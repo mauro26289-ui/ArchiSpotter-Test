@@ -687,6 +687,30 @@ body #splash-screen:not(.hidden) .archi-splash-art {
 /* La cabecera sigue debajo de la zona segura de iOS. */
 #app { padding-top:max(env(safe-area-inset-top, 0px),48px) !important; }
 </style>
+<style id="archi-ios-header-crisp-v9">
+/* La zona de estado queda lisa y opaca: el blur de la cabecera no alcanza
+   al logotipo ni a los botones cuando iOS compone la Dynamic Island. */
+#app { background: #f8f0de !important; }
+#app::before {
+  content: "";
+  position: absolute;
+  z-index: 31;
+  top: 0; left: 0; right: 0;
+  height: max(env(safe-area-inset-top, 0px), 48px);
+  background: #f8f0de;
+  pointer-events: none;
+}
+#app > header.archi-app-header {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+  background: #fffaf1 !important;
+  isolation: isolate;
+}
+body.dark-mode #app { background: #171b18 !important; }
+body.dark-mode #app::before { background: #171b18 !important; }
+body.dark-mode #app > header.archi-app-header { background: #202720 !important; }
+</style>
 </head>
 <body class="archi-intro-active light-mode h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
