@@ -645,34 +645,6 @@ body:has(#splash-screen:not(.hidden)) { background:#f8f0de !important; }
 }
 </style>
 
-<style id="archi-splash-safe-area-v3">
-/* iOS standalone: extender la ilustración por detrás de la barra de estado. */
-html, body { margin:0; min-height:100%; }
-html { background-color:#f8f0de; }
-body.archi-intro-active { background-color:#f8f0de !important; }
-#splash-screen {
- position:fixed !important;
- top:calc(-1 * env(safe-area-inset-top, 0px)) !important;
- bottom:calc(-1 * env(safe-area-inset-bottom, 0px)) !important;
- left:0 !important; right:0 !important;
- width:100vw !important;
- height:auto !important;
- min-height:100dvh !important;
- background:#f8f0de !important;
- overflow:hidden !important;
-}
-#splash-screen .archi-splash-art {
- position:absolute !important; inset:0 !important;
- width:100% !important; height:100% !important;
- background-size:100% 100% !important;
- background-position:center center !important;
- background-repeat:no-repeat !important;
-}
-@supports (height: 100svh) {
- #splash-screen { min-height:100svh !important; }
-}
-</style>
-
 <style id="archi-modal-stacking-fix-20261115">
 /* Los controles Leaflet y los paneles del mapa usan z-index 500.
    La ficha debe permanecer por encima de TODOS esos controles. */
@@ -701,45 +673,41 @@ body > #fullscreen-lightbox:not(.hidden) {
 }
 </style>
 
-<style id="archi-splash-iphone-bottom-fix-v5">
-html,body { background:#f8f0de !important; min-height:100%; }
+<style id="archi-ios-safe-area-definitive-v7">
+/* Zona segura de la APP: separada de la portada. No tapar controles de cabecera. */
+#app {
+  box-sizing: border-box !important;
+  padding-top: max(env(safe-area-inset-top, 0px), 48px) !important;
+}
+#app .archi-app-header {
+  position: sticky !important;
+  top: 0 !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+/* Portada sin deformación: mostrar la imagen íntegra y rellenar el resto
+   con el mismo tono de papel. No usar 100% 100%. */
 #splash-screen:not(.hidden) {
- position:fixed !important; z-index:9999 !important;
- top:calc(-1 * env(safe-area-inset-top, 0px)) !important;
- left:0 !important; right:0 !important;
- bottom:calc(-1 * (env(safe-area-inset-bottom, 0px) + 120px)) !important;
- width:100vw !important; height:auto !important;
- min-height:calc(100lvh + 120px) !important;
- padding:0 !important; margin:0 !important;
- overflow:hidden !important; background:#f8f0de !important;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #f8f0de !important;
+  overflow: hidden !important;
 }
 #splash-screen:not(.hidden) .archi-splash-art {
- position:absolute !important; inset:0 !important;
- width:100% !important; height:100% !important;
- background-position:center center !important;
- background-size:100% 100% !important;
-}
-</style>
-<style id="archi-ios-layout-fix-v6">
-/* Portada: cubrir el área visible sin alterar la proporción de la ilustración. */
-#splash-screen:not(.hidden) .archi-splash-art {
-  background-size: cover !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: contain !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
-}
-/* El header no debe quedar detrás del reloj, batería ni Dynamic Island.
-   El espacio de seguridad se SUMA al padding visual normal. */
-#app > header.archi-app-header {
-  padding-top: calc(12px + env(safe-area-inset-top, 0px)) !important;
-  padding-bottom: 12px !important;
-  box-sizing: border-box !important;
-  min-height: calc(72px + env(safe-area-inset-top, 0px)) !important;
-}
-@media (max-width: 380px) {
-  #app > header.archi-app-header {
-    padding-top: calc(10px + env(safe-area-inset-top, 0px)) !important;
-    min-height: calc(68px + env(safe-area-inset-top, 0px)) !important;
-  }
+  background-color: #f8f0de !important;
 }
 </style>
 </head>
