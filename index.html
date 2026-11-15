@@ -720,6 +720,28 @@ html,body { background:#f8f0de !important; min-height:100%; }
  background-size:100% 100% !important;
 }
 </style>
+<style id="archi-ios-layout-fix-v6">
+/* Portada: cubrir el área visible sin alterar la proporción de la ilustración. */
+#splash-screen:not(.hidden) .archi-splash-art {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+/* El header no debe quedar detrás del reloj, batería ni Dynamic Island.
+   El espacio de seguridad se SUMA al padding visual normal. */
+#app > header.archi-app-header {
+  padding-top: calc(12px + env(safe-area-inset-top, 0px)) !important;
+  padding-bottom: 12px !important;
+  box-sizing: border-box !important;
+  min-height: calc(72px + env(safe-area-inset-top, 0px)) !important;
+}
+@media (max-width: 380px) {
+  #app > header.archi-app-header {
+    padding-top: calc(10px + env(safe-area-inset-top, 0px)) !important;
+    min-height: calc(68px + env(safe-area-inset-top, 0px)) !important;
+  }
+}
+</style>
 </head>
 <body class="archi-intro-active light-mode h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
