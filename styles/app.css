@@ -1,0 +1,684 @@
+/* ArchiSpotter V11 — CSS extraído de V10 sin alterar orden ni declaraciones. */
+
+/* ===== ORIGINAL: base-1 ===== */
+
+        :root { color-scheme: dark; }
+        body.light-mode { background:#f1f5f9 !important; color:#172033 !important; color-scheme:light; }
+        body.light-mode #app, body.light-mode header, body.light-mode nav { background:#ffffff !important; color:#172033 !important; border-color:#dbe2ea !important; }
+        body.light-mode main, body.light-mode #view-map { background:#f8fafc !important; }
+        body.light-mode .bg-slate-950, body.light-mode .bg-slate-900 { background:#ffffff !important; }
+        body.light-mode .bg-slate-800 { background:#eef2f7 !important; }
+        body.light-mode .text-white, body.light-mode .text-slate-100, body.light-mode .text-slate-200 { color:#172033 !important; }
+        body.light-mode .text-slate-300, body.light-mode .text-slate-400 { color:#526174 !important; }
+        body.light-mode .border-slate-800, body.light-mode .border-slate-700 { border-color:#dbe2ea !important; }
+        body.light-mode input, body.light-mode textarea, body.light-mode select { background:#fff !important; color:#172033 !important; border-color:#cbd5e1 !important; }
+        body.light-mode #btn-gps-navigation { color:#172033 !important; }
+        button, input, select { min-height:36px; }
+        button:focus-visible, input:focus-visible, select:focus-visible { outline:3px solid #f59e0b; outline-offset:2px; }
+        #smart-map { width:100%; height:100%; min-height:420px; z-index:1; }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip { background:#0f172a; color:#f8fafc; }
+        .leaflet-popup-content a { color:#fbbf24; font-weight:700; }
+        .favorite-btn.is-favorite { color:#f43f5e !important; }
+        #view-trip, #view-favorites { padding-bottom: 6.5rem; }
+        .bottom-nav { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:2px; }
+        .bottom-nav button { min-width:0; padding:5px 1px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+        .bottom-nav button span { font-size:9px; white-space:nowrap; }
+        .bottom-nav button i { font-size:16px; }
+        .visual-card img { aspect-ratio: 4/3; object-fit:cover; width:100%; }
+        img.image-placeholder { object-fit: contain !important; padding: 1.5rem; background: #0f172a; }
+        body.light-mode .surface-card { background:#fff !important; border-color:#dbe2ea !important; }
+        .route-stop { display:flex; align-items:center; gap:8px; }
+        .safe-area-top { padding-top: max(1rem, env(safe-area-inset-top)); }
+        .safe-area-bottom { padding-bottom: max(1.25rem, env(safe-area-inset-bottom)); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Slider estilo Antes/Ahora */
+        .before-after-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        .before-after-slider img.after-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            clip-path: polygon(0 0, var(--reveal, 50%) 0, var(--reveal, 50%) 100%, 0 100%);
+        }
+
+        /* ArchiSpotter · identidad editorial de arquitectura y viajes */
+        body.light-mode { background:#e9e5dc !important; color:#252923 !important; color-scheme:light; }
+        body.light-mode #app { max-width:480px; background:#f5f2ea !important; color:#252923 !important; border-color:#e1dbcf !important; box-shadow:0 18px 70px rgba(38,35,28,.12); }
+        body.light-mode header, body.light-mode nav { background:rgba(245,242,234,.94) !important; border-color:#ded7c9 !important; }
+        body.light-mode main, body.light-mode #view-map { background:#f5f2ea !important; }
+        body.light-mode #splash-screen { background:#f5f2ea !important; }
+        body.light-mode .bg-slate-950 { background:#eeeae1 !important; }
+        body.light-mode .bg-slate-900 { background:#f5f2ea !important; }
+        body.light-mode .bg-slate-800 { background:#e9e4d9 !important; }
+        body.light-mode .text-white, body.light-mode .text-slate-100, body.light-mode .text-slate-200 { color:#252923 !important; }
+        body.light-mode .text-slate-300, body.light-mode .text-slate-400 { color:#77776e !important; }
+        body.light-mode .text-slate-500 { color:#8b897f !important; }
+        body.light-mode .border-slate-800, body.light-mode .border-slate-700 { border-color:#ded7c9 !important; }
+        body.light-mode .surface-card { background:#fffdf8 !important; border:1px solid #e4ddcf !important; box-shadow:0 5px 18px rgba(55,48,35,.045); }
+        body.light-mode #view-home .bg-gradient-to-br { background:linear-gradient(135deg,#e9dfc9 0%,#f5f2ea 58%,#e7e0d2 100%) !important; border:1px solid #d8c9a9 !important; }
+        body.light-mode .font-serif { letter-spacing:-.025em; }
+        body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4 { color:#292d27 !important; }
+        body.light-mode input, body.light-mode textarea, body.light-mode select { background:#fffdf8 !important; color:#252923 !important; border-color:#d8d0c1 !important; }
+        body.light-mode button.bg-amber-500, body.light-mode .bg-amber-500 { background:#a9874e !important; color:#fffdf8 !important; }
+        body.light-mode .text-amber-400, body.light-mode .text-amber-500 { color:#987541 !important; }
+        body.light-mode .border-amber-500, body.light-mode .border-amber-500\/30 { border-color:#c9b486 !important; }
+        body.light-mode .bottom-nav { box-shadow:0 -8px 28px rgba(45,40,30,.07); }
+        body.light-mode .bottom-nav button { border-radius:12px; transition:background .2s ease,color .2s ease; }
+        body.light-mode .bottom-nav button.text-amber-500 { background:#ebe3d2 !important; color:#8d6d37 !important; }
+        body.light-mode .visual-card { border-radius:16px; overflow:hidden; }
+        body.light-mode .visual-card img { aspect-ratio:4/3; }
+        body.light-mode .rounded-2xl { border-radius:18px; }
+        body.light-mode .rounded-xl { border-radius:13px; }
+        body.light-mode .leaflet-popup-content-wrapper, body.light-mode .leaflet-popup-tip { background:#fffdf8; color:#252923; }
+        body.light-mode .leaflet-popup-content a { color:#987541; }
+        @media (min-width:700px) { body.light-mode #app { margin:18px auto; min-height:calc(100vh - 36px); border-radius:24px; overflow:hidden; } }
+
+        /* REDISEÑO EDITORIAL v3: conserva el formato de app móvil y mejora contraste */
+        body.light-mode { background:#e8e3d8 !important; color:#252923 !important; font-family:Inter,sans-serif; }
+        body.light-mode #app {
+          width:100% !important; max-width:480px !important; min-height:100vh;
+          margin:0 auto !important; background:#f5f2ea !important; color:#252923 !important;
+          border-left:1px solid #ded7c9 !important; border-right:1px solid #ded7c9 !important;
+          box-shadow:0 12px 45px rgba(48,43,33,.10) !important;
+        }
+        body.light-mode header { padding-left:16px !important; padding-right:16px !important; min-height:64px; background:rgba(247,244,237,.98) !important; border-bottom:1px solid #ded7c9 !important; }
+        body.light-mode header h1 { font-family:Cinzel,Georgia,serif !important; color:#252923 !important; }
+        body.light-mode main { padding-left:16px !important; padding-right:16px !important; background:#f5f2ea !important; }
+        body.light-mode #view-home { padding-top:20px !important; padding-bottom:112px !important; }
+        body.light-mode #view-home h2, body.light-mode main h2 { font-family:Cinzel,Georgia,serif !important; color:#252923 !important; line-height:1.2 !important; }
+        body.light-mode #view-home h2 { font-size:clamp(25px,7vw,34px) !important; }
+        body.light-mode main h3 { color:#72572f !important; font-size:11px !important; letter-spacing:.10em !important; text-transform:uppercase !important; }
+        body.light-mode .surface-card, body.light-mode .visual-card { background:#fffdf8 !important; border:1px solid #ded7c9 !important; box-shadow:0 5px 18px rgba(55,48,35,.06) !important; }
+        body.light-mode .visual-card { border-radius:12px !important; overflow:hidden; }
+        body.light-mode .visual-card img { display:block; width:100%; aspect-ratio:4/3 !important; object-fit:cover !important; }
+        body.light-mode .visual-card strong { color:#252923 !important; font-family:Cinzel,Georgia,serif !important; }
+        body.light-mode .visual-card .p-2 { padding:12px !important; }
+        body.light-mode button.bg-amber-500, body.light-mode .bg-amber-500 { background:#80612f !important; color:#ffffff !important; }
+        body.light-mode .text-amber-400, body.light-mode .text-amber-500 { color:#76551f !important; }
+        body.light-mode .text-slate-300, body.light-mode .text-slate-400, body.light-mode .text-slate-500 { color:#535b53 !important; }
+        body.light-mode .text-slate-600, body.light-mode .text-gray-500 { color:#4b534c !important; }
+        body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4,
+        body.light-mode p, body.light-mode label, body.light-mode small, body.light-mode span { text-shadow:none; }
+        body.light-mode .border-slate-800, body.light-mode .border-slate-700 { border-color:#d8d0c1 !important; }
+        body.light-mode input, body.light-mode textarea, body.light-mode select { background:#fffdf8 !important; border:1px solid #c9c0af !important; color:#252923 !important; }
+        body.light-mode input::placeholder, body.light-mode textarea::placeholder { color:#62675f !important; opacity:1; }
+        body.light-mode .bottom-nav {
+          position:fixed !important; left:50% !important; right:auto !important; bottom:0 !important;
+          transform:translateX(-50%) !important; width:100% !important; max-width:480px !important;
+          z-index:40; padding:8px 4px calc(8px + env(safe-area-inset-bottom)) !important;
+          background:rgba(247,244,237,.98) !important; border-top:1px solid #d8d0c1 !important;
+          box-shadow:0 -6px 22px rgba(45,40,30,.10) !important; backdrop-filter:blur(12px);
+        }
+        body.light-mode .bottom-nav button { min-width:0; min-height:52px; border-radius:9px !important; color:#535b53 !important; }
+        body.light-mode .bottom-nav button span { font-size:9px !important; color:inherit !important; }
+        body.light-mode .bottom-nav button.text-amber-500 { color:#684b1e !important; background:#e9dfca !important; }
+        body.light-mode .rounded-2xl { border-radius:14px !important; }
+        body.light-mode .rounded-xl { border-radius:11px !important; }
+        body.light-mode #splash-screen { background:#f5f2ea !important; color:#252923 !important; }
+        body.light-mode .leaflet-popup-content-wrapper, body.light-mode .leaflet-popup-tip { background:#fffdf8 !important; color:#252923 !important; }
+        body.light-mode .leaflet-popup-content a { color:#684b1e !important; }
+        @media (min-width:700px) {
+          body.light-mode #app { min-height:calc(100vh - 32px) !important; margin:16px auto !important; border-radius:22px !important; overflow:hidden !important; }
+          body.light-mode .bottom-nav { width:480px !important; border-radius:0 0 22px 22px; }
+        }
+        @media (max-width:380px) {
+          .bottom-nav button span { font-size:8px !important; }
+          .bottom-nav button i { font-size:14px !important; }
+          body.light-mode main { padding-left:12px !important; padding-right:12px !important; }
+        }
+
+        /* Ajustes de legibilidad del modal del monumento */
+        #audio-speed-panel {
+          background: #fffdf8 !important;
+          border: 1px solid #d8cdbb !important;
+          color: #343a35 !important;
+        }
+        #audio-speed-panel label,
+        #audio-speed-panel span { color: #454d46 !important; }
+        #audio-speed {
+          background: #ffffff !important;
+          color: #252923 !important;
+          border: 1px solid #b9ad99 !important;
+        }
+        #modal-history {
+          background: #ffffff !important;
+          color: #343a35 !important;
+          border: 1px solid #dedede !important;
+          line-height: 1.75 !important;
+        }
+        #modal-history::selection { background:#d9c59f; color:#252923; }
+        #btn-audio-guide {
+          background: #eee8dc !important;
+          color: #684b1e !important;
+          border-color: #d8cdbb !important;
+        }
+        #btn-stamp-passport {
+          background: #f5ead8 !important;
+          color: #684b1e !important;
+          border-color: #dfbd87 !important;
+        }
+        body:not(.light-mode) #audio-speed-panel {
+          background:#242a32 !important; color:#f4f1e9 !important; border-color:#4b5563 !important;
+        }
+        body:not(.light-mode) #audio-speed-panel label,
+        body:not(.light-mode) #audio-speed-panel span { color:#e5e7eb !important; }
+        body:not(.light-mode) #audio-speed { background:#111827 !important; color:#f9fafb !important; }
+        body:not(.light-mode) #modal-history { background:#ffffff !important; color:#343a35 !important; }
+
+        /* v5: encabezado de ficha sin superposiciones + contraste por tema */
+        #monument-modal > div { isolation:isolate; }
+        #monument-modal .modal-close {
+            background:rgba(15,23,42,.88) !important; color:#fff !important;
+            border:1px solid rgba(255,255,255,.35) !important;
+            box-shadow:0 2px 12px rgba(0,0,0,.35) !important;
+        }
+        #monument-modal .modal-heading { min-width:0; display:flex; flex-direction:column; gap:8px; padding-top:2px; }
+        #monument-modal .modal-meta-row {
+            display:flex; align-items:baseline; justify-content:flex-start; flex-wrap:wrap;
+            gap:0; padding-right:2px; font-size:11px; line-height:1.45; font-weight:700;
+            color:#f6cc70;
+        }
+        #monument-modal #modal-style { min-width:0; flex:0 1 auto; overflow-wrap:anywhere; }
+        #monument-modal #modal-year { flex:0 1 auto; text-align:left; white-space:normal; }
+        #monument-modal #modal-year:not(:empty)::before { content:" - "; white-space:pre; }
+        #monument-modal .modal-title-row { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; min-width:0; }
+        #monument-modal #modal-title { flex:1 1 auto; min-width:0; overflow-wrap:anywhere; line-height:1.2; color:#f8fafc !important; }
+        #monument-modal .modal-actions { display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+        #monument-modal .modal-actions button {
+            width:40px; height:40px; min-width:40px; min-height:40px; padding:0;
+            display:flex; align-items:center; justify-content:center; border-radius:12px;
+            background:#263449 !important; border:1px solid #526176 !important;
+            color:#f8d477 !important; box-shadow:0 2px 8px rgba(0,0,0,.16);
+        }
+        #monument-modal #modal-favorite.is-favorite { color:#fb7185 !important; }
+        #monument-modal #modal-location { color:#c1ccda !important; line-height:1.5; }
+        #monument-modal #modal-history { background:#172235 !important; color:#e2e8f0 !important; border-color:#526176 !important; }
+        #monument-modal #modal-architecture, #monument-modal #modal-architecture span,
+        #monument-modal #modal-secret-text { color:#dbe4ef !important; }
+        #monument-modal .text-slate-400 { color:#b4c0d0 !important; }
+        #monument-modal .text-slate-300 { color:#d1dae6 !important; }
+        body.light-mode #monument-modal .modal-close {
+            background:rgba(38,43,39,.88) !important; color:#fff !important;
+            border-color:rgba(255,255,255,.65) !important;
+        }
+        body.light-mode #monument-modal .modal-meta-row { color:#74531e !important; }
+        body.light-mode #monument-modal #modal-title { color:#252923 !important; }
+        body.light-mode #monument-modal .modal-actions button {
+            background:#f0eadf !important; border-color:#c9bda8 !important; color:#76551e !important;
+        }
+        body.light-mode #monument-modal #modal-favorite.is-favorite { color:#be123c !important; }
+        body.light-mode #monument-modal #modal-location { color:#4b5563 !important; }
+        body.light-mode #monument-modal #modal-history {
+            background:#ffffff !important; color:#343a35 !important; border-color:#ded7c9 !important;
+        }
+        body.light-mode #monument-modal #modal-architecture,
+        body.light-mode #monument-modal #modal-architecture span,
+        body.light-mode #monument-modal #modal-secret-text { color:#343a35 !important; }
+        body.light-mode #monument-modal .text-slate-400 { color:#4b5563 !important; }
+        body.light-mode #monument-modal .text-slate-300 { color:#3f4852 !important; }
+        @media (max-width:360px) {
+            #monument-modal .modal-title-row { gap:8px; }
+            #monument-modal .modal-actions { gap:5px; }
+            #monument-modal .modal-actions button { width:36px; min-width:36px; height:36px; min-height:36px; }
+            #monument-modal #modal-title { font-size:1.25rem !important; }
+        }
+
+        /* Mejor contraste de la barra de navegación entre países y monumentos */
+        /* Mayor contraste para la etiqueta de estilo arquitectónico sobre las fotos */
+        body.light-mode #monuments-list .monument-style-badge {
+            background: rgba(255,253,248,.96) !important;
+            color: #493719 !important;
+            border: 1px solid #b99a62 !important;
+            box-shadow: 0 2px 8px rgba(25,22,16,.22) !important;
+            text-shadow: none !important;
+            backdrop-filter: blur(6px);
+        }
+
+        body.light-mode #nav-breadcrumb {
+          background:#e9e3d7 !important;
+          border-bottom:1px solid #cfc5b3 !important;
+          color:#343a32 !important;
+        }
+        body.light-mode #nav-breadcrumb button {
+          color:#252923 !important;
+          font-weight:700 !important;
+        }
+        body.light-mode #nav-breadcrumb button i {
+          color:#72572f !important;
+        }
+        body.light-mode #nav-breadcrumb #breadcrumb-text {
+          color:#252923 !important;
+        }
+        body.light-mode #nav-breadcrumb #breadcrumb-location {
+          color:#343a32 !important;
+          font-weight:700 !important;
+        }
+    
+        /* Map UI: explicit contrast in both themes, independent of global slate overrides. */
+        #view-map .map-topbar { background:#172536 !important; border-color:#394b60 !important; }
+        #view-map .map-topbar .map-heading { color:#f9f5ec !important; }
+        #view-map #gps-toggle-btn { background:#29394b !important; color:#fff6e6 !important; border-color:#5a6b7d !important; }
+        #view-map #gps-toggle-btn i { color:#f5c66d !important; }
+        #view-map .map-overlay-input,
+        #view-map .map-center-button { background:rgba(19,32,49,.97) !important; color:#fff9ed !important; border:1px solid #5a6c7f !important; }
+        #view-map .map-overlay-input::placeholder { color:#d4dbe2 !important; opacity:1 !important; }
+        #view-map .map-center-button { color:#ffcf79 !important; }
+        #view-map .map-status-panel { background:rgba(18,31,47,.97) !important; border:1px solid #53667c !important; }
+        #view-map #map-status-text { color:#f5f7fa !important; }
+        #view-map #nearby-list > span { color:#d5e0ed !important; }
+        #view-map #nearby-list button { background:#29394b !important; border-color:#607185 !important; }
+        #view-map #nearby-list button .text-white { color:#fff9ed !important; }
+        #view-map #nearby-list button .text-amber-400 { color:#ffd27c !important; }
+        #view-map .leaflet-control-zoom a { background:#fffdf8 !important; color:#223248 !important; border-color:#bac5d0 !important; }
+        #view-map .leaflet-control-attribution { background:rgba(255,253,248,.93) !important; color:#28364a !important; }
+        #view-map .leaflet-control-attribution a { color:#365b87 !important; }
+        body.light-mode #view-map .map-topbar { background:#fffaf0 !important; border-color:#d9c9a9 !important; }
+        body.light-mode #view-map .map-topbar .map-heading { color:#28332e !important; }
+        body.light-mode #view-map #gps-toggle-btn { background:#eee4d3 !important; color:#29332e !important; border-color:#bba77e !important; }
+        body.light-mode #view-map #gps-toggle-btn i { color:#806027 !important; }
+        body.light-mode #view-map .map-overlay-input,
+        body.light-mode #view-map .map-center-button { background:rgba(255,253,247,.98) !important; color:#28332e !important; border-color:#9b987f !important; }
+        body.light-mode #view-map .map-overlay-input::placeholder { color:#555e5b !important; }
+        body.light-mode #view-map .map-center-button { color:#76551f !important; }
+        body.light-mode #view-map .map-status-panel { background:rgba(255,253,247,.98) !important; border-color:#bcb49f !important; }
+        body.light-mode #view-map #map-status-text { color:#29332e !important; }
+        body.light-mode #view-map #nearby-list > span { color:#48534e !important; }
+        body.light-mode #view-map #nearby-list button { background:#f2ebdf !important; border-color:#bfb19b !important; }
+        body.light-mode #view-map #nearby-list button .text-white { color:#29332e !important; }
+        body.light-mode #view-map #nearby-list button .text-amber-400 { color:#735019 !important; }
+
+    
+
+/* ===== ORIGINAL: archi-onboarding-styles ===== */
+
+#view-home > .relative:first-child { display:none !important; }
+#archi-onboarding { position:fixed; inset:0; z-index:45; display:flex; align-items:center; justify-content:center; padding:22px; background:#f6f5f1; color:#27323b; overflow-y:auto; }
+#archi-onboarding.archi-gone { display:none !important; }
+body.archi-intro-active .bottom-nav { display:none !important; }
+.archi-onboarding-inner { width:100%; max-width:430px; margin:auto; display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px; }
+.archi-onboarding-mark { width:min(100%,310px); min-height:110px; display:flex; align-items:center; justify-content:center; padding:0 10px; }
+.archi-onboarding-mark img { display:block; width:100%; max-height:150px; object-fit:contain; }
+.archi-onboarding-title { font-family:Georgia,serif; font-size:clamp(32px,8vw,43px); line-height:1.1; font-weight:700; letter-spacing:-.03em; color:#27323b; }
+.archi-onboarding-description { font-size:15px; line-height:1.85; color:#48545e; max-width:360px; }
+.archi-onboarding-start { width:100%; max-width:340px; min-height:56px; border:0; border-radius:17px; background:#ad7e43; color:white; font-size:16px; font-weight:700; cursor:pointer; box-shadow:0 8px 24px #ad7e4330; }
+.archi-onboarding-start:focus-visible { outline:3px solid #334155; outline-offset:4px; }
+.archi-onboarding-languages { position:absolute; top:max(18px,env(safe-area-inset-top)); right:18px; display:flex; gap:5px; z-index:2; }
+.archi-lang-btn { min-width:42px; height:36px; border:1px solid #d7d3cb; border-radius:9px; background:rgba(255,255,255,.86); color:#52606a; font-size:12px; font-weight:750; cursor:pointer; }
+.archi-lang-btn[aria-pressed="true"] { background:#ad7e43; color:#fff; border-color:#ad7e43; box-shadow:0 2px 9px #ad7e4330; }
+.archi-lang-btn:focus-visible { outline:2px solid #ad7e43; outline-offset:2px; }
+.archi-onboarding-kicker { color:#a17b4e; font-size:11px; letter-spacing:.22em; font-weight:800; text-transform:uppercase; }
+body:not(.light-mode) #archi-onboarding { background:#111b27; color:#f8fafc; }
+body:not(.light-mode) .archi-onboarding-title { color:#f8fafc; }
+body:not(.light-mode) .archi-onboarding-description { color:#d0d8e1; }
+body:not(.light-mode) .archi-lang-btn { background:#1e293b; color:#e2e8f0; border-color:#475569; }
+body:not(.light-mode) .archi-lang-btn[aria-pressed="true"] { background:#ad7e43; color:white; border-color:#ad7e43; }
+@media(max-width:390px){ .archi-onboarding-inner { gap:16px; padding-top:46px; } .archi-onboarding-mark { min-height:90px; } .archi-onboarding-mark img { max-height:110px; } }
+
+
+/* ===== ORIGINAL: archi-local-auth-css ===== */
+
+.archi-onboarding-register {width:100%;max-width:340px;min-height:54px;border:1.5px solid #ad7e43;border-radius:17px;background:transparent;color:#895e2d;font-size:16px;font-weight:750;cursor:pointer}
+body:not(.light-mode) .archi-onboarding-register {color:#f1c989}
+.archi-logout{display:flex;align-items:center;gap:6px;min-height:32px;padding:0 9px;border:1px solid #b88b55;border-radius:10px;background:#fff8eb;color:#6f4922;font-size:12px;font-weight:700;white-space:nowrap}
+body:not(.light-mode) .archi-logout{background:#263344;color:#f7d8a3}
+#archi-auth-panel{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:18px;background:#f6f5f1;color:#29312c;overflow-y:auto}
+#archi-auth-panel.archi-auth-hidden{display:none}
+.archi-auth-card{position:relative;width:100%;max-width:390px;background:#fffefa;border:1px solid #dfd5c6;border-radius:22px;padding:32px 25px;box-shadow:0 18px 60px #34271920}
+.archi-auth-back{position:absolute;top:14px;left:17px;color:#6f4922;font-size:24px}
+.archi-auth-brand{text-align:center;font-size:12px;font-weight:800;letter-spacing:.2em;color:#a77a45;margin-bottom:16px}
+#archi-auth-heading{text-align:center;font:700 28px Georgia,serif;margin:0 0 9px}
+#archi-auth-help{text-align:center;color:#58616b;font-size:13px;margin-bottom:20px}
+#archi-auth-form{display:flex;flex-direction:column;gap:8px}
+#archi-auth-form label{font-size:13px;font-weight:700;margin-top:8px}
+#archi-auth-form input{width:100%;border:1px solid #bcb2a3;background:white;color:#252a27;border-radius:10px;padding:12px 13px;font-size:16px}
+#archi-auth-submit{background:#ad7e43;color:#fff;border-radius:12px;padding:14px;font-weight:750;margin-top:9px}
+#archi-auth-switch{display:block;margin:16px auto 0;color:#765028;font-weight:700;text-decoration:underline}
+#archi-auth-error{min-height:18px;color:#a32828;font-size:13px}
+#archi-auth-disclaimer{margin-top:24px;color:#66717a;font-size:11px;line-height:1.6;text-align:center}
+@media(max-width:390px){.archi-logout span{display:none}.archi-logout{padding:0 10px}}
+
+
+/* ===== ORIGINAL: archi-header-layout-fix ===== */
+
+/* Two clear, balanced rows in the phone-sized app: identity above, controls below. */
+#app .archi-app-header {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"brand brand" "tools logout";
+    align-items:center;
+    column-gap:12px;
+    row-gap:12px;
+    padding:15px 16px 13px !important;
+    height:auto !important;
+}
+#app .archi-header-brand {grid-area:brand; min-width:0; width:100%;}
+#app .archi-header-brand h1 {font-size:clamp(17px,4.8vw,22px);white-space:nowrap;}
+#app .archi-header-brand > div:last-child {min-width:0;}
+#app .archi-header-brand > div:first-child {flex-shrink:0;}
+#app .archi-header-tools {grid-area:tools;min-width:0;display:flex;align-items:center;gap:9px;justify-content:flex-start;}
+#app .archi-header-tools > * {flex-shrink:0;}
+#app .archi-header-tools.space-x-2 > :not([hidden]) ~ :not([hidden]) {margin-left:0 !important;}
+#app .archi-header-tools button {width:38px !important;height:38px !important;min-width:38px;}
+#app .archi-header-tools select {width:70px !important;height:38px !important;font-size:12px !important;}
+#app .archi-app-header .archi-logout {grid-area:logout;justify-self:end;min-height:38px;padding:0 11px;font-size:12px;}
+@media(max-width:390px) {
+  #app .archi-app-header {column-gap:8px;padding-left:12px !important;padding-right:12px !important;}
+  #app .archi-header-tools {gap:7px;}
+  #app .archi-header-tools button {width:35px !important;height:35px !important;min-width:35px;}
+  #app .archi-header-tools select {width:62px !important;height:35px !important;}
+  #app .archi-app-header .archi-logout {min-height:35px;padding:0 9px;}
+}
+@media(max-width:350px) {
+  #app .archi-header-tools {gap:5px;}
+  #app .archi-header-tools button {width:32px !important;height:34px !important;min-width:32px;}
+  #app .archi-header-tools select {width:56px !important;height:34px !important;}
+  #app .archi-app-header .archi-logout {padding:0 7px;}
+}
+
+
+/* ===== ORIGINAL: archi-settings-style ===== */
+
+#app .archi-app-header{grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"brand tools"!important;row-gap:0!important;padding:12px 14px!important;}
+#app .archi-header-brand{grid-area:brand!important;width:auto!important;}
+#app .archi-header-brand h1{font-size:clamp(16px,4.5vw,21px)!important;}
+#app .archi-header-tools{grid-area:tools!important;justify-content:flex-end!important;gap:8px!important;}
+#app .archi-header-tools button{width:39px!important;height:39px!important;min-width:39px!important;border-radius:13px!important;}
+#app .archi-header-code,#app .archi-header-settings{background:#eae5dc;border:1px solid #d5cbb9;color:#59452b;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;}
+body:not(.light-mode) #app .archi-header-code,body:not(.light-mode) #app .archi-header-settings{background:#263344;border-color:#475569;color:#f4d69f;}
+#app .archi-header-settings{background:#f7ebd8;color:#7a5326;border-color:#d2b684;}
+#app .archi-app-header .archi-logout{display:none!important;}
+@media(max-width:380px){#app .archi-app-header{padding:10px!important;column-gap:5px!important}#app .archi-header-tools{gap:5px!important}#app .archi-header-tools button{width:33px!important;height:36px!important;min-width:33px!important}#app .archi-header-brand h1{font-size:16px!important}#app .archi-header-brand>div:first-child{width:34px!important;height:34px!important}}
+#app .archi-settings-overlay[hidden]{display:none!important}
+#app .archi-settings-overlay{position:absolute;inset:0;z-index:1000;display:flex;align-items:flex-end;justify-content:center;background:rgba(10,16,26,.55);padding:12px;backdrop-filter:blur(3px)}
+#app .archi-settings-sheet{width:100%;max-width:460px;max-height:calc(100% - 25px);overflow:auto;border-radius:22px;padding:21px 17px max(24px,env(safe-area-inset-bottom));background:#faf8f3;color:#282c2c;box-shadow:0 18px 70px #0005}
+body:not(.light-mode) #app .archi-settings-sheet{background:#172334;color:#f4f4f4}
+#app .archi-settings-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:18px}#app .archi-settings-top h2{font-size:23px;font-weight:800;margin:0}#app .archi-settings-top p{font-size:12px;color:#7b756d;margin:4px 0 0}body:not(.light-mode) #app .archi-settings-top p{color:#b4c0cf}
+#app .archi-settings-close{width:36px;height:36px;border-radius:11px;background:#eae5db;color:#4b4b4b}body:not(.light-mode) #app .archi-settings-close{background:#334155;color:#fff}
+#app .archi-settings-section{background:#fff;border:1px solid #e5dfd4;border-radius:15px;margin-bottom:14px;overflow:hidden}body:not(.light-mode) #app .archi-settings-section{background:#233247;border-color:#475569}
+#app .archi-settings-field,#app .archi-settings-action{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:60px;padding:12px 13px;width:100%;font-size:13px;font-weight:650;color:inherit;text-align:left}#app .archi-settings-field+.archi-settings-field,#app .archi-settings-action+.archi-settings-action{border-top:1px solid #e5dfd4}body:not(.light-mode) #app .archi-settings-field+.archi-settings-field,body:not(.light-mode) #app .archi-settings-action+.archi-settings-action{border-color:#475569}
+#app .archi-settings-field>span,#app .archi-settings-action>span{display:flex;align-items:center;gap:10px}#app .archi-settings-field>span i,#app .archi-settings-action>span i{color:#9b733c;width:17px;text-align:center}
+#app #archi-settings-language{background:#f1ede5;color:#292929;border:1px solid #d8cfc0;border-radius:9px;padding:9px 8px;max-width:125px;font-size:13px}body:not(.light-mode) #app #archi-settings-language{background:#334155;color:#fff;border-color:#64748b}
+#app .archi-theme-options{display:flex;gap:4px;padding:3px;border-radius:11px;background:#eee9df}body:not(.light-mode) #app .archi-theme-options{background:#172334}
+#app .archi-theme-options button{display:flex;align-items:center;gap:5px;border-radius:8px;padding:8px 9px;font-size:12px;color:inherit}#app .archi-theme-options button[aria-pressed="true"]{background:#fff;box-shadow:0 1px 4px #0002;color:#7b5221}body:not(.light-mode) #app .archi-theme-options button[aria-pressed="true"]{background:#475569;color:#fff}
+#app .archi-settings-signout{display:flex;justify-content:center;align-items:center;gap:10px;width:100%;min-height:47px;border:1px solid #bd8e58;border-radius:12px;color:#805329;background:#fff7eb;font-size:14px;font-weight:750}body:not(.light-mode) #app .archi-settings-signout{background:#3b3028;color:#ffddb3}
+
+
+/* ===== ORIGINAL: archi-about-style ===== */
+
+#app .archi-about-overlay[hidden]{display:none!important}
+#app .archi-about-overlay{position:absolute;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(10,16,26,.68);backdrop-filter:blur(5px)}
+#app .archi-about-panel{position:relative;width:100%;max-width:390px;padding:32px 25px 30px;border-radius:24px;background:#faf8f3;color:#303331;box-shadow:0 20px 65px #0005;text-align:center}
+#app .archi-about-close{position:absolute;right:15px;top:15px;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#ebe5da;color:#474747}
+#app .archi-about-emblem{display:grid;place-items:center;margin:0 auto 16px;width:56px;height:56px;border-radius:18px;background:#eee2c8;color:#805b26;font-size:25px}
+#app .archi-about-panel h2{margin:0 0 18px;font-size:21px;font-weight:800;color:inherit}
+#app .archi-about-panel p{margin:0;font-size:15px;line-height:1.85;text-align:left;color:#444743}
+body:not(.light-mode) #app .archi-about-panel{background:#1b293b;color:#f8f4eb}
+body:not(.light-mode) #app .archi-about-panel p{color:#e1e6ed}
+body:not(.light-mode) #app .archi-about-close{background:#35465c;color:#fff}
+body:not(.light-mode) #app .archi-about-emblem{background:#423a2c;color:#e8bd79}
+
+
+/* ===== ORIGINAL: archi-organic-palette-v1 ===== */
+
+/* ArchiSpotter · paleta acuarela botánica. Sobrescribe sin cambiar estructura ni lógica. */
+body { --archi-paper:#f6efdf;--archi-surface:#fffaf0;--archi-raised:#eae1cd;--archi-ink:#343b25;--archi-muted:#646a50;--archi-line:#d8ccb3;--archi-accent:#9a5631;--archi-primary:#4d5a35;--archi-on-primary:#fffaf0; }
+body:not(.light-mode) { --archi-paper:#1c261d;--archi-surface:#293528;--archi-raised:#344330;--archi-ink:#f5eedc;--archi-muted:#c8d0b2;--archi-line:#526046;--archi-accent:#e6a16e;--archi-primary:#b5c49a;--archi-on-primary:#1c261d; }
+body.light-mode,body:not(.light-mode) { background:var(--archi-paper)!important;color:var(--archi-ink)!important; }
+body.light-mode #app,body:not(.light-mode) #app {background:var(--archi-paper)!important;color:var(--archi-ink)!important;border-color:var(--archi-line)!important;max-width:480px;}
+body.light-mode header,body.light-mode nav,body:not(.light-mode) header,body:not(.light-mode) nav {background:var(--archi-surface)!important;color:var(--archi-ink)!important;border-color:var(--archi-line)!important;}
+body.light-mode main,body.light-mode #view-map,body:not(.light-mode) main,body:not(.light-mode) #view-map {background:var(--archi-paper)!important;color:var(--archi-ink)!important;}
+body.light-mode #splash-screen,body:not(.light-mode) #splash-screen {background:var(--archi-paper)!important;color:var(--archi-ink)!important;}
+body.light-mode .bg-slate-950,body.light-mode .bg-slate-900,body:not(.light-mode) .bg-slate-950,body:not(.light-mode) .bg-slate-900 {background:var(--archi-surface)!important;}
+body.light-mode .bg-slate-800,body:not(.light-mode) .bg-slate-800 {background:var(--archi-raised)!important;}
+body.light-mode .surface-card,body:not(.light-mode) .surface-card {background:var(--archi-surface)!important;border-color:var(--archi-line)!important;color:var(--archi-ink)!important;}
+body.light-mode .text-white,body.light-mode .text-slate-100,body.light-mode .text-slate-200,body:not(.light-mode) .text-white,body:not(.light-mode) .text-slate-100,body:not(.light-mode) .text-slate-200 {color:var(--archi-ink)!important;}
+body.light-mode .text-slate-300,body.light-mode .text-slate-400,body.light-mode .text-slate-500,body:not(.light-mode) .text-slate-300,body:not(.light-mode) .text-slate-400,body:not(.light-mode) .text-slate-500 {color:var(--archi-muted)!important;}
+body.light-mode h1,body.light-mode h2,body.light-mode h3,body.light-mode h4,body:not(.light-mode) h1,body:not(.light-mode) h2,body:not(.light-mode) h3,body:not(.light-mode) h4 {color:var(--archi-ink)!important;}
+body.light-mode .border-slate-800,body.light-mode .border-slate-700,body:not(.light-mode) .border-slate-800,body:not(.light-mode) .border-slate-700 {border-color:var(--archi-line)!important;}
+body.light-mode .text-amber-400,body.light-mode .text-amber-500,body:not(.light-mode) .text-amber-400,body:not(.light-mode) .text-amber-500 {color:var(--archi-accent)!important;}
+body.light-mode .bg-amber-500,body:not(.light-mode) .bg-amber-500 {background:var(--archi-primary)!important;color:var(--archi-on-primary)!important;}
+body.light-mode .bottom-nav button.text-amber-500,body:not(.light-mode) .bottom-nav button.text-amber-500 {background:var(--archi-raised)!important;color:var(--archi-accent)!important;}
+body.light-mode input,body.light-mode textarea,body.light-mode select,body:not(.light-mode) input,body:not(.light-mode) textarea,body:not(.light-mode) select {background:var(--archi-surface)!important;color:var(--archi-ink)!important;border-color:var(--archi-line)!important;}
+body.light-mode .leaflet-popup-content-wrapper,body.light-mode .leaflet-popup-tip,body:not(.light-mode) .leaflet-popup-content-wrapper,body:not(.light-mode) .leaflet-popup-tip {background:var(--archi-surface)!important;color:var(--archi-ink)!important;}
+body.light-mode #audio-speed-panel,body:not(.light-mode) #audio-speed-panel,body.light-mode #modal-history,body:not(.light-mode) #modal-history {background:var(--archi-surface)!important;color:var(--archi-ink)!important;border-color:var(--archi-line)!important;}
+body.light-mode #audio-speed-panel label,body.light-mode #audio-speed-panel span,body:not(.light-mode) #audio-speed-panel label,body:not(.light-mode) #audio-speed-panel span {color:var(--archi-ink)!important;}
+body.light-mode #btn-audio-guide,body:not(.light-mode) #btn-audio-guide {background:var(--archi-raised)!important;color:var(--archi-ink)!important;border-color:var(--archi-line)!important;}
+#splash-screen img[alt="ArchiSpotter"] {width:min(82vw,330px)!important;height:auto!important;border-radius:22px;box-shadow:0 12px 36px rgba(27,36,22,.12);}
+.archi-header-brand img {border-radius:8px;object-fit:cover;}
+button:focus-visible,input:focus-visible,select:focus-visible {outline-color:var(--archi-accent)!important;}
+
+
+/* ===== ORIGINAL: archi-bottom-nav-fix ===== */
+
+/* Navegación inferior alineada con el marco móvil en ambos temas. */
+#app > nav.bottom-nav {
+ position:fixed !important; left:50% !important; right:auto !important;
+ transform:translateX(-50%) !important; bottom:0 !important;
+ width:100% !important; max-width:480px !important;
+ box-sizing:border-box !important; margin:0 !important;
+ padding:8px 10px max(10px, env(safe-area-inset-bottom)) !important;
+ border:1px solid var(--archi-line) !important; border-bottom:0 !important;
+ background:var(--archi-surface) !important; z-index:40 !important;
+ align-items:stretch !important; gap:4px !important;
+}
+#app > nav.bottom-nav button {
+ min-width:0 !important; min-height:62px !important; width:100% !important;
+ padding:7px 2px !important; border-radius:15px !important;
+ display:flex !important; flex-direction:column !important;
+ justify-content:center !important; align-items:center !important;
+ gap:5px !important; line-height:1.15 !important;
+ color:var(--archi-muted) !important;
+}
+#app > nav.bottom-nav button i {font-size:21px !important; line-height:1 !important;}
+#app > nav.bottom-nav button span {font-size:12px !important; line-height:1.15 !important; white-space:nowrap !important; color:inherit !important;}
+#app > nav.bottom-nav button.text-amber-500 {background:var(--archi-raised) !important; color:var(--archi-accent) !important;}
+@media (min-width:700px) {#app > nav.bottom-nav {border-radius:0 0 22px 22px !important;}}
+@media (max-width:360px) {#app > nav.bottom-nav {padding-left:5px !important;padding-right:5px !important;gap:1px !important;} #app > nav.bottom-nav button span {font-size:10px !important;}}
+
+
+/* ===== ORIGINAL: archi-onboarding-fullscreen-v2 ===== */
+
+/* Presentación a pantalla completa: sin tarjeta central ni ancho de teléfono. */
+#archi-onboarding { position:fixed !important; inset:0 !important; width:100vw !important; min-height:100vh !important; min-height:100dvh !important; box-sizing:border-box; padding:clamp(20px,4vw,48px) !important; padding-top:max(24px,env(safe-area-inset-top)) !important; padding-bottom:max(28px,env(safe-area-inset-bottom)) !important; overflow-y:auto; }
+#archi-onboarding .archi-onboarding-inner { max-width:none !important; width:100% !important; min-height:calc(100dvh - 96px); margin:0 auto !important; padding:clamp(45px,7vh,90px) 0 0 !important; box-sizing:border-box; display:flex !important; flex-direction:column; align-items:center; justify-content:center; gap:clamp(12px,2vh,22px); background:transparent !important; border:0 !important; box-shadow:none !important; border-radius:0 !important; }
+#archi-onboarding .archi-onboarding-mark { width:min(65vw,340px) !important; min-height:0 !important; flex-shrink:0; padding:0 !important; }
+#archi-onboarding .archi-onboarding-mark img { max-height:min(33vh,240px) !important; width:100%; object-fit:contain; }
+#archi-onboarding .archi-onboarding-description { max-width:min(90%,600px) !important; }
+#archi-onboarding .archi-onboarding-start, #archi-onboarding .archi-onboarding-register { width:min(100%,340px) !important; }
+#archi-onboarding .archi-onboarding-languages { position:fixed !important; top:max(20px,env(safe-area-inset-top)) !important; right:max(20px,env(safe-area-inset-right)) !important; }
+@media(max-height:650px) { #archi-onboarding .archi-onboarding-inner { padding-top:55px !important; gap:10px; } #archi-onboarding .archi-onboarding-mark img { max-height:125px !important; } }
+
+
+/* ===== ORIGINAL: archi-iphone-responsive-2026 ===== */
+
+html { min-height:100%; background:var(--archi-paper,#f6efdf); }
+html, body { width:100%; max-width:100%; margin:0; }
+body { min-height:100vh; min-height:100dvh; overflow-x:hidden; }
+/* En teléfonos no usar el marco de escritorio de 480px. */
+@media (max-width:699px) {
+  body #app, body.light-mode #app, body:not(.light-mode) #app {
+    width:100% !important; max-width:100% !important;
+    min-height:100vh !important; min-height:100dvh !important;
+    margin:0 !important; border:0 !important; border-radius:0 !important;
+    box-shadow:none !important;
+  }
+  #app > nav.bottom-nav, body.light-mode #app > nav.bottom-nav {
+    left:0 !important; right:0 !important; transform:none !important;
+    width:100% !important; max-width:none !important;
+    bottom:0 !important; border-left:0 !important; border-right:0 !important;
+    border-radius:0 !important;
+    padding:8px 10px max(12px, env(safe-area-inset-bottom, 0px)) !important;
+  }
+  #app > main { padding-bottom:calc(90px + env(safe-area-inset-bottom, 0px)) !important; }
+  #app > header { padding-top:max(12px, env(safe-area-inset-top, 0px)) !important; }
+}
+/* La portada es una sola ilustración, sin tarjeta ni segunda capa. */
+#splash-screen { position:fixed !important; inset:0 !important; width:100% !important;
+  height:100vh !important; height:100dvh !important; overflow:hidden !important;
+  margin:0 !important; border:0 !important; border-radius:0 !important; }
+#splash-screen .archi-splash-art { position:absolute !important; inset:0 !important;
+  width:100% !important; height:100% !important;
+  background-size:cover !important; background-position:center center !important;
+  background-repeat:no-repeat !important; }
+@supports (height:100svh) {
+  #splash-screen { min-height:100svh !important; }
+}
+
+
+/* ===== ORIGINAL: archi-iphone-visual-fixes-20261114 ===== */
+
+/* Barra de país/ciudad: ocupar todo el ancho del marco móvil. */
+#app main #nav-breadcrumb {
+  width: calc(100% + 32px) !important;
+  max-width: none !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+  box-sizing: border-box !important;
+  border-radius: 0 !important;
+}
+@media (max-width: 390px) {
+  #app main #nav-breadcrumb {
+    width: calc(100% + 24px) !important;
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+  }
+}
+/* Portada: mostrar la ilustración entera sin recortar el logotipo. */
+#splash-screen .archi-splash-art {
+  background-size: contain !important;
+  background-position: center center !important;
+  background-color: #f8f0de !important;
+}
+/* Logotipo de la cabecera: usar más espacio dentro del marco existente. */
+#app .archi-header-brand > div:first-child {
+  padding: 1px !important;
+  overflow: hidden !important;
+}
+#app .archi-header-brand > div:first-child img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  border-radius: 7px !important;
+}
+
+
+/* ===== ORIGINAL: archi-iphone-splash-and-icon-fix-20261114 ===== */
+
+/* La ilustración de inicio cubre toda la pantalla, incluidas las áreas seguras.
+   Se conserva la imagen entera, sin cortar el nombre ArchiSpotter. */
+html:has(#splash-screen:not(.hidden)),
+body:has(#splash-screen:not(.hidden)) { background:#f8f0de !important; }
+#splash-screen {
+  position:fixed !important;
+  top:0 !important; right:0 !important; bottom:0 !important; left:0 !important;
+  width:100vw !important; height:100vh !important; height:100dvh !important;
+  padding:0 !important; margin:0 !important;
+  background:#f8f0de !important;
+}
+#splash-screen .archi-splash-art {
+  position:absolute !important; inset:0 !important;
+  width:100% !important; height:100% !important;
+  background-size:100% 100% !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+}
+/* La imagen del icono contiene un margen claro propio: ampliar dentro del marco
+   sin modificar el tamaño del encabezado ni deformar el icono. */
+#app .archi-header-brand > div:first-child {
+  padding:0 !important;
+  overflow:hidden !important;
+  border:0 !important;
+  background:transparent !important;
+  border-radius:12px !important;
+}
+#app .archi-header-brand > div:first-child > img {
+  display:block !important;
+  width:100% !important; height:100% !important;
+  max-width:none !important;
+  object-fit:cover !important;
+  transform:scale(1.24) !important;
+  transform-origin:center !important;
+  border-radius:0 !important;
+}
+
+
+/* ===== ORIGINAL: archi-modal-stacking-fix-20261115 ===== */
+
+/* Los controles Leaflet y los paneles del mapa usan z-index 500.
+   La ficha debe permanecer por encima de TODOS esos controles. */
+#monument-modal:not(.hidden) {
+  z-index: 1200 !important;
+  isolation: isolate;
+}
+#monument-modal:not(.hidden) > div { position: relative; z-index: 1; }
+
+/* La galería de fotos es una capa superior a la ficha (1200) y al mapa. */
+#fullscreen-lightbox:not(.hidden) {
+  z-index: 1300 !important;
+  isolation: isolate;
+}
+
+
+/* ===== ORIGINAL: archi-lightbox-portal-fix ===== */
+
+/* El visor se mueve a body al abrirse: no queda atrapado dentro de #app. */
+body > #fullscreen-lightbox:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    z-index: 2147483647 !important;
+    isolation: isolate;
+}
+
+
+/* ===== ORIGINAL: archi-splash-single-source-v9 ===== */
+
+/* Portada vertical de proporción nativa: no se deforma ni añade franjas. */
+html,body { background-color:#f8f0de; }
+body #splash-screen:not(.hidden) {
+ position:fixed !important; inset:0 !important; top:0 !important; bottom:0 !important;
+ width:100vw !important; height:100dvh !important; min-height:100dvh !important;
+ max-height:none !important; margin:0 !important; padding:0 !important;
+ overflow:hidden !important; background:#f8f0de !important;
+}
+body #splash-screen:not(.hidden) .archi-splash-art {
+ position:absolute !important; inset:0 !important;
+ width:100% !important; height:100% !important;
+ background-image:url("assets/splash-iphone.webp?v=8") !important;
+ background-size:cover !important; background-position:center center !important;
+ background-repeat:no-repeat !important;
+}
+/* La cabecera sigue debajo de la zona segura de iOS. */
+#app { padding-top:max(env(safe-area-inset-top, 0px),48px) !important; }
+
+
+/* ===== ORIGINAL: archi-ios-top-controls-v10 ===== */
+
+/* V10: FIX SOLO ARRIBA. Evitar que la cabecera se desplace por debajo
+   de la región de Safari/iOS al hacer scroll. No tocar navegación inferior. */
+#app {
+  padding-top: max(68px, calc(env(safe-area-inset-top, 0px) + 16px)) !important;
+}
+#app::before { content: none !important; display:none !important; }
+#app > header.archi-app-header {
+  position: relative !important;
+  top: auto !important;
+  z-index: 35 !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+  background-color: #fffaf1 !important;
+  isolation: isolate;
+}
+body.dark-mode #app > header.archi-app-header {
+  background-color: #202720 !important;
+}
+/* Sin alterar el menú inferior ni su sombra. */
+
