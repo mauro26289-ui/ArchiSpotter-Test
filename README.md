@@ -1,1 +1,0 @@
-# ArchiSpotter-Test
