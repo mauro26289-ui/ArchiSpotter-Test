@@ -521,11 +521,6 @@ button:focus-visible,input:focus-visible,select:focus-visible {outline-color:var
 #archi-onboarding .archi-onboarding-languages { position:fixed !important; top:max(20px,env(safe-area-inset-top)) !important; right:max(20px,env(safe-area-inset-right)) !important; }
 @media(max-height:650px) { #archi-onboarding .archi-onboarding-inner { padding-top:55px !important; gap:10px; } #archi-onboarding .archi-onboarding-mark img { max-height:125px !important; } }
 </style>
-<style id="archi-splash-edge-to-edge">
-#splash-screen {position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;overflow:hidden!important;background:#f8f0de!important;}
-#splash-screen .archi-splash-art {position:absolute;inset:0;width:100%;height:100%;background-image:url("assets/splash-iphone.webp");background-size:cover;background-position:center;background-repeat:no-repeat;opacity:1;}
-
-</style>
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
 <link rel="manifest" href="manifest.webmanifest" />
 <meta name="theme-color" content="#f6eedc" />
@@ -673,32 +668,24 @@ body > #fullscreen-lightbox:not(.hidden) {
 }
 </style>
 
-<style id="archi-splash-native-image-v8">
-/* Ilustración preparada para un lienzo vertical de iPhone: sin estirar el logotipo. */
-#splash-screen:not(.hidden) {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  min-height: 100dvh !important;
-  max-height: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  background: #f8f0de !important;
+<style id="archi-splash-single-source-v9">
+/* Portada vertical de proporción nativa: no se deforma ni añade franjas. */
+html,body { background-color:#f8f0de; }
+body #splash-screen:not(.hidden) {
+ position:fixed !important; inset:0 !important; top:0 !important; bottom:0 !important;
+ width:100vw !important; height:100dvh !important; min-height:100dvh !important;
+ max-height:none !important; margin:0 !important; padding:0 !important;
+ overflow:hidden !important; background:#f8f0de !important;
 }
-#splash-screen:not(.hidden) .archi-splash-art {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-image: url("assets/splash-iphone.webp") !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
+body #splash-screen:not(.hidden) .archi-splash-art {
+ position:absolute !important; inset:0 !important;
+ width:100% !important; height:100% !important;
+ background-image:url("assets/splash-iphone.webp?v=8") !important;
+ background-size:cover !important; background-position:center center !important;
+ background-repeat:no-repeat !important;
 }
-/* La app mantiene su zona segura, independientemente de la portada. */
-#app { padding-top: max(env(safe-area-inset-top, 0px), 48px) !important; }
+/* La cabecera sigue debajo de la zona segura de iOS. */
+#app { padding-top:max(env(safe-area-inset-top, 0px),48px) !important; }
 </style>
 </head>
 <body class="archi-intro-active light-mode h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
