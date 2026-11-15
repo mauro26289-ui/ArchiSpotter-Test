@@ -700,6 +700,28 @@ body > #fullscreen-lightbox:not(.hidden) {
     isolation: isolate;
 }
 </style>
+
+<style id="archi-splash-iphone-bottom-fix-v4">
+/* Extender la portada por debajo del viewport visual de iOS. */
+html, body { background-color:#f8f0de; }
+#splash-screen:not(.hidden) {
+  position:fixed !important;
+  top:calc(-1 * env(safe-area-inset-top, 0px)) !important;
+  bottom:calc(-1 * (env(safe-area-inset-bottom, 0px) + 90px)) !important;
+  left:0 !important; right:0 !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:calc(100dvh + env(safe-area-inset-bottom, 0px) + 90px) !important;
+  overflow:hidden !important;
+}
+#splash-screen:not(.hidden) > .archi-splash-art {
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important; height:100% !important;
+  background-size:100% 100% !important;
+  background-position:center !important;
+}
+</style>
 </head>
 <body class="archi-intro-active light-mode h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
@@ -2768,7 +2790,8 @@ for (const monument of initialMonumentsData) {
             const audio=document.getElementById('audio-label'); if(audio) audio.textContent=isSpeakingAudio?tr('Pausar audio','Pause audio'):t.audio;
             const lang=document.getElementById('language-select'); if(lang) lang.value=appLanguage;
             document.documentElement.lang=appLanguage;
-            if (selectedCountry || !document.getElementById('view-home').classList.contains('hidden')) renderNavigationFlow();
+            // Actualizar la pantalla visible sin obligar a volver a Países.
+            if (currentTab === 'explore') renderNavigationFlow();
             if (typeof renderTrip==='function') renderTrip();
             if (typeof renderFavorites==='function') renderFavorites();
             if (typeof renderWalkingRoutes==='function') renderWalkingRoutes();
@@ -2779,6 +2802,11 @@ for (const monument of initialMonumentsData) {
             // Keep the welcome heading in sync with the selected language.
             setUiText('#home-intro-heading', appLanguage==='it'?'Che cos’è?':appLanguage==='en'?'What is this?':'¿Y esto qué es?');
             if (activeMonumentForModal && !document.getElementById('monument-modal').classList.contains('hidden')) translateOpenMonument(activeMonumentForModal);
+            // Mantener Ajustes y sus controles sincronizados mientras están abiertos.
+            if (typeof archiSyncSettings === 'function') archiSyncSettings();
+            if (typeof archiSyncAboutLanguage === 'function') archiSyncAboutLanguage();
+            // Actualizar el contenido visible del mapa sin recrear Leaflet.
+            if (currentTab === 'map' && typeof renderNearbyMonuments === 'function') renderNearbyMonuments();
         }
         function translateOpenMonument(m) {
             if(!m) return;
