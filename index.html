@@ -79,6 +79,20 @@
 #splash-screen .archi-splash-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;background:transparent!important}
 #splash-screen .archi-splash-photo{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;opacity:1!important;visibility:visible!important}
 </style>
+<script id="archi-splash-startup-guard-v22">
+(function(){
+  function releaseSplash(){
+    var el=document.getElementById('splash-screen');
+    if(!el)return;
+    el.style.opacity='0';
+    el.style.pointerEvents='none';
+    window.setTimeout(function(){el.style.display='none';},720);
+  }
+  // Independent timer: even if the application throws during initialization,
+  // the splash cannot permanently cover the UI.
+  window.setTimeout(releaseSplash,3200);
+})();
+</script>
 </head>
 <body class="archi-intro-active light-mode h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
@@ -606,8 +620,8 @@
 
     <!-- JavaScript Logic -->
     <script src="data/monuments-data.js"></script>
-    <script src="scripts/storage.js?v=20"></script>
-    <script src="scripts/app.js?v=21"></script>
+    <script src="scripts/storage.js?v=22"></script>
+    <script src="scripts/app.js?v=22"></script>
 <script id="archi-onboarding-script" src="scripts/onboarding.js"></script>
 
 <script id="archi-local-auth-js" src="scripts/auth.js"></script>
