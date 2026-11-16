@@ -1323,41 +1323,13 @@ for (const monument of initialMonumentsData) {
             italianMonumentContent[monument.id].history = text.it;
         }
 
-        function monumentField(m,field){return appLanguage==='it'?(italianMonumentContent[m.id]?.[field]||m[field]):appLanguage==='en'?(englishMonumentContent[m.id]?.[field]||m[field]):m[field];}
+        // monumentField: scripts/monument-content-field.js
+
         // architectureLabel: scripts/labels.js
         // localYear moved to formatting.js
         const staticTextEnglish = {"Volver": "Back", "Mi viaje": "My trip", "Comparador de Esplendor": "Splendor comparison", "Estampar Sello": "Collect stamp", "Velocidad": "Speed", "Narración adaptada al idioma disponible": "Narration in the selected language", "Cómo Llegar (Iniciar Navegación GPS)": "How to get there (Start GPS navigation)", "Historia & Reseña": "History & Overview", "Fotografías del Monumento": "Monument photographs", "Toca para Zoom HD": "Tap to zoom in HD", "Detalles Constructivos": "Architectural details", "Sitio Web Oficial": "Official website", "Pasaporte de Arquitectura": "Architecture passport", "Sellos Coleccionados": "Collected stamps", "Anterior": "Previous", "Siguiente": "Next", "Acceso Desarrollador": "Developer access", "Ingresa credenciales para gestionar el catálogo": "Enter credentials to manage the catalogue", "Cancelar": "Cancel", "Ingresar": "Sign in", "Panel de Desarrollo": "Developer panel", "Crear": "Create", "Editar / Borrar": "Edit / Delete", "Nombre *": "Name *", "Ciudad *": "City *", "País *": "Country *", "Latitud GPS": "GPS latitude", "Longitud GPS": "GPS longitude", "Estilo *": "Style *", "Año *": "Year *", "Fotos (URLs separadas por coma) *": "Photos (comma-separated URLs) *", "URL Reconstrucción Esplendor": "Splendor reconstruction URL", "Dato Curioso / Secretos": "Fun fact / Secrets", "Reseña Histórica (8-10 líneas) *": "Historical overview (8–10 lines) *", "Guardar Monumento": "Save monument", "Código JS Listo para Deploy": "JavaScript code ready to deploy", "Copiar al Portapapeles": "Copy to clipboard", "Notificación": "Notification", "Simular Detección": "Simulate detection", "¡Bienvenido!": "Welcome!", "Países Disponibles": "Available countries", "Selecciona la ciudad que deseas explorar": "Select a city to explore", "Activar GPS": "Enable GPS", "Mis favoritos": "My favorites", "Todos": "All", "Romano": "Roman", "Gótico": "Gothic", "Renacentista": "Renaissance", "Barroco": "Baroque", "Explorar": "Explore", "Favoritos": "Favorites", "Mapa": "Map", "Rutas": "Routes", "Itinerario personal": "Personal itinerary", "Vaciar": "Clear", "Exploración visual": "Visual exploration", "Rutas a Pie Temáticas": "Themed walking routes", "Crear mi ruta": "Create my route", "Reconocimiento Fotográfico": "Photo recognition", "Pasaporte Vacío": "Empty passport", "Audioguía 60s": "Audio guide", "Secretos Ocultos & Datos Curiosos": "Hidden secrets & fun facts", "Curiosidad insólita...": "Unusual fun fact...", "Nivel: Turista Curioso": "Level: Curious Tourist", "Añadir a mi viaje": "Add to my trip", "Agregar a mi viaje": "Add to my trip", "Cómo llegar": "How to get there", "Historia y Reseña": "History & Overview", "Estampar sello": "Collect stamp", "Cerrar ficha": "Close entry", "Detalles Arquitectónicos": "Architectural details", "Sello Coleccionado": "Stamp collected", "Ver en mapa": "View on map", "Cómo Llegar": "How to get there", "Fotografías": "Photographs", "Historia": "History", "Curiosidades": "Fun facts", "Arquitectura": "Architecture", "Agregar a favoritos": "Add to favorites", "Quitar de favoritos": "Remove from favorites"};
-        function translateStaticTextNodes() {
-            const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
-            const nodes=[]; while(walker.nextNode())nodes.push(walker.currentNode);
-            for(const node of nodes){
-                const parent=node.parentElement;
-                if(!parent||['SCRIPT','STYLE','OPTION','TEXTAREA'].includes(parent.tagName)||parent.closest('#archi-onboarding'))continue;
-                const current=node.textContent;
-                const match=current.match(/^(\s*)(.*?)(\s*)$/s);if(!match)continue;
-                let original=node.__archiSpanishText||match[2];
-                // An explicit UI renderer may have replaced the text. Do not restore a stale Spanish original.
-                if(node.__archiSpanishText && ![original,staticTextEnglish[original],staticTextItalian[original]].includes(match[2])){
-                    delete node.__archiSpanishText;
-                    original=match[2];
-                }
-                if(!Object.prototype.hasOwnProperty.call(staticTextEnglish,original))continue;
-                node.__archiSpanishText=original;
-                const next=match[1]+(appLanguage==='it'?(staticTextItalian[original]||original):appLanguage==='en'?staticTextEnglish[original]:original)+match[3];
-                if(node.textContent!==next)node.textContent=next;
-            }
-            for(const el of document.querySelectorAll('[placeholder],[title],[aria-label]')){
-                for(const attr of ['placeholder','title','aria-label']){
-                    const current=el.getAttribute(attr);if(!current)continue;
-                    const key='archiOriginal'+attr;
-                    const original=el.dataset[key]||current;
-                    if(!Object.prototype.hasOwnProperty.call(staticTextEnglish,original))continue;
-                    el.dataset[key]=original;
-                    const next=appLanguage==='it'?(staticTextItalian[original]||original):appLanguage==='en'?staticTextEnglish[original]:original;
-                    if(el.getAttribute(attr)!==next)el.setAttribute(attr,next);
-                }
-            }
-        }
+        // translateStaticTextNodes: scripts/static-text-translation.js
+
         // Keep translations in sync with dynamically rendered modals, routes, and passport.
         let archiTranslationQueued=false;
         const archiTranslationObserver=new MutationObserver(()=>{
@@ -1908,21 +1880,8 @@ for (const monument of initialMonumentsData) {
         // Funciones en scripts/route-rendering.js.
         // Selección de rutas: scripts/route-selection.js (etapa 45).
         // Funciones en scripts/trip-favorites-ui.js.
-        function switchTab(tab) {
-            triggerHaptic(); currentTab=tab;
-            // La barra de país/ciudad pertenece exclusivamente a Explorar.
-            const archiBreadcrumb = document.getElementById('nav-breadcrumb');
-            if (archiBreadcrumb && tab !== 'explore') archiBreadcrumb.classList.add('hidden');
-            const ids=['view-home','view-cities-container','view-monuments-container','view-map','view-walks','view-trip','view-favorites'];
-            ids.forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
-            ['tab-explore','tab-trip','tab-favorites','tab-map','tab-walks'].forEach(id=>{const b=document.getElementById(id);if(b)b.className='flex flex-col items-center text-slate-400 rounded-xl';});
-            const active=document.getElementById('tab-'+tab);if(active)active.className='flex flex-col items-center text-amber-500 rounded-xl';
-            if(tab==='explore') renderNavigationFlow();
-            if(tab==='map'){document.getElementById('view-map').classList.remove('hidden');setTimeout(()=>{if(!smartMap)initSmartMap();else smartMap.invalidateSize();},120);}
-            if(tab==='walks'){document.getElementById('view-walks').classList.remove('hidden');renderWalkingRoutes();}
-            if(tab==='trip'){document.getElementById('view-trip').classList.remove('hidden');renderTrip();}
-            if(tab==='favorites'){document.getElementById('view-favorites').classList.remove('hidden');renderFavorites();}
-        }
+        // switchTab: scripts/tab-navigation.js
+
 
         // Navegación/listado/filtros extraídos: scripts/explore-search-controls.js
 
