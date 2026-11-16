@@ -1965,29 +1965,11 @@ for (const monument of initialMonumentsData) {
             resetLightboxZoom();
         }
 
-        function updateLightboxView() {
-            const img = document.getElementById('lightbox-img');
-            img.dataset.monumentId = activeMonumentForModal?.id || '';
-            img.dataset.fallbackDone = 'false';
-            img.dataset.triedImages = '';
-            img.dataset.activeImage = lightboxImages[lightboxCurrentIdx];
-            img.onerror = () => handleMonumentImageError(img);
-            img.src = lightboxImages[lightboxCurrentIdx];
-            document.getElementById('lightbox-counter').textContent = `${lightboxCurrentIdx + 1} / ${lightboxImages.length}`;
-            resetLightboxZoom();
-        }
+        // updateLightboxView trasladada a scripts/lightbox-navigation.js.
 
-        function prevLightboxImage() {
-            triggerHaptic();
-            lightboxCurrentIdx = (lightboxCurrentIdx > 0) ? lightboxCurrentIdx - 1 : lightboxImages.length - 1;
-            updateLightboxView();
-        }
+        // prevLightboxImage trasladada a scripts/lightbox-navigation.js.
 
-        function nextLightboxImage() {
-            triggerHaptic();
-            lightboxCurrentIdx = (lightboxCurrentIdx < lightboxImages.length - 1) ? lightboxCurrentIdx + 1 : 0;
-            updateLightboxView();
-        }
+        // nextLightboxImage trasladada a scripts/lightbox-navigation.js.
 
         // Zoom del visor trasladado a scripts/lightbox-zoom.js.
 
@@ -2039,13 +2021,28 @@ for (const monument of initialMonumentsData) {
             window.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
             window.addEventListener('mouseup', stopDrag);
 
+            // Deslizar entre imágenes únicamente con zoom estándar.
+            // El gesto no interfiere con el arrastre ampliado ni con el pellizco.
+            let swipeStartX = null;
+            let swipeStartY = null;
+            let swipeStartTime = 0;
+            let swipeEligible = false;
+            let swipeMultiTouch = false;
+
             viewport.addEventListener('touchstart', (e) => {
                 if (e.touches.length === 2) {
+                    swipeEligible = false;
+                    swipeMultiTouch = true;
                     e.preventDefault();
                     isDraggingLightbox = false;
                     initialPinchDistance = getPinchDistance(e.touches);
                     initialPinchScale = lightboxScale;
                 } else if (e.touches.length === 1) {
+                    const touch = e.touches[0];
+                    swipeEligible = lightboxScale === 1 && !swipeMultiTouch;
+                    swipeStartX = touch.clientX;
+                    swipeStartY = touch.clientY;
+                    swipeStartTime = Date.now();
                     const now = Date.now();
                     if (now - lastTapTime < 300) {
                         e.preventDefault();
@@ -2056,6 +2053,7 @@ for (const monument of initialMonumentsData) {
                             applyLightboxTransform();
                         }
                         lastTapTime = 0;
+                        swipeEligible = false;
                         return;
                     }
                     lastTapTime = now;
@@ -2087,8 +2085,26 @@ for (const monument of initialMonumentsData) {
                 if (e.touches.length === 1 && lightboxScale > 1) {
                     startDrag(e.touches[0].clientX, e.touches[0].clientY);
                 } else if (e.touches.length === 0) {
+                    if (swipeEligible && !swipeMultiTouch && lightboxScale === 1 && e.changedTouches.length === 1) {
+                        const endTouch = e.changedTouches[0];
+                        const dx = endTouch.clientX - swipeStartX;
+                        const dy = endTouch.clientY - swipeStartY;
+                        const elapsed = Date.now() - swipeStartTime;
+                        if (Math.abs(dx) >= 55 && Math.abs(dx) > Math.abs(dy) * 1.35 && elapsed < 1000 && lightboxImages.length > 1) {
+                            if (dx < 0) nextLightboxImage();
+                            else prevLightboxImage();
+                            lastTapTime = 0;
+                        }
+                    }
+                    swipeEligible = false;
+                    swipeMultiTouch = false;
                     stopDrag();
                 }
+            });
+            viewport.addEventListener('touchcancel', () => {
+                swipeEligible = false;
+                swipeMultiTouch = false;
+                stopDrag();
             });
         }
 

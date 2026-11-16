@@ -8,3 +8,5 @@ Validar en iPhone: inicio, idiomas, ficha, audioguía, mapa, Mi viaje y favorito
 Etapa 42: extraída segmentación audioChunks a scripts/audio-chunks.js, sin modificar algoritmo.
 
 Etapa 43: función de construcción de enlaces de rutas extraída a scripts/route-links.js.
+
+Etapa 49: swipe horizontal en visor a escala 1, umbral 55px, predominio horizontal, sin interferir con zoom/pinch.
