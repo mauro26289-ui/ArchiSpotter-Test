@@ -1,10 +1,12 @@
-// Busca en los tres idiomas, independientemente del idioma seleccionado.
-// Conserva los nombres originales y los estilos del catálogo.
+// Índice trilingüe para búsquedas: independiente del idioma visible.
 function archiNormalizeSearch(value) {
-    return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().trim();
+    return String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().trim();
 }
-function archiMonumentMatchesSearch(monument, term, englishNames, italianNames, englishStyles, italianStyles) {
-    const names = [monument.name, englishNames[monument.id], italianNames[monument.id]];
-    const styles = [monument.style, englishStyles[monument.style], italianStyles[monument.style]];
-    return archiNormalizeSearch(names.concat(styles).filter(Boolean).join(' ')).includes(term);
+function archiMonumentMatchesSearch(monument, query, englishNames, italianNames, englishStyles, italianStyles) {
+    const id = monument.id;
+    const originalStyle = monument.style || '';
+    const names = [monument.name, englishNames?.[id], italianNames?.[id]];
+    const styles = [originalStyle, englishStyles?.[originalStyle], italianStyles?.[originalStyle]];
+    const searchable = archiNormalizeSearch([...names, ...styles].filter(Boolean).join(' '));
+    return searchable.includes(archiNormalizeSearch(query));
 }
