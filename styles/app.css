@@ -677,8 +677,10 @@ body #splash-screen:not(.hidden) .archi-splash-art {
   background-color: #fffaf1 !important;
   isolation: isolate;
 }
-body.dark-mode #app > header.archi-app-header {
-  background-color: #202720 !important;
+body:not(.light-mode) #app > header.archi-app-header {
+  background-color: var(--archi-surface, #293528) !important;
+  color: var(--archi-ink, #f5eedc) !important;
+  border-bottom-color: var(--archi-line, #526046) !important;
 }
 /* Sin alterar el menú inferior ni su sombra. */
 
