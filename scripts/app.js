@@ -2644,7 +2644,7 @@ for (const monument of initialMonumentsData) {
             const directions = document.getElementById('trip-directions');
             if (directions) directions.classList.toggle('hidden', list.length < 2);
             const grid = document.getElementById('trip-visual-grid');
-            if (grid) grid.innerHTML = (list.length ? list : monumentsData).slice(0,12).map(visualCard).join('');
+            if (grid) grid.innerHTML = archiTripVisualMonuments(list, monumentsData).map(visualCard).join('');
         }
         function renderFavorites(){const box=document.getElementById('favorites-grid');if(!box)return;const list=archiResolveMonumentIds(favoriteMonuments, monumentsData);box.innerHTML=list.length?list.map(visualCard).join(''):`<p class="col-span-2 text-xs text-slate-400 rounded-xl border border-dashed border-slate-700 p-4">${tr("Todavía no tienes favoritos. Guarda monumentos con el icono de corazón en sus fichas.","You have no favorites yet. Save monuments using the heart icon in their details.")}</p>`;}
 
