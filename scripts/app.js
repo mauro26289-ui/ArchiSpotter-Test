@@ -2599,8 +2599,8 @@ for (const monument of initialMonumentsData) {
         function renderNearbyMonuments() {
             const target = document.getElementById('nearby-list'); if (!target) return;
             if (userLat == null || userLng == null) { target.innerHTML = `<span class="text-[10px] text-slate-400">${tr("Activa GPS para ordenar por cercanía.","Enable GPS to sort by distance.")}</span>`; return; }
-            const distance = (a,b) => { const rad=x=>x*Math.PI/180, dLat=rad(b.lat-a.lat), dLng=rad(b.lng-a.lng), x=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLng/2)**2; return 6371*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x)); };
-            const nearby = monumentsData.filter(m=>m.coords).map(m=>({...m,km:distance({lat:userLat,lng:userLng},{lat:m.coords.lat,lng:m.coords.lng})})).sort((a,b)=>a.km-b.km).slice(0,4);
+
+            const nearby = monumentsData.filter(m=>m.coords).map(m=>({...m,km:archiDistanceKm({lat:userLat,lng:userLng},{lat:m.coords.lat,lng:m.coords.lng})})).sort((a,b)=>a.km-b.km).slice(0,4);
             target.innerHTML = nearby.map(m=>`<button onclick="openMonumentById('${m.id}')" class="shrink-0 rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1.5 text-left"><span class="block text-[10px] text-white font-semibold">${monumentLabel(m)}</span><span class="text-[9px] text-amber-400">${m.km.toFixed(1)} km</span></button>`).join('');
         }
 
