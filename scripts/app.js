@@ -2606,7 +2606,7 @@ for (const monument of initialMonumentsData) {
         function renderRoutePicker() {
             const box=document.getElementById('route-picker'); if(!box)return;
             const q=(document.getElementById('route-filter')?.value||'').toLowerCase();
-            const list=monumentsData.filter(m=>m.coords && (`${m.name} ${m.city} ${m.country}`.toLowerCase().includes(q)));
+            const list=monumentsData.filter(m=>archiRouteStopMatches(m, q));
             box.innerHTML=list.map(m=>`<label class="flex items-center gap-2 rounded-lg bg-slate-800/70 p-2 text-xs text-slate-200"><input type="checkbox" value="${m.id}" ${selectedRouteIds.includes(m.id)?'checked':''} onchange="toggleRouteStop('${m.id}',this.checked)" class="accent-amber-500"><span class="flex-1">${monumentLabel(m)}<small class="block text-slate-400">${cityLabel(m.city)}, ${countryLabel(m.country)}</small></span></label>`).join('') || `<p class="text-xs text-slate-400">${tr("No hay monumentos con coordenadas que coincidan.","No monuments with matching coordinates.")}</p>`;
         }
         // Selección de rutas: scripts/route-selection.js (etapa 45).
