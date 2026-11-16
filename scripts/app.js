@@ -1552,17 +1552,7 @@ for (const monument of initialMonumentsData) {
             const container = document.getElementById('view-countries');
             if (!container) return;
 
-            const countriesMap = {};
-            monumentsData.forEach(m => {
-                const cName = m.country || 'Otros';
-                const countryFlag = getFlagForCountry(cName, m.flag);
-                if (!countriesMap[cName]) {
-                    countriesMap[cName] = { name: cName, flag: countryFlag, count: 0 };
-                }
-                countriesMap[cName].count++;
-            });
-
-            const countriesList = Object.values(countriesMap);
+            const countriesList = archiBuildCountryList(monumentsData, getFlagForCountry);
 
             container.innerHTML = countriesList.map(c => `
                 <div onclick="selectCountry(${JSON.stringify(c.name).replace(/"/g,'&quot;')})" class="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 flex flex-col items-center text-center space-y-2 cursor-pointer transition active:scale-95 group shadow-md">
