@@ -1439,16 +1439,7 @@ for (const monument of initialMonumentsData) {
             // La barra de países no debe aparecer sobre las otras pestañas.
             if(currentTab!=='explore')document.getElementById('nav-breadcrumb')?.classList.add('hidden');
         }
-        function translateOpenMonument(m) {
-            if(!m) return;
-            document.getElementById('modal-title').textContent=monumentLabel(m);
-            document.getElementById('modal-style').textContent=styleLabel(m.style);
-            document.getElementById('modal-year').textContent=localYear(m.year);
-            document.getElementById('modal-location').innerHTML=`<i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> ${cityLabel(m.city)}, ${countryLabel(m.country)} ${getFlagForCountry(m.country,m.flag)}`;
-            document.getElementById('modal-history').innerText=monumentField(m,'history');
-            document.getElementById('modal-secret-text').textContent=monumentField(m,'secret')||'';
-            document.getElementById('modal-architecture').innerHTML=architectureLabel(m).map(item=>`<div class="flex items-start space-x-2"><i class="fa-solid fa-check text-amber-500 text-[10px] mt-1"></i><span>${item}</span></div>`).join('');
-        }
+        // Extraído a scripts/modal-translation.js
         function setLanguage(lang) {
             if(isSpeakingAudio) stopAudioGuide();
             appLanguage=['es','en','it'].includes(lang)?lang:'es';
@@ -1458,19 +1449,8 @@ for (const monument of initialMonumentsData) {
             try { showToast(appLanguage==='it'?'Lingua impostata su italiano':appLanguage==='en'?'Language set to English':'Idioma configurado en español'); } catch(e) {}
         }
         window.setLanguage=setLanguage;
-        // iOS Safari: escuchar el selector REAL de Ajustes. El antiguo listener
-        // observaba #language-select, que no existe en la ventana actual.
-        function archiHandleLanguageSelection(event) {
-            const target=event.target;
-            if (!target || !['archi-settings-language','language-select'].includes(target.id)) return;
-            const requested=target.value;
-            if (!['es','en','it'].includes(requested) || requested===appLanguage) return;
-            setLanguage(requested);
-        }
-        document.addEventListener('change',archiHandleLanguageSelection);
-        document.addEventListener('input',archiHandleLanguageSelection);
-        function toggleTheme() { document.body.classList.toggle('light-mode'); const light=document.body.classList.contains('light-mode'); archiStorageSet('archispotter_theme',light?'light':'dark'); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; }
-        function applySavedPreferences() { const savedTheme=archiStorageGet('archispotter_theme'); const light=savedTheme!=='dark'; document.body.classList.toggle('light-mode',light); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; applyLanguage(); }
+        // Extraído a scripts/language-input-handler.js
+        // Extraído a scripts/theme-preferences.js
         // Funciones trasladadas a scripts/favorites-actions.js.
 
         // showToast y triggerHaptic: scripts/ui-feedback.js
