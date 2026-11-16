@@ -1479,62 +1479,9 @@ for (const monument of initialMonumentsData) {
 
         // Funciones trasladadas a scripts/explore-gestures.js.
 
-        function navigateBack() {
-            triggerHaptic();
-            let destination = 'countries';
-            if (selectedCity) { selectedCity = null; destination = 'cities'; }
-            else if (selectedCountry) { selectedCountry = null; destination = 'countries'; }
-            renderNavigationFlow();
-            archiRestoreExploreScroll(destination);
-        }
+        // Navegación/listado/filtros extraídos: scripts/explore-navigation.js
 
-        function goHome() {
-            triggerHaptic();
-            selectedCountry = null;
-            selectedCity = null;
-            switchTab('explore');
-            renderNavigationFlow();
-        }
-
-        function renderMonuments() {
-            const listContainer = document.getElementById('monuments-list');
-            if (!listContainer) return;
-
-            const searchInput = document.getElementById('search-input');
-            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-
-            let filtered = monumentsData.filter(m => m.country === selectedCountry && m.city === selectedCity);
-
-            if (currentActiveStyle !== 'all') {
-                filtered = filtered.filter(m => m.style.toLowerCase().includes(currentActiveStyle.toLowerCase()));
-            }
-
-            if (searchTerm) {
-                filtered = filtered.filter(m => 
-                    (m.name+" "+monumentLabel(m)).toLowerCase().includes(searchTerm) || 
-                    (m.style+" "+styleLabel(m.style)).toLowerCase().includes(searchTerm)
-                );
-            }
-
-            listContainer.innerHTML = filtered.map(m => `
-                <div onclick="openMonumentModal('${m.id}')" class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg hover:border-amber-500/40 transition cursor-pointer active:scale-[0.98] group">
-                    <div class="relative h-44 w-full bg-slate-950 overflow-hidden">
-                        <img src="${(m.images || [])[0] || architecturePlaceholder()}" data-monument-id="${m.id}" onerror="handleMonumentImageError(this)" loading="lazy" decoding="async" alt="${m.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
-                        <span class="monument-style-badge absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-full border border-amber-500/30">
-                            ${styleLabel(m.style)}
-                        </span>
-                    </div>
-                    <div class="p-4 space-y-2">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-serif font-bold text-base text-slate-100 group-hover:text-amber-400 transition">${monumentLabel(m)}</h3>
-                            <span class="text-[10px] text-slate-400">${localYear(m.year)}</span>
-                        </div>
-                        <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${monumentField(m,"history")}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
+        // Navegación/listado/filtros extraídos: scripts/monument-list-ui.js
 
         function openMonumentModal(id) {
             archiRememberExploreScroll('monuments');
@@ -1833,7 +1780,146 @@ for (const monument of initialMonumentsData) {
             document.getElementById('monument-modal').classList.add('hidden');
         }
 
-        // Funciones trasladadas a scripts/audio-guide-controller.js.
+        // ArchiSpotter neural MP3 pilot: Colosseum (EN / ES / IT).
+        // Other monuments retain the existing browser-voice fallback.
+        const NEURAL_MONUMENT_IDS = new Set([
+            'colosseum', 'pantheon', 'forum', 'florence-duomo',
+            'milan-cathedral', 'sagrada-familia', 'alhambra',
+            'chillon-castle', 'christ-redeemer', 'borobudur'
+        ]);
+        let neuralAudioPlayer = null;
+        function startNeuralAudioGuide() {
+            const monument = activeMonumentForModal;
+            if (!monument || !NEURAL_MONUMENT_IDS.has(monument.id)) return false;
+            const language = ['es','en','it'].includes(appLanguage) ? appLanguage : 'es';
+            const audio = new Audio(`audio/${monument.id}-${language}.mp3`);
+            const session = ++audioSessionId;
+            neuralAudioPlayer = audio;
+            isSpeakingAudio = true;
+            const icon = document.getElementById('audio-icon');
+            const label = document.getElementById('audio-label');
+            if (icon) icon.className = 'fa-solid fa-circle-pause text-sm text-amber-400 animate-pulse';
+            if (label) label.textContent = language === 'it' ? 'Ferma audio' : language === 'en' ? 'Stop audio' : 'Detener audio';
+            audio.onended = () => { if (session === audioSessionId) { neuralAudioPlayer = null; resetAudioState(); } };
+            audio.onerror = () => {
+                if (session !== audioSessionId) return;
+                neuralAudioPlayer = null;
+                resetAudioState();
+                showToast(language === 'it' ? 'Audio neurale non disponibile; uso la voce del dispositivo.' : language === 'en' ? 'Neural audio unavailable; using device voice.' : 'Audio neuronal no disponible; usando voz del dispositivo.');
+                startAudioGuide();
+            };
+            const playPromise = audio.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => {
+                    if (session !== audioSessionId) return;
+                    neuralAudioPlayer = null;
+                    resetAudioState();
+                    showToast(language === 'it' ? 'Tocca di nuovo per riprodurre.' : language === 'en' ? 'Tap again to play audio.' : 'Tocá de nuevo para reproducir.');
+                });
+            }
+            return true;
+        }
+        function toggleAudioGuide() {
+            triggerHaptic();
+            if (isSpeakingAudio) {
+                stopAudioGuide();
+            } else if (!startNeuralAudioGuide()) {
+                startAudioGuide();
+            }
+        }
+
+        // Formateo de pronunciación: scripts/speech-formatting.js
+
+        // iOS Safari: narraciones cortas y una única sesión activa.
+        let audioSessionId = 0;
+        let audioCurrentUtterance = null;
+        // audioChunks: scripts/audio-chunks.js
+        function startAudioGuide() {
+            if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+                showToast(tr('Tu navegador no soporta síntesis de voz.', 'Your browser does not support speech synthesis.'));
+                return;
+            }
+            const m = activeMonumentForModal;
+            if (!m) return;
+            const session = ++audioSessionId;
+            const synth = window.speechSynthesis;
+            synth.cancel();
+            const language = appLanguage;
+            const langTag = language === 'it' ? 'it-IT' : language === 'en' ? 'en-GB' : 'es-MX';
+            const intro = language === 'it' ? 'Situato a' : language === 'en' ? 'Located in' : 'Ubicado en';
+            const history = preprocessTextForSpeech(archiEditorial2026[m.id]?.narrations?.[language] || monumentField(m, 'history'), language);
+            const text = archiEditorial2026[m.id]?.narrations?.[language] ? history : `${monumentLabel(m)}. ${intro} ${cityLabel(m.city)}, ${countryLabel(m.country)}. ${history}`;
+            const chunks = audioChunks(text);
+            if (!chunks.length) return;
+            let index = 0;
+            let hasStarted = false;
+            isSpeakingAudio = true;
+            const icon = document.getElementById('audio-icon');
+            const label = document.getElementById('audio-label');
+            if (icon) icon.className = 'fa-solid fa-circle-pause text-sm text-amber-400 animate-pulse';
+            if (label) label.textContent = language === 'it' ? 'Pausa audio' : language === 'en' ? 'Pause audio' : 'Pausar audio';
+            function next() {
+                if (session !== audioSessionId) return;
+                if (index >= chunks.length) { resetAudioState(); return; }
+                const utterance = new SpeechSynthesisUtterance(chunks[index++]);
+                audioCurrentUtterance = utterance;
+                utterance.lang = langTag;
+                utterance.rate = audioRate;
+                utterance.pitch = language === 'en' ? 0.98 : 1;
+                const voices = synth.getVoices();
+                // Priorizar acentos: español latinoamericano neutro, inglés británico e italiano claro.
+                const normalizeLang = v => String(v.lang || '').toLowerCase().replace('_', '-');
+                const preferred = language === 'es'
+                    ? ['es-mx', 'es-co', 'es-us', 'es-ar', 'es-cl', 'es-pe', 'es-ve', 'es-419']
+                    : language === 'en' ? ['en-gb', 'en-ie', 'en-au', 'en-nz', 'en-us'] : ['it-it', 'it-ch', 'it'];
+                const matches = voices.filter(v => normalizeLang(v).startsWith(language));
+                const score = v => {
+                    const tag = normalizeLang(v);
+                    const rank = preferred.findIndex(code => tag === code || tag.startsWith(code + '-'));
+                    const regional = rank < 0 ? 0 : 100 - rank * 10;
+                    const quality = /natural|premium|enhanced|mejorada|neural|eloquence|siri/i.test(v.name) ? 180 : 0;
+                    return regional + quality;
+                };
+                if (matches.length) {
+                    matches.sort((a, b) => score(b) - score(a));
+                    utterance.voice = matches[0];
+                    utterance.lang = matches[0].lang;
+                }
+                utterance.onstart = () => { if (session === audioSessionId) hasStarted = true; };
+                utterance.onend = () => { if (session === audioSessionId) next(); };
+                utterance.onerror = (event) => {
+                    if (session !== audioSessionId) return;
+                    if (event.error !== 'canceled' && event.error !== 'interrupted') {
+                        showToast(language === 'it' ? 'Impossibile riprodurre la voce.' : language === 'en' ? 'Unable to play audio.' : 'No se pudo reproducir la audioguía.');
+                    }
+                    resetAudioState();
+                };
+                try { synth.speak(utterance); }
+                catch (error) { resetAudioState(); showToast('No se pudo iniciar la audioguía.'); }
+            }
+            // La primera llamada se ejecuta directamente dentro del toque del usuario.
+            next();
+        }
+        function stopAudioGuide() {
+            ++audioSessionId;
+            if (neuralAudioPlayer) {
+                neuralAudioPlayer.pause();
+                neuralAudioPlayer.removeAttribute('src');
+                neuralAudioPlayer.load();
+                neuralAudioPlayer = null;
+            }
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            audioCurrentUtterance = null;
+            resetAudioState();
+        }
+        function resetAudioState() {
+            isSpeakingAudio = false;
+            audioCurrentUtterance = null;
+            const icon = document.getElementById('audio-icon');
+            const label = document.getElementById('audio-label');
+            if (icon) icon.className = 'fa-solid fa-circle-play text-sm';
+            if (label) label.textContent = tr('Audioguía 60s', 'Audio guide');
+        }
 
         // Funciones trasladadas a scripts/passport-ui.js.
 
@@ -1858,22 +1944,7 @@ for (const monument of initialMonumentsData) {
             if(tab==='favorites'){document.getElementById('view-favorites').classList.remove('hidden');renderFavorites();}
         }
 
-        function filterStyle(styleName) {
-            triggerHaptic();
-            currentActiveStyle = styleName;
-            document.querySelectorAll('.style-btn').forEach(btn => {
-                if (btn.textContent.trim().toLowerCase() === styleName.toLowerCase() || (styleName === 'all' && btn.textContent.trim() === 'Todos')) {
-                    btn.className = 'style-btn active px-3 py-1 rounded-full bg-amber-500 text-slate-950 font-semibold whitespace-nowrap';
-                } else {
-                    btn.className = 'style-btn px-3 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 whitespace-nowrap';
-                }
-            });
-            renderMonuments();
-        }
-
-        function handleSearch() {
-            renderMonuments();
-        }
+        // Navegación/listado/filtros extraídos: scripts/explore-search-controls.js
 
         // Controles del panel desarrollador: scripts/developer-access.js
 
