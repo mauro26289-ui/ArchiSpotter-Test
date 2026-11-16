@@ -38,18 +38,12 @@
         }
 
 
-/* iOS: además de autocapitalize, normalizar la primera letra en cada entrada.
-   No altera el resto del texto ni las credenciales existentes. */
-(function archiInstallDevUsernameLowercase(){
+/* iOS: se desactiva la capitalización sugerida sin modificar el valor escrito.
+   Los nombres de usuario mantienen sus mayúsculas y minúsculas originales. */
+(function archiConfigureDevUsernameKeyboard(){
     const input = document.getElementById('dev-user');
     if (!input) return;
-    input.setAttribute('autocapitalize', 'off');
+    input.setAttribute('autocapitalize', 'none');
     input.setAttribute('autocorrect', 'off');
     input.setAttribute('spellcheck', 'false');
-    input.addEventListener('input', function(){
-        if (!this.value || this.value[0] === this.value[0].toLowerCase()) return;
-        const start = this.selectionStart, end = this.selectionEnd;
-        this.value = this.value[0].toLowerCase() + this.value.slice(1);
-        if (start !== null && end !== null) this.setSelectionRange(start, end);
-    });
 })();
