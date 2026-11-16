@@ -2592,12 +2592,7 @@ for (const monument of initialMonumentsData) {
             const list=monumentsData.filter(m=>m.coords && (`${m.name} ${m.city} ${m.country}`.toLowerCase().includes(q)));
             box.innerHTML=list.map(m=>`<label class="flex items-center gap-2 rounded-lg bg-slate-800/70 p-2 text-xs text-slate-200"><input type="checkbox" value="${m.id}" ${selectedRouteIds.includes(m.id)?'checked':''} onchange="toggleRouteStop('${m.id}',this.checked)" class="accent-amber-500"><span class="flex-1">${monumentLabel(m)}<small class="block text-slate-400">${cityLabel(m.city)}, ${countryLabel(m.country)}</small></span></label>`).join('') || `<p class="text-xs text-slate-400">${tr("No hay monumentos con coordenadas que coincidan.","No monuments with matching coordinates.")}</p>`;
         }
-        function toggleRouteStop(id,checked){ if(checked){if(!selectedRouteIds.includes(id))selectedRouteIds.push(id);}else selectedRouteIds=selectedRouteIds.filter(x=>x!==id); }
-        function selectedRouteMonuments(){return selectedRouteIds.map(id=>monumentsData.find(m=>m.id===id)).filter(m=>m&&m.coords);}
-        function mapsDirectionsFor(list){ if(list.length<2){showToast(tr("Selecciona al menos dos monumentos con coordenadas","Select at least two monuments with coordinates"));return;} const url=archiWalkingDirectionsUrl(list); openArchiExternalMaps(url); }
-        function openSelectedRoute(){mapsDirectionsFor(selectedRouteMonuments());}
-        function openNamedRoute(names){const list=names.map(n=>monumentsData.find(m=>m.name===n)).filter(Boolean);mapsDirectionsFor(list);}
-        function saveSelectedRoute(){const list=selectedRouteMonuments();if(list.length<2){showToast(tr("Selecciona al menos dos paradas","Select at least two stops"));return;}tripMonumentIds=[...new Set([...tripMonumentIds,...list.map(m=>m.id)])];archiStorageSet('archispotter_trip',JSON.stringify(tripMonumentIds));renderTrip();showToast(tr("Paradas guardadas en Mi viaje","Stops saved to My trip"));}
+        // Selección de rutas: scripts/route-selection.js (etapa 45).
         // V23: Mi viaje. Validar primero; guardar y renderizar sin afectar el arranque.
         function addToTrip(id) {
             const monument = monumentsData.find(m => m.id === id);
