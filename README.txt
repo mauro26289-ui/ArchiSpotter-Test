@@ -6,3 +6,5 @@ Orden de carga: speech-formatting.js antes de app.js.
 Validar en iPhone: inicio, idiomas, ficha, audioguía, mapa, Mi viaje y favoritos.
 
 Etapa 42: extraída segmentación audioChunks a scripts/audio-chunks.js, sin modificar algoritmo.
+
+Etapa 43: función de construcción de enlaces de rutas extraída a scripts/route-links.js.
