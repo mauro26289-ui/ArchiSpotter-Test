@@ -2637,7 +2637,7 @@ for (const monument of initialMonumentsData) {
         function renderTrip() {
             const box = document.getElementById('trip-stops');
             if (!box) return;
-            const list = tripMonumentIds.map(id => monumentsData.find(m => m.id === id)).filter(Boolean);
+            const list = archiResolveMonumentIds(tripMonumentIds, monumentsData);
             const count = document.getElementById('trip-count');
             if (count) count.textContent = `${list.length} ${tr('paradas','stops')}`;
             box.innerHTML = list.length ? list.map((m,i) => `<div class="flex items-center gap-2 text-xs"><span class="w-6 h-6 rounded-full bg-slate-800 text-amber-400 flex items-center justify-center">${i+1}</span><button type="button" class="flex-1 text-left text-white" onclick="openMonumentById('${m.id}')">${monumentLabel(m)}<small class="block text-slate-400">${cityLabel(m.city)}</small></button><button type="button" onclick="removeTripStop('${m.id}')" class="text-rose-400 px-2" aria-label="${tr('Quitar','Remove')} ${monumentLabel(m)}">×</button></div>`).join('') : `<p class="text-xs text-slate-400">${tr('Añade monumentos desde sus fichas o desde las tarjetas visuales.','Add monuments from their details or visual cards.')}</p>`;
@@ -2646,7 +2646,7 @@ for (const monument of initialMonumentsData) {
             const grid = document.getElementById('trip-visual-grid');
             if (grid) grid.innerHTML = (list.length ? list : monumentsData).slice(0,12).map(visualCard).join('');
         }
-        function renderFavorites(){const box=document.getElementById('favorites-grid');if(!box)return;const list=favoriteMonuments.map(id=>monumentsData.find(m=>m.id===id)).filter(Boolean);box.innerHTML=list.length?list.map(visualCard).join(''):`<p class="col-span-2 text-xs text-slate-400 rounded-xl border border-dashed border-slate-700 p-4">${tr("Todavía no tienes favoritos. Guarda monumentos con el icono de corazón en sus fichas.","You have no favorites yet. Save monuments using the heart icon in their details.")}</p>`;}
+        function renderFavorites(){const box=document.getElementById('favorites-grid');if(!box)return;const list=archiResolveMonumentIds(favoriteMonuments, monumentsData);box.innerHTML=list.length?list.map(visualCard).join(''):`<p class="col-span-2 text-xs text-slate-400 rounded-xl border border-dashed border-slate-700 p-4">${tr("Todavía no tienes favoritos. Guarda monumentos con el icono de corazón en sus fichas.","You have no favorites yet. Save monuments using the heart icon in their details.")}</p>`;}
 
         function switchTab(tab) {
             triggerHaptic(); currentTab=tab;
