@@ -124,39 +124,7 @@
 
         // All monument photographs come exclusively from initialMonumentsData[].images.
         // If a URL fails, show a local placeholder; never request a second image source.
-        function architecturePlaceholder() {
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"><rect width="800" height="500" fill="#0f172a"/><g fill="none" stroke="#f59e0b" stroke-width="12"><path d="M110 390V210h580v180M80 390h640M150 210v-60h500v60M205 210v180m130-180v180m130-180v180m130-180v180M110 150l290-95 290 95"/></g><text x="400" y="455" text-anchor="middle" fill="#cbd5e1" font-family="Arial,sans-serif" font-size="24">Foto no disponible</text></svg>`;
-            return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
-        }
-        // Retry the original curated Unsplash photo with a simpler URL before falling back.
-        // Never replace curated photos with another photo provider.
-        function handleMonumentImageError(img) {
-            if (!img || img.dataset.fallbackDone === 'true') return;
-            if ((img.getAttribute('src') || '').startsWith('data:image/')) {
-                img.dataset.fallbackDone = 'true';
-                return;
-            }
-            const original = img.dataset.originalPhoto || img.getAttribute('src') || '';
-            if (!img.dataset.originalPhoto && original.startsWith('https://images.unsplash.com/')) {
-                img.dataset.originalPhoto = original;
-            }
-            const attempt = Number(img.dataset.photoAttempt || '0');
-            if (img.dataset.originalPhoto && attempt === 0) {
-                img.dataset.photoAttempt = '1';
-                const clean = img.dataset.originalPhoto.split('?')[0];
-                img.src = clean + '?w=900&q=75&fit=crop';
-                return;
-            }
-            if (img.dataset.originalPhoto && attempt === 1) {
-                img.dataset.photoAttempt = '2';
-                img.src = img.dataset.originalPhoto.split('?')[0];
-                return;
-            }
-            img.dataset.fallbackDone = 'true';
-            img.src = architecturePlaceholder();
-            img.classList.add('image-placeholder');
-            img.alt = (img.alt || 'Monumento') + ' — fotografía no disponible (verificar conexión a Unsplash)';
-        }
+        // Respaldo de fotografías: scripts/image-fallback.js
         // Reset the retry state when a gallery changes its source.
         document.addEventListener('load', function(ev) {
             const img = ev.target;
@@ -1578,29 +1546,7 @@ for (const monument of initialMonumentsData) {
         function toggleFavorite(id) { const i=favoriteMonuments.indexOf(id); if(i>=0)favoriteMonuments.splice(i,1);else favoriteMonuments.push(id); archiStorageSet('archispotter_favorites',JSON.stringify(favoriteMonuments)); showToast(i>=0?(appLanguage==='it'?'Rimosso dai preferiti':appLanguage==='en'?'Removed from favorites':'Quitado de favoritos'):(appLanguage==='it'?'Aggiunto ai preferiti':appLanguage==='en'?'Added to favorites':'Guardado en favoritos ♥')); renderFavorites(); if(activeMonumentForModal && activeMonumentForModal.id===id) { const b=document.getElementById('modal-favorite'); if(b){b.classList.toggle('is-favorite',isFavorite(id));b.innerHTML=isFavorite(id)?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';}} }
         function isFavorite(id) { return favoriteMonuments.includes(id); }
 
-        function triggerHaptic() {
-            if (navigator.vibrate) navigator.vibrate(25);
-        }
-
-        let archiToastTimeout;
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            if (!toast) return;
-            // El mensaje no debe quedar atrapado debajo del modal de la ficha.
-            if (toast.parentElement !== document.body) document.body.appendChild(toast);
-            const label = document.getElementById('toast-message');
-            if (label) label.textContent = msg;
-            toast.classList.remove('hidden');
-            // Prioridad explícita sobre modales y capas con transform/filter en iOS.
-            toast.style.setProperty('position', 'fixed', 'important');
-            toast.style.setProperty('z-index', '2147483647', 'important');
-            toast.style.setProperty('top', 'max(88px, calc(env(safe-area-inset-top, 0px) + 28px))', 'important');
-            toast.style.setProperty('left', '50%', 'important');
-            toast.style.setProperty('transform', 'translateX(-50%)', 'important');
-            toast.style.setProperty('opacity', '1', 'important');
-            clearTimeout(archiToastTimeout);
-            archiToastTimeout = setTimeout(() => toast.classList.add('hidden'), 3000);
-        }
+        // showToast y triggerHaptic: scripts/ui-feedback.js
 
         function renderNavigationFlow() {
             const viewHome = document.getElementById('view-home');
@@ -2413,12 +2359,18 @@ for (const monument of initialMonumentsData) {
                 `).join('');
             }
 
-            document.getElementById('passport-modal').classList.remove('hidden');
+            const passport = document.getElementById('passport-modal');
+            // Portal: fuera de #app, que crea un contexto de apilamiento propio.
+            if (passport.parentElement !== document.body) document.body.appendChild(passport);
+            passport.classList.remove('hidden');
+            passport.setAttribute('aria-hidden', 'false');
         }
 
         function closePassportModal() {
             triggerHaptic();
-            document.getElementById('passport-modal').classList.add('hidden');
+            const passport = document.getElementById('passport-modal');
+            passport.classList.add('hidden');
+            passport.setAttribute('aria-hidden', 'true');
         }
 
         function toggleUserGps() {
@@ -2586,12 +2538,42 @@ for (const monument of initialMonumentsData) {
         function openSelectedRoute(){mapsDirectionsFor(selectedRouteMonuments());}
         function openNamedRoute(names){const list=names.map(n=>monumentsData.find(m=>m.name===n)).filter(Boolean);mapsDirectionsFor(list);}
         function saveSelectedRoute(){const list=selectedRouteMonuments();if(list.length<2){showToast(tr("Selecciona al menos dos paradas","Select at least two stops"));return;}tripMonumentIds=[...new Set([...tripMonumentIds,...list.map(m=>m.id)])];archiStorageSet('archispotter_trip',JSON.stringify(tripMonumentIds));renderTrip();showToast(tr("Paradas guardadas en Mi viaje","Stops saved to My trip"));}
-        function addToTrip(id){if(!tripMonumentIds.includes(id)){tripMonumentIds.push(id);archiStorageSet('archispotter_trip',JSON.stringify(tripMonumentIds));renderTrip();showToast(tr("Añadido a Mi viaje","Added to My trip"));}else showToast(tr("Ya está en Mi viaje","Already in My trip"));}
-        function removeTripStop(id){tripMonumentIds=tripMonumentIds.filter(x=>x!==id);archiStorageSet('archispotter_trip',JSON.stringify(tripMonumentIds));renderTrip();}
-        function clearTrip(){tripMonumentIds=[];archiStorageSet('archispotter_trip','[]');renderTrip();}
+        // V23: Mi viaje. Validar primero; guardar y renderizar sin afectar el arranque.
+        function addToTrip(id) {
+            const monument = monumentsData.find(m => m.id === id);
+            if (!monument) { showToast(tr('Monumento no encontrado','Monument not found')); return; }
+            if (tripMonumentIds.includes(id)) { showToast(tr('Ya está en Mi viaje','Already in My trip')); return; }
+            const updated = [...tripMonumentIds, id];
+            if (!archiStorageSet('archispotter_trip', JSON.stringify(updated))) return;
+            tripMonumentIds = updated;
+            showToast(appLanguage === 'it' ? 'Aggiunto al mio viaggio' : tr('Añadido a Mi viaje','Added to My trip'));
+            try { renderTrip(); } catch(error) { console.error('ArchiSpotter: error actualizando Mi viaje', error); }
+        }
+        function removeTripStop(id) {
+            const updated = tripMonumentIds.filter(x => x !== id);
+            if (!archiStorageSet('archispotter_trip', JSON.stringify(updated))) return;
+            tripMonumentIds = updated;
+            renderTrip();
+        }
+        function clearTrip() {
+            if (!archiStorageSet('archispotter_trip','[]')) return;
+            tripMonumentIds = [];
+            renderTrip();
+        }
         function openTripDirections(){mapsDirectionsFor(tripMonumentIds.map(id=>monumentsData.find(m=>m.id===id)).filter(m=>m&&m.coords));}
         function visualCard(m){const img=(Array.isArray(m.images)&&m.images[0])||architecturePlaceholder();return `<article class="visual-card surface-card overflow-hidden rounded-xl border border-slate-800 bg-slate-900"><button onclick="openMonumentById('${m.id}')" class="block w-full text-left"><img src="${img}" data-monument-id="${m.id}"  onerror="handleMonumentImageError(this)" alt="${m.name}" loading="lazy" decoding="async"><div class="p-2"><strong class="block text-xs text-white leading-snug">${monumentLabel(m)}</strong><span class="block text-[10px] text-slate-400 mt-1">${cityLabel(m.city)} · ${styleLabel(m.style||tr("Arquitectura","Architecture"))}</span></div></button><div class="px-2 pb-2 flex items-center gap-2"><button onclick="addToTrip('${m.id}')" class="text-[10px] text-amber-400">+ ${tr("Mi viaje","My trip")}</button><button type="button" onclick="toggleFavorite('${m.id}')" class="archi-favorite-toggle text-rose-500" aria-pressed="${isFavorite(m.id)}" aria-label="${isFavorite(m.id)?(appLanguage==='it'?'Rimuovi dai preferiti':appLanguage==='en'?'Remove from favorites':'Quitar de favoritos'):(appLanguage==='it'?'Aggiungi ai preferiti':appLanguage==='en'?'Add to favorites':'Agregar a favoritos')}" title="${isFavorite(m.id)?tr('Quitar de favoritos','Remove from favorites'):tr('Agregar a favoritos','Add to favorites')}"><i class="${isFavorite(m.id)?'fa-solid':'fa-regular'} fa-heart" aria-hidden="true"></i></button></div></article>`;}
-        function renderTrip(){const list=tripMonumentIds.map(id=>monumentsData.find(m=>m.id===id)).filter(Boolean);const box=document.getElementById('trip-stops');if(!box)return;document.getElementById('trip-count').textContent=`${list.length} ${tr("paradas","stops")}`;box.innerHTML=list.length?list.map((m,i)=>`<div class="flex items-center gap-2 text-xs"><span class="w-6 h-6 rounded-full bg-slate-800 text-amber-400 flex items-center justify-center">${i+1}</span><button class="flex-1 text-left text-white" onclick="openMonumentById('${m.id}')">${monumentLabel(m)}<small class="block text-slate-400">${cityLabel(m.city)}</small></button><button onclick="removeTripStop('${m.id}')" class="text-rose-400 px-2" aria-label="${tr("Quitar","Remove")} ${monumentLabel(m)}">×</button></div>`).join(''):`<p class="text-xs text-slate-400">${tr("Añade monumentos desde sus fichas o desde las tarjetas visuales.","Add monuments from their details or visual cards.")}</p>`;document.getElementById('trip-directions').classList.toggle('hidden',list.length<2);document.getElementById('trip-visual-grid').innerHTML=(list.length?list:monumentsData).slice(0,12).map(visualCard).join('');}
+        function renderTrip() {
+            const box = document.getElementById('trip-stops');
+            if (!box) return;
+            const list = tripMonumentIds.map(id => monumentsData.find(m => m.id === id)).filter(Boolean);
+            const count = document.getElementById('trip-count');
+            if (count) count.textContent = `${list.length} ${tr('paradas','stops')}`;
+            box.innerHTML = list.length ? list.map((m,i) => `<div class="flex items-center gap-2 text-xs"><span class="w-6 h-6 rounded-full bg-slate-800 text-amber-400 flex items-center justify-center">${i+1}</span><button type="button" class="flex-1 text-left text-white" onclick="openMonumentById('${m.id}')">${monumentLabel(m)}<small class="block text-slate-400">${cityLabel(m.city)}</small></button><button type="button" onclick="removeTripStop('${m.id}')" class="text-rose-400 px-2" aria-label="${tr('Quitar','Remove')} ${monumentLabel(m)}">×</button></div>`).join('') : `<p class="text-xs text-slate-400">${tr('Añade monumentos desde sus fichas o desde las tarjetas visuales.','Add monuments from their details or visual cards.')}</p>`;
+            const directions = document.getElementById('trip-directions');
+            if (directions) directions.classList.toggle('hidden', list.length < 2);
+            const grid = document.getElementById('trip-visual-grid');
+            if (grid) grid.innerHTML = (list.length ? list : monumentsData).slice(0,12).map(visualCard).join('');
+        }
         function renderFavorites(){const box=document.getElementById('favorites-grid');if(!box)return;const list=favoriteMonuments.map(id=>monumentsData.find(m=>m.id===id)).filter(Boolean);box.innerHTML=list.length?list.map(visualCard).join(''):`<p class="col-span-2 text-xs text-slate-400 rounded-xl border border-dashed border-slate-700 p-4">${tr("Todavía no tienes favoritos. Guarda monumentos con el icono de corazón en sus fichas.","You have no favorites yet. Save monuments using the heart icon in their details.")}</p>`;}
 
         function switchTab(tab) {
