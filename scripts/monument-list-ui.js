@@ -4,7 +4,7 @@
             if (!listContainer) return;
 
             const searchInput = document.getElementById('search-input');
-            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+            const searchTerm = searchInput ? archiNormalizeSearch(searchInput.value) : '';
 
             let filtered = monumentsData.filter(m => m.country === selectedCountry && m.city === selectedCity);
 
@@ -14,8 +14,7 @@
 
             if (searchTerm) {
                 filtered = filtered.filter(m => 
-                    (m.name+" "+monumentLabel(m)).toLowerCase().includes(searchTerm) || 
-                    (m.style+" "+styleLabel(m.style)).toLowerCase().includes(searchTerm)
+                    archiMonumentMatchesSearch(m, searchTerm, englishNames, italianNames, englishStyles, italianStyles)
                 );
             }
 
