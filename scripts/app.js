@@ -1732,9 +1732,10 @@ for (const monument of initialMonumentsData) {
                 if(!main)return false;
                 const rect=main.getBoundingClientRect();
                 const overlay=main.cloneNode(true);
-                overlay.removeAttribute('id');
+                // Keep IDs and the original #app > main ancestry during the brief visual transition.
+                // Removing IDs and mounting outside #app broke selector-based colors on iOS Safari.
                 overlay.setAttribute('aria-hidden','true');
-                overlay.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+                overlay.inert=true;
                 // Reuse already decoded images in the visual copy, avoiding lazy-load flicker.
                 const sourceImages=main.querySelectorAll('img');
                 overlay.querySelectorAll('img').forEach((img,i)=>{
@@ -1757,7 +1758,7 @@ for (const monument of initialMonumentsData) {
                 overlay.scrollTop=main.scrollTop;
                 const state={overlay,under:main,width:rect.width,country:selectedCountry,city:selectedCity,scroll:main.scrollTop,progress:0};
                 active=state;
-                document.body.appendChild(overlay);
+                main.parentElement.appendChild(overlay);
                 document.documentElement.classList.add('archi-edge-swiping');
                 // Show the destination underneath the moving snapshot.
                 if(selectedCity)selectedCity=null;
