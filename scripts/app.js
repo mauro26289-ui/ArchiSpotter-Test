@@ -2580,8 +2580,8 @@ for (const monument of initialMonumentsData) {
             const target = document.getElementById('nearby-list'); if (!target) return;
             if (userLat == null || userLng == null) { target.innerHTML = `<span class="text-[10px] text-slate-400">${tr("Activa GPS para ordenar por cercanía.","Enable GPS to sort by distance.")}</span>`; return; }
 
-            const nearby = monumentsData.filter(m=>m.coords).map(m=>({...m,km:archiDistanceKm({lat:userLat,lng:userLng},{lat:m.coords.lat,lng:m.coords.lng})})).sort((a,b)=>a.km-b.km).slice(0,4);
-            target.innerHTML = nearby.map(m=>`<button onclick="openMonumentById('${m.id}')" class="shrink-0 rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1.5 text-left"><span class="block text-[10px] text-white font-semibold">${monumentLabel(m)}</span><span class="text-[9px] text-amber-400">${m.km.toFixed(1)} km</span></button>`).join('');
+            const nearby = archiNearestMonuments(monumentsData, userLat, userLng, archiDistanceKm);
+            target.innerHTML = nearby.map(m=>`<button onclick="openMonumentById('${m.id}')" class="min-w-0 rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1.5 text-left"><span class="block text-[10px] text-white font-semibold">${monumentLabel(m)}</span><span class="text-[9px] text-amber-400">${m.km.toFixed(1)} km</span></button>`).join('');
         }
 
         function selectCountryFromMap(cName) {
