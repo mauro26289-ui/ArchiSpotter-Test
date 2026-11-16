@@ -1199,43 +1199,7 @@
         });
 
 
-        const archiSettingsWords={
-          es:['Ajustes','Personalizá tu experiencia','Idioma','Apariencia','Claro','Oscuro','Mi pasaporte','Acerca de ArchiSpotter','Cerrar sesión'],
-          en:['Settings','Customize your experience','Language','Appearance','Light','Dark','My passport','About ArchiSpotter','Sign out'],
-          it:['Impostazioni','Personalizza la tua esperienza','Lingua','Aspetto','Chiaro','Scuro','Il mio passaporto','Informazioni su ArchiSpotter','Esci']
-        };
-        function archiSyncSettings(){
-          const lang=(typeof appLanguage!=='undefined'&&archiSettingsWords[appLanguage])?appLanguage:'es';
-          const ids=['archi-settings-heading','archi-settings-subheading','archi-settings-lang-label','archi-settings-theme-label','archi-light-label','archi-dark-label','archi-settings-passport-label','archi-settings-about-label','archi-settings-logout-label'];
-          ids.forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=archiSettingsWords[lang][i]});
-          const devLabel=document.getElementById('archi-settings-dev-label');if(devLabel)devLabel.textContent=({es:'Modo desarrollador',en:'Developer mode',it:'Modalità sviluppatore'})[lang];
-          const select=document.getElementById('archi-settings-language');if(select)select.value=lang;
-          const light=document.body.classList.contains('light-mode');
-          document.getElementById('archi-settings-light')?.setAttribute('aria-pressed',String(light));
-          document.getElementById('archi-settings-dark')?.setAttribute('aria-pressed',String(!light));
-        }
-        function archiOpenSettings(){archiSyncSettings();const el=document.getElementById('archi-settings-overlay');if(el){el.hidden=false;el.querySelector('.archi-settings-close')?.focus();}}
-        function archiCloseSettings(){const el=document.getElementById('archi-settings-overlay');if(el)el.hidden=true;}
-        function archiSetTheme(theme){if(document.body.classList.contains('light-mode')!==(theme==='light'))toggleTheme();archiSyncSettings();}
-        const archiAboutTranslations={
-          es:{title:'Acerca de ArchiSpotter',message:'Esta app nació caminando por alguna calle del mundo, mirando edificios históricos y ruinas sin un cartel que explicara su historia. Porque sé que a vos, como a mí, la curiosidad no te deja quedarte con la duda de qué es eso que tienes ahí delante. ¡Bienvenidos a ArchiSpotter!',close:'Cerrar'},
-          en:{title:'About ArchiSpotter',message:'This app was born while walking down a street somewhere in the world, looking at historic buildings and ruins without a sign explaining their history. Because I know that you, like me, are too curious to walk away without finding out what is right in front of you. Welcome to ArchiSpotter!',close:'Close'},
-          it:{title:'Informazioni su ArchiSpotter',message:'Questa app è nata camminando per una strada in qualche parte del mondo, osservando edifici storici e rovine senza un cartello che ne spiegasse la storia. Perché so che tu, come me, sei troppo curioso per andare oltre senza scoprire che cosa hai davanti agli occhi. Benvenuti su ArchiSpotter!',close:'Chiudi'}
-        };
-        function archiSyncAboutLanguage(){
-          const lang=(typeof appLanguage!=='undefined'&&archiAboutTranslations[appLanguage])?appLanguage:'es';
-          const t=archiAboutTranslations[lang];
-          const title=document.getElementById('archi-about-title');if(title)title.textContent=t.title;
-          const message=document.getElementById('archi-about-message');if(message)message.textContent=t.message;
-          const close=document.querySelector('#archi-about-overlay .archi-about-close');if(close)close.setAttribute('aria-label',t.close);
-        }
-        function archiShowAppInfo(){
-          const overlay=document.getElementById('archi-about-overlay');
-          if(overlay){archiSyncAboutLanguage();overlay.hidden=false;overlay.querySelector('.archi-about-close')?.focus();}
-        }
-        function archiCloseAppInfo(){const overlay=document.getElementById('archi-about-overlay');if(overlay)overlay.hidden=true;}
-
-        document.addEventListener('keydown',e=>{if(e.key==='Escape')archiCloseSettings()});
+        // Funciones trasladadas a scripts/settings-ui.js.
 
         function tr(es,en){return appLanguage==='it'?(italianDynamicText[es]||en):appLanguage==='en'?en:es;}
         // countryLabel: scripts/labels.js
@@ -1507,107 +1471,12 @@ for (const monument of initialMonumentsData) {
         document.addEventListener('input',archiHandleLanguageSelection);
         function toggleTheme() { document.body.classList.toggle('light-mode'); const light=document.body.classList.contains('light-mode'); archiStorageSet('archispotter_theme',light?'light':'dark'); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; }
         function applySavedPreferences() { const savedTheme=archiStorageGet('archispotter_theme'); const light=savedTheme!=='dark'; document.body.classList.toggle('light-mode',light); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; applyLanguage(); }
-        function toggleFavorite(id) { const i=favoriteMonuments.indexOf(id); if(i>=0)favoriteMonuments.splice(i,1);else favoriteMonuments.push(id); archiStorageSet('archispotter_favorites',JSON.stringify(favoriteMonuments)); showToast(i>=0?(appLanguage==='it'?'Rimosso dai preferiti':appLanguage==='en'?'Removed from favorites':'Quitado de favoritos'):(appLanguage==='it'?'Aggiunto ai preferiti':appLanguage==='en'?'Added to favorites':'Guardado en favoritos ♥')); renderFavorites(); if(activeMonumentForModal && activeMonumentForModal.id===id) { const b=document.getElementById('modal-favorite'); if(b){b.classList.toggle('is-favorite',isFavorite(id));b.innerHTML=isFavorite(id)?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';}} }
-        function isFavorite(id) { return favoriteMonuments.includes(id); }
+        // Funciones trasladadas a scripts/favorites-actions.js.
 
         // showToast y triggerHaptic: scripts/ui-feedback.js
 
-        function renderNavigationFlow() {
-            const viewHome = document.getElementById('view-home');
-            const viewCitiesContainer = document.getElementById('view-cities-container');
-            const viewMonumentsContainer = document.getElementById('view-monuments-container');
-            const breadcrumb = document.getElementById('nav-breadcrumb');
+        // Funciones trasladadas a scripts/explore-country-city.js.
 
-            if (!selectedCountry) {
-                viewHome.classList.remove('hidden');
-                viewCitiesContainer.classList.add('hidden');
-                viewMonumentsContainer.classList.add('hidden');
-                breadcrumb.classList.add('hidden');
-                renderCountries();
-            } else if (selectedCountry && !selectedCity) {
-                viewHome.classList.add('hidden');
-                viewCitiesContainer.classList.remove('hidden');
-                viewMonumentsContainer.classList.add('hidden');
-                breadcrumb.classList.remove('hidden');
-
-                const flag = getFlagForCountry(selectedCountry);
-                document.getElementById('selected-country-flag').textContent = flag;
-                document.getElementById('selected-country-title').textContent = `${tr("Ciudades de","Cities in")} ${countryLabel(selectedCountry)}`;
-                document.getElementById('breadcrumb-text').textContent = tr('Países','Countries');
-                document.getElementById('breadcrumb-location').textContent = countryLabel(selectedCountry);
-                renderCities();
-            } else {
-                viewHome.classList.add('hidden');
-                viewCitiesContainer.classList.add('hidden');
-                viewMonumentsContainer.classList.remove('hidden');
-                breadcrumb.classList.remove('hidden');
-
-                document.getElementById('breadcrumb-text').textContent = countryLabel(selectedCountry);
-                document.getElementById('breadcrumb-location').textContent = cityLabel(selectedCity);
-                renderMonuments();
-            }
-        }
-
-        function renderCountries() {
-            const container = document.getElementById('view-countries');
-            if (!container) return;
-
-            const countriesList = archiBuildCountryList(monumentsData, getFlagForCountry);
-
-            container.innerHTML = countriesList.map(c => `
-                <div onclick="selectCountry(${JSON.stringify(c.name).replace(/"/g,'&quot;')})" class="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 flex flex-col items-center text-center space-y-2 cursor-pointer transition active:scale-95 group shadow-md">
-                    <span class="text-3xl group-hover:scale-110 transition duration-300">${c.flag}</span>
-                    <div>
-                        <h4 class="font-serif font-bold text-xs text-white group-hover:text-amber-400 transition">${countryLabel(c.name)}</h4>
-                        <span class="text-[10px] text-slate-400 font-medium">${c.count} ${c.count === 1 ? tr('Monumento','Monument') : tr('Monumentos','Monuments')}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function selectCountry(countryName) {
-            archiRememberExploreScroll('countries');
-            triggerHaptic();
-            selectedCountry = countryName;
-            selectedCity = null;
-            renderNavigationFlow();
-            const scroller=archiExploreScroller(); if(scroller)scroller.scrollTop=0;
-        }
-
-        function renderCities() {
-            const container = document.getElementById('view-cities');
-            if (!container) return;
-
-            const filteredMonuments = monumentsData.filter(m => m.country === selectedCountry);
-            const citiesList = archiBuildCityList(filteredMonuments, architecturePlaceholder);
-
-            container.innerHTML = citiesList.map(c => `
-                <div onclick="selectCity(${JSON.stringify(c.name).replace(/"/g,'&quot;')})" class="relative overflow-hidden rounded-xl bg-slate-900 border border-slate-800 p-4 flex items-center justify-between cursor-pointer hover:border-amber-500/50 transition group">
-                    <div class="flex items-center space-x-3 z-10">
-                        <div class="w-10 h-10 rounded-lg overflow-hidden border border-slate-700 bg-slate-800">
-                            <img src="${c.image}" data-monument-id="${filteredMonuments.find(m => m.city === c.name)?.id || ''}" data-active-image="${c.image}" onerror="handleMonumentImageError(this)" loading="lazy" decoding="async" alt="${tr("Arquitectura de","Architecture in")} ${cityLabel(c.name)}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                        </div>
-                        <div>
-                            <h4 class="font-serif font-bold text-sm text-white group-hover:text-amber-400 transition">${cityLabel(c.name)}</h4>
-                            <span class="text-[10px] text-slate-400">${c.count} ${c.count === 1 ? tr('Monumento','Monument') : tr('Monumentos','Monuments')}</span>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-400 transition z-10"></i>
-                </div>
-            `).join('');
-        }
-
-        function selectCity(cityName) {
-            archiRememberExploreScroll('cities');
-            triggerHaptic();
-            selectedCity = cityName;
-            renderNavigationFlow();
-            const scroller=archiExploreScroller(); if(scroller)scroller.scrollTop=0;
-        }
-
-
-        // iPhone-style edge back gesture and precise position restoration in Explore.
-        const archiExploreScrollPositions = {countries:0, cities:0, monuments:0};
         function archiExploreScroller(){return document.querySelector('#app > main');}
         function archiRememberExploreScroll(level){
             const scroller=archiExploreScroller();
