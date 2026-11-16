@@ -36,43 +36,19 @@
         let initialPinchScale = 1;
         let lastTapTime = 0;
 
-        const countryFlagsDict = {
-            'Italia': '🇮🇹', 'España': '🇪🇸', 'Suiza': '🇨🇭', 'Brasil': '🇧🇷',
-            'Indonesia': '🇮🇩', 'Argentina': '🇦🇷', 'Estados Unidos': '🇺🇸', 'Turquía': '🇹🇷', 'Reino Unido': '🇬🇧', 'Francia': '🇫🇷', 'Alemania': '🇩🇪', 'Marruecos': '🇲🇦', 'India': '🇮🇳', 'Zimbabue': '🇿🇼', 'Etiopía': '🇪🇹', 'Catar': '🇶🇦'
-        };
+        // countryFlagsDict: definido en data/app-catalog.js
+
 
         // getFlagForCountry moved to formatting.js
 
-        const countryMapPositions = {
-            'Italia': { top: '36%', left: '54%' },
-            'España': { top: '39%', left: '46%' },
-            'Suiza': { top: '32%', left: '50%' },
-            'Brasil': { top: '68%', left: '33%' },
-            'Indonesia': { top: '56%', left: '81%' },
-            'Francia': { top: '34%', left: '48%' },
-            'Estados Unidos': { top: '37%', left: '22%' },
-            'Turquía': { top: '39%', left: '60%' }
-        };
+        // countryMapPositions: definido en data/app-catalog.js
+
 
         // Initial Monuments Dataset — original Unsplash image URLs for each monument.
         /* initialMonumentsData: cargado desde data/monuments-data.js */
 
-        const cityWalkingRoutes = [
-            {
-                cityName: 'Roma',
-                title: 'Ruta Imperial por la Roma Antigua',
-                distance: '2.8 km',
-                duration: '45 mins caminando',
-                stops: ['Coliseo Romano', 'Foro Romano', 'Panteón de Agripa']
-            },
-            {
-                cityName: 'Barcelona',
-                title: 'Ruta Gaudí & Modernismo',
-                distance: '3.2 km',
-                duration: '50 mins caminando',
-                stops: ['Basílica de la Sagrada Familia']
-            }
-        ];
+        // cityWalkingRoutes: definido en data/app-catalog.js
+
 
         window.onload = function() {
             setTimeout(function() {
