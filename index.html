@@ -44,7 +44,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles/app.css?v=32" id="archi-modular-styles-v11">
+    <link rel="stylesheet" href="styles/app.css?v=62" id="archi-modular-styles-v11">
 
 
 
@@ -262,7 +262,7 @@
             </section>
 
             <!-- View 4: Map View with Real-time GPS -->
-            <section id="view-map" class="hidden h-full flex flex-col relative bg-slate-950">
+            <section id="view-map" class="hidden flex flex-col relative bg-slate-950">
                 <div class="map-topbar p-3 bg-slate-900/90 border-b border-slate-800 z-20 flex items-center justify-between">
                     <div class="flex items-center space-x-2">
                         <i class="fa-solid fa-earth-americas text-amber-500 text-xs"></i>
@@ -275,16 +275,16 @@
                     </button>
                 </div>
 
-                <div class="relative flex-1 min-h-[430px] bg-slate-950">
+                <div class="relative min-h-[430px] bg-slate-950">
                     <div id="smart-map" role="application" aria-label="Mapa interactivo de monumentos"></div>
                     <div class="absolute top-3 left-3 right-3 z-[500] flex gap-2">
                         <input id="map-search" oninput="filterMapMarkers(this.value)" placeholder="Buscar monumento, ciudad o estilo…" class="map-overlay-input flex-1 rounded-xl px-3 py-2 text-xs bg-slate-900/95 border border-slate-700 text-white shadow-lg" />
                         <button onclick="centerMapOnUser()" class="map-center-button rounded-xl px-3 py-2 text-xs bg-slate-900/95 border border-slate-700 text-amber-400 shadow-lg" aria-label="Centrar en mi ubicación"><i class="fa-solid fa-location-crosshairs"></i></button>
                     </div>
-                    <div class="map-status-panel absolute bottom-3 left-3 right-3 z-[500] bg-slate-900/95 backdrop-blur border border-slate-700 rounded-xl p-3 shadow-xl">
+                </div>
+                <div class="map-status-panel mx-3 my-3 bg-slate-900/95 border border-slate-700 rounded-xl p-3 shadow-xl">
                         <p id="map-status-text" class="text-xs text-slate-200">Explora monumentos cercanos, filtra por ciudad y abre sus fichas.</p>
-                        <div id="nearby-list" class="grid grid-cols-2 gap-2 mt-2"></div>
-                    </div>
+                        <div id="nearby-list" class="grid grid-cols-2 gap-2 mt-2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;"></div>
                 </div>
             </section>
 
@@ -639,8 +639,8 @@
     <script src="scripts/map-marker-filter.js?v=55"></script>
     <script src="scripts/country-list.js?v=56"></script>
     <script src="scripts/city-list.js?v=58"></script>
-    <script src="scripts/nearby-monuments.js?v=61"></script>
-    <script src="scripts/app.js?v=61"></script>
+    <script src="scripts/nearby-monuments.js?v=62"></script>
+    <script src="scripts/app.js?v=62"></script>
 <script id="archi-onboarding-script" src="scripts/onboarding.js"></script>
 
 <script id="archi-local-auth-js" src="scripts/auth.js"></script>
