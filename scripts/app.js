@@ -1693,18 +1693,18 @@ for (const monument of initialMonumentsData) {
                 const progress=Math.max(0,Math.min(1,dx/width));
                 active.progress=progress;
                 active.overlay.style.transform=`translate3d(${progress*width}px,0,0)`;
-                active.overlay.style.boxShadow=`-12px 0 28px rgba(0,0,0,${0.12*(1-progress)})`;
+                active.overlay.style.boxShadow=`-5px 0 14px rgba(0,0,0,${0.08*(1-progress)})`;
                 active.under.style.transform=`translate3d(${(-width*0.22)*(1-progress)}px,0,0)`;
-                active.under.style.opacity=String(0.82+0.18*progress);
+                // Preserve original colors: never fade the destination screen.
             }
             function finish(commit){
                 if(!active){reset();return;}
                 const state=active;
                 state.overlay.style.transition='transform 230ms cubic-bezier(.22,.8,.24,1),box-shadow 230ms ease';
-                state.under.style.transition='transform 230ms cubic-bezier(.22,.8,.24,1),opacity 230ms ease';
+                state.under.style.transition='transform 230ms cubic-bezier(.22,.8,.24,1)';
                 state.overlay.style.transform=`translate3d(${commit?state.width:0}px,0,0)`;
                 state.under.style.transform=`translate3d(${commit?0:-state.width*.22}px,0,0)`;
-                state.under.style.opacity=commit?'1':'0.82';
+                // No opacity animation: both screens remain fully opaque.
                 // Restore the original view only when the gesture is cancelled.
                 if(!commit){
                     selectedCountry=state.country;
@@ -1735,6 +1735,17 @@ for (const monument of initialMonumentsData) {
                 overlay.removeAttribute('id');
                 overlay.setAttribute('aria-hidden','true');
                 overlay.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+                // Reuse already decoded images in the visual copy, avoiding lazy-load flicker.
+                const sourceImages=main.querySelectorAll('img');
+                overlay.querySelectorAll('img').forEach((img,i)=>{
+                    const original=sourceImages[i];
+                    if(!original)return;
+                    const displayed=original.currentSrc || original.src;
+                    if(displayed)img.src=displayed;
+                    img.loading='eager';
+                    img.decoding='sync';
+                    img.removeAttribute('srcset');
+                });
                 overlay.classList.add('archi-edge-foreground');
                 Object.assign(overlay.style,{
                     position:'fixed',top:`${rect.top}px`,left:`${rect.left}px`,
