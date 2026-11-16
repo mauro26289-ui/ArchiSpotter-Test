@@ -108,70 +108,8 @@
 
 
 
-        // Recuperación conservadora de fotos Unsplash al volver la conexión.
-        // Solo intenta imágenes visibles con respaldo, una vez por elemento.
-        // No altera imágenes curadas ni cambia de proveedor.
-        function archiRecoverVisiblePhotos() {
-            if (!navigator.onLine) return;
-            document.querySelectorAll('img.image-placeholder[data-original-photo]').forEach(function(img) {
-                if (!img.isConnected || img.dataset.onlineRecoveryTried === 'true') return;
-                const rect = img.getBoundingClientRect();
-                if (rect.width <= 0 || rect.height <= 0 || rect.bottom < 0 || rect.top > window.innerHeight) return;
-                const original = img.dataset.originalPhoto;
-                if (!original || !original.startsWith('https://images.unsplash.com/')) return;
-                img.dataset.onlineRecoveryTried = 'true';
-                img.dataset.fallbackDone = 'false';
-                img.dataset.photoAttempt = '0';
-                img.classList.remove('image-placeholder');
-                img.src = original;
-            });
-        }
-        window.addEventListener('online', archiRecoverVisiblePhotos);
-        document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) archiRecoverVisiblePhotos();
-        });
-
-        // Free Wikimedia article thumbnails. Only new monuments are affected;
-        // original 45 retain their curated images unchanged.
-        const archiNewMonumentIds = {"fr-mont-saint-michel": true, "ma-hassan-ii-mosque": true, "br-museu-amanha": true, "us-salk-institute": true, "us-fallingwater": true, "in-lotus-temple": true, "fr-chartres-cathedral": true, "zw-great-zimbabwe": true, "et-lalibela-churches": true, "qa-national-museum": true};
-        async function loadWorldMonumentPhotos(){
-            const additions=monumentsData.filter(m=>m.wikipediaTitle && (m.id.startsWith('world-') || m.id in archiNewMonumentIds));
-            for(const m of additions){if(!m.images?.length)m.images=[architecturePlaceholder()];}
-            if(!additions.length)return;
-            let cache={};
-            try{cache=JSON.parse(localStorage.getItem('archispotter_world_photos_v1')||'{}')||{};}catch(e){}
-            const pending=[];
-            for(const m of additions){
-                const cached=cache[m.id];
-                if(cached){
-                    m.images=[cached];
-                    document.querySelectorAll('img[data-monument-id="'+m.id+'"]').forEach(img=>{img.src=cached;img.dataset.fallbackDone='false';});
-                }else pending.push(m);
-            }
-            for(let i=0;i<pending.length;i+=15){
-                const batch=pending.slice(i,i+15);
-                const byTitle=new Map(batch.map(m=>[m.wikipediaTitle.toLowerCase(),m]));
-                try{
-                    const url='https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&origin=*&redirects=1&prop=pageimages&pithumbsize=1000&titles='+encodeURIComponent(batch.map(m=>m.wikipediaTitle).join('|'));
-                    const response=await fetch(url);
-                    if(!response.ok)continue;
-                    const data=await response.json();
-                    for(const page of (data.query?.pages||[])){
-                        const requested=(data.query?.redirects||[]).find(r=>r.to?.toLowerCase()===(page.title||'').toLowerCase())?.from;
-                        const match=byTitle.get((page.title||'').toLowerCase()) || byTitle.get((requested||'').toLowerCase());
-                        if(!match||!page.thumbnail?.source)continue;
-                        const src=page.thumbnail.source;
-                        match.images=[src];cache[match.id]=src;
-                        document.querySelectorAll('img[data-monument-id="'+match.id+'"]').forEach(img=>{img.src=src;img.dataset.fallbackDone='false';});
-                    }
-                    try{localStorage.setItem('archispotter_world_photos_v1',JSON.stringify(cache));}catch(e){}
-                    if(selectedCountry && !selectedCity)renderCities();
-                    else if(selectedCountry && selectedCity)renderMonuments();
-                }catch(e){console.info('Wikimedia image lookup unavailable',e);}
-            }
-        }
-        window.addEventListener('load',()=>setTimeout(loadWorldMonumentPhotos,500));
-
+        // Extraído a scripts/photo-recovery.js
+        // Extraído a scripts/world-photo-loader.js
         // Datos trasladados a scripts/english-monument-content.js
         // Datos trasladados a scripts/language-base-dictionaries.js
         // Datos trasladados a scripts/italian-monument-content.js
@@ -519,39 +457,7 @@ for (const monument of initialMonumentsData) {
         }
         if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',observeArchiTranslations,{once:true});
         else observeArchiTranslations();
-        function setUiText(selector, value) { const el=document.querySelector(selector); if(el) el.textContent=value; }
-        // italianStaticOverrides definido en scripts/static-italian-overrides.js
-        function applyStaticLanguage() {
-            const en=appLanguage==='en';
-            const T={
-                welcome: en?'Welcome!':'¡Bienvenido!', intro:en?'What is this?':'¿Y esto qué es?',
-                introText:en?'You are on vacation, walking down the street, and you see a building or monument you like and want to know what it is. Open ArchiSpotter and voilà: all the information you wanted. Select a country to explore its iconic monuments, audio guides, routes and secrets.':'Estás de vacaciones, vas caminando por la calle y ves un edificio o monumento que te gusta y quieres saber qué es. Entrás en ArchiSpotter y voilà. Toda la información que querías saber. Seleccioná un país para explorar sus monumentos icónicos, audioguías, rutas y secretos.',
-                countries:en?'Available countries':'Países disponibles', cities:en?'Select the city you want to explore':'Selecciona la ciudad que deseas explorar',
-                tripDesc:en?'Your itinerary and the buildings you want to discover':'Tu recorrido y los edificios que quieres descubrir', itinerary:en?'Personal itinerary':'Itinerario personal', clear:en?'Clear':'Vaciar', emptyTrip:en?'Add monuments from Explore or Favorites.':'Añade monumentos desde Explorar o Favoritos.', openTrip:en?'Open walking route with all stops':'Abrir ruta a pie con todas las paradas', visual:en?'Visual exploration':'Exploración visual', visualDesc:en?'Discover architecture through images and open each entry.':'Descubre arquitectura por imágenes y abre cada ficha.',
-                favoritesTitle:en?'My favorites':'Mis favoritos', favoritesDesc:en?'All your saved monuments, from any city.':'Todos tus monumentos guardados, desde cualquier ciudad.',
-                mapTitle:en?'World map & Navigation':'Mapamundi & Navegación', mapStatus:en?'Explore nearby monuments, filter by city and open their entries.':'Explora monumentos cercanos, filtra por ciudad y abre sus fichas.',
-                routesTitle:en?'Themed Walking Routes':'Rutas a Pie Temáticas', routesDesc:en?'Itineraries designed to explore monuments on foot.':'Itinerarios optimizados para recorrer caminando los monumentos',
-                createRoute:en?'Create my route':'Crear mi ruta', routeHelp:en?'Select two or more monuments. A walking route with stops will open in the maps service.':'Selecciona dos o más monumentos. Se abrirá una ruta peatonal con paradas en el servicio de mapas.', routeFilter:en?'Filter by name or city…':'Filtrar por nombre o ciudad…', saveRoute:en?'Save to My trip':'Guardar en Mi viaje', drawRoute:en?'Draw walking route':'Trazar ruta a pie',
-
-                back:en?'Countries':'Países', all:en?'All':'Todos', roman:en?'Roman':'Romano', gothic:en?'Gothic':'Gótico', renaissance:en?'Renaissance':'Renacentista', baroque:en?'Baroque':'Barroco',
-                modalDirections:en?'How to get there':'Cómo llegar', modalAdd:en?'Add to my trip':'Agregar a mi viaje', modalOfficial:en?'Official website':'Sitio oficial', modalClose:en?'Close entry':'Cerrar ficha'
-            };
-            if(appLanguage==='it') { const italianLabels={welcome:'Benvenuto!',intro:'Che cos’è?',countries:'Paesi disponibili',cities:'Seleziona la città che vuoi esplorare',tripDesc:'Il tuo itinerario e gli edifici da scoprire',itinerary:'Itinerario personale',clear:'Svuota',emptyTrip:'Aggiungi monumenti da Esplora o Preferiti.',openTrip:'Apri il percorso a piedi con tutte le tappe',visual:'Esplorazione visiva',visualDesc:'Scopri l’architettura attraverso le immagini',favoritesTitle:'I miei preferiti',favoritesDesc:'Tutti i monumenti salvati',mapTitle:'Mappa del mondo e navigazione',routesTitle:'Percorsi tematici a piedi',createRoute:'Crea il mio percorso',saveRoute:'Salva nel mio viaggio',drawRoute:'Traccia il percorso a piedi'}; Object.assign(T,italianLabels); }
-
-            if(appLanguage==='it') Object.assign(T,italianStaticOverrides);
-            setUiText('#view-home .relative.z-10 > span',T.welcome); setUiText('#home-intro-heading',T.intro); setUiText('#view-home .relative.z-10 > p',T.introText); setUiText('#view-home h3',T.countries);
-            setUiText('#view-cities-container p',T.cities); setUiText('#breadcrumb-text',T.back);
-            setUiText('#view-trip h3',T.tripDesc); setUiText('#view-trip .surface-card h4',T.itinerary); setUiText('#view-trip .surface-card > div > button',T.clear); setUiText('#trip-stops p',T.emptyTrip); setUiText('#trip-directions',T.openTrip); setUiText('#view-trip .space-y-2 h4',T.visual); setUiText('#view-trip .space-y-2 > p',T.visualDesc);
-            setUiText('#view-favorites h3',T.favoritesTitle); setUiText('#view-favorites p',T.favoritesDesc);
-            setUiText('#view-map .p-3 span',T.mapTitle); setUiText('#gps-btn-text',T.gps); setUiText('#map-status-text',T.mapStatus);
-            setUiText('#view-walks h3 span',T.routesTitle); setUiText('#view-walks .space-y-1 p',T.routesDesc); setUiText('#view-walks .surface-card h4',T.createRoute); setUiText('#view-walks .surface-card p',T.routeHelp); setUiText('#view-walks button[onclick="saveSelectedRoute()"]',T.saveRoute); setUiText('#view-walks button[onclick="openSelectedRoute()"]',T.drawRoute);
-            const styles=document.querySelectorAll('#styles-filter .style-btn'); const labels=[T.all,T.roman,T.gothic,T.renaissance,T.baroque]; styles.forEach((b,i)=>{if(labels[i])b.textContent=labels[i];});
-            const search=document.getElementById('search-input'); if(search)search.placeholder=appLanguage==='it'?'Cerca monumento o stile…':en?'Search monument or style…':'Buscar monumento o estilo…';
-            const mapSearch=document.getElementById('map-search'); if(mapSearch)mapSearch.placeholder=appLanguage==='it'?'Cerca monumento, città o stile…':en?'Search monument, city or style…':'Buscar monumento, ciudad o estilo…';
-            const routeFilter=document.getElementById('route-filter'); if(routeFilter)routeFilter.placeholder=T.routeFilter;
-            const directions=document.getElementById('modal-directions-btn'); if(directions)directions.setAttribute('aria-label',T.modalDirections);
-            const close=document.querySelector('#monument-modal .modal-close'); if(close)close.setAttribute('aria-label',T.modalClose);
-        }
+        // Extraído a scripts/static-language-layout.js
         function applyLanguage() {
             const t=translations[appLanguage]||translations.es;
             const set=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
