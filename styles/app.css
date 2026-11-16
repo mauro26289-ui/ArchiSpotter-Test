@@ -763,3 +763,17 @@ body > #passport-modal button[onclick="closePassportModal()"] {
 @media (prefers-reduced-motion: reduce) {
   .archi-edge-foreground { transition-duration: 0.01ms !important; }
 }
+
+/* Etapa 35: la barra de navegación no puede ser translúcida durante
+   el swipe: al pasar sobre otra vista cambia el color percibido. */
+#app #nav-breadcrumb {
+  background-color: #343b35 !important;
+  color: #f7f1e4 !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+#app #nav-breadcrumb #breadcrumb-text,
+#app #nav-breadcrumb #breadcrumb-location,
+#app #nav-breadcrumb button,
+#app #nav-breadcrumb svg { color: #f7f1e4 !important; }
+body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
