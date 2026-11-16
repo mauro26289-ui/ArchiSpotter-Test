@@ -777,3 +777,10 @@ body > #passport-modal button[onclick="closePassportModal()"] {
 #app #nav-breadcrumb button,
 #app #nav-breadcrumb svg { color: #f7f1e4 !important; }
 body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
+
+/* Etapa 36: interactive monument-card edge return; no cloned colors. */
+#monument-modal.archi-modal-edge-active { background:transparent !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+#monument-modal.archi-modal-edge-active > div { box-shadow:-8px 0 22px rgba(0,0,0,.13); }
+/* Etapa 37: the actual open surface moves; no fading or cloned surface. */
+#archi-settings-overlay.archi-gesture-moving,
+#archi-about-overlay.archi-gesture-moving { backdrop-filter:none; -webkit-backdrop-filter:none; }

@@ -1689,6 +1689,7 @@ for (const monument of initialMonumentsData) {
             function reset(){start=null;active=null;}
             function moveFrame(dx){
                 if(!active)return;
+                if(active.type==='surface'){moveSurface(dx);return;}
                 const width=active.width;
                 const progress=Math.max(0,Math.min(1,dx/width));
                 active.progress=progress;
@@ -1725,6 +1726,59 @@ for (const monument of initialMonumentsData) {
                 state.overlay.addEventListener('transitionend',finalize,{once:true});
                 // Reduced-motion / interrupted-transition fallback.
                 setTimeout(()=>{if(active===state)finalize();},310);
+            }
+            // Every dismissible surface participates in the same live edge gesture.
+            // Use its actual DOM node: no snapshots, cloned IDs, or opacity changes.
+            const surfaceSpecs=[
+                ['fullscreen-lightbox',()=>closeFullscreenLightbox()],
+                ['archi-about-overlay',()=>archiCloseAppInfo()],
+                ['archi-settings-overlay',()=>archiCloseSettings()],
+                ['export-modal',()=>closeExportModal()],
+                ['passport-modal',()=>closePassportModal()],
+                ['monument-modal',()=>{closeModal();archiRestoreExploreScroll('monuments');}]
+            ];
+            function visibleSurface(){
+                for(const [id,close] of surfaceSpecs){
+                    const el=document.getElementById(id);
+                    if(!el || el.hidden || el.classList.contains('hidden'))continue;
+                    if(getComputedStyle(el).display==='none')continue;
+                    return {el,close,id};
+                }
+                return null;
+            }
+            function beginSurface(){
+                const surface=visibleSurface();
+                if(!surface)return false;
+                const {el,id}=surface;
+                const panel=id==='monument-modal'?el.firstElementChild:el;
+                if(!panel)return false;
+                const previous={transition:panel.style.transition,transform:panel.style.transform,animation:panel.style.animation,willChange:panel.style.willChange};
+                if(id==='monument-modal')el.classList.add('archi-modal-edge-active');
+                panel.style.transition='none';panel.style.animation='none';panel.style.willChange='transform';
+                active={type:'surface',...surface,panel,previous,width:window.innerWidth,progress:0};
+                return true;
+            }
+            function moveSurface(dx){
+                const state=active;
+                if(!state || state.type!=='surface')return;
+                state.progress=Math.max(0,Math.min(1,dx/state.width));
+                state.panel.style.transform=`translate3d(${state.progress*state.width}px,0,0)`;
+            }
+            function finishSurface(commit){
+                const state=active;
+                if(!state || state.type!=='surface')return;
+                start=null;
+                state.panel.style.transition='transform 230ms cubic-bezier(.22,.8,.24,1)';
+                state.panel.style.transform=`translate3d(${commit?state.width:0}px,0,0)`;
+                const finalize=()=>{
+                    if(active!==state)return;
+                    Object.assign(state.panel.style,state.previous);
+                    state.el.classList.remove('archi-modal-edge-active');
+                    active=null;
+                    if(commit)state.close();
+                };
+                state.panel.addEventListener('transitionend',finalize,{once:true});
+                setTimeout(()=>{if(active===state)finalize();},320);
             }
             function begin(){
                 if(!start || active || currentTab!=='explore' || !(selectedCity || selectedCountry))return false;
@@ -1784,21 +1838,22 @@ for (const monument of initialMonumentsData) {
                     const lightbox=document.getElementById('fullscreen-lightbox');
                     const modal=document.getElementById('monument-modal');
                     const settings=document.getElementById('archi-settings-overlay');
-                    if((lightbox&&!lightbox.classList.contains('hidden')) ||
-                       (modal&&!modal.classList.contains('hidden')) ||
-                       (settings&&!settings.hidden))return;
-                    if(!begin())return;
+                    if(visibleSurface()){
+                        if(!beginSurface())return;
+                    } else if(!begin())return;
                 }
                 if(event.cancelable)event.preventDefault();
                 start.lastX=t.clientX;
                 moveFrame(Math.max(0,dx));
             },{passive:false});
             document.addEventListener('touchend',event=>{
-                if(!start || event.changedTouches.length!==1){if(active)finish(false);else reset();return;}
+                if(!start || event.changedTouches.length!==1){if(active){if(active.type==='surface')finishSurface(false);else finish(false);}else reset();return;}
                 const t=event.changedTouches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
                 if(active){
                     const velocity=dx/Math.max(1,Date.now()-start.time);
-                    finish(active.progress>0.38 || (dx>55 && velocity>0.55));
+                    const commit=active.progress>0.38 || (dx>55 && velocity>0.55);
+                    if(active.type==='surface')finishSurface(commit);
+                    else finish(commit);
                     return;
                 }
                 const valid=dx>75 && dx>Math.abs(dy)*1.45 && Date.now()-start.time<1100;
@@ -1811,7 +1866,7 @@ for (const monument of initialMonumentsData) {
                 const settings=document.getElementById('archi-settings-overlay');
                 if(settings && !settings.hidden){archiCloseSettings();return;}
             },{passive:true});
-            document.addEventListener('touchcancel',()=>{if(active)finish(false);else reset();},{passive:true});
+            document.addEventListener('touchcancel',()=>{if(active){if(active.type==='surface')finishSurface(false);else finish(false);}else reset();},{passive:true});
         })();
 
         function navigateBack() {
