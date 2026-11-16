@@ -2584,7 +2584,7 @@ for (const monument of initialMonumentsData) {
             if (!smartMap || !window.L) return;
             smartMapMarkers.forEach(marker => smartMap.removeLayer(marker)); smartMapMarkers = [];
             const q = query.toLowerCase();
-            const valid = monumentsData.filter(m => m.coords && Number.isFinite(Number(m.coords.lat)) && Number.isFinite(Number(m.coords.lng)) && (!q || [m.name,m.city,m.country,m.style].join(' ').toLowerCase().includes(q)));
+            const valid = monumentsData.filter(m => archiMapMarkerMatches(m, q));
             valid.forEach(m => {
                 const marker = L.marker([Number(m.coords.lat), Number(m.coords.lng)]).addTo(smartMap);
                 marker.bindPopup(`<strong>${monumentLabel(m)}</strong><br>${cityLabel(m.city)}, ${countryLabel(m.country)}<br><small>${m.style || ''}</small><br><a href="#" onclick="openMonumentById('${m.id}');return false;">Ver ficha →</a><br><a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${m.coords.lat},${m.coords.lng}&travelmode=walking">Cómo llegar caminando</a>`);
