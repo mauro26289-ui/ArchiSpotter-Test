@@ -1680,20 +1680,117 @@ for (const monument of initialMonumentsData) {
         }
         (function archiInstallEdgeBackGesture(){
             let start=null;
+            let active=null;
+            const edge=32;
+            function cleanOverlay(){
+                if(active?.overlay)active.overlay.remove();
+                document.documentElement.classList.remove('archi-edge-swiping');
+            }
+            function reset(){start=null;active=null;}
+            function moveFrame(dx){
+                if(!active)return;
+                const width=active.width;
+                const progress=Math.max(0,Math.min(1,dx/width));
+                active.progress=progress;
+                active.overlay.style.transform=`translate3d(${progress*width}px,0,0)`;
+                active.overlay.style.boxShadow=`-12px 0 28px rgba(0,0,0,${0.12*(1-progress)})`;
+                active.under.style.transform=`translate3d(${(-width*0.22)*(1-progress)}px,0,0)`;
+                active.under.style.opacity=String(0.82+0.18*progress);
+            }
+            function finish(commit){
+                if(!active){reset();return;}
+                const state=active;
+                state.overlay.style.transition='transform 230ms cubic-bezier(.22,.8,.24,1),box-shadow 230ms ease';
+                state.under.style.transition='transform 230ms cubic-bezier(.22,.8,.24,1),opacity 230ms ease';
+                state.overlay.style.transform=`translate3d(${commit?state.width:0}px,0,0)`;
+                state.under.style.transform=`translate3d(${commit?0:-state.width*.22}px,0,0)`;
+                state.under.style.opacity=commit?'1':'0.82';
+                // Restore the original view only when the gesture is cancelled.
+                if(!commit){
+                    selectedCountry=state.country;
+                    selectedCity=state.city;
+                }
+                const finalize=()=>{
+                    if(active!==state)return;
+                    if(!commit){
+                        renderNavigationFlow();
+                        const scroller=archiExploreScroller();
+                        if(scroller)scroller.scrollTop=state.scroll;
+                    }
+                    state.under.style.transition='';
+                    state.under.style.transform='';
+                    state.under.style.opacity='';
+                    cleanOverlay();reset();
+                };
+                state.overlay.addEventListener('transitionend',finalize,{once:true});
+                // Reduced-motion / interrupted-transition fallback.
+                setTimeout(()=>{if(active===state)finalize();},310);
+            }
+            function begin(){
+                if(!start || active || currentTab!=='explore' || !(selectedCity || selectedCountry))return false;
+                const main=archiExploreScroller();
+                if(!main)return false;
+                const rect=main.getBoundingClientRect();
+                const overlay=main.cloneNode(true);
+                overlay.removeAttribute('id');
+                overlay.setAttribute('aria-hidden','true');
+                overlay.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+                overlay.classList.add('archi-edge-foreground');
+                Object.assign(overlay.style,{
+                    position:'fixed',top:`${rect.top}px`,left:`${rect.left}px`,
+                    width:`${rect.width}px`,height:`${rect.height}px`,
+                    margin:'0',zIndex:'999',pointerEvents:'none',
+                    overflow:'hidden',background:getComputedStyle(main).backgroundColor||'var(--archi-bg)',
+                    willChange:'transform',transform:'translate3d(0,0,0)'
+                });
+                overlay.scrollTop=main.scrollTop;
+                const state={overlay,under:main,width:rect.width,country:selectedCountry,city:selectedCity,scroll:main.scrollTop,progress:0};
+                active=state;
+                document.body.appendChild(overlay);
+                document.documentElement.classList.add('archi-edge-swiping');
+                // Show the destination underneath the moving snapshot.
+                if(selectedCity)selectedCity=null;
+                else selectedCountry=null;
+                renderNavigationFlow();
+                archiRestoreExploreScroll(state.city?'cities':'countries');
+                moveFrame(0);
+                return true;
+            }
             document.addEventListener('touchstart',event=>{
-                if(event.touches.length!==1){start=null;return;}
-                const touch=event.touches[0];
-                // Only gestures that start near the physical left edge.
-                if(touch.clientX>32){start=null;return;}
-                const node=event.target;
-                if(node.closest('input, textarea, select, [contenteditable="true"]')){start=null;return;}
-                start={x:touch.clientX,y:touch.clientY,time:Date.now()};
+                if(active || event.touches.length!==1){start=null;return;}
+                const t=event.touches[0];
+                if(t.clientX>edge){start=null;return;}
+                if(event.target.closest('input, textarea, select, [contenteditable="true"]')){start=null;return;}
+                start={x:t.clientX,y:t.clientY,time:Date.now(),lastX:t.clientX};
             },{passive:true});
+            document.addEventListener('touchmove',event=>{
+                if(!start || event.touches.length!==1)return;
+                const t=event.touches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
+                if(!active){
+                    if(dy>12 && Math.abs(dy)>Math.abs(dx)){start=null;return;}
+                    if(dx<9 || dx<Math.abs(dy)*1.25)return;
+                    const lightbox=document.getElementById('fullscreen-lightbox');
+                    const modal=document.getElementById('monument-modal');
+                    const settings=document.getElementById('archi-settings-overlay');
+                    if((lightbox&&!lightbox.classList.contains('hidden')) ||
+                       (modal&&!modal.classList.contains('hidden')) ||
+                       (settings&&!settings.hidden))return;
+                    if(!begin())return;
+                }
+                if(event.cancelable)event.preventDefault();
+                start.lastX=t.clientX;
+                moveFrame(Math.max(0,dx));
+            },{passive:false});
             document.addEventListener('touchend',event=>{
-                if(!start || event.changedTouches.length!==1){start=null;return;}
-                const touch=event.changedTouches[0],dx=touch.clientX-start.x,dy=touch.clientY-start.y;
+                if(!start || event.changedTouches.length!==1){if(active)finish(false);else reset();return;}
+                const t=event.changedTouches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
+                if(active){
+                    const velocity=dx/Math.max(1,Date.now()-start.time);
+                    finish(active.progress>0.38 || (dx>55 && velocity>0.55));
+                    return;
+                }
                 const valid=dx>75 && dx>Math.abs(dy)*1.45 && Date.now()-start.time<1100;
-                start=null;
+                reset();
                 if(!valid)return;
                 const lightbox=document.getElementById('fullscreen-lightbox');
                 if(lightbox && !lightbox.classList.contains('hidden')){closeFullscreenLightbox();return;}
@@ -1701,9 +1798,8 @@ for (const monument of initialMonumentsData) {
                 if(modal && !modal.classList.contains('hidden')){closeModal();archiRestoreExploreScroll('monuments');return;}
                 const settings=document.getElementById('archi-settings-overlay');
                 if(settings && !settings.hidden){archiCloseSettings();return;}
-                if(currentTab==='explore' && (selectedCity || selectedCountry))navigateBack();
             },{passive:true});
-            document.addEventListener('touchcancel',()=>{start=null;},{passive:true});
+            document.addEventListener('touchcancel',()=>{if(active)finish(false);else reset();},{passive:true});
         })();
 
         function navigateBack() {
