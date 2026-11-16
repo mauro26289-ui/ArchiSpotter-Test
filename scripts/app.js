@@ -6,6 +6,8 @@
         let selectedCity = null;
         let currentActiveStyle = 'all';
         let currentTab = 'explore';
+        const archiTabHistory = ['explore'];
+        let archiTabHistoryRestoring = false;
         let activeMonumentForModal = null;
         let currentSlideIndex = 0;
         let isSplendorView = false;
@@ -1690,6 +1692,7 @@ for (const monument of initialMonumentsData) {
             function moveFrame(dx){
                 if(!active)return;
                 if(active.type==='surface'){moveSurface(dx);return;}
+                if(active.type==='tab'){active.progress=Math.max(0,Math.min(1,dx/active.width));active.panel.style.transform=`translate3d(${active.progress*active.width}px,0,0)`;return;}
                 const width=active.width;
                 const progress=Math.max(0,Math.min(1,dx/width));
                 active.progress=progress;
@@ -1780,6 +1783,54 @@ for (const monument of initialMonumentsData) {
                 state.panel.addEventListener('transitionend',finalize,{once:true});
                 setTimeout(()=>{if(active===state)finalize();},320);
             }
+            // Tab history uses the real foreground view, avoiding cloned DOM and color changes.
+            function visibleTabView(tab){
+                if(tab==='explore')return archiExploreScroller();
+                return document.getElementById({map:'view-map',walks:'view-walks',trip:'view-trip',favorites:'view-favorites'}[tab]);
+            }
+            function beginTab(){
+                if(archiTabHistory.length<2)return false;
+                const from=currentTab,to=archiTabHistory[archiTabHistory.length-2];
+                const panel=visibleTabView(from);
+                if(!panel)return false;
+                const rect=panel.getBoundingClientRect();
+                if(rect.width<1||rect.height<1)return false;
+                const oldStyle=panel.getAttribute('style');
+                const originalBackground=getComputedStyle(panel).backgroundColor;
+                const oldScroll=panel.scrollTop;
+                archiTabHistoryRestoring=true;
+                try{switchTab(to);}finally{archiTabHistoryRestoring=false;}
+                panel.classList.remove('hidden');
+                Object.assign(panel.style,{position:'fixed',top:rect.top+'px',left:rect.left+'px',width:rect.width+'px',height:rect.height+'px',margin:'0',zIndex:'999',transform:'translate3d(0,0,0)',transition:'none',willChange:'transform',overflow:'auto',backgroundColor:originalBackground==='rgba(0, 0, 0, 0)'?'var(--archi-bg)':originalBackground});
+                panel.scrollTop=oldScroll;
+                active={type:'tab',panel,from,to,width:rect.width,progress:0,oldStyle,oldScroll};
+                return true;
+            }
+            function finishTab(commit){
+                const state=active;
+                if(!state||state.type!=='tab')return;
+                start=null;
+                state.panel.style.transition='transform 230ms cubic-bezier(.22,.8,.24,1)';
+                state.panel.style.transform=`translate3d(${commit?state.width:0}px,0,0)`;
+                const finalize=()=>{
+                    if(active!==state)return;
+                    state.panel.removeEventListener('transitionend',finalize);
+                    if(state.oldStyle===null)state.panel.removeAttribute('style');
+                    else state.panel.setAttribute('style',state.oldStyle);
+                    if(commit){
+                        state.panel.classList.add('hidden');
+                        archiTabHistory.pop();
+                    }else{
+                        archiTabHistoryRestoring=true;
+                        try{switchTab(state.from);}finally{archiTabHistoryRestoring=false;}
+                        state.panel.scrollTop=state.oldScroll;
+                    }
+                    active=null;
+                    if(currentTab==='map'&&smartMap)setTimeout(()=>smartMap.invalidateSize(),60);
+                };
+                state.panel.addEventListener('transitionend',finalize,{once:true});
+                setTimeout(()=>{if(active===state)finalize();},320);
+            }
             function begin(){
                 if(!start || active || currentTab!=='explore' || !(selectedCity || selectedCountry))return false;
                 const main=archiExploreScroller();
@@ -1840,6 +1891,8 @@ for (const monument of initialMonumentsData) {
                     const settings=document.getElementById('archi-settings-overlay');
                     if(visibleSurface()){
                         if(!beginSurface())return;
+                    } else if(currentTab!=='explore' && archiTabHistory.length>1){
+                        if(!beginTab())return;
                     } else if(!begin())return;
                 }
                 if(event.cancelable)event.preventDefault();
@@ -1847,12 +1900,13 @@ for (const monument of initialMonumentsData) {
                 moveFrame(Math.max(0,dx));
             },{passive:false});
             document.addEventListener('touchend',event=>{
-                if(!start || event.changedTouches.length!==1){if(active){if(active.type==='surface')finishSurface(false);else finish(false);}else reset();return;}
+                if(!start || event.changedTouches.length!==1){if(active){if(active.type==='surface')finishSurface(false);else if(active.type==='tab')finishTab(false);else finish(false);}else reset();return;}
                 const t=event.changedTouches[0],dx=t.clientX-start.x,dy=t.clientY-start.y;
                 if(active){
                     const velocity=dx/Math.max(1,Date.now()-start.time);
                     const commit=active.progress>0.38 || (dx>55 && velocity>0.55);
                     if(active.type==='surface')finishSurface(commit);
+                    else if(active.type==='tab')finishTab(commit);
                     else finish(commit);
                     return;
                 }
@@ -1866,7 +1920,7 @@ for (const monument of initialMonumentsData) {
                 const settings=document.getElementById('archi-settings-overlay');
                 if(settings && !settings.hidden){archiCloseSettings();return;}
             },{passive:true});
-            document.addEventListener('touchcancel',()=>{if(active){if(active.type==='surface')finishSurface(false);else finish(false);}else reset();},{passive:true});
+            document.addEventListener('touchcancel',()=>{if(active){if(active.type==='surface')finishSurface(false);else if(active.type==='tab')finishTab(false);else finish(false);}else reset();},{passive:true});
         })();
 
         function navigateBack() {
@@ -2742,6 +2796,10 @@ for (const monument of initialMonumentsData) {
         function renderFavorites(){const box=document.getElementById('favorites-grid');if(!box)return;const list=favoriteMonuments.map(id=>monumentsData.find(m=>m.id===id)).filter(Boolean);box.innerHTML=list.length?list.map(visualCard).join(''):`<p class="col-span-2 text-xs text-slate-400 rounded-xl border border-dashed border-slate-700 p-4">${tr("Todavía no tienes favoritos. Guarda monumentos con el icono de corazón en sus fichas.","You have no favorites yet. Save monuments using the heart icon in their details.")}</p>`;}
 
         function switchTab(tab) {
+            if (!archiTabHistoryRestoring && tab !== currentTab) {
+                archiTabHistory.push(tab);
+                if (archiTabHistory.length > 30) archiTabHistory.shift();
+            }
             triggerHaptic(); currentTab=tab;
             // La barra de país/ciudad pertenece exclusivamente a Explorar.
             const archiBreadcrumb = document.getElementById('nav-breadcrumb');
