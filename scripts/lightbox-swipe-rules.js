@@ -10,3 +10,10 @@ function archiShouldChangeLightboxImage(dx, dy, elapsed, imageCount) {
         elapsed < 1200 &&
         imageCount > 1;
 }
+
+// Distancia entre dos contactos para el zoom por pellizco.
+function archiGetPinchDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.hypot(dx, dy);
+}

@@ -1990,11 +1990,6 @@ for (const monument of initialMonumentsData) {
                 applyLightboxTransform();
             }, { passive: false });
 
-            const getPinchDistance = (touches) => {
-                const dx = touches[0].clientX - touches[1].clientX;
-                const dy = touches[0].clientY - touches[1].clientY;
-                return Math.hypot(dx, dy);
-            };
 
             const startDrag = (x, y) => {
                 if (lightboxScale > 1) {
@@ -2051,7 +2046,7 @@ for (const monument of initialMonumentsData) {
                     swipeMultiTouch = true;
                     e.preventDefault();
                     isDraggingLightbox = false;
-                    initialPinchDistance = getPinchDistance(e.touches);
+                    initialPinchDistance = archiGetPinchDistance(e.touches);
                     initialPinchScale = lightboxScale;
                 } else if (e.touches.length === 1) {
                     const touch = e.touches[0];
@@ -2084,7 +2079,7 @@ for (const monument of initialMonumentsData) {
                 if (swipeAnimating) return;
                 if (e.touches.length === 2 && initialPinchDistance !== null) {
                     e.preventDefault();
-                    const currentDistance = getPinchDistance(e.touches);
+                    const currentDistance = archiGetPinchDistance(e.touches);
                     const scaleRatio = currentDistance / initialPinchDistance;
                     lightboxScale = Math.min(Math.max(initialPinchScale * scaleRatio, 1), 4);
                     if (lightboxScale === 1) {
