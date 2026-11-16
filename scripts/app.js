@@ -2097,7 +2097,7 @@ for (const monument of initialMonumentsData) {
                     if (swipeTracking && swipeEligible && lightboxScale === 1) {
                         const dx = touch.clientX - swipeStartX;
                         const dy = touch.clientY - swipeStartY;
-                        if (Math.abs(dx) > Math.abs(dy) * 1.1 && Math.abs(dx) > 6) {
+                        if (archiShouldTrackLightboxSwipe(dx, dy)) {
                             e.preventDefault();
                             swipeOffset = dx;
                             const img = swipeImg();
@@ -2125,7 +2125,7 @@ for (const monument of initialMonumentsData) {
                         const dx = endTouch.clientX - swipeStartX;
                         const dy = endTouch.clientY - swipeStartY;
                         const elapsed = Date.now() - swipeStartTime;
-                        const valid = Math.abs(dx) >= 55 && Math.abs(dx) > Math.abs(dy) * 1.2 && elapsed < 1200 && lightboxImages.length > 1;
+                        const valid = archiShouldChangeLightboxImage(dx, dy, elapsed, lightboxImages.length);
                         const img = swipeImg();
                         if (img && Math.abs(swipeOffset) > 0) {
                             swipeAnimating = true;
