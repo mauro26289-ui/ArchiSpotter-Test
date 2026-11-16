@@ -1373,10 +1373,102 @@ for (const monument of initialMonumentsData) {
         }
         if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',observeArchiTranslations,{once:true});
         else observeArchiTranslations();
-        // Funciones de scripts/static-language-ui.js.
+        function setUiText(selector, value) { const el=document.querySelector(selector); if(el) el.textContent=value; }
+        const italianStaticOverrides = {"welcome": "Benvenuto!", "intro": "Che cos’è?", "introText": "Sei in vacanza, cammini per strada e vedi un edificio o monumento che ti incuriosisce. Apri ArchiSpotter ed ecco tutte le informazioni che cercavi. Seleziona un paese per esplorare monumenti, audioguide, percorsi e segreti.", "countries": "Paesi disponibili", "cities": "Seleziona la città da esplorare", "tripDesc": "Il tuo itinerario e gli edifici da scoprire", "itinerary": "Itinerario personale", "clear": "Svuota", "emptyTrip": "Aggiungi monumenti da Esplora o Preferiti.", "openTrip": "Apri il percorso a piedi con tutte le tappe", "visual": "Esplorazione visiva", "visualDesc": "Scopri l’architettura attraverso le immagini e apri ogni scheda.", "favoritesTitle": "I miei preferiti", "favoritesDesc": "Tutti i monumenti salvati, di qualsiasi città.", "mapTitle": "Mappa del mondo e navigazione", "mapStatus": "Esplora i monumenti vicini, filtra per città e apri le schede.", "routesTitle": "Percorsi tematici a piedi", "routesDesc": "Itinerari pensati per esplorare i monumenti a piedi.", "createRoute": "Crea il mio percorso", "routeHelp": "Seleziona almeno due monumenti. Si aprirà un percorso a piedi con tappe nel servizio mappe.", "routeFilter": "Filtra per nome o città…", "saveRoute": "Salva in Il mio viaggio", "drawRoute": "Traccia percorso a piedi", "scannerTitle": "Riconoscimento fotografico", "scannerDesc": "Inquadra la facciata del monumento per identificarne subito la storia.", "scannerAction": "Simula rilevamento", "scannerBadge": "Scanner architettonico IA", "back": "Paesi", "all": "Tutti", "roman": "Romano", "gothic": "Gotico", "renaissance": "Rinascimentale", "baroque": "Barocco", "modalDirections": "Come arrivare", "modalAdd": "Aggiungi al mio viaggio", "modalOfficial": "Sito ufficiale", "modalClose": "Chiudi scheda", "gps": "Attiva GPS"};
+        function applyStaticLanguage() {
+            const en=appLanguage==='en';
+            const T={
+                welcome: en?'Welcome!':'¡Bienvenido!', intro:en?'What is this?':'¿Y esto qué es?',
+                introText:en?'You are on vacation, walking down the street, and you see a building or monument you like and want to know what it is. Open ArchiSpotter and voilà: all the information you wanted. Select a country to explore its iconic monuments, audio guides, routes and secrets.':'Estás de vacaciones, vas caminando por la calle y ves un edificio o monumento que te gusta y quieres saber qué es. Entrás en ArchiSpotter y voilà. Toda la información que querías saber. Seleccioná un país para explorar sus monumentos icónicos, audioguías, rutas y secretos.',
+                countries:en?'Available countries':'Países disponibles', cities:en?'Select the city you want to explore':'Selecciona la ciudad que deseas explorar',
+                tripDesc:en?'Your itinerary and the buildings you want to discover':'Tu recorrido y los edificios que quieres descubrir', itinerary:en?'Personal itinerary':'Itinerario personal', clear:en?'Clear':'Vaciar', emptyTrip:en?'Add monuments from Explore or Favorites.':'Añade monumentos desde Explorar o Favoritos.', openTrip:en?'Open walking route with all stops':'Abrir ruta a pie con todas las paradas', visual:en?'Visual exploration':'Exploración visual', visualDesc:en?'Discover architecture through images and open each entry.':'Descubre arquitectura por imágenes y abre cada ficha.',
+                favoritesTitle:en?'My favorites':'Mis favoritos', favoritesDesc:en?'All your saved monuments, from any city.':'Todos tus monumentos guardados, desde cualquier ciudad.',
+                mapTitle:en?'World map & Navigation':'Mapamundi & Navegación', mapStatus:en?'Explore nearby monuments, filter by city and open their entries.':'Explora monumentos cercanos, filtra por ciudad y abre sus fichas.',
+                routesTitle:en?'Themed Walking Routes':'Rutas a Pie Temáticas', routesDesc:en?'Itineraries designed to explore monuments on foot.':'Itinerarios optimizados para recorrer caminando los monumentos',
+                createRoute:en?'Create my route':'Crear mi ruta', routeHelp:en?'Select two or more monuments. A walking route with stops will open in the maps service.':'Selecciona dos o más monumentos. Se abrirá una ruta peatonal con paradas en el servicio de mapas.', routeFilter:en?'Filter by name or city…':'Filtrar por nombre o ciudad…', saveRoute:en?'Save to My trip':'Guardar en Mi viaje', drawRoute:en?'Draw walking route':'Trazar ruta a pie',
 
-        // Funciones de scripts/language-controller.js.
+                back:en?'Countries':'Países', all:en?'All':'Todos', roman:en?'Roman':'Romano', gothic:en?'Gothic':'Gótico', renaissance:en?'Renaissance':'Renacentista', baroque:en?'Baroque':'Barroco',
+                modalDirections:en?'How to get there':'Cómo llegar', modalAdd:en?'Add to my trip':'Agregar a mi viaje', modalOfficial:en?'Official website':'Sitio oficial', modalClose:en?'Close entry':'Cerrar ficha'
+            };
+            if(appLanguage==='it') { const italianLabels={welcome:'Benvenuto!',intro:'Che cos’è?',countries:'Paesi disponibili',cities:'Seleziona la città che vuoi esplorare',tripDesc:'Il tuo itinerario e gli edifici da scoprire',itinerary:'Itinerario personale',clear:'Svuota',emptyTrip:'Aggiungi monumenti da Esplora o Preferiti.',openTrip:'Apri il percorso a piedi con tutte le tappe',visual:'Esplorazione visiva',visualDesc:'Scopri l’architettura attraverso le immagini',favoritesTitle:'I miei preferiti',favoritesDesc:'Tutti i monumenti salvati',mapTitle:'Mappa del mondo e navigazione',routesTitle:'Percorsi tematici a piedi',createRoute:'Crea il mio percorso',saveRoute:'Salva nel mio viaggio',drawRoute:'Traccia il percorso a piedi'}; Object.assign(T,italianLabels); }
 
+            if(appLanguage==='it') Object.assign(T,italianStaticOverrides);
+            setUiText('#view-home .relative.z-10 > span',T.welcome); setUiText('#home-intro-heading',T.intro); setUiText('#view-home .relative.z-10 > p',T.introText); setUiText('#view-home h3',T.countries);
+            setUiText('#view-cities-container p',T.cities); setUiText('#breadcrumb-text',T.back);
+            setUiText('#view-trip h3',T.tripDesc); setUiText('#view-trip .surface-card h4',T.itinerary); setUiText('#view-trip .surface-card > div > button',T.clear); setUiText('#trip-stops p',T.emptyTrip); setUiText('#trip-directions',T.openTrip); setUiText('#view-trip .space-y-2 h4',T.visual); setUiText('#view-trip .space-y-2 > p',T.visualDesc);
+            setUiText('#view-favorites h3',T.favoritesTitle); setUiText('#view-favorites p',T.favoritesDesc);
+            setUiText('#view-map .p-3 span',T.mapTitle); setUiText('#gps-btn-text',T.gps); setUiText('#map-status-text',T.mapStatus);
+            setUiText('#view-walks h3 span',T.routesTitle); setUiText('#view-walks .space-y-1 p',T.routesDesc); setUiText('#view-walks .surface-card h4',T.createRoute); setUiText('#view-walks .surface-card p',T.routeHelp); setUiText('#view-walks button[onclick="saveSelectedRoute()"]',T.saveRoute); setUiText('#view-walks button[onclick="openSelectedRoute()"]',T.drawRoute);
+            const styles=document.querySelectorAll('#styles-filter .style-btn'); const labels=[T.all,T.roman,T.gothic,T.renaissance,T.baroque]; styles.forEach((b,i)=>{if(labels[i])b.textContent=labels[i];});
+            const search=document.getElementById('search-input'); if(search)search.placeholder=appLanguage==='it'?'Cerca monumento o stile…':en?'Search monument or style…':'Buscar monumento o estilo…';
+            const mapSearch=document.getElementById('map-search'); if(mapSearch)mapSearch.placeholder=appLanguage==='it'?'Cerca monumento, città o stile…':en?'Search monument, city or style…':'Buscar monumento, ciudad o estilo…';
+            const routeFilter=document.getElementById('route-filter'); if(routeFilter)routeFilter.placeholder=T.routeFilter;
+            const directions=document.getElementById('modal-directions-btn'); if(directions)directions.setAttribute('aria-label',T.modalDirections);
+            const close=document.querySelector('#monument-modal .modal-close'); if(close)close.setAttribute('aria-label',T.modalClose);
+        }
+        function applyLanguage() {
+            const t=translations[appLanguage]||translations.es;
+            const set=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
+            const safe=(name,fn)=>{try{fn();}catch(err){console.warn('[ArchiSpotter i18n] '+name,err);}};
+            set('tab-explore-label',t.explore);
+            set('tab-walks-label',t.routes);
+            set('tab-map-label',t.map);
+            set('tab-trip-label',t.trip);
+            set('tab-favorites-label',t.favorites);
+            const audio=document.getElementById('audio-label');
+            if(audio)audio.textContent=isSpeakingAudio?tr('Pausar audio','Pause audio'):t.audio;
+            for (const id of ['language-select','archi-settings-language']) {
+                const lang=document.getElementById(id);
+                if(lang && lang.value!==appLanguage)lang.value=appLanguage;
+            }
+            document.documentElement.lang=appLanguage;
+            // Conservar selectedCountry, selectedCity y currentTab; solo volver a pintar.
+            safe('explore',()=>{if(currentTab==='explore')renderNavigationFlow();});
+            safe('trip',()=>renderTrip());
+            safe('favorites',()=>renderFavorites());
+            safe('routes',()=>renderWalkingRoutes());
+            safe('nearby',()=>renderNearbyMonuments());
+            safe('passport',()=>{const el=document.getElementById('passport-modal');if(el&&!el.classList.contains('hidden'))openPassportModal();});
+            safe('static',()=>applyStaticLanguage());
+            safe('text',()=>translateStaticTextNodes());
+            safe('intro',()=>setUiText('#home-intro-heading',appLanguage==='it'?'Che cos’è?':appLanguage==='en'?'What is this?':'¿Y esto qué es?'));
+            safe('modal',()=>{const el=document.getElementById('monument-modal');if(activeMonumentForModal&&el&&!el.classList.contains('hidden'))translateOpenMonument(activeMonumentForModal);});
+            safe('settings',()=>archiSyncSettings());
+            safe('about',()=>archiSyncAboutLanguage());
+            safe('map',()=>{if(currentTab==='map')renderNearbyMonuments();});
+            // La barra de países no debe aparecer sobre las otras pestañas.
+            if(currentTab!=='explore')document.getElementById('nav-breadcrumb')?.classList.add('hidden');
+        }
+        function translateOpenMonument(m) {
+            if(!m) return;
+            document.getElementById('modal-title').textContent=monumentLabel(m);
+            document.getElementById('modal-style').textContent=styleLabel(m.style);
+            document.getElementById('modal-year').textContent=localYear(m.year);
+            document.getElementById('modal-location').innerHTML=`<i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> ${cityLabel(m.city)}, ${countryLabel(m.country)} ${getFlagForCountry(m.country,m.flag)}`;
+            document.getElementById('modal-history').innerText=monumentField(m,'history');
+            document.getElementById('modal-secret-text').textContent=monumentField(m,'secret')||'';
+            document.getElementById('modal-architecture').innerHTML=architectureLabel(m).map(item=>`<div class="flex items-start space-x-2"><i class="fa-solid fa-check text-amber-500 text-[10px] mt-1"></i><span>${item}</span></div>`).join('');
+        }
+        function setLanguage(lang) {
+            if(isSpeakingAudio) stopAudioGuide();
+            appLanguage=['es','en','it'].includes(lang)?lang:'es';
+            try { localStorage.setItem('archispotter_language',appLanguage); } catch(e) {}
+            try { if(typeof window.updateArchiOnboarding==='function')window.updateArchiOnboarding(); } catch(e) { console.warn('[ArchiSpotter] onboarding i18n',e); }
+            applyLanguage();
+            try { showToast(appLanguage==='it'?'Lingua impostata su italiano':appLanguage==='en'?'Language set to English':'Idioma configurado en español'); } catch(e) {}
+        }
+        window.setLanguage=setLanguage;
+        // iOS Safari: escuchar el selector REAL de Ajustes. El antiguo listener
+        // observaba #language-select, que no existe en la ventana actual.
+        function archiHandleLanguageSelection(event) {
+            const target=event.target;
+            if (!target || !['archi-settings-language','language-select'].includes(target.id)) return;
+            const requested=target.value;
+            if (!['es','en','it'].includes(requested) || requested===appLanguage) return;
+            setLanguage(requested);
+        }
+        document.addEventListener('change',archiHandleLanguageSelection);
+        document.addEventListener('input',archiHandleLanguageSelection);
         function toggleTheme() { document.body.classList.toggle('light-mode'); const light=document.body.classList.contains('light-mode'); archiStorageSet('archispotter_theme',light?'light':'dark'); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; }
         function applySavedPreferences() { const savedTheme=archiStorageGet('archispotter_theme'); const light=savedTheme!=='dark'; document.body.classList.toggle('light-mode',light); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; applyLanguage(); }
         // Funciones trasladadas a scripts/favorites-actions.js.
@@ -1391,7 +1483,64 @@ for (const monument of initialMonumentsData) {
 
         // Navegación/listado/filtros extraídos: scripts/monument-list-ui.js
 
-        // Funciones de scripts/monument-modal-ui.js.
+        function openMonumentModal(id) {
+            archiRememberExploreScroll('monuments');
+            triggerHaptic();
+            stopAudioGuide();
+            activeMonumentForModal = monumentsData.find(m => m.id === id);
+            if (!activeMonumentForModal) return;
+
+            const m = activeMonumentForModal;
+            document.getElementById('modal-title').textContent = monumentLabel(m);
+            const favBtn=document.getElementById('modal-favorite'); if(favBtn){favBtn.classList.toggle('is-favorite',isFavorite(m.id));favBtn.innerHTML=isFavorite(m.id)?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';}
+            document.getElementById('modal-style').textContent = styleLabel(m.style);
+            document.getElementById('modal-year').textContent = localYear(m.year);
+            document.getElementById('modal-location').innerHTML = `<i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> ${cityLabel(m.city)}, ${countryLabel(m.country)} ${getFlagForCountry(m.country, m.flag)}`;
+            document.getElementById('modal-history').innerText = monumentField(m,"history");
+            document.getElementById('modal-official-btn').href = m.ticketLink || '#';
+
+            const secretBox = document.getElementById('modal-secret-container');
+            if (m.secret) {
+                document.getElementById('modal-secret-text').textContent = monumentField(m,'secret');
+                secretBox.classList.remove('hidden');
+            } else {
+                secretBox.classList.add('hidden');
+            }
+
+            const archContainer = document.getElementById('modal-architecture');
+            archContainer.innerHTML = architectureLabel(m).map(item => `
+                <div class="flex items-start space-x-2">
+                    <i class="fa-solid fa-check text-amber-500 text-[10px] mt-1"></i>
+                    <span>${item}</span>
+                </div>
+            `).join('');
+            translateOpenMonument(m);
+
+            currentSlideIndex = 0;
+            isSplendorView = false;
+            setupSplendorComparison(m);
+            renderCarouselSlides(m);
+            renderInlineDescriptionGallery(m);
+
+            document.getElementById('monument-modal').classList.remove('hidden');
+        }
+
+        function renderInlineDescriptionGallery(m) {
+            const galleryContainer = document.getElementById('modal-inline-gallery');
+            if (!galleryContainer) return;
+
+            const allImages = Array.isArray(m.images) ? m.images : [];
+
+            galleryContainer.innerHTML = allImages.map((imgUrl, idx) => `
+                <div onclick="openFullscreenLightbox(${idx})" class="relative h-28 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group shadow-md">
+                    <img src="${imgUrl}" data-monument-id="${m.id}" data-active-image="${imgUrl}" onerror="handleMonumentImageError(this)" loading="lazy" decoding="async" alt="${m.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/0 transition"></div>
+                    <div class="absolute bottom-1.5 right-1.5 bg-slate-900/80 backdrop-blur-sm text-amber-400 w-6 h-6 rounded-full flex items-center justify-center border border-amber-500/30 text-[10px]">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
 
         function openFullscreenLightbox(idx) {
             triggerHaptic();
