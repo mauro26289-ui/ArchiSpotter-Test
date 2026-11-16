@@ -1579,17 +1579,7 @@ for (const monument of initialMonumentsData) {
             if (!container) return;
 
             const filteredMonuments = monumentsData.filter(m => m.country === selectedCountry);
-            const citiesMap = {};
-            
-            filteredMonuments.forEach(m => {
-                const city = m.city || 'Desconocido';
-                if (!citiesMap[city]) {
-                    citiesMap[city] = { name: city, count: 0, image: (Array.isArray(m.images) && m.images[0]) || architecturePlaceholder() };
-                }
-                citiesMap[city].count++;
-            });
-
-            const citiesList = Object.values(citiesMap);
+            const citiesList = archiBuildCityList(filteredMonuments, architecturePlaceholder);
 
             container.innerHTML = citiesList.map(c => `
                 <div onclick="selectCity(${JSON.stringify(c.name).replace(/"/g,'&quot;')})" class="relative overflow-hidden rounded-xl bg-slate-900 border border-slate-800 p-4 flex items-center justify-between cursor-pointer hover:border-amber-500/50 transition group">
