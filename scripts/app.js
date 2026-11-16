@@ -461,49 +461,9 @@ for (const monument of initialMonumentsData) {
         if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',observeArchiTranslations,{once:true});
         else observeArchiTranslations();
         // Extraído a scripts/static-language-layout.js
-        function applyLanguage() {
-            const t=translations[appLanguage]||translations.es;
-            const set=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
-            const safe=(name,fn)=>{try{fn();}catch(err){console.warn('[ArchiSpotter i18n] '+name,err);}};
-            set('tab-explore-label',t.explore);
-            set('tab-walks-label',t.routes);
-            set('tab-map-label',t.map);
-            set('tab-trip-label',t.trip);
-            set('tab-favorites-label',t.favorites);
-            const audio=document.getElementById('audio-label');
-            if(audio)audio.textContent=isSpeakingAudio?tr('Pausar audio','Pause audio'):t.audio;
-            for (const id of ['language-select','archi-settings-language']) {
-                const lang=document.getElementById(id);
-                if(lang && lang.value!==appLanguage)lang.value=appLanguage;
-            }
-            document.documentElement.lang=appLanguage;
-            // Conservar selectedCountry, selectedCity y currentTab; solo volver a pintar.
-            safe('explore',()=>{if(currentTab==='explore')renderNavigationFlow();});
-            safe('trip',()=>renderTrip());
-            safe('favorites',()=>renderFavorites());
-            safe('routes',()=>renderWalkingRoutes());
-            safe('nearby',()=>renderNearbyMonuments());
-            safe('passport',()=>{const el=document.getElementById('passport-modal');if(el&&!el.classList.contains('hidden'))openPassportModal();});
-            safe('static',()=>applyStaticLanguage());
-            safe('text',()=>translateStaticTextNodes());
-            safe('intro',()=>setUiText('#home-intro-heading',appLanguage==='it'?'Che cos’è?':appLanguage==='en'?'What is this?':'¿Y esto qué es?'));
-            safe('modal',()=>{const el=document.getElementById('monument-modal');if(activeMonumentForModal&&el&&!el.classList.contains('hidden'))translateOpenMonument(activeMonumentForModal);});
-            safe('settings',()=>archiSyncSettings());
-            safe('about',()=>archiSyncAboutLanguage());
-            safe('map',()=>{if(currentTab==='map')renderNearbyMonuments();});
-            // La barra de países no debe aparecer sobre las otras pestañas.
-            if(currentTab!=='explore')document.getElementById('nav-breadcrumb')?.classList.add('hidden');
-        }
+        // Extraído a scripts/language-application.js
         // Extraído a scripts/modal-translation.js
-        function setLanguage(lang) {
-            if(isSpeakingAudio) stopAudioGuide();
-            appLanguage=['es','en','it'].includes(lang)?lang:'es';
-            try { localStorage.setItem('archispotter_language',appLanguage); } catch(e) {}
-            try { if(typeof window.updateArchiOnboarding==='function')window.updateArchiOnboarding(); } catch(e) { console.warn('[ArchiSpotter] onboarding i18n',e); }
-            applyLanguage();
-            try { showToast(appLanguage==='it'?'Lingua impostata su italiano':appLanguage==='en'?'Language set to English':'Idioma configurado en español'); } catch(e) {}
-        }
-        window.setLanguage=setLanguage;
+        // Extraído a scripts/language-selection.js
         // Extraído a scripts/language-input-handler.js
         // Extraído a scripts/theme-preferences.js
         // Funciones trasladadas a scripts/favorites-actions.js.
@@ -518,48 +478,7 @@ for (const monument of initialMonumentsData) {
 
         // Navegación/listado/filtros extraídos: scripts/monument-list-ui.js
 
-        function openMonumentModal(id) {
-            archiRememberExploreScroll('monuments');
-            triggerHaptic();
-            stopAudioGuide();
-            activeMonumentForModal = monumentsData.find(m => m.id === id);
-            if (!activeMonumentForModal) return;
-
-            const m = activeMonumentForModal;
-            document.getElementById('modal-title').textContent = monumentLabel(m);
-            const favBtn=document.getElementById('modal-favorite'); if(favBtn){favBtn.classList.toggle('is-favorite',isFavorite(m.id));favBtn.innerHTML=isFavorite(m.id)?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';}
-            document.getElementById('modal-style').textContent = styleLabel(m.style);
-            document.getElementById('modal-year').textContent = localYear(m.year);
-            document.getElementById('modal-location').innerHTML = `<i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> ${cityLabel(m.city)}, ${countryLabel(m.country)} ${getFlagForCountry(m.country, m.flag)}`;
-            document.getElementById('modal-history').innerText = monumentField(m,"history");
-            document.getElementById('modal-official-btn').href = m.ticketLink || '#';
-
-            const secretBox = document.getElementById('modal-secret-container');
-            if (m.secret) {
-                document.getElementById('modal-secret-text').textContent = monumentField(m,'secret');
-                secretBox.classList.remove('hidden');
-            } else {
-                secretBox.classList.add('hidden');
-            }
-
-            const archContainer = document.getElementById('modal-architecture');
-            archContainer.innerHTML = architectureLabel(m).map(item => `
-                <div class="flex items-start space-x-2">
-                    <i class="fa-solid fa-check text-amber-500 text-[10px] mt-1"></i>
-                    <span>${item}</span>
-                </div>
-            `).join('');
-            translateOpenMonument(m);
-
-            currentSlideIndex = 0;
-            isSplendorView = false;
-            setupSplendorComparison(m);
-            renderCarouselSlides(m);
-            renderInlineDescriptionGallery(m);
-
-            document.getElementById('monument-modal').classList.remove('hidden');
-        }
-
+        // Extraído a scripts/monument-modal-controller.js
         // Extraído a scripts/inline-gallery-ui.js
         // Extraído a scripts/lightbox-entry.js
         // updateLightboxView trasladada a scripts/lightbox-navigation.js.
@@ -574,11 +493,7 @@ for (const monument of initialMonumentsData) {
         // Funciones en scripts/splendor-controls.js.
         // Funciones trasladadas a scripts/monument-carousel.js.
 
-        function closeModal() {
-            triggerHaptic();
-            stopAudioGuide();
-            document.getElementById('monument-modal').classList.add('hidden');
-        }
+        // closeModal: scripts/monument-modal-controller.js
 
         // ArchiSpotter neural MP3 pilot: Colosseum (EN / ES / IT).
         // Other monuments retain the existing browser-voice fallback.

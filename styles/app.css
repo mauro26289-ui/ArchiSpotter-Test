@@ -791,3 +791,9 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
 #view-map #nearby-list { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; overflow:visible !important; }
 #view-map #nearby-list button { width:100%; min-width:0; white-space:normal; overflow-wrap:anywhere; }
 #view-map .map-status-panel { flex:none; position:relative; left:auto; right:auto; bottom:auto; }
+
+/* Etapa 85: mantener la barra a todo lo ancho, con sus controles separados de los bordes. */
+#app main #nav-breadcrumb {
+  padding-left: max(24px, env(safe-area-inset-left, 0px)) !important;
+  padding-right: max(24px, env(safe-area-inset-right, 0px)) !important;
+}
