@@ -1,0 +1,19 @@
+ARCHISPOTTER E98 — AUDITORÍA DE ARRANQUE (sin modificar diseño)
+
+Hallazgos confirmados en el código E97:
+- index.html contiene los bloques archi-viewport-v95 y archi-root-scroll-lock-v96.
+- En CSS conviven declaraciones 100vh/100dvh/100svh para splash y app.
+- La hoja de estilos contiene una regla que usa background-size:contain para la ilustración.
+- La app usa un manifiesto web; no se encontró registro de service worker en index.html.
+
+NO se ha demostrado que esas reglas sean la causa del fallo intermitente.
+E98 no cambia alturas, scroll, estilos de la ilustración ni comportamiento de la app.
+
+Diagnóstico E98: registra viewport, scroll, fondos computados y límites de splash/app
+al iniciar, cambiar tamaño y tocar la pantalla. Mantiene máximo 60 muestras en memoria;
+no envía información a servidores. Para ver el panel, tocar 4 veces la esquina
+superior izquierda (primeros 72px de ancho y 105px de alto) en menos de 3 segundos.
+Si aparece el zócalo: captura ANTES de deslizar; abrir panel y hacer captura.
+Luego deslizar y volver a abrir panel para comparar.
+
+Importante: no se ha reproducido el problema en un iPhone real en esta sesión.
