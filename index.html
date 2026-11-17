@@ -74,25 +74,52 @@
 
 
 
-<style id="archi-splash-critical-v17">
-#splash-screen{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:-1px!important;width:100%!important;height:var(--archi-splash-height,100dvh)!important;min-height:100vh!important;z-index:99999!important;background:#f8f0de!important;overflow:hidden!important;transform:translateZ(0)!important}
-#splash-screen .archi-splash-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;background:transparent!important}
-#splash-screen .archi-splash-photo{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;opacity:1!important;visibility:visible!important}
+<style id="archi-splash-viewport-v94">
+/* Un solo controlador de dimensiones para la pantalla de arranque. La
+   imagen se extiende también sobre la región inferior que iOS revela tarde. */
+html,body { background-color:#f8f0de; }
+body #splash-screen, body #splash-screen:not(.hidden) {
+  position:fixed!important;top:0!important;left:0!important;right:0!important;
+  bottom:auto!important;width:100vw!important;
+  height:var(--archi-launch-height,100dvh)!important;
+  min-height:var(--archi-launch-height,100dvh)!important;
+  max-height:none!important;margin:0!important;padding:0!important;
+  overflow:hidden!important;border:0!important;border-radius:0!important;
+  z-index:99999!important;background:#f8f0de!important;
+  transform:none!important;
+}
+body #splash-screen .archi-splash-art,
+body #splash-screen:not(.hidden) .archi-splash-art {
+  position:absolute!important;inset:0!important;width:100%!important;
+  height:100%!important;background:none!important;
+}
+body #splash-screen .archi-splash-photo {
+  display:block!important;width:100%!important;height:100%!important;
+  max-width:none!important;max-height:none!important;
+  object-fit:cover!important;object-position:center center!important;
+  opacity:1!important;visibility:visible!important;
+}
 </style>
-<script id="archi-splash-viewport-fix-v93">
+<script id="archi-splash-viewport-v94">
 (function(){
-  // iOS standalone can report a stale dynamic viewport on first paint.
-  // Keep the temporary splash layer aligned with the actual visible viewport.
-  function syncSplashViewport(){
-    var v=window.visualViewport;
-    var h=Math.max(window.innerHeight||0, v ? v.height+v.offsetTop : 0);
-    if(h>0)document.documentElement.style.setProperty('--archi-splash-height',Math.ceil(h+2)+'px');
+  // En PWA iOS, innerHeight y visualViewport pueden iniciar con un valor
+  // inferior al alto real; screen.height proporciona un piso en vertical.
+  function updateLaunchHeight(){
+    var vv=window.visualViewport;
+    var h=Math.max(window.innerHeight||0,document.documentElement.clientHeight||0,
+      vv ? (vv.height+vv.offsetTop) : 0);
+    if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches &&
+       window.innerHeight>=window.innerWidth && screen.height>0){
+      h=Math.max(h,screen.height);
+    }
+    if(h>0)document.documentElement.style.setProperty('--archi-launch-height',Math.ceil(h+3)+'px');
   }
-  syncSplashViewport();
-  window.addEventListener('pageshow',syncSplashViewport,{passive:true});
-  window.addEventListener('orientationchange',syncSplashViewport,{passive:true});
-  window.addEventListener('resize',syncSplashViewport,{passive:true});
-  if(window.visualViewport)window.visualViewport.addEventListener('resize',syncSplashViewport,{passive:true});
+  updateLaunchHeight();
+  document.addEventListener('DOMContentLoaded',updateLaunchHeight,{once:true});
+  window.addEventListener('pageshow',updateLaunchHeight,{passive:true});
+  window.addEventListener('resize',updateLaunchHeight,{passive:true});
+  window.addEventListener('orientationchange',updateLaunchHeight,{passive:true});
+  if(window.visualViewport)window.visualViewport.addEventListener('resize',updateLaunchHeight,{passive:true});
 })();
 </script>
 <script id="archi-splash-startup-guard-v22">

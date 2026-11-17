@@ -651,7 +651,7 @@ body #splash-screen:not(.hidden) {
 body #splash-screen:not(.hidden) .archi-splash-art {
  position:absolute !important; inset:0 !important;
  width:100% !important; height:100% !important;
- background-image:url("../assets/splash-iphone.webp?v=8") !important;
+ background-image:none !important;
  background-size:cover !important; background-position:center center !important;
  background-repeat:no-repeat !important;
 }
