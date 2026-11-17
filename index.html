@@ -153,56 +153,56 @@ body #splash-screen .archi-splash-photo {
   if(window.visualViewport)window.visualViewport.addEventListener('resize',function(){sample('visual-resize');},{passive:true});
 })();
 </script>
-<script id="archi-viewport-investigation-v98">
-/* E98: instrumentación sin alterar scroll, alturas ni gestos. Activación:
-   4 toques en la esquina superior izquierda en menos de 3 segundos. */
+<script id="archi-bottom-layer-diagnostics-v99">
+/* E99: diagnóstico de capas de la franja inferior. No altera el layout. */
 (function(){
-  'use strict';
-  var records=[], firstTouch=null, tapCount=0, lastTap=0, panel=null;
-  function n(v){return typeof v==='number'?Math.round(v*10)/10:v;}
-  function box(el){if(!el)return null;var r=el.getBoundingClientRect();return {top:n(r.top),bottom:n(r.bottom),height:n(r.height)};}
-  function sample(event){
-    var de=document.documentElement,b=document.body,v=window.visualViewport;
-    var splash=document.getElementById('splash-screen'),app=document.getElementById('app');
-    var data={event:event,ms:Math.round(performance.now()),innerHeight:innerHeight,
-      outerHeight:outerHeight,docClientHeight:de.clientHeight,docScrollTop:de.scrollTop,
-      bodyScrollTop:b?b.scrollTop:null,scrollY:n(scrollY),visualHeight:v?n(v.height):null,
-      visualOffsetTop:v?n(v.offsetTop):null,visualPageTop:v?n(v.pageTop):null,
-      splash:box(splash),app:box(app),
-      htmlBg:getComputedStyle(de).backgroundColor,bodyBg:b?getComputedStyle(b).backgroundColor:null,
-      splashVisible:!!(splash&&!splash.classList.contains('hidden')),
-      activeElement:document.activeElement&&document.activeElement.tagName};
-    records.push(data);if(records.length>60)records.shift();
-    if(panel&&panel.style.display!=='none')render();
+ 'use strict';
+ var records=[],panel=null,button=null,taps=0,lastTap=0;
+ function round(n){return typeof n==='number'?Math.round(n*10)/10:n;}
+ function rect(el){if(!el)return null;var r=el.getBoundingClientRect();return {top:round(r.top),bottom:round(r.bottom),left:round(r.left),right:round(r.right),height:round(r.height),width:round(r.width)};}
+ function describe(el){if(!el)return null;var cs=getComputedStyle(el);return {tag:el.tagName,id:el.id||'',classes:typeof el.className==='string'?el.className.slice(0,130):'',display:cs.display,visibility:cs.visibility,opacity:cs.opacity,position:cs.position,zIndex:cs.zIndex,background:cs.backgroundColor,backgroundImage:cs.backgroundImage==='none'?'none':cs.backgroundImage.slice(0,120),objectFit:cs.objectFit,overflow:cs.overflow,rect:rect(el)};}
+ function chain(el){var a=[],i=0;while(el&&i++<7){a.push(describe(el));el=el.parentElement;}return a;}
+ function visible(el){if(!el)return false;var c=getComputedStyle(el),r=el.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&Number(c.opacity)>0&&r.height>0&&r.width>0;}
+ function sample(event){
+  var de=document.documentElement,b=document.body,v=window.visualViewport;
+  var app=document.getElementById('app'),splash=document.getElementById('splash-screen');
+  var w=de.clientWidth||innerWidth,h=innerHeight;
+  var samples=[8,25,55,90,130].map(function(d){var x=Math.max(1,Math.min(w-2,w/2)),y=Math.max(1,h-d);var el=document.elementFromPoint(x,y);return {fromBottom:d,x:round(x),y:round(y),stack:chain(el)};});
+  var data={event:event,ms:Math.round(performance.now()),url:location.pathname+location.search,
+   innerHeight:innerHeight,docClientHeight:de.clientHeight,scrollY:scrollY,
+   visualHeight:v?round(v.height):null,visualOffsetTop:v?round(v.offsetTop):null,
+   html:describe(de),body:describe(b),app:describe(app),main:describe(app&&app.querySelector('main')),
+   nav:describe(document.querySelector('.bottom-nav')),splash:describe(splash),
+   splashActuallyVisible:visible(splash),splashArt:describe(document.querySelector('.archi-splash-art')),
+   splashPhoto:describe(document.querySelector('.archi-splash-photo')),
+   bottomSamples:samples};
+  records.push(data);if(records.length>18)records.shift();return data;
+ }
+ function show(){
+  // Capturar ANTES de crear el panel, para no contaminar elementFromPoint.
+  sample('open-panel-before-overlay');
+  if(!panel){
+   panel=document.createElement('section');panel.id='archi-e99-diagnostics';
+   panel.style.cssText='position:fixed!important;inset:8px!important;z-index:2147483647!important;background:#142333!important;color:#fff!important;border:2px solid #ffcf70!important;border-radius:12px!important;padding:12px!important;overflow:auto!important;font:12px/1.4 monospace!important;';
+   panel.innerHTML='<div style="display:flex;gap:8px;align-items:center"><strong style="flex:1">ArchiSpotter · Capas E99</strong><button type="button" data-action="copy">Copiar</button><button type="button" data-action="close">Cerrar</button></div><p>Copiá este registro mientras la franja siga visible. Muestra las capas en los últimos 130 píxeles.</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>';
+   panel.addEventListener('click',function(e){var a=e.target.getAttribute('data-action');if(a==='close'){panel.style.display='none';}if(a==='copy'){var t=panel.querySelector('pre').textContent;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).catch(function(){});}});
+   document.body.appendChild(panel);
   }
-  function render(){if(!panel)return;var pre=panel.querySelector('pre');
-    if(pre)pre.textContent=JSON.stringify({latest:records[records.length-1],startup:records.slice(0,7),touch:records.filter(function(x){return /touch/.test(x.event)}).slice(-4)},null,2);
+  panel.style.display='block';panel.querySelector('pre').textContent=JSON.stringify({latest:records[records.length-1],startup:records.slice(0,3)},null,2);
+ }
+ window.archiE99Diagnostics=function(){return records.slice();};
+ sample('script');
+ document.addEventListener('DOMContentLoaded',function(){sample('dom-ready');
+  // Acceso visible solo si se abre con ?diag=1; el acceso de 4 toques permanece.
+  if(new URLSearchParams(location.search).has('diag')){
+   button=document.createElement('button');button.type='button';button.textContent='D99';
+   button.setAttribute('aria-label','Abrir diagnóstico de capas');
+   button.style.cssText='position:fixed!important;top:110px!important;right:8px!important;z-index:2147483646!important;background:#142333!important;color:#fff!important;padding:8px!important;border-radius:8px!important;font:12px sans-serif!important;';
+   button.addEventListener('click',show);document.body.appendChild(button);
   }
-  function toggle(){if(!panel){
-    panel=document.createElement('section');panel.id='archi-e98-diagnostics';
-    panel.setAttribute('aria-label','Diagnóstico de pantalla');
-    panel.style.cssText='position:fixed!important;top:env(safe-area-inset-top,10px)!important;left:8px!important;right:8px!important;bottom:env(safe-area-inset-bottom,10px)!important;z-index:2147483647!important;background:#142333!important;color:white!important;border:2px solid #ffcf70!important;border-radius:12px!important;padding:12px!important;overflow:auto!important;font:12px/1.4 monospace!important;';
-    panel.innerHTML='<div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><strong style="flex:1">ArchiSpotter · Diagnóstico E98</strong><button type="button" data-action="copy">Copiar</button><button type="button" data-action="close">Cerrar</button></div><p>Hacé una captura antes de deslizar; luego deslizá y abrí el panel de nuevo.</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>';
-    panel.addEventListener('click',function(e){var action=e.target.getAttribute('data-action');
-      if(action==='close')panel.style.display='none';
-      if(action==='copy'){var data=JSON.stringify(records,null,2);if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(data).catch(function(){});}
-    });document.body.appendChild(panel);
-  }else panel.style.display=panel.style.display==='none'?'block':'none';render();}
-  window.archiE98Diagnostics=function(){return records.slice();};
-  sample('script');
-  document.addEventListener('DOMContentLoaded',function(){sample('dom-ready');});
-  window.addEventListener('pageshow',function(){sample('pageshow');});
-  window.addEventListener('resize',function(){sample('resize');},{passive:true});
-  if(window.visualViewport)window.visualViewport.addEventListener('resize',function(){sample('visual-resize');},{passive:true});
-  document.addEventListener('touchstart',function(e){
-    sample('touch-before-gesture');
-    if(!e.touches||e.touches.length!==1)return;
-    var t=e.touches[0];firstTouch={x:t.clientX,y:t.clientY};
-    if(t.clientX>72||t.clientY>105)return;
-    var now=Date.now();tapCount=now-lastTap<3000?tapCount+1:1;lastTap=now;
-    if(tapCount===4){tapCount=0;toggle();}
-  },{passive:true,capture:true});
-  document.addEventListener('touchend',function(){if(firstTouch){sample('touch-after-gesture');firstTouch=null;}},{passive:true});
+ });
+ window.addEventListener('pageshow',function(){sample('pageshow');});
+ document.addEventListener('touchstart',function(e){if(!e.touches||e.touches.length!==1)return;var t=e.touches[0];if(t.clientX>72||t.clientY>105)return;var now=Date.now();taps=now-lastTap<3000?taps+1:1;lastTap=now;if(taps===4){taps=0;show();}},{passive:true,capture:true});
 })();
 </script>
 <script id="archi-splash-startup-guard-v22">
