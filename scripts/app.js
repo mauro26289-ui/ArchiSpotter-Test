@@ -50,64 +50,12 @@
         // cityWalkingRoutes: definido en data/app-catalog.js
 
 
-        window.onload = function() {
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
-                    splash.style.opacity = '0';
-                    setTimeout(function() {
-                        splash.style.display = 'none';
-                    }, 700);
-                }
-            }, 2500);
-
-            const savedMonuments = localStorage.getItem('archispotter_monuments');
-            if (savedMonuments) {
-                try {
-                    const parsed = JSON.parse(savedMonuments);
-                    const savedById = new Map((Array.isArray(parsed) ? parsed : []).filter(m => m && m.id).map(m => [m.id, m]));
-                    const initialIds = new Set(initialMonumentsData.map(m => m.id));
-                    // Keep user edits, but always render the built-in Unsplash gallery for built-in monuments.
-                    monumentsData = initialMonumentsData.map(base => {
-                        const saved = savedById.get(base.id) || {};
-                        const merged = { ...base, ...saved };
-                        merged.images = (base.images || []).slice();
-                        return merged;
-                    }).concat((Array.isArray(parsed) ? parsed : []).filter(m => m && m.id && !initialIds.has(m.id)).map(m => ({ ...m, images: Array.isArray(m.images) ? m.images.filter(Boolean) : [] })));
-                } catch(e) { monumentsData = [...initialMonumentsData]; }
-            } else {
-                monumentsData = [...initialMonumentsData];
-            }
-
-            const savedStamps = localStorage.getItem('archispotter_stamps');
-            if (savedStamps) {
-                try { stampedPassports = JSON.parse(savedStamps); } catch(e) { stampedPassports = []; }
-            }
-
-            updatePassportBadgeCount();
-            renderNavigationFlow();
-            renderMapPins();
-            renderWalkingRoutes();
-            renderTrip();
-            renderFavorites();
-            applySavedPreferences();
-            setTimeout(initSmartMap, 250);
-        };
-
-
+        // Extraído a scripts/app-startup.js
         // All monument photographs come exclusively from initialMonumentsData[].images.
         // If a URL fails, show a local placeholder; never request a second image source.
         // Respaldo de fotografías: scripts/image-fallback.js
         // Reset the retry state when a gallery changes its source.
-        document.addEventListener('load', function(ev) {
-            const img = ev.target;
-            if (img && img.tagName === 'IMG' && img.dataset.monumentId && !img.classList.contains('image-placeholder')) {
-                img.dataset.photoAttempt = '0';
-            }
-        }, true);
-
-
-
+        // Extraído a scripts/photo-load-reset.js
         // Extraído a scripts/photo-recovery.js
         // Extraído a scripts/world-photo-loader.js
         // Datos trasladados a scripts/english-monument-content.js
@@ -416,20 +364,7 @@ for (const monument of initialMonumentsData) {
         // translateStaticTextNodes: scripts/static-text-translation.js
 
         // Keep translations in sync with dynamically rendered modals, routes, and passport.
-        let archiTranslationQueued=false;
-        const archiTranslationObserver=new MutationObserver(()=>{
-            if(archiTranslationQueued)return;
-            archiTranslationQueued=true;
-            queueMicrotask(()=>{
-                archiTranslationQueued=false;
-                translateStaticTextNodes();
-            });
-        });
-        function observeArchiTranslations(){
-            if(document.body)archiTranslationObserver.observe(document.body,{subtree:true,childList:true,characterData:true});
-        }
-        if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',observeArchiTranslations,{once:true});
-        else observeArchiTranslations();
+        // Extraído a scripts/translation-observer.js
         // Extraído a scripts/static-language-layout.js
         // Extraído a scripts/language-application.js
         // Extraído a scripts/modal-translation.js
