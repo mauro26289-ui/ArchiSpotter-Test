@@ -797,3 +797,17 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
   padding-left: max(24px, env(safe-area-inset-left, 0px)) !important;
   padding-right: max(24px, env(safe-area-inset-right, 0px)) !important;
 }
+
+/* E100 — continuidad del área segura inferior en iOS.
+   Se preservan la altura y la posición de la barra; se revierte el recorte
+   de 12px del padding seguro introducido en V18. */
+@media (max-width:699px) {
+  #app > nav.bottom-nav, body.light-mode #app > nav.bottom-nav {
+    padding-bottom:calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    background-color:var(--archi-surface) !important;
+    background-clip:border-box !important;
+  }
+  body.archi-intro-active #archi-onboarding {
+    background-color:#f6f5f1 !important;
+  }
+}

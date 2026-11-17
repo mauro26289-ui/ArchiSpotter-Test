@@ -1,0 +1,8 @@
+ArchiSpotter - Test · Etapa 100 (prueba iOS)
+Base: E99. No cambia módulos JS ni datos.
+Cambios: restituye padding completo del área segura en barra inferior,
+armoniza theme-color y fondo de documento para splash, bienvenida y app.
+No se afirma que el zócalo haya desaparecido: requiere prueba física en iPhone.
+IMPORTANTE: iOS puede conservar configuración de la PWA instalada.
+Para evaluar el manifiesto nuevo puede ser necesario quitar el icono de
+pantalla de inicio y añadirlo de nuevo (sin borrar datos si se necesitan).

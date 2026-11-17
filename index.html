@@ -57,7 +57,7 @@
 
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
 <link rel="manifest" href="manifest.webmanifest" />
-<meta name="theme-color" content="#f6eedc" />
+<meta name="theme-color" content="#f8f0de" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="ArchiSpotter" />
@@ -101,6 +101,14 @@ body #splash-screen .archi-splash-photo {
 @media(max-width:699px) {
   body #app { min-height:100svh!important; }
 }
+</style>
+<style id="archi-ios-safe-area-e100">
+/* E100: la superficie del área de sistema sigue el estado visual de la app. */
+html { background-color:#f8f0de !important; }
+body.light-mode { background-color:#f8f0de !important; }
+html:has(body:not(.light-mode)):not(:has(#splash-screen:not(.hidden))) { background-color:#0f172a !important; }
+body.archi-intro-active { background-color:#f6f5f1 !important; }
+html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { background-color:#f6f5f1 !important; }
 </style>
 <style id="archi-root-scroll-lock-v96">
 /* E96: el documento exterior no es el área desplazable de la PWA.
