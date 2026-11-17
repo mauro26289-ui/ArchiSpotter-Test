@@ -44,7 +44,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles/app.css?v=102" id="archi-modular-styles-v11">
+    <link rel="stylesheet" href="styles/app.css?v=102-fix" id="archi-modular-styles-v11">
 
 
 
@@ -56,7 +56,7 @@
 
 
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
-<link rel="manifest" href="manifest.webmanifest?v=102" />
+<link rel="manifest" href="manifest.webmanifest?v=102-fix" />
 <meta name="theme-color" content="#fffaf0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -225,31 +225,6 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
   // Independent timer: even if the application throws during initialization,
   // the splash cannot permanently cover the UI.
   window.setTimeout(releaseSplash,3200);
-})();
-</script>
-<style id="archi-ios-system-surface-e102">
-/* E102: match iOS root surface to bottom navigation; no geometry changes. */
-html { background-color:#fffaf0 !important; }
-html:has(body:not(.light-mode)):not(:has(body.archi-intro-active)):not(:has(#splash-screen:not(.hidden))) { background-color:#293528 !important; }
-html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { background-color:#f6f5f1 !important; }
-</style>
-<script id="archi-ios-theme-sync-e102">
-(function(){
- var meta=document.querySelector('meta[name="theme-color"]');
- function update(){
-  if(!meta||!document.body)return;
-  var splash=document.getElementById('splash-screen');
-  var splashOn=splash&&getComputedStyle(splash).display!=='none'&&getComputedStyle(splash).visibility!=='hidden'&&Number(getComputedStyle(splash).opacity)>0;
-  var color=splashOn?'#f8f0de':document.body.classList.contains('archi-intro-active')?'#f6f5f1':document.body.classList.contains('light-mode')?'#fffaf0':'#293528';
-  if(meta.content!==color)meta.content=color;
- }
- document.addEventListener('DOMContentLoaded',function(){
-  update();
-  new MutationObserver(update).observe(document.body,{attributes:true,attributeFilter:['class']});
-  var splash=document.getElementById('splash-screen');
-  if(splash)new MutationObserver(update).observe(splash,{attributes:true,attributeFilter:['class','style']});
- });
- window.addEventListener('pageshow',update);
 })();
 </script>
 </head>
