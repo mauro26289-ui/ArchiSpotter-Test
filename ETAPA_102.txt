@@ -1,0 +1,1 @@
+ETAPA 102: se eliminan colores E101; se sincronizan color del tema y fondo raiz con estado de la app. No se cambian modulos JS. El area externa al viewport puede depender de iOS: requiere prueba real. Para probar metadatos PWA nuevos, reinstalar icono tras probar el existente.
