@@ -122,7 +122,42 @@
             renderNearbyMonuments();
         }
 
-        function filterMapMarkers(value) { addSmartMapMarkers(value); }
+        // E92: el buscador del mapa también desplaza la vista hacia los resultados.
+        let archiMapSearchTimer = null;
+        function filterMapMarkers(value) {
+            addSmartMapMarkers(value);
+            if (archiMapSearchTimer) clearTimeout(archiMapSearchTimer);
+            const query = archiNormalizeSearch(String(value || '').trim());
+            if (!smartMap || query.length < 3) return;
+            archiMapSearchTimer = setTimeout(function () {
+                if (!smartMap || !window.L) return;
+                const input = document.getElementById('map-search');
+                if (!input || archiNormalizeSearch(input.value.trim()) !== query) return;
+                const matches = smartMapMarkers.filter(function (marker) {
+                    const m = marker.monument;
+                    return m && m.coords && Number.isFinite(Number(m.coords.lat)) && Number.isFinite(Number(m.coords.lng));
+                });
+                if (!matches.length) return;
+                // Priorizar una ciudad o monumento coincidente exactamente para evitar
+                // saltos inesperados mientras se escribe una búsqueda parcial.
+                const exact = matches.filter(function (marker) {
+                    const m = marker.monument;
+                    return [m.city, m.name, monumentLabel(m), cityLabel(m.city)].some(function (v) {
+                        return archiNormalizeSearch(String(v || '')) === query;
+                    });
+                });
+                const targets = exact.length ? exact : matches;
+                if (targets.length === 1) {
+                    const m = targets[0].monument;
+                    smartMap.flyTo([Number(m.coords.lat), Number(m.coords.lng)], 13, {duration: 0.8});
+                } else {
+                    const bounds = L.latLngBounds(targets.map(function (marker) {
+                        return marker.getLatLng();
+                    }));
+                    if (bounds.isValid()) smartMap.flyToBounds(bounds, {padding: [38, 38], maxZoom: 12, duration: 0.8});
+                }
+            }, 450);
+        }
         function openMonumentById(id) { const m = monumentsData.find(item => item.id === id); if (m) openMonumentModal(m.id); }
         function centerMapOnUser() { if (!smartMap) return; if (userGpsActive && userLat != null) smartMap.setView([userLat,userLng],15); else toggleUserGps(); }
         function renderNearbyMonuments() {
