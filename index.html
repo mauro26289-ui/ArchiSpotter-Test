@@ -74,52 +74,55 @@
 
 
 
-<style id="archi-splash-viewport-v94">
-/* Un solo controlador de dimensiones para la pantalla de arranque. La
-   imagen se extiende también sobre la región inferior que iOS revela tarde. */
-html,body { background-color:#f8f0de; }
-body #splash-screen, body #splash-screen:not(.hidden) {
-  position:fixed!important;top:0!important;left:0!important;right:0!important;
-  bottom:auto!important;width:100vw!important;
-  height:var(--archi-launch-height,100dvh)!important;
-  min-height:var(--archi-launch-height,100dvh)!important;
-  max-height:none!important;margin:0!important;padding:0!important;
-  overflow:hidden!important;border:0!important;border-radius:0!important;
-  z-index:99999!important;background:#f8f0de!important;
-  transform:none!important;
+<style id="archi-viewport-v95">
+/* E95: no fijar altura a screen.height. Dejar que iOS resuelva inset:0
+   en su viewport real; mantener un fondo coherente detrás de toda la app. */
+html { background-color:#f5f2ea !important; min-height:100%; }
+body { background-color:#f5f2ea !important; min-height:100%; overscroll-behavior-y:none; }
+body:not(.light-mode) { background-color:#0f172a !important; }
+html:has(#splash-screen:not(.hidden)),
+body:has(#splash-screen:not(.hidden)) { background-color:#f8f0de !important; }
+body #splash-screen,body #splash-screen:not(.hidden) {
+  position:fixed!important; inset:0!important; width:100%!important;
+  height:auto!important; min-height:0!important; max-height:none!important;
+  margin:0!important; padding:0!important; overflow:hidden!important;
+  border:0!important; border-radius:0!important; z-index:99999!important;
+  background:#f8f0de!important; transform:none!important;
 }
-body #splash-screen .archi-splash-art,
-body #splash-screen:not(.hidden) .archi-splash-art {
-  position:absolute!important;inset:0!important;width:100%!important;
-  height:100%!important;background:none!important;
+body #splash-screen .archi-splash-art {
+  position:absolute!important; inset:0!important; width:100%!important;
+  height:100%!important; background:none!important;
 }
 body #splash-screen .archi-splash-photo {
-  display:block!important;width:100%!important;height:100%!important;
-  max-width:none!important;max-height:none!important;
-  object-fit:cover!important;object-position:center center!important;
-  opacity:1!important;visibility:visible!important;
+  display:block!important; width:100%!important; height:100%!important;
+  max-width:none!important; max-height:none!important;
+  object-fit:cover!important; object-position:center center!important;
+}
+@media(max-width:699px) {
+  body #app { min-height:100svh!important; }
 }
 </style>
-<script id="archi-splash-viewport-v94">
+<script id="archi-viewport-diagnostics-v95">
 (function(){
-  // En PWA iOS, innerHeight y visualViewport pueden iniciar con un valor
-  // inferior al alto real; screen.height proporciona un piso en vertical.
-  function updateLaunchHeight(){
-    var vv=window.visualViewport;
-    var h=Math.max(window.innerHeight||0,document.documentElement.clientHeight||0,
-      vv ? (vv.height+vv.offsetTop) : 0);
-    if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches &&
-       window.innerHeight>=window.innerWidth && screen.height>0){
-      h=Math.max(h,screen.height);
-    }
-    if(h>0)document.documentElement.style.setProperty('--archi-launch-height',Math.ceil(h+3)+'px');
+  // Solo diagnóstico: no escribe estilos, no fuerza reflow ni cambia la altura.
+  var history=[];
+  function sample(event){
+    var vv=window.visualViewport, app=document.getElementById('app'), splash=document.getElementById('splash-screen');
+    var item={event:event, at:Math.round(performance.now()), innerHeight:window.innerHeight,
+      clientHeight:document.documentElement.clientHeight, scrollY:window.scrollY,
+      viewportHeight:vv?vv.height:null, viewportOffsetTop:vv?vv.offsetTop:null,
+      screenHeight:window.screen.height,
+      appBottom:app?Math.round(app.getBoundingClientRect().bottom):null,
+      splashBottom:splash?Math.round(splash.getBoundingClientRect().bottom):null};
+    history.push(item); if(history.length>25)history.shift();
   }
-  updateLaunchHeight();
-  document.addEventListener('DOMContentLoaded',updateLaunchHeight,{once:true});
-  window.addEventListener('pageshow',updateLaunchHeight,{passive:true});
-  window.addEventListener('resize',updateLaunchHeight,{passive:true});
-  window.addEventListener('orientationchange',updateLaunchHeight,{passive:true});
-  if(window.visualViewport)window.visualViewport.addEventListener('resize',updateLaunchHeight,{passive:true});
+  window.archiViewportDiagnostics=function(){return history.slice();};
+  sample('script');
+  document.addEventListener('DOMContentLoaded',function(){sample('dom-ready');},{once:true});
+  window.addEventListener('pageshow',function(){sample('pageshow');},{passive:true});
+  window.addEventListener('resize',function(){sample('resize');},{passive:true});
+  window.addEventListener('scroll',function(){sample('scroll');},{passive:true});
+  if(window.visualViewport)window.visualViewport.addEventListener('resize',function(){sample('visual-resize');},{passive:true});
 })();
 </script>
 <script id="archi-splash-startup-guard-v22">
