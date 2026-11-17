@@ -811,3 +811,29 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
     background-color:#f6f5f1 !important;
   }
 }
+
+/* E101: EXPERIMENTO VISUAL TEMPORAL, NO ES UN DISEÑO FINAL.
+   Rosa: html/body y fondo general; azul: barra de navegación;
+   verde: los 16 px inferiores del viewport JS.
+   Si queda crema DEBAJO del verde, iOS la pinta fuera del viewport. */
+html.archi-e101,html.archi-e101 body,html.archi-e101 #app,
+html.archi-e101 body.light-mode,html.archi-e101 body.dark-mode {
+  background-color:#e500e5 !important;
+}
+html.archi-e101 #app > nav.bottom-nav,
+html.archi-e101 body.light-mode #app > nav.bottom-nav,
+html.archi-e101 body.dark-mode #app > nav.bottom-nav {
+  background:#00c9f5 !important;
+  background-color:#00c9f5 !important;
+}
+html.archi-e101 #archi-onboarding {background:#e500e5 !important;}
+html.archi-e101 #splash-screen {background:#e500e5 !important;}
+#archi-e101-marker {position:fixed!important;bottom:0!important;left:0!important;right:0!important;
+ height:16px!important;box-sizing:border-box!important;z-index:2147483647!important;
+ background:#00ef32!important;color:#071d08!important;font:700 9px/16px system-ui,sans-serif!important;
+ text-align:center!important;pointer-events:none!important;}
+#archi-e101-legend {position:fixed!important;top:52px!important;left:50%!important;
+ transform:translateX(-50%)!important;z-index:2147483647!important;max-width:95vw!important;
+ background:#151515!important;color:white!important;border-radius:5px!important;
+ padding:5px 8px!important;font:600 10px/1.2 system-ui,sans-serif!important;
+ pointer-events:none!important;white-space:nowrap!important;}

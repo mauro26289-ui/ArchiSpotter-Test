@@ -1,0 +1,12 @@
+ETAPA 101 — PRUEBA VISUAL, NO CORRECCIÓN DEFINITIVA
+
+ROSA FUERTE = fondo html/body/app y color de arranque PWA
+AZUL CELESTE = barra de navegación ArchiSpotter
+VERDE = últimos 16 px del viewport HTML, por encima de todas las capas
+
+Si la franja crema queda por debajo del verde, está fuera del viewport web medido.
+Si el verde ocupa la zona antes crema, es contenido/capa dentro del viewport.
+Si el fondo se vuelve rosa en la franja, proviene del fondo general o del tema.
+
+Capturar pantalla COMPLETA en Safari y app instalada; indicar modo claro/oscuro.
+Esta etapa altera colores intencionalmente; NO usar como versión final.

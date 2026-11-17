@@ -44,7 +44,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles/app.css?v=97" id="archi-modular-styles-v11">
+    <link rel="stylesheet" href="styles/app.css?v=101" id="archi-modular-styles-v11">
 
 
 
@@ -57,7 +57,7 @@
 
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
 <link rel="manifest" href="manifest.webmanifest" />
-<meta name="theme-color" content="#f8f0de" />
+<meta name="theme-color" content="#e500e5" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="ArchiSpotter" />
@@ -226,6 +226,14 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
   // the splash cannot permanently cover the UI.
   window.setTimeout(releaseSplash,3200);
 })();
+</script>
+<script id="archi-e101-color-diagnostic">
+/* E101: diagnostic only. Remove after visual identification. */
+(function(){document.documentElement.classList.add('archi-e101');
+function mark(){if(document.getElementById('archi-e101-marker'))return;
+var bar=document.createElement('div');bar.id='archi-e101-marker';bar.textContent='E101 · VERDE = borde del viewport';document.body.appendChild(bar);
+var legend=document.createElement('div');legend.id='archi-e101-legend';legend.textContent='E101: ROSA fondo · AZUL navegación · VERDE borde';document.body.appendChild(legend);}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mark);else mark();})();
 </script>
 </head>
 <body class="archi-intro-active light-mode h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
