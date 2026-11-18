@@ -3,9 +3,9 @@
             const container = document.getElementById('carousel-slides');
             const dotsContainer = document.getElementById('carousel-dots');
 
-            container.innerHTML = (m.images || []).map(url => `
+            container.innerHTML = (m.images || []).map((url, idx) => `
                 <div class="w-full h-full flex-shrink-0 relative">
-                    <img src="${url}" data-monument-id="${m.id}" data-active-image="${url}" onerror="handleMonumentImageError(this)" loading="lazy" decoding="async" alt="${m.name}" class="w-full h-full object-cover">
+                    <img src="${url}" data-monument-id="${m.id}" data-active-image="${url}" onerror="handleMonumentImageError(this)" loading="${idx === 0 ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${idx === 0 ? 'high' : 'low'}" alt="${m.name}" class="w-full h-full object-cover">
                 </div>
             `).join('');
 

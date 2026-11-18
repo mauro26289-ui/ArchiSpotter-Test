@@ -55,7 +55,7 @@
                             <i class="fa-solid fa-stamp"></i>
                         </div>
                         <div class="w-10 h-10 rounded-full bg-slate-900 border border-slate-700 overflow-hidden">
-                            <img src="${m.images[0]}" data-monument-id="${m.id}"  onerror="handleMonumentImageError(this)" alt="${m.name}" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                            <img src="${m.images[0]}" data-monument-id="${m.id}"  onerror="handleMonumentImageError(this)" alt="${m.name}" loading="lazy" decoding="async" fetchpriority="low" class="w-full h-full object-cover">
                         </div>
                         <span class="font-serif font-bold text-[11px] text-slate-100 line-clamp-1">${monumentLabel(m)}</span>
                         <span class="text-[9px] text-amber-400 font-medium">${cityLabel(m.city)}, ${countryLabel(m.country)}</span>

@@ -72,7 +72,7 @@
                 <div onclick="selectCity(${JSON.stringify(c.name).replace(/"/g,'&quot;')})" class="relative overflow-hidden rounded-xl bg-slate-900 border border-slate-800 p-4 flex items-center justify-between cursor-pointer hover:border-amber-500/50 transition group">
                     <div class="flex items-center space-x-3 z-10">
                         <div class="w-10 h-10 rounded-lg overflow-hidden border border-slate-700 bg-slate-800">
-                            <img src="${c.image}" data-monument-id="${filteredMonuments.find(m => m.city === c.name)?.id || ''}" data-active-image="${c.image}" onerror="handleMonumentImageError(this)" loading="lazy" decoding="async" alt="${tr("Arquitectura de","Architecture in")} ${cityLabel(c.name)}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            <img src="${c.image}" data-monument-id="${filteredMonuments.find(m => m.city === c.name)?.id || ''}" data-active-image="${c.image}" onerror="handleMonumentImageError(this)" loading="lazy" decoding="async" fetchpriority="low" alt="${tr("Arquitectura de","Architecture in")} ${cityLabel(c.name)}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                         </div>
                         <div>
                             <h4 class="font-serif font-bold text-sm text-white group-hover:text-amber-400 transition">${cityLabel(c.name)}</h4>
