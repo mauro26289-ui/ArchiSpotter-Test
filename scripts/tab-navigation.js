@@ -35,3 +35,12 @@
                 archiScheduleVisiblePhotoRecovery();
             }
         }
+
+// E127: cancel a pending Leaflet refresh when the PWA leaves the foreground.
+// Returning to the map still uses switchTab's existing guarded refresh.
+window.addEventListener('pagehide', function() {
+    if (switchTab.mapRefreshTimer) {
+        clearTimeout(switchTab.mapRefreshTimer);
+        switchTab.mapRefreshTimer = null;
+    }
+});
