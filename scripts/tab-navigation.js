@@ -28,4 +28,10 @@
             if(tab==='walks'){document.getElementById('view-walks').classList.remove('hidden');renderWalkingRoutes();}
             if(tab==='trip'){document.getElementById('view-trip').classList.remove('hidden');renderTrip();}
             if(tab==='favorites'){document.getElementById('view-favorites').classList.remove('hidden');renderFavorites();}
+            // E125: newly visible tab content may contain fallback photos that
+            // were offscreen when connectivity returned. Reuse E124's guarded
+            // recovery scheduler after the tab's DOM has been rendered.
+            if (typeof archiScheduleVisiblePhotoRecovery === 'function') {
+                archiScheduleVisiblePhotoRecovery();
+            }
         }
