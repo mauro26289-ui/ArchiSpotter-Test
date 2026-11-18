@@ -14,7 +14,8 @@
         let userLat = null;
         let userLng = null;
         let isSpeakingAudio = false;
-        let appLanguage = ['es','en','it'].includes(archiStorageGet('archispotter_language')) ? archiStorageGet('archispotter_language') : 'es';
+        const archiSavedLanguage = archiStorageGet('archispotter_language');
+        let appLanguage = ['es','en','it'].includes(archiSavedLanguage) ? archiSavedLanguage : 'es';
         let audioRate = 1.0;
         let smartMap = null;
         let smartMapMarkers = [];
