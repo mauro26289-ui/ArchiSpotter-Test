@@ -1,0 +1,1 @@
+ETAPA 105 — viewport-fit=auto se mantiene. Se elimina compensacion superior redundante de #app (68px) y se fija padding superior normal de cabecera (12px) en moviles. No cambia barra inferior, mapa ni JS. Prueba visual en iPhone pendiente.\n

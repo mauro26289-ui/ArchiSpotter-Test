@@ -812,3 +812,14 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
   }
 }
 
+
+/* E105: con viewport-fit=auto iOS ya reserva la franja superior.
+   No agregar otros 68px de compensacion en el contenedor. */
+@media (max-width:699px) {
+  body #app, body.light-mode #app, body:not(.light-mode) #app {
+    padding-top:0 !important;
+  }
+  #app > header.archi-app-header {
+    padding-top:12px !important;
+  }
+}
