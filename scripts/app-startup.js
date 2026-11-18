@@ -28,10 +28,8 @@
                 monumentsData = [...initialMonumentsData];
             }
 
-            const savedStamps = archiStorageGet('archispotter_stamps');
-            if (savedStamps) {
-                try { const parsedStamps = JSON.parse(savedStamps); stampedPassports = Array.isArray(parsedStamps) ? [...new Set(parsedStamps.filter(id => typeof id === 'string'))] : []; } catch(e) { stampedPassports = []; }
-            }
+            // E141: misma validación que favoritos y Mi viaje, usando el lector protegido compartido.
+            stampedPassports = archiReadSavedIdList('archispotter_stamps');
 
             updatePassportBadgeCount();
             renderNavigationFlow();
