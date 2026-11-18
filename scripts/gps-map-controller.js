@@ -3,15 +3,26 @@
         // A location permission prompt may outlive the tab that started it.
         let archiGpsRequestPending = false;
         let archiGpsRequestGeneration = 0;
-        // E118: show a clearly labelled GPS-off control directly over the map.
+        // E119: one persistent, accessible GPS toggle in the map header.
+        // Keep its label in sync with the actual GPS state, including tab returns.
         function archiSyncGpsOffButton() {
-            const offButton = document.getElementById('gps-disable-map-btn');
-            if (!offButton) return;
             const active = Boolean(userGpsActive);
-            offButton.hidden = !active;
-            offButton.style.display = active ? 'inline-flex' : 'none';
-            const topButton = document.getElementById('gps-toggle-btn');
-            if (topButton) topButton.setAttribute('aria-pressed', String(active));
+            const language = typeof appLanguage === 'string' ? appLanguage : 'es';
+            const labels = {
+                es: ['Activar GPS', 'Desactivar GPS'],
+                en: ['Enable GPS', 'Disable GPS'],
+                it: ['Attiva GPS', 'Disattiva GPS']
+            };
+            const pair = labels[language] || labels.es;
+            const toggle = document.getElementById('gps-toggle-btn');
+            const text = document.getElementById('gps-btn-text');
+            if (text) text.textContent = pair[active ? 1 : 0];
+            if (toggle) {
+                toggle.setAttribute('aria-pressed', String(active));
+                toggle.setAttribute('aria-label', pair[active ? 1 : 0]);
+                toggle.setAttribute('title', pair[active ? 1 : 0]);
+                toggle.classList.toggle('archi-gps-active', active);
+            }
         }
         function toggleUserGps() {
             triggerHaptic();
@@ -31,7 +42,7 @@
                 const marker = document.getElementById('user-gps-marker');
                 if (marker) marker.classList.add('hidden');
                 const button = document.getElementById('gps-btn-text');
-                if (button) button.textContent = 'Activar GPS';
+                archiSyncGpsOffButton();
                 const status = document.getElementById('map-status-text');
                 if (status) status.textContent = 'GPS desactivado. Toca un país en el mapa para explorar.';
                 showToast(tr('GPS Desactivado','GPS disabled'));
@@ -65,7 +76,7 @@
                         }
                         renderNearbyMonuments();
                         const button = document.getElementById('gps-btn-text');
-                        if (button) button.textContent = 'GPS Activo';
+                        archiSyncGpsOffButton();
                         const status = document.getElementById('map-status-text');
                         if (status) status.textContent = `Ubicación localizada (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`;
                         showToast(tr('Ubicación GPS activada con éxito 📍','GPS location enabled 📍'));

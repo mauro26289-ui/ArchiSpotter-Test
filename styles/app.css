@@ -867,3 +867,7 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
 @media (max-width:699px) {
   #app > header.archi-app-header { padding-top:16px !important; }
 }
+
+/* E119: active GPS toggle is the single visible control, in the map header. */
+#view-map #gps-toggle-btn.archi-gps-active { border-width:2px !important; border-color:#d6a54c !important; font-weight:700 !important; }
+#view-map #gps-toggle-btn { min-height:32px; white-space:nowrap; }
