@@ -11,7 +11,7 @@
             const pending=[];
             for(const m of additions){
                 const cached=cache[m.id];
-                if(cached){
+                if(typeof cached === 'string' && /^https:\/\//.test(cached)){
                     m.images=[cached];
                     document.querySelectorAll('img[data-monument-id="'+m.id+'"]').forEach(img=>{img.src=cached;img.dataset.fallbackDone='false';});
                 }else pending.push(m);
@@ -29,6 +29,7 @@
                         const match=byTitle.get((page.title||'').toLowerCase()) || byTitle.get((requested||'').toLowerCase());
                         if(!match||!page.thumbnail?.source)continue;
                         const src=page.thumbnail.source;
+                        if(typeof src !== 'string' || !/^https:\/\//.test(src))continue;
                         match.images=[src];cache[match.id]=src;
                         document.querySelectorAll('img[data-monument-id="'+match.id+'"]').forEach(img=>{img.src=src;img.dataset.fallbackDone='false';});
                     }
