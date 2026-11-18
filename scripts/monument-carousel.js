@@ -5,7 +5,7 @@
 
             container.innerHTML = (m.images || []).map((url, idx) => `
                 <div class="w-full h-full flex-shrink-0 relative">
-                    <img src="${url}" data-monument-id="${m.id}" data-active-image="${url}" onerror="handleMonumentImageError(this)" loading="${idx === 0 ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${idx === 0 ? 'high' : 'low'}" alt="${m.name}" class="w-full h-full object-cover">
+                    <img ${idx === 0 ? `src="${url}"` : `data-pending-src="${url}"`} data-monument-id="${m.id}" data-active-image="${url}" onerror="handleMonumentImageError(this)" loading="${idx === 0 ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${idx === 0 ? 'high' : 'low'}" alt="${m.name}" class="w-full h-full object-cover">
                 </div>
             `).join('');
 
@@ -22,6 +22,18 @@
             const container = document.getElementById('carousel-slides');
             const dots = document.getElementById('carousel-dots').children;
 
+            // E114: request a gallery image only when its slide is actually shown.
+            // Previously all src attributes were assigned at once, potentially
+            // starting network requests for every off-screen slide on iOS.
+            const activeSlide = container.children[currentSlideIndex];
+            const activeImage = activeSlide && activeSlide.querySelector('img[data-pending-src]');
+            if (activeImage) {
+                const pendingUrl = activeImage.getAttribute('data-pending-src');
+                if (pendingUrl) {
+                    activeImage.src = pendingUrl;
+                    activeImage.removeAttribute('data-pending-src');
+                }
+            }
             container.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
             for (let i = 0; i < dots.length; i++) {
                 if (i === currentSlideIndex) {
