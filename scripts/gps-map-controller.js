@@ -3,11 +3,22 @@
         // A location permission prompt may outlive the tab that started it.
         let archiGpsRequestPending = false;
         let archiGpsRequestGeneration = 0;
+        // E118: show a clearly labelled GPS-off control directly over the map.
+        function archiSyncGpsOffButton() {
+            const offButton = document.getElementById('gps-disable-map-btn');
+            if (!offButton) return;
+            const active = Boolean(userGpsActive);
+            offButton.hidden = !active;
+            offButton.style.display = active ? 'inline-flex' : 'none';
+            const topButton = document.getElementById('gps-toggle-btn');
+            if (topButton) topButton.setAttribute('aria-pressed', String(active));
+        }
         function toggleUserGps() {
             triggerHaptic();
             if (userGpsActive) {
                 archiGpsRequestGeneration++;
                 userGpsActive = false;
+                archiSyncGpsOffButton();
                 if (window.userLeafletMarker) {
                     if (smartMap && smartMap.hasLayer(window.userLeafletMarker)) {
                         smartMap.removeLayer(window.userLeafletMarker);
@@ -46,6 +57,7 @@
                         userLat = pos.coords.latitude;
                         userLng = pos.coords.longitude;
                         userGpsActive = true;
+                        archiSyncGpsOffButton();
                         if (smartMap && window.L) {
                             smartMap.setView([userLat, userLng], 14);
                             if (window.userLeafletMarker) smartMap.removeLayer(window.userLeafletMarker);

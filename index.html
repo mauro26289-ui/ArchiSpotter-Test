@@ -430,6 +430,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
                     <div id="smart-map" role="application" aria-label="Mapa interactivo de monumentos"></div>
                     <div class="absolute top-3 left-3 right-3 z-[500] flex gap-2">
                         <input id="map-search" oninput="filterMapMarkers(this.value)" placeholder="Buscar monumento, ciudad o estilo…" class="map-overlay-input flex-1 rounded-xl px-3 py-2 text-xs bg-slate-900/95 border border-slate-700 text-white shadow-lg" />
+                        <button id="gps-disable-map-btn" type="button" onclick="toggleUserGps()" hidden style="display:none" class="rounded-xl px-3 py-2 text-xs bg-slate-900/95 border border-amber-500 text-amber-400 shadow-lg" aria-label="Desactivar GPS">Desactivar GPS</button>
                         <button onclick="centerMapOnUser()" class="map-center-button rounded-xl px-3 py-2 text-xs bg-slate-900/95 border border-slate-700 text-amber-400 shadow-lg" aria-label="Centrar en mi ubicación"><i class="fa-solid fa-location-crosshairs"></i></button>
                     </div>
                 </div>
@@ -804,7 +805,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
     <script src="scripts/favorites-actions.js?v=97"></script>
     <script src="scripts/explore-country-city.js?v=97"></script>
     <script src="scripts/explore-gestures.js?v=97"></script>
-    <script src="scripts/gps-map-controller.js?v=117"></script>
+    <script src="scripts/gps-map-controller.js?v=118"></script>
     <script src="scripts/explore-navigation.js?v=97"></script>
     <script src="scripts/multilingual-search.js?v=97"></script>
     <script src="scripts/monument-list-ui.js?v=97"></script>
