@@ -823,3 +823,19 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
     padding-top:12px !important;
   }
 }
+
+/* E106 — prueba de nitidez en el borde superior iOS.
+   Conservar viewport-fit=auto y la geometria validada de E105. */
+@media (max-width:699px) {
+  html, body { overscroll-behavior-y: none !important; }
+  #app > header.archi-app-header {
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+    filter:none !important;
+    -webkit-mask-image:none !important;
+    mask-image:none !important;
+    opacity:1 !important;
+    transform:translateZ(0);
+    -webkit-transform:translateZ(0);
+  }
+}
