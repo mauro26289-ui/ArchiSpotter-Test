@@ -44,7 +44,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles/app.css?v=106" id="archi-modular-styles-v11">
+    <link rel="stylesheet" href="styles/app.css?v=108" id="archi-modular-styles-v11">
 
 
 
@@ -855,18 +855,6 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 (function(){
   const toast=document.getElementById('toast');
   if(toast && toast.parentNode!==document.body)document.body.appendChild(toast);
-})();
-</script>
-<script id="archi-e107-diagnostics">
-/* Diagnostic only, enabled by ?blurdiag=1. No changes to app geometry or styles. */
-(function(){
-if(new URLSearchParams(location.search).get('blurdiag')!=='1')return;
-var records=[],start=performance.now(),panel=null,latest='';
-function descriptor(el){if(!el)return null;var s=getComputedStyle(el),r=el.getBoundingClientRect();return {node:el.tagName.toLowerCase()+(el.id?'#'+el.id:'')+(typeof el.className==='string'&&el.className?'.'+el.className.trim().split(/\s+/).slice(0,3).join('.'):'') ,rect:[Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)],position:s.position,z:s.zIndex,background:s.backgroundColor,backdrop:s.backdropFilter||s.webkitBackdropFilter,filter:s.filter,opacity:s.opacity,transform:s.transform,mask:s.maskImage||s.webkitMaskImage,pointer:s.pointerEvents};}
-function capture(reason){try{var w=innerWidth,h=innerHeight;var top=[8,28,55,85,120].map(function(y){return {y:y,layers:document.elementsFromPoint(w/2,y).filter(function(e){return !e.closest('#archi-e107-panel')}).slice(0,9).map(descriptor)}});var fixed=Array.from(document.querySelectorAll('body *')).filter(function(e){var s=getComputedStyle(e);if(s.position!=='fixed'&&s.position!=='sticky')return false;var r=e.getBoundingClientRect();return r.top<160&&r.bottom>0}).slice(0,20).map(descriptor);records.push({atMs:Math.round(performance.now()-start),reason:reason,viewport:{innerWidth:w,innerHeight:h,visualHeight:visualViewport?visualViewport.height:null,visualOffset:visualViewport?visualViewport.offsetTop:null,scrollY:scrollY},bodyClass:document.body.className,html:descriptor(document.documentElement),body:descriptor(document.body),app:descriptor(document.querySelector('#app')),header:descriptor(document.querySelector('#app > header.archi-app-header')),onboarding:descriptor(document.querySelector('#archi-onboarding')),splash:descriptor(document.querySelector('#splash-screen')),top:top,fixed:fixed});if(records.length>90)records.shift();}catch(e){records.push({error:String(e)})}}
-function init(){capture('dom-ready');[250,700,1200,2000,3500,5000,8000,12000].forEach(function(t){setTimeout(function(){capture('timer-'+t)},t)});var obs=new MutationObserver(function(m){if(performance.now()-start>15000)return;var relevant=m.filter(function(x){return x.type==='attributes'&&/^(class|style|hidden)$/.test(x.attributeName)}).slice(0,5).map(function(x){return (x.target.id||x.target.tagName)+':'+x.attributeName});if(relevant.length){capture('mutation:'+relevant.join(','))}});obs.observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class','style','hidden']});setTimeout(function(){obs.disconnect();capture('end-15s')},15000);
-var p=document.createElement('div');p.id='archi-e107-panel';p.style.cssText='position:fixed;z-index:2147483647;right:8px;bottom:76px;background:#111;color:white;border:1px solid white;border-radius:10px;padding:8px;font:12px system-ui;display:flex;gap:6px;align-items:center;max-width:95vw';p.innerHTML='<span>E107 · blur</span><button type="button" id="archi-e107-mark">Marcar blur</button><button type="button" id="archi-e107-copy">Copiar log</button><button type="button" id="archi-e107-close">×</button>';document.body.appendChild(p);p.querySelectorAll('button').forEach(function(b){b.style.cssText='font:12px system-ui;padding:5px;background:white;color:black;border-radius:5px;border:0'});p.querySelector('#archi-e107-mark').onclick=function(){capture('USER-SEES-BLUR')};p.querySelector('#archi-e107-copy').onclick=function(){capture('copy');latest=JSON.stringify({version:'E107',url:location.href,userAgent:navigator.userAgent,records:records},null,2);if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(latest).then(function(){p.querySelector('span').textContent='Copiado ✓'},function(){prompt('Copiar registro',latest)})}else{prompt('Copiar registro',latest)}};p.querySelector('#archi-e107-close').onclick=function(){p.remove()};}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 </script>
 </body>
