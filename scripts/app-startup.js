@@ -10,7 +10,7 @@
                 }
             }, 2500);
 
-            const savedMonuments = localStorage.getItem('archispotter_monuments');
+            const savedMonuments = archiStorageGet('archispotter_monuments');
             if (savedMonuments) {
                 try {
                     const parsed = JSON.parse(savedMonuments);
@@ -28,9 +28,9 @@
                 monumentsData = [...initialMonumentsData];
             }
 
-            const savedStamps = localStorage.getItem('archispotter_stamps');
+            const savedStamps = archiStorageGet('archispotter_stamps');
             if (savedStamps) {
-                try { stampedPassports = JSON.parse(savedStamps); } catch(e) { stampedPassports = []; }
+                try { const parsedStamps = JSON.parse(savedStamps); stampedPassports = Array.isArray(parsedStamps) ? parsedStamps : []; } catch(e) { stampedPassports = []; }
             }
 
             updatePassportBadgeCount();
