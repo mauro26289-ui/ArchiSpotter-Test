@@ -10,6 +10,8 @@ function archiNearestMonuments(monumentsData, userLat, userLng, distanceKm) {
             origin,
             {lat:monument.coords.lat,lng:monument.coords.lng}
         );
+        // E149: una distancia inválida no debe desplazar resultados GPS válidos.
+        if (!Number.isFinite(km) || km < 0) continue;
         // Usar > (no >=) conserva el orden de entrada para distancias iguales.
         let pos = nearest.findIndex(item => item.km > km);
         if (pos === -1) pos = nearest.length;
