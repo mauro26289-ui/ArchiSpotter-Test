@@ -1,8 +1,22 @@
 // Selección de los seis monumentos más próximos al GPS.
-// Preserva el filtro, la fórmula y el orden de la implementación anterior.
+// Conserva los mismos resultados, distancias y desempates por orden original.
+// E131: mantiene solo seis candidatos en vez de ordenar toda la colección.
 function archiNearestMonuments(monumentsData, userLat, userLng, distanceKm) {
-    return monumentsData.filter(m=>m.coords)
-        .map(m=>({...m,km:distanceKm({lat:userLat,lng:userLng},{lat:m.coords.lat,lng:m.coords.lng})}))
-        .sort((a,b)=>a.km-b.km)
-        .slice(0,6);
+    const nearest = [];
+    for (const monument of monumentsData) {
+        if (!monument.coords) continue;
+        const km = distanceKm(
+            {lat:userLat,lng:userLng},
+            {lat:monument.coords.lat,lng:monument.coords.lng}
+        );
+        const candidate = {...monument, km};
+        // Usar > (no >=) conserva el orden de entrada para distancias iguales.
+        let pos = nearest.findIndex(item => item.km > km);
+        if (pos === -1) pos = nearest.length;
+        if (pos < 6) {
+            nearest.splice(pos, 0, candidate);
+            if (nearest.length > 6) nearest.pop();
+        }
+    }
+    return nearest;
 }
