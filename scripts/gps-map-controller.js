@@ -167,11 +167,7 @@
             setTimeout(() => smartMap.invalidateSize(), 300);
         }
 
-        document.addEventListener('visibilitychange', function () {
-            if (!document.hidden && smartMap && currentTab === 'map') {
-                setTimeout(function () { if (smartMap) smartMap.invalidateSize(); }, 150);
-            }
-        });
+        // E140: el retorno desde segundo plano se gestiona exclusivamente en tab-navigation.js.
         window.addEventListener('online', function () {
             if (smartMap && currentTab === 'map') {
                 smartMap.invalidateSize();
