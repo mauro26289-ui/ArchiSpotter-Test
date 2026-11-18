@@ -38,9 +38,23 @@
 
 // E127: cancel a pending Leaflet refresh when the PWA leaves the foreground.
 // Returning to the map still uses switchTab's existing guarded refresh.
-window.addEventListener('pagehide', function() {
+function archiCancelPendingMapRefresh() {
     if (switchTab.mapRefreshTimer) {
         clearTimeout(switchTab.mapRefreshTimer);
         switchTab.mapRefreshTimer = null;
+    }
+}
+window.addEventListener('pagehide', archiCancelPendingMapRefresh);
+// iOS can background an installed PWA without immediately firing pagehide.
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) archiCancelPendingMapRefresh();
+    else if (currentTab === 'map') {
+        // Refresh only the already initialized map when returning to the foreground.
+        // Never initialize Leaflet from this lifecycle callback.
+        if (typeof smartMap !== 'undefined' && smartMap) {
+            requestAnimationFrame(function() {
+                if (!document.hidden && currentTab === 'map' && smartMap) smartMap.invalidateSize();
+            });
+        }
     }
 });
