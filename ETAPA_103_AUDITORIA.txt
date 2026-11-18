@@ -1,0 +1,7 @@
+ETAPA 103 — AUDITORÍA Y PRUEBA CONTROLADA iOS
+Base: ZIP de E102 corregida sin diagnóstico.
+Hallazgos: viewport-fit=cover ya existe; reglas antiguas V95/E100 asignan distintos colores a html/body; existían metadatos Apple duplicados.
+Cambios: se quitaron únicamente duplicados de metadatos Apple; se añadió prueba optativa ?iosprobe=1 que pinta meta theme-color rojo y fondo HTML azul sin tocar la geometría. El resto de la app permanece igual.
+PRUEBA: publicar ZIP, abrir en Safari URL habitual (control), luego la misma URL añadiendo ?iosprobe=1. Comparar franja inferior. No es necesario reinstalar la PWA para esta prueba en Safari.
+INTERPRETACIÓN: si franja cambia al rojo o azul, hay influencia del tema o raíz; si sigue crema, la región puede estar gobernada por la interfaz del sistema o caché. No concluir causa definitiva con una sola captura.
+No se alteraron módulos JavaScript ni las reglas de navegación.

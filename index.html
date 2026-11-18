@@ -44,7 +44,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles/app.css?v=102-fix" id="archi-modular-styles-v11">
+    <link rel="stylesheet" href="styles/app.css?v=103-fix" id="archi-modular-styles-v11">
 
 
 
@@ -56,12 +56,8 @@
 
 
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
-<link rel="manifest" href="manifest.webmanifest?v=102-fix" />
+<link rel="manifest" href="manifest.webmanifest?v=103" />
 <meta name="theme-color" content="#fffaf0" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="ArchiSpotter" />
-
 <!-- Ajustes iPhone: ancho completo, viewport dinámico y zonas seguras -->
 
 
@@ -225,6 +221,22 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
   // Independent timer: even if the application throws during initialization,
   // the splash cannot permanently cover the UI.
   window.setTimeout(releaseSplash,3200);
+})();
+</script>
+
+<script id="archi-e103-ios-probe">
+/* E103: prueba optativa, activar solo con ?iosprobe=1; no altera la geometría. */
+(function(){
+ if(!new URLSearchParams(location.search).has('iosprobe'))return;
+ var meta=document.querySelector('meta[name="theme-color"]');
+ if(meta)meta.setAttribute('content','#e00050');
+ document.documentElement.style.setProperty('background-color','#193cff','important');
+ document.addEventListener('DOMContentLoaded',function(){
+  var banner=document.createElement('div');
+  banner.textContent='E103 · META ROJO / HTML AZUL · comprobar franja inferior';
+  banner.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;background:#e00050;color:white;font:700 11px sans-serif;text-align:center;padding:3px;pointer-events:none';
+  document.body.appendChild(banner);
+ });
 })();
 </script>
 </head>
