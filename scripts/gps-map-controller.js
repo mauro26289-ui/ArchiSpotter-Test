@@ -120,19 +120,15 @@
             if (smartMap) { smartMapMarkers.forEach(marker => smartMap.removeLayer(marker)); smartMapMarkers = []; addSmartMapMarkers(); }
         }
 
+        // E139: fondo estable mientras se verifica la autorización de CARTO.
+        // Los mosaicos CARTO pueden devolver una imagen de aviso con HTTP 200;
+        // en ese caso Leaflet no emite tileerror y el respaldo no se activa.
+        const archiOsmTileUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
         function archiCartoTileUrl() {
-            const key = typeof window.ARCHISPOTTER_CARTO_API_KEY === 'string'
-                ? window.ARCHISPOTTER_CARTO_API_KEY.trim() : '';
-            // Never request watermarked CARTO tiles when the key is not configured.
-            if (!key || key === 'PEGA_AQUI_TU_API_KEY_CARTO') {
-                return 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-            }
-            const style = document.body.classList.contains('light-mode') ? 'light_all' : 'dark_all';
-            return 'https://{s}.basemaps.cartocdn.com/' + style + '/{z}/{x}/{y}{r}.png?key=' + encodeURIComponent(key);
+            return archiOsmTileUrl;
         }
-
         function archiUpdateMapTheme() {
-            if (window.archiMapBaseTiles) window.archiMapBaseTiles.setUrl(archiCartoTileUrl());
+            if (window.archiMapBaseTiles) window.archiMapBaseTiles.setUrl(archiOsmTileUrl);
         }
 
         function initSmartMap() {
@@ -157,25 +153,14 @@
                 minZoom: 1,
                 zoomSnap: 0.25
             }).setView([43.2, 10.5], 4);
-            // CARTO basemaps share the same Leaflet layer; switching themes keeps pins, zoom and position.
+            // Un solo fondo OSM: conserva los pines, el zoom y la posición al cambiar de tema.
             const archiTiles = L.tileLayer(archiCartoTileUrl(), {
                 maxZoom: 19,
                 noWrap: true,
                 bounds: worldBounds,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             });
             window.archiMapBaseTiles = archiTiles;
-            let archiTileFailures = 0;
-            archiTiles.on('tileerror', function () {
-                archiTileFailures++;
-                if (archiTileFailures >= 3) {
-                    const status = document.getElementById('map-status-text');
-                    if (status) status.textContent = 'Algunas partes del mapa no cargaron. Los monumentos siguen disponibles; comprobá tu conexión.';
-                }
-            });
-            archiTiles.on('tileload', function () {
-                archiTileFailures = 0;
-            });
             archiTiles.addTo(smartMap);
             L.control.zoom({ position: 'bottomright' }).addTo(smartMap);
             addSmartMapMarkers();
