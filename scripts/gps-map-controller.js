@@ -5,17 +5,18 @@
         let archiGpsRequestGeneration = 0;
         function toggleUserGps() {
             triggerHaptic();
-            if (archiGpsRequestPending) {
-                // Ignore duplicate taps while iOS is asking for permission.
-                return;
-            }
             if (userGpsActive) {
                 archiGpsRequestGeneration++;
                 userGpsActive = false;
-                if (window.userLeafletMarker && smartMap) {
-                    smartMap.removeLayer(window.userLeafletMarker);
+                if (window.userLeafletMarker) {
+                    if (smartMap && smartMap.hasLayer(window.userLeafletMarker)) {
+                        smartMap.removeLayer(window.userLeafletMarker);
+                    }
                     window.userLeafletMarker = null;
                 }
+                userLat = null;
+                userLng = null;
+                renderNearbyMonuments();
                 const marker = document.getElementById('user-gps-marker');
                 if (marker) marker.classList.add('hidden');
                 const button = document.getElementById('gps-btn-text');
@@ -23,6 +24,10 @@
                 const status = document.getElementById('map-status-text');
                 if (status) status.textContent = 'GPS desactivado. Toca un país en el mapa para explorar.';
                 showToast(tr('GPS Desactivado','GPS disabled'));
+                return;
+            }
+            if (archiGpsRequestPending) {
+                // Ignore duplicate taps only while a location request is pending.
                 return;
             }
             if (!('geolocation' in navigator)) {
@@ -80,7 +85,7 @@
                 mapsUrl += `&origin=${userLat},${userLng}&travelmode=walking`;
             }
 
-            window.open(mapsUrl, '_blank');
+            openArchiExternalMaps(mapsUrl);
         }
 
         function renderMapPins() {
@@ -150,7 +155,7 @@
             const valid = monumentsData.filter(m => archiMapMarkerMatches(m, q));
             valid.forEach(m => {
                 const marker = L.marker([Number(m.coords.lat), Number(m.coords.lng)]).addTo(smartMap);
-                marker.bindPopup(`<strong>${monumentLabel(m)}</strong><br>${cityLabel(m.city)}, ${countryLabel(m.country)}<br><small>${m.style || ''}</small><br><a href="#" onclick="openMonumentById('${m.id}');return false;">Ver ficha →</a><br><a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${m.coords.lat},${m.coords.lng}&travelmode=walking">Cómo llegar caminando</a>`);
+                marker.bindPopup(`<strong>${monumentLabel(m)}</strong><br>${cityLabel(m.city)}, ${countryLabel(m.country)}<br><small>${m.style || ''}</small><br><a href="#" onclick="openMonumentById('${m.id}');return false;">Ver ficha →</a><br><a href="https://www.google.com/maps/dir/?api=1&destination=${m.coords.lat},${m.coords.lng}&travelmode=walking" onclick="openArchiExternalMaps(this.href);return false;">Cómo llegar caminando</a>`);
                 marker.monument = m; smartMapMarkers.push(marker);
             });
             renderNearbyMonuments();
