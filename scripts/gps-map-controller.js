@@ -24,6 +24,11 @@
                 toggle.classList.toggle('archi-gps-active', active);
             }
         }
+        // E128: GPS feedback follows the currently selected app language.
+        function archiGpsText(es, en, it) {
+            return (typeof appLanguage === 'string' && appLanguage === 'it') ? it
+                : (typeof appLanguage === 'string' && appLanguage === 'en') ? en : es;
+        }
         function toggleUserGps() {
             triggerHaptic();
             if (userGpsActive) {
@@ -44,8 +49,8 @@
                 const button = document.getElementById('gps-btn-text');
                 archiSyncGpsOffButton();
                 const status = document.getElementById('map-status-text');
-                if (status) status.textContent = 'GPS desactivado. Toca un país en el mapa para explorar.';
-                showToast(tr('GPS Desactivado','GPS disabled'));
+                if (status) status.textContent = archiGpsText('GPS desactivado. Toca un país en el mapa para explorar.', 'GPS disabled. Tap a country on the map to explore.', 'GPS disattivato. Tocca un paese sulla mappa per esplorare.');
+                showToast(archiGpsText('GPS desactivado', 'GPS disabled', 'GPS disattivato'));
                 return;
             }
             if (archiGpsRequestPending) {
@@ -53,13 +58,13 @@
                 return;
             }
             if (!('geolocation' in navigator)) {
-                showToast(tr('Geolocalización no soportada por el navegador.','Geolocation is not supported by this browser.'));
+                showToast(archiGpsText('Geolocalización no soportada por el navegador.', 'Geolocation is not supported by this browser.', 'Geolocalizzazione non supportata dal browser.'));
                 return;
             }
             archiGpsRequestPending = true;
             const request = ++archiGpsRequestGeneration;
             const button = document.getElementById('gps-btn-text');
-            if (button) button.textContent = 'Buscando...';
+            if (button) button.textContent = archiGpsText('Buscando...', 'Locating...', 'Ricerca in corso...');
             try {
                 navigator.geolocation.getCurrentPosition(
                     (pos) => {
@@ -72,29 +77,29 @@
                         if (smartMap && window.L) {
                             smartMap.setView([userLat, userLng], 14);
                             if (window.userLeafletMarker) smartMap.removeLayer(window.userLeafletMarker);
-                            window.userLeafletMarker = L.marker([userLat, userLng]).addTo(smartMap).bindPopup('Tu ubicación aproximada');
+                            window.userLeafletMarker = L.marker([userLat, userLng]).addTo(smartMap).bindPopup(archiGpsText('Tu ubicación aproximada', 'Your approximate location', 'La tua posizione approssimativa'));
                         }
                         renderNearbyMonuments();
                         const button = document.getElementById('gps-btn-text');
                         archiSyncGpsOffButton();
                         const status = document.getElementById('map-status-text');
-                        if (status) status.textContent = `Ubicación localizada (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`;
-                        showToast(tr('Ubicación GPS activada con éxito 📍','GPS location enabled 📍'));
+                        if (status) status.textContent = archiGpsText(`Ubicación localizada (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`, `Location found (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`, `Posizione trovata (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`);
+                        showToast(archiGpsText('Ubicación GPS activada 📍', 'GPS location enabled 📍', 'Posizione GPS attivata 📍'));
                     },
                     () => {
                         if (request !== archiGpsRequestGeneration) return;
                         archiGpsRequestPending = false;
                         const button = document.getElementById('gps-btn-text');
-                        if (button) button.textContent = 'Activar GPS';
-                        showToast(tr('No se pudo acceder a la geolocalización.','Could not access your location.'));
+                        archiSyncGpsOffButton();
+                        showToast(archiGpsText('No se pudo acceder a la geolocalización.', 'Could not access your location.', 'Impossibile accedere alla tua posizione.'));
                     },
                     { enableHighAccuracy: true, timeout: 15000 }
                 );
             } catch (error) {
                 if (request !== archiGpsRequestGeneration) return;
                 archiGpsRequestPending = false;
-                if (button) button.textContent = 'Activar GPS';
-                showToast(tr('No se pudo acceder a la geolocalización.','Could not access your location.'));
+                archiSyncGpsOffButton();
+                showToast(archiGpsText('No se pudo acceder a la geolocalización.', 'Could not access your location.', 'Impossibile accedere alla tua posizione.'));
             }
         }
 
