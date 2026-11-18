@@ -16,7 +16,7 @@
         function archiReadSavedIdList(key) {
             try {
                 const value = JSON.parse(localStorage.getItem(key) || '[]');
-                return Array.isArray(value) ? [...new Set(value.filter(id => typeof id === 'string' && id.trim().length > 0))] : [];
+                return Array.isArray(value) ? [...new Set(value.filter(id => typeof id === 'string'))] : [];
             } catch (error) {
                 console.warn('ArchiSpotter: saved list unavailable or invalid:', key, error);
                 return [];
