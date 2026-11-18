@@ -30,7 +30,7 @@
 
             const savedStamps = archiStorageGet('archispotter_stamps');
             if (savedStamps) {
-                try { const parsedStamps = JSON.parse(savedStamps); stampedPassports = Array.isArray(parsedStamps) ? parsedStamps : []; } catch(e) { stampedPassports = []; }
+                try { const parsedStamps = JSON.parse(savedStamps); stampedPassports = Array.isArray(parsedStamps) ? [...new Set(parsedStamps.filter(id => typeof id === 'string'))] : []; } catch(e) { stampedPassports = []; }
             }
 
             updatePassportBadgeCount();

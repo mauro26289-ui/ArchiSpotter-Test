@@ -120,6 +120,15 @@
             if (smartMap) { smartMapMarkers.forEach(marker => smartMap.removeLayer(marker)); smartMapMarkers = []; addSmartMapMarkers(); }
         }
 
+        function archiCartoTileUrl() {
+            const style = document.body.classList.contains('light-mode') ? 'light_all' : 'dark_all';
+            return 'https://{s}.basemaps.cartocdn.com/' + style + '/{z}/{x}/{y}{r}.png';
+        }
+
+        function archiUpdateMapTheme() {
+            if (window.archiMapBaseTiles) window.archiMapBaseTiles.setUrl(archiCartoTileUrl());
+        }
+
         function initSmartMap() {
             const el = document.getElementById('smart-map');
             if (!el || smartMap) return;
@@ -142,12 +151,14 @@
                 minZoom: 1,
                 zoomSnap: 0.25
             }).setView([43.2, 10.5], 4);
-            const archiTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            // CARTO basemaps share the same Leaflet layer; switching themes keeps pins, zoom and position.
+            const archiTiles = L.tileLayer(archiCartoTileUrl(), {
                 maxZoom: 19,
                 noWrap: true,
                 bounds: worldBounds,
-                attribution: '&copy; OpenStreetMap contributors'
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
             });
+            window.archiMapBaseTiles = archiTiles;
             let archiTileFailures = 0;
             archiTiles.on('tileerror', function () {
                 archiTileFailures++;

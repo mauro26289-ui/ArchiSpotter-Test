@@ -5,8 +5,9 @@
             if (!m) return;
 
             if (!stampedPassports.includes(m.id)) {
-                stampedPassports.push(m.id);
-                archiStorageSet('archispotter_stamps', JSON.stringify(stampedPassports));
+                const nextStamps = [...stampedPassports, m.id];
+                if (!archiStorageSet('archispotter_stamps', JSON.stringify(nextStamps))) return;
+                stampedPassports = nextStamps;
                 updatePassportBadgeCount();
                 showToast(`${tr("¡Sello de","Stamp for")} ${monumentLabel(m)} ${tr("estampado!","collected!")} 🛂`);
             } else {
