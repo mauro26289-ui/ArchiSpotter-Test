@@ -17,7 +17,7 @@
                 switchTab.mapRefreshTimer = setTimeout(() => {
                     switchTab.mapRefreshTimer = null;
                     const mapView = document.getElementById('view-map');
-                    if (currentTab !== 'map' || !mapView || mapView.classList.contains('hidden')) return;
+                    if (document.hidden || currentTab !== 'map' || !mapView || mapView.classList.contains('hidden')) return;
                     if (!smartMap) initSmartMap();
                     else smartMap.invalidateSize();
                 }, 120);
@@ -53,7 +53,8 @@ document.addEventListener('visibilitychange', function() {
         // Never initialize Leaflet from this lifecycle callback.
         if (typeof smartMap !== 'undefined' && smartMap) {
             requestAnimationFrame(function() {
-                if (!document.hidden && currentTab === 'map' && smartMap) smartMap.invalidateSize();
+                const mapView = document.getElementById('view-map');
+                if (!document.hidden && currentTab === 'map' && mapView && !mapView.classList.contains('hidden') && smartMap) smartMap.invalidateSize();
             });
         }
     }
