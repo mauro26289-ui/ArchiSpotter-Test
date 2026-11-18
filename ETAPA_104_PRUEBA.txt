@@ -1,0 +1,7 @@
+ETAPA 104 — PRUEBA CONTROLADA DE VIEWPORT
+Base: etapa 103.
+ÚNICO CAMBIO FUNCIONAL: viewport-fit=cover -> viewport-fit=auto en index.html.
+No se modifican colores, manifiesto, CSS ni scripts.
+Prueba con URL normal sin ?iosprobe=1 en Safari y PWA instalada.
+Si la franja cambia o desaparece, viewport-fit influye; si no cambia, no explica por sí solo el fenómeno.
+Esta versión es diagnóstica y puede cambiar la distribución junto a los bordes del iPhone.
