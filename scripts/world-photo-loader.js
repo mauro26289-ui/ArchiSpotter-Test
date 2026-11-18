@@ -7,7 +7,7 @@
             for(const m of additions){if(!m.images?.length)m.images=[architecturePlaceholder()];}
             if(!additions.length)return;
             let cache={};
-            try{cache=JSON.parse(localStorage.getItem('archispotter_world_photos_v1')||'{}')||{};}catch(e){}
+            try{const saved=JSON.parse(localStorage.getItem('archispotter_world_photos_v1')||'{}');cache=saved&&typeof saved==='object'&&!Array.isArray(saved)?saved:{};}catch(e){}
             const pending=[];
             for(const m of additions){
                 const cached=cache[m.id];
