@@ -1,38 +1,72 @@
 // Extraído sin alterar la lógica original de ArchiSpotter.
+        // E116: prevent repeated location requests and ignore stale callbacks.
+        // A location permission prompt may outlive the tab that started it.
+        let archiGpsRequestPending = false;
+        let archiGpsRequestGeneration = 0;
         function toggleUserGps() {
             triggerHaptic();
-            if (userGpsActive) {
-                userGpsActive = false;
-                document.getElementById('user-gps-marker').classList.add('hidden');
-                document.getElementById('gps-btn-text').textContent = 'Activar GPS';
-                document.getElementById('map-status-text').textContent = 'GPS desactivado. Toca un país en el mapa para explorar.';
-                showToast(tr("GPS Desactivado","GPS disabled"));
+            if (archiGpsRequestPending) {
+                // Ignore duplicate taps while iOS is asking for permission.
                 return;
             }
-
-            if ('geolocation' in navigator) {
-                document.getElementById('gps-btn-text').textContent = 'Buscando...';
+            if (userGpsActive) {
+                archiGpsRequestGeneration++;
+                userGpsActive = false;
+                if (window.userLeafletMarker && smartMap) {
+                    smartMap.removeLayer(window.userLeafletMarker);
+                    window.userLeafletMarker = null;
+                }
+                const marker = document.getElementById('user-gps-marker');
+                if (marker) marker.classList.add('hidden');
+                const button = document.getElementById('gps-btn-text');
+                if (button) button.textContent = 'Activar GPS';
+                const status = document.getElementById('map-status-text');
+                if (status) status.textContent = 'GPS desactivado. Toca un país en el mapa para explorar.';
+                showToast(tr('GPS Desactivado','GPS disabled'));
+                return;
+            }
+            if (!('geolocation' in navigator)) {
+                showToast(tr('Geolocalización no soportada por el navegador.','Geolocation is not supported by this browser.'));
+                return;
+            }
+            archiGpsRequestPending = true;
+            const request = ++archiGpsRequestGeneration;
+            const button = document.getElementById('gps-btn-text');
+            if (button) button.textContent = 'Buscando...';
+            try {
                 navigator.geolocation.getCurrentPosition(
                     (pos) => {
+                        if (request !== archiGpsRequestGeneration) return;
+                        archiGpsRequestPending = false;
                         userLat = pos.coords.latitude;
                         userLng = pos.coords.longitude;
                         userGpsActive = true;
-
-                        if (smartMap) { smartMap.setView([userLat, userLng], 14); if (window.userLeafletMarker) smartMap.removeLayer(window.userLeafletMarker); window.userLeafletMarker = L.marker([userLat,userLng]).addTo(smartMap).bindPopup('Tu ubicación aproximada'); }
+                        if (smartMap && window.L) {
+                            smartMap.setView([userLat, userLng], 14);
+                            if (window.userLeafletMarker) smartMap.removeLayer(window.userLeafletMarker);
+                            window.userLeafletMarker = L.marker([userLat, userLng]).addTo(smartMap).bindPopup('Tu ubicación aproximada');
+                        }
                         renderNearbyMonuments();
-
-                        document.getElementById('gps-btn-text').textContent = 'GPS Activo';
-                        document.getElementById('map-status-text').textContent = `Ubicación localizada (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`;
-                        showToast(tr("Ubicación GPS activada con éxito 📍","GPS location enabled 📍"));
+                        const button = document.getElementById('gps-btn-text');
+                        if (button) button.textContent = 'GPS Activo';
+                        const status = document.getElementById('map-status-text');
+                        if (status) status.textContent = `Ubicación localizada (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`;
+                        showToast(tr('Ubicación GPS activada con éxito 📍','GPS location enabled 📍'));
                     },
-                    (err) => {
-                        document.getElementById('gps-btn-text').textContent = 'Activar GPS';
-                        showToast(tr("No se pudo acceder a la geolocalización.","Could not access your location."));
+                    () => {
+                        if (request !== archiGpsRequestGeneration) return;
+                        archiGpsRequestPending = false;
+                        const button = document.getElementById('gps-btn-text');
+                        if (button) button.textContent = 'Activar GPS';
+                        showToast(tr('No se pudo acceder a la geolocalización.','Could not access your location.'));
                     },
-                    { enableHighAccuracy: true }
+                    { enableHighAccuracy: true, timeout: 15000 }
                 );
-            } else {
-                showToast(tr("Geolocalización no soportada por el navegador.","Geolocation is not supported by this browser."));
+            } catch (error) {
+                if (request !== archiGpsRequestGeneration) return;
+                archiGpsRequestPending = false;
+                if (button) button.textContent = 'Activar GPS';
+                showToast(tr('No se pudo acceder a la geolocalización.','Could not access your location.'));
             }
         }
 
