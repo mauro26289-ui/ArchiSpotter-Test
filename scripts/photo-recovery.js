@@ -17,8 +17,21 @@
                 img.src = original;
             });
         }
-        window.addEventListener('online', archiRecoverVisiblePhotos);
+        // E124: when connectivity returns, offscreen fallback photos may become visible
+        // later without another 'online' event. Retry only after scrolling settles
+        // into the next animation frame; each image is attempted at most once.
+        let archiPhotoRecoveryFrame = null;
+        function archiScheduleVisiblePhotoRecovery() {
+            if (!navigator.onLine || document.hidden || archiPhotoRecoveryFrame !== null) return;
+            archiPhotoRecoveryFrame = requestAnimationFrame(function() {
+                archiPhotoRecoveryFrame = null;
+                archiRecoverVisiblePhotos();
+            });
+        }
+        window.addEventListener('online', archiScheduleVisiblePhotoRecovery);
+        window.addEventListener('scroll', archiScheduleVisiblePhotoRecovery, { passive: true, capture: true });
+        window.addEventListener('pageshow', archiScheduleVisiblePhotoRecovery);
         document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) archiRecoverVisiblePhotos();
+            if (!document.hidden) archiScheduleVisiblePhotoRecovery();
         });
 
