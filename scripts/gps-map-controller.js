@@ -121,8 +121,14 @@
         }
 
         function archiCartoTileUrl() {
+            const key = typeof window.ARCHISPOTTER_CARTO_API_KEY === 'string'
+                ? window.ARCHISPOTTER_CARTO_API_KEY.trim() : '';
+            // Never request watermarked CARTO tiles when the key is not configured.
+            if (!key || key === 'PEGA_AQUI_TU_API_KEY_CARTO') {
+                return 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+            }
             const style = document.body.classList.contains('light-mode') ? 'light_all' : 'dark_all';
-            return 'https://{s}.basemaps.cartocdn.com/' + style + '/{z}/{x}/{y}{r}.png';
+            return 'https://{s}.basemaps.cartocdn.com/' + style + '/{z}/{x}/{y}{r}.png?key=' + encodeURIComponent(key);
         }
 
         function archiUpdateMapTheme() {
