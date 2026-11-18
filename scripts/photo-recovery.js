@@ -31,7 +31,16 @@
         window.addEventListener('online', archiScheduleVisiblePhotoRecovery);
         window.addEventListener('scroll', archiScheduleVisiblePhotoRecovery, { passive: true, capture: true });
         window.addEventListener('pageshow', archiScheduleVisiblePhotoRecovery);
+        // E142: no conservar una recuperación pendiente mientras la PWA está oculta.
+        function archiCancelPendingPhotoRecovery() {
+            if (archiPhotoRecoveryFrame !== null) {
+                cancelAnimationFrame(archiPhotoRecoveryFrame);
+                archiPhotoRecoveryFrame = null;
+            }
+        }
+        window.addEventListener('pagehide', archiCancelPendingPhotoRecovery);
         document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) archiScheduleVisiblePhotoRecovery();
+            if (document.hidden) archiCancelPendingPhotoRecovery();
+            else archiScheduleVisiblePhotoRecovery();
         });
 
