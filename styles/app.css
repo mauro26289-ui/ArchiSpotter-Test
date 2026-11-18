@@ -862,3 +862,8 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
     display:none !important;
   }
 }
+
+/* E112: solo 4px extra de aire interior para la cabecera; no se altera viewport. */
+@media (max-width:699px) {
+  #app > header.archi-app-header { padding-top:16px !important; }
+}
