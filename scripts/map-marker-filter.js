@@ -4,5 +4,7 @@ function archiMapMarkerMatches(m, q) {
     return m.coords &&
         Number.isFinite(Number(m.coords.lat)) &&
         Number.isFinite(Number(m.coords.lng)) &&
+        Math.abs(Number(m.coords.lat)) <= 90 &&
+        Math.abs(Number(m.coords.lng)) <= 180 &&
         (!q || archiMonumentMatchesSearch(m, archiNormalizeSearch(q), englishNames, italianNames, englishStyles, italianStyles) || archiNormalizeSearch([m.city,m.country].join(' ')).includes(archiNormalizeSearch(q)));
 }
