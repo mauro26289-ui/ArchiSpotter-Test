@@ -82,21 +82,12 @@
                 crop.img.style.setProperty('--archi-photo-x', x + '%');
                 crop.img.style.setProperty('--archi-photo-y', y + '%');
             }, {passive:true});
+            // En iOS touchend puede ocurrir antes de pointerup. El cambio de
+            // fotografía se resuelve en touchend para no depender del orden.
             const finishPhotoPointer = (e) => {
-                if (photoPointer && photoPointer.id === e.pointerId) {
-                    if (e.type === 'pointerup' && photoPointerCountIsSingle() &&
-                        lightboxScale === 1 && lightboxImages.length > 1 &&
-                        photoPointer.moved && photoPointer.overscroll >= 65) {
-                        const direction = photoPointer.direction;
-                        if (direction < 0) nextLightboxImage();
-                        else if (direction > 0) prevLightboxImage();
-                        lastTapTime = 0;
-                    }
-                    photoPointer = null;
-                }
                 photoPointers.delete(e.pointerId);
+                if (photoPointer && photoPointer.id === e.pointerId) photoPointer = null;
             };
-            const photoPointerCountIsSingle = () => photoPointers.size === 1;
             viewport.addEventListener('pointerup', finishPhotoPointer);
             viewport.addEventListener('pointercancel', finishPhotoPointer);
             viewport.addEventListener('lostpointercapture', finishPhotoPointer);
@@ -232,12 +223,31 @@
                 if (e.touches.length === 1 && lightboxScale > 1) {
                     startDrag(e.touches[0].clientX, e.touches[0].clientY);
                 } else if (e.touches.length === 0) {
-                    if (swipeEligible && !swipeMultiTouch && lightboxScale === 1 && e.changedTouches.length === 1) {
+                    // Al llegar al extremo, un nuevo arrastre hacia fuera cambia de foto.
+                    // Funciona también cuando la imagen está recortada en modo cover.
+                    const endTouch = e.changedTouches[0];
+                    const cropAtEnd = coverCrop();
+                    const edgeDx = endTouch && swipeStartX !== null ? endTouch.clientX - swipeStartX : 0;
+                    const edgeDy = endTouch && swipeStartY !== null ? endTouch.clientY - swipeStartY : 0;
+                    const edgeX = cropAtEnd ? parseFloat(cropAtEnd.img.style.getPropertyValue('--archi-photo-x') || '50') : 50;
+                    const atRightEdge = cropAtEnd && cropAtEnd.cropX > 1 && edgeX >= 99.5;
+                    const atLeftEdge = cropAtEnd && cropAtEnd.cropX > 1 && edgeX <= 0.5;
+                    const edgeGesture = swipeEligible && !swipeMultiTouch && lightboxScale === 1 &&
+                        lightboxImages.length > 1 && Math.abs(edgeDx) >= 55 &&
+                        Math.abs(edgeDx) > Math.abs(edgeDy) * 1.25 &&
+                        ((edgeDx < 0 && atRightEdge) || (edgeDx > 0 && atLeftEdge));
+                    if (edgeGesture) {
+                        if (edgeDx < 0) nextLightboxImage();
+                        else prevLightboxImage();
+                        lastTapTime = 0;
+                        clearSwipeVisual();
+                    } else if (swipeEligible && !swipeMultiTouch && lightboxScale === 1 && e.changedTouches.length === 1) {
                         const endTouch = e.changedTouches[0];
                         const dx = endTouch.clientX - swipeStartX;
                         const dy = endTouch.clientY - swipeStartY;
                         const elapsed = Date.now() - swipeStartTime;
-                        const valid = archiShouldChangeLightboxImage(dx, dy, elapsed, lightboxImages.length);
+                        const valid = (!cropAtEnd || cropAtEnd.cropX < 1) &&
+                            archiShouldChangeLightboxImage(dx, dy, elapsed, lightboxImages.length);
                         const img = swipeImg();
                         if (img && Math.abs(swipeOffset) > 0) {
                             swipeAnimating = true;
