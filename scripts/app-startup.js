@@ -22,7 +22,7 @@
                         const merged = { ...base, ...saved };
                         merged.images = (base.images || []).slice();
                         return merged;
-                    }).concat((Array.isArray(parsed) ? parsed : []).filter(m => m && m.id && !initialIds.has(m.id)).map(m => ({ ...m, images: Array.isArray(m.images) ? m.images.filter(Boolean) : [] })));
+                    }).concat([]);
                 } catch(e) { monumentsData = [...initialMonumentsData]; }
             } else {
                 monumentsData = [...initialMonumentsData];

@@ -14,7 +14,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=auto">
-    <title>vB1 · ArchiSpotter - Guía Arquitectónica e Histórica</title>
+    <title>ArchiSpotter - Guía Arquitectónica e Histórica</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,6 +50,7 @@
         }
     </script>
     <link rel="stylesheet" href="styles/app.css?v=pan3" id="archi-modular-styles-v11">
+<link rel="stylesheet" href="styles/vb1.css?v=vb1-real2">
 
 
 
@@ -62,7 +63,7 @@
 
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
 <link rel="manifest" href="manifest.webmanifest?v=103" />
-<meta name="theme-color" content="#fffaf0" />
+<meta name="theme-color" content="#101518" />
 <!-- Ajustes iPhone: ancho completo, viewport dinámico y zonas seguras -->
 
 
@@ -244,7 +245,6 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
  });
 })();
 </script>
-    <link rel="stylesheet" href="styles/vb1.css?v=1">
 </head>
 <body class="archi-intro-active light-mode h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
@@ -347,17 +347,22 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 
             <!-- View 1: Welcome & Countries Selection -->
             <section id="view-home" class="p-4 space-y-5">
-                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-600/20 via-slate-900 to-slate-950 border border-amber-500/20 p-5 shadow-lg">
-                    <div class="relative z-10 space-y-2">
-                        <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-bold text-amber-400 tracking-wide uppercase">¡Bienvenido!</span>
-                        <h2 id="home-intro-heading" class="font-serif text-xl font-bold text-slate-100">¿Y esto qué es?</h2>
-                        <p class="text-xs text-slate-300 leading-relaxed">Estás de vacaciones, vas caminando por la calle y ves un edificio o monumento que te gusta y quieres saber qué es. Entrás en ArchiSpotter y <i>voilà</i>. Toda la información que querías saber. Seleccioná un país para explorar sus monumentos icónicos, audioguías, rutas y secretos.</p>
+                <div class="vb-hero" id="vb-hero">
+                    <img class="vb-hero-image" id="vb-hero-image" src="" alt="Arquitectura monumental" loading="eager" onerror="this.style.opacity='0'">
+                    <div class="vb-hero-shade"></div>
+                    <div class="vb-hero-content relative z-10">
+                        <span class="vb-eyebrow">ARCHISPOTTER · vB1</span>
+                        <h2 id="home-intro-heading" class="vb-hero-title">Monumentos que cuentan historias</h2>
+                        <p class="vb-hero-subtitle">Explorá la arquitectura del mundo, una historia a la vez.</p>
+                        <div class="vb-hero-line"></div>
+                        <span class="vb-hero-footnote">EUROPA · BUENOS AIRES</span>
                     </div>
                 </div>
+                <div class="vb-discover-head"><span class="vb-section-kicker">TU PRÓXIMO DESCUBRIMIENTO</span><span class="vb-section-rule"></span></div>
 
                 <div>
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Países Disponibles</h3>
-                    <div id="view-countries" class="grid grid-cols-2 gap-3"></div>
+                    <h3 class="vb-section-heading">Explorá por país <span class="vb-section-arrow">↗</span></h3>
+                    <div id="view-countries" class="vb-country-grid"></div>
                 </div>
             </section>
 
@@ -772,7 +777,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
     </div>
 
     <!-- JavaScript Logic -->
-    <script src="data/monuments-data.js?v=97"></script>
+    <script src="data/monuments-data.js?v=vb1-real2"></script>
     <script src="scripts/storage.js?v=147"></script>
     <script src="scripts/image-fallback.js?v=153"></script>
     <script src="scripts/ui-feedback.js?v=97"></script>

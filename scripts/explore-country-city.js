@@ -41,15 +41,25 @@
 
             const countriesList = archiBuildCountryList(monumentsData, getFlagForCountry);
 
-            container.innerHTML = countriesList.map(c => `
-                <div onclick="selectCountry(${JSON.stringify(c.name).replace(/"/g,'&quot;')})" class="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 flex flex-col items-center text-center space-y-2 cursor-pointer transition active:scale-95 group shadow-md">
-                    <span class="text-3xl group-hover:scale-110 transition duration-300">${c.flag}</span>
-                    <div>
-                        <h4 class="font-serif font-bold text-xs text-white group-hover:text-amber-400 transition">${countryLabel(c.name)}</h4>
-                        <span class="text-[10px] text-slate-400 font-medium">${c.count} ${c.count === 1 ? tr('Monumento','Monument') : tr('Monumentos','Monuments')}</span>
-                    </div>
-                </div>
-            `).join('');
+            // vB1: tarjetas fotográficas con los datos reales del catálogo activo.
+            container.innerHTML = countriesList.map(c => {
+                const candidate = monumentsData.find(m => m.country === c.name && Array.isArray(m.images) && m.images[0]);
+                const photo = candidate ? candidate.images[0] : '';
+                const countryArg = JSON.stringify(c.name).replace(/"/g,'&quot;');
+                const safePhoto = String(photo).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+                return `<button type="button" onclick="selectCountry(${countryArg})" class="vb-country-card" aria-label="${countryLabel(c.name)}">
+                    <img src="${safePhoto}" loading="lazy" decoding="async" alt="" onerror="this.style.opacity='0'">
+                    <span class="vb-country-overlay"></span>
+                    <span class="vb-country-flag">${c.flag}</span>
+                    <span class="vb-country-copy"><strong>${countryLabel(c.name)}</strong><small>${c.count} ${c.count === 1 ? tr('Monumento','Monument') : tr('Monumentos','Monuments')}</small></span>
+                    <span class="vb-country-chevron">↗</span>
+                </button>`;
+            }).join('');
+            const hero = document.getElementById('vb-hero-image');
+            if (hero && !hero.getAttribute('src')) {
+                const cover = monumentsData.find(m => m.id === 'colosseum' && m.images && m.images[0]) || monumentsData.find(m => m.images && m.images[0]);
+                if (cover) hero.src = cover.images[0];
+            }
         }
 
         function selectCountry(countryName) {

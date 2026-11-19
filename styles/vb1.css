@@ -28,3 +28,36 @@ body.light-mode .bg-amber-500 {background:#26343a!important;color:#fffdf8!import
 #view-home h2,#view-monuments-container h2 {letter-spacing:-.025em!important;}
 #app button { -webkit-tap-highlight-color:transparent; }
 #app button:focus-visible {outline:2px solid #e9b75a!important;outline-offset:2px;}
+
+/* vB1 real: nueva composición de Inicio y países, independiente de Tailwind */
+body:not(.light-mode) #view-home{background:#101518!important;color:#f7f2e9!important;}
+#view-home{padding:15px 16px 30px!important;}
+.vb-hero{position:relative;isolation:isolate;overflow:hidden;min-height:300px;border-radius:23px;background:#202b30;display:flex;align-items:flex-end;box-shadow:0 18px 42px rgba(0,0,0,.26);}
+.vb-hero-image,.vb-hero-shade{position:absolute;inset:0;width:100%;height:100%;}
+.vb-hero-image{object-fit:cover;object-position:center 38%;}
+.vb-hero-shade{background:linear-gradient(180deg,rgba(6,12,16,.08) 0%,rgba(6,12,16,.46) 40%,rgba(6,12,16,.94) 100%);}
+.vb-hero-content{padding:32px 25px 24px;width:100%;color:#fff!important;}
+.vb-eyebrow,.vb-section-kicker{font-family:Inter,sans-serif;font-size:10px;letter-spacing:.23em;font-weight:700;color:#e9b75a;}
+.vb-hero-title{font-family:Georgia,serif!important;font-weight:600!important;line-height:1.07!important;letter-spacing:-.025em;font-size:clamp(30px,8vw,42px)!important;max-width:310px;margin:12px 0!important;color:#fff!important;}
+.vb-hero-subtitle{font-size:12px;line-height:1.55;max-width:250px;color:#e5e6e3!important;}
+.vb-hero-line{width:40px;height:2px;background:#e9b75a;margin:17px 0 10px;}
+.vb-hero-footnote{font-size:9px;letter-spacing:.18em;font-weight:700;color:#e9b75a;}
+.vb-discover-head{display:flex;align-items:center;gap:12px;margin:22px 0 5px;}
+.vb-section-rule{height:1px;background:#394448;flex:1;}
+.vb-section-heading{font-family:Inter,sans-serif!important;font-size:21px!important;letter-spacing:-.045em;font-weight:700!important;margin:0 0 15px!important;color:#f7f2e9!important;display:flex;justify-content:space-between;align-items:center;}
+.vb-section-arrow{font-size:19px;color:#e9b75a;}
+.vb-country-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;}
+.vb-country-card{position:relative;display:block;min-width:0;height:185px;text-align:left;overflow:hidden;border-radius:17px;background:#27363a;border:1px solid #394449;box-shadow:0 8px 22px rgba(0,0,0,.2);color:white;touch-action:manipulation;}
+.vb-country-card>img,.vb-country-overlay{position:absolute;inset:0;width:100%;height:100%;}
+.vb-country-card>img{object-fit:cover;object-position:center;transition:transform .3s ease;}
+.vb-country-card:active>img{transform:scale(1.04);}
+.vb-country-overlay{background:linear-gradient(180deg,rgba(5,12,16,.25),rgba(5,12,16,.08) 25%,rgba(5,12,16,.85) 100%);}
+.vb-country-flag{position:absolute;top:11px;left:11px;font-size:23px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.5));}
+.vb-country-copy{position:absolute;bottom:14px;left:13px;right:24px;display:flex;flex-direction:column;gap:4px;}
+.vb-country-copy strong{font-size:17px;font-weight:750;line-height:1.1;color:white!important;}
+.vb-country-copy small{font-size:10px;color:#e6e5e1!important;}
+.vb-country-chevron{position:absolute;right:12px;bottom:15px;color:#e9b75a;font-size:18px;}
+body.light-mode .vb-section-heading{color:#263238!important;}
+body.light-mode .vb-section-kicker{color:#966c24;}
+body.light-mode .vb-section-rule{background:#d7d3ca;}
+@media(max-width:350px){.vb-country-card{height:158px}.vb-hero{min-height:280px}.vb-country-copy strong{font-size:15px}}
