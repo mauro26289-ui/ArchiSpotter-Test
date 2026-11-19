@@ -1,0 +1,42 @@
+/* vB9.16: unified photographic viewport for splash, welcome and auth.
+   The same fixed rectangle and cover crop are used in all three states.
+   Extend only the visual layer into the bottom safe area; controls retain
+   their existing safe-area positioning. */
+@media (max-width: 699px) {
+  html body #splash-screen,
+  html body #archi-onboarding,
+  html body #archi-auth-panel {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: calc(100dvh + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+  html body #splash-screen .archi-splash-art {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+  html body #splash-screen .archi-splash-photo {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  /* Keep entry buttons above the home indicator after extending the art. */
+  html body #archi-onboarding .archi-onboarding-inner {
+    padding-bottom: calc(32px + 2 * env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
