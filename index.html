@@ -219,41 +219,38 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
  document.addEventListener('touchstart',function(e){if(!e.touches||e.touches.length!==1)return;var t=e.touches[0];if(t.clientX>72||t.clientY>105)return;var now=Date.now();taps=now-lastTap<3000?taps+1:1;lastTap=now;if(taps===4){taps=0;show();}},{passive:true,capture:true});
 })();
 </script>
-<script id="archi-splash-startup-guard-v98">
+<script id="archi-splash-startup-guard-v99">
 (function(){
-  // Start the presentation clock only once the DOM is ready, not while
-  // external scripts and CSS are still loading in the document head.
-  var started=false;
-  function start(){
-    if(started)return;
-    started=true;
-    var el=document.getElementById('splash-screen');
-    if(!el)return;
-    el.classList.remove('hidden');
-    el.style.removeProperty('display');
-    el.style.opacity='1';
-    el.style.pointerEvents='auto';
-    var photo=el.querySelector('.archi-splash-photo');
-    var ready=Promise.resolve();
-    if(photo && !photo.complete){
-      ready=new Promise(function(resolve){
-        var done=false;
-        function finish(){if(done)return;done=true;resolve();}
-        photo.addEventListener('load',finish,{once:true});
-        photo.addEventListener('error',finish,{once:true});
-        setTimeout(finish,1800);
-      });
-    }
-    ready.then(function(){
-      setTimeout(function(){
-        el.style.opacity='0';
-        el.style.pointerEvents='none';
-        setTimeout(function(){el.classList.add('hidden');el.style.display='none';},720);
-      },2500);
+  var done=false;
+  function begin(){
+    if(done)return;
+    var splash=document.getElementById('splash-screen');
+    if(!splash)return;
+    done=true;
+    splash.classList.remove('hidden');
+    splash.style.removeProperty('display');
+    splash.style.removeProperty('opacity');
+    splash.style.removeProperty('visibility');
+    var image=splash.querySelector('img');
+    var imageReady=new Promise(function(resolve){
+      if(!image || image.complete){resolve();return;}
+      var settled=false;
+      function finish(){if(settled)return;settled=true;resolve();}
+      image.addEventListener('load',finish,{once:true});
+      image.addEventListener('error',finish,{once:true});
+      setTimeout(finish,2500);
+    });
+    imageReady.then(function(){
+      // Two rendered frames before countdown, rather than DOM parsing time.
+      requestAnimationFrame(function(){requestAnimationFrame(function(){
+        setTimeout(function(){
+          splash.classList.add('archi-splash-exiting');
+          setTimeout(function(){splash.classList.add('hidden');splash.style.display='none';},750);
+        },2500);
+      });});
     });
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});
-  else start();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',begin,{once:true});else begin();
 })();
 </script>
 
@@ -273,9 +270,15 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 })();
 </script>
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-6">
-<link rel="stylesheet" href="styles/entry-v98.css?v=9-8">
+<link rel="stylesheet" href="styles/entry-v99.css?v=9-9">
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
+<!-- Splash inicial: primer elemento visible del documento -->
+<div id="splash-screen" class="fixed inset-0 z-50 transition-opacity duration-700" aria-label="ArchiSpotter">
+        <div class="archi-splash-art" role="img" aria-label="ArchiSpotter, arquitectura y naturaleza"><img class="archi-splash-photo" loading="eager" src="assets/cinematic-scene-v92.webp" alt="" aria-hidden="true" decoding="sync" fetchpriority="high"></div>
+
+    </div>
+
 
 <section id="archi-onboarding" aria-label="Presentación de ArchiSpotter">
  <div class="archi-onboarding-inner">
@@ -308,11 +311,6 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
   <p id="archi-auth-disclaimer">Solo para pruebas: la cuenta se guarda en este dispositivo y no ofrece seguridad de servidor.</p>
  </div>
 </section>
-    <!-- Splash Screen (Pantalla de presentación por 2.5 segundos) -->
-    <div id="splash-screen" class="fixed inset-0 z-50 transition-opacity duration-700" aria-label="ArchiSpotter">
-        <div class="archi-splash-art" role="img" aria-label="ArchiSpotter, arquitectura y naturaleza"><img class="archi-splash-photo" loading="eager" src="assets/cinematic-scene-v92.webp" alt="" aria-hidden="true" decoding="sync" fetchpriority="high"></div>
-
-    </div>
 
     <!-- App Container -->
     <div id="app" class="flex-1 flex flex-col max-w-md w-full mx-auto bg-slate-900 shadow-2xl relative overflow-hidden border-x border-slate-800">
