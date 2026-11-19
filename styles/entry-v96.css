@@ -61,3 +61,12 @@ html,body,body.archi-intro-active{background-color:var(--entry-ink)!important;co
 #archi-auth-panel #archi-auth-forgot[hidden]{display:none}
 #archi-auth-panel #archi-auth-forgot:focus-visible{outline:2px solid #e4b45d;outline-offset:2px}
 @media(max-height:740px){#archi-onboarding .archi-onboarding-inner{padding-top:270px}#archi-auth-panel .archi-auth-card{padding-top:280px}}
+
+/* vB9.7 — fundido carbón superior de bienvenida, igual al acceso.
+   Se fuerza solo el fondo de bienvenida: no altera tamaño, posición ni botones. */
+#archi-onboarding{
+ background-image:linear-gradient(to bottom,#101517 0%,rgba(16,21,23,.9) 5%,rgba(16,21,23,.38) 12%,transparent 23%),url('../assets/cinematic-scene-v92.webp')!important;
+ background-size:100% 100%,100% auto!important;
+ background-position:center top,center top!important;
+ background-repeat:no-repeat!important;
+}
