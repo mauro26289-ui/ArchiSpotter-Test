@@ -21,11 +21,11 @@
   $('archi-auth-user-label').textContent=x.user;$('archi-auth-password-label').textContent=x.password;
   $('archi-auth-submit').textContent=x[mode];$('archi-auth-switch').textContent=x[mode==='login'?'register':'login'];
   $('archi-auth-disclaimer').textContent=x.disclaimer;
-  $('archi-auth-forgot').textContent=x.forgot;
+  $('archi-auth-forgot').textContent=x.forgot;$('archi-auth-user').placeholder=x.user;$('archi-auth-password').placeholder=x.password;
   $('archi-auth-forgot').hidden=(mode!=='login');
   $('archi-auth-password').autocomplete=mode==='login'?'current-password':'new-password';
  };
- window.archiShowAuth=function(which){mode=which==='register'?'register':'login';$('archi-auth-panel').classList.remove('archi-auth-hidden');$('archi-auth-form').reset();$('archi-auth-error').textContent='';window.archiRefreshAuth();$('archi-auth-user').focus()};
+ window.archiShowAuth=function(which){mode=which==='register'?'register':'login';$('archi-auth-panel').classList.remove('archi-auth-hidden');$('archi-auth-form').reset();$('archi-auth-error').textContent='';window.archiRefreshAuth();$('archi-auth-panel').scrollTop=0};
  window.archiCloseAuth=function(){$('archi-auth-panel').classList.add('archi-auth-hidden')};
  window.archiToggleAuth=function(){window.archiShowAuth(mode==='login'?'register':'login')};
  window.archiLogout=function(){

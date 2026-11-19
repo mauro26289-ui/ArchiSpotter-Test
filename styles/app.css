@@ -296,49 +296,49 @@
 /* ===== ORIGINAL: archi-onboarding-styles ===== */
 
 #view-home > .relative:first-child { display:none !important; }
-#archi-onboarding { position:fixed; inset:0; z-index:45; display:flex; align-items:center; justify-content:center; padding:22px; background:#f6f5f1; color:#27323b; overflow-y:auto; }
-#archi-onboarding.archi-gone { display:none !important; }
+
+
 body.archi-intro-active .bottom-nav { display:none !important; }
-.archi-onboarding-inner { width:100%; max-width:430px; margin:auto; display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px; }
-.archi-onboarding-mark { width:min(100%,310px); min-height:110px; display:flex; align-items:center; justify-content:center; padding:0 10px; }
-.archi-onboarding-mark img { display:block; width:100%; max-height:150px; object-fit:contain; }
-.archi-onboarding-title { font-family:Georgia,serif; font-size:clamp(32px,8vw,43px); line-height:1.1; font-weight:700; letter-spacing:-.03em; color:#27323b; }
-.archi-onboarding-description { font-size:15px; line-height:1.85; color:#48545e; max-width:360px; }
-.archi-onboarding-start { width:100%; max-width:340px; min-height:56px; border:0; border-radius:17px; background:#ad7e43; color:white; font-size:16px; font-weight:700; cursor:pointer; box-shadow:0 8px 24px #ad7e4330; }
-.archi-onboarding-start:focus-visible { outline:3px solid #334155; outline-offset:4px; }
-.archi-onboarding-languages { position:absolute; top:max(18px,env(safe-area-inset-top)); right:18px; display:flex; gap:5px; z-index:2; }
-.archi-lang-btn { min-width:42px; height:36px; border:1px solid #d7d3cb; border-radius:9px; background:rgba(255,255,255,.86); color:#52606a; font-size:12px; font-weight:750; cursor:pointer; }
-.archi-lang-btn[aria-pressed="true"] { background:#ad7e43; color:#fff; border-color:#ad7e43; box-shadow:0 2px 9px #ad7e4330; }
-.archi-lang-btn:focus-visible { outline:2px solid #ad7e43; outline-offset:2px; }
-.archi-onboarding-kicker { color:#a17b4e; font-size:11px; letter-spacing:.22em; font-weight:800; text-transform:uppercase; }
-body:not(.light-mode) #archi-onboarding { background:#111b27; color:#f8fafc; }
-body:not(.light-mode) .archi-onboarding-title { color:#f8fafc; }
-body:not(.light-mode) .archi-onboarding-description { color:#d0d8e1; }
-body:not(.light-mode) .archi-lang-btn { background:#1e293b; color:#e2e8f0; border-color:#475569; }
-body:not(.light-mode) .archi-lang-btn[aria-pressed="true"] { background:#ad7e43; color:white; border-color:#ad7e43; }
-@media(max-width:390px){ .archi-onboarding-inner { gap:16px; padding-top:46px; } .archi-onboarding-mark { min-height:90px; } .archi-onboarding-mark img { max-height:110px; } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ===== ORIGINAL: archi-local-auth-css ===== */
 
-.archi-onboarding-register {width:100%;max-width:340px;min-height:54px;border:1.5px solid #ad7e43;border-radius:17px;background:transparent;color:#895e2d;font-size:16px;font-weight:750;cursor:pointer}
-body:not(.light-mode) .archi-onboarding-register {color:#f1c989}
+
+
 .archi-logout{display:flex;align-items:center;gap:6px;min-height:32px;padding:0 9px;border:1px solid #b88b55;border-radius:10px;background:#fff8eb;color:#6f4922;font-size:12px;font-weight:700;white-space:nowrap}
 body:not(.light-mode) .archi-logout{background:#263344;color:#f7d8a3}
-#archi-auth-panel{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:18px;background:#f6f5f1;color:#29312c;overflow-y:auto}
-#archi-auth-panel.archi-auth-hidden{display:none}
-.archi-auth-card{position:relative;width:100%;max-width:390px;background:#fffefa;border:1px solid #dfd5c6;border-radius:22px;padding:32px 25px;box-shadow:0 18px 60px #34271920}
-.archi-auth-back{position:absolute;top:14px;left:17px;color:#6f4922;font-size:24px}
-.archi-auth-brand{text-align:center;font-size:12px;font-weight:800;letter-spacing:.2em;color:#a77a45;margin-bottom:16px}
-#archi-auth-heading{text-align:center;font:700 28px Georgia,serif;margin:0 0 9px}
-#archi-auth-help{text-align:center;color:#58616b;font-size:13px;margin-bottom:20px}
-#archi-auth-form{display:flex;flex-direction:column;gap:8px}
-#archi-auth-form label{font-size:13px;font-weight:700;margin-top:8px}
-#archi-auth-form input{width:100%;border:1px solid #bcb2a3;background:white;color:#252a27;border-radius:10px;padding:12px 13px;font-size:16px}
-#archi-auth-submit{background:#ad7e43;color:#fff;border-radius:12px;padding:14px;font-weight:750;margin-top:9px}
-#archi-auth-switch{display:block;margin:16px auto 0;color:#765028;font-weight:700;text-decoration:underline}
-#archi-auth-error{min-height:18px;color:#a32828;font-size:13px}
-#archi-auth-disclaimer{margin-top:24px;color:#66717a;font-size:11px;line-height:1.6;text-align:center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width:390px){.archi-logout span{display:none}.archi-logout{padding:0 10px}}
 
 
@@ -483,14 +483,14 @@ button:focus-visible,input:focus-visible,select:focus-visible {outline-color:var
 /* ===== ORIGINAL: archi-onboarding-fullscreen-v2 ===== */
 
 /* Presentación a pantalla completa: sin tarjeta central ni ancho de teléfono. */
-#archi-onboarding { position:fixed !important; inset:0 !important; width:100vw !important; min-height:100vh !important; min-height:100dvh !important; box-sizing:border-box; padding:clamp(20px,4vw,48px) !important; padding-top:max(24px,env(safe-area-inset-top)) !important; padding-bottom:max(28px,env(safe-area-inset-bottom)) !important; overflow-y:auto; }
-#archi-onboarding .archi-onboarding-inner { max-width:none !important; width:100% !important; min-height:calc(100dvh - 96px); margin:0 auto !important; padding:clamp(45px,7vh,90px) 0 0 !important; box-sizing:border-box; display:flex !important; flex-direction:column; align-items:center; justify-content:center; gap:clamp(12px,2vh,22px); background:transparent !important; border:0 !important; box-shadow:none !important; border-radius:0 !important; }
-#archi-onboarding .archi-onboarding-mark { width:min(65vw,340px) !important; min-height:0 !important; flex-shrink:0; padding:0 !important; }
-#archi-onboarding .archi-onboarding-mark img { max-height:min(33vh,240px) !important; width:100%; object-fit:contain; }
-#archi-onboarding .archi-onboarding-description { max-width:min(90%,600px) !important; }
-#archi-onboarding .archi-onboarding-start, #archi-onboarding .archi-onboarding-register { width:min(100%,340px) !important; }
-#archi-onboarding .archi-onboarding-languages { position:fixed !important; top:max(20px,env(safe-area-inset-top)) !important; right:max(20px,env(safe-area-inset-right)) !important; }
-@media(max-height:650px) { #archi-onboarding .archi-onboarding-inner { padding-top:55px !important; gap:10px; } #archi-onboarding .archi-onboarding-mark img { max-height:125px !important; } }
+
+
+
+
+
+
+
+
 
 
 /* ===== ORIGINAL: archi-iphone-responsive-2026 ===== */
@@ -807,9 +807,7 @@ body.dark-mode #app #nav-breadcrumb { background-color: #202720 !important; }
     background-color:var(--archi-surface) !important;
     background-clip:border-box !important;
   }
-  body.archi-intro-active #archi-onboarding {
-    background-color:#f6f5f1 !important;
-  }
+  
 }
 
 
