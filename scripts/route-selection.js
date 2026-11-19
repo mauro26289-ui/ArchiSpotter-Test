@@ -4,8 +4,10 @@
         function archiHasValidRouteCoords(m) {
             if (!m || !m.coords) return false;
             const lat = Number(m.coords.lat), lng = Number(m.coords.lng);
+            // E152: whitespace-only values and booleans must not become zero.
             return m.coords.lat !== null && m.coords.lng !== null &&
-                m.coords.lat !== '' && m.coords.lng !== '' &&
+                typeof m.coords.lat !== 'boolean' && typeof m.coords.lng !== 'boolean' &&
+                String(m.coords.lat).trim() !== '' && String(m.coords.lng).trim() !== '' &&
                 Number.isFinite(lat) && Number.isFinite(lng) &&
                 lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
         }
