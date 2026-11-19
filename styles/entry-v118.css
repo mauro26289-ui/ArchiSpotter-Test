@@ -1,0 +1,26 @@
+/* vB9.18 — restaurar la capa de imagen que vB9.17 ocultó.
+   Mantener exactamente la geometría de vB9.16 y el mismo recorte cover
+   para presentación, bienvenida y acceso. */
+@media (max-width: 699px) {
+  html body #splash-screen .archi-splash-art {
+    visibility: visible !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    background-image: none !important;
+  }
+  html body #splash-screen .archi-splash-photo {
+    visibility: visible !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}
