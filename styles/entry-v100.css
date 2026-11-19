@@ -103,3 +103,22 @@ body #splash-screen .archi-splash-brand{display:flex!important;position:absolute
 body #splash-screen .archi-splash-brand img{display:block!important;width:min(83vw,390px)!important;height:auto!important;max-height:260px!important;object-fit:contain!important;}
 #archi-onboarding .archi-onboarding-title,#archi-onboarding .archi-onboarding-description,#archi-onboarding .archi-onboarding-kicker,#archi-onboarding .archi-onboarding-mark{display:none!important;}
 #archi-onboarding .archi-onboarding-inner{justify-content:flex-end!important;}
+
+/* vB9.11: controles de idioma compactos, sin fondo de barra heredado. */
+#archi-onboarding nav.archi-onboarding-languages{
+ background:transparent!important;background-color:transparent!important;background-image:none!important;
+ box-shadow:none!important;border:0!important;outline:0!important;
+ padding:0!important;margin:0!important;min-height:0!important;
+ width:auto!important;height:auto!important;max-width:none!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ display:flex!important;align-items:center!important;gap:6px!important;
+}
+#archi-onboarding nav.archi-onboarding-languages .archi-lang-btn{
+ box-sizing:border-box!important;width:39px!important;min-width:39px!important;max-width:39px!important;
+ height:34px!important;min-height:34px!important;max-height:34px!important;
+ padding:0!important;margin:0!important;border-radius:9px!important;
+ font-size:13px!important;line-height:1!important;letter-spacing:0!important;
+ box-shadow:none!important;transform:none!important;
+}
+#archi-onboarding nav.archi-onboarding-languages::before,
+#archi-onboarding nav.archi-onboarding-languages::after{content:none!important;display:none!important}
