@@ -2,6 +2,9 @@
         function renderNavigationFlow() {
             const italyView = document.getElementById('vb2-italy');
             const isItalyLanding = selectedCountry === 'Italia' && !selectedCity;
+            const isVB3Landing = ['España','Suiza','Francia','Reino Unido'].includes(selectedCountry) && !selectedCity;
+            const vb3View=document.getElementById('vb3-country');
+            if(vb3View)vb3View.classList.toggle('hidden',!isVB3Landing);
             if (italyView) italyView.classList.toggle('hidden', !isItalyLanding);
             const viewHome = document.getElementById('view-home');
             const viewCitiesContainer = document.getElementById('view-cities-container');
@@ -22,6 +25,14 @@
                 document.getElementById('breadcrumb-text').textContent = tr('Países','Countries');
                 document.getElementById('breadcrumb-location').textContent = countryLabel(selectedCountry);
                 if (typeof renderVB2Italy === 'function') renderVB2Italy();
+            } else if (isVB3Landing) {
+                viewHome.classList.add('hidden');
+                viewCitiesContainer.classList.add('hidden');
+                viewMonumentsContainer.classList.add('hidden');
+                breadcrumb.classList.remove('hidden');
+                document.getElementById('breadcrumb-text').textContent=tr('Países','Countries');
+                document.getElementById('breadcrumb-location').textContent=countryLabel(selectedCountry);
+                if(typeof renderVB3Country==='function')renderVB3Country(selectedCountry);
             } else if (selectedCountry && !selectedCity) {
                 viewHome.classList.add('hidden');
                 viewCitiesContainer.classList.remove('hidden');

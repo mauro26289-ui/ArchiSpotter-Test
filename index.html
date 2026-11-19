@@ -370,7 +370,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
             <!-- vB2: Italia, experiencia editorial de país (otros países sin cambios) -->
             <section id="vb2-italy" class="hidden vb2-italy" aria-label="Explorar Italia">
               <div class="vb2-italy-cover">
-                <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Coliseo de Roma" loading="eager">
+                <img src="assets/italia-colosseo-portada.jpeg" alt="Coliseo de Roma al atardecer" loading="eager">
                 <div class="vb2-cover-shade"></div>
                 <div class="vb2-cover-copy"><span class="vb2-kicker">ARCHISPOTTER · EUROPA</span><h2>Italia</h2><p class="vb2-poetic">Una historia escrita en piedra.</p><span class="vb2-stat">5 monumentos · 3 ciudades</span></div>
               </div>
@@ -381,7 +381,8 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
               <div class="vb2-monument-grid" id="vb2-italy-monuments"></div>
             </section>
 
-            <!-- View 2: Cities Selection -->
+            <section id="vb3-country" class="hidden vb2-italy" aria-label="Explorar país"><div class="vb2-italy-cover"><img id="vb3-cover" src="" alt="" loading="eager"><div class="vb2-cover-shade"></div><div class="vb2-cover-copy"><span class="vb2-kicker">ARCHISPOTTER · EUROPA</span><h2 id="vb3-title"></h2><p class="vb2-poetic" id="vb3-poetic"></p><span class="vb2-stat" id="vb3-stat"></span></div></div><div class="vb2-intro"><span class="vb2-kicker" id="vb3-kicker"></span><h3 id="vb3-headline"></h3><p id="vb3-intro"></p></div><div class="vb2-actions"><button type="button" onclick="document.getElementById('vb3-anchor').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-landmark"></i> Monumentos</button><button type="button" onclick="archiItalyOpenMap()"><i class="fa-solid fa-map-location-dot"></i> Ver mapa</button></div><div class="vb2-section-title" id="vb3-anchor"><span class="vb2-kicker" id="vb3-count"></span><h3>Explorá los monumentos</h3></div><div class="vb2-filters" id="vb3-filters"></div><div class="vb2-monument-grid" id="vb3-monuments"></div></section>
+<!-- View 2: Cities Selection -->
             <section id="view-cities-container" class="hidden p-4 space-y-4">
                 <div class="space-y-1">
                     <h3 class="font-serif text-lg font-bold text-white flex items-center space-x-2">
@@ -826,6 +827,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
     <script src="scripts/favorites-actions.js?v=121"></script>
     <script src="scripts/explore-country-city.js?v=97"></script>
 <script src="scripts/vb2-italy.js?v=vb2-1"></script>
+<script src="scripts/vb3-countries.js?v=vb3-1"></script>
     <script src="scripts/explore-gestures.js?v=97"></script>
     <script src="scripts/carto-config.js?v=136"></script>
     <script src="scripts/gps-map-controller.js?v=140"></script>
