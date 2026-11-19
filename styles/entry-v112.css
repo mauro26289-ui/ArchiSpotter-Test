@@ -1,0 +1,17 @@
+/* vB9.12 — splash subtitle and iOS status area matching the app header. */
+body #splash-screen .archi-splash-brand{
+ flex-direction:column!important;gap:0!important;
+}
+body #splash-screen .archi-splash-brand-subtitle{
+ display:block!important;position:relative!important;visibility:visible!important;
+ margin:-16px 0 0!important;padding:0!important;
+ font:700 clamp(11px,3vw,14px)/1.4 system-ui,sans-serif!important;
+ letter-spacing:.26em!important;color:#e4b45d!important;
+ text-align:center!important;text-shadow:0 1px 6px #10151799!important;
+}
+/* Same surface as the top app header, rather than the old navy strip. */
+html:has(body:not(.archi-intro-active):not(.light-mode)){
+ background-color:#1b2427!important;
+}
+html:has(body.archi-intro-active){background-color:#101517!important;}
+html:has(body:not(.archi-intro-active).light-mode){background-color:#f5f2ea!important;}
