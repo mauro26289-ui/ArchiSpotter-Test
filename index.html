@@ -81,7 +81,7 @@
 
 
 
-<style id="archi-viewport-v95">
+<<style id="archi-viewport-v95">
 /* E95: no fijar altura a screen.height. Dejar que iOS resuelva inset:0
    en su viewport real; mantener un fondo coherente detrás de toda la app. */
 html { background-color:#101517 !important; min-height:100%; }
@@ -91,24 +91,23 @@ html:has(#splash-screen:not(.hidden)),
 body:has(#splash-screen:not(.hidden)) { background-color:#101517 !important; }
 body #splash-screen,body #splash-screen:not(.hidden) {
   position:fixed!important; inset:0!important; width:100%!important;
-  height:auto!important; min-height:0!important; max-height:none!important;
+  height:100dvh!important; min-height:100dvh!important; max-height:none!important;
   margin:0!important; padding:0!important; overflow:hidden!important;
   border:0!important; border-radius:0!important; z-index:99999!important;
   background:#101517!important; transform:none!important;
 }
-body #splash-screen .archi-splash-art {
-  position:absolute!important; inset:0!important; width:100%!important;
-  height:100%!important; background:none!important;
-}
+body #splash-screen .archi-splash-art,
 body #splash-screen .archi-splash-photo {
-  display:block!important; width:100%!important; height:100%!important;
-  max-width:none!important; max-height:none!important;
-  object-fit:cover!important; object-position:center center!important;
+  position:absolute!important; inset:0!important; width:100%!important;
+  height:100%!important; max-width:none!important; max-height:none!important;
+  object-fit:cover!important; object-position:center top!important;
+  background:none!important; display:block!important;
 }
 @media(max-width:699px) {
   body #app { min-height:100svh!important; }
 }
 </style>
+
 <style id="archi-ios-safe-area-e100">
 /* E100: la superficie del área de sistema sigue el estado visual de la app. */
 html { background-color:#101517 !important; }
