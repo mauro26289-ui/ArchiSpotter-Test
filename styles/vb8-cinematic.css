@@ -53,3 +53,14 @@ body:has(#splash-screen:not(.hidden)){background-color:#101517!important}
 #splash-screen .archi-splash-brand-subtitle{
  font:700 10px system-ui,sans-serif;letter-spacing:.24em;color:#e6b760
 }
+
+/* vB8.2: identidad Travel Mate y contraste del área de estado de iOS */
+:root{color-scheme:dark;background:#101517}
+html,body{background:#101517!important;color-scheme:dark!important}
+#splash-screen .archi-splash-brand img{width:104px;height:104px;filter:drop-shadow(0 0 18px #c4933940)}
+#splash-screen .archi-splash-brand-name{font-family:Georgia,'Times New Roman',serif;letter-spacing:.105em}
+#splash-screen .archi-splash-brand-subtitle{letter-spacing:.32em}
+
+/* vB8.3: neutraliza los estilos antiguos crema en todas las fases de bienvenida. */
+html,body,body.archi-intro-active,html:has(body.archi-intro-active),html:has(#splash-screen:not(.hidden)),body:has(#splash-screen:not(.hidden)),body #splash-screen,body #splash-screen:not(.hidden),#archi-onboarding{background-color:#101517!important;color-scheme:dark!important}
+#splash-screen .archi-splash-brand{display:flex!important;visibility:visible!important;opacity:1!important;z-index:999!important}
