@@ -275,7 +275,19 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 })();
 </script>
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-6">
-<link rel="stylesheet" href="styles/entry.css?v=9-26">
+<link rel="stylesheet" href="styles/entry.css?v=9-27">
+
+<style id="archi-splash-fullscreen-v927">
+/* Prioridad máxima: anula app.css beige y display:none del splash en iPhone */
+@media (max-width:699px){
+html,body,html:has(#splash-screen:not(.hidden)),body:has(#splash-screen:not(.hidden)),body.archi-intro-active{background-color:#101517!important}
+#archi-entry-photo{position:fixed!important;inset:0!important;width:100%!important;height:100lvh!important;min-height:-webkit-fill-available!important;background:#101517 url(assets/cinematic-scene-v92.webp) center center/cover no-repeat!important;z-index:44!important;pointer-events:none!important}
+#archi-entry-photo::after{content:none!important;display:none!important}
+#splash-screen,#splash-screen:not(.hidden){position:fixed!important;inset:0!important;width:100%!important;height:100lvh!important;min-height:-webkit-fill-available!important;background:transparent!important;z-index:50!important;overflow:hidden!important}
+#splash-screen .archi-splash-art,#splash-screen .archi-splash-photo{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;background:none!important}
+#splash-screen .archi-splash-brand{display:flex!important;z-index:2!important}
+}
+</style>
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 <script id="archi-ios-statusbar-v912">
