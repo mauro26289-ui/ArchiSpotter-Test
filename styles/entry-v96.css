@@ -62,17 +62,22 @@ html,body,body.archi-intro-active{background-color:var(--entry-ink)!important;co
 #archi-auth-panel #archi-auth-forgot:focus-visible{outline:2px solid #e4b45d;outline-offset:2px}
 @media(max-height:740px){#archi-onboarding .archi-onboarding-inner{padding-top:270px}#archi-auth-panel .archi-auth-card{padding-top:280px}}
 
-/* vB9.7 — fundido carbón superior de bienvenida, igual al acceso.
-   Se fuerza solo el fondo de bienvenida: no altera tamaño, posición ni botones. */
-#archi-onboarding{
- background-image:linear-gradient(to bottom,#101517 0%,rgba(16,21,23,.9) 5%,rgba(16,21,23,.38) 12%,transparent 23%),url('../assets/cinematic-scene-v92.webp')!important;
- background-size:100% 100%,100% auto!important;
- background-position:center top,center top!important;
- background-repeat:no-repeat!important;
-}
-
 /* vB9.8: pantalla de bienvenida simplificada: únicamente idioma y acciones. */
 #archi-onboarding .archi-onboarding-kicker,
 #archi-onboarding .archi-onboarding-title,
 #archi-onboarding .archi-onboarding-description{display:none!important}
 #archi-onboarding .archi-onboarding-inner{justify-content:flex-end!important;gap:16px!important}
+
+/* vB9.9 — Fondo idéntico entre splash, bienvenida y acceso.
+   La foto de splash antes usaba object-fit:cover y se desplazaba al pasar a
+   bienvenida, que usaba background-size:100% auto. Unificamos ambos. */
+body #splash-screen .archi-splash-art,
+#archi-onboarding,
+#archi-auth-panel{
+ background-color:#101517!important;
+ background-image:linear-gradient(to bottom,#101517 0%,rgba(16,21,23,.96) 5%,rgba(16,21,23,.67) 11%,rgba(16,21,23,.20) 19%,transparent 27%),url('../assets/cinematic-scene-v92.webp')!important;
+ background-size:100% 100%,100% auto!important;
+ background-position:center top,center top!important;
+ background-repeat:no-repeat!important;
+}
+body #splash-screen .archi-splash-photo{display:none!important}
