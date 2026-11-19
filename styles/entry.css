@@ -256,3 +256,19 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
   opacity: 1 !important;
   pointer-events: auto !important;
 }
+
+
+/* vB9.26 — Solo zócalo inferior. Mantiene intacta la secuencia vB9.25.
+   La franja que queda fuera del fondo usa el mismo tono que el extremo
+   inferior de la fotografía. No altera el tamaño ni posición de la imagen. */
+@media (max-width: 699px) {
+  html:has(body.archi-intro-active),
+  html:has(#splash-screen:not(.hidden)),
+  html body.archi-intro-active,
+  html body:has(#splash-screen:not(.hidden)) {
+    background-color: #080c0d !important;
+  }
+  html body #archi-entry-photo::after {
+    background-color: #080c0d !important;
+  }
+}
