@@ -274,11 +274,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 <link rel="stylesheet" href="styles/entry-v100.css?v=9-12">
 <link rel="stylesheet" href="styles/entry-v112.css?v=9-12">
 <link rel="stylesheet" href="styles/entry-v113.css?v=9-13">
-<link rel="stylesheet" href="styles/entry-v114.css?v=9-14">
-<link rel="stylesheet" href="styles/entry-v115.css?v=9-15">
-<link rel="stylesheet" href="styles/entry-v116.css?v=9-16">
-<link rel="stylesheet" href="styles/entry-v117.css?v=9-17">
-<link rel="stylesheet" href="styles/entry-v118.css?v=9-18">
+<link rel="stylesheet" href="styles/entry-v119.css?v=9-19">
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 <script id="archi-ios-statusbar-v912">
@@ -296,6 +292,8 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
  });
 })();
 </script>
+<!-- Fondo unico: permanece inmovil durante splash, bienvenida y acceso -->
+<div id="archi-entry-photo" aria-hidden="true"></div>
 <!-- Splash inicial: primer elemento visible del documento -->
 <div id="splash-screen" class="fixed inset-0 z-50 transition-opacity duration-700" aria-label="ArchiSpotter">
         <div class="archi-splash-art" role="img" aria-label="ArchiSpotter, arquitectura y naturaleza"><img class="archi-splash-photo" loading="eager" src="assets/cinematic-scene-v92.webp" alt="" aria-hidden="true" decoding="sync" fetchpriority="high"></div>
