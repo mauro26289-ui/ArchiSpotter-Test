@@ -65,8 +65,10 @@
 
             // vB1: tarjetas fotográficas con los datos reales del catálogo activo.
             container.innerHTML = countriesList.map(c => {
-                const candidate = monumentsData.find(m => m.country === c.name && Array.isArray(m.images) && m.images[0]);
-                const photo = candidate ? candidate.images[0] : '';
+                // vB3.1: imagen de portada seleccionada por país, no primera foto arbitraria.
+                const coverIds = {'Italia':'colosseum','España':'sagrada-familia','Suiza':'chillon-castle','Francia':'fr-notre-dame','Reino Unido':'world-big-ben-elizabeth-tower'};
+                const candidate = monumentsData.find(m => m.id === coverIds[c.name] && m.country === c.name) || monumentsData.find(m => m.country === c.name && Array.isArray(m.images) && m.images[0]);
+                const photo = c.name === 'Italia' ? 'assets/italia-colosseo-portada.jpeg' : (candidate && candidate.images && candidate.images[0] || '');
                 const countryArg = JSON.stringify(c.name).replace(/"/g,'&quot;');
                 const safePhoto = String(photo).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
                 return `<button type="button" onclick="selectCountry(${countryArg})" class="vb-country-card" aria-label="${countryLabel(c.name)}">
@@ -80,7 +82,7 @@
             const hero = document.getElementById('vb-hero-image');
             if (hero && !hero.getAttribute('src')) {
                 const cover = monumentsData.find(m => m.id === 'colosseum' && m.images && m.images[0]) || monumentsData.find(m => m.images && m.images[0]);
-                if (cover) hero.src = cover.images[0];
+                if (cover) hero.src = 'assets/italia-colosseo-portada.jpeg';
             }
         }
 

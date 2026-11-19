@@ -7,6 +7,7 @@
             if (!activeMonumentForModal) return;
 
             const m = activeMonumentForModal;
+            document.getElementById('monument-modal').classList.toggle('vb4-italy-modal', m.country === 'Italia');
             document.getElementById('modal-title').textContent = monumentLabel(m);
             const favBtn=document.getElementById('modal-favorite'); if(favBtn){favBtn.classList.toggle('is-favorite',isFavorite(m.id));favBtn.innerHTML=isFavorite(m.id)?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';}
             document.getElementById('modal-style').textContent = styleLabel(m.style);

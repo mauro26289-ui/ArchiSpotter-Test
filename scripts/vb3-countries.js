@@ -18,7 +18,7 @@ function renderVB3Country(country){
  el('vb3-kicker').textContent='DESCUBRÍ '+country.toLocaleUpperCase('es');
  el('vb3-stat').textContent=all.length+' monumentos · '+(cities.length-1)+' ciudades';
  el('vb3-count').textContent=all.length+' LUGARES PARA DESCUBRIR';
- const cover=all.find(m=>m.images&&m.images.length);el('vb3-cover').src=cover?cover.images[0]:'';el('vb3-cover').alt=cover?cover.name:country;
+ const selectedCoverIds={'España':'sagrada-familia','Suiza':'chillon-castle','Francia':'fr-notre-dame','Reino Unido':'world-big-ben-elizabeth-tower'};const cover=all.find(m=>m.id===selectedCoverIds[country])||all.find(m=>m.images&&m.images.length);el('vb3-cover').src=cover?cover.images[0]:'';el('vb3-cover').alt=cover?cover.name:country;
  const filters=el('vb3-filters');filters.replaceChildren();
  cities.forEach(city=>{const b=document.createElement('button');b.type='button';b.className='vb2-filter'+(vb3CityFilter===city?' selected':'');b.textContent=city==='Todas'?(typeof tr==='function'?tr('Todas','All'):'Todas'):(typeof cityLabel==='function'?cityLabel(city):city);b.setAttribute('aria-pressed',String(vb3CityFilter===city));b.addEventListener('click',()=>{vb3CityFilter=city;renderVB3Country(country)});filters.append(b)});
  const list=el('vb3-monuments');list.replaceChildren();

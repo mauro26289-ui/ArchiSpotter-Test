@@ -41,3 +41,10 @@ function renderVB2Italy() {
   card.addEventListener('click',()=>openMonumentModal(m.id));container.appendChild(card);
  });
 }
+
+// vB4: navegación editorial por ciudad y estilo de ficha solo para Italia.
+function archiItalyChooseCity(city) {
+ archiItalyCityFilter=city;
+ renderVB2Italy();
+ archiItalyScrollToMonuments();
+}

@@ -51,7 +51,7 @@
     </script>
     <link rel="stylesheet" href="styles/app.css?v=pan3" id="archi-modular-styles-v11">
 <link rel="stylesheet" href="styles/vb1.css?v=vb1-real2">
-<link rel="stylesheet" href="styles/vb2-italy.css?v=vb2-1">
+<link rel="stylesheet" href="styles/vb2-italy.css?v=vb4-italia">
 
 
 
@@ -377,6 +377,14 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
               <div class="vb2-intro"><div><span class="vb2-kicker">DESCUBRÍ ITALIA</span><h3>Arquitectura que trasciende el tiempo</h3><p>De las maravillas de la Roma antigua a las grandes catedrales italianas.</p></div></div>
               <div class="vb2-actions"><button type="button" onclick="archiItalyScrollToMonuments()"><i class="fa-solid fa-landmark"></i> Monumentos</button><button type="button" onclick="archiItalyOpenMap()"><i class="fa-solid fa-map-location-dot"></i> Ver mapa</button></div>
               <div class="vb2-section-title" id="vb2-monuments-anchor"><div><span class="vb2-kicker">5 LUGARES PARA DESCUBRIR</span><h3>Explorá los monumentos</h3></div></div>
+              <div class="vb4-italy-highlights" aria-label="Descubrí Italia">
+                <div class="vb4-italy-highlights-head"><span class="vb2-kicker">UN VIAJE POR LOS SIGLOS</span><h3>De Roma al Renacimiento</h3><p>Cinco monumentos, tres ciudades y siglos de arquitectura extraordinaria.</p></div>
+                <div class="vb4-italy-highlights-grid">
+                  <button type="button" onclick="archiItalyChooseCity('Roma')"><span>01 / ROMA</span><strong>La ciudad eterna</strong><small>Coliseo · Panteón · Foro Romano</small><i class="fa-solid fa-arrow-up-right"></i></button>
+                  <button type="button" onclick="archiItalyChooseCity('Florencia')"><span>02 / FLORENCIA</span><strong>La cuna del Renacimiento</strong><small>Santa María del Fiore</small><i class="fa-solid fa-arrow-up-right"></i></button>
+                  <button type="button" onclick="archiItalyChooseCity('Milán')"><span>03 / MILÁN</span><strong>El esplendor del gótico</strong><small>Catedral de Milán</small><i class="fa-solid fa-arrow-up-right"></i></button>
+                </div>
+              </div>
               <div class="vb2-filters" id="vb2-italy-filters" aria-label="Filtrar por ciudad"></div>
               <div class="vb2-monument-grid" id="vb2-italy-monuments"></div>
             </section>
@@ -825,9 +833,9 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
     <script src="scripts/trip-favorites-ui.js?v=97"></script>
     <script src="scripts/settings-ui.js?v=97"></script>
     <script src="scripts/favorites-actions.js?v=121"></script>
-    <script src="scripts/explore-country-city.js?v=97"></script>
-<script src="scripts/vb2-italy.js?v=vb2-1"></script>
-<script src="scripts/vb3-countries.js?v=vb3-1"></script>
+    <script src="scripts/explore-country-city.js?v=vb3photos2"></script>
+<script src="scripts/vb2-italy.js?v=vb4-italia"></script>
+<script src="scripts/vb3-countries.js?v=vb3photos2"></script>
     <script src="scripts/explore-gestures.js?v=97"></script>
     <script src="scripts/carto-config.js?v=136"></script>
     <script src="scripts/gps-map-controller.js?v=140"></script>
