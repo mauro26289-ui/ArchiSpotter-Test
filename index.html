@@ -246,7 +246,11 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
       requestAnimationFrame(function(){requestAnimationFrame(function(){
         setTimeout(function(){
           splash.classList.add('archi-splash-exiting');
-          setTimeout(function(){splash.classList.add('hidden');splash.style.display='none';},750);
+          setTimeout(function(){
+            splash.classList.add('hidden');
+            splash.style.setProperty('display','none','important');
+            splash.remove(); // El splash no debe seguir superpuesto a la bienvenida.
+          },750);
         },2500);
       });});
     });
@@ -271,7 +275,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 })();
 </script>
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-6">
-<link rel="stylesheet" href="styles/entry.css?v=9-23">
+<link rel="stylesheet" href="styles/entry.css?v=9-25">
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 <script id="archi-ios-statusbar-v912">

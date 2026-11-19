@@ -214,3 +214,45 @@ html:has(body.archi-intro-active){background-color:#101517!important}
   html body #archi-onboarding.archi-gone,
   html body #archi-auth-panel.archi-auth-hidden { display: none !important; }
 }
+
+/* vB9.24 — Reparación de transición y área inferior, sin CSS extra. */
+@media (max-width:699px) {
+  /* Evitar que el logo se superponga mientras se desvanece el splash. */
+  html body #splash-screen.archi-splash-exiting .archi-splash-brand {
+    visibility:hidden !important;
+    opacity:0 !important;
+  }
+  html body #splash-screen.archi-splash-exiting:not(.hidden) {
+    opacity:0 !important;
+    pointer-events:none !important;
+  }
+  /* El fondo del sistema coincide con la zona negra de la ilustración. */
+  html:has(body.archi-intro-active),
+  html body.archi-intro-active { background-color:#080c0d !important; }
+  html body #archi-entry-photo {
+    background-color:#080c0d !important;
+    bottom:-100px !important;
+    height:calc(100lvh + 100px) !important;
+    min-height:calc(100dvh + 100px) !important;
+    background-position:center top !important;
+  }
+  /* El fondo continúa bajo el indicador sin crear una segunda fotografía. */
+  html body #archi-entry-photo::after {
+    content:''; position:absolute; left:0;right:0;bottom:0;
+    height:calc(100px + env(safe-area-inset-bottom));
+    background:#080c0d; pointer-events:none;
+  }
+}
+
+/* vB9.25: la bienvenida no puede mostrarse hasta que el splash se retire.
+   :has() está soportado por Safari iOS en la versión objetivo. */
+html:has(#splash-screen:not(.hidden)) body #archi-onboarding {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-gone) {
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
