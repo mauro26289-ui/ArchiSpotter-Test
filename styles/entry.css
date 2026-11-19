@@ -406,3 +406,86 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     background-image: none !important;
   }
 }
+
+
+/* ============================================================
+   vB9.28 — Nuclear full-bleed (anula vB9.23–27 y app.css)
+   ============================================================ */
+@media (max-width: 699px) {
+  html, body,
+  html:has(#splash-screen:not(.hidden)),
+  body:has(#splash-screen:not(.hidden)),
+  body.archi-intro-active,
+  html:has(body.archi-intro-active) {
+    background-color: #101517 !important;
+  }
+
+  html body #archi-entry-photo,
+  html body #splash-screen,
+  html body #splash-screen:not(.hidden) {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: calc(-1 * env(safe-area-inset-bottom, 0px) - 2px) !important;
+    width: 100% !important;
+    width: 100vw !important;
+    height: var(--archi-app-height, 100lvh) !important;
+    min-height: var(--archi-app-height, 100lvh) !important;
+    min-height: -webkit-fill-available !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  html body #archi-entry-photo {
+    display: block !important;
+    z-index: 44 !important;
+    pointer-events: none !important;
+    background: #101517 url('../assets/cinematic-scene-v92.webp') center center / cover no-repeat !important;
+  }
+  html body #archi-entry-photo::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  html body #splash-screen {
+    z-index: 50 !important;
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+  }
+
+  /* Restaurar la <img> (vB9.23 la ocultaba) */
+  html body #splash-screen .archi-splash-art,
+  html body #splash-screen .archi-splash-photo {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    background-image: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  html body #splash-screen .archi-splash-brand {
+    display: flex !important;
+    z-index: 2 !important;
+  }
+}

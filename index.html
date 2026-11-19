@@ -86,7 +86,9 @@
    en su viewport real; mantener un fondo coherente detrás de toda la app. */
 html { background-color:#101517 !important; min-height:100%; }
 body { background-color:#101517 !important; min-height:100%; overscroll-behavior-y:none; }
-body:not(.light-mode) { background-color:#1b2427 !important; }
+body:not(.light-mode) { background-color:#101517 !important; }
+/* Gris de la app solo cuando ya no hay splash ni intro */
+body:not(.light-mode):not(.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { background-color:#1b2427 !important; }
 html:has(#splash-screen:not(.hidden)),
 body:has(#splash-screen:not(.hidden)) { background-color:#101517 !important; }
 body #splash-screen,body #splash-screen:not(.hidden) {
@@ -275,19 +277,140 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 })();
 </script>
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-6">
-<link rel="stylesheet" href="styles/entry.css?v=9-27">
+<link rel="stylesheet" href="styles/entry.css?v=9-28">
 
-<style id="archi-splash-fullscreen-v927">
-/* Prioridad máxima: anula app.css beige y display:none del splash en iPhone */
-@media (max-width:699px){
-html,body,html:has(#splash-screen:not(.hidden)),body:has(#splash-screen:not(.hidden)),body.archi-intro-active{background-color:#101517!important}
-#archi-entry-photo{position:fixed!important;inset:0!important;width:100%!important;height:100lvh!important;min-height:-webkit-fill-available!important;background:#101517 url(assets/cinematic-scene-v92.webp) center center/cover no-repeat!important;z-index:44!important;pointer-events:none!important}
-#archi-entry-photo::after{content:none!important;display:none!important}
-#splash-screen,#splash-screen:not(.hidden){position:fixed!important;inset:0!important;width:100%!important;height:100lvh!important;min-height:-webkit-fill-available!important;background:transparent!important;z-index:50!important;overflow:hidden!important}
-#splash-screen .archi-splash-art,#splash-screen .archi-splash-photo{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;background:none!important}
-#splash-screen .archi-splash-brand{display:flex!important;z-index:2!important}
+<style id="archi-splash-fullscreen-v928">
+/* Nuclear fix: full-bleed splash en iPhone (sin zócalo gris) */
+html {
+  height: 100%;
+  height: -webkit-fill-available;
+  background-color: #101517 !important;
+}
+html, body {
+  background-color: #101517 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body {
+  min-height: 100%;
+  min-height: -webkit-fill-available;
+  min-height: 100dvh;
+  min-height: 100lvh;
+}
+/* Anular el gris #1b2427 mientras splash o intro estén activos */
+body:not(.light-mode),
+body:not(.light-mode).archi-intro-active,
+body:has(#splash-screen:not(.hidden)),
+html:has(#splash-screen:not(.hidden)),
+html:has(body.archi-intro-active) {
+  background-color: #101517 !important;
+}
+@media (max-width: 699px) {
+  /* Capa de foto + splash: anclar a los 4 bordes (más fiable que 100vh en iOS) */
+  #archi-entry-photo,
+  #splash-screen,
+  #splash-screen:not(.hidden) {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    width: 100vw !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  /* Altura forzada con variable JS (window.innerHeight) + fallbacks */
+  #archi-entry-photo,
+  #splash-screen {
+    height: 100% !important;
+    height: 100dvh !important;
+    height: 100lvh !important;
+    height: var(--archi-app-height, 100lvh) !important;
+    min-height: var(--archi-app-height, 100lvh) !important;
+    min-height: -webkit-fill-available !important;
+    /* Empuja un poco más allá del home indicator */
+    bottom: calc(-1 * env(safe-area-inset-bottom, 0px) - 2px) !important;
+  }
+  #archi-entry-photo {
+    z-index: 44 !important;
+    pointer-events: none !important;
+    background: #101517 url(assets/cinematic-scene-v92.webp) center center / cover no-repeat !important;
+  }
+  #archi-entry-photo::after {
+    content: none !important;
+    display: none !important;
+  }
+  #splash-screen {
+    z-index: 50 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+  /* La <img> real ocupa todo el splash */
+  #splash-screen .archi-splash-art {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    background-color: transparent !important;
+  }
+  #splash-screen .archi-splash-photo {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    background: none !important;
+  }
+  #splash-screen .archi-splash-brand {
+    display: flex !important;
+    z-index: 2 !important;
+  }
+  #archi-onboarding, #archi-auth-panel {
+    background: transparent !important;
+    background-image: none !important;
+  }
 }
 </style>
+<script id="archi-app-height-v928">
+(function () {
+  function setH() {
+    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    // Usar el mayor entre innerHeight y screen disponible para cubrir home indicator
+    var h2 = Math.max(window.innerHeight || 0, h || 0);
+    document.documentElement.style.setProperty('--archi-app-height', h2 + 'px');
+  }
+  setH();
+  window.addEventListener('resize', setH, { passive: true });
+  window.addEventListener('orientationchange', function () { setTimeout(setH, 200); }, { passive: true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setH, { passive: true });
+  }
+  document.addEventListener('DOMContentLoaded', setH, { once: true });
+})();
+</script>
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 <script id="archi-ios-statusbar-v912">
