@@ -35,5 +35,8 @@
             img.dataset.fallbackDone = 'true';
             img.src = architecturePlaceholder();
             img.classList.add('image-placeholder');
-            img.alt = (img.alt || 'Monumento') + ' — fotografía no disponible (verificar conexión a Unsplash)';
+            // E153: una recuperación fallida no debe añadir el aviso repetidamente al texto alternativo.
+            const unavailableSuffix = ' — fotografía no disponible (verificar conexión a Unsplash)';
+            const currentAlt = img.alt || 'Monumento';
+            img.alt = currentAlt.endsWith(unavailableSuffix) ? currentAlt : currentAlt + unavailableSuffix;
         }
