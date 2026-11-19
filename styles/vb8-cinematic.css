@@ -30,3 +30,26 @@ html,body,body.light-mode{background:#101517!important;color:#f3eee5!important}
 #monument-modal :is(.text-gray-600,.text-slate-600,.text-gray-700,.text-slate-700){color:#d3c6b2!important}
 #monument-modal :is(h1,h2,h3){color:#f1c67b!important}
 #archi-settings-overlay{color:#f2e9d7!important}
+
+/* vB8.1: superficie de sistema iOS coherente con la imagen, sin franja crema. */
+html,html:has(#splash-screen:not(.hidden)),
+body,body.archi-intro-active,
+body:has(#splash-screen:not(.hidden)){background-color:#101517!important}
+#splash-screen,#splash-screen:not(.hidden){background-color:#101517!important}
+#archi-onboarding{background-color:#101517!important}
+#splash-screen .archi-splash-brand{
+ position:absolute;z-index:3;left:0;right:0;bottom:max(12%,calc(env(safe-area-inset-bottom) + 60px));
+ display:flex;flex-direction:column;align-items:center;gap:8px;
+ color:#f8ead0;text-align:center;pointer-events:none;
+ text-shadow:0 3px 14px rgba(0,0,0,.95)
+}
+#splash-screen .archi-splash-brand img{
+ width:clamp(72px,24vw,120px);height:clamp(72px,24vw,120px);
+ object-fit:contain;filter:drop-shadow(0 5px 15px #000c)
+}
+#splash-screen .archi-splash-brand-name{
+ font:700 clamp(21px,6vw,30px) Georgia,serif;letter-spacing:.12em
+}
+#splash-screen .archi-splash-brand-subtitle{
+ font:700 10px system-ui,sans-serif;letter-spacing:.24em;color:#e6b760
+}
