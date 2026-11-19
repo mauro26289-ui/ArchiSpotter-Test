@@ -489,3 +489,22 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     z-index: 2 !important;
   }
 }
+
+
+/* vB9.29 — fondo = borde inferior real de la foto (#050709); sin gris */
+@media (max-width: 699px) {
+  html, body,
+  html:has(body.archi-intro-active),
+  body.archi-intro-active,
+  html:has(#splash-screen:not(.hidden)),
+  body:has(#splash-screen:not(.hidden)) {
+    background-color: #050709 !important;
+    background: #050709 !important;
+  }
+  html body #archi-entry-photo {
+    background-color: #050709 !important;
+    background-image: url('../assets/cinematic-scene-v92.webp') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+}

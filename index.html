@@ -3,7 +3,7 @@
 <head>
     <meta name="color-scheme" content="dark">
     <meta name="mobile-web-app-capable" content="yes">
-    <style>html,body{background:#101517!important;color-scheme:dark}html{min-height:100%;}body{min-height:100dvh;margin:0}</style>
+    <style>html,body{background:#050709!important;color-scheme:dark}html{min-height:100%;}body{min-height:100dvh;margin:0}</style>
     <!-- E112: inicio de medicion antes de dependencias externas -->
     <script>window.__archiE112Start = performance.now(); performance.mark('archi:e112:head');</script>
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
@@ -116,8 +116,8 @@ body #splash-screen .archi-splash-photo {
 html { background-color:#101517 !important; }
 body.light-mode { background-color:#101517 !important; }
 html:has(body:not(.light-mode)):not(:has(#splash-screen:not(.hidden))) { background-color:#1b2427 !important; }
-body.archi-intro-active { background-color:#101517 !important; }
-html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { background-color:#101517 !important; }
+body.archi-intro-active { background-color:#050709 !important; }
+html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { background-color:#050709 !important; }
 </style>
 <style id="archi-root-scroll-lock-v96">
 /* E96: el documento exterior no es el área desplazable de la PWA.
@@ -277,49 +277,43 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 })();
 </script>
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-6">
-<link rel="stylesheet" href="styles/entry.css?v=9-28">
+<link rel="stylesheet" href="styles/entry.css?v=9-29">
 
-<style id="archi-splash-fullscreen-v928">
-/* Nuclear fix: full-bleed splash en iPhone (sin zócalo gris) */
+<style id="archi-splash-fullscreen-v929">
+/* v929: el zócalo gris es body #1b2427; la foto termina en #050709.
+   Igualamos el fondo al negro de la imagen y forzamos altura por JS. */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #050709 !important;
+  background: #050709 !important;
+}
 html {
   height: 100%;
   height: -webkit-fill-available;
-  background-color: #101517 !important;
-}
-html, body {
-  background-color: #101517 !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 body {
   min-height: 100%;
   min-height: -webkit-fill-available;
-  min-height: 100dvh;
-  min-height: 100lvh;
 }
-/* Anular el gris #1b2427 mientras splash o intro estén activos */
-body:not(.light-mode),
-body:not(.light-mode).archi-intro-active,
+/* Nunca mostrar el gris de la app durante splash/onboarding */
+body.archi-intro-active,
 body:has(#splash-screen:not(.hidden)),
+html:has(body.archi-intro-active),
 html:has(#splash-screen:not(.hidden)),
-html:has(body.archi-intro-active) {
-  background-color: #101517 !important;
+body:not(.light-mode).archi-intro-active {
+  background-color: #050709 !important;
+  background: #050709 !important;
 }
 @media (max-width: 699px) {
-  /* Capa de foto + splash: anclar a los 4 bordes (más fiable que 100vh en iOS) */
   #archi-entry-photo,
-  #splash-screen,
-  #splash-screen:not(.hidden) {
+  #splash-screen {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
     width: 100% !important;
-    width: 100vw !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
@@ -328,45 +322,21 @@ html:has(body.archi-intro-active) {
     overflow: hidden !important;
     box-sizing: border-box !important;
   }
-  /* Altura forzada con variable JS (window.innerHeight) + fallbacks */
-  #archi-entry-photo,
-  #splash-screen {
-    height: 100% !important;
-    height: 100dvh !important;
-    height: 100lvh !important;
-    height: var(--archi-app-height, 100lvh) !important;
-    min-height: var(--archi-app-height, 100lvh) !important;
-    min-height: -webkit-fill-available !important;
-    /* Empuja un poco más allá del home indicator */
-    bottom: calc(-1 * env(safe-area-inset-bottom, 0px) - 2px) !important;
-  }
   #archi-entry-photo {
     z-index: 44 !important;
     pointer-events: none !important;
-    background: #101517 url(assets/cinematic-scene-v92.webp) center center / cover no-repeat !important;
+    background-color: #050709 !important;
+    background-image: url(assets/cinematic-scene-v92.webp) !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
   }
-  #archi-entry-photo::after {
-    content: none !important;
-    display: none !important;
-  }
+  #archi-entry-photo::after { content: none !important; display: none !important; }
   #splash-screen {
     z-index: 50 !important;
     background: transparent !important;
-    background-color: transparent !important;
-    background-image: none !important;
   }
-  /* La <img> real ocupa todo el splash */
-  #splash-screen .archi-splash-art {
-    display: block !important;
-    position: absolute !important;
-    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: none !important;
-    background-color: transparent !important;
-  }
+  #splash-screen .archi-splash-art,
   #splash-screen .archi-splash-photo {
     display: block !important;
     visibility: visible !important;
@@ -377,38 +347,65 @@ html:has(body.archi-intro-active) {
     height: 100% !important;
     max-width: none !important;
     max-height: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
     object-fit: cover !important;
     object-position: center center !important;
     background: none !important;
   }
-  #splash-screen .archi-splash-brand {
-    display: flex !important;
-    z-index: 2 !important;
-  }
+  #splash-screen .archi-splash-brand { display: flex !important; z-index: 2 !important; }
   #archi-onboarding, #archi-auth-panel {
     background: transparent !important;
     background-image: none !important;
   }
 }
 </style>
-<script id="archi-app-height-v928">
+<script id="archi-app-height-v929">
 (function () {
-  function setH() {
-    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-    // Usar el mayor entre innerHeight y screen disponible para cubrir home indicator
-    var h2 = Math.max(window.innerHeight || 0, h || 0);
-    document.documentElement.style.setProperty('--archi-app-height', h2 + 'px');
+  function apply() {
+    var h = Math.max(
+      window.innerHeight || 0,
+      (window.visualViewport && window.visualViewport.height) || 0,
+      document.documentElement.clientHeight || 0
+    );
+    // Extra para cubrir home indicator / toolbars de Safari
+    var extra = 80;
+    var total = h + extra;
+    document.documentElement.style.setProperty('--archi-app-height', total + 'px');
+    document.documentElement.style.backgroundColor = '#050709';
+    if (document.body) {
+      document.body.style.setProperty('background-color', '#050709', 'important');
+      document.body.style.setProperty('background', '#050709', 'important');
+    }
+    ['archi-entry-photo', 'splash-screen'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.style.setProperty('position', 'fixed', 'important');
+      el.style.setProperty('top', '0', 'important');
+      el.style.setProperty('left', '0', 'important');
+      el.style.setProperty('right', '0', 'important');
+      el.style.setProperty('bottom', 'auto', 'important');
+      el.style.setProperty('width', '100%', 'important');
+      el.style.setProperty('height', total + 'px', 'important');
+      el.style.setProperty('min-height', total + 'px', 'important');
+      el.style.setProperty('max-height', 'none', 'important');
+    });
   }
-  setH();
-  window.addEventListener('resize', setH, { passive: true });
-  window.addEventListener('orientationchange', function () { setTimeout(setH, 200); }, { passive: true });
+  apply();
+  window.addEventListener('resize', apply, { passive: true });
+  window.addEventListener('orientationchange', function () { setTimeout(apply, 250); }, { passive: true });
   if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', setH, { passive: true });
+    window.visualViewport.addEventListener('resize', apply, { passive: true });
+    window.visualViewport.addEventListener('scroll', apply, { passive: true });
   }
-  document.addEventListener('DOMContentLoaded', setH, { once: true });
+  document.addEventListener('DOMContentLoaded', apply, { once: true });
+  // Reaplicar cuando el splash se quite y quede el onboarding
+  document.addEventListener('DOMContentLoaded', function () {
+    var splash = document.getElementById('splash-screen');
+    if (!splash || !window.MutationObserver) return;
+    new MutationObserver(apply).observe(splash, { attributes: true, attributeFilter: ['class', 'style'] });
+  }, { once: true });
+  setTimeout(apply, 100);
+  setTimeout(apply, 500);
+  setTimeout(apply, 1500);
 })();
 </script>
 </head>
