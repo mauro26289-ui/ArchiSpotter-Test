@@ -60,7 +60,8 @@
                 if (!crop || (crop.cropX < 1 && crop.cropY < 1)) return;
                 photoPointer = { id:e.pointerId, x:e.clientX, y:e.clientY,
                     px:parseFloat(crop.img.style.getPropertyValue('--archi-photo-x')) || 50,
-                    py:parseFloat(crop.img.style.getPropertyValue('--archi-photo-y')) || 50 };
+                    py:parseFloat(crop.img.style.getPropertyValue('--archi-photo-y')) || 50,
+                    overscroll:0, direction:0, moved:false };
                 try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
             }, {passive:true});
             viewport.addEventListener('pointermove', (e) => {
@@ -68,15 +69,34 @@
                 const crop = coverCrop();
                 if (!crop) return;
                 const dx = e.clientX - photoPointer.x, dy = e.clientY - photoPointer.y;
-                const x = crop.cropX > 1 ? Math.max(0,Math.min(100,photoPointer.px - dx / crop.cropX * 100)) : 50;
+                const rawX = crop.cropX > 1 ? photoPointer.px - dx / crop.cropX * 100 : 50;
+                const x = crop.cropX > 1 ? Math.max(0,Math.min(100,rawX)) : 50;
+                // Sólo cambiar foto cuando se intenta seguir deslizando fuera del borde.
+                // El primer arrastre siempre explora la fotografía actual.
+                photoPointer.overscroll = crop.cropX > 1
+                    ? (rawX < 0 ? -rawX * crop.cropX / 100 : rawX > 100 ? (rawX - 100) * crop.cropX / 100 : 0)
+                    : 0;
+                photoPointer.direction = rawX < 0 ? 1 : rawX > 100 ? -1 : 0;
+                photoPointer.moved = photoPointer.moved || Math.abs(dx) > 12 || Math.abs(dy) > 12;
                 const y = crop.cropY > 1 ? Math.max(0,Math.min(100,photoPointer.py - dy / crop.cropY * 100)) : 50;
                 crop.img.style.setProperty('--archi-photo-x', x + '%');
                 crop.img.style.setProperty('--archi-photo-y', y + '%');
             }, {passive:true});
             const finishPhotoPointer = (e) => {
+                if (photoPointer && photoPointer.id === e.pointerId) {
+                    if (e.type === 'pointerup' && photoPointerCountIsSingle() &&
+                        lightboxScale === 1 && lightboxImages.length > 1 &&
+                        photoPointer.moved && photoPointer.overscroll >= 65) {
+                        const direction = photoPointer.direction;
+                        if (direction < 0) nextLightboxImage();
+                        else if (direction > 0) prevLightboxImage();
+                        lastTapTime = 0;
+                    }
+                    photoPointer = null;
+                }
                 photoPointers.delete(e.pointerId);
-                if (photoPointer && photoPointer.id === e.pointerId) photoPointer = null;
             };
+            const photoPointerCountIsSingle = () => photoPointers.size === 1;
             viewport.addEventListener('pointerup', finishPhotoPointer);
             viewport.addEventListener('pointercancel', finishPhotoPointer);
             viewport.addEventListener('lostpointercapture', finishPhotoPointer);
