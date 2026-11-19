@@ -1,1 +1,0 @@
-ETAPA 107 — Diagnóstico de blur superior. Base E106 limpia. Abrir con ?blurdiag=1, esperar a que aparezca blur, tocar Marcar blur y Copiar log. No se cambian estilos ni viewport. El panel de diagnóstico se muestra solo con el parámetro.

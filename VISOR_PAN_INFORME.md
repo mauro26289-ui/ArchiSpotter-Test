@@ -1,1 +1,0 @@
-Corrección del visor: arrastre de fotografía recortada a zoom 1, vertical y horizontal cuando hay una sola foto; preserva gesto horizontal de cambio entre varias fotos. Reinicio de encuadre al cambiar de imagen. La extensión bajo Dynamic Island sigue condicionada por iOS y requiere verificación en el dispositivo. Base: visor inmersivo anterior.
