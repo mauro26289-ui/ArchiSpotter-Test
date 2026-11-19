@@ -17,6 +17,38 @@
             }, { passive: false });
 
 
+            // Con object-fit:cover, permitir explorar la zona recortada incluso con zoom 1.
+            // El desplazamiento horizontal sigue cambiando de foto cuando hay varias.
+            let coverDrag = null;
+            function coverCrop() {
+                const img = document.getElementById('lightbox-img');
+                const view = document.getElementById('lightbox-viewport');
+                const modal = document.getElementById('fullscreen-lightbox');
+                if (!img || !view || !modal || modal.classList.contains('archi-fit-contain') ||
+                    !img.naturalWidth || !img.naturalHeight) return null;
+                const w = view.clientWidth, h = view.clientHeight;
+                if (!w || !h) return null;
+                const factor = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+                return {img, cropX: Math.max(0, img.naturalWidth * factor - w),
+                    cropY: Math.max(0, img.naturalHeight * factor - h)};
+            }
+            function coverMove(x, y) {
+                if (!coverDrag || lightboxScale !== 1) return false;
+                const crop = coverCrop();
+                if (!crop) return false;
+                const dx = x - coverDrag.x, dy = y - coverDrag.y;
+                const px = crop.cropX ? Math.max(0, Math.min(100, coverDrag.px - dx / crop.cropX * 100)) : 50;
+                const py = crop.cropY ? Math.max(0, Math.min(100, coverDrag.py - dy / crop.cropY * 100)) : 50;
+                crop.img.style.objectPosition = `${px}% ${py}%`;
+                return true;
+            }
+            function coverStart(x, y) {
+                const crop = coverCrop();
+                if (!crop) { coverDrag = null; return; }
+                const parts = (crop.img.style.objectPosition || '50% 50%').match(/([\\d.]+)%/g) || [];
+                coverDrag = {x,y,px:parts[0] ? parseFloat(parts[0]) : 50,
+                    py:parts[1] ? parseFloat(parts[1]) : 50};
+            }
             const startDrag = (x, y) => {
                 if (lightboxScale > 1) {
                     isDraggingLightbox = true;
@@ -97,7 +129,8 @@
                         return;
                     }
                     lastTapTime = now;
-                    startDrag(e.touches[0].clientX, e.touches[0].clientY);
+                    coverStart(touch.clientX, touch.clientY);
+                    startDrag(touch.clientX, touch.clientY);
                 }
             }, { passive: false });
 
@@ -128,8 +161,14 @@
                             }
                         }
                     } else {
-                        if (lightboxScale > 1) e.preventDefault();
-                        moveDrag(touch.clientX, touch.clientY);
+                        if (lightboxScale > 1) {
+                            e.preventDefault();
+                            moveDrag(touch.clientX, touch.clientY);
+                        } else if (coverDrag && (Math.abs(touch.clientY - coverDrag.y) > 5 ||
+                                   (lightboxImages.length <= 1 && Math.abs(touch.clientX - coverDrag.x) > 5))) {
+                            e.preventDefault();
+                            coverMove(touch.clientX, touch.clientY);
+                        }
                     }
                 }
             }, { passive: false });
@@ -181,6 +220,7 @@
                     }
                     swipeEligible = false;
                     swipeMultiTouch = false;
+                    coverDrag = null;
                     stopDrag();
                 }
             });
@@ -188,6 +228,7 @@
                 clearSwipeVisual();
                 swipeEligible = false;
                 swipeMultiTouch = false;
+                coverDrag = null;
                 stopDrag();
             });
         }
