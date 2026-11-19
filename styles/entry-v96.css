@@ -81,3 +81,22 @@ body #splash-screen .archi-splash-art,
  background-repeat:no-repeat!important;
 }
 body #splash-screen .archi-splash-photo{display:none!important}
+
+/* vB9.10 — una sola capa fotográfica física, persistente durante
+   splash -> bienvenida -> autenticación. Evita recalcular escala o posición. */
+#archi-entry-backdrop{
+ position:fixed!important;inset:0!important;width:100%!important;height:100%!important;
+ z-index:1!important;pointer-events:none!important;
+ background:#101517 url('../assets/cinematic-scene-v92.webp') center top / 100% auto no-repeat!important;
+}
+#archi-entry-backdrop::after{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(to bottom,#101517 0%,rgba(16,21,23,.96) 5%,rgba(16,21,23,.67) 11%,rgba(16,21,23,.20) 19%,transparent 27%);
+}
+#archi-onboarding,#archi-auth-panel,
+body #splash-screen,body #splash-screen .archi-splash-art{
+ background:transparent!important;background-image:none!important;
+}
+body #splash-screen .archi-splash-photo{display:none!important}
+#archi-onboarding,#archi-auth-panel{z-index:45!important}
+#archi-auth-panel{z-index:100!important}
