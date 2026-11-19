@@ -1,8 +1,8 @@
 // Código original extraído de app.js (etapa 68).
         function renderNavigationFlow() {
             const italyView = document.getElementById('vb2-italy');
-            const isItalyLanding = selectedCountry === 'Italia' && !selectedCity;
-            const isVB3Landing = ['España','Suiza','Francia','Reino Unido'].includes(selectedCountry) && !selectedCity;
+            const isItalyLanding = currentTab === 'explore' && selectedCountry === 'Italia' && !selectedCity;
+            const isVB3Landing = currentTab === 'explore' && ['España','Suiza','Francia','Reino Unido'].includes(selectedCountry) && !selectedCity;
             const vb3View=document.getElementById('vb3-country');
             if(vb3View)vb3View.classList.toggle('hidden',!isVB3Landing);
             if (italyView) italyView.classList.toggle('hidden', !isItalyLanding);
