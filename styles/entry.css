@@ -508,3 +508,34 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     background-position: center center !important;
   }
 }
+
+
+/* vB9.31 — Autenticación: ocultar la bienvenida mientras el panel está abierto.
+   El panel es transparente para conservar la foto compartida; por eso, sin
+   esta regla, sus botones quedan visibles debajo del formulario. */
+body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-onboarding {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-auth-panel {
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+/* Respetar la visibilidad del panel al volver a la bienvenida. */
+#archi-auth-panel.archi-auth-hidden {
+  display: none !important;
+}
+/* Evitar el amarillo de autocompletado de Safari sin alterar el fondo. */
+#archi-auth-panel .archi-auth-field input,
+#archi-auth-panel .archi-auth-field input:focus {
+  background: transparent !important;
+  color: #fff5df !important;
+  -webkit-text-fill-color: #fff5df !important;
+}
+#archi-auth-panel .archi-auth-field input:-webkit-autofill,
+#archi-auth-panel .archi-auth-field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff5df !important;
+  -webkit-box-shadow: 0 0 0 1000px #101517 inset !important;
+  box-shadow: 0 0 0 1000px #101517 inset !important;
+  caret-color: #fff5df !important;
+}
