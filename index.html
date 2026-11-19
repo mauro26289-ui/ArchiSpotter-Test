@@ -277,7 +277,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 })();
 </script>
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-6">
-<link rel="stylesheet" href="styles/entry.css?v=9-29">
+<link rel="stylesheet" href="styles/entry.css?v=9-30">
 
 <style id="archi-splash-fullscreen-v929">
 /* v929: el zócalo gris es body #1b2427; la foto termina en #050709.
@@ -358,56 +358,125 @@ body:not(.light-mode).archi-intro-active {
   }
 }
 </style>
-<script id="archi-app-height-v929">
+<script id="archi-app-height-v930">
 (function () {
-  function apply() {
-    var h = Math.max(
-      window.innerHeight || 0,
-      (window.visualViewport && window.visualViewport.height) || 0,
-      document.documentElement.clientHeight || 0
-    );
-    // Extra para cubrir home indicator / toolbars de Safari
-    var extra = 80;
-    var total = h + extra;
-    document.documentElement.style.setProperty('--archi-app-height', total + 'px');
-    document.documentElement.style.backgroundColor = '#050709';
-    if (document.body) {
-      document.body.style.setProperty('background-color', '#050709', 'important');
-      document.body.style.setProperty('background', '#050709', 'important');
-    }
-    ['archi-entry-photo', 'splash-screen'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      el.style.setProperty('position', 'fixed', 'important');
-      el.style.setProperty('top', '0', 'important');
-      el.style.setProperty('left', '0', 'important');
-      el.style.setProperty('right', '0', 'important');
-      el.style.setProperty('bottom', 'auto', 'important');
-      el.style.setProperty('width', '100%', 'important');
-      el.style.setProperty('height', total + 'px', 'important');
-      el.style.setProperty('min-height', total + 'px', 'important');
-      el.style.setProperty('max-height', 'none', 'important');
-    });
+  var BLACK = '#050709';
+  var APP_BG = '#1b2427';
+
+  function isIntro() {
+    var body = document.body;
+    if (!body) return true;
+    if (body.classList.contains('archi-intro-active')) return true;
+    var splash = document.getElementById('splash-screen');
+    if (splash && !splash.classList.contains('hidden') && splash.isConnected) return true;
+    return false;
   }
+
+  function apply() {
+    var body = document.body;
+    if (!body) return;
+
+    if (isIntro()) {
+      var h = Math.max(
+        window.innerHeight || 0,
+        (window.visualViewport && window.visualViewport.height) || 0,
+        document.documentElement.clientHeight || 0
+      );
+      var total = h + 80;
+      document.documentElement.style.setProperty('--archi-app-height', total + 'px');
+      document.documentElement.style.setProperty('background-color', BLACK, 'important');
+      body.style.setProperty('background-color', BLACK, 'important');
+      body.style.setProperty('background', BLACK, 'important');
+      ['archi-entry-photo', 'splash-screen'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.setProperty('position', 'fixed', 'important');
+        el.style.setProperty('top', '0', 'important');
+        el.style.setProperty('left', '0', 'important');
+        el.style.setProperty('right', '0', 'important');
+        el.style.setProperty('bottom', 'auto', 'important');
+        el.style.setProperty('width', '100%', 'important');
+        el.style.setProperty('height', total + 'px', 'important');
+        el.style.setProperty('min-height', total + 'px', 'important');
+      });
+    } else {
+      // App normal: restaurar fondo de la app y no tocar alturas del splash
+      document.documentElement.style.setProperty('background-color', APP_BG, 'important');
+      body.style.setProperty('background-color', APP_BG, 'important');
+      body.style.setProperty('background', APP_BG, 'important');
+      document.documentElement.style.removeProperty('--archi-app-height');
+      var photo = document.getElementById('archi-entry-photo');
+      if (photo) {
+        photo.style.cssText = '';
+        photo.style.setProperty('display', 'none', 'important');
+      }
+    }
+  }
+
   apply();
   window.addEventListener('resize', apply, { passive: true });
   window.addEventListener('orientationchange', function () { setTimeout(apply, 250); }, { passive: true });
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', apply, { passive: true });
-    window.visualViewport.addEventListener('scroll', apply, { passive: true });
   }
-  document.addEventListener('DOMContentLoaded', apply, { once: true });
-  // Reaplicar cuando el splash se quite y quede el onboarding
   document.addEventListener('DOMContentLoaded', function () {
+    apply();
+    if (window.MutationObserver && document.body) {
+      new MutationObserver(apply).observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    }
     var splash = document.getElementById('splash-screen');
-    if (!splash || !window.MutationObserver) return;
-    new MutationObserver(apply).observe(splash, { attributes: true, attributeFilter: ['class', 'style'] });
+    if (splash && window.MutationObserver) {
+      new MutationObserver(apply).observe(splash, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+      });
+    }
   }, { once: true });
   setTimeout(apply, 100);
-  setTimeout(apply, 500);
-  setTimeout(apply, 1500);
+  setTimeout(apply, 600);
+  setTimeout(apply, 2000);
+  setTimeout(apply, 4000);
 })();
 </script>
+
+<style id="archi-inapp-bottom-v930">
+/* In-app: sin zócalo debajo del bottom nav */
+body:not(.archi-intro-active):not(:has(#splash-screen:not(.hidden))) {
+  background-color: #1b2427 !important;
+  background: #1b2427 !important;
+}
+html:has(body:not(.archi-intro-active):not(:has(#splash-screen:not(.hidden)))) {
+  background-color: #1b2427 !important;
+}
+@media (max-width: 699px) {
+  body:not(.archi-intro-active) #app > nav.bottom-nav {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    /* El fondo del nav pinta también la zona del home indicator */
+    padding-bottom: max(10px, env(safe-area-inset-bottom, 0px)) !important;
+    background-color: #0f172a !important;
+    background: #0f172a !important;
+    border-top-color: #1e293b !important;
+    z-index: 40 !important;
+  }
+  body:not(.archi-intro-active) #app {
+    min-height: 100dvh !important;
+    min-height: -webkit-fill-available !important;
+    background-color: #1b2427 !important;
+  }
+  body:not(.archi-intro-active) #app > main {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+</style>
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 <script id="archi-ios-statusbar-v912">
