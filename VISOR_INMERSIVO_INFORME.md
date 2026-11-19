@@ -1,0 +1,1 @@
+Visor inmersivo: viewport-fit=cover al abrir fotos, restauracion de viewport-fit=auto al cerrar. Imagen a 100dvh, controles respetando safe area, modo cover/contain. Base: visor completo basado en E154. Validacion estatica, pendiente prueba real en iPhone.

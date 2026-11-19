@@ -881,3 +881,25 @@ body > #fullscreen-lightbox:not(.hidden) {display:block!important;padding:0!impo
 #fullscreen-lightbox #lightbox-caption,#fullscreen-lightbox #lightbox-counter {color:white!important}
 #fullscreen-lightbox #lightbox-fit-button {color:white!important;background:rgba(0,0,0,.55)!important}
 body > #fullscreen-lightbox.archi-fit-contain #lightbox-img {object-fit:contain!important}
+
+/* Visor extendido hasta el borde fisico del iPhone y el area de Dynamic Island. */
+html.archi-photo-immersive, html.archi-photo-immersive body {
+  background:#080a0e!important;
+}
+html.archi-photo-immersive body > #fullscreen-lightbox:not(.hidden) {
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  max-width:none!important;
+  max-height:none!important;
+  border-radius:0!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  z-index:2147483647!important;
+}
+html.archi-photo-immersive #lightbox-viewport,
+html.archi-photo-immersive #lightbox-img {
+  border-radius:0!important;
+}

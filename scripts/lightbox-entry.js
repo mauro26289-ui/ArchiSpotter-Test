@@ -18,12 +18,15 @@
             if (lightbox && lightbox.parentElement !== document.body) {
                 document.body.appendChild(lightbox);
             }
+            // Expandir el viewport al area de sistema solo mientras se muestra la foto.
+            archiSetImmersivePhotoViewport(true);
             if (lightbox) lightbox.classList.remove('hidden');
         }
 
         function closeFullscreenLightbox() {
             triggerHaptic();
             document.getElementById('fullscreen-lightbox').classList.add('hidden');
+            archiSetImmersivePhotoViewport(false);
             resetLightboxZoom();
         }
 
@@ -41,4 +44,16 @@
                 if (icon) icon.className = contained ? 'fa-solid fa-compress text-xs' : 'fa-solid fa-expand text-xs';
             }
             resetLightboxZoom();
+        }
+
+        // Mantener la geometria historica de ArchiSpotter fuera del visor.
+        function archiSetImmersivePhotoViewport(enabled) {
+            const meta = document.querySelector('meta[name="viewport"]');
+            if (!meta) return;
+            if (!meta.dataset.archiNormalViewport) meta.dataset.archiNormalViewport = meta.content;
+            const normal = meta.dataset.archiNormalViewport;
+            meta.content = enabled
+                ? normal.replace(/viewport-fit=(?:auto|contain|cover)/, 'viewport-fit=cover')
+                : normal;
+            document.documentElement.classList.toggle('archi-photo-immersive', enabled);
         }
