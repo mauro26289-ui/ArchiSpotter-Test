@@ -1,0 +1,30 @@
+/* ArchiSpotter vB1 — Contemporary Dark / visual exploration */
+:root { color-scheme:dark; }
+body:not(.light-mode) { --archi-paper:#101518; --archi-surface:#1b2428; --archi-raised:#293338; --archi-ink:#f6f1e8; --archi-muted:#c3c8c5; --archi-line:#364348; --archi-accent:#e9b75a; --archi-primary:#e9b75a; --archi-on-primary:#151b1e; background:#101518!important; color:#f6f1e8!important; }
+body:not(.light-mode) #app,body:not(.light-mode) main,body:not(.light-mode) #view-map {background:#101518!important;color:#f6f1e8!important;}
+body:not(.light-mode) header,body:not(.light-mode) nav {background:rgba(20,27,30,.97)!important;border-color:#354247!important;color:#f6f1e8!important;}
+body:not(.light-mode) .bg-slate-950,body:not(.light-mode) .bg-slate-900 {background:#1b2428!important;}
+body:not(.light-mode) .bg-slate-800,body:not(.light-mode) .surface-card {background:#253036!important;border-color:#354247!important;color:#f6f1e8!important;}
+body:not(.light-mode) .text-amber-400,body:not(.light-mode) .text-amber-500 {color:#e9b75a!important;}
+body:not(.light-mode) .bg-amber-500 {background:#e9b75a!important;color:#151b1e!important;}
+body:not(.light-mode) .text-white,body:not(.light-mode) .text-slate-100,body:not(.light-mode) .text-slate-200 {color:#f6f1e8!important;}
+body:not(.light-mode) .text-slate-300,body:not(.light-mode) .text-slate-400 {color:#c3c8c5!important;}
+body:not(.light-mode) .visual-card {background:#202b30!important;border:1px solid #354247!important;box-shadow:0 12px 30px rgba(0,0,0,.24)!important;}
+body:not(.light-mode) .visual-card img {object-fit:cover!important;aspect-ratio:4/3!important;}
+body:not(.light-mode) #app > nav.bottom-nav {background:#151d20!important;border-top:1px solid #344248!important;box-shadow:0 -8px 30px rgba(0,0,0,.22)!important;}
+body:not(.light-mode) #app > nav.bottom-nav button.text-amber-500 {color:#e9b75a!important;background:#2d3434!important;}
+body:not(.light-mode) .leaflet-popup-content-wrapper,body:not(.light-mode) .leaflet-popup-tip {background:#1b2428;color:#f6f1e8;}
+body:not(.light-mode) .leaflet-popup-content a {color:#e9b75a;}
+body:not(.light-mode) input,body:not(.light-mode) textarea,body:not(.light-mode) select {background:#253036!important;color:#f6f1e8!important;border-color:#465257!important;}
+body.light-mode {--archi-paper:#f7f5ef;--archi-surface:#fffdf8;--archi-raised:#eee9df;--archi-ink:#202b30;--archi-muted:#536065;--archi-line:#d9d7ce;--archi-accent:#a37628;--archi-primary:#27353b;--archi-on-primary:#fffdf8;}
+body.light-mode #app,body.light-mode main,body.light-mode #view-map {background:#f7f5ef!important;color:#202b30!important;}
+body.light-mode header,body.light-mode nav {background:#fffdf8!important;color:#202b30!important;border-color:#d9d7ce!important;}
+body.light-mode .surface-card,body.light-mode .visual-card {background:#fffdf8!important;border-color:#d9d7ce!important;box-shadow:0 10px 28px rgba(22,35,39,.06)!important;}
+body.light-mode #app > nav.bottom-nav {background:#fffdf8!important;border-top:1px solid #d9d7ce!important;}
+body.light-mode .text-amber-400,body.light-mode .text-amber-500 {color:#9b722e!important;}
+body.light-mode .bg-amber-500 {background:#26343a!important;color:#fffdf8!important;}
+#view-home .visual-card,#view-countries .visual-card,#view-monuments-container .visual-card {border-radius:19px!important;overflow:hidden!important;}
+#view-home .visual-card img,#view-countries .visual-card img {border-radius:17px 17px 0 0!important;}
+#view-home h2,#view-monuments-container h2 {letter-spacing:-.025em!important;}
+#app button { -webkit-tap-highlight-color:transparent; }
+#app button:focus-visible {outline:2px solid #e9b75a!important;outline-offset:2px;}
