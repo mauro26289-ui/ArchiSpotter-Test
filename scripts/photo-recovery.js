@@ -7,7 +7,7 @@
             document.querySelectorAll('img.image-placeholder[data-original-photo]').forEach(function(img) {
                 if (!img.isConnected || img.dataset.onlineRecoveryTried === 'true') return;
                 const rect = img.getBoundingClientRect();
-                if (rect.width <= 0 || rect.height <= 0 || rect.bottom < 0 || rect.top > window.innerHeight) return;
+                if (rect.width <= 0 || rect.height <= 0 || rect.bottom < 0 || rect.top > window.innerHeight || rect.right < 0 || rect.left > window.innerWidth) return;
                 const original = img.dataset.originalPhoto;
                 if (!original || !original.startsWith('https://images.unsplash.com/')) return;
                 img.dataset.onlineRecoveryTried = 'true';
