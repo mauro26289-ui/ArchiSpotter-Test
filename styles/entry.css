@@ -189,6 +189,10 @@ html:has(body.archi-intro-active){background-color:#101517!important}
     min-height: 0 !important; background: transparent !important;
     z-index: 50 !important;
   }
+  /* Mismo encuadre que la capa compartida, pero independiente de su z-index. */
+  html body #splash-screen {
+    background: #101517 url('../assets/cinematic-scene-v92.webp') center center / cover no-repeat !important;
+  }
   html body #splash-screen .archi-splash-art,
   html body #splash-screen .archi-splash-photo { display: none !important; }
   html body #archi-onboarding,
