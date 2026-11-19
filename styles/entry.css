@@ -1,3 +1,9 @@
+/* ArchiSpotter — estilos de presentación, bienvenida y acceso.
+   Consolidación de los archivos activos de vB9.19, manteniendo su orden
+   de cascada para no alterar el comportamiento durante las pruebas. */
+
+
+/* ===== Origen: entry-v100.css ===== */
 /* vB9.6 — ÚNICA fuente de estilos de bienvenida y autenticación. */
 :root{--entry-ink:#101517;--entry-gold:#e4b45d}
 html,body,body.archi-intro-active{background-color:var(--entry-ink)!important;color-scheme:dark}
@@ -97,3 +103,102 @@ body #splash-screen .archi-splash-photo{display:block!important;visibility:visib
 html body #splash-screen:not(.hidden){position:fixed!important;inset:0!important;z-index:2147483000!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;transition:opacity .7s ease!important;}
 html body #splash-screen.archi-splash-exiting:not(.hidden){opacity:0!important;pointer-events:none!important;}
 html body #splash-screen.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+
+/* vB9.10: presentation logo only; welcome controls only. */
+body #splash-screen .archi-splash-brand{display:flex!important;position:absolute!important;left:0!important;right:0!important;bottom:clamp(12%,17dvh,23%)!important;align-items:center!important;justify-content:center!important;z-index:100!important;pointer-events:none!important;}
+body #splash-screen .archi-splash-brand img{display:block!important;width:min(83vw,390px)!important;height:auto!important;max-height:260px!important;object-fit:contain!important;}
+#archi-onboarding .archi-onboarding-title,#archi-onboarding .archi-onboarding-description,#archi-onboarding .archi-onboarding-kicker,#archi-onboarding .archi-onboarding-mark{display:none!important;}
+#archi-onboarding .archi-onboarding-inner{justify-content:flex-end!important;}
+
+/* vB9.11: controles de idioma compactos, sin fondo de barra heredado. */
+#archi-onboarding nav.archi-onboarding-languages{
+ background:transparent!important;background-color:transparent!important;background-image:none!important;
+ box-shadow:none!important;border:0!important;outline:0!important;
+ padding:0!important;margin:0!important;min-height:0!important;
+ width:auto!important;height:auto!important;max-width:none!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ display:flex!important;align-items:center!important;gap:6px!important;
+}
+#archi-onboarding nav.archi-onboarding-languages .archi-lang-btn{
+ box-sizing:border-box!important;width:39px!important;min-width:39px!important;max-width:39px!important;
+ height:34px!important;min-height:34px!important;max-height:34px!important;
+ padding:0!important;margin:0!important;border-radius:9px!important;
+ font-size:13px!important;line-height:1!important;letter-spacing:0!important;
+ box-shadow:none!important;transform:none!important;
+}
+#archi-onboarding nav.archi-onboarding-languages::before,
+#archi-onboarding nav.archi-onboarding-languages::after{content:none!important;display:none!important}
+
+
+/* ===== Origen: entry-v112.css ===== */
+/* vB9.12 — splash subtitle and iOS status area matching the app header. */
+body #splash-screen .archi-splash-brand{
+ flex-direction:column!important;gap:0!important;
+}
+body #splash-screen .archi-splash-brand-subtitle{
+ display:block!important;position:relative!important;visibility:visible!important;
+ margin:-16px 0 0!important;padding:0!important;
+ font:700 clamp(11px,3vw,14px)/1.4 system-ui,sans-serif!important;
+ letter-spacing:.26em!important;color:#e4b45d!important;
+ text-align:center!important;text-shadow:0 1px 6px #10151799!important;
+}
+/* Same surface as the top app header, rather than the old navy strip. */
+html:has(body:not(.archi-intro-active):not(.light-mode)){
+ background-color:#1b2427!important;
+}
+html:has(body.archi-intro-active){background-color:#101517!important;}
+html:has(body:not(.archi-intro-active).light-mode){background-color:#f5f2ea!important;}
+
+
+/* ===== Origen: entry-v113.css ===== */
+/* vB9.13 — splash: subtítulo separado del logotipo. */
+body #splash-screen .archi-splash-brand{flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:0!important}
+body #splash-screen .archi-splash-brand-subtitle{
+ display:block!important;position:relative!important;visibility:visible!important;
+ margin:18px 0 0!important;padding:0!important;transform:none!important;
+ font:700 clamp(11px,3vw,14px)/1.5 system-ui,sans-serif!important;
+ letter-spacing:.26em!important;color:#e4b45d!important;
+ text-align:center!important;text-shadow:0 1px 6px #10151799!important;
+}
+/* Fondo del documento bajo la zona segura de iOS. */
+:root,html,body{background-color:#101517!important}
+html:has(body:not(.archi-intro-active):not(.light-mode)){background-color:#101517!important}
+html:has(body.archi-intro-active){background-color:#101517!important}
+
+
+/* ===== Origen: entry-v119.css ===== */
+/* vB9.19 — Unica capa de fotografia compartida por splash, bienvenida y acceso.
+   No hay dos elementos cover que puedan cambiar de recorte al terminar splash.
+   Se retiran de index los parches contradictorios v114–v118. */
+@media (max-width: 699px) {
+  html body #archi-entry-photo {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    bottom: calc(-1 * env(safe-area-inset-bottom, 0px)) !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 44 !important;
+    pointer-events: none !important;
+    background: #101517 url('../assets/cinematic-scene-v92.webp') center center / cover no-repeat !important;
+    display: block !important;
+  }
+  html body:not(.archi-intro-active) #archi-entry-photo { display: none !important; }
+  html body #splash-screen {
+    position: fixed !important; inset: 0 !important;
+    width: 100% !important; height: 100dvh !important;
+    min-height: 0 !important; background: transparent !important;
+    z-index: 50 !important;
+  }
+  html body #splash-screen .archi-splash-art,
+  html body #splash-screen .archi-splash-photo { display: none !important; }
+  html body #archi-onboarding,
+  html body #archi-auth-panel {
+    position: fixed !important; inset: 0 !important;
+    width: 100% !important; height: 100dvh !important;
+    min-height: 0 !important; background: transparent !important;
+    background-image: none !important;
+  }
+  html body #archi-onboarding { z-index: 45 !important; }
+  html body #archi-auth-panel { z-index: 100 !important; }
+}
+
