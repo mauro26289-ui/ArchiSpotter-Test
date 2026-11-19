@@ -100,3 +100,31 @@ html:has(body.archi-intro-active){
 #archi-onboarding .archi-lang-btn[aria-pressed="true"]{
  outline:2px solid #fff0c8!important;outline-offset:2px!important;
 }
+
+/* vB8.7: ajustes consistentes con la identidad cinematografica. */
+#archi-settings-overlay .archi-settings-sheet{
+ background:#151a1c!important;color:#f5ead6!important;
+ border:1px solid rgba(211,167,91,.28)!important;
+}
+#archi-settings-overlay .archi-settings-section{
+ background:#1b2225!important;border:1px solid rgba(211,167,91,.28)!important;
+ overflow:hidden;
+}
+#archi-settings-overlay .archi-settings-field,
+#archi-settings-overlay .archi-settings-action{
+ background:#1b2225!important;color:#f5ead6!important;
+ border-color:rgba(211,167,91,.22)!important;
+}
+#archi-settings-overlay .archi-settings-field > span i,
+#archi-settings-overlay .archi-settings-action > span i{color:#e2b663!important}
+#archi-settings-overlay #archi-settings-language{
+ background:#111719!important;color:#f6ead3!important;
+ border:1px solid #9e8050!important;
+}
+#archi-settings-overlay .archi-settings-signout{
+ background:#2a241f!important;color:#e8c38a!important;
+ border:1px solid #ba8d4c!important;
+}
+#archi-settings-overlay .archi-settings-close{
+ background:#293035!important;color:#f5ead6!important;
+}
