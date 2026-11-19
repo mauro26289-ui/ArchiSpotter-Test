@@ -100,3 +100,18 @@ body #splash-screen,body #splash-screen .archi-splash-art{
 body #splash-screen .archi-splash-photo{display:none!important}
 #archi-onboarding,#archi-auth-panel{z-index:45!important}
 #archi-auth-panel{z-index:100!important}
+
+/* vB9.11 — aislamiento de las pantallas de acceso.
+   #app estaba renderizado detrás de la bienvenida; su cabecera y botones
+   aparecían por encima de la foto, como en la captura de iPhone. */
+body.archi-intro-active > #app{
+ visibility:hidden!important;
+ pointer-events:none!important;
+}
+body:not(.archi-intro-active) > #app{
+ visibility:visible!important;
+ pointer-events:auto!important;
+}
+body:not(.archi-intro-active):has(#splash-screen.hidden) > #archi-entry-backdrop{
+ display:none!important;
+}
