@@ -30,6 +30,8 @@
         }
         window.addEventListener('online', archiScheduleVisiblePhotoRecovery);
         window.addEventListener('scroll', archiScheduleVisiblePhotoRecovery, { passive: true, capture: true });
+        // E155: una rotación o cambio de tamaño puede hacer visibles fotos sin desplazamiento.
+        window.addEventListener('resize', archiScheduleVisiblePhotoRecovery, { passive: true });
         window.addEventListener('pageshow', archiScheduleVisiblePhotoRecovery);
         // E142: no conservar una recuperación pendiente mientras la PWA está oculta.
         function archiCancelPendingPhotoRecovery() {
