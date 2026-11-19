@@ -25,3 +25,10 @@ body.light-mode .vb4-italy-highlights-head h3{color:#26343a}body.light-mode .vb4
 
 /* vB5: prevent editorial sections from covering other tabs */
 #vb2-italy.hidden, #vb3-country.hidden { display:none !important; }
+
+/* vB6: fail-closed tab isolation even if a stale renderer leaves a section visible */
+body:not([data-archi-active-tab="explore"]) #vb2-italy,
+body:not([data-archi-active-tab="explore"]) #vb3-country,
+main:not([data-archi-active-tab="explore"]) > #vb2-italy,
+main:not([data-archi-active-tab="explore"]) > #vb3-country,
+#vb2-italy[hidden], #vb3-country[hidden] { display:none !important; }

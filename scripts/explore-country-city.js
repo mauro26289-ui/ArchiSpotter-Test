@@ -6,6 +6,12 @@
             const vb3View=document.getElementById('vb3-country');
             if(vb3View)vb3View.classList.toggle('hidden',!isVB3Landing);
             if (italyView) italyView.classList.toggle('hidden', !isItalyLanding);
+            // vB6: only an active Explore tab may reveal editorial pages.
+            [[italyView,isItalyLanding],[vb3View,isVB3Landing]].forEach(([view,visible]) => {
+                if (!view) return;
+                view.hidden = !visible;
+                view.style.setProperty('display',visible ? 'block' : 'none','important');
+            });
             const viewHome = document.getElementById('view-home');
             const viewCitiesContainer = document.getElementById('view-cities-container');
             const viewMonumentsContainer = document.getElementById('view-monuments-container');

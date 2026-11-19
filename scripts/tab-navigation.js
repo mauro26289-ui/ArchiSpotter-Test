@@ -1,6 +1,15 @@
 // Función original extraída de app.js sin modificar su implementación.
         function switchTab(tab) {
             triggerHaptic(); currentTab=tab;
+            // vB6: independent tab visibility enforced on the real content root.
+            document.body.dataset.archiActiveTab = tab;
+            const archiMain = document.querySelector('main');
+            if (archiMain) archiMain.dataset.archiActiveTab = tab;
+            // Inline display also protects against stale Tailwind visibility rules.
+            ['vb2-italy','vb3-country'].forEach(id => {
+                const view = document.getElementById(id);
+                if (view) { view.hidden = true; view.style.setProperty('display','none','important'); }
+            });
             // La barra de país/ciudad pertenece exclusivamente a Explorar.
             const archiBreadcrumb = document.getElementById('nav-breadcrumb');
             if (archiBreadcrumb && tab !== 'explore') archiBreadcrumb.classList.add('hidden');
