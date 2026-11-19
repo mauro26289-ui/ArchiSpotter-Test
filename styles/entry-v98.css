@@ -86,3 +86,9 @@ body.archi-intro-active #app *{pointer-events:none!important}
 #archi-onboarding .archi-onboarding-languages{z-index:2}
 #archi-auth-panel .archi-auth-card{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){#splash-screen{transition:none!important}}
+
+/* vB9.8: splash must win over legacy cinematic CSS until its own timer ends. */
+body #splash-screen:not(.hidden){display:block!important;visibility:visible!important;opacity:1;pointer-events:auto;}
+body #splash-screen.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+body #splash-screen .archi-splash-art{background-image:none!important;background-color:#101517!important;}
+body #splash-screen .archi-splash-photo{display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;}
