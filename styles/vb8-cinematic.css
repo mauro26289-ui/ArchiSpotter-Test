@@ -64,3 +64,39 @@ html,body{background:#101517!important;color-scheme:dark!important}
 /* vB8.3: neutraliza los estilos antiguos crema en todas las fases de bienvenida. */
 html,body,body.archi-intro-active,html:has(body.archi-intro-active),html:has(#splash-screen:not(.hidden)),body:has(#splash-screen:not(.hidden)),body #splash-screen,body #splash-screen:not(.hidden),#archi-onboarding{background-color:#101517!important;color-scheme:dark!important}
 #splash-screen .archi-splash-brand{display:flex!important;visibility:visible!important;opacity:1!important;z-index:999!important}
+
+/* vB8.5: la franja reservada por iOS se integra con el borde superior de las fotografías. */
+html:has(#splash-screen:not(.hidden)),
+body:has(#splash-screen:not(.hidden)),
+html:has(body.archi-intro-active),
+body.archi-intro-active {
+ background-color:#f8f0de!important;
+}
+#splash-screen .archi-splash-art {background-color:#f8f0de!important;}
+#archi-onboarding {
+ background-image:linear-gradient(180deg,rgba(248,240,222,0) 0%,rgba(9,14,16,.05) 17%,rgba(9,14,16,.82) 60%,#101517 100%),url('../assets/cinematic-welcome.webp')!important;
+ background-color:#f8f0de!important;
+}
+#archi-auth-panel {background-color:#f8f0de!important;}
+
+/* vB8.6: fondo carbon en barra iOS y fundido fotografico superior. */
+:root,html,body,body.archi-intro-active,
+html:has(#splash-screen:not(.hidden)),
+body:has(#splash-screen:not(.hidden)),
+html:has(body.archi-intro-active){
+ background:#101517!important;background-color:#101517!important;color-scheme:dark!important;
+}
+#splash-screen,#splash-screen .archi-splash-art,
+#archi-onboarding,#archi-auth-panel{background-color:#101517!important}
+#archi-onboarding{
+ background-image:linear-gradient(180deg,rgba(16,21,23,0) 0%,rgba(9,14,16,.05) 20%,rgba(9,14,16,.82) 60%,#101517 100%),url('../assets/cinematic-welcome.webp')!important;
+}
+#archi-onboarding .archi-lang-btn,
+#archi-onboarding .archi-lang-btn[aria-pressed="true"],
+#archi-onboarding .archi-lang-btn[aria-pressed="false"]{
+ background:#e3b45d!important;color:#171b1c!important;border:1px solid #e3b45d!important;
+ box-shadow:0 2px 8px rgba(0,0,0,.22)!important;
+}
+#archi-onboarding .archi-lang-btn[aria-pressed="true"]{
+ outline:2px solid #fff0c8!important;outline-offset:2px!important;
+}
