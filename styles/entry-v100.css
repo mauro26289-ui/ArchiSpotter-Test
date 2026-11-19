@@ -1,0 +1,105 @@
+/* vB9.6 — ÚNICA fuente de estilos de bienvenida y autenticación. */
+:root{--entry-ink:#101517;--entry-gold:#e4b45d}
+html,body,body.archi-intro-active{background-color:var(--entry-ink)!important;color-scheme:dark}
+#archi-onboarding,#archi-auth-panel{
+ position:fixed;inset:0;width:100%;height:100dvh;min-height:100dvh;
+ box-sizing:border-box;overflow-y:auto;overscroll-behavior:contain;
+ background-color:var(--entry-ink);
+ background-image:linear-gradient(to bottom,#101517 0%,rgba(16,21,23,.9) 5%,rgba(16,21,23,.38) 12%,transparent 23%),url('../assets/cinematic-scene-v92.webp');
+ background-size:100% 100%,100% auto;background-position:center top,center top;background-repeat:no-repeat;
+ color:#f7f0e3;padding:0;margin:0;
+}
+#archi-onboarding{z-index:45;display:block}
+#archi-onboarding.archi-gone{display:none}
+#archi-auth-panel{z-index:100;display:block}
+#archi-auth-panel.archi-auth-hidden{display:none}
+#archi-onboarding .archi-onboarding-inner{
+ width:100%;max-width:440px;min-height:100dvh;box-sizing:border-box;
+ margin:0 auto;padding:clamp(350px,46dvh,550px) 24px calc(32px + env(safe-area-inset-bottom));
+ display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+ gap:clamp(11px,1.7dvh,19px);text-align:center;
+}
+#archi-onboarding .archi-onboarding-languages{
+ position:fixed;top:calc(env(safe-area-inset-top) + 16px);right:16px;
+ z-index:3;display:flex;gap:6px;
+}
+#archi-onboarding .archi-lang-btn{
+ appearance:none;min-width:44px;height:38px;border:1px solid #e4b45d;border-radius:10px;
+ background:#e4b45d;color:#141a1b;font:700 14px system-ui,sans-serif;
+ box-shadow:none;outline:0;
+}
+#archi-onboarding .archi-lang-btn:focus-visible{outline:2px solid #fff4d4;outline-offset:2px}
+#archi-onboarding .archi-onboarding-mark{width:min(78vw,325px);min-height:0;padding:0;margin:0 auto;display:block}
+#archi-onboarding .archi-onboarding-mark img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+#archi-onboarding .archi-onboarding-kicker{font:600 11px system-ui,sans-serif;letter-spacing:.34em;color:#e6b765;margin-top:-5px}
+#archi-onboarding .archi-onboarding-title{font:700 clamp(35px,9vw,55px)/1.12 Georgia,serif;color:#fff5e7;margin:0;text-shadow:0 2px 9px #000b}
+#archi-onboarding .archi-onboarding-description{font:400 clamp(14px,3.7vw,17px)/1.55 system-ui,sans-serif;color:#f1e9dc;max-width:390px;margin:0 0 7px;text-shadow:0 2px 8px #000c}
+#archi-onboarding .archi-onboarding-start,#archi-onboarding .archi-onboarding-register{width:100%;max-width:390px;min-height:55px;border-radius:13px;font:700 18px Georgia,serif;cursor:pointer}
+#archi-onboarding .archi-onboarding-start{background:linear-gradient(110deg,#b87320,#f3ce7d,#c78324);border:1px solid #d6a350;color:#141719}
+#archi-onboarding .archi-onboarding-register{background:#101517d9;border:1.5px solid #d9a753;color:#e9bd72}
+#archi-auth-panel .archi-auth-card{
+ position:relative;box-sizing:border-box;width:100%;max-width:440px;min-height:100dvh;
+ margin:0 auto;padding:clamp(340px,43dvh,500px) 24px calc(45px + env(safe-area-inset-bottom));
+ display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;gap:0;
+ background:transparent;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;
+}
+#archi-auth-panel .archi-auth-back{position:fixed;top:calc(env(safe-area-inset-top) + 16px);left:18px;z-index:5;color:#e4b45d;background:#101517aa;border:1px solid #bd8b40;border-radius:9px;padding:3px 11px;font-size:25px}
+#archi-auth-panel #archi-auth-heading,#archi-auth-panel #archi-auth-help,#archi-auth-panel #archi-auth-disclaimer,
+#archi-auth-panel .archi-auth-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#archi-auth-panel #archi-auth-form{display:flex;flex-direction:column;gap:12px;margin:0}
+#archi-auth-panel .archi-auth-field{display:flex;align-items:center;gap:12px;width:100%;min-height:54px;box-sizing:border-box;padding:0 14px;background:rgba(13,17,18,.86);border:1px solid #c59448;border-radius:12px}
+#archi-auth-panel .archi-auth-field:focus-within{border-color:#f1c875;box-shadow:0 0 0 2px #f1c87533}
+#archi-auth-panel .archi-field-icon{flex:none;color:#e4b45d;font-size:22px}
+#archi-auth-panel .archi-auth-field input{flex:1;min-width:0;width:100%;height:52px;padding:0;background:transparent;border:0;border-radius:0;outline:0;box-shadow:none;color:#fff5df;font:400 16px system-ui,sans-serif}
+#archi-auth-panel .archi-auth-field input::placeholder{color:#b5a287;opacity:1}
+#archi-auth-panel #archi-password-visibility{flex:none;background:transparent;border:0;color:#e4b45d;font-size:21px;padding:5px;min-width:30px}
+#archi-auth-panel #archi-auth-error{min-height:0;margin:0;color:#ffcf93;font:400 12px system-ui,sans-serif}
+#archi-auth-panel #archi-auth-error:empty{display:none}
+#archi-auth-panel #archi-auth-submit{width:100%;min-height:56px;margin:6px 0 0;border:1px solid #dba34d;border-radius:12px;background:linear-gradient(110deg,#b87320,#f3ce7d,#c78324);color:#141719;font:700 20px Georgia,serif}
+#archi-auth-panel #archi-auth-switch{display:block;width:100%;min-height:52px;margin:15px 0 0;padding:10px;border:1.5px solid #dba34d;border-radius:12px;background:#101517b0;color:#e9bd72;text-align:center;text-decoration:none;font:700 17px Georgia,serif}
+#archi-auth-panel #archi-auth-forgot{display:block;width:100%;min-height:42px;margin:16px 0 0;padding:10px 6px;border:0;background:transparent;color:#e4b45d;text-align:center;letter-spacing:.06em;font:600 12px system-ui,sans-serif}
+#archi-auth-panel #archi-auth-forgot[hidden]{display:none}
+#archi-auth-panel #archi-auth-forgot:focus-visible{outline:2px solid #e4b45d;outline-offset:2px}
+@media(max-height:740px){#archi-onboarding .archi-onboarding-inner{padding-top:270px}#archi-auth-panel .archi-auth-card{padding-top:280px}}
+
+/* vB9.7: single image surface; screen isolation. Last stylesheet wins. */
+:root{--archi-entry-photo:url('../assets/cinematic-scene-v92.webp')}
+body.archi-intro-active #app{visibility:hidden!important;pointer-events:none!important}
+body.archi-intro-active #app *{pointer-events:none!important}
+#archi-onboarding,#archi-auth-panel{
+ background-color:#101517!important;
+ background-image:var(--archi-entry-photo)!important;
+ background-size:cover!important;
+ background-position:center center!important;
+ background-repeat:no-repeat!important;
+ height:100dvh!important;min-height:100dvh!important;
+ isolation:isolate!important;
+}
+#archi-onboarding{z-index:100010!important}
+#archi-auth-panel{z-index:100020!important}
+#archi-onboarding.archi-gone,#archi-auth-panel.archi-auth-hidden{display:none!important}
+#splash-screen{z-index:100030!important}
+#splash-screen .archi-splash-photo{object-fit:cover!important;object-position:center center!important}
+#splash-screen .archi-splash-brand,#archi-onboarding .archi-onboarding-mark{display:none!important}
+#archi-onboarding .archi-onboarding-inner{position:relative;z-index:1}
+#archi-onboarding .archi-onboarding-kicker{margin-top:0}
+#archi-onboarding .archi-onboarding-languages{z-index:2}
+#archi-auth-panel .archi-auth-card{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){#splash-screen{transition:none!important}}
+
+/* vB9.8: splash must win over legacy cinematic CSS until its own timer ends. */
+body #splash-screen:not(.hidden){display:block!important;visibility:visible!important;opacity:1;pointer-events:auto;}
+body #splash-screen.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+body #splash-screen .archi-splash-art{background-image:none!important;background-color:#101517!important;}
+body #splash-screen .archi-splash-photo{display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;}
+
+/* B9.9: splash visible from first parse, and fade never blocked by legacy !important. */
+html body #splash-screen:not(.hidden){position:fixed!important;inset:0!important;z-index:2147483000!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;transition:opacity .7s ease!important;}
+html body #splash-screen.archi-splash-exiting:not(.hidden){opacity:0!important;pointer-events:none!important;}
+html body #splash-screen.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+
+/* vB9.10: presentation logo only; welcome controls only. */
+body #splash-screen .archi-splash-brand{display:flex!important;position:absolute!important;left:0!important;right:0!important;bottom:clamp(12%,17dvh,23%)!important;align-items:center!important;justify-content:center!important;z-index:100!important;pointer-events:none!important;}
+body #splash-screen .archi-splash-brand img{display:block!important;width:min(83vw,390px)!important;height:auto!important;max-height:260px!important;object-fit:contain!important;}
+#archi-onboarding .archi-onboarding-title,#archi-onboarding .archi-onboarding-description,#archi-onboarding .archi-onboarding-kicker,#archi-onboarding .archi-onboarding-mark{display:none!important;}
+#archi-onboarding .archi-onboarding-inner{justify-content:flex-end!important;}
