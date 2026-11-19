@@ -1,0 +1,13 @@
+/* vB9.13 — splash: subtítulo separado del logotipo. */
+body #splash-screen .archi-splash-brand{flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:0!important}
+body #splash-screen .archi-splash-brand-subtitle{
+ display:block!important;position:relative!important;visibility:visible!important;
+ margin:18px 0 0!important;padding:0!important;transform:none!important;
+ font:700 clamp(11px,3vw,14px)/1.5 system-ui,sans-serif!important;
+ letter-spacing:.26em!important;color:#e4b45d!important;
+ text-align:center!important;text-shadow:0 1px 6px #10151799!important;
+}
+/* Fondo del documento bajo la zona segura de iOS. */
+:root,html,body{background-color:#101517!important}
+html:has(body:not(.archi-intro-active):not(.light-mode)){background-color:#101517!important}
+html:has(body.archi-intro-active){background-color:#101517!important}
