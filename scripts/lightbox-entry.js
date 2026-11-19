@@ -27,3 +27,18 @@
             resetLightboxZoom();
         }
 
+
+        // Modo pantalla llena por defecto; el usuario puede alternar sin recortar.
+        function toggleLightboxFit() {
+            const lightbox = document.getElementById('fullscreen-lightbox');
+            if (!lightbox) return;
+            const contained = lightbox.classList.toggle('archi-fit-contain');
+            const button = document.getElementById('lightbox-fit-button');
+            if (button) {
+                button.setAttribute('aria-label', contained ? 'Llenar pantalla con fotografía' : 'Mostrar imagen completa');
+                button.title = contained ? 'Llenar pantalla' : 'Mostrar imagen completa';
+                const icon = button.querySelector('i');
+                if (icon) icon.className = contained ? 'fa-solid fa-compress text-xs' : 'fa-solid fa-expand text-xs';
+            }
+            resetLightboxZoom();
+        }
