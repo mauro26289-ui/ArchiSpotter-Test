@@ -249,15 +249,15 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
  });
 })();
 </script>
-<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-0">
+<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-1">
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
 <section id="archi-onboarding" aria-label="Presentación de ArchiSpotter">
  <div class="archi-onboarding-inner">
   <nav class="archi-onboarding-languages" aria-label="Idioma / Language / Lingua"><button type="button" class="archi-lang-btn" data-archi-lang="es" aria-pressed="true" onclick="setLanguage('es')">ES</button><button type="button" class="archi-lang-btn" data-archi-lang="en" aria-pressed="false" onclick="setLanguage('en')">EN</button><button type="button" class="archi-lang-btn" data-archi-lang="it" aria-pressed="false" onclick="setLanguage('it')">IT</button></nav>
-  <div class="archi-onboarding-mark"><img id="archi-onboarding-logo" alt="Logo de ArchiSpotter" src="assets/archispotter-mark.svg" /></div>
-  <div class="archi-onboarding-kicker">ARCHISPOTTER</div>
+  <div class="archi-onboarding-mark"><img id="archi-onboarding-logo" alt="ArchiSpotter" src="assets/archispotter-reference-brand-v91.png" /></div>
+  <div class="archi-onboarding-kicker">TRAVEL MATE</div>
   <h1 id="archi-onboarding-title" class="archi-onboarding-title">¿Y esto qué es?</h1>
   <p id="archi-onboarding-description" class="archi-onboarding-description">Estás de vacaciones, vas caminando por la calle y ves un edificio o monumento que te gusta y quieres saber qué es. Abrí ArchiSpotter y descubre su historia, arquitectura, fotografías, audioguías y rutas. Elegí un país y empezá a explorar.</p>
   <button type="button" id="archi-onboarding-start" class="archi-onboarding-start" onclick="archiShowAuth('login')">Iniciar sesión</button>
@@ -268,7 +268,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 <section id="archi-auth-panel" class="archi-auth-hidden" role="dialog" aria-modal="true" aria-labelledby="archi-auth-heading">
  <div class="archi-auth-card">
   <button type="button" class="archi-auth-back" onclick="archiCloseAuth()" aria-label="Volver">←</button>
-  <div class="archi-auth-brand"><img class="archi-auth-gold-logo" src="assets/archispotter-mark.svg" alt="" />ARCHISPOTTER <span style="display:block;color:#d9ac62;font:600 10px Inter,sans-serif;letter-spacing:.24em;margin-top:8px">TRAVEL MATE</span></div>
+  <div class="archi-auth-brand"><img class="archi-auth-gold-logo" src="assets/archispotter-reference-brand-v91.png" alt="ArchiSpotter" /><span>TRAVEL MATE</span></div>
   <h2 id="archi-auth-heading">Iniciar sesión</h2>
   <p id="archi-auth-help">Cuenta local en este navegador</p>
   <form id="archi-auth-form" autocomplete="on">
@@ -285,12 +285,8 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 </section>
     <!-- Splash Screen (Pantalla de presentación por 2.5 segundos) -->
     <div id="splash-screen" class="fixed inset-0 z-50 transition-opacity duration-700" aria-label="ArchiSpotter">
-        <div class="archi-splash-art" role="img" aria-label="ArchiSpotter, arquitectura y naturaleza"><img class="archi-splash-photo" loading="eager" src="assets/architecture-welcome-v90.webp" alt="" aria-hidden="true" decoding="sync" fetchpriority="high"></div>
-        <div class="archi-splash-brand" aria-label="ArchiSpotter">
-            <img src="assets/archispotter-mark.svg" alt="Logo de ArchiSpotter" />
-            <div class="archi-splash-brand-name">ARCHISPOTTER</div>
-            <div class="archi-splash-brand-subtitle">TRAVEL MATE</div>
-        </div>
+        <div class="archi-splash-art" role="img" aria-label="ArchiSpotter, arquitectura y naturaleza"><img class="archi-splash-photo" loading="eager" src="assets/reference-scene-welcome-v91.webp" alt="" aria-hidden="true" decoding="sync" fetchpriority="high"></div>
+        <div class="archi-splash-brand" aria-label="ArchiSpotter"><img src="assets/archispotter-reference-brand-v91.png" alt="ArchiSpotter" /><div class="archi-splash-brand-subtitle">TRAVEL MATE</div></div>
     </div>
 
     <!-- App Container -->
