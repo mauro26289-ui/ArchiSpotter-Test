@@ -249,7 +249,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
  });
 })();
 </script>
-<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-3">
+<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-4">
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
@@ -280,7 +280,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
    <button type="submit" id="archi-auth-submit">Iniciar sesión</button>
   </form>
   <button type="button" id="archi-auth-switch" onclick="archiToggleAuth()">Crear usuario</button>
-  <button type="button" id="archi-auth-forgot" onclick="archiShowPasswordHelp()">¿OLVIDASTE TU CONTRASEÑA?</button>
+  <button type="button" id="archi-auth-forgot" onclick="archiShowPasswordHelp()" aria-label="¿Olvidaste tu contraseña?">¿OLVIDASTE TU CONTRASEÑA?</button>
   <p id="archi-auth-disclaimer">Solo para pruebas: la cuenta se guarda en este dispositivo y no ofrece seguridad de servidor.</p>
  </div>
 </section>
