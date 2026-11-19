@@ -146,3 +146,31 @@ html:has(body.archi-intro-active){
  backdrop-filter:none!important;
  border:1px solid rgba(218,168,82,.35)!important;
 }
+
+/* vB8.9: imagenes solo de arquitectura, marca y formularios siempre HTML. */
+#splash-screen .archi-splash-brand{
+ display:flex!important;visibility:visible!important;opacity:1!important;
+ z-index:10!important;bottom:max(14%,calc(env(safe-area-inset-bottom) + 90px))!important;
+}
+#splash-screen .archi-splash-photo{
+ object-fit:cover!important;object-position:center top!important;
+}
+#archi-onboarding{
+ background-color:#101517!important;
+ background-image:linear-gradient(180deg,rgba(16,21,23,0) 0%,rgba(16,21,23,.18) 40%,#101517 72%),url('../assets/cinematic-welcome.webp')!important;
+ background-size:100% 100%,100% auto!important;
+ background-position:center top,center top!important;
+ background-repeat:no-repeat!important;
+}
+#archi-auth-panel{
+ background-color:#101517!important;
+ background-image:linear-gradient(180deg,rgba(16,21,23,0) 0%,rgba(16,21,23,.35) 37%,#101517 63%),url('../assets/cinematic-login.webp')!important;
+ background-size:100% 100%,100% auto!important;
+ background-position:center top,center top!important;
+ background-repeat:no-repeat!important;
+}
+#archi-auth-panel .archi-auth-card{
+ margin-top:min(39vh,350px)!important;
+ background:#101517f2!important;
+ border:1px solid rgba(218,168,82,.4)!important;
+}
