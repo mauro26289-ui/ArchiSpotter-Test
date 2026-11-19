@@ -249,14 +249,14 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
  });
 })();
 </script>
-<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-1">
+<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-3">
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
 <section id="archi-onboarding" aria-label="Presentación de ArchiSpotter">
  <div class="archi-onboarding-inner">
   <nav class="archi-onboarding-languages" aria-label="Idioma / Language / Lingua"><button type="button" class="archi-lang-btn" data-archi-lang="es" aria-pressed="true" onclick="setLanguage('es')">ES</button><button type="button" class="archi-lang-btn" data-archi-lang="en" aria-pressed="false" onclick="setLanguage('en')">EN</button><button type="button" class="archi-lang-btn" data-archi-lang="it" aria-pressed="false" onclick="setLanguage('it')">IT</button></nav>
-  <div class="archi-onboarding-mark"><img id="archi-onboarding-logo" alt="ArchiSpotter" src="assets/archispotter-reference-brand-v91.png" /></div>
+  <div class="archi-onboarding-mark"><img id="archi-onboarding-logo" alt="ArchiSpotter" src="assets/archispotter-logo-gold-v92.png" /></div>
   <div class="archi-onboarding-kicker">TRAVEL MATE</div>
   <h1 id="archi-onboarding-title" class="archi-onboarding-title">¿Y esto qué es?</h1>
   <p id="archi-onboarding-description" class="archi-onboarding-description">Estás de vacaciones, vas caminando por la calle y ves un edificio o monumento que te gusta y quieres saber qué es. Abrí ArchiSpotter y descubre su historia, arquitectura, fotografías, audioguías y rutas. Elegí un país y empezá a explorar.</p>
@@ -268,25 +268,26 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 <section id="archi-auth-panel" class="archi-auth-hidden" role="dialog" aria-modal="true" aria-labelledby="archi-auth-heading">
  <div class="archi-auth-card">
   <button type="button" class="archi-auth-back" onclick="archiCloseAuth()" aria-label="Volver">←</button>
-  <div class="archi-auth-brand"><img class="archi-auth-gold-logo" src="assets/archispotter-reference-brand-v91.png" alt="ArchiSpotter" /><span>TRAVEL MATE</span></div>
+  <div class="archi-auth-brand"><img class="archi-auth-gold-logo" src="assets/archispotter-logo-gold-v92.png" alt="ArchiSpotter" /><span>TRAVEL MATE</span></div>
   <h2 id="archi-auth-heading">Iniciar sesión</h2>
   <p id="archi-auth-help">Cuenta local en este navegador</p>
   <form id="archi-auth-form" autocomplete="on">
-   <label for="archi-auth-user" id="archi-auth-user-label">Usuario</label>
-   <input id="archi-auth-user" name="username" required minlength="3" maxlength="40" autocomplete="username" spellcheck="false" />
-   <label for="archi-auth-password" id="archi-auth-password-label">Contraseña</label>
-   <input id="archi-auth-password" name="password" type="password" required minlength="6" autocomplete="current-password" />
+   <label for="archi-auth-user" id="archi-auth-user-label" class="archi-auth-visually-hidden">Usuario</label>
+   <div class="archi-auth-field"><span class="archi-field-icon" aria-hidden="true">♙</span><input id="archi-auth-user" name="username" placeholder="Usuario" required minlength="3" maxlength="40" autocomplete="username" spellcheck="false" /></div>
+   <label for="archi-auth-password" id="archi-auth-password-label" class="archi-auth-visually-hidden">Contraseña</label>
+   <div class="archi-auth-field"><span class="archi-field-icon" aria-hidden="true">♙</span><input id="archi-auth-password" name="password" placeholder="Contraseña" type="password" required minlength="6" autocomplete="current-password" /><button type="button" id="archi-password-visibility" aria-label="Mostrar contraseña" onclick="archiTogglePasswordVisibility()">◉</button></div>
    <p id="archi-auth-error" role="alert" aria-live="polite"></p>
    <button type="submit" id="archi-auth-submit">Iniciar sesión</button>
   </form>
   <button type="button" id="archi-auth-switch" onclick="archiToggleAuth()">Crear usuario</button>
+  <button type="button" id="archi-auth-forgot" onclick="archiShowPasswordHelp()">¿OLVIDASTE TU CONTRASEÑA?</button>
   <p id="archi-auth-disclaimer">Solo para pruebas: la cuenta se guarda en este dispositivo y no ofrece seguridad de servidor.</p>
  </div>
 </section>
     <!-- Splash Screen (Pantalla de presentación por 2.5 segundos) -->
     <div id="splash-screen" class="fixed inset-0 z-50 transition-opacity duration-700" aria-label="ArchiSpotter">
-        <div class="archi-splash-art" role="img" aria-label="ArchiSpotter, arquitectura y naturaleza"><img class="archi-splash-photo" loading="eager" src="assets/reference-scene-welcome-v91.webp" alt="" aria-hidden="true" decoding="sync" fetchpriority="high"></div>
-        <div class="archi-splash-brand" aria-label="ArchiSpotter"><img src="assets/archispotter-reference-brand-v91.png" alt="ArchiSpotter" /><div class="archi-splash-brand-subtitle">TRAVEL MATE</div></div>
+        <div class="archi-splash-art" role="img" aria-label="ArchiSpotter, arquitectura y naturaleza"><img class="archi-splash-photo" loading="eager" src="assets/cinematic-scene-v92.webp" alt="" aria-hidden="true" decoding="sync" fetchpriority="high"></div>
+        <div class="archi-splash-brand" aria-label="ArchiSpotter"><img src="assets/archispotter-logo-gold-v92.png" alt="ArchiSpotter" /><div class="archi-splash-brand-subtitle">TRAVEL MATE</div></div>
     </div>
 
     <!-- App Container -->
@@ -938,6 +939,17 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
     requestAnimationFrame(function () { capture('load-and-frame'); });
   }, { once: true });
 })();
+</script>
+<script>
+function archiTogglePasswordVisibility(){
+ const p=document.getElementById('archi-auth-password'),b=document.getElementById('archi-password-visibility');
+ if(!p)return;p.type=p.type==='password'?'text':'password';
+ if(b)b.setAttribute('aria-label',p.type==='password'?'Mostrar contraseña':'Ocultar contraseña');
+}
+function archiShowPasswordHelp(){
+ const p=document.getElementById('archi-auth-error');
+ if(p)p.textContent='Esta cuenta se guarda únicamente en este dispositivo. Si olvidaste la contraseña, creá un usuario nuevo.';
+}
 </script>
 </body>
 </html>
