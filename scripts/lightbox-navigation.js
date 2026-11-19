@@ -2,7 +2,8 @@
 
         function updateLightboxView() {
             const img = document.getElementById('lightbox-img');
-            img.style.objectPosition = '50% 50%';
+            img.style.removeProperty('--archi-photo-x');
+            img.style.removeProperty('--archi-photo-y');
             img.dataset.monumentId = activeMonumentForModal?.id || '';
             img.dataset.fallbackDone = 'false';
             img.dataset.triedImages = '';

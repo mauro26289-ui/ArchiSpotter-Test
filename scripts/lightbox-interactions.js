@@ -39,16 +39,47 @@
                 const dx = x - coverDrag.x, dy = y - coverDrag.y;
                 const px = crop.cropX ? Math.max(0, Math.min(100, coverDrag.px - dx / crop.cropX * 100)) : 50;
                 const py = crop.cropY ? Math.max(0, Math.min(100, coverDrag.py - dy / crop.cropY * 100)) : 50;
-                crop.img.style.objectPosition = `${px}% ${py}%`;
+                crop.img.style.setProperty('--archi-photo-x', `${px}%`);
+                crop.img.style.setProperty('--archi-photo-y', `${py}%`);
                 return true;
             }
             function coverStart(x, y) {
                 const crop = coverCrop();
                 if (!crop) { coverDrag = null; return; }
-                const parts = (crop.img.style.objectPosition || '50% 50%').match(/([\\d.]+)%/g) || [];
+                const parts = [crop.img.style.getPropertyValue('--archi-photo-x') || '50%', crop.img.style.getPropertyValue('--archi-photo-y') || '50%'];
                 coverDrag = {x,y,px:parts[0] ? parseFloat(parts[0]) : 50,
                     py:parts[1] ? parseFloat(parts[1]) : 50};
             }
+            // Arrastre nativo de la foto recortada en iPhone, sin zoom previo.
+            let photoPointer = null;
+            const photoPointers = new Set();
+            viewport.addEventListener('pointerdown', (e) => {
+                photoPointers.add(e.pointerId);
+                if (photoPointers.size !== 1 || lightboxScale !== 1) { photoPointer = null; return; }
+                const crop = coverCrop();
+                if (!crop || (crop.cropX < 1 && crop.cropY < 1)) return;
+                photoPointer = { id:e.pointerId, x:e.clientX, y:e.clientY,
+                    px:parseFloat(crop.img.style.getPropertyValue('--archi-photo-x')) || 50,
+                    py:parseFloat(crop.img.style.getPropertyValue('--archi-photo-y')) || 50 };
+                try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
+            }, {passive:true});
+            viewport.addEventListener('pointermove', (e) => {
+                if (!photoPointer || e.pointerId !== photoPointer.id || photoPointers.size !== 1 || lightboxScale !== 1) return;
+                const crop = coverCrop();
+                if (!crop) return;
+                const dx = e.clientX - photoPointer.x, dy = e.clientY - photoPointer.y;
+                const x = crop.cropX > 1 ? Math.max(0,Math.min(100,photoPointer.px - dx / crop.cropX * 100)) : 50;
+                const y = crop.cropY > 1 ? Math.max(0,Math.min(100,photoPointer.py - dy / crop.cropY * 100)) : 50;
+                crop.img.style.setProperty('--archi-photo-x', x + '%');
+                crop.img.style.setProperty('--archi-photo-y', y + '%');
+            }, {passive:true});
+            const finishPhotoPointer = (e) => {
+                photoPointers.delete(e.pointerId);
+                if (photoPointer && photoPointer.id === e.pointerId) photoPointer = null;
+            };
+            viewport.addEventListener('pointerup', finishPhotoPointer);
+            viewport.addEventListener('pointercancel', finishPhotoPointer);
+            viewport.addEventListener('lostpointercapture', finishPhotoPointer);
             const startDrag = (x, y) => {
                 if (lightboxScale > 1) {
                     isDraggingLightbox = true;
@@ -112,7 +143,8 @@
                     swipeStartX = touch.clientX;
                     swipeStartY = touch.clientY;
                     swipeStartTime = Date.now();
-                    swipeTracking = swipeEligible && lightboxImages.length > 1;
+                    const currentCrop = coverCrop();
+                    swipeTracking = swipeEligible && lightboxImages.length > 1 && !(currentCrop && currentCrop.cropX > 1);
                     swipeOffset = 0;
                     const now = Date.now();
                     if (now - lastTapTime < 300) {
@@ -165,9 +197,9 @@
                             e.preventDefault();
                             moveDrag(touch.clientX, touch.clientY);
                         } else if (coverDrag && (Math.abs(touch.clientY - coverDrag.y) > 5 ||
-                                   (lightboxImages.length <= 1 && Math.abs(touch.clientX - coverDrag.x) > 5))) {
+                                   Math.abs(touch.clientX - coverDrag.x) > 5)) {
                             e.preventDefault();
-                            coverMove(touch.clientX, touch.clientY);
+                            if (!photoPointer) coverMove(touch.clientX, touch.clientY);
                         }
                     }
                 }
