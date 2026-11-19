@@ -51,6 +51,7 @@
     </script>
     <link rel="stylesheet" href="styles/app.css?v=pan3" id="archi-modular-styles-v11">
 <link rel="stylesheet" href="styles/vb1.css?v=vb1-real2">
+<link rel="stylesheet" href="styles/vb2-italy.css?v=vb2-1">
 
 
 
@@ -364,6 +365,20 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
                     <h3 class="vb-section-heading">Explorá por país <span class="vb-section-arrow">↗</span></h3>
                     <div id="view-countries" class="vb-country-grid"></div>
                 </div>
+            </section>
+
+            <!-- vB2: Italia, experiencia editorial de país (otros países sin cambios) -->
+            <section id="vb2-italy" class="hidden vb2-italy" aria-label="Explorar Italia">
+              <div class="vb2-italy-cover">
+                <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Coliseo de Roma" loading="eager">
+                <div class="vb2-cover-shade"></div>
+                <div class="vb2-cover-copy"><span class="vb2-kicker">ARCHISPOTTER · EUROPA</span><h2>Italia</h2><p class="vb2-poetic">Una historia escrita en piedra.</p><span class="vb2-stat">5 monumentos · 3 ciudades</span></div>
+              </div>
+              <div class="vb2-intro"><div><span class="vb2-kicker">DESCUBRÍ ITALIA</span><h3>Arquitectura que trasciende el tiempo</h3><p>De las maravillas de la Roma antigua a las grandes catedrales italianas.</p></div></div>
+              <div class="vb2-actions"><button type="button" onclick="archiItalyScrollToMonuments()"><i class="fa-solid fa-landmark"></i> Monumentos</button><button type="button" onclick="archiItalyOpenMap()"><i class="fa-solid fa-map-location-dot"></i> Ver mapa</button></div>
+              <div class="vb2-section-title" id="vb2-monuments-anchor"><div><span class="vb2-kicker">5 LUGARES PARA DESCUBRIR</span><h3>Explorá los monumentos</h3></div></div>
+              <div class="vb2-filters" id="vb2-italy-filters" aria-label="Filtrar por ciudad"></div>
+              <div class="vb2-monument-grid" id="vb2-italy-monuments"></div>
             </section>
 
             <!-- View 2: Cities Selection -->
@@ -810,6 +825,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
     <script src="scripts/settings-ui.js?v=97"></script>
     <script src="scripts/favorites-actions.js?v=121"></script>
     <script src="scripts/explore-country-city.js?v=97"></script>
+<script src="scripts/vb2-italy.js?v=vb2-1"></script>
     <script src="scripts/explore-gestures.js?v=97"></script>
     <script src="scripts/carto-config.js?v=136"></script>
     <script src="scripts/gps-map-controller.js?v=140"></script>
