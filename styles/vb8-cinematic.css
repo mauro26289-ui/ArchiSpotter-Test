@@ -128,3 +128,21 @@ html:has(body.archi-intro-active){
 #archi-settings-overlay .archi-settings-close{
  background:#293035!important;color:#f5ead6!important;
 }
+
+/* vB8.8: artes exactas aprobadas por el usuario; formulario HTML real debajo de la ilustracion. */
+#splash-screen .archi-splash-art{inset:0!important}
+#splash-screen .archi-splash-photo{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center top!important}
+#splash-screen .archi-splash-brand{display:none!important}
+#archi-auth-panel{
+ background-color:#101517!important;
+ background-image:linear-gradient(to bottom,rgba(16,21,23,0) 0%,rgba(16,21,23,.02) 38%,#101517 67%),url('../assets/cinematic-login.webp')!important;
+ background-size:100% 100%,100% auto!important;
+ background-position:center,center top!important;
+ background-repeat:no-repeat!important;
+}
+#archi-auth-panel .archi-auth-card{
+ margin-top:min(48vh,430px)!important;
+ background:#101517e8!important;
+ backdrop-filter:none!important;
+ border:1px solid rgba(218,168,82,.35)!important;
+}
