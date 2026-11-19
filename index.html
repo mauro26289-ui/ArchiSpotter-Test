@@ -249,7 +249,8 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
  });
 })();
 </script>
-<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-4">
+<link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-5">
+<link rel="stylesheet" href="styles/vb95-entry.css?v=9-5">
 </head>
 <body data-archi-active-tab="explore" class="archi-intro-active h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
@@ -268,7 +269,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 <section id="archi-auth-panel" class="archi-auth-hidden" role="dialog" aria-modal="true" aria-labelledby="archi-auth-heading">
  <div class="archi-auth-card">
   <button type="button" class="archi-auth-back" onclick="archiCloseAuth()" aria-label="Volver">←</button>
-  <div class="archi-auth-brand"><img class="archi-auth-gold-logo" src="assets/archispotter-logo-gold-v92.png" alt="ArchiSpotter" /><span>TRAVEL MATE</span></div>
+  
   <h2 id="archi-auth-heading">Iniciar sesión</h2>
   <p id="archi-auth-help">Cuenta local en este navegador</p>
   <form id="archi-auth-form" autocomplete="on">
@@ -280,7 +281,7 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
    <button type="submit" id="archi-auth-submit">Iniciar sesión</button>
   </form>
   <button type="button" id="archi-auth-switch" onclick="archiToggleAuth()">Crear usuario</button>
-  <button type="button" id="archi-auth-forgot" onclick="archiShowPasswordHelp()" aria-label="¿Olvidaste tu contraseña?">¿OLVIDASTE TU CONTRASEÑA?</button>
+  <button type="button" id="archi-auth-forgot" onclick="archiShowPasswordHelp()">Olvidé mi contraseña</button>
   <p id="archi-auth-disclaimer">Solo para pruebas: la cuenta se guarda en este dispositivo y no ofrece seguridad de servidor.</p>
  </div>
 </section>
