@@ -1,0 +1,32 @@
+/* vB8: identidad cinematográfica única. Basada en la navegación funcional de vB6. */
+:root{color-scheme:dark;--archi-gold:#e6b760;--archi-night:#101517;--archi-panel:#1b2225}
+html,body,body.light-mode{background:#101517!important;color:#f3eee5!important}
+#theme-toggle,#archi-settings-light,#archi-settings-dark,#archi-settings-theme-label{display:none!important}
+#archi-settings-overlay :is(label,div):has(> #archi-settings-light){display:none!important}
+#archi-settings-overlay :is(label,div):has(> #archi-settings-dark){display:none!important}
+#archi-onboarding{background:linear-gradient(180deg,rgba(9,14,16,.22),rgba(9,14,16,.85) 48%,#101517 95%),url('../assets/cinematic-welcome.webp') center top/cover no-repeat!important;color:#f4eee2!important}
+#archi-onboarding .archi-onboarding-inner{justify-content:flex-end!important;padding-top:max(90px,env(safe-area-inset-top))!important;padding-bottom:max(28px,env(safe-area-inset-bottom))!important;min-height:100dvh!important}
+#archi-onboarding .archi-onboarding-mark{width:min(32vw,128px)!important}
+#archi-onboarding .archi-onboarding-mark img{max-height:110px!important;filter:drop-shadow(0 4px 12px #000a)}
+#archi-onboarding .archi-onboarding-title{color:#fff8e8!important;text-shadow:0 3px 16px #000a;font-family:Georgia,serif!important}
+#archi-onboarding .archi-onboarding-description{color:#e7ded0!important;text-shadow:0 2px 10px #000d;line-height:1.55!important}
+#archi-onboarding .archi-onboarding-kicker{color:#eac477!important}
+#archi-onboarding .archi-onboarding-start{background:#e3b45d!important;color:#1c1b18!important;border-radius:12px!important}
+#archi-onboarding .archi-onboarding-register{color:#f0cf91!important;border-color:#c7a464!important;background:#101517a8!important;border-radius:12px!important}
+#archi-onboarding .archi-lang-btn{background:#121a1dc9!important;color:#f7e8c9!important;border-color:#9e8456!important}
+#archi-onboarding .archi-lang-btn[aria-pressed=true]{background:#d6a64f!important;color:#15191a!important}
+#archi-auth-panel{background:linear-gradient(180deg,#0b1013a8,#0b1013e8 58%,#101517),url('../assets/cinematic-login.webp') center center/cover no-repeat!important;color:#f3eee5!important}
+#archi-auth-panel .archi-auth-card{background:rgba(20,26,28,.93)!important;border:1px solid #ad8b5080!important;color:#f6efe1!important;box-shadow:0 25px 75px #000a!important;backdrop-filter:blur(14px)}
+#archi-auth-panel :is(h2,.archi-auth-brand,label){color:#f5e9cf!important}
+#archi-auth-panel :is(input){background:#101719!important;border:1px solid #8a764f!important;color:#fff!important}
+#archi-auth-submit{background:#dfb15d!important;color:#141819!important}
+#archi-auth-panel :is(#archi-auth-help,#archi-auth-disclaimer){color:#d2c4ad!important}
+#splash-screen,#splash-screen .archi-splash-art{background:#101517!important}
+#splash-screen .archi-splash-photo{object-fit:cover!important;object-position:center top!important}
+#view-home,#view-cities-container,#view-monuments-container,#view-favorites,#view-my-trip,#view-map,#view-routes{color:#f4eee5}
+#monument-modal{color:#f2eee6!important}
+#monument-modal :is(.bg-white,.bg-slate-50,.bg-gray-50){background:#1b2326!important;color:#f4eee5!important}
+#monument-modal :is(.text-gray-900,.text-slate-900,.text-gray-800,.text-slate-800){color:#f5eee1!important}
+#monument-modal :is(.text-gray-600,.text-slate-600,.text-gray-700,.text-slate-700){color:#d3c6b2!important}
+#monument-modal :is(h1,h2,h3){color:#f1c67b!important}
+#archi-settings-overlay{color:#f2e9d7!important}

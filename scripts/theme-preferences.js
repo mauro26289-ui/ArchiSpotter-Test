@@ -1,3 +1,3 @@
-// Bloque original extraído de app.js sin alterar su comportamiento.
-        function toggleTheme() { document.body.classList.toggle('light-mode'); const light=document.body.classList.contains('light-mode'); archiStorageSet('archispotter_theme',light?'light':'dark'); if (typeof archiUpdateMapTheme === 'function') archiUpdateMapTheme(); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; }
-        function applySavedPreferences() { const savedTheme=archiStorageGet('archispotter_theme'); const light=savedTheme!=='dark'; document.body.classList.toggle('light-mode',light); const b=document.getElementById('theme-toggle'); if(b)b.innerHTML=light?'<i class="fa-solid fa-moon text-xs"></i>':'<i class="fa-solid fa-sun text-xs"></i>'; applyLanguage(); }
+// Tema cinematográfico único: se conservan los nombres públicos para compatibilidad.
+function toggleTheme(){document.body.classList.remove('light-mode');archiStorageSet('archispotter_theme','dark');if(typeof archiUpdateMapTheme==='function')archiUpdateMapTheme();}
+function applySavedPreferences(){document.body.classList.remove('light-mode');archiStorageSet('archispotter_theme','dark');if(typeof applyLanguage==='function')applyLanguage();}

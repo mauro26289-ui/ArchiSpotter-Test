@@ -16,7 +16,7 @@
         }
         function archiOpenSettings(){archiSyncSettings();const el=document.getElementById('archi-settings-overlay');if(el){el.hidden=false;el.querySelector('.archi-settings-close')?.focus();}}
         function archiCloseSettings(){const el=document.getElementById('archi-settings-overlay');if(el)el.hidden=true;}
-        function archiSetTheme(theme){if(document.body.classList.contains('light-mode')!==(theme==='light'))toggleTheme();archiSyncSettings();}
+        function archiSetTheme(theme){document.body.classList.remove('light-mode');archiSyncSettings();}
         const archiAboutTranslations={
           es:{title:'Acerca de ArchiSpotter',message:'Esta app nació caminando por alguna calle del mundo, mirando edificios históricos y ruinas sin un cartel que explicara su historia. Porque sé que a vos, como a mí, la curiosidad no te deja quedarte con la duda de qué es eso que tienes ahí delante. ¡Bienvenidos a ArchiSpotter!',close:'Cerrar'},
           en:{title:'About ArchiSpotter',message:'This app was born while walking down a street somewhere in the world, looking at historic buildings and ruins without a sign explaining their history. Because I know that you, like me, are too curious to walk away without finding out what is right in front of you. Welcome to ArchiSpotter!',close:'Close'},
