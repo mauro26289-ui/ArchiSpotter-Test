@@ -1,15 +1,5 @@
 // Extraído de app.js (E89); comportamiento original preservado.
         window.onload = function() {
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
-                    splash.style.opacity = '0';
-                    setTimeout(function() {
-                        splash.style.display = 'none';
-                    }, 700);
-                }
-            }, 2500);
-
             const savedMonuments = archiStorageGet('archispotter_monuments');
             if (savedMonuments) {
                 try {

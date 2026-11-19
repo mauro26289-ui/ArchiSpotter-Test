@@ -26,9 +26,6 @@
   if(typeof applyLanguage==='function')applyLanguage();
  };
  document.addEventListener('DOMContentLoaded',()=>{
-  const source=document.querySelector('#splash-screen img[alt="ArchiSpotter"]');
-  const logo=document.getElementById('archi-onboarding-logo');
-  if(source && logo) logo.src=source.src;
   window.updateArchiOnboarding();
   if(window.archiHasSession && window.archiHasSession())window.enterArchiSpotter();
  });
