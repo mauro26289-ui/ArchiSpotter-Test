@@ -1,6 +1,6 @@
 /* CARTO Voyager monument pins; public browser tile key configured. */
 window.ArchiSpotterMap = (function () {
-  var map, tiles, markers, locationMarker, locationCircle, failures = 0;
+  var map, tiles, markers, tripLayer, locationMarker, locationCircle, failures = 0;
   var monumentCoordinates = {"Coliseo":[41.89021,12.49223],"Catedral de Florencia":[43.7731,11.256],"Sagrada Familia":[41.4036,2.1744],"Casa Batlló":[41.3916,2.1649],"Palacio Real":[40.41795,-3.7143],"Puerta de Alcalá":[40.4201,-3.6889],"Torre Eiffel":[48.85837,2.29448],"Arco del Triunfo":[48.8738,2.295],"Palacio de Versalles":[48.8049,2.1204],"Partenón":[37.9715,23.7267],"Erecteión":[37.972,23.7265],"Templo de Apolo":[38.4825,22.501],"Palacio de Westminster":[51.4995,-0.1248],"Tower Bridge":[51.5055,-0.0754],"Termas romanas":[51.381,-2.3595],"Puerta de Brandeburgo":[52.5163,13.3777],"Catedral de Berlín":[52.5191,13.401],"Catedral de Colonia":[50.9413,6.9583],"Torre de Belém":[38.6916,-9.216],"Monasterio de los Jerónimos":[38.6979,-9.206],"Puente Don Luis I":[41.1397,-8.6094],"Obelisco":[-34.6037,-58.3816],"Teatro Colón":[-34.6011,-58.383]};
   var attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
   function addTiles() {
@@ -77,7 +77,28 @@ window.ArchiSpotterMap = (function () {
   }
   var locationButton=document.getElementById('map-locate');
   if(locationButton)locationButton.addEventListener('click',function(){show();locate();});
+  function showTrip(){
+    show();if(!map)return;
+    if(tripLayer)map.removeLayer(tripLayer);
+    tripLayer=L.layerGroup().addTo(map);
+    var ids=[];try{ids=JSON.parse(localStorage.getItem('archispotter_preview_trip')||'[]');if(!Array.isArray(ids))ids=[];}catch(_){ids=[];}
+    var found=[],catalog=window.ArchiSpotterData.countryCitySamples;
+    Object.keys(catalog).forEach(function(country){catalog[country].forEach(function(city){
+      city[4].forEach(function(place){var id=city[0]+'|'+place[0],pos=monumentCoordinates[place[0]];
+        if(ids.indexOf(id)>=0&&pos)found.push({id:id,pos:pos,name:place[({es:0,en:1,it:2}[document.documentElement.lang]||0)]});
+      });
+    });});
+    found.sort(function(a,b){return ids.indexOf(a.id)-ids.indexOf(b.id);});
+    var bounds=[];found.forEach(function(item,i){
+      var dot=L.circleMarker(item.pos,{radius:11,color:'#ffffff',weight:2,fillColor:'#226e61',fillOpacity:1}).addTo(tripLayer);
+      dot.bindTooltip(String(i+1),{permanent:true,direction:'center',className:'archi-trip-number'});
+      dot.bindPopup(item.name);bounds.push(item.pos);
+    });
+    if(bounds.length)map.fitBounds(bounds,{padding:[35,35],maxZoom:15});
+    var status=document.getElementById('map-status');
+    if(status)status.textContent=found.length+' paradas de Mi viaje visibles en el mapa';
+  }
   function show() { init(); if (map) { addTiles(); setTimeout(function(){map.invalidateSize();},60); } }
   document.addEventListener('archispotter:tab',function(e){if(e.detail==='map')show();});
-  return {show:show,openMonument:null};
+  return {show:show,showTrip:showTrip,openMonument:null};
 })();
