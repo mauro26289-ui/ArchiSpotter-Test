@@ -207,12 +207,8 @@
         document.getElementById('country-overview').hidden = false;
         document.querySelector('.app-content').scrollTop = 0;
       });
-      function showTab(tab) {
-        document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
-        document.querySelectorAll('.app-view').forEach(function (view) { view.hidden = view.id !== 'view-' + tab; });
-        document.querySelector('.app-content').scrollTop = 0;
-      }
-      document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
+      var showTab = window.ArchiSpotterNavigation.showTab;
+      window.ArchiSpotterNavigation.init();
       document.querySelectorAll('[data-lang]').forEach(function (button) { button.addEventListener('click', function () {
         try { localStorage.setItem('archispotter_language', button.getAttribute('data-lang')); } catch (_) {}
         applyLanguage();
