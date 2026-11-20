@@ -351,6 +351,24 @@
     #country-detail .landmark-card img { display:block; width:100%; aspect-ratio:1.12; object-fit:cover; border-radius:12px; background:#263033; }
     #country-detail .landmark-card h4 { font:600 17px/1.28 Fraunces,Georgia,serif; margin:9px 0 0; }
     #country-detail .country-back { cursor:pointer; }
+    /* Ciudad: galería arquitectónica independiente, con navegación de regreso. */
+    #city-detail[hidden] { display:none!important; }
+    #city-detail .city-back { border:0; background:transparent; color:var(--ink); padding:8px 0 16px; font:500 14px Inter,sans-serif; cursor:pointer; }
+    #city-detail .city-cover { position:relative; overflow:hidden; border-radius:18px; height:225px; background:#263033; isolation:isolate; }
+    #city-detail .city-cover img { width:100%; height:100%; object-fit:cover; display:block; }
+    #city-detail .city-cover::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 30%,rgba(5,9,10,.82)); pointer-events:none; }
+    #city-detail .city-cover h2 { position:absolute; z-index:1; bottom:17px; left:19px; right:16px; margin:0; color:#fff; font:600 38px/1.1 Fraunces,Georgia,serif; }
+    #city-detail .city-gallery-intro { font:400 14px/1.65 Inter,sans-serif; color:var(--muted); margin:18px 0 24px; }
+    #city-detail .city-gallery-heading { font:600 25px/1.2 Fraunces,Georgia,serif; margin:0 0 17px; }
+    #city-detail .city-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 13px; padding-bottom:30px; }
+    #city-detail .city-gallery article { min-width:0; }
+    #city-detail .city-gallery img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:14px; display:block; background:#263033; }
+    #city-detail .city-gallery h3 { font:600 19px/1.25 Fraunces,Georgia,serif; margin:10px 0 5px; }
+    #city-detail .city-gallery p { font:400 11px/1.4 Inter,sans-serif; color:var(--muted); margin:0; }
+    #country-detail .city-open { display:flex; justify-content:space-between; align-items:baseline; width:100%; padding:0; border:0; background:transparent; color:var(--ink); text-align:left; cursor:pointer; }
+    #country-detail .city-open span { color:var(--muted); font:500 12px Inter,sans-serif; }
+    #country-detail .city-open:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+    @media(min-width:700px) { #city-detail .city-gallery { grid-template-columns:repeat(3,minmax(0,1fr)); } }
     /* Visor de fotografía: zoom táctil, arrastre y cierre accesible. */
     .explore-hero { cursor:zoom-in; }
     .explore-hero:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
@@ -460,6 +478,13 @@
           <p class="country-intro" data-i18n="countryIntro">Explora ciudades y descubre su arquitectura a través de imágenes.</p>
           <div id="country-cities"></div>
         </div>
+        <div id="city-detail" hidden>
+          <button type="button" class="city-back" id="city-back" data-i18n="backCountry">← Volver al país</button>
+          <div class="city-cover"><img id="city-detail-photo" alt="" /><h2 id="city-detail-name"></h2></div>
+          <p class="city-gallery-intro" data-i18n="cityIntro">Explora la arquitectura de esta ciudad.</p>
+          <h2 class="city-gallery-heading" data-i18n="cityMonuments">Arquitectura destacada</h2>
+          <div class="city-gallery" id="city-gallery"></div>
+        </div>
       </div>
       <div class="app-view" id="view-trip" hidden>
         <span class="eyebrow" data-i18n="trip">Mi viaje</span><h2 data-i18n="tripTitle">Mis rutas</h2>
@@ -539,9 +564,9 @@
         document.documentElement.classList.toggle('is-in-app', screen === home);
       }
       var strings = {
-        es: {tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',backCountries:'← Volver a países',countrySoon:'Próximamente podrás explorar los monumentos de este país.',countryIntro:'Explora ciudades y descubre su arquitectura a través de imágenes.',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
-        en: {tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',backCountries:'← Back to countries',countrySoon:'You will soon be able to explore this country’s monuments.',countryIntro:'Explore cities and discover their architecture through images.',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
-        it: {tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',backCountries:'← Torna ai paesi',countrySoon:'Presto potrai esplorare i monumenti di questo paese.',countryIntro:'Esplora le città e scopri la loro architettura attraverso le immagini.',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
+        es: {backCountry:'← Volver al país',cityIntro:'Explora la arquitectura de esta ciudad.',cityMonuments:'Arquitectura destacada',viewCity:'Ver ciudad',sampleImage:'Imagen ilustrativa · catálogo en preparación',tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',backCountries:'← Volver a países',countrySoon:'Próximamente podrás explorar los monumentos de este país.',countryIntro:'Explora ciudades y descubre su arquitectura a través de imágenes.',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
+        en: {backCountry:'← Back to country',cityIntro:'Explore the architecture of this city.',cityMonuments:'Featured architecture',viewCity:'View city',sampleImage:'Illustrative image · catalogue in preparation',tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',backCountries:'← Back to countries',countrySoon:'You will soon be able to explore this country’s monuments.',countryIntro:'Explore cities and discover their architecture through images.',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
+        it: {backCountry:'← Torna al paese',cityIntro:'Esplora l’architettura di questa città.',cityMonuments:'Architettura in evidenza',viewCity:'Vedi città',sampleImage:'Immagine illustrativa · catalogo in preparazione',tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',backCountries:'← Torna ai paesi',countrySoon:'Presto potrai esplorare i monumenti di questo paese.',countryIntro:'Esplora le città e scopri la loro architettura attraverso le immagini.',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
       };
       function currentLang() {
         try { var l = localStorage.getItem('archispotter_language'); return strings[l] ? l : 'es'; } catch (_) { return 'es'; }
@@ -680,8 +705,11 @@
         countryCitySamples[selected].forEach(function(city) {
           var section = document.createElement('section'); section.className='city-section';
           var heading = document.createElement('div'); heading.className='city-heading';
-          var title = document.createElement('h3'); title.textContent=city[idx]; heading.appendChild(title);
-          section.appendChild(heading);
+          var open = document.createElement('button'); open.type='button'; open.className='city-open';
+          var title = document.createElement('h3'); title.textContent=city[idx]; open.appendChild(title);
+          var hint = document.createElement('span'); hint.textContent=strings[currentLang()].viewCity + ' ›'; open.appendChild(hint);
+          open.addEventListener('click',function(){ openCity(city); });
+          heading.appendChild(open); section.appendChild(heading);
           var row = document.createElement('div'); row.className='landmarks-row';
           city[4].forEach(function(place) {
             var card=document.createElement('article'); card.className='landmark-card';
@@ -692,6 +720,30 @@
           section.appendChild(row); root.appendChild(section);
         });
       }
+      function openCity(city) {
+        var idx={es:0,en:1,it:2}[currentLang()]||0;
+        var photo=document.getElementById('city-detail-photo');
+        photo.src='https://images.unsplash.com/'+city[3]+'?auto=format&fit=crop&w=1100&q=80';
+        document.getElementById('city-detail-name').textContent=city[idx];
+        var gallery=document.getElementById('city-gallery'); gallery.replaceChildren();
+        city[4].forEach(function(place) {
+          var item=document.createElement('article');
+          var img=document.createElement('img');
+          img.src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=650&q=80';
+          img.alt=''; img.loading='lazy'; img.decoding='async'; item.appendChild(img);
+          var title=document.createElement('h3'); title.textContent=place[idx]; item.appendChild(title);
+          var note=document.createElement('p'); note.textContent=strings[currentLang()].sampleImage; item.appendChild(note);
+          gallery.appendChild(item);
+        });
+        document.getElementById('country-detail').hidden=true;
+        document.getElementById('city-detail').hidden=false;
+        document.querySelector('.app-content').scrollTop=0;
+      }
+      document.getElementById('city-back').addEventListener('click',function(){
+        document.getElementById('city-detail').hidden=true;
+        document.getElementById('country-detail').hidden=false;
+        document.querySelector('.app-content').scrollTop=0;
+      });
       var countryNames = {
         it:['Italia','Italy','Italia'], es:['España','Spain','Spagna'],
         fr:['Francia','France','Francia'], gr:['Grecia','Greece','Grecia'],
@@ -727,6 +779,7 @@
       document.getElementById('country-back').addEventListener('click', function () {
         document.getElementById('country-detail').hidden = true;
         document.getElementById('country-overview').hidden = false;
+        document.querySelector('.app-content').scrollTop = 0;
       });
       function showTab(tab) {
         document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
