@@ -3,7 +3,7 @@ window.ArchiSpotterMap = (function () {
   var map, tiles, markers, activeStyle, failures = 0;
   var cityCoordinates = { 'Roma':[41.9028,12.4964], 'Florencia':[43.7696,11.2558], 'Barcelona':[41.3874,2.1686], 'Madrid':[40.4168,-3.7038], 'París':[48.8566,2.3522], 'Versalles':[48.8014,2.1301], 'Atenas':[37.9838,23.7275], 'Delfos':[38.4824,22.5010], 'Londres':[51.5074,-0.1278], 'Bath':[51.3811,-2.3590], 'Berlín':[52.5200,13.4050], 'Colonia':[50.9375,6.9603], 'Lisboa':[38.7223,-9.1393], 'Oporto':[41.1579,-8.6291], 'Buenos Aires':[-34.6037,-58.3816] };
   var attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
-  function dark() { return document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); }
+  function dark() { return document.documentElement.dataset.theme !== 'light'; }
   function style() { return dark() ? 'dark_all' : 'light_all'; }
   function addTiles() {
     var wanted = style(); if (tiles && wanted === activeStyle) return;
