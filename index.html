@@ -289,6 +289,25 @@
     #home .mark { font: 600 clamp(2.1rem, 9vw, 2.75rem)/1.15 Fraunces, Georgia, serif; margin: 0 0 14px; }
     #home .tag { font: 500 12px Inter, sans-serif; letter-spacing: .12em; color: var(--muted); }
     .btn:disabled { opacity: .55; cursor: wait; }
+    /* New app shell: independent from the archived interface. */
+    #home { justify-content: flex-start; padding: max(32px, calc(env(safe-area-inset-top, 0px) + 18px)) 20px max(86px, calc(env(safe-area-inset-bottom, 0px) + 72px)); background: #101517; text-align: left; overflow: hidden; }
+    #home .app-heading { flex: none; width: 100%; display: flex; justify-content: space-between; align-items: baseline; padding: 4px 2px 20px; }
+    #home .app-heading h1 { font: 600 28px/1.2 Fraunces, Georgia, serif; margin: 0; }
+    #home .app-heading span { font: 500 10px Inter, sans-serif; letter-spacing: .13em; color: var(--muted); text-transform: uppercase; }
+    #home .app-content { flex: 1; width: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; text-align: left; }
+    .app-view[hidden] { display: none !important; }
+    .app-view h2 { font: 600 29px/1.2 Fraunces, Georgia, serif; margin: 16px 0 14px; }
+    .app-view p { font: 400 14px/1.65 Inter, sans-serif; color: var(--muted); margin: 0 0 20px; }
+    .app-view .eyebrow { text-transform: uppercase; letter-spacing: .17em; font: 600 10px Inter, sans-serif; color: #b5c2c3; }
+    .app-panel { border: 1px solid rgba(220,229,229,.19); border-radius: 16px; background: #1b2427; padding: 18px; margin-bottom: 12px; }
+    .app-panel h3 { font: 600 20px Fraunces, Georgia, serif; margin: 0 0 8px; }
+    .app-panel p { margin: 0; }
+    .app-nav { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 10px 8px max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); border-top: 1px solid rgba(220,229,229,.17); background: #101517; }
+    .app-nav button { border: 0; background: none; color: #9faeb1; padding: 9px 2px; font: 500 11px Inter, sans-serif; border-radius: 10px; cursor: pointer; }
+    .app-nav button[aria-selected="true"] { background: #dce5e5; color: #101517; }
+    .lang-choices { display: flex; gap: 8px; margin: 12px 0 20px; }
+    .lang-choices button { flex: 1; min-height: 42px; border: 1px solid rgba(220,229,229,.3); border-radius: 10px; background: transparent; color: var(--ink); font: 600 13px Inter, sans-serif; }
+    .lang-choices button[aria-pressed="true"] { background: var(--accent); color: var(--accent-contrast); }
     .toast {
       position: fixed;
       left: 50%;
@@ -361,10 +380,37 @@
     </form>
   </section>
 
-  <section id="home" class="screen" aria-label="Sesión iniciada">
-    <h1 class="mark">ArchiSpotter</h1>
-    <p class="tag" id="welcome-user">Sesión iniciada</p>
-    <div class="session-actions"><button type="button" class="btn btn-secondary" id="logout-btn">Cerrar sesión</button></div>
+  <section id="home" class="screen" aria-label="ArchiSpotter">
+    <header class="app-heading"><h1>ArchiSpotter</h1><span data-i18n="tagline">Arquitectura en contexto</span></header>
+    <main class="app-content">
+      <div class="app-view" id="view-explore">
+        <span class="eyebrow" data-i18n="explore">Explorar</span>
+        <h2 data-i18n="discoverTitle">Descubre la arquitectura</h2>
+        <p data-i18n="discoverText">Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.</p>
+        <div class="app-panel"><h3 data-i18n="countriesTitle">Países y monumentos</h3><p data-i18n="countriesText">El catálogo se incorporará en la siguiente etapa.</p></div>
+      </div>
+      <div class="app-view" id="view-trip" hidden>
+        <span class="eyebrow" data-i18n="trip">Mi viaje</span><h2 data-i18n="tripTitle">Mis rutas</h2>
+        <div class="app-panel"><p data-i18n="tripText">Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.</p></div>
+      </div>
+      <div class="app-view" id="view-favorites" hidden>
+        <span class="eyebrow" data-i18n="favorites">Favoritos</span><h2 data-i18n="favoritesTitle">Mis favoritos</h2>
+        <div class="app-panel"><p data-i18n="favoritesText">Todavía no hay monumentos disponibles para guardar.</p></div>
+      </div>
+      <div class="app-view" id="view-settings" hidden>
+        <span class="eyebrow" data-i18n="settings">Configuración</span><h2 data-i18n="preferences">Preferencias</h2>
+        <div class="app-panel"><h3 data-i18n="language">Idioma</h3><div class="lang-choices" role="group" aria-label="Idioma">
+          <button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="it">IT</button>
+        </div><p id="welcome-user"></p></div>
+        <button type="button" class="btn btn-secondary" id="logout-btn" data-i18n="logout" style="width:100%">Cerrar sesión</button>
+      </div>
+    </main>
+    <nav class="app-nav" aria-label="Navegación principal">
+      <button type="button" data-tab="explore" aria-selected="true" data-i18n="explore">Explorar</button>
+      <button type="button" data-tab="trip" aria-selected="false" data-i18n="trip">Mi viaje</button>
+      <button type="button" data-tab="favorites" aria-selected="false" data-i18n="favorites">Favoritos</button>
+      <button type="button" data-tab="settings" aria-selected="false" data-i18n="settings">Ajustes</button>
+    </nav>
   </section>
 
   <div class="toast" id="toast" role="status"></div>
@@ -460,8 +506,37 @@
         [splash, auth, home].forEach(function (el) { el.classList.toggle('is-active', el === screen); });
         setVvh();
       }
+      var strings = {
+        es: {tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países y monumentos',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
+        en: {tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries and monuments',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
+        it: {tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi e monumenti',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
+      };
+      function currentLang() {
+        try { var l = localStorage.getItem('archispotter_language'); return strings[l] ? l : 'es'; } catch (_) { return 'es'; }
+      }
+      function applyLanguage() {
+        var lang = currentLang(), words = strings[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('#home [data-i18n]').forEach(function (el) {
+          el.textContent = words[el.getAttribute('data-i18n')] || '';
+        });
+        document.querySelectorAll('[data-lang]').forEach(function (el) { el.setAttribute('aria-pressed', String(el.getAttribute('data-lang') === lang)); });
+        var user = sessionUser();
+        if (user) document.getElementById('welcome-user').textContent = words.welcome + user;
+      }
+      function showTab(tab) {
+        document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
+        document.querySelectorAll('.app-view').forEach(function (view) { view.hidden = view.id !== 'view-' + tab; });
+        document.querySelector('.app-content').scrollTop = 0;
+      }
+      document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
+      document.querySelectorAll('[data-lang]').forEach(function (button) { button.addEventListener('click', function () {
+        try { localStorage.setItem('archispotter_language', button.getAttribute('data-lang')); } catch (_) {}
+        applyLanguage();
+      }); });
       function enter(user) {
-        document.getElementById('welcome-user').textContent = 'Bienvenido, ' + user;
+        showTab('explore');
+        applyLanguage();
         showScreen(home);
       }
       function sessionUser() {
