@@ -12,13 +12,31 @@ window.ArchiSpotterSaved=(function(){
     if(!valid.length){var empty=document.createElement('p');empty.className='saved-empty';empty.textContent=words.empty;root.appendChild(empty);return;}
     var count=document.createElement('p');count.className='saved-count';count.textContent=valid.length+' '+words.count;root.appendChild(count);
     if(type==='trip'){
-      var actions=document.createElement('div');actions.className='trip-map-actions';
-      var mapButton=document.createElement('button');mapButton.type='button';mapButton.textContent=({es:'Ver paradas en el mapa',en:'Show stops on map',it:'Mostra tappe sulla mappa'})[document.documentElement.lang]||'Ver paradas en el mapa';
-      mapButton.addEventListener('click',function(){window.ArchiSpotterNavigation.showTab('map');if(window.ArchiSpotterMap)window.ArchiSpotterMap.showTrip();});actions.appendChild(mapButton);
-      root.appendChild(actions);
-      var note=document.createElement('p');note.className='saved-count';
-      note.textContent=({es:'Solo aparecen en el mapa las paradas con coordenadas disponibles.',en:'Only stops with available coordinates appear on the map.',it:'Sulla mappa compaiono solo le tappe con coordinate disponibili.'})[document.documentElement.lang]||'Solo aparecen las paradas ubicadas.';
-      root.appendChild(note);
+      var routeNote=document.createElement('p');routeNote.className='saved-count';
+      routeNote.textContent=({es:'Abrí las paradas en Google Maps y ajustá allí el orden. En iPhone se envían hasta 5 paradas por tramo.',en:'Open stops in Google Maps and adjust their order there. On iPhone, each section contains up to 5 stops.',it:'Apri le tappe in Google Maps e riordinale lì. Su iPhone, ogni tratto contiene fino a 5 tappe.'})[document.documentElement.lang];
+      root.appendChild(routeNote);
+      var coordinates=window.ArchiSpotterMap.coordinates;
+      var mapped=valid.map(function(id){var entry=dict[id];return {id:id,pos:coordinates[entry.place[0]]};});
+      var unavailable=mapped.filter(function(entry){return !entry.pos;});
+      if(unavailable.length){var warning=document.createElement('p');warning.className='saved-count';warning.textContent=unavailable.length+' sin coordenadas disponibles';root.appendChild(warning);}
+      var located=mapped.filter(function(entry){return !!entry.pos;});
+      if(located.length){
+        var groups=[];
+        if(located.length<=5)groups.push(located);
+        else {for(var at=0;at<located.length-1;at+=4)groups.push(located.slice(at,at+5));}
+        groups.forEach(function(group,index){
+          var actions=document.createElement('div');actions.className='trip-map-actions';
+          var button=document.createElement('button');button.type='button';
+          button.textContent=({es:'Abrir recorrido en Google Maps',en:'Open route in Google Maps',it:'Apri percorso in Google Maps'})[document.documentElement.lang]+(groups.length>1?' · '+(index+1)+'/'+groups.length:'');
+          button.addEventListener('click',function(){
+            var points=group.map(function(entry){return entry.pos.join(',');});
+            var url='https://www.google.com/maps/dir/?api=1&travelmode=walking';
+            if(points.length===1)url+='&destination='+encodeURIComponent(points[0]);
+            else {url+='&origin='+encodeURIComponent(points[0])+'&destination='+encodeURIComponent(points[points.length-1]);if(points.length>2)url+='&waypoints='+encodeURIComponent(points.slice(1,-1).join('|'));}
+            window.open(url,'_blank','noopener,noreferrer');
+          });actions.appendChild(button);root.appendChild(actions);
+        });
+      }
     }
     valid.forEach(function(id,index){
       var item=dict[id],card=document.createElement('article');card.className='saved-card';
