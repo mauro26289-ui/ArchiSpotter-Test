@@ -15,12 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #f7f0e3;
-      --muted: #e5d5bd;
-      --accent: #e4b45d;
+      --ink: #f3f7f7;
+      --muted: #c4d0d0;
+      --accent: #dce5e5;
       --accent-contrast: #101517;
       --field-bg: rgba(13,17,18,.78);
-      --field-border: rgba(228,180,93,.62);
+      --field-border: rgba(220,229,229,.62);
       --paper: #101517;
       --vvh: 100dvh;
     }
@@ -69,14 +69,14 @@
       inset: 0;
       opacity: 0.16;
       background-image:
-        radial-gradient(ellipse at 20% 30%, rgba(120,110,95,.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(90,85,75,.10) 0%, transparent 45%),
+        radial-gradient(ellipse at 20% 30%, rgba(120,135,140,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(90,110,115,.10) 0%, transparent 45%),
         repeating-linear-gradient(
           0deg,
           transparent,
           transparent 3px,
-          rgba(80,70,60,.03) 3px,
-          rgba(80,70,60,.03) 4px
+          rgba(80,100,110,.03) 3px,
+          rgba(80,100,110,.03) 4px
         );
     }
     #backdrop img {
@@ -99,10 +99,10 @@
     #backdrop[data-scene="sagrada"] .veil {
       background: linear-gradient(to bottom, rgba(9,13,15,.56) 0%, rgba(9,13,15,.68) 42%, rgba(9,13,15,.91) 77%, rgba(9,13,15,.97) 100%);
     }
-    .scene-picker { position:fixed;top:calc(env(safe-area-inset-top, 0px) + 12px);left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;padding:5px;border:1px solid rgba(228,180,93,.38);border-radius:999px;background:rgba(9,13,15,.75); }
-    .scene-picker button { color:#f7f0e3;background:transparent;border:0;border-radius:999px;padding:8px 11px;font:600 12px Inter,system-ui,sans-serif;white-space:nowrap; }
-    .scene-picker button[aria-pressed="true"] { color:#101517;background:#e4b45d; }
-    .scene-credit { position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 5px);right:12px;z-index:9;font:400 10px Inter,system-ui,sans-serif;color:#e5d5bd;opacity:.8; }
+    .scene-picker { position:fixed;top:calc(env(safe-area-inset-top, 0px) + 12px);left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;padding:5px;border:1px solid rgba(220,229,229,.38);border-radius:999px;background:rgba(9,13,15,.75); }
+    .scene-picker button { color:#f3f7f7;background:transparent;border:0;border-radius:999px;padding:8px 11px;font:600 12px Inter,system-ui,sans-serif;white-space:nowrap; }
+    .scene-picker button[aria-pressed="true"] { color:#101517;background:#dce5e5; }
+    .scene-credit { position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 5px);right:12px;z-index:9;font:400 10px Inter,system-ui,sans-serif;color:#c4d0d0;opacity:.8; }
     .scene-credit a { color:inherit; }
     @media (prefers-reduced-motion: reduce) { .screen,#backdrop img { transition:none; } }
 
@@ -282,14 +282,21 @@
       align-self: center;
     }
 
+    .auth-error { min-height: 1.2em; margin: 0; color: #ffb6b6; font: 500 12px Inter, sans-serif; text-align: center; }
+    .auth-error:empty { display: none; }
+    .session-actions { margin-top: auto; width: 100%; max-width: 400px; align-self: center; }
+    #home { align-items: center; text-align: center; justify-content: center; }
+    #home .mark { font: 600 clamp(2.1rem, 9vw, 2.75rem)/1.15 Fraunces, Georgia, serif; margin: 0 0 14px; }
+    #home .tag { font: 500 12px Inter, sans-serif; letter-spacing: .12em; color: var(--muted); }
+    .btn:disabled { opacity: .55; cursor: wait; }
     .toast {
       position: fixed;
       left: 50%;
       bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
       transform: translateX(-50%) translateY(140%);
       background: #101517;
-      color: #f7f0e3;
-      border: 1px solid rgba(228,180,93,.45);
+      color: #f3f7f7;
+      border: 1px solid rgba(220,229,229,.45);
       padding: 11px 18px;
       border-radius: 999px;
       font-size: 13px;
@@ -349,8 +356,15 @@
 
       <button type="submit" class="btn btn-primary" id="submit-btn">Iniciar sesión</button>
       <button type="button" class="btn btn-secondary" id="switch-btn">Crear usuario</button>
+      <p id="auth-error" class="auth-error" role="alert" aria-live="polite"></p>
       <button type="button" class="link" id="forgot-btn">¿Olvidaste tu contraseña?</button>
     </form>
+  </section>
+
+  <section id="home" class="screen" aria-label="Sesión iniciada">
+    <h1 class="mark">ArchiSpotter</h1>
+    <p class="tag" id="welcome-user">Sesión iniciada</p>
+    <div class="session-actions"><button type="button" class="btn btn-secondary" id="logout-btn">Cerrar sesión</button></div>
   </section>
 
   <div class="toast" id="toast" role="status"></div>
@@ -407,51 +421,110 @@
       img.addEventListener('error', function () { img.classList.remove('is-ready'); });
             var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
+      var home = document.getElementById('home');
       var mode = 'login';
       var modeLabel = document.getElementById('mode-label');
       var submitBtn = document.getElementById('submit-btn');
       var switchBtn = document.getElementById('switch-btn');
       var pass = document.getElementById('pass');
       var toast = document.getElementById('toast');
+      var error = document.getElementById('auth-error');
+      var ACCOUNTS = 'archispotter_local_accounts_v1';
+      var SESSION = 'archispotter_local_session_v1';
+      var DEFAULT_USER = 'user';
+      var DEFAULT_PASSWORD = 'user123';
 
+      function accounts() {
+        try {
+          var value = JSON.parse(localStorage.getItem(ACCOUNTS) || '{}');
+          return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+        } catch (_) { return {}; }
+      }
       function showToast(msg) {
         toast.textContent = msg;
         toast.classList.add('show');
         clearTimeout(showToast._t);
-        showToast._t = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+        showToast._t = setTimeout(function () { toast.classList.remove('show'); }, 2600);
       }
-
       function setMode(next) {
         mode = next;
-        if (mode === 'login') {
-          modeLabel.textContent = 'Iniciar sesión';
-          submitBtn.textContent = 'Iniciar sesión';
-          switchBtn.textContent = 'Crear usuario';
-          pass.setAttribute('autocomplete', 'current-password');
-        } else {
-          modeLabel.textContent = 'Crear usuario';
-          submitBtn.textContent = 'Crear usuario';
-          switchBtn.textContent = 'Ya tengo cuenta';
-          pass.setAttribute('autocomplete', 'new-password');
-        }
+        error.textContent = '';
+        document.getElementById('auth-form').reset();
+        modeLabel.textContent = next === 'login' ? 'Iniciar sesión' : 'Crear usuario';
+        submitBtn.textContent = modeLabel.textContent;
+        switchBtn.textContent = next === 'login' ? 'Crear usuario' : 'Ya tengo cuenta';
+        pass.setAttribute('autocomplete', next === 'login' ? 'current-password' : 'new-password');
+        document.getElementById('forgot-btn').hidden = next !== 'login';
       }
-
-      switchBtn.addEventListener('click', function () {
-        setMode(mode === 'login' ? 'register' : 'login');
-      });
-      document.getElementById('forgot-btn').addEventListener('click', function () {
-        showToast('Demo: recuperación en la app completa');
-      });
-      document.getElementById('auth-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var u = document.getElementById('user').value.trim();
-        showToast(mode === 'login' ? ('Hola, ' + u + ' (demo)') : 'Usuario creado (demo)');
-      });
-
-      setTimeout(function () {
-        splash.classList.remove('is-active');
-        auth.classList.add('is-active');
+      function showScreen(screen) {
+        [splash, auth, home].forEach(function (el) { el.classList.toggle('is-active', el === screen); });
         setVvh();
+      }
+      function enter(user) {
+        document.getElementById('welcome-user').textContent = 'Bienvenido, ' + user;
+        showScreen(home);
+      }
+      function sessionUser() {
+        try {
+          var user = localStorage.getItem(SESSION);
+          return user && (user === DEFAULT_USER || Object.prototype.hasOwnProperty.call(accounts(), user)) ? user : null;
+        } catch (_) { return null; }
+      }
+      async function digest(password, salt) {
+        if (!crypto || !crypto.subtle) throw new Error('WebCrypto unavailable');
+        var data = new TextEncoder().encode(salt + ':' + password);
+        var bytes = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(bytes), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
+      }
+      switchBtn.addEventListener('click', function () { setMode(mode === 'login' ? 'register' : 'login'); });
+      document.getElementById('forgot-btn').addEventListener('click', function () {
+        showToast('Las cuentas se guardan solo en este dispositivo. La recuperación aún no está disponible.');
+      });
+      document.getElementById('logout-btn').addEventListener('click', function () {
+        try { localStorage.removeItem(SESSION); } catch (_) {}
+        setMode('login');
+        showScreen(auth);
+      });
+      document.getElementById('auth-form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        error.textContent = '';
+        var username = document.getElementById('user').value.trim().toLowerCase();
+        var password = pass.value;
+        if (username.length < 3 || password.length < 6) {
+          error.textContent = 'Usá al menos 3 caracteres para el usuario y 6 para la contraseña.';
+          return;
+        }
+        submitBtn.disabled = true;
+        try {
+          var saved = accounts();
+          if (mode === 'register') {
+            if (username === DEFAULT_USER || Object.prototype.hasOwnProperty.call(saved, username)) {
+              error.textContent = 'Ese usuario ya existe.';
+              return;
+            }
+            if (!window.crypto || !crypto.getRandomValues) throw new Error('Crypto unavailable');
+            var salt = Array.from(crypto.getRandomValues(new Uint8Array(16)), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
+            saved[username] = { salt: salt, hash: await digest(password, salt) };
+            localStorage.setItem(ACCOUNTS, JSON.stringify(saved));
+          } else if (username === DEFAULT_USER) {
+            if (password !== DEFAULT_PASSWORD) { error.textContent = 'Usuario o contraseña incorrectos.'; return; }
+          } else {
+            var account = saved[username];
+            if (!account || await digest(password, account.salt) !== account.hash) {
+              error.textContent = 'Usuario o contraseña incorrectos.';
+              return;
+            }
+          }
+          localStorage.setItem(SESSION, username);
+          enter(username);
+        } catch (_) {
+          error.textContent = 'No se pudo acceder a la cuenta en este navegador.';
+        } finally { submitBtn.disabled = false; }
+      });
+      setTimeout(function () {
+        var user = sessionUser();
+        if (user) enter(user);
+        else showScreen(auth);
       }, 2000);
     })();
   </script>
