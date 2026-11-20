@@ -333,9 +333,9 @@ window.ArchiSpotterEditorial={
       "it": "Il Park Güell nacque come progetto residenziale privato e finì per diventare uno dei principali spazi pubblici di Barcellona. Nel 1900 l'imprenditore Eusebi Güell affidò ad Antoni Gaudí la realizzazione di un complesso ispirato ai quartieri residenziali immersi nel verde inglesi. L'iniziativa rispondeva alla crescita di una città industriale che cercava nuove forme abitative lontano dal centro affollato. Il terreno prescelto occupava una collina affacciata sul paesaggio urbano e sul Mediterraneo. Tuttavia, la proposta commerciale non attirò abbastanza acquirenti e soltanto una piccola parte delle abitazioni previste venne realizzata. I lavori si fermarono e la proprietà rimase privata per diversi anni. Eusebi Güell morì nel 1918; successivamente gli eredi offrirono il complesso al Comune di Barcellona. L'amministrazione ne approvò l'acquisto nel 1922 e il parco aprì al pubblico nel 1926. Da allora ospitò incontri di quartiere, attività culturali e feste popolari, comprese riunioni dedicate alla sardana tradizionale. L'antica residenza della famiglia Güell fu adattata a scuola. Nel 1984 l'UNESCO inserì il parco nel Patrimonio Mondiale legato alle opere di Gaudí. La sua storia dimostra come un'iniziativa immobiliare fallita potesse trasformarsi in uno spazio di vita collettiva e patrimonio condiviso. Oggi appartiene tanto alla memoria sociale quanto all'identità architettonica della città."
     },
     "curiosity": {
-      "es": "La antigua casa de la familia Güell llegó a funcionar como escuela.",
-      "en": "The former Güell family residence later operated as a school.",
-      "it": "L'antica residenza della famiglia Güell divenne in seguito una scuola."
+      "es": "El parque recibió la declaración de monumento artístico en 1969.",
+      "en": "The park received official artistic monument status in 1969.",
+      "it": "Il parco ottenne il riconoscimento di monumento artistico nel 1969."
     },
     "architecture": {
       "es": [
