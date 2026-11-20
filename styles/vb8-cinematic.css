@@ -5,7 +5,6 @@ html,body,body.light-mode{background:#101517!important;color:#f3eee5!important}
 #archi-settings-overlay :is(label,div):has(> #archi-settings-light){display:none!important}
 #archi-settings-overlay :is(label,div):has(> #archi-settings-dark){display:none!important}
 
-#splash-screen,#splash-screen .archi-splash-art{background:#101517!important}
 #view-home,#view-cities-container,#view-monuments-container,#view-favorites,#view-my-trip,#view-map,#view-routes{color:#f4eee5}
 #monument-modal{color:#f2eee6!important}
 #monument-modal :is(.bg-white,.bg-slate-50,.bg-gray-50){background:#1b2326!important;color:#f4eee5!important}
@@ -46,8 +45,6 @@ html,body{background:#101517!important;color-scheme:dark!important}
 
 /* vB8.3: neutraliza los estilos antiguos crema en todas las fases de bienvenida. */
 
-#splash-screen .archi-splash-brand{display:flex!important;visibility:visible!important;opacity:1!important;z-index:999!important}
-
 /* vB8.6: fondo carbon en barra iOS y fundido fotografico superior. */
 :root,html,body,body.archi-intro-active,
 html:has(#splash-screen:not(.hidden)),
@@ -86,8 +83,7 @@ html:has(body.archi-intro-active){
 
 /* vB8.8: artes exactas aprobadas por el usuario; formulario HTML real debajo de la ilustracion. */
 #splash-screen .archi-splash-art{inset:0!important}
-#splash-screen .archi-splash-photo{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center top!important}
-/* Regla de ocultación obsoleta retirada: la visibilidad se controla en entry.css. */
+#splash-screen .archi-splash-photo{width:100%!important;height:100%!important}
 
 /* vB8.9: imagenes solo de arquitectura, marca y formularios siempre HTML. */
 #splash-screen .archi-splash-brand{
@@ -96,7 +92,6 @@ html:has(body.archi-intro-active){
 }
 
 /* vB9.0: clean architecture art only, never baked UI or baked branding. */
-
 
 /* vB9.2: fondo y marca como archivos INDEPENDIENTES; sin zoom ni elementos horneados. */
 :root,html,body,body.archi-intro-active{background:#101517!important;color-scheme:dark!important}
@@ -110,9 +105,6 @@ html:has(body.archi-intro-active){
 #splash-screen .archi-splash-brand-subtitle{font:600 12px system-ui,sans-serif!important;letter-spacing:.36em!important;color:#e4ae5c!important;margin-top:0!important}
 
 /* vB9.3: composición real, UNA imagen compartida y formulario HTML. */
-
-/* Declaración duplicada de fondo eliminada: conservada en vB9.2. */
-
 
 /* vB9.4: blur OSCURO solo detrás del logotipo de la pantalla de acceso.
    Bienvenida y splash conservan la imagen original, sin overlays. */
