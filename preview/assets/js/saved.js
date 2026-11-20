@@ -11,6 +11,12 @@ window.ArchiSpotterSaved=(function(){
     root.replaceChildren();var dict=lookup(),items=read(keys[type]),words=labels(),idx=lang(),valid=items.filter(function(id){return !!dict[id];});
     if(!valid.length){var empty=document.createElement('p');empty.className='saved-empty';empty.textContent=words.empty;root.appendChild(empty);return;}
     var count=document.createElement('p');count.className='saved-count';count.textContent=valid.length+' '+words.count;root.appendChild(count);
+    if(type==='trip'){
+      var actions=document.createElement('div');actions.className='trip-map-actions';
+      var mapButton=document.createElement('button');mapButton.type='button';mapButton.textContent=({es:'Ver paradas en el mapa',en:'Show stops on map',it:'Mostra tappe sulla mappa'})[document.documentElement.lang]||'Ver paradas en el mapa';
+      mapButton.addEventListener('click',function(){window.ArchiSpotterNavigation.showTab('map');if(window.ArchiSpotterMap)window.ArchiSpotterMap.showTrip();});actions.appendChild(mapButton);
+      root.appendChild(actions);
+    }
     valid.forEach(function(id){
       var item=dict[id],card=document.createElement('article');card.className='saved-card';
       var photo=document.createElement('img');photo.src='https://images.unsplash.com/'+item.place[3]+'?auto=format&fit=crop&w=360&q=75';photo.alt='';photo.loading='lazy';card.appendChild(photo);
