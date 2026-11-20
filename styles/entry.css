@@ -262,12 +262,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     display: none !important;
   }
 
-  /* Sin franja negra artificial debajo de la foto */
-  html body #archi-entry-photo::after {
-    content: none !important;
-    display: none !important;
-  }
-
   /* Splash: transparente; la foto es la <img> */
   html body #splash-screen,
   html body #splash-screen:not(.hidden) {
