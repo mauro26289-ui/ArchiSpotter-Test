@@ -26,6 +26,12 @@
       }
       var monumentModule = window.ArchiSpotterMonuments.init(currentLang,strings);
       var openMonument = monumentModule.openMonument;
+      if(window.ArchiSpotterMap)window.ArchiSpotterMap.openMonument=function(place,city,country){
+        var countryButton=document.querySelector('[data-country="'+country+'"]');
+        if(countryButton)countryButton.click();
+        window.ArchiSpotterNavigation.showTab('explore');
+        openMonument(place,city);
+      };
       var renderMonument = monumentModule.renderMonument;
       var exploreModule = window.ArchiSpotterExplore.init(currentLang,strings,openMonument);
       var renderCountryCities = exploreModule.renderCountryCities;
