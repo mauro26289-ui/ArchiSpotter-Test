@@ -275,7 +275,7 @@
     .app-panel { border: 1px solid rgba(220,229,229,.19); border-radius: 16px; background: #1b2427; padding: 18px; margin-bottom: 12px; }
     .app-panel h3 { font: 600 20px Fraunces, Georgia, serif; margin: 0 0 8px; }
     .app-panel p { margin: 0; }
-    .app-nav { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 10px 8px max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); border-top: 1px solid rgba(220,229,229,.17); background: #101517; }
+    .app-nav { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; padding: 10px 8px max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); border-top: 1px solid rgba(220,229,229,.17); background: #101517; }
     .app-nav button { border: 0; background: none; color: #9faeb1; padding: 9px 2px; font: 500 11px Inter, sans-serif; border-radius: 10px; cursor: pointer; }
     .app-nav button[aria-selected="true"] { background: #dce5e5; color: #101517; }
     .lang-choices { display: flex; gap: 8px; margin: 12px 0 20px; }
