@@ -4,6 +4,7 @@ window.ArchiSpotterNavigation = (function () {
     document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
     document.querySelectorAll('.app-view').forEach(function (view) { view.hidden = view.id !== 'view-' + tab; });
     document.querySelector('.app-content').scrollTop = 0;
+    document.dispatchEvent(new CustomEvent('archispotter:tab',{detail:tab}));
   }
   function init() {
     document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
