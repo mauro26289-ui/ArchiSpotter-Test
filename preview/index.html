@@ -20,7 +20,8 @@
       --accent-contrast: #101517;
       --field-bg: rgba(13,17,18,.78);
       --field-border: rgba(220,229,229,.62);
-      --paper: #101517;
+      --paper: #0e1113;
+      --vvh: 100%;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -47,7 +48,7 @@
       left: 0;
       width: 100%;
       width: 100vw;
-      bottom: 0;
+      height: var(--vvh);
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
@@ -100,7 +101,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      bottom: 0;
+      height: var(--vvh);
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -426,6 +427,28 @@
 
   <script>
     (function () {
+      /* Prueba aislada del segundo parche de Claude: altura de pantalla en PWA. */
+      function setVvh() {
+        var landscape = window.innerWidth > window.innerHeight;
+        var full = landscape ? Math.min(screen.width, screen.height) : Math.max(screen.width, screen.height);
+        var h = Math.max(
+          window.innerHeight || 0,
+          (window.visualViewport && Math.round(window.visualViewport.height)) || 0,
+          document.documentElement.clientHeight || 0
+        );
+        if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) h = Math.max(h, full);
+        if (h) document.documentElement.style.setProperty('--vvh', h + 'px');
+      }
+      function settleVvh() { setVvh(); setTimeout(setVvh, 120); setTimeout(setVvh, 500); }
+      setVvh();
+      window.addEventListener('resize', setVvh, { passive: true });
+      window.addEventListener('orientationchange', settleVvh, { passive: true });
+      window.addEventListener('pageshow', settleVvh, { passive: true });
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) settleVvh(); });
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', setVvh, { passive: true });
+      document.addEventListener('DOMContentLoaded', settleVvh, { once: true });
+      window.addEventListener('load', settleVvh, { once: true });
+
       var img = document.getElementById('bg-img');
       var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
