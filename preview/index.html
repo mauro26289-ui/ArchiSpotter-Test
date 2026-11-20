@@ -336,6 +336,14 @@
     .country-back { border:0; background:transparent; color:var(--ink); padding:8px 0 16px; font:500 14px Inter,sans-serif; }
     .country-detail-photo { width:100%; aspect-ratio:1.5; border-radius:16px; object-fit:cover; }
     @media (min-width:700px) { .countries-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } #view-explore .explore-hero { min-height:270px; } }
+    /* Visor de fotografía: zoom táctil, arrastre y cierre accesible. */
+    .explore-hero { cursor:zoom-in; }
+    .explore-hero:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .photo-viewer[hidden] { display:none!important; }
+    .photo-viewer { position:fixed; inset:0; z-index:100; background:#080b0d; display:flex; align-items:center; justify-content:center; overflow:hidden; touch-action:none; overscroll-behavior:contain; }
+    .photo-viewer-image { display:block; width:100%; height:100%; object-fit:contain; transform-origin:center center; user-select:none; -webkit-user-select:none; -webkit-user-drag:none; touch-action:none; will-change:transform; }
+    .photo-viewer-close { position:absolute; z-index:2; right: max(18px, env(safe-area-inset-right, 0px)); top:max(20px, calc(env(safe-area-inset-top, 0px) + 12px)); display:grid; place-items:center; width:46px; height:46px; border:1px solid rgba(255,255,255,.45); border-radius:50%; background:rgba(10,14,16,.75); color:white; font:400 28px/1 Inter,sans-serif; cursor:pointer; touch-action:manipulation; }
+    .photo-viewer-hint { position:absolute; bottom:max(30px, calc(env(safe-area-inset-bottom, 0px) + 18px)); left:20px; right:20px; text-align:center; color:rgba(255,255,255,.8); font:400 12px/1.5 Inter,sans-serif; pointer-events:none; }
     .toast {
       position: fixed;
       left: 50%;
@@ -415,7 +423,7 @@
     <main class="app-content">
       <div class="app-view" id="view-explore">
         <div id="country-overview">
-          <div class="explore-hero">
+          <div class="explore-hero" id="explore-hero" role="button" tabindex="0" aria-label="Ampliar fotografía del Coliseo">
             <img src="https://images.unsplash.com/photo-1763374046991-632df3a66127?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="" decoding="async" fetchpriority="high" />
             <div class="hero-copy"><span class="eyebrow" data-i18n="explore">Explorar</span><h2 data-i18n="discoverTitle">Descubre la arquitectura</h2></div>
           </div>
@@ -461,6 +469,12 @@
       <button type="button" data-tab="settings" aria-selected="false" data-i18n="settings">Ajustes</button>
     </nav>
   </section>
+
+  <div class="photo-viewer" id="photo-viewer" role="dialog" aria-modal="true" aria-label="Fotografía del Coliseo" hidden>
+    <img class="photo-viewer-image" id="photo-viewer-image" alt="Coliseo de Roma" draggable="false" />
+    <button type="button" class="photo-viewer-close" id="photo-viewer-close" aria-label="Cerrar imagen">×</button>
+    <div class="photo-viewer-hint" id="photo-viewer-hint">Pellizca para ampliar · Arrastra para explorar</div>
+  </div>
 
   <div class="toast" id="toast" role="status"></div>
 
@@ -528,6 +542,109 @@
         if (user) document.getElementById('welcome-user').textContent = words.welcome + user;
         updateCountryNames();
       }
+      /* Visor independiente: no altera la fotografía ni el viewport del splash. */
+      (function () {
+        var hero = document.getElementById('explore-hero');
+        var viewer = document.getElementById('photo-viewer');
+        var photo = document.getElementById('photo-viewer-image');
+        var close = document.getElementById('photo-viewer-close');
+        var hint = document.getElementById('photo-viewer-hint');
+        var points = new Map();
+        var scale = 1, x = 0, y = 0, startDistance = 0, startScale = 1;
+        var startMid = null, startX = 0, startY = 0, lastTap = 0;
+        function clamp(n, min, max) { return Math.min(max, Math.max(min, n)); }
+        function bounds() {
+          var naturalW = photo.naturalWidth || 1, naturalH = photo.naturalHeight || 1;
+          var fit = Math.min(viewer.clientWidth / naturalW, viewer.clientHeight / naturalH);
+          var renderedW = naturalW * fit, renderedH = naturalH * fit;
+          return { x:Math.max(0,(renderedW*scale-viewer.clientWidth)/2), y:Math.max(0,(renderedH*scale-viewer.clientHeight)/2) };
+        }
+        function paint() {
+          var b = bounds();
+          x = clamp(x,-b.x,b.x); y = clamp(y,-b.y,b.y);
+          photo.style.transform = 'translate3d('+x+'px,'+y+'px,0) scale('+scale+')';
+        }
+        function reset() { scale=1; x=0; y=0; points.clear(); paint(); }
+        function openViewer() {
+          photo.src = hero.querySelector('img').src;
+          viewer.hidden=false;
+          reset();
+          hint.hidden=false;
+          close.focus({preventScroll:true});
+        }
+        function closeViewer() {
+          points.clear();
+          viewer.hidden=true;
+          photo.removeAttribute('src');
+          hero.focus({preventScroll:true});
+        }
+        hero.addEventListener('click',openViewer);
+        hero.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openViewer();}});
+        close.addEventListener('click',closeViewer);
+        document.addEventListener('keydown',function(e){if(viewer.hidden)return;if(e.key==='Escape')closeViewer();});
+        photo.addEventListener('load',paint);
+        function geometry() {
+          var a=Array.from(points.values());
+          if(a.length<2)return null;
+          return { distance:Math.hypot(a[1].x-a[0].x,a[1].y-a[0].y), mid:{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2} };
+        }
+        function restart() {
+          var g=geometry();
+          startScale=scale;startX=x;startY=y;
+          if(g){startDistance=Math.max(1,g.distance);startMid=g.mid;}
+          else if(points.size===1){startMid=Array.from(points.values())[0];}
+        }
+        viewer.addEventListener('pointerdown',function(e){
+          if(e.target===close)return;
+          e.preventDefault();
+          viewer.setPointerCapture(e.pointerId);
+          points.set(e.pointerId,{x:e.clientX,y:e.clientY});
+          restart();
+          hint.hidden=true;
+        });
+        viewer.addEventListener('pointermove',function(e){
+          if(!points.has(e.pointerId))return;
+          points.set(e.pointerId,{x:e.clientX,y:e.clientY});
+          var g=geometry();
+          if(g){
+            scale=clamp(startScale*g.distance/startDistance,1,5);
+            x=startX+g.mid.x-startMid.x;
+            y=startY+g.mid.y-startMid.y;
+          } else if(points.size===1&&scale>1) {
+            x=startX+e.clientX-startMid.x;
+            y=startY+e.clientY-startMid.y;
+          }
+          paint();
+        });
+        function end(e){
+          if(!points.has(e.pointerId))return;
+          points.delete(e.pointerId);
+          restart();
+        }
+        viewer.addEventListener('pointerup',end);
+        viewer.addEventListener('pointercancel',end);
+        viewer.addEventListener('lostpointercapture',end);
+        viewer.addEventListener('dblclick',function(e){
+          if(e.target===close)return;
+          scale=scale>1?1:2.5;
+          if(scale===1){x=0;y=0;}
+          paint();
+        });
+        viewer.addEventListener('touchend',function(e){
+          if(e.touches.length!==0||e.changedTouches.length!==1)return;
+          var now=Date.now();
+          if(now-lastTap<290){scale=scale>1?1:2.5;if(scale===1){x=0;y=0;}paint();lastTap=0;}
+          else lastTap=now;
+        },{passive:true});
+        viewer.addEventListener('wheel',function(e){
+          e.preventDefault();
+          scale=clamp(scale*(e.deltaY<0?1.12:.89),1,5);
+          if(scale===1){x=0;y=0;}
+          paint();
+        },{passive:false});
+        window.addEventListener('resize',function(){if(!viewer.hidden)paint();},{passive:true});
+      })();
+
       var countryNames = {
         it:['Italia','Italy','Italia'], es:['España','Spain','Spagna'],
         fr:['Francia','France','Francia'], gr:['Grecia','Greece','Grecia'],
