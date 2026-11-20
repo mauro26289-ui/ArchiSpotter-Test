@@ -94,9 +94,13 @@ window.ArchiSpotterMap = (function () {
       dot.bindTooltip(String(i+1),{permanent:true,direction:'center',className:'archi-trip-number'});
       dot.bindPopup(item.name);bounds.push(item.pos);
     });
+    if(bounds.length>1){
+      // Straight connectors indicate selected stop order, not a calculated walking route.
+      L.polyline(bounds,{color:'#226e61',weight:3,opacity:.8,dashArray:'7 9',interactive:false}).addTo(tripLayer);
+    }
     if(bounds.length)map.fitBounds(bounds,{padding:[35,35],maxZoom:15});
     var status=document.getElementById('map-status');
-    if(status)status.textContent=found.length+' paradas de Mi viaje visibles en el mapa';
+    if(status)status.textContent=({es:found.length+' paradas ordenadas · Línea orientativa, no ruta peatonal',en:found.length+' ordered stops · Straight-line guide, not a walking route',it:found.length+' tappe ordinate · Linea indicativa, non percorso pedonale'})[document.documentElement.lang]||found.length+' paradas ordenadas';
   }
   function show() { init(); if (map) { addTiles(); setTimeout(function(){map.invalidateSize();},60); } }
   document.addEventListener('archispotter:tab',function(e){if(e.detail==='map')show();});
