@@ -8,11 +8,11 @@
 :root{--entry-ink:#101517;--entry-gold:#e4b45d}
 html,body,body.archi-intro-active{background-color:var(--entry-ink)!important;color-scheme:dark}
 #archi-onboarding,#archi-auth-panel{
- position:fixed;inset:0;width:100%;height:100dvh;min-height:100dvh;
+ position:fixed;inset:0;width:100%;height:100%;min-height:100%;min-height:-webkit-fill-available;
  box-sizing:border-box;overflow-y:auto;overscroll-behavior:contain;
- background-color:var(--entry-ink);
- background-image:linear-gradient(to bottom,#101517 0%,rgba(16,21,23,.9) 5%,rgba(16,21,23,.38) 12%,transparent 23%),url('../assets/cinematic-scene-v92.webp');
- background-size:100% 100%,100% auto;background-position:center top,center top;background-repeat:no-repeat;
+ /* La foto vive en #archi-entry-photo; estos paneles son UI transparente */
+ background-color:transparent;
+ background-image:none;
  color:#f7f0e3;padding:0;margin:0;
 }
 #archi-onboarding{z-index:45;display:block}
@@ -452,6 +452,7 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
    El panel es transparente para conservar la foto compartida; por eso, sin
    esta regla, sus botones quedan visibles debajo del formulario. */
 body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-onboarding {
+  display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
@@ -476,4 +477,108 @@ body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-auth-panel {
   -webkit-box-shadow: 0 0 0 1000px #101517 inset !important;
   box-shadow: 0 0 0 1000px #101517 inset !important;
   caret-color: #fff5df !important;
+}
+
+
+/* ============================================================
+   vB9.40 — Full-bleed de la FOTO (sin relleno negro debajo)
+   La imagen debe llegar al borde físico del iPhone.
+   ============================================================ */
+@media (max-width: 699px) {
+  html {
+    height: 100%;
+    height: -webkit-fill-available;
+  }
+  html, body, body.archi-intro-active {
+    /* Mientras carga la imagen puede verse esto; no es un "zócalo" intencional */
+    background-color: #101517 !important;
+    min-height: 100%;
+    min-height: -webkit-fill-available;
+  }
+
+  /* Capa única de fotografía: anclada a los 4 bordes del viewport */
+  html body #archi-entry-photo {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    width: 100vw !important;
+    /* Preferir estirar a bordes; height como refuerzo iOS */
+    height: auto !important;
+    height: 100% !important;
+    height: -webkit-fill-available !important;
+    min-height: 100% !important;
+    min-height: 100dvh !important;
+    min-height: -webkit-fill-available !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    transform: none !important;
+    overflow: hidden !important;
+    z-index: 44 !important;
+    pointer-events: none !important;
+    /* cover = la foto escala y recorta para llenar TODO el rectángulo */
+    background-color: transparent !important;
+    background-image: url('../assets/cinematic-scene-v92.webp') !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Visible en splash, onboarding y auth (todo el intro) */
+  html body.archi-intro-active #archi-entry-photo,
+  html body:has(#splash-screen:not(.hidden)) #archi-entry-photo,
+  html body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-entry-photo {
+    display: block !important;
+  }
+
+  html body:not(.archi-intro-active):not(:has(#splash-screen:not(.hidden))):not(:has(#archi-auth-panel:not(.archi-auth-hidden))) #archi-entry-photo {
+    display: none !important;
+  }
+
+  /* Sin pseudo-elementos que pinten franja */
+  html body #archi-entry-photo::before,
+  html body #archi-entry-photo::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Splash / onboarding / auth: transparentes, solo UI encima de la foto */
+  html body #splash-screen,
+  html body #archi-onboarding,
+  html body #archi-auth-panel {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  html body #splash-screen,
+  html body #archi-onboarding,
+  html body #archi-auth-panel {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Foto del splash (img) también a cover full */
+  html body #splash-screen .archi-splash-art,
+  html body #splash-screen .archi-splash-photo {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
 }
