@@ -26,6 +26,7 @@ window.ArchiSpotterMonuments = (function () {
         items=items.includes(id)?items.filter(function(x){return x!==id;}):items.concat(id);
         try{localStorage.setItem(key,JSON.stringify(items));}catch(_){}
         updateMonumentActions();
+        document.dispatchEvent(new CustomEvent('archispotter:saved-change'));
       }
       document.getElementById('monument-favorite').addEventListener('click',function(){toggleMonument('archispotter_preview_favorites');});
       document.getElementById('monument-trip').addEventListener('click',function(){toggleMonument('archispotter_preview_trip');});
