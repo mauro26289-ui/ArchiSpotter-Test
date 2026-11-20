@@ -227,139 +227,8 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
 }
 
 
-/* ============================================================
-   vB9.27 — FIX splash full-screen iPhone
-   Restaura la <img> real del splash y cubre todo el viewport
-   (incluido home indicator). Anula display:none de vB9.23 y
-   el parche ::after de vB9.24 que tapaba la foto.
-   ============================================================ */
-@media (max-width: 699px) {
-
-  /* Capa de fondo compartida (onboarding / auth) */
-  html body #archi-entry-photo {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100dvh !important;
-    height: 100lvh !important;
-    min-height: 100dvh !important;
-    min-height: -webkit-fill-available !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #101517 url('../assets/cinematic-scene-v92.webp') center center / cover no-repeat !important;
-    z-index: 44 !important;
-    pointer-events: none !important;
-    transform: none !important;
-  }
-
-  body:not(.archi-intro-active):not(:has(#splash-screen:not(.hidden))) #archi-entry-photo {
-    display: none !important;
-  }
-
-  /* Splash: transparente; la foto es la <img> */
-  html body #splash-screen,
-  html body #splash-screen:not(.hidden) {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100dvh !important;
-    height: 100lvh !important;
-    min-height: 100dvh !important;
-    min-height: -webkit-fill-available !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    z-index: 50 !important;
-    overflow: hidden !important;
-    transform: none !important;
-  }
-
-  html body #splash-screen.hidden {
-    display: none !important;
-  }
-
-  html body #splash-screen .archi-splash-brand {
-    display: flex !important;
-    z-index: 2 !important;
-  }
-
-  html body #archi-onboarding,
-  html body #archi-auth-panel {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100dvh !important;
-    height: 100lvh !important;
-    min-height: -webkit-fill-available !important;
-    background: transparent !important;
-  }
-}
-
-
-/* ============================================================
-   vB9.28 — Nuclear full-bleed (anula vB9.23–27 y app.css)
-   ============================================================ */
-@media (max-width: 699px) {
-  html, body,
-  html:has(#splash-screen:not(.hidden)),
-  body:has(#splash-screen:not(.hidden)),
-  body.archi-intro-active,
-  html:has(body.archi-intro-active) {
-    background-color: #101517 !important;
-  }
-
-  html body #archi-entry-photo,
-  html body #splash-screen,
-  html body #splash-screen:not(.hidden) {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    width: 100vw !important;
-    height: 100lvh !important;
-    min-height: 100dvh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    transform: none !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-  }
-
-  html body #archi-entry-photo {
-    display: block !important;
-    z-index: 44 !important;
-    pointer-events: none !important;
-    background: #101517 url('../assets/cinematic-scene-v92.webp') center center / cover no-repeat !important;
-  }
-  html body #archi-entry-photo::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  html body #splash-screen {
-    z-index: 50 !important;
-    background: transparent !important;
-  }
-
-  html body #splash-screen .archi-splash-brand {
-    display: flex !important;
-    z-index: 2 !important;
-  }
-}
-
+/* vB9.27–28 retirados: sus reglas de full-bleed repetían o contradecían
+   la capa única vigente de vB9.40. Se preservan vB9.24–25 y vB9.31. */
 
 /* vB9.31 — Autenticación: ocultar la bienvenida mientras el panel está abierto.
    El panel es transparente para conservar la foto compartida; por eso, sin
@@ -451,8 +320,15 @@ body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-auth-panel {
     display: none !important;
   }
 
-  /* Sin pseudo-elementos que pinten franja */
-  html body #archi-entry-photo::before,
+  /* Un único velo oscuro sobre la fotografía; sin superficies duplicadas. */
+  html body #archi-entry-photo::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, rgba(8,11,13,.48), rgba(8,11,13,.58) 42%, rgba(8,11,13,.88) 78%, rgba(8,11,13,.96)) !important;
+    pointer-events: none !important;
+  }
   html body #archi-entry-photo::after {
     content: none !important;
     display: none !important;
