@@ -17,9 +17,23 @@ window.ArchiSpotterSaved=(function(){
       mapButton.addEventListener('click',function(){window.ArchiSpotterNavigation.showTab('map');if(window.ArchiSpotterMap)window.ArchiSpotterMap.showTrip();});actions.appendChild(mapButton);
       root.appendChild(actions);
     }
-    valid.forEach(function(id){
+    valid.forEach(function(id,index){
       var item=dict[id],card=document.createElement('article');card.className='saved-card';
       var photo=document.createElement('img');photo.src='https://images.unsplash.com/'+item.place[3]+'?auto=format&fit=crop&w=360&q=75';photo.alt='';photo.loading='lazy';card.appendChild(photo);
+      if(type==='trip'){
+        var order=document.createElement('div');order.className='trip-order';
+        var number=document.createElement('span');number.className='trip-order-number';number.textContent=String(index+1);order.appendChild(number);
+        function move(direction){
+          var current=read(keys.trip),at=current.indexOf(id),target=at+direction;
+          if(at<0||target<0||target>=current.length)return;
+          var other=current[target];current[target]=id;current[at]=other;
+          try{localStorage.setItem(keys.trip,JSON.stringify(current));}catch(_){return;}
+          document.dispatchEvent(new CustomEvent('archispotter:saved-change'));
+        }
+        var up=document.createElement('button');up.type='button';up.textContent='↑';up.disabled=index===0;up.setAttribute('aria-label',({es:'Subir parada',en:'Move stop up',it:'Sposta tappa su'})[document.documentElement.lang]||'Subir parada');up.addEventListener('click',function(){move(-1);});order.appendChild(up);
+        var down=document.createElement('button');down.type='button';down.textContent='↓';down.disabled=index===valid.length-1;down.setAttribute('aria-label',({es:'Bajar parada',en:'Move stop down',it:'Sposta tappa giù'})[document.documentElement.lang]||'Bajar parada');down.addEventListener('click',function(){move(1);});order.appendChild(down);
+        card.appendChild(order);
+      }
       var body=document.createElement('div');body.className='saved-card-body';var title=document.createElement('strong');title.textContent=item.place[idx];body.appendChild(title);
       var city=document.createElement('span');city.textContent=item.city[idx];body.appendChild(city);
       var actions=document.createElement('div');actions.className='saved-card-actions';
