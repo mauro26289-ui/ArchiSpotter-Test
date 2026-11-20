@@ -53,7 +53,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles/app.css?v=pan3" id="archi-modular-styles-v11">
+    <link rel="stylesheet" href="styles/app.css?v=pan4" id="archi-modular-styles-v11">
 <link rel="stylesheet" href="styles/vb1.css?v=vb1-real2">
 <link rel="stylesheet" href="styles/vb2-italy.css?v=vb6-131">
 
@@ -258,21 +258,7 @@ html:has(body:not(.light-mode)):not(:has(#splash-screen:not(.hidden))) { backgro
 })();
 </script>
 
-<script id="archi-e103-ios-probe">
-/* E103: prueba optativa, activar solo con ?iosprobe=1; no altera la geometría. */
-(function(){
- if(!new URLSearchParams(location.search).has('iosprobe'))return;
- var meta=document.querySelector('meta[name="theme-color"]');
- if(meta)meta.setAttribute('content','#e00050');
- document.documentElement.style.setProperty('background-color','#193cff','important');
- document.addEventListener('DOMContentLoaded',function(){
-  var banner=document.createElement('div');
-  banner.textContent='E103 · META ROJO / HTML AZUL · comprobar franja inferior';
-  banner.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;background:#e00050;color:white;font:700 11px sans-serif;text-align:center;padding:3px;pointer-events:none';
-  document.body.appendChild(banner);
- });
-})();
-</script>
+
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-6">
 <link rel="stylesheet" href="styles/entry.css?v=9-32">
 
