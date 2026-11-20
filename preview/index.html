@@ -336,6 +336,21 @@
     .country-back { border:0; background:transparent; color:var(--ink); padding:8px 0 16px; font:500 14px Inter,sans-serif; }
     .country-detail-photo { width:100%; aspect-ratio:1.5; border-radius:16px; object-fit:cover; }
     @media (min-width:700px) { .countries-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } #view-explore .explore-hero { min-height:270px; } }
+    /* País: portada editorial, ciudades y monumentos destacados. */
+    #country-detail .country-cover { position:relative; overflow:hidden; border-radius:18px; height:245px; background:#263033; isolation:isolate; }
+    #country-detail .country-detail-photo { width:100%; height:100%; aspect-ratio:auto; object-fit:cover; display:block; }
+    #country-detail .country-cover::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 28%,rgba(5,9,10,.83)); pointer-events:none; }
+    #country-detail .country-cover-title { position:absolute; z-index:1; bottom:19px; left:20px; right:16px; margin:0; font:600 37px/1.1 Fraunces,Georgia,serif; color:white; }
+    #country-detail .country-intro { font:400 14px/1.7 Inter,sans-serif; color:var(--muted); margin:18px 0 25px; }
+    #country-detail .city-section { margin:0 0 30px; }
+    #country-detail .city-heading { display:flex; align-items:baseline; justify-content:space-between; margin:0 0 13px; gap:10px; }
+    #country-detail .city-heading h3 { font:600 27px/1.2 Fraunces,Georgia,serif; margin:0; }
+    #country-detail .city-photo { display:block; width:100%; aspect-ratio:1.9; object-fit:cover; border-radius:15px; margin-bottom:13px; }
+    #country-detail .landmarks-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    #country-detail .landmark-card { min-width:0; }
+    #country-detail .landmark-card img { display:block; width:100%; aspect-ratio:1.12; object-fit:cover; border-radius:12px; background:#263033; }
+    #country-detail .landmark-card h4 { font:600 17px/1.28 Fraunces,Georgia,serif; margin:9px 0 0; }
+    #country-detail .country-back { cursor:pointer; }
     /* Visor de fotografía: zoom táctil, arrastre y cierre accesible. */
     .explore-hero { cursor:zoom-in; }
     .explore-hero:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
@@ -441,9 +456,9 @@
         </div>
         <div id="country-detail" hidden>
           <button type="button" class="country-back" id="country-back" data-i18n="backCountries">← Volver a países</button>
-          <img class="country-detail-photo" id="country-detail-photo" alt="" />
-          <h2 id="country-detail-name"></h2>
-          <p data-i18n="countrySoon">Próximamente podrás explorar los monumentos de este país.</p>
+          <div class="country-cover"><img class="country-detail-photo" id="country-detail-photo" alt="" /><h2 class="country-cover-title" id="country-detail-name"></h2></div>
+          <p class="country-intro" data-i18n="countryIntro">Explora ciudades y descubre su arquitectura a través de imágenes.</p>
+          <div id="country-cities"></div>
         </div>
       </div>
       <div class="app-view" id="view-trip" hidden>
@@ -524,9 +539,9 @@
         document.documentElement.classList.toggle('is-in-app', screen === home);
       }
       var strings = {
-        es: {tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',backCountries:'← Volver a países',countrySoon:'Próximamente podrás explorar los monumentos de este país.',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
-        en: {tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',backCountries:'← Back to countries',countrySoon:'You will soon be able to explore this country’s monuments.',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
-        it: {tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',backCountries:'← Torna ai paesi',countrySoon:'Presto potrai esplorare i monumenti di questo paese.',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
+        es: {tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',backCountries:'← Volver a países',countrySoon:'Próximamente podrás explorar los monumentos de este país.',countryIntro:'Explora ciudades y descubre su arquitectura a través de imágenes.',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
+        en: {tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',backCountries:'← Back to countries',countrySoon:'You will soon be able to explore this country’s monuments.',countryIntro:'Explore cities and discover their architecture through images.',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
+        it: {tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',backCountries:'← Torna ai paesi',countrySoon:'Presto potrai esplorare i monumenti di questo paese.',countryIntro:'Esplora le città e scopri la loro architettura attraverso le immagini.',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
       };
       function currentLang() {
         try { var l = localStorage.getItem('archispotter_language'); return strings[l] ? l : 'es'; } catch (_) { return 'es'; }
@@ -541,6 +556,7 @@
         var user = sessionUser();
         if (user) document.getElementById('welcome-user').textContent = words.welcome + user;
         updateCountryNames();
+        renderCountryCities();
       }
       /* Visor independiente: no altera la fotografía ni el viewport del splash. */
       (function () {
@@ -645,6 +661,38 @@
         window.addEventListener('resize',function(){if(!viewer.hidden)paint();},{passive:true});
       })();
 
+      var countryCitySamples = {"it":[["Roma","Rome","Roma","photo-1552832230-c0197dd311b5",[["Coliseo","Colosseum","Colosseo","photo-1552832230-c0197dd311b5"],["Panteón","Pantheon","Pantheon","photo-1533105079780-92b9be482077"]]],["Florencia","Florence","Firenze","photo-1541370976299-4d24ebbc9077",[["Catedral de Florencia","Florence Cathedral","Duomo di Firenze","photo-1541370976299-4d24ebbc9077"],["Ponte Vecchio","Ponte Vecchio","Ponte Vecchio","photo-1533105079780-92b9be482077"]]]],"es":[["Barcelona","Barcelona","Barcellona","photo-1539037116277-4db20889f2d4",[["Sagrada Familia","Sagrada Família","Sagrada Família","photo-1583779457094-ab6f5f0c1e2b"],["Casa Batlló","Casa Batlló","Casa Batlló","photo-1539037116277-4db20889f2d4"]]],["Madrid","Madrid","Madrid","photo-1543783207-ec64e4d95325",[["Palacio Real","Royal Palace","Palazzo Reale","photo-1543783207-ec64e4d95325"],["Puerta de Alcalá","Puerta de Alcalá","Puerta de Alcalá","photo-1539037116277-4db20889f2d4"]]]],"fr":[["París","Paris","Parigi","photo-1502602898657-3e91760cbb34",[["Torre Eiffel","Eiffel Tower","Torre Eiffel","photo-1502602898657-3e91760cbb34"],["Arco del Triunfo","Arc de Triomphe","Arco di Trionfo","photo-1502602898657-3e91760cbb34"]]],["Versalles","Versailles","Versailles","photo-1590490360182-c33d57733427",[["Palacio de Versalles","Palace of Versailles","Reggia di Versailles","photo-1590490360182-c33d57733427"]]]],"gr":[["Atenas","Athens","Atene","photo-1555993539-1732b0258235",[["Partenón","Parthenon","Partenone","photo-1555993539-1732b0258235"],["Erecteión","Erechtheion","Eretteo","photo-1555993539-1732b0258235"]]],["Delfos","Delphi","Delfi","photo-1503152394-c571994fd383",[["Templo de Apolo","Temple of Apollo","Tempio di Apollo","photo-1503152394-c571994fd383"]]]],"gb":[["Londres","London","Londra","photo-1513635269975-59663e0ac1ad",[["Palacio de Westminster","Palace of Westminster","Palazzo di Westminster","photo-1513635269975-59663e0ac1ad"],["Tower Bridge","Tower Bridge","Tower Bridge","photo-1513635269975-59663e0ac1ad"]]],["Bath","Bath","Bath","photo-1528909514045-2fa4ac7a08ba",[["Termas romanas","Roman Baths","Terme romane","photo-1528909514045-2fa4ac7a08ba"]]]],"de":[["Berlín","Berlin","Berlino","photo-1560969184-10fe8719e047",[["Puerta de Brandeburgo","Brandenburg Gate","Porta di Brandeburgo","photo-1560969184-10fe8719e047"],["Catedral de Berlín","Berlin Cathedral","Duomo di Berlino","photo-1467269204594-9661b134dd2b"]]],["Colonia","Cologne","Colonia","photo-1500530855697-b586d89ba3ee",[["Catedral de Colonia","Cologne Cathedral","Duomo di Colonia","photo-1500530855697-b586d89ba3ee"]]]],"pt":[["Lisboa","Lisbon","Lisbona","photo-1555881400-74d7acaacd8b",[["Torre de Belém","Belém Tower","Torre di Belém","photo-1555881400-74d7acaacd8b"],["Monasterio de los Jerónimos","Jerónimos Monastery","Monastero dos Jerónimos","photo-1555881400-74d7acaacd8b"]]],["Oporto","Porto","Porto","photo-1548707309-dcebeab9ea9b",[["Puente Don Luis I","Dom Luís I Bridge","Ponte Dom Luís I","photo-1548707309-dcebeab9ea9b"]]]],"ar":[["Buenos Aires","Buenos Aires","Buenos Aires","photo-1589909202802-8f4aadce1849",[["Obelisco","Obelisk","Obelisco","photo-1589909202802-8f4aadce1849"],["Teatro Colón","Teatro Colón","Teatro Colón","photo-1589909202802-8f4aadce1849"]]],["La Plata","La Plata","La Plata","photo-1548707309-dcebeab9ea9b",[["Catedral de La Plata","La Plata Cathedral","Cattedrale di La Plata","photo-1548707309-dcebeab9ea9b"]]]]};
+      function renderCountryCities() {
+        var selected = document.getElementById('country-detail').getAttribute('data-selected');
+        var root = document.getElementById('country-cities');
+        root.replaceChildren();
+        if (!selected || !countryCitySamples[selected]) return;
+        var idx = {es:0,en:1,it:2}[currentLang()] || 0;
+        function picture(id, width, className) {
+          var img = document.createElement('img');
+          img.src = 'https://images.unsplash.com/' + id + '?auto=format&fit=crop&w=' + width + '&q=80';
+          img.alt = '';
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          if (className) img.className = className;
+          return img;
+        }
+        countryCitySamples[selected].forEach(function(city) {
+          var section = document.createElement('section'); section.className='city-section';
+          var heading = document.createElement('div'); heading.className='city-heading';
+          var title = document.createElement('h3'); title.textContent=city[idx]; heading.appendChild(title);
+          section.appendChild(heading);
+          section.appendChild(picture(city[3],900,'city-photo'));
+          var row = document.createElement('div'); row.className='landmarks-row';
+          city[4].forEach(function(place) {
+            var card=document.createElement('article'); card.className='landmark-card';
+            card.appendChild(picture(place[3],500,''));
+            var name=document.createElement('h4'); name.textContent=place[idx]; card.appendChild(name);
+            row.appendChild(card);
+          });
+          section.appendChild(row); root.appendChild(section);
+        });
+      }
       var countryNames = {
         it:['Italia','Italy','Italia'], es:['España','Spain','Spagna'],
         fr:['Francia','France','Francia'], gr:['Grecia','Greece','Grecia'],
@@ -669,6 +717,7 @@
           document.getElementById('country-overview').hidden = true;
           document.getElementById('country-detail').hidden = false;
           updateCountryNames();
+          renderCountryCities();
           document.querySelector('.app-content').scrollTop = 0;
         });
       });
