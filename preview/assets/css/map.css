@@ -3,3 +3,8 @@
 #archi-map { width:100%; height:min(62dvh,600px); min-height:340px; border-radius:16px; overflow:hidden; background:#172024; z-index:0; }
 #archi-map .leaflet-container { font-family:Inter,sans-serif; }
 #archi-map .leaflet-control-attribution { font-size:10px; }
+
+#archi-map .archi-map-popup{display:flex;flex-direction:column;gap:6px;font:13px Inter,sans-serif;color:#243033}
+#archi-map .archi-map-popup img{width:100%;height:95px;object-fit:cover;border-radius:7px}
+#archi-map .archi-map-popup strong{font-size:14px}
+#archi-map .archi-map-popup button{background:#203b35;color:#fff;border:0;border-radius:8px;padding:9px;cursor:pointer}
