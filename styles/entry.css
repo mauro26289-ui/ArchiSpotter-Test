@@ -354,29 +354,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     background: transparent !important;
   }
 
-  /* Restaurar la <img> (vB9.23 la ocultaba) */
-  html body #splash-screen .archi-splash-art,
-  html body #splash-screen .archi-splash-photo {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
-    max-height: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: none !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-  }
-
   html body #splash-screen .archi-splash-brand {
     display: flex !important;
     z-index: 2 !important;
