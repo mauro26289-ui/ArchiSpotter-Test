@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#F4F0EA" />
+  <meta name="apple-mobile-web-app-title" content="ArchiSpotter" />
+  <title>ArchiSpotter — muestra</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1A1A1A;
+      --muted: #5C5A56;
+      --accent: #2F5D50;
+      --accent-contrast: #F7F4EE;
+      --field-bg: rgba(255,255,255,.92);
+      --field-border: #D9D2C7;
+      --paper: #F4F0EA;
+      --vvh: 100dvh;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html {
+      width: 100%;
+      height: 100%;
+      height: -webkit-fill-available;
+      background: var(--paper);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      min-height: 100dvh;
+      min-height: -webkit-fill-available;
+      min-height: var(--vvh);
+      overflow: hidden;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    /* Fondo full-bleed: color + textura CSS (siempre visible) + foto opcional */
+    #backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      width: 100vw;
+      height: var(--vvh);
+      min-height: 100%;
+      min-height: -webkit-fill-available;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        linear-gradient(165deg, #ebe4d8 0%, #f4f0ea 40%, #e7e0d4 100%);
+    }
+    /* Textura sutil tipo piedra/papel sin depender de red */
+    #backdrop::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.45;
+      background-image:
+        radial-gradient(ellipse at 20% 30%, rgba(120,110,95,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(90,85,75,.10) 0%, transparent 45%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(80,70,60,.03) 3px,
+          rgba(80,70,60,.03) 4px
+        );
+    }
+    #backdrop img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      opacity: 0;
+      transition: opacity .6s ease;
+    }
+    #backdrop img.is-ready { opacity: 1; }
+    #backdrop .veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(244,240,234,.20) 0%,
+        rgba(244,240,234,.55) 42%,
+        rgba(244,240,234,.92) 70%,
+        rgba(244,240,234,.98) 100%
+      );
+    }
+
+    .screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--vvh);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      padding:
+        max(28px, calc(env(safe-area-inset-top, 0px) + 12px))
+        24px
+        max(28px, calc(env(safe-area-inset-bottom, 0px) + 12px))
+        24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .5s ease, visibility .5s ease;
+    }
+    .screen.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* Splash */
+    #splash {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #splash .mark {
+      font-family: Fraunces, Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 9vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.15;
+    }
+    #splash .line {
+      width: 44px;
+      height: 2px;
+      background: var(--accent);
+      margin: 16px auto 14px;
+      border-radius: 2px;
+    }
+    #splash .tag {
+      font-family: Inter, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Auth */
+    #auth { justify-content: flex-end; }
+    #auth .brand {
+      text-align: center;
+      margin-bottom: auto;
+      padding-top: max(4vh, 8px);
+    }
+    #auth .brand h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2rem, 8vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    #auth .brand .line {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 14px auto 12px;
+      border-radius: 2px;
+    }
+    #auth .brand .tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .panel {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mode-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin: 0 0 2px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 14px;
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(26,26,26,.04);
+    }
+    .field:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(47,93,80,.18);
+    }
+    .field svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.6;
+    }
+    .field input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-size: 16px;
+      color: var(--ink);
+      padding: 12px 0;
+      font-family: Inter, sans-serif;
+    }
+    .field input::placeholder { color: #8a857c; }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+      border: 0;
+      cursor: pointer;
+    }
+    .btn:active { opacity: 0.9; transform: scale(0.985); }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      margin-top: 4px;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.55);
+      color: var(--ink);
+      border: 1.5px solid var(--field-border);
+    }
+    .link {
+      background: none;
+      border: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-family: Inter, sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 10px;
+      align-self: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+      transform: translateX(-50%) translateY(140%);
+      background: var(--ink);
+      color: var(--paper);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      z-index: 30;
+      transition: transform .35s ease;
+      pointer-events: none;
+      max-width: 90vw;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+  <div id="backdrop" aria-hidden="true">
+    <!-- Wikimedia: muro de piedra (suele cargar mejor que Unsplash en algunos iPhone) -->
+    <img
+      id="bg-img"
+      src="stone.jpg"
+      alt=""
+      decoding="async"
+      fetchpriority="high"
+    />
+    <div class="veil"></div>
+  </div>
+
+  <section id="splash" class="screen is-active" aria-label="Splash">
+    <h1 class="mark">ArchiSpotter</h1>
+    <div class="line" aria-hidden="true"></div>
+    <p class="tag">Arquitectura en contexto</p>
+  </section>
+
+  <section id="auth" class="screen" aria-label="Acceso">
+    <div class="brand">
+      <h1>ArchiSpotter</h1>
+      <div class="line" aria-hidden="true"></div>
+      <p class="tag">Arquitectura en contexto</p>
+    </div>
+
+    <form class="panel" id="auth-form" autocomplete="on">
+      <p class="mode-title" id="mode-label">Iniciar sesión</p>
+
+      <label class="field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 19c1.5-3.2 4-5 7-5s5.5 1.8 7 5"/></svg>
+        <input id="user" name="username" type="text" placeholder="Usuario" required minlength="3" autocomplete="username" />
+      </label>
+
+      <label class="field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        <input id="pass" name="password" type="password" placeholder="Contraseña" required minlength="6" autocomplete="current-password" />
+      </label>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn">Iniciar sesión</button>
+      <button type="button" class="btn btn-secondary" id="switch-btn">Crear usuario</button>
+      <button type="button" class="link" id="forgot-btn">¿Olvidaste tu contraseña?</button>
+    </form>
+  </section>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    (function () {
+      function setVvh() {
+        var h = Math.max(
+          window.innerHeight || 0,
+          (window.visualViewport && Math.round(window.visualViewport.height)) || 0,
+          document.documentElement.clientHeight || 0
+        );
+        if (!h) return;
+        document.documentElement.style.setProperty('--vvh', h + 'px');
+        document.body.style.minHeight = h + 'px';
+      }
+      setVvh();
+      window.addEventListener('resize', setVvh, { passive: true });
+      window.addEventListener('orientationchange', function () { setTimeout(setVvh, 250); }, { passive: true });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', setVvh, { passive: true });
+      }
+      document.addEventListener('DOMContentLoaded', setVvh, { once: true });
+
+      var img = document.getElementById('bg-img');
+      function markReady() { img.classList.add('is-ready'); }
+      if (img.complete && img.naturalWidth) markReady();
+      else {
+        img.addEventListener('load', markReady, { once: true });
+        img.addEventListener('error', function () {
+          /* sin foto: queda textura CSS + papel — sin icono roto */
+          img.style.display = 'none';
+        }, { once: true });
+      }
+
+      var splash = document.getElementById('splash');
+      var auth = document.getElementById('auth');
+      var mode = 'login';
+      var modeLabel = document.getElementById('mode-label');
+      var submitBtn = document.getElementById('submit-btn');
+      var switchBtn = document.getElementById('switch-btn');
+      var pass = document.getElementById('pass');
+      var toast = document.getElementById('toast');
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+      }
+
+      function setMode(next) {
+        mode = next;
+        if (mode === 'login') {
+          modeLabel.textContent = 'Iniciar sesión';
+          submitBtn.textContent = 'Iniciar sesión';
+          switchBtn.textContent = 'Crear usuario';
+          pass.setAttribute('autocomplete', 'current-password');
+        } else {
+          modeLabel.textContent = 'Crear usuario';
+          submitBtn.textContent = 'Crear usuario';
+          switchBtn.textContent = 'Ya tengo cuenta';
+          pass.setAttribute('autocomplete', 'new-password');
+        }
+      }
+
+      switchBtn.addEventListener('click', function () {
+        setMode(mode === 'login' ? 'register' : 'login');
+      });
+      document.getElementById('forgot-btn').addEventListener('click', function () {
+        showToast('Demo: recuperación en la app completa');
+      });
+      document.getElementById('auth-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var u = document.getElementById('user').value.trim();
+        showToast(mode === 'login' ? ('Hola, ' + u + ' (demo)') : 'Usuario creado (demo)');
+      });
+
+      setTimeout(function () {
+        splash.classList.remove('is-active');
+        auth.classList.add('is-active');
+        setVvh();
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>
