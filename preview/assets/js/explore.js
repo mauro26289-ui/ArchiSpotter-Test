@@ -95,7 +95,7 @@ window.ArchiSpotterExplore = (function () {
         document.getElementById('country-overview').hidden = false;
         document.querySelector('.app-content').scrollTop = 0;
       });
-    return { renderCountryCities:renderCountryCities, updateCountryNames:updateCountryNames };
+    return { renderCountryCities:renderCountryCities, updateCountryNames:updateCountryNames, openCity:openCity };
   }
   return {init:init};
 })();
