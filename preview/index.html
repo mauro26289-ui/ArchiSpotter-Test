@@ -112,13 +112,18 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      /* Pantallas exclusivas: sin fundido que superponga splash y acceso. */
-      transition: none;
+      /* Saliente: se desvanece primero y solo después pasa a hidden. */
+      transition: opacity .3s ease, visibility 0s linear .3s;
     }
     .screen.is-active {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
+      /* Entrante: espera a que la saliente casi haya desaparecido (sin doble logo). */
+      transition: opacity .4s ease .22s, visibility 0s linear 0s;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .screen, .screen.is-active, #auth .btn-primary, #auth.is-active .btn-primary { transition: none; }
     }
 
     /* Splash */
@@ -255,6 +260,18 @@
       color: var(--accent-contrast);
       margin-top: 4px;
     }
+    /* Evita el bloque gris aislado durante el fundido: el botón entra oscuro
+       (como los campos) y se ilumina cuando la pantalla ya es opaca. */
+    #auth .btn-primary {
+      background: var(--field-bg);
+      color: var(--ink);
+      transition: none;
+    }
+    #auth.is-active .btn-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      transition: background-color .3s ease .62s, color .3s ease .62s;
+    }
     .btn-secondary {
       background: rgba(13,17,18,.65);
       color: var(--ink);
@@ -311,11 +328,14 @@
       font-size: 13px;
       font-weight: 500;
       z-index: 30;
-      transition: transform .35s ease;
+      /* Oculto de verdad cuando no hay mensaje: antes asomaba una cápsula vacía abajo. */
+      opacity: 0;
+      visibility: hidden;
+      transition: transform .35s ease, opacity .35s ease, visibility 0s linear .35s;
       pointer-events: none;
       max-width: 90vw;
     }
-    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; transition-delay: 0s, 0s, 0s; }
   </style>
 </head>
 <body>
