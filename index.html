@@ -260,7 +260,7 @@ html:has(body:not(.light-mode)):not(:has(#splash-screen:not(.hidden))) { backgro
 
 
 <link rel="stylesheet" href="styles/vb8-cinematic.css?v=9-7">
-<link rel="stylesheet" href="styles/entry.css?v=9-32">
+<link rel="stylesheet" href="styles/entry.css?v=9-33">
 
 <style id="archi-splash-fullscreen-v929">
 /* Geometría de splash; sin colores artificiales para ocultar franjas. */
@@ -328,81 +328,7 @@ body {
   }
 }
 </style>
-<script id="archi-app-height-v930">
-(function () {
 
-  function isIntro() {
-    var body = document.body;
-    if (!body) return true;
-    if (body.classList.contains('archi-intro-active')) return true;
-    var splash = document.getElementById('splash-screen');
-    if (splash && !splash.classList.contains('hidden') && splash.isConnected) return true;
-    return false;
-  }
-
-  function apply() {
-    var body = document.body;
-    if (!body) return;
-
-    if (isIntro()) {
-      var h = Math.max(
-        window.innerHeight || 0,
-        (window.visualViewport && window.visualViewport.height) || 0,
-        document.documentElement.clientHeight || 0
-      );
-      var total = h + 80;
-      document.documentElement.style.setProperty('--archi-app-height', total + 'px');
-      ['archi-entry-photo', 'splash-screen'].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        el.style.setProperty('position', 'fixed', 'important');
-        el.style.setProperty('top', '0', 'important');
-        el.style.setProperty('left', '0', 'important');
-        el.style.setProperty('right', '0', 'important');
-        el.style.setProperty('bottom', 'auto', 'important');
-        el.style.setProperty('width', '100%', 'important');
-        el.style.setProperty('height', total + 'px', 'important');
-        el.style.setProperty('min-height', total + 'px', 'important');
-      });
-    } else {
-      // App normal: retirar las alturas temporales sin imponer colores
-      document.documentElement.style.removeProperty('--archi-app-height');
-      var photo = document.getElementById('archi-entry-photo');
-      if (photo) {
-        photo.style.cssText = '';
-        photo.style.setProperty('display', 'none', 'important');
-      }
-    }
-  }
-
-  apply();
-  window.addEventListener('resize', apply, { passive: true });
-  window.addEventListener('orientationchange', function () { setTimeout(apply, 250); }, { passive: true });
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', apply, { passive: true });
-  }
-  document.addEventListener('DOMContentLoaded', function () {
-    apply();
-    if (window.MutationObserver && document.body) {
-      new MutationObserver(apply).observe(document.body, {
-        attributes: true,
-        attributeFilter: ['class']
-      });
-    }
-    var splash = document.getElementById('splash-screen');
-    if (splash && window.MutationObserver) {
-      new MutationObserver(apply).observe(splash, {
-        attributes: true,
-        attributeFilter: ['class', 'style']
-      });
-    }
-  }, { once: true });
-  setTimeout(apply, 100);
-  setTimeout(apply, 600);
-  setTimeout(apply, 2000);
-  setTimeout(apply, 4000);
-})();
-</script>
 
 <style id="archi-inapp-bottom-v930">
 /* Navegación inferior: conservar sus estilos propios, sin pintar el fondo del documento. */
