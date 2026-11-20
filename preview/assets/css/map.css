@@ -1,0 +1,5 @@
+#view-map .map-title { font:600 28px/1.2 Fraunces,Georgia,serif; margin:10px 0; text-align:left; }
+#view-map .map-note, #view-map .map-status { color:var(--muted); font:400 12px/1.55 Inter,sans-serif; text-align:left; }
+#archi-map { width:100%; height:min(62dvh,600px); min-height:340px; border-radius:16px; overflow:hidden; background:#172024; z-index:0; }
+#archi-map .leaflet-container { font-family:Inter,sans-serif; }
+#archi-map .leaflet-control-attribution { font-size:10px; }
