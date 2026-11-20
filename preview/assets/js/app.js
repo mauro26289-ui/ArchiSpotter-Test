@@ -28,7 +28,9 @@
       var openMonument = monumentModule.openMonument;
       if(window.ArchiSpotterMap)window.ArchiSpotterMap.openMonument=function(place,city,country){
         var countryButton=document.querySelector('[data-country="'+country+'"]');
-        if(countryButton)countryButton.click();
+        if(!countryButton)return;
+        countryButton.click();
+        exploreModule.openCity(city);
         window.ArchiSpotterNavigation.showTab('explore');
         openMonument(place,city);
       };
