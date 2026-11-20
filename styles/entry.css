@@ -452,6 +452,7 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
    El panel es transparente para conservar la foto compartida; por eso, sin
    esta regla, sus botones quedan visibles debajo del formulario. */
 body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-onboarding {
+  display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
