@@ -6,17 +6,34 @@ window.ArchiSpotterMap = (function () {
   function dark() { return document.documentElement.dataset.theme !== 'light'; }
   function style() { return dark() ? 'dark_all' : 'light_all'; }
   function addTiles() {
-    var wanted = style(); if (tiles && wanted === activeStyle) return;
+    // CARTO requires a key since September 2026. Until configured, use OSM.
+    // Do not request CARTO without a key: it returns watermarked PNGs (HTTP 200).
+    var key = window.ArchiSpotterConfig && window.ArchiSpotterConfig.cartoBasemapKey;
+    var wanted = key ? style() : 'osm';
+    if (tiles && wanted === activeStyle) return;
     activeStyle = wanted; failures = 0;
     if (tiles) map.removeLayer(tiles);
-    tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/' + wanted + '/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:19, attribution:attribution, crossOrigin:true});
-    tiles.on('tileerror', function () {
-      if (++failures < 5 || !tiles || tiles._archiFallback) return;
-      var old = tiles; map.removeLayer(old);
-      tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
-      tiles._archiFallback = true; tiles.addTo(map);
-      var status = document.getElementById('map-status'); if (status) status.textContent = 'CARTO no responde. Se muestra OpenStreetMap.';
-    });
+    if (!key) {
+      tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom:19, noWrap:true,
+        attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      });
+    } else {
+      tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/' + wanted + '/{z}/{x}/{y}{r}.png?key=' + encodeURIComponent(key), {
+        subdomains:'abcd', maxZoom:19, noWrap:true, attribution:attribution
+      });
+      tiles.on('tileerror',function(){
+        if (++failures < 5 || !tiles || tiles._archiFallback) return;
+        map.removeLayer(tiles);
+        tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom:19, noWrap:true,
+          attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+        tiles._archiFallback=true; activeStyle='osm'; tiles.addTo(map);
+        var status=document.getElementById('map-status');
+        if(status) status.textContent='CARTO no responde. Se muestra OpenStreetMap.';
+      });
+    }
     tiles.addTo(map);
   }
   function init() {
