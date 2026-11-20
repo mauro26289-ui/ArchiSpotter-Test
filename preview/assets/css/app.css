@@ -185,16 +185,7 @@
       flex-direction: column;
       gap: 12px;
     }
-    .mode-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-      margin: 0 0 2px;
-    }
-    .field {
+.field {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -264,19 +255,7 @@
       color: var(--ink);
       border: 1.5px solid var(--field-border);
     }
-    .link {
-      background: none;
-      border: 0;
-      color: var(--muted);
-      font-size: 13px;
-      font-family: Inter, sans-serif;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      padding: 10px;
-      align-self: center;
-    }
-
-    .auth-error { min-height: 1.2em; margin: 0; color: #ffb6b6; font: 500 12px Inter, sans-serif; text-align: center; }
+.auth-error { min-height: 1.2em; margin: 0; color: #ffb6b6; font: 500 12px Inter, sans-serif; text-align: center; }
     .auth-error:empty { display: none; }
     .session-actions { margin-top: auto; width: 100%; max-width: 400px; align-self: center; }
     #home { align-items: center; text-align: center; justify-content: center; }
