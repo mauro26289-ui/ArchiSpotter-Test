@@ -341,8 +341,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     margin: 0 !important;
     padding: 0 !important;
     background: transparent !important;
-    background-image: none !important;
-    background-color: transparent !important;
     z-index: 50 !important;
     overflow: hidden !important;
     transform: none !important;
@@ -364,8 +362,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     margin: 0 !important;
     padding: 0 !important;
     background: none !important;
-    background-image: none !important;
-    background-color: transparent !important;
   }
 
   html body #splash-screen .archi-splash-photo {
@@ -382,7 +378,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     padding: 0 !important;
     border: 0 !important;
     background: none !important;
-    background-image: none !important;
     object-fit: cover !important;
     object-position: center center !important;
   }
@@ -454,8 +449,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
   html body #splash-screen {
     z-index: 50 !important;
     background: transparent !important;
-    background-image: none !important;
-    background-color: transparent !important;
   }
 
   /* Restaurar la <img> (vB9.23 la ocultaba) */
@@ -477,7 +470,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     padding: 0 !important;
     border: 0 !important;
     background: none !important;
-    background-image: none !important;
     object-fit: cover !important;
     object-position: center center !important;
   }
