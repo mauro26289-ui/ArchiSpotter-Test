@@ -1,4 +1,4 @@
-/* Stage 25: exact original ElevenLabs narration scripts. Never edit history without rechecking audio synchronization. */
+/* Stage 26: Italian editorial content. Existing ElevenLabs history remains byte-for-byte unchanged. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -149,5 +149,69 @@ window.ArchiSpotterEditorial={
         "La torre centrale di Gesù Cristo ha una struttura a dodici lati."
       ]
     }
+  },
+  "Fontana di Trevi": {
+    "history": {
+      "es": "La Fontana di Trevi nació de una necesidad antigua: llevar agua a la ciudad. En este lugar terminaba el recorrido del acueducto Aqua Virgo, construido en época romana para abastecer distintos sectores de la capital. Con el paso de los siglos, aquel punto de llegada fue adquiriendo un significado urbano y ceremonial cada vez mayor. En el siglo XVIII, el papa Clemente XII decidió sustituir la fuente existente por una composición monumental. En 1732 convocó un concurso y eligió el proyecto de Nicola Salvi. La obra transformó la parte posterior del Palacio Poli en un escenario público dedicado al agua. Salvi no llegó a contemplar el resultado final: murió mientras continuaban los trabajos. Otros artistas y responsables prosiguieron la ejecución, hasta que Giuseppe Pannini completó el conjunto en 1762. Desde entonces, la fuente ha acompañado los cambios de Roma sin perder su función como punto de encuentro. También se convirtió en una imagen internacional de la ciudad gracias al cine y a los viajeros que la visitan. Contemplarla permite entender cómo una infraestructura destinada al suministro cotidiano podía convertirse, con el tiempo, en una declaración artística y política. El monumento pertenece tanto a la historia de los servicios urbanos como a la de las grandes intervenciones promovidas por el papado.",
+      "en": "The Trevi Fountain began with an ancient necessity: bringing water into the city. This was the terminal area of the Aqua Virgo aqueduct, constructed in Roman times to supply different parts of the capital. Over the centuries, that point of arrival acquired increasing urban and ceremonial importance. In the eighteenth century, Pope Clement XII decided to replace the existing fountain with a monumental composition. He launched a competition in 1732 and selected Nicola Salvi's design. The project transformed the rear of Palazzo Poli into a public setting devoted to water. Salvi never saw the finished result: he died while construction was still under way. Other artists and supervisors continued the work until Giuseppe Pannini completed the ensemble in 1762. Since then, the fountain has accompanied Rome through successive changes while remaining a gathering place. It also became an internationally recognizable image of the city through cinema and the countless travellers who visited it. Looking at the monument reveals how an infrastructure intended to provide an everyday service could gradually become an artistic and political statement. Its history belongs both to the development of urban water supplies and to the ambitious public projects sponsored by the papacy. The fountain thus connects practical needs, civic identity and artistic ambition across very different periods of Roman life.",
+      "it": "La Fontana di Trevi nasce da un'esigenza antica: portare acqua in città. Qui terminava il percorso dell'acquedotto Aqua Virgo, costruito in epoca romana per rifornire diversi settori della capitale. Nel corso dei secoli, quel punto di arrivo acquistò un'importanza urbana e cerimoniale sempre maggiore. Nel Settecento papa Clemente XII decise di sostituire la fontana esistente con una composizione monumentale. Nel 1732 indisse un concorso e scelse il progetto di Nicola Salvi. L'intervento trasformò il retro di Palazzo Poli in uno scenario pubblico dedicato all'acqua. Salvi non vide il risultato definitivo: morì quando i lavori erano ancora in corso. Altri artisti e responsabili proseguirono la realizzazione, fino al completamento dell'insieme da parte di Giuseppe Pannini nel 1762. Da allora la fontana ha accompagnato i cambiamenti di Roma, mantenendo il proprio ruolo di luogo d'incontro. È diventata anche un'immagine della città conosciuta in tutto il mondo, grazie al cinema e ai viaggiatori che la visitano. Osservarla permette di comprendere come un'infrastruttura destinata a un servizio quotidiano potesse trasformarsi, nel tempo, in una dichiarazione artistica e politica. La sua storia appartiene sia allo sviluppo dell'approvvigionamento idrico urbano sia ai grandi interventi pubblici promossi dal papato."
+    },
+    "curiosity": {
+      "es": "Su nombre podría aludir al encuentro de tres calles cercanas.",
+      "en": "Its name may refer to three streets meeting nearby.",
+      "it": "Il nome potrebbe richiamare l'incrocio di tre strade vicine."
+    },
+    "architecture": {
+      "es": [
+        "Océano ocupa el nicho central sobre un carro con forma de concha.",
+        "Dos caballos representan las aguas agitadas y las tranquilas.",
+        "La escenografía rocosa se integra directamente con la fachada de Palazzo Poli."
+      ],
+      "en": [
+        "Oceanus occupies the central niche on a shell-shaped chariot.",
+        "Two horses represent turbulent and calm waters.",
+        "The rocky setting merges directly with the façade of Palazzo Poli."
+      ],
+      "it": [
+        "Oceano occupa la nicchia centrale su un carro a forma di conchiglia.",
+        "Due cavalli rappresentano le acque agitate e quelle calme.",
+        "La scenografia rocciosa si integra con la facciata di Palazzo Poli."
+      ]
+    },
+    "sources": [
+      "https://www.turismoroma.it/es/places/la-fuente-de-trevi"
+    ]
+  },
+  "Castillo de Sant'Angelo": {
+    "history": {
+      "es": "El Castillo de Sant'Angelo no nació como fortaleza. Su historia comenzó en el siglo II d. C., cuando el emperador Adriano mandó construir junto al Tíber un mausoleo para él y su familia. El edificio funerario pasó después a formar parte de las defensas de Roma, una transformación que modificó profundamente su destino. Durante la Edad Media fue disputado por distintas familias poderosas y se convirtió en una posición estratégica para controlar el acceso a la ciudad. Su cercanía al Vaticano acabó vinculándolo estrechamente con los pontífices. En 1367, las llaves del edificio fueron entregadas al papa Urbano V, en un momento marcado por los esfuerzos para restablecer la presencia papal en Roma. Los sucesivos pontífices reforzaron sus defensas y acondicionaron espacios residenciales. Bajo Pablo III, en el siglo XVI, los apartamentos alcanzaron especial riqueza decorativa. El castillo también sirvió como prisión, particularmente para detenidos relacionados con conflictos políticos. Tras la incorporación de Roma al Estado italiano, pasó a usos militares y, finalmente, se convirtió en museo nacional en 1925. Su recorrido reúne así funciones que rara vez conviven en un mismo edificio: tumba imperial, bastión defensivo, residencia de gobierno, cárcel y museo. Cada transformación responde a una etapa distinta de la historia de Roma.",
+      "en": "Castel Sant'Angelo was not originally a fortress. Its story began in the second century AD, when Emperor Hadrian commissioned a mausoleum beside the Tiber for himself and his family. The funerary building was later incorporated into Rome's defences, a transformation that profoundly changed its destiny. During the Middle Ages, powerful families competed to control it, and the structure became a strategic position overlooking access to the city. Its proximity to the Vatican eventually tied it closely to the popes. In 1367, the keys were handed to Pope Urban V during efforts to restore the papal presence in Rome. Successive pontiffs strengthened its defences and created residential quarters. Under Paul III, in the sixteenth century, the papal apartments acquired particularly rich decoration. The castle also served as a prison, especially for people detained during political conflicts. After Rome became part of the Italian state, the complex had military uses before finally becoming a national museum in 1925. Its rooms therefore bring together functions rarely found in one building: an imperial tomb, defensive stronghold, government residence, prison and museum. Each successive use reflects a different chapter in Rome's history. Rather than preserving a single moment, the monument reveals how a city continually reshapes the buildings inherited from earlier generations.",
+      "it": "Castel Sant'Angelo non nacque come fortezza. La sua storia iniziò nel II secolo d.C., quando l'imperatore Adriano fece costruire presso il Tevere un mausoleo per sé e per la propria famiglia. L'edificio funerario venne successivamente inserito nelle difese di Roma, una trasformazione che ne cambiò profondamente il destino. Durante il Medioevo diverse famiglie potenti si contesero il controllo della struttura, diventata una posizione strategica per sorvegliare gli accessi alla città. La vicinanza al Vaticano finì per legarla strettamente ai pontefici. Nel 1367 le chiavi dell'edificio furono consegnate a papa Urbano V, mentre si cercava di ristabilire la presenza papale a Roma. I pontefici successivi rafforzarono le difese e predisposero ambienti residenziali. Sotto Paolo III, nel Cinquecento, gli appartamenti raggiunsero una particolare ricchezza decorativa. Il castello fu utilizzato anche come prigione, soprattutto per detenuti coinvolti in conflitti politici. Dopo l'annessione di Roma allo Stato italiano, il complesso ebbe funzioni militari e divenne infine museo nazionale nel 1925. Il suo percorso riunisce quindi funzioni raramente presenti nello stesso edificio: sepolcro imperiale, baluardo difensivo, residenza di governo, carcere e museo. Ogni cambiamento corrisponde a una fase diversa della storia della città. Il monumento mostra come Roma abbia continuamente trasformato gli edifici ricevuti dal passato."
+    },
+    "curiosity": {
+      "es": "Una leyenda atribuye su nombre a una visión del arcángel Miguel.",
+      "en": "A legend links its name to a vision of Archangel Michael.",
+      "it": "Una leggenda collega il nome a una visione dell'arcangelo Michele."
+    },
+    "architecture": {
+      "es": [
+        "El núcleo original combina una base cuadrada y un gran cuerpo cilíndrico.",
+        "Las defensas posteriores incorporaron una muralla de trazado pentagonal.",
+        "El Passetto di Borgo proporciona una conexión elevada hacia el Vaticano."
+      ],
+      "en": [
+        "The original core combines a square base with a large cylinder.",
+        "Later defences included a pentagonal perimeter wall.",
+        "The Passetto di Borgo provides an elevated connection towards the Vatican."
+      ],
+      "it": [
+        "Il nucleo originario unisce una base quadrata e un grande cilindro.",
+        "Le difese successive comprendono una cinta muraria pentagonale.",
+        "Il Passetto di Borgo offre un collegamento sopraelevato verso il Vaticano."
+      ]
+    },
+    "sources": [
+      "https://direzionemuseiroma.cultura.gov.it/en/museo-nazionale-di-castel-santangelo/"
+    ]
   }
 };
