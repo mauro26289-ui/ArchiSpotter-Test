@@ -75,6 +75,31 @@ window.ArchiSpotterMap = (function () {
       status.textContent=error.code===1?({es:'Permiso de ubicación denegado.',en:'Location permission denied.',it:'Permesso di localizzazione negato.'}[lang]||'Permiso denegado'):({es:'No se pudo obtener tu ubicación. Inténtalo de nuevo.',en:'Unable to get your location. Try again.',it:'Impossibile ottenere la posizione. Riprova.'}[lang]||'Ubicación no disponible');
     },{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
   }
+  // Local, accent-insensitive search across the mapped catalogue; no external geocoding.
+  var searchInput=document.getElementById('map-search'),searchResults=document.getElementById('map-search-results');
+  function normalize(value){return String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();}
+  function searchEntries(){var entries=[],catalog=window.ArchiSpotterData.countryCitySamples;
+    Object.keys(catalog).forEach(function(country){catalog[country].forEach(function(city){city[4].forEach(function(place){
+      var pos=monumentCoordinates[place[0]];if(pos)entries.push({place:place,city:city,country:country,pos:pos});
+    });});});return entries;
+  }
+  function clearSearch(){if(searchResults){searchResults.replaceChildren();searchResults.hidden=true;}}
+  function chooseSearch(item){
+    clearSearch();if(searchInput)searchInput.value=item.place[({es:0,en:1,it:2}[document.documentElement.lang]||0)];
+    show();if(!map)return;map.setView(item.pos,16);
+    markers.eachLayer(function(marker){if(marker.getLatLng().distanceTo(L.latLng(item.pos))<3)marker.fire('click');});
+  }
+  function updateSearch(){
+    clearSearch();if(!searchInput||!searchResults)return;
+    var query=normalize(searchInput.value);if(!query)return;
+    var idx=({es:0,en:1,it:2}[document.documentElement.lang]||0);
+    var matches=searchEntries().filter(function(item){return item.place.some(function(name){return normalize(name).includes(query);})||item.city.some(function(name){return normalize(name).includes(query);});}).slice(0,12);
+    if(!matches.length){var none=document.createElement('p');none.textContent=({es:'Sin resultados',en:'No results',it:'Nessun risultato'})[document.documentElement.lang];searchResults.appendChild(none);}
+    matches.forEach(function(item){var button=document.createElement('button');button.type='button';button.setAttribute('role','option');button.textContent=item.place[idx]+' · '+item.city[idx];button.addEventListener('click',function(){chooseSearch(item);});searchResults.appendChild(button);});
+    searchResults.hidden=false;
+  }
+  if(searchInput){searchInput.addEventListener('input',updateSearch);searchInput.addEventListener('keydown',function(event){if(event.key==='Escape')clearSearch();if(event.key==='Enter'){var first=searchResults&&searchResults.querySelector('button');if(first){event.preventDefault();first.click();}}});}
+  document.querySelectorAll('[data-lang]').forEach(function(button){button.addEventListener('click',function(){if(searchInput&&searchInput.value)updateSearch();});});
   var locationButton=document.getElementById('map-locate');
   if(locationButton)locationButton.addEventListener('click',function(){show();locate();});
   var tripMode=false;
