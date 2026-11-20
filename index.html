@@ -280,13 +280,10 @@ html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { backg
 <link rel="stylesheet" href="styles/entry.css?v=9-32">
 
 <style id="archi-splash-fullscreen-v929">
-/* v929: el zócalo gris es body #1b2427; la foto termina en #050709.
-   Igualamos el fondo al negro de la imagen y forzamos altura por JS. */
+/* Geometría de splash; sin colores artificiales para ocultar franjas. */
 html, body {
   margin: 0 !important;
   padding: 0 !important;
-  background-color: #050709 !important;
-  background: #050709 !important;
 }
 html {
   height: 100%;
@@ -295,15 +292,6 @@ html {
 body {
   min-height: 100%;
   min-height: -webkit-fill-available;
-}
-/* Nunca mostrar el gris de la app durante splash/onboarding */
-body.archi-intro-active,
-body:has(#splash-screen:not(.hidden)),
-html:has(body.archi-intro-active),
-html:has(#splash-screen:not(.hidden)),
-body:not(.light-mode).archi-intro-active {
-  background-color: #050709 !important;
-  background: #050709 !important;
 }
 @media (max-width: 699px) {
   #archi-entry-photo,
@@ -325,8 +313,7 @@ body:not(.light-mode).archi-intro-active {
   #archi-entry-photo {
     z-index: 44 !important;
     pointer-events: none !important;
-    background-color: #050709 !important;
-    background-image: url(assets/cinematic-scene-v92.webp) !important;
+      background-image: url(assets/cinematic-scene-v92.webp) !important;
     background-position: center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -360,8 +347,6 @@ body:not(.light-mode).archi-intro-active {
 </style>
 <script id="archi-app-height-v930">
 (function () {
-  var BLACK = '#050709';
-  var APP_BG = '#1b2427';
 
   function isIntro() {
     var body = document.body;
@@ -384,9 +369,6 @@ body:not(.light-mode).archi-intro-active {
       );
       var total = h + 80;
       document.documentElement.style.setProperty('--archi-app-height', total + 'px');
-      document.documentElement.style.setProperty('background-color', BLACK, 'important');
-      body.style.setProperty('background-color', BLACK, 'important');
-      body.style.setProperty('background', BLACK, 'important');
       ['archi-entry-photo', 'splash-screen'].forEach(function (id) {
         var el = document.getElementById(id);
         if (!el) return;
@@ -400,10 +382,7 @@ body:not(.light-mode).archi-intro-active {
         el.style.setProperty('min-height', total + 'px', 'important');
       });
     } else {
-      // App normal: restaurar fondo de la app y no tocar alturas del splash
-      document.documentElement.style.setProperty('background-color', APP_BG, 'important');
-      body.style.setProperty('background-color', APP_BG, 'important');
-      body.style.setProperty('background', APP_BG, 'important');
+      // App normal: retirar las alturas temporales sin imponer colores
       document.documentElement.style.removeProperty('--archi-app-height');
       var photo = document.getElementById('archi-entry-photo');
       if (photo) {
@@ -443,14 +422,7 @@ body:not(.light-mode).archi-intro-active {
 </script>
 
 <style id="archi-inapp-bottom-v930">
-/* In-app: sin zócalo debajo del bottom nav */
-body:not(.archi-intro-active):not(:has(#splash-screen:not(.hidden))) {
-  background-color: #1b2427 !important;
-  background: #1b2427 !important;
-}
-html:has(body:not(.archi-intro-active):not(:has(#splash-screen:not(.hidden)))) {
-  background-color: #1b2427 !important;
-}
+/* Navegación inferior: conservar sus estilos propios, sin pintar el fondo del documento. */
 @media (max-width: 699px) {
   body:not(.archi-intro-active) #app > nav.bottom-nav {
     position: fixed !important;
