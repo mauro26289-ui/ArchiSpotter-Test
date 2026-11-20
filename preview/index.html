@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/app.css?v=audit8" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="./assets/css/map.css?v=map9" />
   <link rel="stylesheet" href="./assets/css/gallery.css?v=mod3" />
 </head>
 <body>
@@ -118,6 +120,7 @@
           </div>
         </div>
       </div>
+      <div class="app-view" id="view-map" hidden><span class="eyebrow">CARTO · OpenStreetMap</span><h2 class="map-title">Mapa arquitectónico</h2><p class="map-note">Puntos de referencia de ciudades, no ubicaciones exactas de monumentos. Catálogo de 48 monumentos en preparación.</p><div id="archi-map" role="region" aria-label="Mapa de ciudades de ArchiSpotter"></div><p id="map-status" class="map-status" role="status"></p></div>
       <div class="app-view" id="view-trip" hidden>
         <span class="eyebrow" data-i18n="trip">Mi viaje</span><h2 data-i18n="tripTitle">Mis rutas</h2>
         <div class="app-panel"><p data-i18n="tripText">Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.</p></div>
@@ -136,6 +139,7 @@
     </main>
     <nav class="app-nav" aria-label="Navegación principal">
       <button type="button" data-tab="explore" aria-selected="true" data-i18n="explore">Explorar</button>
+      <button type="button" data-tab="map" aria-selected="false">Mapa</button>
       <button type="button" data-tab="trip" aria-selected="false" data-i18n="trip">Mi viaje</button>
       <button type="button" data-tab="favorites" aria-selected="false" data-i18n="favorites">Favoritos</button>
       <button type="button" data-tab="settings" aria-selected="false" data-i18n="settings">Ajustes</button>
@@ -150,6 +154,7 @@
 
   <div class="toast" id="toast" role="status"></div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="./assets/data/translations.js?v=mod2" defer></script>
   <script src="./assets/data/countries.js?v=mod2" defer></script>
   <script src="./assets/data/cities.js?v=mod2" defer></script>
@@ -159,5 +164,6 @@
   <script src="./assets/js/auth.js?v=mod7" defer></script>
   <script src="./assets/js/app.js?v=audit8" defer></script>
   <script src="./assets/js/gallery.js?v=mod3" defer></script>
+  <script src="./assets/js/map.js?v=map9" defer></script>
 </body>
 </html>
