@@ -77,7 +77,9 @@ window.ArchiSpotterMap = (function () {
   }
   var locationButton=document.getElementById('map-locate');
   if(locationButton)locationButton.addEventListener('click',function(){show();locate();});
+  var tripMode=false;
   function showTrip(){
+    tripMode=true;
     show();if(!map)return;
     if(tripLayer)map.removeLayer(tripLayer);
     tripLayer=L.layerGroup().addTo(map);
@@ -94,15 +96,14 @@ window.ArchiSpotterMap = (function () {
       dot.bindTooltip(String(i+1),{permanent:true,direction:'center',className:'archi-trip-number'});
       dot.bindPopup(item.name);bounds.push(item.pos);
     });
-    if(bounds.length>1){
-      // Straight connectors indicate selected stop order, not a calculated walking route.
-      L.polyline(bounds,{color:'#226e61',weight:3,opacity:.8,dashArray:'7 9',interactive:false}).addTo(tripLayer);
-    }
+
     if(bounds.length)map.fitBounds(bounds,{padding:[35,35],maxZoom:15});
     var status=document.getElementById('map-status');
-    if(status)status.textContent=({es:found.length+' paradas ordenadas · Línea orientativa, no ruta peatonal',en:found.length+' ordered stops · Straight-line guide, not a walking route',it:found.length+' tappe ordinate · Linea indicativa, non percorso pedonale'})[document.documentElement.lang]||found.length+' paradas ordenadas';
+    var missing=ids.length-found.length;
+    if(status)status.textContent=({es:found.length+' de '+ids.length+' paradas ubicadas'+(missing?' · '+missing+' sin coordenadas todavía':''),en:found.length+' of '+ids.length+' stops mapped'+(missing?' · '+missing+' missing coordinates':''),it:found.length+' di '+ids.length+' tappe sulla mappa'+(missing?' · '+missing+' senza coordinate':'')})[document.documentElement.lang]||found.length+' paradas ubicadas';
   }
   function show() { init(); if (map) { addTiles(); setTimeout(function(){map.invalidateSize();},60); } }
   document.addEventListener('archispotter:tab',function(e){if(e.detail==='map')show();});
+  document.addEventListener('archispotter:saved-change',function(){if(tripMode&&map)showTrip();});
   return {show:show,showTrip:showTrip,openMonument:null};
 })();
