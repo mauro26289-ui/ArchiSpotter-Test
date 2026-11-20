@@ -287,8 +287,9 @@
       left: 50%;
       bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
       transform: translateX(-50%) translateY(140%);
-      background: var(--ink);
-      color: var(--paper);
+      background: #101517;
+      color: #f7f0e3;
+      border: 1px solid rgba(228,180,93,.45);
       padding: 11px 18px;
       border-radius: 999px;
       font-size: 13px;
@@ -338,12 +339,12 @@
 
       <label class="field">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 19c1.5-3.2 4-5 7-5s5.5 1.8 7 5"/></svg>
-        <input id="user" name="username" type="text" placeholder="Usuario" required minlength="3" autocomplete="username" />
+        <input id="user" name="username" type="text" aria-label="Usuario" placeholder="Usuario" required minlength="3" autocomplete="username" />
       </label>
 
       <label class="field">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-        <input id="pass" name="password" type="password" placeholder="Contraseña" required minlength="6" autocomplete="current-password" />
+        <input id="pass" name="password" type="password" aria-label="Contraseña" placeholder="Contraseña" required minlength="6" autocomplete="current-password" />
       </label>
 
       <button type="submit" class="btn btn-primary" id="submit-btn">Iniciar sesión</button>
@@ -385,13 +386,6 @@
       };
       function markReady() { img.classList.add('is-ready'); }
       if (img.complete && img.naturalWidth) markReady();
-      else {
-        img.addEventListener('load', markReady, { once: true });
-        img.addEventListener('error', function () {
-          /* sin foto: queda textura CSS + papel — sin icono roto */
-          img.style.display = 'none';
-        }, { once: true });
-      }
 
       document.querySelectorAll('[data-scene-choice]').forEach(function (button) {
         button.addEventListener('click', function () {
