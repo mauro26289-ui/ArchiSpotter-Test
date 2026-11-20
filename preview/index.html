@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#101517" />
+  <meta name="apple-mobile-web-app-title" content="ArchiSpotter Prueba" />
+  <title>ArchiSpotter · Vista de prueba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #f3f7f7;
+      --muted: #c4d0d0;
+      --accent: #dce5e5;
+      --accent-contrast: #101517;
+      --field-bg: rgba(13,17,18,.78);
+      --field-border: rgba(220,229,229,.62);
+      --paper: #101517;
+      --vvh: 100dvh;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html {
+      width: 100%;
+      height: 100%;
+      height: -webkit-fill-available;
+      background: var(--paper);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      min-height: 100dvh;
+      min-height: -webkit-fill-available;
+      min-height: var(--vvh);
+      overflow: hidden;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    /* Fondo full-bleed: color + textura CSS (siempre visible) + foto opcional */
+    #backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      width: 100vw;
+      height: var(--vvh);
+      min-height: 100%;
+      min-height: -webkit-fill-available;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        linear-gradient(165deg, #293034 0%, #101517 65%, #0b1012 100%);
+    }
+    /* Textura sutil tipo piedra/papel sin depender de red */
+    #backdrop::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.16;
+      background-image:
+        radial-gradient(ellipse at 20% 30%, rgba(120,135,140,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(90,110,115,.10) 0%, transparent 45%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(80,100,110,.03) 3px,
+          rgba(80,100,110,.03) 4px
+        );
+    }
+    #backdrop img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      opacity: 0;
+      transition: opacity .6s ease;
+    }
+    #backdrop img.is-ready { opacity: 1; }
+    #backdrop .veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(9,13,15,.43) 0%, rgba(9,13,15,.56) 42%, rgba(9,13,15,.88) 77%, rgba(9,13,15,.96) 100%);
+    }
+    .scene-picker { position:fixed;top:calc(env(safe-area-inset-top, 0px) + 12px);left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;padding:5px;border:1px solid rgba(220,229,229,.38);border-radius:999px;background:rgba(9,13,15,.75); }
+    .scene-picker .scene-label { color:#f3f7f7;padding:8px 11px;font:600 12px Inter,system-ui,sans-serif;white-space:nowrap; }
+    body.is-in-app .scene-picker, body.is-in-app .scene-credit { display:none; }
+    .scene-credit { position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 5px);right:12px;z-index:9;font:400 10px Inter,system-ui,sans-serif;color:#c4d0d0;opacity:.8; }
+    .scene-credit a { color:inherit; }
+    @media (prefers-reduced-motion: reduce) { .screen,#backdrop img { transition:none; } }
+
+    .screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--vvh);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      padding:
+        max(28px, calc(env(safe-area-inset-top, 0px) + 12px))
+        24px
+        max(28px, calc(env(safe-area-inset-bottom, 0px) + 12px))
+        24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .5s ease, visibility .5s ease;
+    }
+    .screen.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* Splash */
+    #splash {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #splash .mark {
+      font-family: Fraunces, Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 9vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.15;
+    }
+    #splash .line {
+      width: 44px;
+      height: 2px;
+      background: var(--accent);
+      margin: 16px auto 14px;
+      border-radius: 2px;
+    }
+    #splash .tag {
+      font-family: Inter, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Auth */
+    #auth { justify-content: flex-end; }
+    #auth .brand {
+      text-align: center;
+      margin-bottom: auto;
+      padding-top: max(4vh, 8px);
+    }
+    #auth .brand h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2rem, 8vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    #auth .brand .line {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 14px auto 12px;
+      border-radius: 2px;
+    }
+    #auth .brand .tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .panel {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mode-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin: 0 0 2px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 14px;
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(26,26,26,.04);
+    }
+    .field:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(47,93,80,.18);
+    }
+    .field svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.6;
+    }
+    .field input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-size: 16px;
+      color: var(--ink);
+      padding: 12px 0;
+      font-family: Inter, sans-serif;
+    }
+    .field input::placeholder { color: #8a857c; }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+      border: 0;
+      cursor: pointer;
+    }
+    .btn:active { opacity: 0.9; transform: scale(0.985); }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      margin-top: 4px;
+    }
+    .btn-secondary {
+      background: rgba(13,17,18,.65);
+      color: var(--ink);
+      border: 1.5px solid var(--field-border);
+    }
+    .link {
+      background: none;
+      border: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-family: Inter, sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 10px;
+      align-self: center;
+    }
+
+    .auth-error { min-height: 1.2em; margin: 0; color: #ffb6b6; font: 500 12px Inter, sans-serif; text-align: center; }
+    .auth-error:empty { display: none; }
+    .session-actions { margin-top: auto; width: 100%; max-width: 400px; align-self: center; }
+    #home { align-items: center; text-align: center; justify-content: center; }
+    #home .mark { font: 600 clamp(2.1rem, 9vw, 2.75rem)/1.15 Fraunces, Georgia, serif; margin: 0 0 14px; }
+    #home .tag { font: 500 12px Inter, sans-serif; letter-spacing: .12em; color: var(--muted); }
+    .btn:disabled { opacity: .55; cursor: wait; }
+    /* New app shell: independent from the archived interface. */
+    #home { justify-content: flex-start; padding: max(32px, calc(env(safe-area-inset-top, 0px) + 18px)) 20px max(86px, calc(env(safe-area-inset-bottom, 0px) + 72px)); background: #101517; text-align: left; overflow: hidden; }
+    #home .app-heading { flex: none; width: 100%; display: flex; justify-content: space-between; align-items: baseline; padding: 4px 2px 20px; }
+    #home .app-heading h1 { font: 600 28px/1.2 Fraunces, Georgia, serif; margin: 0; }
+    #home .app-heading span { font: 500 10px Inter, sans-serif; letter-spacing: .13em; color: var(--muted); text-transform: uppercase; }
+    #home .app-content { flex: 1; width: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; text-align: left; }
+    .app-view[hidden] { display: none !important; }
+    .app-view h2 { font: 600 29px/1.2 Fraunces, Georgia, serif; margin: 16px 0 14px; }
+    .app-view p { font: 400 14px/1.65 Inter, sans-serif; color: var(--muted); margin: 0 0 20px; }
+    .app-view .eyebrow { text-transform: uppercase; letter-spacing: .17em; font: 600 10px Inter, sans-serif; color: #b5c2c3; }
+    .app-panel { border: 1px solid rgba(220,229,229,.19); border-radius: 16px; background: #1b2427; padding: 18px; margin-bottom: 12px; }
+    .app-panel h3 { font: 600 20px Fraunces, Georgia, serif; margin: 0 0 8px; }
+    .app-panel p { margin: 0; }
+    .app-nav { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 10px 8px max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); border-top: 1px solid rgba(220,229,229,.17); background: #101517; }
+    .app-nav button { border: 0; background: none; color: #9faeb1; padding: 9px 2px; font: 500 11px Inter, sans-serif; border-radius: 10px; cursor: pointer; }
+    .app-nav button[aria-selected="true"] { background: #dce5e5; color: #101517; }
+    .lang-choices { display: flex; gap: 8px; margin: 12px 0 20px; }
+    .lang-choices button { flex: 1; min-height: 42px; border: 1px solid rgba(220,229,229,.3); border-radius: 10px; background: transparent; color: var(--ink); font: 600 13px Inter, sans-serif; }
+    .lang-choices button[aria-pressed="true"] { background: var(--accent); color: var(--accent-contrast); }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+      transform: translateX(-50%) translateY(140%);
+      background: #101517;
+      color: #f3f7f7;
+      border: 1px solid rgba(220,229,229,.45);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      z-index: 30;
+      transition: transform .35s ease;
+      pointer-events: none;
+      max-width: 90vw;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+  <div id="backdrop" aria-hidden="true">
+    <!-- Fotografía real de Unsplash; una sola capa compartida entre splash y acceso. -->
+    <img
+      id="bg-img"
+      src="https://images.unsplash.com/photo-1763374046991-632df3a66127?auto=format&amp;fit=crop&amp;w=1400&amp;q=82"
+      alt=""
+      decoding="async"
+      fetchpriority="high"
+    />
+    <div class="veil"></div>
+  </div>
+
+  <nav class="scene-picker" aria-label="Fotografía del Coliseo de Roma">
+    <span class="scene-label">Coliseo de Roma</span>
+  </nav>
+  <div class="scene-credit" id="scene-credit">Foto: <a href="https://unsplash.com/photos/close-up-of-the-ancient-roman-colosseum-arches-M32BbLBXGuc" target="_blank" rel="noopener noreferrer">Pablo Fernández / Unsplash</a></div>
+
+  <section id="splash" class="screen is-active" aria-label="Splash">
+    <h1 class="mark">ArchiSpotter</h1>
+    <div class="line" aria-hidden="true"></div>
+    <p class="tag">Arquitectura en contexto</p>
+  </section>
+
+  <section id="auth" class="screen" aria-label="Acceso">
+    <div class="brand">
+      <h1>ArchiSpotter</h1>
+      <div class="line" aria-hidden="true"></div>
+      <p class="tag">Arquitectura en contexto</p>
+    </div>
+
+    <form class="panel" id="auth-form" autocomplete="on">
+      <p class="mode-title" id="mode-label">Iniciar sesión</p>
+
+      <label class="field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 19c1.5-3.2 4-5 7-5s5.5 1.8 7 5"/></svg>
+        <input id="user" name="username" type="text" aria-label="Usuario" placeholder="Usuario" required minlength="3" autocomplete="username" />
+      </label>
+
+      <label class="field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        <input id="pass" name="password" type="password" aria-label="Contraseña" placeholder="Contraseña" required minlength="6" autocomplete="current-password" />
+      </label>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn">Iniciar sesión</button>
+      <button type="button" class="btn btn-secondary" id="switch-btn">Crear usuario</button>
+      <p id="auth-error" class="auth-error" role="alert" aria-live="polite"></p>
+      <button type="button" class="link" id="forgot-btn">¿Olvidaste tu contraseña?</button>
+    </form>
+  </section>
+
+  <section id="home" class="screen" aria-label="ArchiSpotter">
+    <header class="app-heading"><h1>ArchiSpotter</h1><span data-i18n="tagline">Arquitectura en contexto</span></header>
+    <main class="app-content">
+      <div class="app-view" id="view-explore">
+        <span class="eyebrow" data-i18n="explore">Explorar</span>
+        <h2 data-i18n="discoverTitle">Descubre la arquitectura</h2>
+        <p data-i18n="discoverText">Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.</p>
+        <div class="app-panel"><h3 data-i18n="countriesTitle">Países y monumentos</h3><p data-i18n="countriesText">El catálogo se incorporará en la siguiente etapa.</p></div>
+      </div>
+      <div class="app-view" id="view-trip" hidden>
+        <span class="eyebrow" data-i18n="trip">Mi viaje</span><h2 data-i18n="tripTitle">Mis rutas</h2>
+        <div class="app-panel"><p data-i18n="tripText">Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.</p></div>
+      </div>
+      <div class="app-view" id="view-favorites" hidden>
+        <span class="eyebrow" data-i18n="favorites">Favoritos</span><h2 data-i18n="favoritesTitle">Mis favoritos</h2>
+        <div class="app-panel"><p data-i18n="favoritesText">Todavía no hay monumentos disponibles para guardar.</p></div>
+      </div>
+      <div class="app-view" id="view-settings" hidden>
+        <span class="eyebrow" data-i18n="settings">Configuración</span><h2 data-i18n="preferences">Preferencias</h2>
+        <div class="app-panel"><h3 data-i18n="language">Idioma</h3><div class="lang-choices" role="group" aria-label="Idioma">
+          <button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="it">IT</button>
+        </div><p id="welcome-user"></p></div>
+        <button type="button" class="btn btn-secondary" id="logout-btn" data-i18n="logout" style="width:100%">Cerrar sesión</button>
+      </div>
+    </main>
+    <nav class="app-nav" aria-label="Navegación principal">
+      <button type="button" data-tab="explore" aria-selected="true" data-i18n="explore">Explorar</button>
+      <button type="button" data-tab="trip" aria-selected="false" data-i18n="trip">Mi viaje</button>
+      <button type="button" data-tab="favorites" aria-selected="false" data-i18n="favorites">Favoritos</button>
+      <button type="button" data-tab="settings" aria-selected="false" data-i18n="settings">Ajustes</button>
+    </nav>
+  </section>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    (function () {
+      function setVvh() {
+        var h = Math.max(
+          window.innerHeight || 0,
+          (window.visualViewport && Math.round(window.visualViewport.height)) || 0,
+          document.documentElement.clientHeight || 0
+        );
+        if (!h) return;
+        document.documentElement.style.setProperty('--vvh', h + 'px');
+        document.body.style.minHeight = h + 'px';
+      }
+      setVvh();
+      window.addEventListener('resize', setVvh, { passive: true });
+      window.addEventListener('orientationchange', function () { setTimeout(setVvh, 250); }, { passive: true });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', setVvh, { passive: true });
+      }
+      document.addEventListener('DOMContentLoaded', setVvh, { once: true });
+
+      var img = document.getElementById('bg-img');
+      function markReady() { img.classList.add('is-ready'); }
+      if (img.complete && img.naturalWidth) markReady();
+      img.addEventListener('load', markReady);
+      img.addEventListener('error', function () { img.classList.remove('is-ready'); });
+      var splash = document.getElementById('splash');
+      var auth = document.getElementById('auth');
+      var home = document.getElementById('home');
+      var mode = 'login';
+      var modeLabel = document.getElementById('mode-label');
+      var submitBtn = document.getElementById('submit-btn');
+      var switchBtn = document.getElementById('switch-btn');
+      var pass = document.getElementById('pass');
+      var toast = document.getElementById('toast');
+      var error = document.getElementById('auth-error');
+      var ACCOUNTS = 'archispotter_local_accounts_v1';
+      var SESSION = 'archispotter_local_session_v1';
+      var DEFAULT_USER = 'user';
+      var DEFAULT_PASSWORD = 'user123';
+
+      function accounts() {
+        try {
+          var value = JSON.parse(localStorage.getItem(ACCOUNTS) || '{}');
+          return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+        } catch (_) { return {}; }
+      }
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+      }
+      function setMode(next) {
+        mode = next;
+        error.textContent = '';
+        document.getElementById('auth-form').reset();
+        modeLabel.textContent = next === 'login' ? 'Iniciar sesión' : 'Crear usuario';
+        submitBtn.textContent = modeLabel.textContent;
+        switchBtn.textContent = next === 'login' ? 'Crear usuario' : 'Ya tengo cuenta';
+        pass.setAttribute('autocomplete', next === 'login' ? 'current-password' : 'new-password');
+        document.getElementById('forgot-btn').hidden = next !== 'login';
+      }
+      function showScreen(screen) {
+        [splash, auth, home].forEach(function (el) { el.classList.toggle('is-active', el === screen); });
+        document.body.classList.toggle('is-in-app', screen === home);
+        setVvh();
+      }
+      var strings = {
+        es: {tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países y monumentos',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
+        en: {tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries and monuments',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
+        it: {tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi e monumenti',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
+      };
+      function currentLang() {
+        try { var l = localStorage.getItem('archispotter_language'); return strings[l] ? l : 'es'; } catch (_) { return 'es'; }
+      }
+      function applyLanguage() {
+        var lang = currentLang(), words = strings[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('#home [data-i18n]').forEach(function (el) {
+          el.textContent = words[el.getAttribute('data-i18n')] || '';
+        });
+        document.querySelectorAll('[data-lang]').forEach(function (el) { el.setAttribute('aria-pressed', String(el.getAttribute('data-lang') === lang)); });
+        var user = sessionUser();
+        if (user) document.getElementById('welcome-user').textContent = words.welcome + user;
+      }
+      function showTab(tab) {
+        document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
+        document.querySelectorAll('.app-view').forEach(function (view) { view.hidden = view.id !== 'view-' + tab; });
+        document.querySelector('.app-content').scrollTop = 0;
+      }
+      document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
+      document.querySelectorAll('[data-lang]').forEach(function (button) { button.addEventListener('click', function () {
+        try { localStorage.setItem('archispotter_language', button.getAttribute('data-lang')); } catch (_) {}
+        applyLanguage();
+      }); });
+      function enter(user) {
+        showTab('explore');
+        applyLanguage();
+        showScreen(home);
+      }
+      function sessionUser() {
+        try {
+          var user = localStorage.getItem(SESSION);
+          return user && (user === DEFAULT_USER || Object.prototype.hasOwnProperty.call(accounts(), user)) ? user : null;
+        } catch (_) { return null; }
+      }
+      async function digest(password, salt) {
+        if (!crypto || !crypto.subtle) throw new Error('WebCrypto unavailable');
+        var data = new TextEncoder().encode(salt + ':' + password);
+        var bytes = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(bytes), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
+      }
+      switchBtn.addEventListener('click', function () { setMode(mode === 'login' ? 'register' : 'login'); });
+      document.getElementById('forgot-btn').addEventListener('click', function () {
+        showToast('Las cuentas se guardan solo en este dispositivo. La recuperación aún no está disponible.');
+      });
+      document.getElementById('logout-btn').addEventListener('click', function () {
+        try { localStorage.removeItem(SESSION); } catch (_) {}
+        setMode('login');
+        showScreen(auth);
+      });
+      document.getElementById('auth-form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        error.textContent = '';
+        var username = document.getElementById('user').value.trim().toLowerCase();
+        var password = pass.value;
+        if (username.length < 3 || password.length < 6) {
+          error.textContent = 'Usá al menos 3 caracteres para el usuario y 6 para la contraseña.';
+          return;
+        }
+        submitBtn.disabled = true;
+        try {
+          var saved = accounts();
+          if (mode === 'register') {
+            if (username === DEFAULT_USER || Object.prototype.hasOwnProperty.call(saved, username)) {
+              error.textContent = 'Ese usuario ya existe.';
+              return;
+            }
+            if (!window.crypto || !crypto.getRandomValues) throw new Error('Crypto unavailable');
+            var salt = Array.from(crypto.getRandomValues(new Uint8Array(16)), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
+            saved[username] = { salt: salt, hash: await digest(password, salt) };
+            localStorage.setItem(ACCOUNTS, JSON.stringify(saved));
+          } else if (username === DEFAULT_USER) {
+            if (password !== DEFAULT_PASSWORD) { error.textContent = 'Usuario o contraseña incorrectos.'; return; }
+          } else {
+            var account = saved[username];
+            if (!account || await digest(password, account.salt) !== account.hash) {
+              error.textContent = 'Usuario o contraseña incorrectos.';
+              return;
+            }
+          }
+          localStorage.setItem(SESSION, username);
+          enter(username);
+        } catch (_) {
+          error.textContent = 'No se pudo acceder a la cuenta en este navegador.';
+        } finally { submitBtn.disabled = false; }
+      });
+      setTimeout(function () {
+        var user = sessionUser();
+        if (user) enter(user);
+        else showScreen(auth);
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>
