@@ -213,5 +213,71 @@ window.ArchiSpotterEditorial={
     "sources": [
       "https://direzionemuseiroma.cultura.gov.it/en/museo-nazionale-di-castel-santangelo/"
     ]
+  },
+  "Ponte Vecchio": {
+    "history": {
+      "es": "El Ponte Vecchio atraviesa el río Arno en uno de los puntos más antiguos de comunicación entre las dos orillas de Florencia. Su historia está ligada al comercio y a la vida cotidiana tanto como a los grandes acontecimientos políticos. El puente actual se levantó en el siglo XIV, después de que una inundación destruyera una estructura anterior. Desde entonces, sus espacios comerciales han convertido el paso sobre el río en una calle activa, no solamente en una vía de tránsito. Durante mucho tiempo trabajaron allí vendedores y artesanos de distintos oficios. La transformación más célebre llegó bajo el gobierno de los Médici, cuando los negocios vinculados a la joyería adquirieron protagonismo. En 1565, Cosme I encargó a Giorgio Vasari un recorrido elevado que permitiera conectar los centros del poder y la residencia ducal sin atravesar las calles. Aquel corredor cruzó el puente y modificó para siempre su relación con la ciudad. Durante la Segunda Guerra Mundial, el Ponte Vecchio sobrevivió a la destrucción que afectó a otros puentes florentinos. Hoy continúa siendo una vía pública y un espacio comercial, además de uno de los lugares más reconocibles de Florencia. Su permanencia recuerda que las infraestructuras urbanas pueden conservar funciones cotidianas incluso después de convertirse en patrimonio monumental.",
+      "en": "Ponte Vecchio crosses the Arno at one of Florence's oldest points of connection between the riverbanks. Its history is tied to trade and everyday life as closely as to major political events. The present bridge was erected in the fourteenth century after a flood destroyed an earlier structure. Since then, its commercial premises have turned the crossing into an active street rather than simply a route over water. For a long time, merchants and craftspeople representing different trades worked here. A celebrated transformation came under Medici rule, when businesses associated with jewellery became increasingly prominent. In 1565, Cosimo I commissioned Giorgio Vasari to create an elevated passage linking the centres of government and the ducal residence without travelling through the streets. The resulting corridor crossed the bridge and permanently changed its relationship with the city. During the Second World War, Ponte Vecchio survived the destruction that affected other Florentine bridges. Today it remains both a public thoroughfare and a commercial space, as well as one of Florence's most recognizable landmarks. Its continued use reminds us that urban infrastructure can retain an everyday purpose long after becoming celebrated heritage. Visitors therefore encounter not a monument isolated from city life, but a crossing that still participates in it.",
+      "it": "Ponte Vecchio attraversa l'Arno in uno dei punti più antichi di collegamento fra le due rive di Firenze. La sua storia è legata al commercio e alla vita quotidiana quanto ai grandi avvenimenti politici. Il ponte attuale fu costruito nel Trecento, dopo che un'alluvione aveva distrutto una struttura precedente. Da allora, i suoi spazi commerciali hanno trasformato l'attraversamento in una strada attiva, non soltanto in una via di passaggio. Per molto tempo vi lavorarono mercanti e artigiani di mestieri differenti. Una trasformazione celebre avvenne durante il governo dei Medici, quando acquistarono importanza le attività legate alla gioielleria. Nel 1565 Cosimo I incaricò Giorgio Vasari di realizzare un percorso sopraelevato che collegasse i centri del potere e la residenza ducale senza attraversare le strade. Quel corridoio passò sopra il ponte e modificò definitivamente il suo rapporto con la città. Durante la Seconda guerra mondiale Ponte Vecchio sopravvisse alle distruzioni che colpirono altri ponti fiorentini. Oggi continua a essere una via pubblica e uno spazio commerciale, oltre che uno dei luoghi più riconoscibili di Firenze. La sua continuità ricorda che le infrastrutture urbane possono mantenere funzioni quotidiane anche dopo essere diventate patrimonio monumentale. Chi lo attraversa incontra quindi una parte ancora viva della città."
+    },
+    "curiosity": {
+      "es": "El corredor elevado rodea una torre privada en lugar de atravesarla.",
+      "en": "The elevated corridor bends around a private tower instead of crossing it.",
+      "it": "Il corridoio sopraelevato aggira una torre privata invece di attraversarla."
+    },
+    "architecture": {
+      "es": [
+        "Tres arcos rebajados sostienen el tablero sobre el Arno.",
+        "Las tiendas sobresalen lateralmente mediante pequeños cuerpos volados.",
+        "El corredor superior posee ventanas orientadas hacia el paisaje fluvial."
+      ],
+      "en": [
+        "Three shallow arches support the crossing above the Arno.",
+        "Shop structures project sideways beyond the bridge deck.",
+        "The upper corridor has windows overlooking the river landscape."
+      ],
+      "it": [
+        "Tre archi ribassati sostengono il passaggio sull'Arno.",
+        "Le botteghe sporgono lateralmente rispetto al piano del ponte.",
+        "Il corridoio superiore presenta finestre affacciate sul fiume."
+      ]
+    },
+    "sources": [
+      "https://www.uffizi.it/en/corridoio-vasariano/history",
+      "https://www.uffizi.it/en/news/the-vasari-corridor-reopening"
+    ]
+  },
+  "Palazzo Vecchio": {
+    "history": {
+      "es": "El Palazzo Vecchio ha representado el poder civil de Florencia durante más de siete siglos. Su construcción comenzó entre finales del siglo XIII y principios del XIV, cuando la ciudad necesitaba una sede adecuada para los Priores de las Artes y el Gonfaloniero de Justicia, responsables de su gobierno. El edificio nació en una época de intensa competencia entre grupos políticos y familias influyentes. Su presencia en la plaza de la Signoria hizo visible la autoridad de las instituciones comunales. Con el paso del tiempo, la organización política de Florencia cambió y también lo hicieron los usos del palacio. Durante el siglo XVI, Cosme I de Médici lo convirtió en residencia ducal y promovió transformaciones destinadas a expresar el prestigio de su gobierno. Diversos artistas participaron en la decoración de las salas, creando un conjunto que relacionaba las virtudes del gobernante con la historia de la ciudad. Cuando la corte se trasladó al Palacio Pitti, el edificio recibió el nombre de Palazzo Vecchio, o Palacio Viejo. Sin embargo, nunca perdió por completo su dimensión institucional. Actualmente alberga funciones municipales y un museo que permite recorrer diferentes etapas de su pasado. Su historia explica cómo una sede republicana pudo convertirse en residencia principesca y continuar siendo un símbolo del gobierno florentino.",
+      "en": "Palazzo Vecchio has represented Florence's civic power for more than seven centuries. Construction began around the turn of the fourteenth century, when the city needed a suitable headquarters for the Priors of the Guilds and the Gonfalonier of Justice, its leading governing officials. The building emerged during an era of intense competition between political factions and influential families. Its position in Piazza della Signoria made the authority of communal institutions visible to everyone. Over time, Florence's political system changed, and the palace acquired new purposes. In the sixteenth century, Cosimo I de' Medici made it a ducal residence and commissioned alterations intended to express the prestige of his rule. Numerous artists decorated its rooms, creating a setting that connected the ruler's virtues with the history of the city. When the court later moved to Pitti Palace, the former residence became known as Palazzo Vecchio, meaning Old Palace. Nevertheless, it never entirely lost its institutional character. Today the building accommodates municipal functions and a museum that allows visitors to explore different stages of its past. Its history demonstrates how the headquarters of a republic could become a princely residence and still remain a symbol of Florentine government. The palace preserves traces of these contrasting political identities within one enduring urban landmark.",
+      "it": "Palazzo Vecchio rappresenta il potere civile di Firenze da oltre sette secoli. La costruzione iniziò tra la fine del Duecento e l'inizio del Trecento, quando la città aveva bisogno di una sede adeguata per i Priori delle Arti e il Gonfaloniere di Giustizia, principali responsabili del governo cittadino. L'edificio nacque in un'epoca di forte competizione tra fazioni politiche e famiglie influenti. La sua posizione in piazza della Signoria rendeva visibile a tutti l'autorità delle istituzioni comunali. Nel tempo, il sistema politico fiorentino cambiò e anche il palazzo assunse nuove funzioni. Nel Cinquecento Cosimo I de' Medici lo trasformò in residenza ducale e promosse interventi destinati a esprimere il prestigio del proprio governo. Numerosi artisti decorarono le sale, creando un insieme che collegava le virtù del sovrano alla storia della città. Quando la corte si trasferì a Palazzo Pitti, la precedente residenza prese il nome di Palazzo Vecchio. Non perse tuttavia completamente il suo carattere istituzionale. Oggi ospita funzioni comunali e un museo che permette di ripercorrere le diverse fasi del suo passato. La sua storia mostra come una sede repubblicana potesse diventare residenza principesca e continuare a rappresentare il governo fiorentino. Il palazzo conserva così testimonianze di identità politiche differenti nello stesso monumento."
+    },
+    "curiosity": {
+      "es": "Bajo el palacio se conservan restos de un antiguo teatro romano.",
+      "en": "Remains of an ancient Roman theatre survive beneath the palace.",
+      "it": "Sotto il palazzo si conservano resti di un antico teatro romano."
+    },
+    "architecture": {
+      "es": [
+        "La Torre de Arnolfo se eleva sobre la fachada almenada.",
+        "El Salón de los Quinientos ocupa un gran espacio ceremonial.",
+        "La capilla de Eleonora conserva pinturas de Agnolo Bronzino."
+      ],
+      "en": [
+        "Arnolfo's Tower rises above the crenellated façade.",
+        "The Hall of the Five Hundred forms a vast ceremonial space.",
+        "Eleonora's Chapel preserves paintings by Agnolo Bronzino."
+      ],
+      "it": [
+        "La Torre di Arnolfo domina la facciata merlata.",
+        "Il Salone dei Cinquecento costituisce un vasto spazio cerimoniale.",
+        "La Cappella di Eleonora conserva dipinti di Agnolo Bronzino."
+      ]
+    },
+    "sources": [
+      "https://musefirenze.it/musei/museo-di-palazzo-vecchio/",
+      "https://www.feelflorence.it/en/editorial-staff/civic-museums-florence"
+    ]
   }
 };
