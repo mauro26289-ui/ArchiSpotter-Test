@@ -56,6 +56,13 @@ window.ArchiSpotterExplore = (function () {
           if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(img,place,650);
           gallery.appendChild(item);
         });
+        var food=window.ArchiSpotterCityFood&&window.ArchiSpotterCityFood[city[0]];
+        var foodSection=document.getElementById('city-food'),foodList=document.getElementById('city-food-list');
+        foodList.replaceChildren();foodSection.hidden=!food;
+        if(food){
+          document.getElementById('city-food-title').textContent=({es:'Sabores locales',en:'Local flavors',it:'Sapori locali'})[currentLang()];
+          food.forEach(function(dish){var item=document.createElement('article');item.className='city-food-item';var name=document.createElement('h3');name.textContent=dish[0];var description=document.createElement('p');description.textContent=dish[({es:2,en:1,it:3}[currentLang()]||2)];item.appendChild(name);item.appendChild(description);foodList.appendChild(item);});
+        }
         document.getElementById('country-detail').hidden=true;
         document.getElementById('city-detail').hidden=false;
         document.querySelector('.app-content').scrollTop=0;
