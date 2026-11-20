@@ -373,8 +373,10 @@
     #monument-detail[hidden] { display:none!important; }
     #monument-detail .monument-back { display:block; border:0; background:transparent; color:var(--ink); font:500 14px Inter,sans-serif; padding:8px 0 16px; cursor:pointer; }
     .monument-cover { overflow:hidden; border-radius:18px; background:#1b2427; }
-    .monument-cover-photo { position:relative; height:auto; aspect-ratio:3/4; background:#263033; }
+    .monument-cover-photo { position:relative; height:auto; aspect-ratio:3/4; background:#263033; cursor:zoom-in; }
+    .monument-cover-photo:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
     .monument-cover-photo img { width:100%; height:100%; display:block; object-fit:cover; }
+    .monument-cover-photo .monument-zoom-indicator { position:absolute; right:14px; bottom:14px; width:36px; height:36px; display:grid; place-items:center; border-radius:50%; background:rgba(8,12,14,.7); color:white; font-size:23px; pointer-events:none; }
     .monument-cover-info { padding:20px 18px 22px; }
     .monument-cover-info .eyebrow { color:var(--muted); }
     .monument-cover-info h2 { margin:8px 0 10px; font:600 35px/1.12 Fraunces,Georgia,serif; }
@@ -506,7 +508,7 @@
         <div id="monument-detail" hidden>
           <button type="button" class="monument-back" id="monument-back" data-i18n="backCity">← Volver a la ciudad</button>
           <div class="monument-cover">
-            <div class="monument-cover-photo"><img id="monument-photo" alt="" /></div>
+            <div class="monument-cover-photo" id="monument-photo-trigger" role="button" tabindex="0" aria-label="Ampliar fotografía"><img id="monument-photo" alt="" /><span class="monument-zoom-indicator" aria-hidden="true">⤢</span></div>
             <div class="monument-cover-info">
               <span class="eyebrow" id="monument-location"></span>
               <h2 id="monument-name"></h2>
@@ -603,9 +605,9 @@
         document.documentElement.classList.toggle('is-in-app', screen === home);
       }
       var strings = {
-        es: {backCity:'← Volver a la ciudad',audioPending:'Audioguía · próximamente',favoriteAction:'♡ Favorito',tripAction:'＋ Mi viaje',monumentStoryTitle:'Una historia por descubrir',metaPending:'Información arquitectónica en preparación',storyPending:'Estamos preparando la historia y los detalles arquitectónicos de este monumento. Esta pantalla muestra la distribución visual de la futura ficha.',backCountry:'← Volver al país',cityIntro:'Explora la arquitectura de esta ciudad.',cityMonuments:'Arquitectura destacada',viewCity:'Ver ciudad',sampleImage:'Imagen ilustrativa · catálogo en preparación',tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',backCountries:'← Volver a países',countrySoon:'Próximamente podrás explorar los monumentos de este país.',countryIntro:'Explora ciudades y descubre su arquitectura a través de imágenes.',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
-        en: {backCity:'← Back to city',audioPending:'Audio guide · coming soon',favoriteAction:'♡ Favorite',tripAction:'＋ My trip',monumentStoryTitle:'A story to discover',metaPending:'Architectural details in preparation',storyPending:'We are preparing the history and architectural details of this monument. This screen previews the layout of the future entry.',backCountry:'← Back to country',cityIntro:'Explore the architecture of this city.',cityMonuments:'Featured architecture',viewCity:'View city',sampleImage:'Illustrative image · catalogue in preparation',tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',backCountries:'← Back to countries',countrySoon:'You will soon be able to explore this country’s monuments.',countryIntro:'Explore cities and discover their architecture through images.',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
-        it: {backCity:'← Torna alla città',audioPending:'Audioguida · prossimamente',favoriteAction:'♡ Preferito',tripAction:'＋ Il mio viaggio',monumentStoryTitle:'Una storia da scoprire',metaPending:'Informazioni architettoniche in preparazione',storyPending:'Stiamo preparando la storia e i dettagli architettonici di questo monumento. Questa schermata mostra il design della futura scheda.',backCountry:'← Torna al paese',cityIntro:'Esplora l’architettura di questa città.',cityMonuments:'Architettura in evidenza',viewCity:'Vedi città',sampleImage:'Immagine illustrativa · catalogo in preparazione',tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',backCountries:'← Torna ai paesi',countrySoon:'Presto potrai esplorare i monumenti di questo paese.',countryIntro:'Esplora le città e scopri la loro architettura attraverso le immagini.',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
+        es: {zoomPhoto:'Ampliar fotografía de',backCity:'← Volver a la ciudad',audioPending:'Audioguía · próximamente',favoriteAction:'♡ Favorito',tripAction:'＋ Mi viaje',monumentStoryTitle:'Una historia por descubrir',metaPending:'Información arquitectónica en preparación',storyPending:'Estamos preparando la historia y los detalles arquitectónicos de este monumento. Esta pantalla muestra la distribución visual de la futura ficha.',backCountry:'← Volver al país',cityIntro:'Explora la arquitectura de esta ciudad.',cityMonuments:'Arquitectura destacada',viewCity:'Ver ciudad',sampleImage:'Imagen ilustrativa · catálogo en preparación',tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',backCountries:'← Volver a países',countrySoon:'Próximamente podrás explorar los monumentos de este país.',countryIntro:'Explora ciudades y descubre su arquitectura a través de imágenes.',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
+        en: {zoomPhoto:'Enlarge photo of',backCity:'← Back to city',audioPending:'Audio guide · coming soon',favoriteAction:'♡ Favorite',tripAction:'＋ My trip',monumentStoryTitle:'A story to discover',metaPending:'Architectural details in preparation',storyPending:'We are preparing the history and architectural details of this monument. This screen previews the layout of the future entry.',backCountry:'← Back to country',cityIntro:'Explore the architecture of this city.',cityMonuments:'Featured architecture',viewCity:'View city',sampleImage:'Illustrative image · catalogue in preparation',tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',backCountries:'← Back to countries',countrySoon:'You will soon be able to explore this country’s monuments.',countryIntro:'Explore cities and discover their architecture through images.',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
+        it: {zoomPhoto:'Ingrandisci la foto di',backCity:'← Torna alla città',audioPending:'Audioguida · prossimamente',favoriteAction:'♡ Preferito',tripAction:'＋ Il mio viaggio',monumentStoryTitle:'Una storia da scoprire',metaPending:'Informazioni architettoniche in preparazione',storyPending:'Stiamo preparando la storia e i dettagli architettonici di questo monumento. Questa schermata mostra il design della futura scheda.',backCountry:'← Torna al paese',cityIntro:'Esplora l’architettura di questa città.',cityMonuments:'Architettura in evidenza',viewCity:'Vedi città',sampleImage:'Immagine illustrativa · catalogo in preparazione',tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',backCountries:'← Torna ai paesi',countrySoon:'Presto potrai esplorare i monumenti di questo paese.',countryIntro:'Esplora le città e scopri la loro architettura attraverso le immagini.',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
       };
       function currentLang() {
         try { var l = localStorage.getItem('archispotter_language'); return strings[l] ? l : 'es'; } catch (_) { return 'es'; }
@@ -630,6 +632,8 @@
         var photo = document.getElementById('photo-viewer-image');
         var close = document.getElementById('photo-viewer-close');
         var hint = document.getElementById('photo-viewer-hint');
+        var monumentTrigger = document.getElementById('monument-photo-trigger');
+        var returnFocus = hero;
         var points = new Map();
         var scale = 1, x = 0, y = 0, startDistance = 0, startScale = 1;
         var startMid = null, startX = 0, startY = 0, lastTap = 0;
@@ -646,20 +650,28 @@
           photo.style.transform = 'translate3d('+x+'px,'+y+'px,0) scale('+scale+')';
         }
         function reset() { scale=1; x=0; y=0; points.clear(); paint(); }
-        function openViewer() {
-          photo.src = hero.querySelector('img').src;
+        function openViewerFrom(source, trigger) {
+          if (!source || !source.getAttribute('src')) return;
+          returnFocus = trigger;
+          photo.src = source.currentSrc || source.src;
+          photo.alt = source.alt || '';
+          viewer.setAttribute('aria-label', source.alt || 'Fotografía ampliada');
           viewer.hidden=false;
           reset();
           hint.hidden=false;
           close.focus({preventScroll:true});
         }
+        function openViewer() { openViewerFrom(hero.querySelector('img'),hero); }
+        function openMonumentViewer() { openViewerFrom(document.getElementById('monument-photo'),monumentTrigger); }
         function closeViewer() {
           points.clear();
           viewer.hidden=true;
           photo.removeAttribute('src');
-          hero.focus({preventScroll:true});
+          if(returnFocus && returnFocus.isConnected) returnFocus.focus({preventScroll:true});
         }
         hero.addEventListener('click',openViewer);
+        monumentTrigger.addEventListener('click',openMonumentViewer);
+        monumentTrigger.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openMonumentViewer();}});
         hero.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openViewer();}});
         close.addEventListener('click',closeViewer);
         document.addEventListener('keydown',function(e){if(viewer.hidden)return;if(e.key==='Escape')closeViewer();});
@@ -829,6 +841,8 @@
         var place=selectedMonument,city=selectedMonumentCity;
         document.getElementById('monument-photo').src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=1100&q=80';
         document.getElementById('monument-name').textContent=place[idx];
+        document.getElementById('monument-photo').alt=place[idx];
+        document.getElementById('monument-photo-trigger').setAttribute('aria-label',strings[currentLang()].zoomPhoto+' '+place[idx]);
         document.getElementById('monument-location').textContent=city[idx]+' · '+document.getElementById('country-detail-name').textContent;
         var colosseum=place[0]==='Coliseo';
         document.getElementById('monument-meta').textContent=colosseum?['Arquitectura romana · 70–80 d. C.','Roman architecture · AD 70–80','Architettura romana · 70–80 d.C.'][idx]:strings[currentLang()].metaPending;
