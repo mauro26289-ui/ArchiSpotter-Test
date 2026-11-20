@@ -30,6 +30,7 @@ window.ArchiSpotterExplore = (function () {
             var card=document.createElement('article'); card.className='landmark-card';
             card.appendChild(picture(place[3],500,''));
             var name=document.createElement('h4'); name.textContent=place[idx]; card.appendChild(name);
+            if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(card.querySelector('img'),place,500);
             row.appendChild(card);
           });
           section.appendChild(row); root.appendChild(section);
@@ -52,6 +53,7 @@ window.ArchiSpotterExplore = (function () {
           img.alt=''; img.loading='lazy'; img.decoding='async'; item.appendChild(img);
           var title=document.createElement('h3'); title.textContent=place[idx]; item.appendChild(title);
           var note=document.createElement('p'); note.textContent=strings[currentLang()].sampleImage; item.appendChild(note);
+          if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(img,place,650);
           gallery.appendChild(item);
         });
         document.getElementById('country-detail').hidden=true;
