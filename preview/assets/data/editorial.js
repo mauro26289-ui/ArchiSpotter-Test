@@ -1,4 +1,4 @@
-/* Stage 26: source-referenced Italian editorial entries; ElevenLabs history unmodified. */
+/* Stage 27: Barcelona editorial, with institutional source references. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -291,6 +291,105 @@ window.ArchiSpotterEditorial={
     "sources": [
       "https://musefirenze.it/musei/museo-di-palazzo-vecchio/",
       "https://www.feelflorence.it/en/editorial-staff/civic-museums-florence"
+    ]
+  },
+  "Casa Batlló": {
+    "history": {
+      "es": "Casa Batlló es una de las residencias que explican la transformación de Barcelona a comienzos del siglo XX. El edificio original fue construido en 1877 por Emili Sala Cortés, cuando el Passeig de Gràcia se consolidaba como avenida de las familias acomodadas. En 1903 lo compró Josep Batlló, empresario textil que deseaba una vivienda representativa. Su primer propósito era derribar la construcción, pero Antoni Gaudí propuso una alternativa: reformarla profundamente. Entre 1904 y 1906 se desarrolló una intervención que convirtió una casa convencional en una obra singular del modernismo catalán. El proyecto coincidió con un momento de intensa competencia artística entre arquitectos que trabajaban en el mismo tramo de la avenida. Por eso esta zona recibió el nombre popular de Manzana de la Discordia. La familia Batlló mantuvo su relación con el inmueble durante generaciones, mientras la ciudad cambiaba a su alrededor. Con el tiempo, el interés por la obra de Gaudí dejó de ser exclusivamente local y comenzó a atraer visitantes internacionales. Su reconocimiento patrimonial consolidó el lugar como testimonio de la creatividad de la Barcelona industrial. Hoy la casa permite conocer cómo una residencia privada llegó a convertirse en un símbolo cultural compartido por toda la ciudad.",
+      "en": "Casa Batlló is one of the residences that explain Barcelona's transformation at the beginning of the twentieth century. The original building was constructed in 1877 by Emili Sala Cortés, when Passeig de Gràcia was becoming an avenue favoured by wealthy families. In 1903 it was purchased by Josep Batlló, a textile businessman who wanted a prestigious home. His initial intention was to demolish the property, but Antoni Gaudí proposed another solution: a comprehensive renovation. Between 1904 and 1906, the project transformed an ordinary residence into a remarkable example of Catalan Modernisme. This work coincided with a period of intense artistic competition among architects designing buildings along the same stretch of the avenue. Consequently, the area acquired the popular nickname Block of Discord. The Batlló family maintained connections with the property for generations while the surrounding city continued to change. Over time, appreciation of Gaudí's work extended far beyond Barcelona and began attracting international visitors. Recognition of its heritage significance established the building as evidence of the creativity of industrial Barcelona. Today the house illustrates how a private residence could become a cultural symbol shared by the entire city. Its story also reflects the ambitions of a society eager to express prosperity through architecture.",
+      "it": "Casa Batlló è una delle residenze che raccontano la trasformazione di Barcellona all'inizio del Novecento. L'edificio originario fu costruito nel 1877 da Emili Sala Cortés, quando il Passeig de Gràcia si stava affermando come viale delle famiglie benestanti. Nel 1903 fu acquistato da Josep Batlló, imprenditore tessile che desiderava una dimora prestigiosa. Inizialmente pensava di demolire l'immobile, ma Antoni Gaudí propose un'altra soluzione: una ristrutturazione completa. Tra il 1904 e il 1906 l'intervento trasformò una residenza convenzionale in un'opera straordinaria del modernismo catalano. Il progetto coincise con una fase di intensa competizione artistica fra architetti attivi nello stesso tratto del viale. Per questo la zona ricevette il soprannome popolare di Manzana de la Discordia. La famiglia Batlló mantenne legami con la proprietà per generazioni, mentre la città circostante continuava a cambiare. Col tempo l'interesse per l'opera di Gaudí superò i confini locali, attirando visitatori internazionali. Il riconoscimento del valore patrimoniale consolidò l'edificio come testimonianza della creatività della Barcellona industriale. Oggi la casa mostra come una residenza privata sia diventata un simbolo culturale condiviso dall'intera città. La sua vicenda riflette anche le aspirazioni di una società desiderosa di esprimere il proprio benessere attraverso l'architettura."
+    },
+    "curiosity": {
+      "es": "La cabina original de su ascensor conserva elementos diseñados por Gaudí.",
+      "en": "Its original lift cabin preserves elements designed by Gaudí.",
+      "it": "La cabina originale dell'ascensore conserva elementi progettati da Gaudí."
+    },
+    "architecture": {
+      "es": [
+        "El patio de luces se ensancha hacia los pisos inferiores.",
+        "La fachada combina fragmentos cerámicos y vidrio de colores.",
+        "Los balcones exteriores incorporan piezas de hierro fundido."
+      ],
+      "en": [
+        "The light well widens towards the lower floors.",
+        "The façade combines ceramic fragments and coloured glass.",
+        "Exterior balconies incorporate cast-iron elements."
+      ],
+      "it": [
+        "Il cortile della luce si allarga verso i piani inferiori.",
+        "La facciata combina frammenti ceramici e vetri colorati.",
+        "I balconi esterni comprendono elementi in ghisa."
+      ]
+    },
+    "sources": [
+      "https://www.casabatllo.es/antoni-gaudi/casa-batllo/historia/",
+      "https://www.casabatllo.es/novedades/restauracion-fachada-casa-batllo/"
+    ]
+  },
+  "Parque Güell": {
+    "history": {
+      "es": "El Park Güell nació como un proyecto residencial privado y terminó convirtiéndose en uno de los grandes espacios públicos de Barcelona. En 1900, el empresario Eusebi Güell encargó a Antoni Gaudí la creación de una urbanización inspirada en los parques residenciales ingleses. La iniciativa respondía al crecimiento de una ciudad industrial que buscaba nuevas formas de vivienda alejadas del centro congestionado. El terreno elegido estaba en una colina, desde donde se dominaba el paisaje urbano y el Mediterráneo. Sin embargo, la propuesta comercial no obtuvo el éxito esperado y apenas se materializaron las viviendas previstas. Las obras se detuvieron y el lugar mantuvo durante años un carácter privado. Eusebi Güell falleció en 1918; sus herederos ofrecieron posteriormente la propiedad al Ayuntamiento de Barcelona. El consistorio aprobó su adquisición en 1922 y el parque abrió al público en 1926. Desde entonces acogió encuentros vecinales, actividades culturales y celebraciones populares, incluidas reuniones de aficionados a la sardana. La antigua residencia familiar de los Güell se adaptó para albergar una escuela. En 1984, la UNESCO incorporó el parque al Patrimonio Mundial dentro del conjunto de obras de Gaudí. Su historia demuestra cómo un negocio inmobiliario fallido pudo transformarse en un lugar de convivencia y patrimonio colectivo.",
+      "en": "Park Güell began as a private residential venture and eventually became one of Barcelona's most important public spaces. In 1900, businessman Eusebi Güell commissioned Antoni Gaudí to develop an estate inspired by English residential garden communities. The initiative reflected the expansion of an industrial city seeking new forms of housing away from its crowded centre. The selected site occupied a hillside overlooking the urban landscape and the Mediterranean. However, the commercial proposal failed to attract sufficient buyers, and only a small part of the planned housing was realized. Construction stopped, and the estate remained private for several years. Eusebi Güell died in 1918; his heirs subsequently offered the property to Barcelona City Council. The municipality approved its purchase in 1922, and the park opened to the public in 1926. From then on, it hosted neighbourhood gatherings, cultural activities and popular celebrations, including meetings devoted to the traditional sardana dance. The former Güell family residence was adapted for use as a school. In 1984, UNESCO included the park in the World Heritage listing associated with Gaudí's work. Its history shows how an unsuccessful property development could become a place of shared public life and collective heritage. Today it belongs to the city's social memory as well as its architectural identity.",
+      "it": "Il Park Güell nacque come progetto residenziale privato e finì per diventare uno dei principali spazi pubblici di Barcellona. Nel 1900 l'imprenditore Eusebi Güell affidò ad Antoni Gaudí la realizzazione di un complesso ispirato ai quartieri residenziali immersi nel verde inglesi. L'iniziativa rispondeva alla crescita di una città industriale che cercava nuove forme abitative lontano dal centro affollato. Il terreno prescelto occupava una collina affacciata sul paesaggio urbano e sul Mediterraneo. Tuttavia, la proposta commerciale non attirò abbastanza acquirenti e soltanto una piccola parte delle abitazioni previste venne realizzata. I lavori si fermarono e la proprietà rimase privata per diversi anni. Eusebi Güell morì nel 1918; successivamente gli eredi offrirono il complesso al Comune di Barcellona. L'amministrazione ne approvò l'acquisto nel 1922 e il parco aprì al pubblico nel 1926. Da allora ospitò incontri di quartiere, attività culturali e feste popolari, comprese riunioni dedicate alla sardana tradizionale. L'antica residenza della famiglia Güell fu adattata a scuola. Nel 1984 l'UNESCO inserì il parco nel Patrimonio Mondiale legato alle opere di Gaudí. La sua storia dimostra come un'iniziativa immobiliare fallita potesse trasformarsi in uno spazio di vita collettiva e patrimonio condiviso. Oggi appartiene tanto alla memoria sociale quanto all'identità architettonica della città."
+    },
+    "curiosity": {
+      "es": "La antigua casa de la familia Güell llegó a funcionar como escuela.",
+      "en": "The former Güell family residence later operated as a school.",
+      "it": "L'antica residenza della famiglia Güell divenne in seguito una scuola."
+    },
+    "architecture": {
+      "es": [
+        "Los viaductos utilizan columnas de piedra adaptadas a la pendiente.",
+        "El banco ondulado incorpora mosaicos de fragmentos cerámicos.",
+        "Los sistemas de captación de lluvia alimentaban depósitos subterráneos."
+      ],
+      "en": [
+        "Stone-column viaducts adapt to the steep terrain.",
+        "The undulating bench incorporates mosaics of broken ceramics.",
+        "Rainwater collection systems supplied underground reservoirs."
+      ],
+      "it": [
+        "I viadotti con colonne in pietra si adattano al pendio.",
+        "La panchina ondulata incorpora mosaici di frammenti ceramici.",
+        "I sistemi di raccolta dell'acqua piovana alimentavano serbatoi sotterranei."
+      ]
+    },
+    "sources": [
+      "https://parkguell.barcelona/es/el-park-guell/mas-100-anos-historia",
+      "https://parkguell.barcelona/es/el-park-guell/origen-creacion"
+    ]
+  },
+  "Casa Milà": {
+    "history": {
+      "es": "La Casa Milà, conocida también como La Pedrera, fue el último gran edificio civil proyectado por Antoni Gaudí. Pere Milà y Roser Segimon encargaron una residencia con viviendas de alquiler en el Passeig de Gràcia, una de las avenidas más prestigiosas de Barcelona. Los planos se presentaron al Ayuntamiento en febrero de 1906 y la construcción se prolongó hasta 1912. El proyecto despertó debates públicos por su aspecto inusual y por las dificultades para encajarlo en las ordenanzas municipales. En 1909, una comisión municipal reconoció su carácter monumental y permitió un tratamiento excepcional. El 31 de octubre de 1912, Gaudí certificó la finalización de las obras. Poco después llegaron inquilinos de profesiones y procedencias diversas, desde empresarios hasta diplomáticos. Durante la Guerra Civil española, el inmueble fue incautado y albergó dependencias vinculadas al gobierno republicano. Su valoración cambió considerablemente durante el siglo XX: lo que inicialmente había provocado controversia terminó por recibir reconocimiento internacional. Las restauraciones y la apertura de espacios culturales permitieron recuperar partes del conjunto y facilitar su visita. En 1996 concluyó una importante etapa de rehabilitación. Hoy la casa sigue recordando las aspiraciones de modernidad de la burguesía barcelonesa y la transformación de una residencia privada en patrimonio accesible al público.",
+      "en": "Casa Milà, also known as La Pedrera, was the last major secular building designed by Antoni Gaudí. Pere Milà and Roser Segimon commissioned a residence containing rental apartments on Passeig de Gràcia, one of Barcelona's most prestigious avenues. The plans were submitted to the City Council in February 1906, and construction continued until 1912. The project provoked public debate because of its unusual appearance and difficulties meeting municipal building regulations. In 1909, a municipal commission acknowledged its monumental character and allowed exceptional treatment. On 31 October 1912, Gaudí certified that construction was complete. Tenants from diverse backgrounds soon arrived, including entrepreneurs and diplomats. During the Spanish Civil War, the property was requisitioned and accommodated offices associated with the Republican government. Its reputation changed considerably during the twentieth century: what had initially caused controversy eventually received international recognition. Restoration work and the opening of cultural spaces helped recover parts of the complex and made it accessible to visitors. A major rehabilitation programme was completed in 1996. Today the house continues to evoke the ambitions of Barcelona's prosperous middle classes and the transformation of a private residence into publicly accessible heritage. Its changing fortunes also illustrate how architectural innovation can take decades to gain broad appreciation, even when its originality was apparent from the beginning.",
+      "it": "Casa Milà, conosciuta anche come La Pedrera, fu l'ultimo grande edificio civile progettato da Antoni Gaudí. Pere Milà e Roser Segimon commissionarono una residenza con appartamenti in affitto sul Passeig de Gràcia, uno dei viali più prestigiosi di Barcellona. I progetti furono presentati al Comune nel febbraio del 1906 e la costruzione proseguì fino al 1912. L'intervento suscitò dibattiti pubblici per l'aspetto insolito e per le difficoltà di rispettare i regolamenti edilizi comunali. Nel 1909 una commissione municipale riconobbe il carattere monumentale dell'edificio, consentendo un trattamento eccezionale. Il 31 ottobre 1912 Gaudí certificò il completamento dei lavori. Arrivarono presto inquilini di provenienze e professioni differenti, tra cui imprenditori e diplomatici. Durante la Guerra civile spagnola, l'immobile fu requisito e ospitò uffici collegati al governo repubblicano. La sua reputazione cambiò notevolmente nel Novecento: ciò che inizialmente aveva suscitato polemiche ottenne in seguito riconoscimento internazionale. I restauri e l'apertura di spazi culturali permisero di recuperare parti del complesso e renderle accessibili ai visitatori. Nel 1996 si concluse un importante programma di riabilitazione. Oggi la casa ricorda le aspirazioni di modernità della borghesia barcellonese e la trasformazione di una residenza privata in patrimonio aperto al pubblico. La sua vicenda mostra anche come un'innovazione architettonica possa richiedere decenni per essere apprezzata pienamente."
+    },
+    "curiosity": {
+      "es": "Una reforma posterior eliminó 532,5 metros cuadrados de techos originales.",
+      "en": "A later renovation removed 532.5 square metres of original ceilings.",
+      "it": "Una ristrutturazione successiva eliminò 532,5 metri quadrati di soffitti originali."
+    },
+    "architecture": {
+      "es": [
+        "La fachada pétrea ondula sin funcionar como muro de carga convencional.",
+        "Los patios interiores distribuyen iluminación y ventilación a las viviendas.",
+        "La azotea reúne chimeneas y conductos de ventilación escultóricos."
+      ],
+      "en": [
+        "The undulating stone façade is not a conventional load-bearing wall.",
+        "Interior courtyards distribute daylight and ventilation to the apartments.",
+        "The roof features sculptural chimneys and ventilation shafts."
+      ],
+      "it": [
+        "La facciata ondulata in pietra non è un tradizionale muro portante.",
+        "I cortili interni distribuiscono luce e ventilazione agli appartamenti.",
+        "Il tetto presenta comignoli e condotti di ventilazione scultorei."
+      ]
+    },
+    "sources": [
+      "https://www.lapedrera.com/es/casa-mila/historia/",
+      "https://www.lapedrera.com/es/casa-mila/"
     ]
   }
 };
