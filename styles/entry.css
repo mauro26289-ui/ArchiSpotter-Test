@@ -190,7 +190,7 @@ html:has(body.archi-intro-active){background-color:#101517!important}
     position: fixed !important; inset: 0 !important;
     width: 100% !important; height: 100lvh !important;
     min-height: 100dvh !important;
-    background: transparent !important; background-image: none !important;
+    background: transparent !important;
     z-index: 2147481000 !important; overflow: hidden !important;
     transform: none !important;
   }
@@ -198,7 +198,6 @@ html:has(body.archi-intro-active){background-color:#101517!important}
   html body #splash-screen .archi-splash-art,
   html body #splash-screen .archi-splash-photo {
     display: none !important; background: none !important;
-    background-image: none !important;
   }
   html body #splash-screen .archi-splash-brand {
     display: flex !important; z-index: 2 !important;
@@ -207,7 +206,7 @@ html:has(body.archi-intro-active){background-color:#101517!important}
     position: fixed !important; inset: 0 !important;
     width: 100% !important; height: 100dvh !important;
     min-height: 0 !important;
-    background: transparent !important; background-image: none !important;
+    background: transparent !important;
   }
   html body #archi-onboarding { z-index: 2147480500 !important; }
   html body #archi-auth-panel { z-index: 2147480600 !important; }
