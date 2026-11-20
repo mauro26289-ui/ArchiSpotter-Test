@@ -21,24 +21,19 @@
       --field-bg: rgba(13,17,18,.78);
       --field-border: rgba(220,229,229,.62);
       --paper: #101517;
-      --vvh: 100dvh;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html {
       width: 100%;
       height: 100%;
-      height: -webkit-fill-available;
       background: var(--paper);
     }
     body {
       margin: 0;
       padding: 0;
       width: 100%;
-      min-height: 100%;
       min-height: 100dvh;
-      min-height: -webkit-fill-available;
-      min-height: var(--vvh);
       overflow: hidden;
       font-family: Inter, system-ui, -apple-system, sans-serif;
       color: var(--ink);
@@ -52,9 +47,7 @@
       left: 0;
       width: 100%;
       width: 100vw;
-      height: var(--vvh);
-      min-height: 100%;
-      min-height: -webkit-fill-available;
+      bottom: 0;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
@@ -86,8 +79,7 @@
       object-fit: cover;
       object-position: center center;
       display: block;
-      opacity: 0;
-      /* Evitar el fundido inicial de la fotografía. */
+      opacity: 1;
       transition: none;
     }
     #backdrop img.is-ready { opacity: 1; }
@@ -108,7 +100,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: var(--vvh);
+      bottom: 0;
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -414,29 +406,7 @@
 
   <script>
     (function () {
-      function setVvh() {
-        var h = Math.max(
-          window.innerHeight || 0,
-          (window.visualViewport && Math.round(window.visualViewport.height)) || 0,
-          document.documentElement.clientHeight || 0
-        );
-        if (!h) return;
-        document.documentElement.style.setProperty('--vvh', h + 'px');
-        document.body.style.minHeight = h + 'px';
-      }
-      setVvh();
-      window.addEventListener('resize', setVvh, { passive: true });
-      window.addEventListener('orientationchange', function () { setTimeout(setVvh, 250); }, { passive: true });
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', setVvh, { passive: true });
-      }
-      document.addEventListener('DOMContentLoaded', setVvh, { once: true });
-
       var img = document.getElementById('bg-img');
-      function markReady() { img.classList.add('is-ready'); }
-      if (img.complete && img.naturalWidth) markReady();
-      img.addEventListener('load', markReady);
-      img.addEventListener('error', function () { img.classList.remove('is-ready'); });
       var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
       var home = document.getElementById('home');
@@ -477,7 +447,6 @@
       function showScreen(screen) {
         [splash, auth, home].forEach(function (el) { el.classList.toggle('is-active', el === screen); });
         document.body.classList.toggle('is-in-app', screen === home);
-        setVvh();
       }
       var strings = {
         es: {tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países y monumentos',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
