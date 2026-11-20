@@ -131,12 +131,7 @@ body #splash-screen .archi-splash-brand img{display:block!important;width:min(83
 
 
 /* ===== Origen: entry-v112.css ===== */
-/* vB9.12 — splash subtitle and iOS status area matching the app header. */
-/* Same surface as the top app header, rather than the old navy strip. */
-html:has(body:not(.archi-intro-active):not(.light-mode)){
- background-color:#1b2427!important;
-}
-html:has(body.archi-intro-active){background-color:#101517!important;}
+/* vB9.12 — light-mode document background. */
 html:has(body:not(.archi-intro-active).light-mode){background-color:#f5f2ea!important;}
 
 
