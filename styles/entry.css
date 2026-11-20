@@ -504,7 +504,6 @@ body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-auth-panel {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    width: 100% !important;
     width: 100vw !important;
     /* Altura con respaldo porcentual para WebKit antiguo. */
     height: 100% !important;
