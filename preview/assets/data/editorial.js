@@ -1,4 +1,4 @@
-/* Stage 27: Barcelona editorial, with institutional source references. */
+/* Stage 28: Madrid editorial content; original audio scripts remain unchanged. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -390,6 +390,71 @@ window.ArchiSpotterEditorial={
     "sources": [
       "https://www.lapedrera.com/es/casa-mila/historia/",
       "https://www.lapedrera.com/es/casa-mila/"
+    ]
+  },
+  "Palacio Real": {
+    "history": {
+      "es": "El Palacio Real de Madrid ocupa el lugar de una antigua fortaleza medieval que llegó a convertirse en residencia de los monarcas españoles. El Alcázar anterior sufrió un incendio devastador en la Nochebuena de 1734. Felipe V decidió levantar un edificio nuevo que expresara la autoridad de la monarquía borbónica. Primero recurrió al arquitecto Filippo Juvarra, pero, tras su muerte, el proyecto fue adaptado por Giovanni Battista Sacchetti. La primera piedra se colocó en 1738 y las obras principales avanzaron durante las décadas siguientes. Carlos III fue el primer rey que se instaló en el nuevo palacio, en 1764. Sus sucesores modificaron las estancias y reunieron obras de arte que permiten reconocer gustos de épocas diferentes. Pintores como Tiepolo y Mengs participaron en la decoración de sus espacios representativos. Aunque sigue siendo la residencia oficial del rey de España, la familia real no vive habitualmente aquí. El edificio se utiliza para ceremonias de Estado y también recibe visitantes. Recorrer sus salas permite comprender que una residencia real era, además de vivienda, un centro de administración, representación diplomática y protocolo. Su historia reúne la memoria de la corte, las transformaciones políticas del país y la continuidad de algunas instituciones españolas.",
+      "en": "The Royal Palace of Madrid stands on the site of a medieval fortress that eventually became a residence of Spanish monarchs. The former Alcázar suffered a devastating fire on Christmas Eve in 1734. Philip V decided to erect a new building expressing the authority of the Bourbon monarchy. He initially turned to architect Filippo Juvarra, but after his death Giovanni Battista Sacchetti adapted the design. The foundation stone was laid in 1738, and major construction continued over the following decades. Charles III became the first king to move into the new palace in 1764. Later monarchs altered the rooms and assembled artworks reflecting the tastes of different periods. Painters such as Tiepolo and Mengs contributed to the decoration of its most important spaces. Although the palace remains the official residence of Spain's king, the royal family does not normally live here. It is used for state ceremonies and also welcomes visitors. Exploring its rooms reveals that a royal residence served not only as a home but also as a centre of administration, diplomatic representation and protocol. Its history brings together court life, the country's political transformations and the continuity of certain Spanish institutions. The building remains a working setting for the public rituals of the modern state.",
+      "it": "Il Palazzo Reale di Madrid sorge sul luogo di una fortezza medievale che divenne in seguito residenza dei sovrani spagnoli. Il precedente Alcázar fu devastato da un incendio nella notte di Natale del 1734. Filippo V decise di costruire un nuovo edificio capace di esprimere l'autorità della monarchia borbonica. Si rivolse inizialmente all'architetto Filippo Juvarra, ma dopo la sua morte Giovanni Battista Sacchetti adattò il progetto. La prima pietra fu posta nel 1738 e i lavori principali proseguirono nei decenni successivi. Carlo III fu il primo re a trasferirsi nel nuovo palazzo, nel 1764. I suoi successori modificarono gli ambienti e raccolsero opere d'arte che testimoniano gusti di epoche differenti. Pittori come Tiepolo e Mengs contribuirono alla decorazione delle sale più rappresentative. Sebbene rimanga la residenza ufficiale del re di Spagna, la famiglia reale non vi abita abitualmente. L'edificio ospita cerimonie di Stato e accoglie anche visitatori. Attraversare le sue sale permette di capire che una residenza reale non era soltanto un'abitazione, ma anche un centro amministrativo, diplomatico e cerimoniale. La sua storia riunisce la memoria della corte, i cambiamenti politici del paese e la continuità di alcune istituzioni spagnole. Il palazzo conserva ancora oggi un ruolo concreto nella rappresentazione dello Stato."
+    },
+    "curiosity": {
+      "es": "Juvarra imaginó inicialmente un palacio mucho mayor que el construido.",
+      "en": "Juvarra originally imagined a much larger palace than the completed building.",
+      "it": "Juvarra immaginò inizialmente un palazzo molto più grande di quello realizzato."
+    },
+    "architecture": {
+      "es": [
+        "La estructura emplea bóvedas de fábrica para reducir el riesgo de incendios.",
+        "El edificio supera los 135.000 metros cuadrados de superficie.",
+        "El trazado se adapta al desnivel mediante plantas de distintas alturas."
+      ],
+      "en": [
+        "Masonry vaults reduce the structural risk posed by fire.",
+        "The building covers more than 135,000 square metres.",
+        "Its layout adapts to sloping ground through different floor levels."
+      ],
+      "it": [
+        "Le volte in muratura riducono i rischi strutturali degli incendi.",
+        "L'edificio supera i 135.000 metri quadrati di superficie.",
+        "La struttura si adatta al dislivello mediante piani di altezze differenti."
+      ]
+    },
+    "sources": [
+      "https://www.patrimonionacional.es/visita/palacio-real-de-madrid",
+      "https://www.patrimonionacional.es/sites/default/files/documents/cuaderno_profesorado_palacio_real_0.pdf"
+    ]
+  },
+  "Puerta de Alcalá": {
+    "history": {
+      "es": "La Puerta de Alcalá recuerda una etapa en la que Madrid todavía estaba marcada por accesos que regulaban la entrada a la ciudad. Carlos III impulsó su construcción para sustituir una puerta anterior, considerada insuficiente para la capital que quería modernizar. El arquitecto Francesco Sabatini recibió el encargo de diseñar un monumento que combinara utilidad urbana y representación del poder real. La nueva puerta se inauguró en 1778, junto al camino que conducía hacia Alcalá de Henares. Formaba parte de una transformación más amplia de Madrid, con mejoras en paseos, iluminación, saneamiento y espacios públicos. A diferencia de una fortaleza, su presencia tenía un sentido principalmente ceremonial: ofrecía una imagen monumental a quienes llegaban desde el este. Con la expansión urbana, los límites de la ciudad se desplazaron y la puerta perdió su antigua función de acceso. El tráfico comenzó a rodearla y su entorno se convirtió en una plaza importante. Actualmente se alza en la Plaza de la Independencia, junto al Retiro, como testimonio de las reformas ilustradas. Su permanencia permite reconocer cómo una obra vinculada al control de los caminos terminó transformándose en un símbolo compartido por generaciones de madrileños y visitantes.",
+      "en": "The Puerta de Alcalá recalls a time when Madrid was still defined by gateways regulating entry into the city. Charles III commissioned its construction to replace an earlier gate considered inadequate for the capital he wished to modernize. Architect Francesco Sabatini was asked to create a monument combining an urban purpose with the representation of royal authority. The new gateway was inaugurated in 1778 beside the road leading towards Alcalá de Henares. It formed part of a broader transformation of Madrid, including improvements to promenades, lighting, sanitation and public spaces. Unlike a fortress, its principal significance was ceremonial: it presented a monumental image to travellers arriving from the east. As the city expanded, its boundaries moved outward and the gate lost its original role as an entrance. Traffic began to circulate around it, and its surroundings became an important square. Today it stands in Plaza de la Independencia, beside Retiro Park, as evidence of Enlightenment-era urban reforms. Its survival shows how a structure originally associated with controlling routes into the capital gradually became a symbol shared by generations of residents and visitors. The monument now belongs to the city's identity rather than to its former defensive boundaries.",
+      "it": "La Puerta de Alcalá ricorda un'epoca in cui Madrid era ancora definita da porte che regolavano l'accesso alla città. Carlo III ne promosse la costruzione per sostituire un ingresso precedente, ritenuto inadeguato alla capitale che intendeva modernizzare. L'architetto Francesco Sabatini ricevette l'incarico di progettare un monumento capace di unire funzione urbana e rappresentazione del potere reale. La nuova porta fu inaugurata nel 1778, lungo la strada diretta verso Alcalá de Henares. Faceva parte di una trasformazione più ampia di Madrid, con miglioramenti ai viali, all'illuminazione, all'igiene e agli spazi pubblici. Diversamente da una fortezza, aveva soprattutto un significato cerimoniale: offriva un'immagine monumentale ai viaggiatori provenienti da est. Con l'espansione urbana, i confini della città si spostarono e la porta perse la sua funzione originaria di accesso. Il traffico cominciò a circondarla e lo spazio circostante divenne una piazza importante. Oggi sorge nella Plaza de la Independencia, accanto al Retiro, come testimonianza delle riforme illuministe. La sua permanenza mostra come un'opera inizialmente legata al controllo delle vie d'ingresso sia diventata un simbolo condiviso da generazioni di cittadini e visitatori. Il monumento appartiene ormai all'identità urbana di Madrid."
+    },
+    "curiosity": {
+      "es": "Sus dos fachadas presentan decoraciones diferentes, según el sentido de entrada.",
+      "en": "Its two façades display different decoration depending on the approach.",
+      "it": "Le due facciate presentano decorazioni differenti secondo il lato osservato."
+    },
+    "architecture": {
+      "es": [
+        "Dispone de cinco vanos, tres de arco y dos adintelados.",
+        "La construcción utiliza granito y elementos ornamentales de piedra caliza.",
+        "Las esculturas exteriores representan las cuatro virtudes cardinales."
+      ],
+      "en": [
+        "Five openings combine three arches with two lintelled passages.",
+        "Granite construction is complemented by limestone ornamental elements.",
+        "Exterior sculptures represent the four cardinal virtues."
+      ],
+      "it": [
+        "Cinque aperture comprendono tre archi e due passaggi architravati.",
+        "La costruzione combina granito ed elementi decorativi in pietra calcarea.",
+        "Le sculture esterne rappresentano le quattro virtù cardinali."
+      ]
+    },
+    "sources": [
+      "https://www.esmadrid.com/informacion-turistica/puerta-de-alcala"
     ]
   }
 };
