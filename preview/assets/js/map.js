@@ -105,5 +105,5 @@ window.ArchiSpotterMap = (function () {
   function show() { init(); if (map) { addTiles(); setTimeout(function(){map.invalidateSize();},60); } }
   document.addEventListener('archispotter:tab',function(e){if(e.detail==='map')show();});
   document.addEventListener('archispotter:saved-change',function(){if(tripMode&&map)showTrip();});
-  return {show:show,showTrip:showTrip,openMonument:null};
+  return {show:show,showTrip:showTrip,coordinates:monumentCoordinates,openMonument:null};
 })();
