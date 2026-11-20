@@ -16,6 +16,9 @@ window.ArchiSpotterSaved=(function(){
       var mapButton=document.createElement('button');mapButton.type='button';mapButton.textContent=({es:'Ver paradas en el mapa',en:'Show stops on map',it:'Mostra tappe sulla mappa'})[document.documentElement.lang]||'Ver paradas en el mapa';
       mapButton.addEventListener('click',function(){window.ArchiSpotterNavigation.showTab('map');if(window.ArchiSpotterMap)window.ArchiSpotterMap.showTrip();});actions.appendChild(mapButton);
       root.appendChild(actions);
+      var note=document.createElement('p');note.className='saved-count';
+      note.textContent=({es:'Solo aparecen en el mapa las paradas con coordenadas disponibles.',en:'Only stops with available coordinates appear on the map.',it:'Sulla mappa compaiono solo le tappe con coordinate disponibili.'})[document.documentElement.lang]||'Solo aparecen las paradas ubicadas.';
+      root.appendChild(note);
     }
     valid.forEach(function(id,index){
       var item=dict[id],card=document.createElement('article');card.className='saved-card';
