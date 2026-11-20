@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#101517" />
+  <meta name="apple-mobile-web-app-title" content="ArchiSpotter Prueba" />
+  <title>ArchiSpotter · Vista de prueba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #f3f7f7;
+      --muted: #c4d0d0;
+      --accent: #dce5e5;
+      --accent-contrast: #101517;
+      --field-bg: rgba(13,17,18,.78);
+      --field-border: rgba(220,229,229,.62);
+      --paper: #0b0e10;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html {
+      width: 100%;
+      height: 100%;
+      background: var(--paper);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh;
+      overflow: hidden;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    /* Fondo full-bleed: color + textura CSS (siempre visible) + foto opcional */
+    #backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      width: 100vw;
+      bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        linear-gradient(165deg, #293034 0%, #101517 65%, #0b1012 100%);
+    }
+    /* Textura sutil tipo piedra/papel sin depender de red */
+    #backdrop::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.16;
+      background-image:
+        radial-gradient(ellipse at 20% 30%, rgba(120,135,140,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(90,110,115,.10) 0%, transparent 45%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(80,100,110,.03) 3px,
+          rgba(80,100,110,.03) 4px
+        );
+    }
+    #backdrop img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      opacity: 1;
+      transition: none;
+    }
+    #backdrop img.is-ready { opacity: 1; }
+    #backdrop .veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(9,13,15,.43) 0%, rgba(9,13,15,.56) 42%, rgba(9,13,15,.88) 77%, rgb(11,14,16) 100%);
+    }
+    .scene-picker { position:fixed;top:calc(env(safe-area-inset-top, 0px) + 12px);left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;padding:5px;border:1px solid rgba(220,229,229,.38);border-radius:999px;background:rgba(9,13,15,.75); }
+    .scene-picker .scene-label { color:#f3f7f7;padding:8px 11px;font:600 12px Inter,system-ui,sans-serif;white-space:nowrap; }
+    body.is-in-app .scene-picker, body.is-in-app .scene-credit { display:none; }
+    /* Dentro de la app el fondo es #101517: el lienzo bajo la pantalla debe coincidir. */
+    html.is-in-app, html.is-in-app body { background: #101517; }
+    .scene-credit { position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 5px);right:12px;z-index:9;font:400 10px Inter,system-ui,sans-serif;color:#c4d0d0;opacity:.8; }
+    .scene-credit a { color:inherit; }
+    @media (prefers-reduced-motion: reduce) { .screen,#backdrop img { transition:none; } }
+
+    .screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      padding:
+        max(28px, calc(env(safe-area-inset-top, 0px) + 12px))
+        24px
+        max(28px, calc(env(safe-area-inset-bottom, 0px) + 12px))
+        24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      /* Saliente: se desvanece primero y solo después pasa a hidden. */
+      transition: opacity .3s ease, visibility 0s linear .3s;
+    }
+    .screen.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      /* Entrante: espera a que la saliente casi haya desaparecido (sin doble logo). */
+      transition: opacity .4s ease .22s, visibility 0s linear 0s;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .screen, .screen.is-active, #auth .btn-primary, #auth.is-active .btn-primary { transition: none; }
+    }
+
+    /* Splash */
+    #splash {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #splash .mark {
+      font-family: Fraunces, Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 9vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.15;
+    }
+    #splash .line {
+      width: 44px;
+      height: 2px;
+      background: var(--accent);
+      margin: 16px auto 14px;
+      border-radius: 2px;
+    }
+    #splash .tag {
+      font-family: Inter, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Auth */
+    #auth { justify-content: flex-end; }
+    #auth .brand {
+      text-align: center;
+      margin-bottom: auto;
+      padding-top: max(4vh, 8px);
+    }
+    #auth .brand h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2rem, 8vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    #auth .brand .line {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 14px auto 12px;
+      border-radius: 2px;
+    }
+    #auth .brand .tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .panel {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mode-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin: 0 0 2px;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 14px;
+      background: var(--field-bg);
+      border: 1px solid var(--field-border);
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(26,26,26,.04);
+    }
+    .field:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(47,93,80,.18);
+    }
+    .field svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.6;
+    }
+    .field input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-size: 16px;
+      color: var(--ink);
+      padding: 12px 0;
+      font-family: Inter, sans-serif;
+    }
+    .field input::placeholder { color: #8a857c; }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+      border: 0;
+      cursor: pointer;
+    }
+    .btn:active { opacity: 0.9; transform: scale(0.985); }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      margin-top: 4px;
+    }
+    /* Evita el bloque gris aislado durante el fundido: el botón entra oscuro
+       (como los campos) y se ilumina cuando la pantalla ya es opaca. */
+    #auth .btn-primary {
+      background: var(--field-bg);
+      color: var(--ink);
+      transition: none;
+    }
+    #auth.is-active .btn-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      transition: background-color .3s ease .62s, color .3s ease .62s;
+    }
+    .btn-secondary {
+      background: rgba(13,17,18,.65);
+      color: var(--ink);
+      border: 1.5px solid var(--field-border);
+    }
+    .link {
+      background: none;
+      border: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-family: Inter, sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 10px;
+      align-self: center;
+    }
+
+    .auth-error { min-height: 1.2em; margin: 0; color: #ffb6b6; font: 500 12px Inter, sans-serif; text-align: center; }
+    .auth-error:empty { display: none; }
+    .session-actions { margin-top: auto; width: 100%; max-width: 400px; align-self: center; }
+    #home { align-items: center; text-align: center; justify-content: center; }
+    #home .mark { font: 600 clamp(2.1rem, 9vw, 2.75rem)/1.15 Fraunces, Georgia, serif; margin: 0 0 14px; }
+    #home .tag { font: 500 12px Inter, sans-serif; letter-spacing: .12em; color: var(--muted); }
+    .btn:disabled { opacity: .55; cursor: wait; }
+    /* New app shell: independent from the archived interface. */
+    #home { justify-content: flex-start; padding: max(32px, calc(env(safe-area-inset-top, 0px) + 18px)) 20px max(86px, calc(env(safe-area-inset-bottom, 0px) + 72px)); background: #101517; text-align: left; overflow: hidden; }
+    #home .app-heading { flex: none; width: 100%; display: flex; justify-content: space-between; align-items: baseline; padding: 4px 2px 20px; }
+    #home .app-heading h1 { font: 600 28px/1.2 Fraunces, Georgia, serif; margin: 0; }
+    #home .app-heading span { font: 500 10px Inter, sans-serif; letter-spacing: .13em; color: var(--muted); text-transform: uppercase; }
+    #home .app-content { flex: 1; width: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; text-align: left; }
+    .app-view[hidden] { display: none !important; }
+    .app-view h2 { font: 600 29px/1.2 Fraunces, Georgia, serif; margin: 16px 0 14px; }
+    .app-view p { font: 400 14px/1.65 Inter, sans-serif; color: var(--muted); margin: 0 0 20px; }
+    .app-view .eyebrow { text-transform: uppercase; letter-spacing: .17em; font: 600 10px Inter, sans-serif; color: #b5c2c3; }
+    .app-panel { border: 1px solid rgba(220,229,229,.19); border-radius: 16px; background: #1b2427; padding: 18px; margin-bottom: 12px; }
+    .app-panel h3 { font: 600 20px Fraunces, Georgia, serif; margin: 0 0 8px; }
+    .app-panel p { margin: 0; }
+    .app-nav { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 10px 8px max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); border-top: 1px solid rgba(220,229,229,.17); background: #101517; }
+    .app-nav button { border: 0; background: none; color: #9faeb1; padding: 9px 2px; font: 500 11px Inter, sans-serif; border-radius: 10px; cursor: pointer; }
+    .app-nav button[aria-selected="true"] { background: #dce5e5; color: #101517; }
+    .lang-choices { display: flex; gap: 8px; margin: 12px 0 20px; }
+    .lang-choices button { flex: 1; min-height: 42px; border: 1px solid rgba(220,229,229,.3); border-radius: 10px; background: transparent; color: var(--ink); font: 600 13px Inter, sans-serif; }
+    .lang-choices button[aria-pressed="true"] { background: var(--accent); color: var(--accent-contrast); }
+    /* Explorar: portada fotográfica y cuadrícula editorial de países. */
+    #view-explore .explore-hero { position:relative; min-height:220px; border-radius:18px; overflow:hidden; margin:0 0 24px; background:#253034; isolation:isolate; }
+    #view-explore .explore-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 44%; }
+    #view-explore .explore-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(8,12,14,.08),rgba(8,12,14,.18) 30%,rgba(8,12,14,.86)); }
+    #view-explore .hero-copy { position:absolute; z-index:1; bottom:20px; left:20px; right:20px; }
+    #view-explore .hero-copy .eyebrow { color:#e4e9e8; }
+    #view-explore .hero-copy h2 { margin:8px 0 0; font:600 clamp(27px,7vw,36px)/1.08 Fraunces,Georgia,serif; color:#fff; }
+    #view-explore .countries-heading { margin:0 0 15px; font:600 25px/1.2 Fraunces,Georgia,serif; }
+    .countries-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; padding-bottom:24px; }
+    .country-card { position:relative; border:0; border-radius:15px; padding:0; min-width:0; aspect-ratio: .81; overflow:hidden; background:#263033; text-align:left; color:#fff; cursor:pointer; isolation:isolate; }
+    .country-card img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .3s ease; }
+    .country-card::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(5,9,10,.8)); }
+    .country-card span { position:absolute; z-index:1; left:14px; bottom:15px; right:10px; font:600 22px/1.1 Fraunces,Georgia,serif; }
+    .country-card:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .country-card:active img { transform:scale(1.025); }
+    #country-detail[hidden], #country-overview[hidden] { display:none!important; }
+    .country-back { border:0; background:transparent; color:var(--ink); padding:8px 0 16px; font:500 14px Inter,sans-serif; }
+    .country-detail-photo { width:100%; aspect-ratio:1.5; border-radius:16px; object-fit:cover; }
+    @media (min-width:700px) { .countries-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } #view-explore .explore-hero { min-height:270px; } }
+    /* País: portada editorial, ciudades y monumentos destacados. */
+    #country-detail .country-cover { position:relative; overflow:hidden; border-radius:18px; height:245px; background:#263033; isolation:isolate; }
+    #country-detail .country-detail-photo { width:100%; height:100%; aspect-ratio:auto; object-fit:cover; display:block; }
+    #country-detail .country-cover::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 28%,rgba(5,9,10,.83)); pointer-events:none; }
+    #country-detail .country-cover-title { position:absolute; z-index:1; bottom:19px; left:20px; right:16px; margin:0; font:600 37px/1.1 Fraunces,Georgia,serif; color:white; }
+    #country-detail .country-intro { font:400 14px/1.7 Inter,sans-serif; color:var(--muted); margin:18px 0 25px; }
+    #country-detail .city-section { margin:0 0 30px; }
+    #country-detail .city-heading { display:flex; align-items:baseline; justify-content:space-between; margin:0 0 13px; gap:10px; }
+    #country-detail .city-heading h3 { font:600 27px/1.2 Fraunces,Georgia,serif; margin:0; }
+    #country-detail .city-photo { display:block; width:100%; aspect-ratio:1.9; object-fit:cover; border-radius:15px; margin-bottom:13px; }
+    #country-detail .landmarks-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    #country-detail .landmark-card { min-width:0; }
+    #country-detail .landmark-card img { display:block; width:100%; aspect-ratio:1.12; object-fit:cover; border-radius:12px; background:#263033; }
+    #country-detail .landmark-card h4 { font:600 17px/1.28 Fraunces,Georgia,serif; margin:9px 0 0; }
+    #country-detail .country-back { cursor:pointer; }
+    /* Ciudad: galería arquitectónica independiente, con navegación de regreso. */
+    #city-detail[hidden] { display:none!important; }
+    #city-detail .city-back { border:0; background:transparent; color:var(--ink); padding:8px 0 16px; font:500 14px Inter,sans-serif; cursor:pointer; }
+    #city-detail .city-cover { position:relative; overflow:hidden; border-radius:18px; height:225px; background:#263033; isolation:isolate; }
+    #city-detail .city-cover img { width:100%; height:100%; object-fit:cover; display:block; }
+    #city-detail .city-cover::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 30%,rgba(5,9,10,.82)); pointer-events:none; }
+    #city-detail .city-cover h2 { position:absolute; z-index:1; bottom:17px; left:19px; right:16px; margin:0; color:#fff; font:600 38px/1.1 Fraunces,Georgia,serif; }
+    #city-detail .city-gallery-intro { font:400 14px/1.65 Inter,sans-serif; color:var(--muted); margin:18px 0 24px; }
+    #city-detail .city-gallery-heading { font:600 25px/1.2 Fraunces,Georgia,serif; margin:0 0 17px; }
+    #city-detail .city-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 13px; padding-bottom:30px; }
+    #city-detail .city-gallery article { min-width:0; }
+    #city-detail .city-gallery img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:14px; display:block; background:#263033; }
+    #city-detail .city-gallery h3 { font:600 19px/1.25 Fraunces,Georgia,serif; margin:10px 0 5px; }
+    #city-detail .city-gallery p { font:400 11px/1.4 Inter,sans-serif; color:var(--muted); margin:0; }
+    #country-detail .city-open { display:flex; justify-content:space-between; align-items:baseline; width:100%; padding:0; border:0; background:transparent; color:var(--ink); text-align:left; cursor:pointer; }
+    #country-detail .city-open span { color:var(--muted); font:500 12px Inter,sans-serif; }
+    #country-detail .city-open:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+    @media(min-width:700px) { #city-detail .city-gallery { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    /* Ficha inmersiva: imagen primero, contenido editorial después. */
+    #monument-detail[hidden] { display:none!important; }
+    #monument-detail .monument-back { display:block; border:0; background:transparent; color:var(--ink); font:500 14px Inter,sans-serif; padding:8px 0 16px; cursor:pointer; }
+    .monument-cover { overflow:hidden; border-radius:18px; background:#1b2427; }
+    .monument-cover-photo { position:relative; height:auto; aspect-ratio:3/4; background:#263033; cursor:zoom-in; }
+    .monument-cover-photo:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .monument-cover-photo img { width:100%; height:100%; display:block; object-fit:cover; }
+    .monument-cover-photo .monument-zoom-indicator { position:absolute; right:14px; bottom:14px; width:36px; height:36px; display:grid; place-items:center; border-radius:50%; background:rgba(8,12,14,.7); color:white; font-size:23px; pointer-events:none; }
+    .monument-cover-info { padding:20px 18px 22px; }
+    .monument-cover-info .eyebrow { color:var(--muted); }
+    .monument-cover-info h2 { margin:8px 0 10px; font:600 35px/1.12 Fraunces,Georgia,serif; }
+    .monument-meta { color:var(--muted); font:400 12px/1.55 Inter,sans-serif; }
+    .monument-actions { display:flex; gap:9px; align-items:center; justify-content:space-between; margin:18px 0 24px; }
+    .monument-actions button { min-height:43px; border:1px solid rgba(220,229,229,.3); border-radius:12px; background:#1b2427; color:var(--ink); font:500 12px Inter,sans-serif; padding:9px 12px; cursor:pointer; }
+    .monument-actions button[aria-pressed="true"] { background:var(--accent); color:var(--accent-contrast); }
+    .monument-actions button:disabled { opacity:.55; cursor:default; }
+    .monument-actions .audio-action { flex:1; text-align:left; }
+    .monument-story h3 { font:600 26px/1.2 Fraunces,Georgia,serif; margin:0 0 12px; }
+    .monument-story p { color:var(--muted); font:400 14px/1.75 Inter,sans-serif; margin:0 0 17px; }
+    .monument-photo-notice { color:var(--muted); font:400 11px/1.5 Inter,sans-serif; margin:12px 0 0; }
+    /* Visor de fotografía: zoom táctil, arrastre y cierre accesible. */
+    .explore-hero { cursor:zoom-in; }
+    .explore-hero:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .photo-viewer[hidden] { display:none!important; }
+    .photo-viewer { position:fixed; inset:0; z-index:100; background:#080b0d; display:flex; align-items:center; justify-content:center; overflow:hidden; touch-action:none; overscroll-behavior:contain; }
+    .photo-viewer-image { display:block; width:100%; height:100%; object-fit:contain; transform-origin:center center; user-select:none; -webkit-user-select:none; -webkit-user-drag:none; touch-action:none; will-change:transform; }
+    .photo-viewer-close { position:absolute; z-index:2; right: max(18px, env(safe-area-inset-right, 0px)); top:max(20px, calc(env(safe-area-inset-top, 0px) + 12px)); display:grid; place-items:center; width:46px; height:46px; border:1px solid rgba(255,255,255,.45); border-radius:50%; background:rgba(10,14,16,.75); color:white; font:400 28px/1 Inter,sans-serif; cursor:pointer; touch-action:manipulation; }
+    .photo-viewer-hint { position:absolute; bottom:max(30px, calc(env(safe-area-inset-bottom, 0px) + 18px)); left:20px; right:20px; text-align:center; color:rgba(255,255,255,.8); font:400 12px/1.5 Inter,sans-serif; pointer-events:none; }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+      transform: translateX(-50%) translateY(140%);
+      background: #101517;
+      color: #f3f7f7;
+      border: 1px solid rgba(220,229,229,.45);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      z-index: 30;
+      /* Oculto de verdad cuando no hay mensaje: antes asomaba una cápsula vacía abajo. */
+      opacity: 0;
+      visibility: hidden;
+      transition: transform .35s ease, opacity .35s ease, visibility 0s linear .35s;
+      pointer-events: none;
+      max-width: 90vw;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; transition-delay: 0s, 0s, 0s; }
+  </style>
+</head>
+<body>
+  <div id="backdrop" aria-hidden="true">
+    <!-- Fotografía real de Unsplash; una sola capa compartida entre splash y acceso. -->
+    <img
+      id="bg-img"
+      src="https://images.unsplash.com/photo-1763374046991-632df3a66127?auto=format&amp;fit=crop&amp;w=1400&amp;q=82"
+      alt=""
+      decoding="async"
+      fetchpriority="high"
+    />
+    <div class="veil"></div>
+  </div>
+
+  <nav class="scene-picker" aria-label="Fotografía del Coliseo de Roma">
+    <span class="scene-label">Coliseo de Roma</span>
+  </nav>
+  <div class="scene-credit" id="scene-credit">Foto: <a href="https://unsplash.com/photos/close-up-of-the-ancient-roman-colosseum-arches-M32BbLBXGuc" target="_blank" rel="noopener noreferrer">Pablo Fernández / Unsplash</a></div>
+
+  <section id="splash" class="screen is-active" aria-label="Splash">
+    <h1 class="mark">ArchiSpotter</h1>
+    <div class="line" aria-hidden="true"></div>
+    <p class="tag">Arquitectura en contexto</p>
+  </section>
+
+  <section id="auth" class="screen" aria-label="Acceso">
+    <div class="brand">
+      <h1>ArchiSpotter</h1>
+      <div class="line" aria-hidden="true"></div>
+      <p class="tag">Arquitectura en contexto</p>
+    </div>
+
+    <form class="panel" id="auth-form" autocomplete="on">
+      <p class="mode-title" id="mode-label">Iniciar sesión</p>
+
+      <label class="field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 19c1.5-3.2 4-5 7-5s5.5 1.8 7 5"/></svg>
+        <input id="user" name="username" type="text" aria-label="Usuario" placeholder="Usuario" required minlength="3" autocomplete="username" />
+      </label>
+
+      <label class="field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        <input id="pass" name="password" type="password" aria-label="Contraseña" placeholder="Contraseña" required minlength="6" autocomplete="current-password" />
+      </label>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn">Iniciar sesión</button>
+      <button type="button" class="btn btn-secondary" id="switch-btn">Crear usuario</button>
+      <p id="auth-error" class="auth-error" role="alert" aria-live="polite"></p>
+      <button type="button" class="link" id="forgot-btn">¿Olvidaste tu contraseña?</button>
+    </form>
+  </section>
+
+  <section id="home" class="screen" aria-label="ArchiSpotter">
+    <header class="app-heading"><h1>ArchiSpotter</h1><span data-i18n="tagline">Arquitectura en contexto</span></header>
+    <main class="app-content">
+      <div class="app-view" id="view-explore">
+        <div id="country-overview">
+          <div class="explore-hero" id="explore-hero" role="button" tabindex="0" aria-label="Ampliar fotografía del Coliseo">
+            <img src="https://images.unsplash.com/photo-1763374046991-632df3a66127?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="" decoding="async" fetchpriority="high" />
+            <div class="hero-copy"><span class="eyebrow" data-i18n="explore">Explorar</span><h2 data-i18n="discoverTitle">Descubre la arquitectura</h2></div>
+          </div>
+          <h2 class="countries-heading" data-i18n="countriesTitle">Países</h2>
+          <div class="countries-grid">
+          <button class="country-card" type="button" data-country="it" aria-label="Italia"><img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="it">Italia</span></button>
+          <button class="country-card" type="button" data-country="es" aria-label="España"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="es">España</span></button>
+          <button class="country-card" type="button" data-country="fr" aria-label="Francia"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="fr">Francia</span></button>
+          <button class="country-card" type="button" data-country="gr" aria-label="Grecia"><img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="gr">Grecia</span></button>
+          <button class="country-card" type="button" data-country="gb" aria-label="Reino Unido"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="gb">Reino Unido</span></button>
+          <button class="country-card" type="button" data-country="de" aria-label="Alemania"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="de">Alemania</span></button>
+          <button class="country-card" type="button" data-country="pt" aria-label="Portugal"><img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="pt">Portugal</span></button>
+          <button class="country-card" type="button" data-country="ar" aria-label="Argentina"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="" loading="lazy" decoding="async" /><span data-country-label="ar">Argentina</span></button>
+          </div>
+        </div>
+        <div id="country-detail" hidden>
+          <button type="button" class="country-back" id="country-back" data-i18n="backCountries">← Volver a países</button>
+          <div class="country-cover"><img class="country-detail-photo" id="country-detail-photo" alt="" /><h2 class="country-cover-title" id="country-detail-name"></h2></div>
+          <p class="country-intro" data-i18n="countryIntro">Explora ciudades y descubre su arquitectura a través de imágenes.</p>
+          <div id="country-cities"></div>
+        </div>
+        <div id="city-detail" hidden>
+          <button type="button" class="city-back" id="city-back" data-i18n="backCountry">← Volver al país</button>
+          <div class="city-cover"><img id="city-detail-photo" alt="" /><h2 id="city-detail-name"></h2></div>
+          <p class="city-gallery-intro" data-i18n="cityIntro">Explora la arquitectura de esta ciudad.</p>
+          <h2 class="city-gallery-heading" data-i18n="cityMonuments">Arquitectura destacada</h2>
+          <div class="city-gallery" id="city-gallery"></div>
+        </div>
+        <div id="monument-detail" hidden>
+          <button type="button" class="monument-back" id="monument-back" data-i18n="backCity">← Volver a la ciudad</button>
+          <div class="monument-cover">
+            <div class="monument-cover-photo" id="monument-photo-trigger" role="button" tabindex="0" aria-label="Ampliar fotografía"><img id="monument-photo" alt="" /><span class="monument-zoom-indicator" aria-hidden="true">⤢</span></div>
+            <div class="monument-cover-info">
+              <span class="eyebrow" id="monument-location"></span>
+              <h2 id="monument-name"></h2>
+              <div class="monument-meta" id="monument-meta"></div>
+            </div>
+          </div>
+          <p class="monument-photo-notice" data-i18n="sampleImage">Imagen ilustrativa · catálogo en preparación</p>
+          <div class="monument-actions">
+            <button type="button" class="audio-action" disabled data-i18n="audioPending">Audioguía · próximamente</button>
+            <button type="button" id="monument-favorite" aria-pressed="false" data-i18n="favoriteAction">♡ Favorito</button>
+            <button type="button" id="monument-trip" aria-pressed="false" data-i18n="tripAction">＋ Mi viaje</button>
+          </div>
+          <div class="monument-story">
+            <h3 data-i18n="monumentStoryTitle">Una historia por descubrir</h3>
+            <p id="monument-story-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="app-view" id="view-trip" hidden>
+        <span class="eyebrow" data-i18n="trip">Mi viaje</span><h2 data-i18n="tripTitle">Mis rutas</h2>
+        <div class="app-panel"><p data-i18n="tripText">Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.</p></div>
+      </div>
+      <div class="app-view" id="view-favorites" hidden>
+        <span class="eyebrow" data-i18n="favorites">Favoritos</span><h2 data-i18n="favoritesTitle">Mis favoritos</h2>
+        <div class="app-panel"><p data-i18n="favoritesText">Todavía no hay monumentos disponibles para guardar.</p></div>
+      </div>
+      <div class="app-view" id="view-settings" hidden>
+        <span class="eyebrow" data-i18n="settings">Configuración</span><h2 data-i18n="preferences">Preferencias</h2>
+        <div class="app-panel"><h3 data-i18n="language">Idioma</h3><div class="lang-choices" role="group" aria-label="Idioma">
+          <button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="it">IT</button>
+        </div><p id="welcome-user"></p></div>
+        <button type="button" class="btn btn-secondary" id="logout-btn" data-i18n="logout" style="width:100%">Cerrar sesión</button>
+      </div>
+    </main>
+    <nav class="app-nav" aria-label="Navegación principal">
+      <button type="button" data-tab="explore" aria-selected="true" data-i18n="explore">Explorar</button>
+      <button type="button" data-tab="trip" aria-selected="false" data-i18n="trip">Mi viaje</button>
+      <button type="button" data-tab="favorites" aria-selected="false" data-i18n="favorites">Favoritos</button>
+      <button type="button" data-tab="settings" aria-selected="false" data-i18n="settings">Ajustes</button>
+    </nav>
+  </section>
+
+  <div class="photo-viewer" id="photo-viewer" role="dialog" aria-modal="true" aria-label="Fotografía del Coliseo" hidden>
+    <img class="photo-viewer-image" id="photo-viewer-image" alt="Coliseo de Roma" draggable="false" />
+    <button type="button" class="photo-viewer-close" id="photo-viewer-close" aria-label="Cerrar imagen">×</button>
+    <div class="photo-viewer-hint" id="photo-viewer-hint">Pellizca para ampliar · Arrastra para explorar</div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    (function () {
+      var img = document.getElementById('bg-img');
+      var splash = document.getElementById('splash');
+      var auth = document.getElementById('auth');
+      var home = document.getElementById('home');
+      var mode = 'login';
+      var modeLabel = document.getElementById('mode-label');
+      var submitBtn = document.getElementById('submit-btn');
+      var switchBtn = document.getElementById('switch-btn');
+      var pass = document.getElementById('pass');
+      var toast = document.getElementById('toast');
+      var error = document.getElementById('auth-error');
+      var ACCOUNTS = 'archispotter_local_accounts_v1';
+      var SESSION = 'archispotter_local_session_v1';
+      var DEFAULT_USER = 'user';
+      var DEFAULT_PASSWORD = 'user123';
+
+      function accounts() {
+        try {
+          var value = JSON.parse(localStorage.getItem(ACCOUNTS) || '{}');
+          return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+        } catch (_) { return {}; }
+      }
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+      }
+      function setMode(next) {
+        mode = next;
+        error.textContent = '';
+        document.getElementById('auth-form').reset();
+        modeLabel.textContent = next === 'login' ? 'Iniciar sesión' : 'Crear usuario';
+        submitBtn.textContent = modeLabel.textContent;
+        switchBtn.textContent = next === 'login' ? 'Crear usuario' : 'Ya tengo cuenta';
+        pass.setAttribute('autocomplete', next === 'login' ? 'current-password' : 'new-password');
+        document.getElementById('forgot-btn').hidden = next !== 'login';
+      }
+      function showScreen(screen) {
+        [splash, auth, home].forEach(function (el) { el.classList.toggle('is-active', el === screen); });
+        document.body.classList.toggle('is-in-app', screen === home);
+        document.documentElement.classList.toggle('is-in-app', screen === home);
+      }
+      var strings = {
+        es: {zoomPhoto:'Ampliar fotografía de',backCity:'← Volver a la ciudad',audioPending:'Audioguía · próximamente',favoriteAction:'♡ Favorito',tripAction:'＋ Mi viaje',monumentStoryTitle:'Una historia por descubrir',metaPending:'Información arquitectónica en preparación',storyPending:'Estamos preparando la historia y los detalles arquitectónicos de este monumento. Esta pantalla muestra la distribución visual de la futura ficha.',backCountry:'← Volver al país',cityIntro:'Explora la arquitectura de esta ciudad.',cityMonuments:'Arquitectura destacada',viewCity:'Ver ciudad',sampleImage:'Imagen ilustrativa · catálogo en preparación',tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',backCountries:'← Volver a países',countrySoon:'Próximamente podrás explorar los monumentos de este país.',countryIntro:'Explora ciudades y descubre su arquitectura a través de imágenes.',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
+        en: {zoomPhoto:'Enlarge photo of',backCity:'← Back to city',audioPending:'Audio guide · coming soon',favoriteAction:'♡ Favorite',tripAction:'＋ My trip',monumentStoryTitle:'A story to discover',metaPending:'Architectural details in preparation',storyPending:'We are preparing the history and architectural details of this monument. This screen previews the layout of the future entry.',backCountry:'← Back to country',cityIntro:'Explore the architecture of this city.',cityMonuments:'Featured architecture',viewCity:'View city',sampleImage:'Illustrative image · catalogue in preparation',tagline:'Architecture in context',explore:'Explore',discoverTitle:'Discover architecture',backCountries:'← Back to countries',countrySoon:'You will soon be able to explore this country’s monuments.',countryIntro:'Explore cities and discover their architecture through images.',discoverText:'We are rebuilding monument exploration on this new foundation, without reusing the previous design.',countriesTitle:'Countries',countriesText:'The catalogue will be added in the next stage.',trip:'My trip',tripTitle:'My routes',tripText:'You will be able to organize monuments and routes when the catalogue is added.',favorites:'Favorites',favoritesTitle:'My favorites',favoritesText:'There are no monuments to save yet.',settings:'Settings',preferences:'Preferences',language:'Language',logout:'Sign out',welcome:'Signed in as: '},
+        it: {zoomPhoto:'Ingrandisci la foto di',backCity:'← Torna alla città',audioPending:'Audioguida · prossimamente',favoriteAction:'♡ Preferito',tripAction:'＋ Il mio viaggio',monumentStoryTitle:'Una storia da scoprire',metaPending:'Informazioni architettoniche in preparazione',storyPending:'Stiamo preparando la storia e i dettagli architettonici di questo monumento. Questa schermata mostra il design della futura scheda.',backCountry:'← Torna al paese',cityIntro:'Esplora l’architettura di questa città.',cityMonuments:'Architettura in evidenza',viewCity:'Vedi città',sampleImage:'Immagine illustrativa · catalogo in preparazione',tagline:'Architettura nel contesto',explore:'Esplora',discoverTitle:'Scopri l’architettura',backCountries:'← Torna ai paesi',countrySoon:'Presto potrai esplorare i monumenti di questo paese.',countryIntro:'Esplora le città e scopri la loro architettura attraverso le immagini.',discoverText:'Stiamo ricostruendo l’esplorazione dei monumenti su questa nuova base, senza riutilizzare il vecchio design.',countriesTitle:'Paesi',countriesText:'Il catalogo sarà aggiunto nella prossima fase.',trip:'Il mio viaggio',tripTitle:'I miei itinerari',tripText:'Potrai organizzare monumenti e itinerari quando aggiungeremo il catalogo.',favorites:'Preferiti',favoritesTitle:'I miei preferiti',favoritesText:'Non ci sono ancora monumenti da salvare.',settings:'Impostazioni',preferences:'Preferenze',language:'Lingua',logout:'Esci',welcome:'Accesso effettuato: '}
+      };
+      function currentLang() {
+        try { var l = localStorage.getItem('archispotter_language'); return strings[l] ? l : 'es'; } catch (_) { return 'es'; }
+      }
+      function applyLanguage() {
+        var lang = currentLang(), words = strings[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('#home [data-i18n]').forEach(function (el) {
+          el.textContent = words[el.getAttribute('data-i18n')] || '';
+        });
+        document.querySelectorAll('[data-lang]').forEach(function (el) { el.setAttribute('aria-pressed', String(el.getAttribute('data-lang') === lang)); });
+        var user = sessionUser();
+        if (user) document.getElementById('welcome-user').textContent = words.welcome + user;
+        updateCountryNames();
+        renderCountryCities();
+        renderMonument();
+      }
+      /* Visor independiente: no altera la fotografía ni el viewport del splash. */
+      (function () {
+        var hero = document.getElementById('explore-hero');
+        var viewer = document.getElementById('photo-viewer');
+        var photo = document.getElementById('photo-viewer-image');
+        var close = document.getElementById('photo-viewer-close');
+        var hint = document.getElementById('photo-viewer-hint');
+        var monumentTrigger = document.getElementById('monument-photo-trigger');
+        var returnFocus = hero;
+        var points = new Map();
+        var scale = 1, x = 0, y = 0, startDistance = 0, startScale = 1;
+        var startMid = null, startX = 0, startY = 0, lastTap = 0;
+        function clamp(n, min, max) { return Math.min(max, Math.max(min, n)); }
+        function bounds() {
+          var naturalW = photo.naturalWidth || 1, naturalH = photo.naturalHeight || 1;
+          var fit = Math.min(viewer.clientWidth / naturalW, viewer.clientHeight / naturalH);
+          var renderedW = naturalW * fit, renderedH = naturalH * fit;
+          return { x:Math.max(0,(renderedW*scale-viewer.clientWidth)/2), y:Math.max(0,(renderedH*scale-viewer.clientHeight)/2) };
+        }
+        function paint() {
+          var b = bounds();
+          x = clamp(x,-b.x,b.x); y = clamp(y,-b.y,b.y);
+          photo.style.transform = 'translate3d('+x+'px,'+y+'px,0) scale('+scale+')';
+        }
+        function reset() { scale=1; x=0; y=0; points.clear(); paint(); }
+        function openViewerFrom(source, trigger) {
+          if (!source || !source.getAttribute('src')) return;
+          returnFocus = trigger;
+          photo.src = source.currentSrc || source.src;
+          photo.alt = source.alt || '';
+          viewer.setAttribute('aria-label', source.alt || 'Fotografía ampliada');
+          viewer.hidden=false;
+          reset();
+          hint.hidden=false;
+          close.focus({preventScroll:true});
+        }
+        function openViewer() { openViewerFrom(hero.querySelector('img'),hero); }
+        function openMonumentViewer() { openViewerFrom(document.getElementById('monument-photo'),monumentTrigger); }
+        function closeViewer() {
+          points.clear();
+          viewer.hidden=true;
+          photo.removeAttribute('src');
+          if(returnFocus && returnFocus.isConnected) returnFocus.focus({preventScroll:true});
+        }
+        hero.addEventListener('click',openViewer);
+        monumentTrigger.addEventListener('click',openMonumentViewer);
+        monumentTrigger.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openMonumentViewer();}});
+        hero.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openViewer();}});
+        close.addEventListener('click',closeViewer);
+        document.addEventListener('keydown',function(e){if(viewer.hidden)return;if(e.key==='Escape')closeViewer();});
+        photo.addEventListener('load',paint);
+        function geometry() {
+          var a=Array.from(points.values());
+          if(a.length<2)return null;
+          return { distance:Math.hypot(a[1].x-a[0].x,a[1].y-a[0].y), mid:{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2} };
+        }
+        function restart() {
+          var g=geometry();
+          startScale=scale;startX=x;startY=y;
+          if(g){startDistance=Math.max(1,g.distance);startMid=g.mid;}
+          else if(points.size===1){startMid=Array.from(points.values())[0];}
+        }
+        viewer.addEventListener('pointerdown',function(e){
+          if(e.target===close)return;
+          e.preventDefault();
+          viewer.setPointerCapture(e.pointerId);
+          points.set(e.pointerId,{x:e.clientX,y:e.clientY});
+          restart();
+          hint.hidden=true;
+        });
+        viewer.addEventListener('pointermove',function(e){
+          if(!points.has(e.pointerId))return;
+          points.set(e.pointerId,{x:e.clientX,y:e.clientY});
+          var g=geometry();
+          if(g){
+            scale=clamp(startScale*g.distance/startDistance,1,5);
+            x=startX+g.mid.x-startMid.x;
+            y=startY+g.mid.y-startMid.y;
+          } else if(points.size===1&&scale>1) {
+            x=startX+e.clientX-startMid.x;
+            y=startY+e.clientY-startMid.y;
+          }
+          paint();
+        });
+        function end(e){
+          if(!points.has(e.pointerId))return;
+          points.delete(e.pointerId);
+          restart();
+        }
+        viewer.addEventListener('pointerup',end);
+        viewer.addEventListener('pointercancel',end);
+        viewer.addEventListener('lostpointercapture',end);
+        viewer.addEventListener('dblclick',function(e){
+          if(e.target===close)return;
+          scale=scale>1?1:2.5;
+          if(scale===1){x=0;y=0;}
+          paint();
+        });
+        viewer.addEventListener('touchend',function(e){
+          if(e.touches.length!==0||e.changedTouches.length!==1)return;
+          var now=Date.now();
+          if(now-lastTap<290){scale=scale>1?1:2.5;if(scale===1){x=0;y=0;}paint();lastTap=0;}
+          else lastTap=now;
+        },{passive:true});
+        viewer.addEventListener('wheel',function(e){
+          e.preventDefault();
+          scale=clamp(scale*(e.deltaY<0?1.12:.89),1,5);
+          if(scale===1){x=0;y=0;}
+          paint();
+        },{passive:false});
+        window.addEventListener('resize',function(){if(!viewer.hidden)paint();},{passive:true});
+      })();
+
+      var countryCitySamples = {"it":[["Roma","Rome","Roma","photo-1552832230-c0197dd311b5",[["Coliseo","Colosseum","Colosseo","photo-1552832230-c0197dd311b5"],["Roma histórica","Historic Rome","Roma storica","photo-1531572753322-ad063cecc140"]]],["Florencia","Florence","Firenze","photo-1541370976299-4d24ebbc9077",[["Catedral de Florencia","Florence Cathedral","Duomo di Firenze","photo-1541370976299-4d24ebbc9077"],["Florencia histórica","Historic Florence","Firenze storica","photo-1541370976299-4d24ebbc9077"]]]],"es":[["Barcelona","Barcelona","Barcellona","photo-1539037116277-4db20889f2d4",[["Sagrada Familia","Sagrada Família","Sagrada Família","photo-1583779457094-ab6f5f0c1e2b"],["Casa Batlló","Casa Batlló","Casa Batlló","photo-1539037116277-4db20889f2d4"]]],["Madrid","Madrid","Madrid","photo-1543783207-ec64e4d95325",[["Palacio Real","Royal Palace","Palazzo Reale","photo-1543783207-ec64e4d95325"],["Puerta de Alcalá","Puerta de Alcalá","Puerta de Alcalá","photo-1539037116277-4db20889f2d4"]]]],"fr":[["París","Paris","Parigi","photo-1502602898657-3e91760cbb34",[["Torre Eiffel","Eiffel Tower","Torre Eiffel","photo-1502602898657-3e91760cbb34"],["Arco del Triunfo","Arc de Triomphe","Arco di Trionfo","photo-1502602898657-3e91760cbb34"]]],["Versalles","Versailles","Versailles","photo-1590490360182-c33d57733427",[["Palacio de Versalles","Palace of Versailles","Reggia di Versailles","photo-1590490360182-c33d57733427"]]]],"gr":[["Atenas","Athens","Atene","photo-1555993539-1732b0258235",[["Partenón","Parthenon","Partenone","photo-1555993539-1732b0258235"],["Erecteión","Erechtheion","Eretteo","photo-1555993539-1732b0258235"]]],["Delfos","Delphi","Delfi","photo-1503152394-c571994fd383",[["Templo de Apolo","Temple of Apollo","Tempio di Apollo","photo-1503152394-c571994fd383"]]]],"gb":[["Londres","London","Londra","photo-1513635269975-59663e0ac1ad",[["Palacio de Westminster","Palace of Westminster","Palazzo di Westminster","photo-1513635269975-59663e0ac1ad"],["Tower Bridge","Tower Bridge","Tower Bridge","photo-1513635269975-59663e0ac1ad"]]],["Bath","Bath","Bath","photo-1528909514045-2fa4ac7a08ba",[["Termas romanas","Roman Baths","Terme romane","photo-1528909514045-2fa4ac7a08ba"]]]],"de":[["Berlín","Berlin","Berlino","photo-1560969184-10fe8719e047",[["Puerta de Brandeburgo","Brandenburg Gate","Porta di Brandeburgo","photo-1560969184-10fe8719e047"],["Catedral de Berlín","Berlin Cathedral","Duomo di Berlino","photo-1467269204594-9661b134dd2b"]]],["Colonia","Cologne","Colonia","photo-1500530855697-b586d89ba3ee",[["Catedral de Colonia","Cologne Cathedral","Duomo di Colonia","photo-1500530855697-b586d89ba3ee"]]]],"pt":[["Lisboa","Lisbon","Lisbona","photo-1555881400-74d7acaacd8b",[["Torre de Belém","Belém Tower","Torre di Belém","photo-1555881400-74d7acaacd8b"],["Monasterio de los Jerónimos","Jerónimos Monastery","Monastero dos Jerónimos","photo-1555881400-74d7acaacd8b"]]],["Oporto","Porto","Porto","photo-1548707309-dcebeab9ea9b",[["Puente Don Luis I","Dom Luís I Bridge","Ponte Dom Luís I","photo-1548707309-dcebeab9ea9b"]]]],"ar":[["Buenos Aires","Buenos Aires","Buenos Aires","photo-1589909202802-8f4aadce1849",[["Obelisco","Obelisk","Obelisco","photo-1589909202802-8f4aadce1849"],["Teatro Colón","Teatro Colón","Teatro Colón","photo-1589909202802-8f4aadce1849"]]],["La Plata","La Plata","La Plata","photo-1548707309-dcebeab9ea9b",[["Catedral de La Plata","La Plata Cathedral","Cattedrale di La Plata","photo-1548707309-dcebeab9ea9b"]]]]};
+      function renderCountryCities() {
+        var selected = document.getElementById('country-detail').getAttribute('data-selected');
+        var root = document.getElementById('country-cities');
+        root.replaceChildren();
+        if (!selected || !countryCitySamples[selected]) return;
+        var idx = {es:0,en:1,it:2}[currentLang()] || 0;
+        function picture(id, width, className) {
+          var img = document.createElement('img');
+          img.src = 'https://images.unsplash.com/' + id + '?auto=format&fit=crop&w=' + width + '&q=80';
+          img.alt = '';
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          if (className) img.className = className;
+          return img;
+        }
+        countryCitySamples[selected].forEach(function(city) {
+          var section = document.createElement('section'); section.className='city-section';
+          var heading = document.createElement('div'); heading.className='city-heading';
+          var open = document.createElement('button'); open.type='button'; open.className='city-open';
+          var title = document.createElement('h3'); title.textContent=city[idx]; open.appendChild(title);
+          var hint = document.createElement('span'); hint.textContent=strings[currentLang()].viewCity + ' ›'; open.appendChild(hint);
+          open.addEventListener('click',function(){ openCity(city); });
+          heading.appendChild(open); section.appendChild(heading);
+          var row = document.createElement('div'); row.className='landmarks-row';
+          city[4].forEach(function(place) {
+            var card=document.createElement('article'); card.className='landmark-card';
+            card.appendChild(picture(place[3],500,''));
+            var name=document.createElement('h4'); name.textContent=place[idx]; card.appendChild(name);
+            row.appendChild(card);
+          });
+          section.appendChild(row); root.appendChild(section);
+        });
+      }
+      function openCity(city) {
+        var idx={es:0,en:1,it:2}[currentLang()]||0;
+        var photo=document.getElementById('city-detail-photo');
+        photo.src='https://images.unsplash.com/'+city[3]+'?auto=format&fit=crop&w=1100&q=80';
+        document.getElementById('city-detail-name').textContent=city[idx];
+        var gallery=document.getElementById('city-gallery'); gallery.replaceChildren();
+        city[4].forEach(function(place) {
+          var item=document.createElement('article');
+          item.setAttribute('role','button'); item.tabIndex=0;
+          item.style.cursor='pointer';
+          item.addEventListener('click',function(){openMonument(place,city);});
+          item.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openMonument(place,city);}});
+          var img=document.createElement('img');
+          img.src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=650&q=80';
+          img.alt=''; img.loading='lazy'; img.decoding='async'; item.appendChild(img);
+          var title=document.createElement('h3'); title.textContent=place[idx]; item.appendChild(title);
+          var note=document.createElement('p'); note.textContent=strings[currentLang()].sampleImage; item.appendChild(note);
+          gallery.appendChild(item);
+        });
+        document.getElementById('country-detail').hidden=true;
+        document.getElementById('city-detail').hidden=false;
+        document.querySelector('.app-content').scrollTop=0;
+      }
+      document.getElementById('city-back').addEventListener('click',function(){
+        document.getElementById('city-detail').hidden=true;
+        document.getElementById('country-detail').hidden=false;
+        document.querySelector('.app-content').scrollTop=0;
+      });
+      var selectedMonument=null, selectedMonumentCity=null;
+      var monumentExamples={
+        'Coliseo':[
+          'El Coliseo, también conocido como anfiteatro Flavio, comenzó a construirse durante el gobierno de Vespasiano y fue inaugurado por Tito en el año 80 d. C. Su sistema de arcos, bóvedas y graderíos organizaba la circulación de miles de espectadores. Esta ficha es una demostración de diseño; la narración completa se incorporará con el catálogo definitivo.',
+          'The Colosseum, also known as the Flavian Amphitheatre, was begun under Vespasian and inaugurated by Titus in AD 80. Its arches, vaults and tiers organized the movement of thousands of spectators. This is a design preview; the full narration will arrive with the final catalogue.',
+          'Il Colosseo, noto anche come Anfiteatro Flavio, fu iniziato sotto Vespasiano e inaugurato da Tito nell’80 d.C. Archi, volte e gradinate organizzavano il movimento di migliaia di spettatori. Questa scheda è una dimostrazione del design; la narrazione completa arriverà con il catalogo definitivo.'
+        ]
+      };
+      function monumentKey(place,city) { return city[0]+'|'+place[0]; }
+      function storedMonumentSet(key) {
+        try {var a=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(a)?a:[];}catch(_){return [];}
+      }
+      function updateMonumentActions() {
+        if(!selectedMonument)return;
+        var key=monumentKey(selectedMonument,selectedMonumentCity);
+        document.getElementById('monument-favorite').setAttribute('aria-pressed',String(storedMonumentSet('archispotter_preview_favorites').includes(key)));
+        document.getElementById('monument-trip').setAttribute('aria-pressed',String(storedMonumentSet('archispotter_preview_trip').includes(key)));
+      }
+      function toggleMonument(key) {
+        if(!selectedMonument)return;
+        var id=monumentKey(selectedMonument,selectedMonumentCity);
+        var items=storedMonumentSet(key);
+        items=items.includes(id)?items.filter(function(x){return x!==id;}):items.concat(id);
+        try{localStorage.setItem(key,JSON.stringify(items));}catch(_){}
+        updateMonumentActions();
+      }
+      document.getElementById('monument-favorite').addEventListener('click',function(){toggleMonument('archispotter_preview_favorites');});
+      document.getElementById('monument-trip').addEventListener('click',function(){toggleMonument('archispotter_preview_trip');});
+      function openMonument(place,city) {
+        selectedMonument=place; selectedMonumentCity=city;
+        renderMonument();
+        document.getElementById('city-detail').hidden=true;
+        document.getElementById('monument-detail').hidden=false;
+        document.querySelector('.app-content').scrollTop=0;
+      }
+      function renderMonument() {
+        if(!selectedMonument)return;
+        var idx={es:0,en:1,it:2}[currentLang()]||0;
+        var place=selectedMonument,city=selectedMonumentCity;
+        document.getElementById('monument-photo').src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=1100&q=80';
+        document.getElementById('monument-name').textContent=place[idx];
+        document.getElementById('monument-photo').alt=place[idx];
+        document.getElementById('monument-photo-trigger').setAttribute('aria-label',strings[currentLang()].zoomPhoto+' '+place[idx]);
+        document.getElementById('monument-location').textContent=city[idx]+' · '+document.getElementById('country-detail-name').textContent;
+        var colosseum=place[0]==='Coliseo';
+        document.getElementById('monument-meta').textContent=colosseum?['Arquitectura romana · 70–80 d. C.','Roman architecture · AD 70–80','Architettura romana · 70–80 d.C.'][idx]:strings[currentLang()].metaPending;
+        document.getElementById('monument-story-text').textContent=colosseum?monumentExamples.Coliseo[idx]:strings[currentLang()].storyPending;
+        updateMonumentActions();
+      }
+      document.getElementById('monument-back').addEventListener('click',function(){
+        document.getElementById('monument-detail').hidden=true;
+        document.getElementById('city-detail').hidden=false;
+        document.querySelector('.app-content').scrollTop=0;
+      });
+      var countryNames = {
+        it:['Italia','Italy','Italia'], es:['España','Spain','Spagna'],
+        fr:['Francia','France','Francia'], gr:['Grecia','Greece','Grecia'],
+        gb:['Reino Unido','United Kingdom','Regno Unito'], de:['Alemania','Germany','Germania'],
+        pt:['Portugal','Portugal','Portogallo'], ar:['Argentina','Argentina','Argentina']
+      };
+      function updateCountryNames() {
+        var idx = {es:0,en:1,it:2}[currentLang()] || 0;
+        document.querySelectorAll('[data-country-label]').forEach(function (el) {
+          el.textContent = countryNames[el.getAttribute('data-country-label')][idx];
+        });
+        document.querySelectorAll('[data-country]').forEach(function (el) {
+          el.setAttribute('aria-label', countryNames[el.getAttribute('data-country')][idx]);
+        });
+        var selected = document.getElementById('country-detail').getAttribute('data-selected');
+        if (selected && countryNames[selected]) document.getElementById('country-detail-name').textContent = countryNames[selected][idx];
+      }
+      document.querySelectorAll('[data-country]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          document.getElementById('country-detail').setAttribute('data-selected',button.getAttribute('data-country'));
+          var coverPhoto = button.querySelector('img').src;
+          if (button.getAttribute('data-country') === 'it') {
+            coverPhoto = 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=1100&q=80';
+          }
+          document.getElementById('country-detail-photo').src = coverPhoto;
+          document.getElementById('country-overview').hidden = true;
+          document.getElementById('country-detail').hidden = false;
+          updateCountryNames();
+          renderCountryCities();
+          document.querySelector('.app-content').scrollTop = 0;
+        });
+      });
+      document.getElementById('country-back').addEventListener('click', function () {
+        document.getElementById('country-detail').hidden = true;
+        document.getElementById('country-overview').hidden = false;
+        document.querySelector('.app-content').scrollTop = 0;
+      });
+      function showTab(tab) {
+        document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
+        document.querySelectorAll('.app-view').forEach(function (view) { view.hidden = view.id !== 'view-' + tab; });
+        document.querySelector('.app-content').scrollTop = 0;
+      }
+      document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
+      document.querySelectorAll('[data-lang]').forEach(function (button) { button.addEventListener('click', function () {
+        try { localStorage.setItem('archispotter_language', button.getAttribute('data-lang')); } catch (_) {}
+        applyLanguage();
+      }); });
+      function enter(user) {
+        showTab('explore');
+        applyLanguage();
+        showScreen(home);
+      }
+      function sessionUser() {
+        try {
+          var user = localStorage.getItem(SESSION);
+          return user && (user === DEFAULT_USER || Object.prototype.hasOwnProperty.call(accounts(), user)) ? user : null;
+        } catch (_) { return null; }
+      }
+      async function digest(password, salt) {
+        if (!crypto || !crypto.subtle) throw new Error('WebCrypto unavailable');
+        var data = new TextEncoder().encode(salt + ':' + password);
+        var bytes = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(bytes), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
+      }
+      switchBtn.addEventListener('click', function () { setMode(mode === 'login' ? 'register' : 'login'); });
+      document.getElementById('forgot-btn').addEventListener('click', function () {
+        showToast('Las cuentas se guardan solo en este dispositivo. La recuperación aún no está disponible.');
+      });
+      document.getElementById('logout-btn').addEventListener('click', function () {
+        try { localStorage.removeItem(SESSION); } catch (_) {}
+        setMode('login');
+        showScreen(auth);
+      });
+      document.getElementById('auth-form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        error.textContent = '';
+        var username = document.getElementById('user').value.trim().toLowerCase();
+        var password = pass.value;
+        if (username.length < 3 || password.length < 6) {
+          error.textContent = 'Usá al menos 3 caracteres para el usuario y 6 para la contraseña.';
+          return;
+        }
+        submitBtn.disabled = true;
+        try {
+          var saved = accounts();
+          if (mode === 'register') {
+            if (username === DEFAULT_USER || Object.prototype.hasOwnProperty.call(saved, username)) {
+              error.textContent = 'Ese usuario ya existe.';
+              return;
+            }
+            if (!window.crypto || !crypto.getRandomValues) throw new Error('Crypto unavailable');
+            var salt = Array.from(crypto.getRandomValues(new Uint8Array(16)), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
+            saved[username] = { salt: salt, hash: await digest(password, salt) };
+            localStorage.setItem(ACCOUNTS, JSON.stringify(saved));
+          } else if (username === DEFAULT_USER) {
+            if (password !== DEFAULT_PASSWORD) { error.textContent = 'Usuario o contraseña incorrectos.'; return; }
+          } else {
+            var account = saved[username];
+            if (!account || await digest(password, account.salt) !== account.hash) {
+              error.textContent = 'Usuario o contraseña incorrectos.';
+              return;
+            }
+          }
+          localStorage.setItem(SESSION, username);
+          enter(username);
+        } catch (_) {
+          error.textContent = 'No se pudo acceder a la cuenta en este navegador.';
+        } finally { submitBtn.disabled = false; }
+      });
+      setTimeout(function () {
+        var user = sessionUser();
+        if (user) enter(user);
+        else showScreen(auth);
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>
