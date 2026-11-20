@@ -3,12 +3,8 @@
       var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
       var home = document.getElementById('home');
-      var mode = 'login';
-      var modeLabel = document.getElementById('mode-label');
       var submitBtn = document.getElementById('submit-btn');
-      var switchBtn = document.getElementById('switch-btn');
       var pass = document.getElementById('pass');
-      var toast = document.getElementById('toast');
       var error = document.getElementById('auth-error');
       var ACCOUNTS = 'archispotter_local_accounts_v1';
       var SESSION = 'archispotter_local_session_v1';
@@ -20,22 +16,6 @@
           var value = JSON.parse(localStorage.getItem(ACCOUNTS) || '{}');
           return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
         } catch (_) { return {}; }
-      }
-      function showToast(msg) {
-        toast.textContent = msg;
-        toast.classList.add('show');
-        clearTimeout(showToast._t);
-        showToast._t = setTimeout(function () { toast.classList.remove('show'); }, 2600);
-      }
-      function setMode(next) {
-        mode = next;
-        error.textContent = '';
-        document.getElementById('auth-form').reset();
-        modeLabel.textContent = next === 'login' ? 'Iniciar sesión' : 'Crear usuario';
-        submitBtn.textContent = modeLabel.textContent;
-        switchBtn.textContent = next === 'login' ? 'Crear usuario' : 'Ya tengo cuenta';
-        pass.setAttribute('autocomplete', next === 'login' ? 'current-password' : 'new-password');
-        document.getElementById('forgot-btn').hidden = next !== 'login';
       }
       function showScreen(screen) {
         [splash, auth, home].forEach(function (el) { el.classList.toggle('is-active', el === screen); });
@@ -88,13 +68,10 @@
         var bytes = await crypto.subtle.digest('SHA-256', data);
         return Array.from(new Uint8Array(bytes), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
       }
-      switchBtn.addEventListener('click', function () { setMode(mode === 'login' ? 'register' : 'login'); });
-      document.getElementById('forgot-btn').addEventListener('click', function () {
-        showToast('Las cuentas se guardan solo en este dispositivo. La recuperación aún no está disponible.');
-      });
       document.getElementById('logout-btn').addEventListener('click', function () {
         try { localStorage.removeItem(SESSION); } catch (_) {}
-        setMode('login');
+        document.getElementById('auth-form').reset();
+        error.textContent = '';
         showScreen(auth);
       });
       document.getElementById('auth-form').addEventListener('submit', async function (event) {
@@ -103,29 +80,25 @@
         var username = document.getElementById('user').value.trim().toLowerCase();
         var password = pass.value;
         if (username.length < 3 || password.length < 6) {
-          error.textContent = 'Usá al menos 3 caracteres para el usuario y 6 para la contraseña.';
+          error.textContent = 'Usa al menos 3 caracteres para el usuario y 6 para la contraseña.';
           return;
         }
         submitBtn.disabled = true;
         try {
           var saved = accounts();
-          if (mode === 'register') {
-            if (username === DEFAULT_USER || Object.prototype.hasOwnProperty.call(saved, username)) {
-              error.textContent = 'Ese usuario ya existe.';
-              return;
-            }
-            if (!window.crypto || !crypto.getRandomValues) throw new Error('Crypto unavailable');
-            var salt = Array.from(crypto.getRandomValues(new Uint8Array(16)), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
-            saved[username] = { salt: salt, hash: await digest(password, salt) };
-            localStorage.setItem(ACCOUNTS, JSON.stringify(saved));
-          } else if (username === DEFAULT_USER) {
+          if (username === DEFAULT_USER) {
             if (password !== DEFAULT_PASSWORD) { error.textContent = 'Usuario o contraseña incorrectos.'; return; }
-          } else {
+          } else if (Object.prototype.hasOwnProperty.call(saved, username)) {
             var account = saved[username];
             if (!account || await digest(password, account.salt) !== account.hash) {
               error.textContent = 'Usuario o contraseña incorrectos.';
               return;
             }
+          } else {
+            if (!window.crypto || !crypto.getRandomValues) throw new Error('Crypto unavailable');
+            var salt = Array.from(crypto.getRandomValues(new Uint8Array(16)), function (n) { return n.toString(16).padStart(2, '0'); }).join('');
+            saved[username] = { salt: salt, hash: await digest(password, salt) };
+            localStorage.setItem(ACCOUNTS, JSON.stringify(saved));
           }
           localStorage.setItem(SESSION, username);
           enter(username);
