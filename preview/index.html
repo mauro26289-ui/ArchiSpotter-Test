@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="./assets/css/map.css?v=map13" />
   <link rel="stylesheet" href="./assets/css/gallery.css?v=mod3" />
+  <link rel="stylesheet" href="./assets/css/saved.css?v=stage14" />
 </head>
 <body>
   <div id="backdrop" aria-hidden="true">
@@ -123,11 +124,11 @@
       <div class="app-view" id="view-map" hidden><span class="eyebrow">CARTO Voyager · OpenStreetMap</span><h2 class="map-title">Mapa arquitectónico</h2><p class="map-note">Marcadores individuales de monumentos. Catálogo de 48 en preparación.</p><div class="map-toolbar"><button id="map-locate" class="map-locate" type="button">◎ Mi ubicación</button><span id="map-location-status" class="map-location-status" role="status"></span></div><div id="archi-map" role="region" aria-label="Mapa de monumentos de ArchiSpotter"></div><p id="map-status" class="map-status" role="status"></p></div>
       <div class="app-view" id="view-trip" hidden>
         <span class="eyebrow" data-i18n="trip">Mi viaje</span><h2 data-i18n="tripTitle">Mis rutas</h2>
-        <div class="app-panel"><p data-i18n="tripText">Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.</p></div>
+        <div id="saved-trip" class="saved-list"></div>
       </div>
       <div class="app-view" id="view-favorites" hidden>
         <span class="eyebrow" data-i18n="favorites">Favoritos</span><h2 data-i18n="favoritesTitle">Mis favoritos</h2>
-        <div class="app-panel"><p data-i18n="favoritesText">Todavía no hay monumentos disponibles para guardar.</p></div>
+        <div id="saved-favorites" class="saved-list"></div>
       </div>
       <div class="app-view" id="view-settings" hidden>
         <span class="eyebrow" data-i18n="settings">Configuración</span><h2 data-i18n="preferences">Preferencias</h2>
@@ -159,11 +160,12 @@
   <script src="./assets/data/countries.js?v=mod2" defer></script>
   <script src="./assets/data/cities.js?v=mod2" defer></script>
   <script src="./assets/js/navigation.js?v=mod4" defer></script>
-  <script src="./assets/js/monuments.js?v=mod5" defer></script>
+  <script src="./assets/js/monuments.js?v=stage14" defer></script>
   <script src="./assets/js/explore.js?v=mod6" defer></script>
   <script src="./assets/js/auth.js?v=mod7" defer></script>
   <script src="./assets/js/app.js?v=map12" defer></script>
   <script src="./assets/js/gallery.js?v=mod3" defer></script>
   <script src="./assets/js/map.js?v=map13" defer></script>
+  <script src="./assets/js/saved.js?v=stage14" defer></script>
 </body>
 </html>
