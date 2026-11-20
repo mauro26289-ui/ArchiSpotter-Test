@@ -225,22 +225,7 @@ html:has(body.archi-intro-active){background-color:#101517!important}
     opacity:0 !important;
     pointer-events:none !important;
   }
-  /* El fondo del sistema coincide con la zona negra de la ilustración. */
-  html:has(body.archi-intro-active),
-  html body.archi-intro-active { background-color:#080c0d !important; }
-  html body #archi-entry-photo {
-    background-color:#080c0d !important;
-    bottom:-100px !important;
-    height:calc(100lvh + 100px) !important;
-    min-height:calc(100dvh + 100px) !important;
-    background-position:center top !important;
-  }
-  /* El fondo continúa bajo el indicador sin crear una segunda fotografía. */
-  html body #archi-entry-photo::after {
-    content:''; position:absolute; left:0;right:0;bottom:0;
-    height:calc(100px + env(safe-area-inset-bottom));
-    background:#080c0d; pointer-events:none;
-  }
+
 }
 
 /* vB9.25: la bienvenida no puede mostrarse hasta que el splash se retire.
@@ -254,22 +239,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
-}
-
-
-/* vB9.26 — Solo zócalo inferior. Mantiene intacta la secuencia vB9.25.
-   La franja que queda fuera del fondo usa el mismo tono que el extremo
-   inferior de la fotografía. No altera el tamaño ni posición de la imagen. */
-@media (max-width: 699px) {
-  html:has(body.archi-intro-active),
-  html:has(#splash-screen:not(.hidden)),
-  html body.archi-intro-active,
-  html body:has(#splash-screen:not(.hidden)) {
-    background-color: #080c0d !important;
-  }
-  html body #archi-entry-photo::after {
-    background-color: #080c0d !important;
-  }
 }
 
 
@@ -476,25 +445,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
   html body #splash-screen .archi-splash-brand {
     display: flex !important;
     z-index: 2 !important;
-  }
-}
-
-
-/* vB9.29 — fondo = borde inferior real de la foto (#050709); sin gris */
-@media (max-width: 699px) {
-  html, body,
-  html:has(body.archi-intro-active),
-  body.archi-intro-active,
-  html:has(#splash-screen:not(.hidden)),
-  body:has(#splash-screen:not(.hidden)) {
-    background-color: #050709 !important;
-    background: #050709 !important;
-  }
-  html body #archi-entry-photo {
-    background-color: #050709 !important;
-    background-image: url('../assets/cinematic-scene-v92.webp') !important;
-    background-size: cover !important;
-    background-position: center center !important;
   }
 }
 
