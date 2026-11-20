@@ -380,3 +380,6 @@
 .scene-picker .scene-label{display:block;padding:0;color:rgba(243,247,247,.78);font:400 10px/1.4 Inter,system-ui,sans-serif;letter-spacing:.025em;text-shadow:0 1px 5px rgba(0,0,0,.8)}
 .scene-credit{bottom:calc(env(safe-area-inset-bottom,0px) + 2px);right:12px;left:auto;z-index:9;font-size:9px;line-height:1.2;opacity:.8}
 #auth{padding-bottom:max(58px,calc(env(safe-area-inset-bottom,0px) + 43px))}
+
+/* Stage 17: image stays sharp behind the top status-bar area; avoid extra shading at the very top. */
+#backdrop .veil{background:linear-gradient(to bottom,rgba(9,13,15,.10) 0%,rgba(9,13,15,.24) 18%,rgba(9,13,15,.56) 48%,rgba(9,13,15,.88) 77%,rgb(11,14,16) 100%)}
