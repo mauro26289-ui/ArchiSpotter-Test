@@ -1,4 +1,4 @@
-/* Stage 26: Italian editorial content. Existing ElevenLabs history remains byte-for-byte unchanged. */
+/* Stage 26: source-referenced Italian editorial entries; ElevenLabs history unmodified. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -28,7 +28,10 @@ window.ArchiSpotterEditorial={
         "Tre ordini sovrapposti: tuscanico-dorico, ionico e corinzio.",
         "Gli ingressi esterni erano numerati per orientare gli spettatori."
       ]
-    }
+    },
+    "sources": [
+      "https://colosseo.it/en/area/the-colosseum/"
+    ]
   },
   "Panteón de Agripa": {
     "sourceId": "pantheon",
@@ -58,7 +61,10 @@ window.ArchiSpotterEditorial={
         "Il calcestruzzo diventa progressivamente più leggero verso l'alto.",
         "Piccoli scarichi nel pavimento smaltiscono l'acqua piovana."
       ]
-    }
+    },
+    "sources": [
+      "https://direzionemuseiroma.cultura.gov.it/en/pantheon/"
+    ]
   },
   "Foro Romano": {
     "sourceId": "forum",
@@ -88,7 +94,10 @@ window.ArchiSpotterEditorial={
         "Il tempio di Antonino e Faustina presenta colonne monolitiche in cipollino.",
         "L'Arco di Tito presenta un solo fornice centrale."
       ]
-    }
+    },
+    "sources": [
+      "https://colosseo.it/en/area/the-roman-forum/"
+    ]
   },
   "Catedral de Florencia": {
     "sourceId": "florence-duomo",
@@ -118,7 +127,11 @@ window.ArchiSpotterEditorial={
         "Il pavimento presenta elaborati motivi geometrici in marmo.",
         "La pianta a croce latina termina in uno spazio ottagonale."
       ]
-    }
+    },
+    "sources": [
+      "https://duomo.firenze.it/en/discover/cathedral",
+      "https://duomo.firenze.it/en/discover/cathedral/9065/"
+    ]
   },
   "Sagrada Familia": {
     "sourceId": "sagrada-familia",
