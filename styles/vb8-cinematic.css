@@ -65,17 +65,6 @@ html,body{background:#101517!important;color-scheme:dark!important}
 
 #splash-screen .archi-splash-brand{display:flex!important;visibility:visible!important;opacity:1!important;z-index:999!important}
 
-/* vB8.5: la franja reservada por iOS se integra con el borde superior de las fotografías. */
-html:has(#splash-screen:not(.hidden)),
-body:has(#splash-screen:not(.hidden)),
-html:has(body.archi-intro-active),
-body.archi-intro-active {
- background-color:#f8f0de!important;
-}
-#splash-screen .archi-splash-art {background-color:#f8f0de!important;}
-
-
-
 /* vB8.6: fondo carbon en barra iOS y fundido fotografico superior. */
 :root,html,body,body.archi-intro-active,
 html:has(#splash-screen:not(.hidden)),
