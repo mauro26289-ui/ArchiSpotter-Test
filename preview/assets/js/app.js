@@ -1,5 +1,4 @@
     (function () {
-      var img = document.getElementById('bg-img');
       var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
       var home = document.getElementById('home');
