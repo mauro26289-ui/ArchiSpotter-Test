@@ -6,57 +6,78 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="theme-color" content="#2F5D50" />
+  <meta name="theme-color" content="#F4F0EA" />
   <meta name="apple-mobile-web-app-title" content="ArchiSpotter" />
   <title>ArchiSpotter — muestra</title>
   <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #1A1A1A;
       --muted: #5C5A56;
       --accent: #2F5D50;
-      --accent-contrast: #F4F0EA;
-      --field-bg: rgba(255,255,255,.88);
-      --field-border: #E2DCD3;
+      --accent-contrast: #F7F4EE;
+      --field-bg: rgba(255,255,255,.92);
+      --field-border: #D9D2C7;
       --paper: #F4F0EA;
       --vvh: 100dvh;
     }
 
-    /* Tema oscuro automático si el fondo es oscuro (clase en body) */
-    body.theme-dark {
-      --ink: #F4F0EA;
-      --muted: #C8C2B8;
-      --accent: #8FBCB0;
-      --accent-contrast: #12201C;
-      --field-bg: rgba(18,20,22,.72);
-      --field-border: rgba(244,240,234,.35);
-    }
-
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html, body {
-      margin: 0;
-      padding: 0;
+    html {
       width: 100%;
       height: 100%;
       height: -webkit-fill-available;
+      background: var(--paper);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      min-height: 100dvh;
+      min-height: -webkit-fill-available;
+      min-height: var(--vvh);
       overflow: hidden;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #1a1a1a;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
       color: var(--ink);
+      background: var(--paper);
     }
 
-    /* Capa de foto: 100% del viewport real (JS setea --vvh) */
+    /* Fondo full-bleed: color + textura CSS (siempre visible) + foto opcional */
     #backdrop {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       width: 100vw;
-      height: var(--vvh, 100dvh);
+      height: var(--vvh);
       min-height: 100%;
       min-height: -webkit-fill-available;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
+      background:
+        linear-gradient(165deg, #ebe4d8 0%, #f4f0ea 40%, #e7e0d4 100%);
+    }
+    /* Textura sutil tipo piedra/papel sin depender de red */
+    #backdrop::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.45;
+      background-image:
+        radial-gradient(ellipse at 20% 30%, rgba(120,110,95,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(90,85,75,.10) 0%, transparent 45%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(80,70,60,.03) 3px,
+          rgba(80,70,60,.03) 4px
+        );
     }
     #backdrop img {
       position: absolute;
@@ -66,46 +87,40 @@
       object-fit: cover;
       object-position: center center;
       display: block;
+      opacity: 0;
+      transition: opacity .6s ease;
     }
+    #backdrop img.is-ready { opacity: 1; }
     #backdrop .veil {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(244,240,234,.15) 0%,
-        rgba(244,240,234,.45) 45%,
-        rgba(244,240,234,.88) 72%,
-        rgba(244,240,234,.96) 100%
-      );
-      transition: background .5s ease;
-    }
-    body.theme-dark #backdrop .veil {
-      background: linear-gradient(
-        to bottom,
-        rgba(10,12,14,.25) 0%,
-        rgba(10,12,14,.55) 50%,
-        rgba(10,12,14,.88) 78%,
-        rgba(10,12,14,.95) 100%
+        rgba(244,240,234,.20) 0%,
+        rgba(244,240,234,.55) 42%,
+        rgba(244,240,234,.92) 70%,
+        rgba(244,240,234,.98) 100%
       );
     }
 
     .screen {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: var(--vvh, 100dvh);
-      z-index: 1;
+      height: var(--vvh);
+      z-index: 2;
       display: flex;
       flex-direction: column;
       padding:
-        max(20px, env(safe-area-inset-top))
+        max(28px, calc(env(safe-area-inset-top, 0px) + 12px))
         24px
-        max(24px, env(safe-area-inset-bottom))
+        max(28px, calc(env(safe-area-inset-bottom, 0px) + 12px))
         24px;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition: opacity .55s ease, visibility .55s ease;
+      transition: opacity .5s ease, visibility .5s ease;
     }
     .screen.is-active {
       opacity: 1;
@@ -113,62 +128,68 @@
       pointer-events: auto;
     }
 
-    /* —— Splash —— */
+    /* Splash */
     #splash {
       align-items: center;
       justify-content: center;
       text-align: center;
     }
     #splash .mark {
-      font-family: "Times New Roman", Georgia, "Iowan Old Style", serif;
-      font-size: clamp(2rem, 8vw, 2.6rem);
+      font-family: Fraunces, Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 9vw, 2.75rem);
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.02em;
       color: var(--ink);
       margin: 0;
+      line-height: 1.15;
     }
     #splash .line {
-      width: 48px;
+      width: 44px;
       height: 2px;
       background: var(--accent);
-      margin: 14px auto 12px;
+      margin: 16px auto 14px;
       border-radius: 2px;
     }
     #splash .tag {
+      font-family: Inter, sans-serif;
       font-size: 11px;
-      letter-spacing: 0.28em;
+      font-weight: 500;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--muted);
       margin: 0;
     }
 
-    /* —— Auth —— */
-    #auth {
-      justify-content: flex-end;
-    }
+    /* Auth */
+    #auth { justify-content: flex-end; }
     #auth .brand {
       text-align: center;
       margin-bottom: auto;
-      padding-top: 8vh;
+      padding-top: max(4vh, 8px);
     }
     #auth .brand h1 {
-      font-family: "Times New Roman", Georgia, serif;
-      font-size: clamp(1.9rem, 7vw, 2.4rem);
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2rem, 8vw, 2.5rem);
       font-weight: 600;
+      letter-spacing: -0.02em;
       margin: 0;
       color: var(--ink);
+      line-height: 1.15;
     }
     #auth .brand .line {
       width: 40px;
       height: 2px;
       background: var(--accent);
-      margin: 12px auto 10px;
+      margin: 14px auto 12px;
+      border-radius: 2px;
     }
     #auth .brand .tag {
       font-size: 10px;
-      letter-spacing: 0.26em;
+      font-weight: 500;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--muted);
+      margin: 0;
     }
 
     .panel {
@@ -179,7 +200,15 @@
       flex-direction: column;
       gap: 12px;
     }
-
+    .mode-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin: 0 0 2px;
+    }
     .field {
       display: flex;
       align-items: center;
@@ -189,12 +218,11 @@
       background: var(--field-bg);
       border: 1px solid var(--field-border);
       border-radius: 12px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 1px 2px rgba(26,26,26,.04);
     }
     .field:focus-within {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+      box-shadow: 0 0 0 3px rgba(47,93,80,.18);
     }
     .field svg {
       flex: none;
@@ -209,12 +237,12 @@
       border: 0;
       outline: 0;
       background: transparent;
-      font-size: 16px; /* evita zoom iOS */
+      font-size: 16px;
       color: var(--ink);
       padding: 12px 0;
-      font-family: inherit;
+      font-family: Inter, sans-serif;
     }
-    .field input::placeholder { color: var(--muted); }
+    .field input::placeholder { color: #8a857c; }
 
     .btn {
       display: flex;
@@ -224,19 +252,18 @@
       border-radius: 12px;
       font-size: 16px;
       font-weight: 600;
-      font-family: inherit;
+      font-family: Inter, sans-serif;
       border: 0;
       cursor: pointer;
-      transition: transform .15s ease, opacity .15s ease;
     }
-    .btn:active { transform: scale(0.98); opacity: 0.92; }
+    .btn:active { opacity: 0.9; transform: scale(0.985); }
     .btn-primary {
       background: var(--accent);
       color: var(--accent-contrast);
-      margin-top: 6px;
+      margin-top: 4px;
     }
     .btn-secondary {
-      background: transparent;
+      background: rgba(255,255,255,.55);
       color: var(--ink);
       border: 1.5px solid var(--field-border);
     }
@@ -245,53 +272,40 @@
       border: 0;
       color: var(--muted);
       font-size: 13px;
+      font-family: Inter, sans-serif;
       text-decoration: underline;
       text-underline-offset: 3px;
-      padding: 8px;
-      font-family: inherit;
-      cursor: pointer;
+      padding: 10px;
       align-self: center;
-    }
-
-    .mode-title {
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-      margin: 0 0 4px;
     }
 
     .toast {
       position: fixed;
       left: 50%;
-      bottom: max(28px, env(safe-area-inset-bottom));
-      transform: translateX(-50%) translateY(120%);
+      bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+      transform: translateX(-50%) translateY(140%);
       background: var(--ink);
       color: var(--paper);
-      padding: 10px 16px;
+      padding: 11px 18px;
       border-radius: 999px;
       font-size: 13px;
-      z-index: 20;
+      font-weight: 500;
+      z-index: 30;
       transition: transform .35s ease;
       pointer-events: none;
-      white-space: nowrap;
-    }
-    body.theme-dark .toast {
-      background: var(--paper);
-      color: #1A1A1A;
+      max-width: 90vw;
     }
     .toast.show { transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
   <div id="backdrop" aria-hidden="true">
-    <!-- Piedra / materia: Unsplash, cover full-bleed -->
+    <!-- Wikimedia: muro de piedra (suele cargar mejor que Unsplash en algunos iPhone) -->
     <img
       id="bg-img"
-      src="https://images.unsplash.com/photo-1615874959474-d1258255f3f8?auto=format&fit=crop&w=1200&q=80"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Stone_wall_texture.jpg/1280px-Stone_wall_texture.jpg"
       alt=""
-      decoding="sync"
+      decoding="async"
       fetchpriority="high"
     />
     <div class="veil"></div>
@@ -333,7 +347,6 @@
 
   <script>
     (function () {
-      // Altura real iPhone (evita zócalo)
       function setVvh() {
         var h = Math.max(
           window.innerHeight || 0,
@@ -342,6 +355,7 @@
         );
         if (!h) return;
         document.documentElement.style.setProperty('--vvh', h + 'px');
+        document.body.style.minHeight = h + 'px';
       }
       setVvh();
       window.addEventListener('resize', setVvh, { passive: true });
@@ -349,33 +363,22 @@
       if (window.visualViewport) {
         window.visualViewport.addEventListener('resize', setVvh, { passive: true });
       }
+      document.addEventListener('DOMContentLoaded', setVvh, { once: true });
 
-      // Tema según luminosidad media del fondo (simple)
       var img = document.getElementById('bg-img');
-      function applyThemeFromImage() {
-        try {
-          var c = document.createElement('canvas');
-          var size = 32;
-          c.width = size; c.height = size;
-          var ctx = c.getContext('2d', { willReadFrequently: true });
-          ctx.drawImage(img, 0, 0, size, size);
-          var data = ctx.getImageData(0, 0, size, size).data;
-          var sum = 0, n = size * size;
-          for (var i = 0; i < data.length; i += 4) {
-            sum += (data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114);
-          }
-          var avg = sum / n;
-          document.body.classList.toggle('theme-dark', avg < 110);
-        } catch (e) {
-          /* cross-origin o canvas: se queda tema claro */
-        }
+      function markReady() { img.classList.add('is-ready'); }
+      if (img.complete && img.naturalWidth) markReady();
+      else {
+        img.addEventListener('load', markReady, { once: true });
+        img.addEventListener('error', function () {
+          /* sin foto: queda textura CSS + papel — sin icono roto */
+          img.style.display = 'none';
+        }, { once: true });
       }
-      if (img.complete) applyThemeFromImage();
-      else img.addEventListener('load', applyThemeFromImage, { once: true });
 
       var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
-      var mode = 'login'; // login | register
+      var mode = 'login';
       var modeLabel = document.getElementById('mode-label');
       var submitBtn = document.getElementById('submit-btn');
       var switchBtn = document.getElementById('switch-btn');
@@ -407,23 +410,20 @@
       switchBtn.addEventListener('click', function () {
         setMode(mode === 'login' ? 'register' : 'login');
       });
-
       document.getElementById('forgot-btn').addEventListener('click', function () {
-        showToast('Demo: recuperá la clave en una versión completa');
+        showToast('Demo: recuperación en la app completa');
       });
-
       document.getElementById('auth-form').addEventListener('submit', function (e) {
         e.preventDefault();
         var u = document.getElementById('user').value.trim();
-        if (mode === 'login') showToast('Hola, ' + u + ' (demo)');
-        else showToast('Usuario creado (demo)');
+        showToast(mode === 'login' ? ('Hola, ' + u + ' (demo)') : 'Usuario creado (demo)');
       });
 
-      // Splash → auth
       setTimeout(function () {
         splash.classList.remove('is-active');
         auth.classList.add('is-active');
-      }, 2200);
+        setVvh();
+      }, 2000);
     })();
   </script>
 </body>
