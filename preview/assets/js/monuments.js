@@ -2,13 +2,6 @@
 window.ArchiSpotterMonuments = (function () {
   function init(currentLang, strings) {
       var selectedMonument=null, selectedMonumentCity=null;
-      var monumentExamples={
-        'Coliseo':[
-          'El Coliseo, también conocido como anfiteatro Flavio, comenzó a construirse durante el gobierno de Vespasiano y fue inaugurado por Tito en el año 80 d. C. Su sistema de arcos, bóvedas y graderíos organizaba la circulación de miles de espectadores. Esta ficha es una demostración de diseño; la narración completa se incorporará con el catálogo definitivo.',
-          'The Colosseum, also known as the Flavian Amphitheatre, was begun under Vespasian and inaugurated by Titus in AD 80. Its arches, vaults and tiers organized the movement of thousands of spectators. This is a design preview; the full narration will arrive with the final catalogue.',
-          'Il Colosseo, noto anche come Anfiteatro Flavio, fu iniziato sotto Vespasiano e inaugurato da Tito nell’80 d.C. Archi, volte e gradinate organizzavano il movimento di migliaia di spettatori. Questa scheda è una dimostrazione del design; la narrazione completa arriverà con il catalogo definitivo.'
-        ]
-      };
       function monumentKey(place,city) { return city[0]+'|'+place[0]; }
       function storedMonumentSet(key) {
         try {var a=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(a)?a:[];}catch(_){return [];}
@@ -47,9 +40,19 @@ window.ArchiSpotterMonuments = (function () {
         document.getElementById('monument-photo').alt=place[idx];
         document.getElementById('monument-photo-trigger').setAttribute('aria-label',strings[currentLang()].zoomPhoto+' '+place[idx]);
         document.getElementById('monument-location').textContent=city[idx]+' · '+document.getElementById('country-detail-name').textContent;
-        var colosseum=place[0]==='Coliseo';
-        document.getElementById('monument-meta').textContent=colosseum?['Arquitectura romana · 70–80 d. C.','Roman architecture · AD 70–80','Architettura romana · 70–80 d.C.'][idx]:strings[currentLang()].metaPending;
-        document.getElementById('monument-story-text').textContent=colosseum?monumentExamples.Coliseo[idx]:strings[currentLang()].storyPending;
+        var entry=window.ArchiSpotterEditorial&&window.ArchiSpotterEditorial[place[0]];
+        var language=currentLang();
+        document.getElementById('monument-meta').textContent=place[0]==='Coliseo'?['Arquitectura romana · 70–80 d. C.','Roman architecture · AD 70–80','Architettura romana · 70–80 d.C.'][idx]:strings[language].metaPending;
+        document.getElementById('monument-story-text').textContent=entry?entry.history[language]:strings[language].storyPending;
+        document.getElementById('monument-story-heading').textContent=entry?({es:'Historia',en:'History',it:'Storia'})[language]:strings[language].monumentStoryTitle;
+        var extra=document.getElementById('monument-editorial');extra.hidden=!entry;
+        if(entry){
+          document.getElementById('monument-curiosity-title').textContent=({es:'Curiosidad',en:'Curiosity',it:'Curiosità'})[language];
+          document.getElementById('monument-architecture-title').textContent=({es:'3 detalles arquitectónicos',en:'3 architectural details',it:'3 dettagli architettonici'})[language];
+          document.getElementById('monument-curiosity-text').textContent=entry.curiosity[language];
+          var list=document.getElementById('monument-architecture-list');list.replaceChildren();
+          entry.architecture[language].forEach(function(detail){var li=document.createElement('li');li.textContent=detail;list.appendChild(li);});
+        }
         updateMonumentActions();
       }
       document.getElementById('monument-back').addEventListener('click',function(){
