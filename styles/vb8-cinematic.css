@@ -138,13 +138,6 @@ html:has(body.archi-intro-active){
 /* vB9.0: clean architecture art only, never baked UI or baked branding. */
 
 
-#splash-screen .archi-splash-photo{object-fit:cover!important;object-position:center top!important}
-
-
-
-
-
-
 /* vB9.2: fondo y marca como archivos INDEPENDIENTES; sin zoom ni elementos horneados. */
 :root,html,body,body.archi-intro-active{background:#101517!important;color-scheme:dark!important}
 
@@ -211,7 +204,7 @@ html:has(body.archi-intro-active){
 
 
 
-#splash-screen .archi-splash-art{background-image:url("../assets/cinematic-scene-v92.webp")!important;background-size:100% auto!important;background-position:center top!important}
+/* Declaración duplicada de fondo eliminada: conservada en vB9.2. */
 
 
 /* vB9.4: blur OSCURO solo detrás del logotipo de la pantalla de acceso.
