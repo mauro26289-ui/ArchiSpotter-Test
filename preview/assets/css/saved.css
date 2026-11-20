@@ -8,3 +8,11 @@
 .saved-card-actions{display:flex;gap:7px;margin-top:auto;flex-wrap:wrap}
 .saved-card-actions button{border:0;border-radius:8px;padding:8px 10px;background:var(--accent);color:var(--accent-contrast);font:600 11px Inter,sans-serif;cursor:pointer}
 .saved-card-actions .saved-remove{background:transparent;color:var(--ink);border:1px solid rgba(220,229,229,.35)}
+
+/* Stage 19: accessible reorder buttons, not drag-only controls. */
+.trip-order{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
+.trip-order-number{width:27px;height:27px;display:grid;place-items:center;background:#226e61;color:white;border-radius:50%;font:700 12px Inter,sans-serif}
+.trip-order button{width:28px;height:28px;padding:0;border-radius:8px;border:1px solid rgba(220,229,229,.4);background:transparent;color:var(--ink);font-size:17px;cursor:pointer}
+.trip-order button:disabled{opacity:.25;cursor:default}
+#view-trip .saved-card>img{width:82px}
+@media(max-width:370px){#view-trip .saved-card>img{width:65px}}
