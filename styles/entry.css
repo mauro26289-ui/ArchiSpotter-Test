@@ -277,7 +277,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     margin: 0 !important;
     padding: 0 !important;
     background: #101517 url('../assets/cinematic-scene-v92.webp') center center / cover no-repeat !important;
-    background-color: #101517 !important;
     z-index: 44 !important;
     pointer-events: none !important;
     transform: none !important;
@@ -364,7 +363,6 @@ html:not(:has(#splash-screen:not(.hidden))) body #archi-onboarding:not(.archi-go
     height: 100lvh !important;
     min-height: -webkit-fill-available !important;
     background: transparent !important;
-    background-image: none !important;
   }
 }
 
