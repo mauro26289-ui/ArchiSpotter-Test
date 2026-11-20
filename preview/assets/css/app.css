@@ -390,3 +390,6 @@
 .trip-map-actions button{width:100%;padding:13px 16px;border:1px solid rgba(220,229,229,.45);border-radius:12px;background:var(--accent);color:var(--accent-contrast);font:600 13px Inter,sans-serif;cursor:pointer}
 #archi-map .archi-trip-number{background:transparent;border:0;box-shadow:none;color:white;font:700 11px Inter,sans-serif;padding:0;pointer-events:none}
 #archi-map .archi-trip-number:before{display:none}
+
+/* Stage 24: text-only local food in city details. */
+.city-food{margin:28px 0 34px}.city-food>h2{font:600 24px Fraunces,Georgia,serif;margin:0 0 14px}.city-food-item{padding:13px 0;border-bottom:1px solid rgba(140,155,150,.25)}.city-food-item h3{font:600 16px Inter,sans-serif;margin:0 0 5px}.city-food-item p{font:13px/1.6 Inter,sans-serif;color:var(--muted);margin:0}
