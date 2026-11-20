@@ -551,8 +551,6 @@ body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-auth-panel {
   html body #archi-onboarding,
   html body #archi-auth-panel {
     background: transparent !important;
-    background-color: transparent !important;
-    background-image: none !important;
   }
 
   html body #splash-screen,
