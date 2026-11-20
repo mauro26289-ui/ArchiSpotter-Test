@@ -47,8 +47,6 @@
     </div>
 
     <form class="panel" id="auth-form" autocomplete="on">
-      <p class="mode-title" id="mode-label">Iniciar sesión</p>
-
       <label class="field">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 19c1.5-3.2 4-5 7-5s5.5 1.8 7 5"/></svg>
         <input id="user" name="username" type="text" aria-label="Usuario" placeholder="Usuario" required minlength="3" autocomplete="username" />
@@ -59,10 +57,8 @@
         <input id="pass" name="password" type="password" aria-label="Contraseña" placeholder="Contraseña" required minlength="6" autocomplete="current-password" />
       </label>
 
-      <button type="submit" class="btn btn-primary" id="submit-btn">Iniciar sesión</button>
-      <button type="button" class="btn btn-secondary" id="switch-btn">Crear usuario</button>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Registrarse o Iniciar sesión</button>
       <p id="auth-error" class="auth-error" role="alert" aria-live="polite"></p>
-      <button type="button" class="link" id="forgot-btn">¿Olvidaste tu contraseña?</button>
     </form>
   </section>
 
