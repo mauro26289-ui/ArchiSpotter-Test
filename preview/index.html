@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=stage24" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=stage25" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="./assets/css/map.css?v=stage23" />
   <link rel="stylesheet" href="./assets/css/gallery.css?v=mod3" />
@@ -116,9 +116,10 @@
             <button type="button" id="monument-trip" aria-pressed="false" data-i18n="tripAction">＋ Mi viaje</button>
           </div>
           <div class="monument-story">
-            <h3 data-i18n="monumentStoryTitle">Una historia por descubrir</h3>
+            <h3 id="monument-story-heading" data-i18n="monumentStoryTitle">Una historia por descubrir</h3>
             <p id="monument-story-text"></p>
           </div>
+          <section class="monument-editorial" id="monument-editorial" hidden><h3 id="monument-curiosity-title"></h3><p id="monument-curiosity-text"></p><h3 id="monument-architecture-title"></h3><ul id="monument-architecture-list"></ul></section>
         </div>
       </div>
       <div class="app-view" id="view-map" hidden><span class="eyebrow">CARTO Voyager · OpenStreetMap</span><h2 class="map-title">Mapa arquitectónico</h2><p class="map-note">Marcadores individuales de monumentos. 48 monumentos ubicados.</p><div class="map-search-wrap"><input id="map-search" type="search" autocomplete="off" placeholder="Buscar monumento o ciudad…" aria-label="Buscar monumento o ciudad" aria-controls="map-search-results"><div id="map-search-results" class="map-search-results" role="listbox" hidden></div></div><div class="map-toolbar"><button id="map-locate" class="map-locate" type="button">◎ Mi ubicación</button><span id="map-location-status" class="map-location-status" role="status"></span></div><div id="archi-map" role="region" aria-label="Mapa de monumentos de ArchiSpotter"></div><p id="map-status" class="map-status" role="status"></p></div>
@@ -162,7 +163,8 @@
   <script src="./assets/js/photos.js?v=stage22" defer></script>
   <script src="./assets/data/city-food.js?v=stage24" defer></script>
   <script src="./assets/js/navigation.js?v=mod4" defer></script>
-  <script src="./assets/js/monuments.js?v=stage22" defer></script>
+  <script src="./assets/data/editorial.js?v=stage25" defer></script>
+  <script src="./assets/js/monuments.js?v=stage25" defer></script>
   <script src="./assets/js/explore.js?v=stage24" defer></script>
   <script src="./assets/js/auth.js?v=mod7" defer></script>
   <script src="./assets/js/map.js?v=stage23" defer></script>
