@@ -96,12 +96,6 @@
       inset: 0;
       background: linear-gradient(to bottom, rgba(9,13,15,.43) 0%, rgba(9,13,15,.56) 42%, rgba(9,13,15,.88) 77%, rgba(9,13,15,.96) 100%);
     }
-    #backdrop[data-scene="sagrada"] .veil {
-      background: linear-gradient(to bottom, rgba(9,13,15,.56) 0%, rgba(9,13,15,.68) 42%, rgba(9,13,15,.91) 77%, rgba(9,13,15,.97) 100%);
-    }
-    .scene-picker { position:fixed;top:calc(env(safe-area-inset-top, 0px) + 12px);left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;padding:5px;border:1px solid rgba(220,229,229,.38);border-radius:999px;background:rgba(9,13,15,.75); }
-    .scene-picker button { color:#f3f7f7;background:transparent;border:0;border-radius:999px;padding:8px 11px;font:600 12px Inter,system-ui,sans-serif;white-space:nowrap; }
-    .scene-picker button[aria-pressed="true"] { color:#101517;background:#dce5e5; }
     .scene-credit { position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 5px);right:12px;z-index:9;font:400 10px Inter,system-ui,sans-serif;color:#c4d0d0;opacity:.8; }
     .scene-credit a { color:inherit; }
     @media (prefers-reduced-motion: reduce) { .screen,#backdrop img { transition:none; } }
@@ -341,10 +335,6 @@
     <div class="veil"></div>
   </div>
 
-  <nav class="scene-picker" aria-label="Elegir fotografía de prueba">
-    <button type="button" data-scene-choice="coliseo" aria-pressed="true">Coliseo</button>
-    <button type="button" data-scene-choice="sagrada" aria-pressed="false">Sagrada Família</button>
-  </nav>
   <div class="scene-credit" id="scene-credit">Foto: <a href="https://unsplash.com/photos/close-up-of-the-ancient-roman-colosseum-arches-M32BbLBXGuc" target="_blank" rel="noopener noreferrer">Pablo Fernández / Unsplash</a></div>
 
   <section id="splash" class="screen is-active" aria-label="Splash">
@@ -435,37 +425,13 @@
       }
       document.addEventListener('DOMContentLoaded', setVvh, { once: true });
 
+      // Una única fotografía fija para splash y acceso; sin selector ni cambios de escena.
       var img = document.getElementById('bg-img');
-      var sceneUrls = {
-        coliseo: 'https://images.unsplash.com/photo-1763374046991-632df3a66127?auto=format&fit=crop&w=1400&q=82',
-        sagrada: 'https://images.unsplash.com/photo-1722545331003-bc5507a8bdf8?auto=format&fit=crop&w=1400&q=82'
-      };
-      var sceneCredits = {
-        coliseo: { url:'https://unsplash.com/photos/close-up-of-the-ancient-roman-colosseum-arches-M32BbLBXGuc', label:'Pablo Fernández / Unsplash' },
-        sagrada: { url:'https://unsplash.com/photos/the-interior-of-a-cathedral-with-stained-glass-windows-WuxbrjICVFQ', label:'Alex / Unsplash' }
-      };
       function markReady() { img.classList.add('is-ready'); }
       if (img.complete && img.naturalWidth) markReady();
-
-      document.querySelectorAll('[data-scene-choice]').forEach(function (button) {
-        button.addEventListener('click', function () {
-          var choice = button.getAttribute('data-scene-choice');
-          if (!sceneUrls[choice]) return;
-          document.querySelectorAll('[data-scene-choice]').forEach(function (b) {
-            b.setAttribute('aria-pressed', String(b === button));
-          });
-          document.getElementById('backdrop').setAttribute('data-scene', choice);
-          var credit = document.getElementById('scene-credit');
-          credit.querySelector('a').href = sceneCredits[choice].url;
-          credit.querySelector('a').textContent = sceneCredits[choice].label;
-          img.classList.remove('is-ready');
-          img.src = sceneUrls[choice];
-          if (img.complete && img.naturalWidth) markReady();
-        });
-      });
       img.addEventListener('load', markReady);
       img.addEventListener('error', function () { img.classList.remove('is-ready'); });
-            var splash = document.getElementById('splash');
+      var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
       var home = document.getElementById('home');
       var mode = 'login';
