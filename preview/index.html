@@ -87,7 +87,8 @@
       object-position: center center;
       display: block;
       opacity: 0;
-      transition: opacity .6s ease;
+      /* Evitar el fundido inicial de la fotografía. */
+      transition: none;
     }
     #backdrop img.is-ready { opacity: 1; }
     #backdrop .veil {
@@ -119,7 +120,8 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition: opacity .5s ease, visibility .5s ease;
+      /* Pantallas exclusivas: sin fundido que superponga splash y acceso. */
+      transition: none;
     }
     .screen.is-active {
       opacity: 1;
