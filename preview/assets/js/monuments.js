@@ -42,7 +42,17 @@ window.ArchiSpotterMonuments = (function () {
         document.getElementById('monument-location').textContent=city[idx]+' · '+document.getElementById('country-detail-name').textContent;
         var entry=window.ArchiSpotterEditorial&&window.ArchiSpotterEditorial[place[0]];
         var language=currentLang();
-        document.getElementById('monument-meta').textContent=place[0]==='Coliseo'?['Arquitectura romana · 70–80 d. C.','Roman architecture · AD 70–80','Architettura romana · 70–80 d.C.'][idx]:strings[language].metaPending;
+        var metas={
+          'Coliseo':[['Anfiteatro romano · siglo I','Roman amphitheatre · 1st century','Anfiteatro romano · I secolo']],
+          'Panteón de Agripa':[['Templo romano · siglo II','Roman temple · 2nd century','Tempio romano · II secolo']],
+          'Foro Romano':[['Centro cívico romano','Roman civic centre','Centro civico romano']],
+          'Fontana di Trevi':[['Fuente barroca · 1732–1762','Baroque fountain · 1732–1762','Fontana barocca · 1732–1762']],
+          "Castillo de Sant'Angelo":[['Mausoleo romano · siglo II','Roman mausoleum · 2nd century','Mausoleo romano · II secolo']],
+          'Catedral de Florencia':[['Catedral · 1296–1436','Cathedral · 1296–1436','Cattedrale · 1296–1436']],
+          'Ponte Vecchio':[['Puente medieval · siglo XIV','Medieval bridge · 14th century','Ponte medievale · XIV secolo']],
+          'Palazzo Vecchio':[['Palacio cívico · siglo XIV','Civic palace · 14th century','Palazzo civico · XIV secolo']]
+        };
+        document.getElementById('monument-meta').textContent=metas[place[0]]?metas[place[0]][0][idx]:strings[language].metaPending;
         document.getElementById('monument-story-text').textContent=entry?entry.history[language]:strings[language].storyPending;
         document.getElementById('monument-story-heading').textContent=entry?({es:'Historia',en:'History',it:'Storia'})[language]:strings[language].monumentStoryTitle;
         var extra=document.getElementById('monument-editorial');extra.hidden=!entry;
