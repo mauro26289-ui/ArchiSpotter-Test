@@ -393,3 +393,6 @@
 
 /* Stage 24: text-only local food in city details. */
 .city-food{margin:28px 0 34px}.city-food>h2{font:600 24px Fraunces,Georgia,serif;margin:0 0 14px}.city-food-item{padding:13px 0;border-bottom:1px solid rgba(140,155,150,.25)}.city-food-item h3{font:600 16px Inter,sans-serif;margin:0 0 5px}.city-food-item p{font:13px/1.6 Inter,sans-serif;color:var(--muted);margin:0}
+
+/* Stage 25: editorial sections, intentionally text-only. */
+.monument-editorial{padding:0 20px 34px}.monument-editorial h3{font:600 21px Fraunces,Georgia,serif;margin:24px 0 12px}.monument-editorial p{font-size:14px;line-height:1.7;margin:0}.monument-editorial ul{margin:0;padding-left:21px}.monument-editorial li{font-size:14px;line-height:1.65;margin:0 0 10px}
