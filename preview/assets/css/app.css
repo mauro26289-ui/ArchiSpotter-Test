@@ -374,3 +374,9 @@
       max-width: 90vw;
     }
     .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; transition-delay: 0s, 0s, 0s; }
+
+/* Stage 16: quiet photo identification, and a dedicated footer lane for attribution. */
+.scene-picker{top:calc(env(safe-area-inset-top,0px) + 9px);left:14px;transform:none;z-index:3;display:block;gap:0;padding:0;border:0;border-radius:0;background:none;pointer-events:none}
+.scene-picker .scene-label{display:block;padding:0;color:rgba(243,247,247,.78);font:400 10px/1.4 Inter,system-ui,sans-serif;letter-spacing:.025em;text-shadow:0 1px 5px rgba(0,0,0,.8)}
+.scene-credit{bottom:calc(env(safe-area-inset-bottom,0px) + 2px);right:12px;left:auto;z-index:9;font-size:9px;line-height:1.2;opacity:.8}
+#auth{padding-bottom:max(58px,calc(env(safe-area-inset-bottom,0px) + 43px))}
