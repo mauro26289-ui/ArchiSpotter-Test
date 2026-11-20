@@ -506,11 +506,9 @@ body:has(#archi-auth-panel:not(.archi-auth-hidden)) #archi-auth-panel {
     bottom: 0 !important;
     width: 100% !important;
     width: 100vw !important;
-    /* Preferir estirar a bordes; height como refuerzo iOS */
-    height: auto !important;
+    /* Altura con respaldo porcentual para WebKit antiguo. */
     height: 100% !important;
     height: -webkit-fill-available !important;
-    min-height: 100% !important;
     min-height: 100dvh !important;
     min-height: -webkit-fill-available !important;
     margin: 0 !important;
