@@ -20,8 +20,7 @@
       --accent-contrast: #101517;
       --field-bg: rgba(13,17,18,.78);
       --field-border: rgba(220,229,229,.62);
-      --paper: #0e1113;
-      --vvh: 100%;
+      --paper: #0b0e10;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -48,7 +47,7 @@
       left: 0;
       width: 100%;
       width: 100vw;
-      height: var(--vvh);
+      bottom: 0;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
@@ -87,11 +86,13 @@
     #backdrop .veil {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(9,13,15,.43) 0%, rgba(9,13,15,.56) 42%, rgba(9,13,15,.88) 77%, rgba(9,13,15,.96) 100%);
+      background: linear-gradient(to bottom, rgba(9,13,15,.43) 0%, rgba(9,13,15,.56) 42%, rgba(9,13,15,.88) 77%, rgb(11,14,16) 100%);
     }
     .scene-picker { position:fixed;top:calc(env(safe-area-inset-top, 0px) + 12px);left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;padding:5px;border:1px solid rgba(220,229,229,.38);border-radius:999px;background:rgba(9,13,15,.75); }
     .scene-picker .scene-label { color:#f3f7f7;padding:8px 11px;font:600 12px Inter,system-ui,sans-serif;white-space:nowrap; }
     body.is-in-app .scene-picker, body.is-in-app .scene-credit { display:none; }
+    /* Dentro de la app el fondo es #101517: el lienzo bajo la pantalla debe coincidir. */
+    html.is-in-app, html.is-in-app body { background: #101517; }
     .scene-credit { position:fixed;bottom:calc(env(safe-area-inset-bottom, 0px) + 5px);right:12px;z-index:9;font:400 10px Inter,system-ui,sans-serif;color:#c4d0d0;opacity:.8; }
     .scene-credit a { color:inherit; }
     @media (prefers-reduced-motion: reduce) { .screen,#backdrop img { transition:none; } }
@@ -101,7 +102,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: var(--vvh);
+      bottom: 0;
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -427,28 +428,6 @@
 
   <script>
     (function () {
-      /* Prueba aislada del segundo parche de Claude: altura de pantalla en PWA. */
-      function setVvh() {
-        var landscape = window.innerWidth > window.innerHeight;
-        var full = landscape ? Math.min(screen.width, screen.height) : Math.max(screen.width, screen.height);
-        var h = Math.max(
-          window.innerHeight || 0,
-          (window.visualViewport && Math.round(window.visualViewport.height)) || 0,
-          document.documentElement.clientHeight || 0
-        );
-        if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) h = Math.max(h, full);
-        if (h) document.documentElement.style.setProperty('--vvh', h + 'px');
-      }
-      function settleVvh() { setVvh(); setTimeout(setVvh, 120); setTimeout(setVvh, 500); }
-      setVvh();
-      window.addEventListener('resize', setVvh, { passive: true });
-      window.addEventListener('orientationchange', settleVvh, { passive: true });
-      window.addEventListener('pageshow', settleVvh, { passive: true });
-      document.addEventListener('visibilitychange', function () { if (!document.hidden) settleVvh(); });
-      if (window.visualViewport) window.visualViewport.addEventListener('resize', setVvh, { passive: true });
-      document.addEventListener('DOMContentLoaded', settleVvh, { once: true });
-      window.addEventListener('load', settleVvh, { once: true });
-
       var img = document.getElementById('bg-img');
       var splash = document.getElementById('splash');
       var auth = document.getElementById('auth');
@@ -490,6 +469,7 @@
       function showScreen(screen) {
         [splash, auth, home].forEach(function (el) { el.classList.toggle('is-active', el === screen); });
         document.body.classList.toggle('is-in-app', screen === home);
+        document.documentElement.classList.toggle('is-in-app', screen === home);
       }
       var strings = {
         es: {tagline:'Arquitectura en contexto',explore:'Explorar',discoverTitle:'Descubre la arquitectura',discoverText:'Estamos reconstruyendo la exploración de monumentos sobre esta nueva base, sin reutilizar el diseño anterior.',countriesTitle:'Países y monumentos',countriesText:'El catálogo se incorporará en la siguiente etapa.',trip:'Mi viaje',tripTitle:'Mis rutas',tripText:'Aquí podrás organizar tus monumentos y rutas cuando incorporemos el catálogo.',favorites:'Favoritos',favoritesTitle:'Mis favoritos',favoritesText:'Todavía no hay monumentos disponibles para guardar.',settings:'Ajustes',preferences:'Preferencias',language:'Idioma',logout:'Cerrar sesión',welcome:'Sesión iniciada: '},
