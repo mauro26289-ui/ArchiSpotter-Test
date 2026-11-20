@@ -3,7 +3,7 @@
 <head>
     <meta name="color-scheme" content="dark">
     <meta name="mobile-web-app-capable" content="yes">
-    <style>html,body{background:#050709!important;color-scheme:dark}html{min-height:100%;}body{min-height:100dvh;margin:0}</style>
+    <style>html{min-height:100%;}body{min-height:100dvh;margin:0}</style>
     <!-- E112: inicio de medicion antes de dependencias externas -->
     <script>window.__archiE112Start = performance.now(); performance.mark('archi:e112:head');</script>
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
@@ -90,7 +90,6 @@ body:not(.light-mode) { background-color:#101517 !important; }
 /* Gris de la app solo cuando ya no hay splash ni intro */
 body:not(.light-mode):not(.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { background-color:#1b2427 !important; }
 html:has(#splash-screen:not(.hidden)),
-body:has(#splash-screen:not(.hidden)) { background-color:#101517 !important; }
 body #splash-screen,body #splash-screen:not(.hidden) {
   position:fixed!important; inset:0!important; width:100%!important;
   height:auto!important; min-height:0!important; max-height:none!important;
@@ -116,8 +115,6 @@ body #splash-screen .archi-splash-photo {
 html { background-color:#101517 !important; }
 body.light-mode { background-color:#101517 !important; }
 html:has(body:not(.light-mode)):not(:has(#splash-screen:not(.hidden))) { background-color:#1b2427 !important; }
-body.archi-intro-active { background-color:#050709 !important; }
-html:has(body.archi-intro-active):not(:has(#splash-screen:not(.hidden))) { background-color:#050709 !important; }
 </style>
 <style id="archi-root-scroll-lock-v96">
 /* E96: el documento exterior no es el área desplazable de la PWA.
