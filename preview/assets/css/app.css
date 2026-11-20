@@ -374,14 +374,6 @@
     .monument-story h3 { font:600 26px/1.2 Fraunces,Georgia,serif; margin:0 0 12px; }
     .monument-story p { color:var(--muted); font:400 14px/1.75 Inter,sans-serif; margin:0 0 17px; }
     .monument-photo-notice { color:var(--muted); font:400 11px/1.5 Inter,sans-serif; margin:12px 0 0; }
-    /* Visor de fotografía: zoom táctil, arrastre y cierre accesible. */
-    .explore-hero { cursor:zoom-in; }
-    .explore-hero:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
-    .photo-viewer[hidden] { display:none!important; }
-    .photo-viewer { position:fixed; inset:0; z-index:100; background:#080b0d; display:flex; align-items:center; justify-content:center; overflow:hidden; touch-action:none; overscroll-behavior:contain; }
-    .photo-viewer-image { display:block; width:100%; height:100%; object-fit:contain; transform-origin:center center; user-select:none; -webkit-user-select:none; -webkit-user-drag:none; touch-action:none; will-change:transform; }
-    .photo-viewer-close { position:absolute; z-index:2; right: max(18px, env(safe-area-inset-right, 0px)); top:max(20px, calc(env(safe-area-inset-top, 0px) + 12px)); display:grid; place-items:center; width:46px; height:46px; border:1px solid rgba(255,255,255,.45); border-radius:50%; background:rgba(10,14,16,.75); color:white; font:400 28px/1 Inter,sans-serif; cursor:pointer; touch-action:manipulation; }
-    .photo-viewer-hint { position:absolute; bottom:max(30px, calc(env(safe-area-inset-bottom, 0px) + 18px)); left:20px; right:20px; text-align:center; color:rgba(255,255,255,.8); font:400 12px/1.5 Inter,sans-serif; pointer-events:none; }
     .toast {
       position: fixed;
       left: 50%;
