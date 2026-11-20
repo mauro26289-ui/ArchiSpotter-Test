@@ -42,6 +42,7 @@ window.ArchiSpotterMonuments = (function () {
         var idx={es:0,en:1,it:2}[currentLang()]||0;
         var place=selectedMonument,city=selectedMonumentCity;
         document.getElementById('monument-photo').src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=1100&q=80';
+        if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(document.getElementById('monument-photo'),place,1100);
         document.getElementById('monument-name').textContent=place[idx];
         document.getElementById('monument-photo').alt=place[idx];
         document.getElementById('monument-photo-trigger').setAttribute('aria-label',strings[currentLang()].zoomPhoto+' '+place[idx]);
