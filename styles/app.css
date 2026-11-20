@@ -551,7 +551,7 @@ body { min-height:100vh; min-height:100dvh; overflow-x:hidden; }
 #splash-screen .archi-splash-art {
   background-size: contain !important;
   background-position: center center !important;
-  background-color: #f8f0de !important;
+
 }
 /* Logotipo de la cabecera: usar más espacio dentro del marco existente. */
 #app .archi-header-brand > div:first-child {
@@ -572,13 +572,13 @@ body { min-height:100vh; min-height:100dvh; overflow-x:hidden; }
 /* La ilustración de inicio cubre toda la pantalla, incluidas las áreas seguras.
    Se conserva la imagen entera, sin cortar el nombre ArchiSpotter. */
 html:has(#splash-screen:not(.hidden)),
-body:has(#splash-screen:not(.hidden)) { background:#f8f0de !important; }
+
 #splash-screen {
   position:fixed !important;
   top:0 !important; right:0 !important; bottom:0 !important; left:0 !important;
   width:100vw !important; height:100vh !important; height:100dvh !important;
   padding:0 !important; margin:0 !important;
-  background:#f8f0de !important;
+
 }
 #splash-screen .archi-splash-art {
   position:absolute !important; inset:0 !important;
@@ -641,12 +641,11 @@ body > #fullscreen-lightbox:not(.hidden) {
 /* ===== ORIGINAL: archi-splash-single-source-v9 ===== */
 
 /* Portada vertical de proporción nativa: no se deforma ni añade franjas. */
-html,body { background-color:#f8f0de; }
 body #splash-screen:not(.hidden) {
  position:fixed !important; inset:0 !important; top:0 !important; bottom:0 !important;
  width:100vw !important; height:100dvh !important; min-height:100dvh !important;
  max-height:none !important; margin:0 !important; padding:0 !important;
- overflow:hidden !important; background:#f8f0de !important;
+ overflow:hidden !important; 
 }
 body #splash-screen:not(.hidden) .archi-splash-art {
  position:absolute !important; inset:0 !important;
