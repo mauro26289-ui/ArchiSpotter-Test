@@ -13,3 +13,13 @@
 #view-map .map-locate{background:#203b35;color:#fff;border:0;border-radius:10px;padding:11px 14px;font:600 13px Inter,sans-serif;cursor:pointer}
 #view-map .map-location-status{font:12px/1.4 Inter,sans-serif;color:var(--muted);flex:1}
 #archi-map .archi-map-popup .archi-directions{background:#eef1ed;color:#203b35;border:1px solid #b6c4be}
+
+/* Stage 23: compact search above the map, with touch-friendly results. */
+#view-map .map-search-wrap{position:relative;margin:14px 0 8px;z-index:500}
+#map-search{box-sizing:border-box;width:100%;padding:13px 15px;border-radius:12px;border:1px solid rgba(220,229,229,.3);background:#1b2427;color:#f1f4f2;font:14px Inter,sans-serif;outline-offset:2px}
+#map-search::placeholder{color:#aebbb9}
+#map-search-results{position:absolute;top:calc(100% + 5px);left:0;right:0;max-height:260px;overflow-y:auto;background:#1b2427;border:1px solid rgba(220,229,229,.3);border-radius:12px;box-shadow:0 12px 25px rgba(0,0,0,.35)}
+#map-search-results[hidden]{display:none}
+#map-search-results button{display:block;width:100%;padding:13px 14px;text-align:left;border:0;border-bottom:1px solid rgba(220,229,229,.12);background:transparent;color:#f1f4f2;font:13px Inter,sans-serif;cursor:pointer}
+#map-search-results button:last-child{border-bottom:0}
+#map-search-results p{padding:12px;margin:0;color:#aebbb9;font:13px Inter,sans-serif}
