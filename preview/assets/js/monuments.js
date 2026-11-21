@@ -9,9 +9,15 @@ window.ArchiSpotterMonuments = (function () {
         'Panteón de Agripa':'pantheon',
         'Foro Romano':'forum',
         'Catedral de Florencia':'florence-duomo',
-        'Sagrada Familia':'sagrada-familia'
+        'Sagrada Familia':'sagrada-familia',
+        'Fontana di Trevi':'trevi-fountain',
+        "Castillo de Sant'Angelo":'castel-sant-angelo',
+        'Ponte Vecchio':'ponte-vecchio',
+        'Palazzo Vecchio':'palazzo-vecchio'
       };
       var audioBase='https://raw.githubusercontent.com/mauro26289-ui/ArchiSpotter/main/audio/';
+      var newAudioIds={'trevi-fountain':true,'castel-sant-angelo':true,'ponte-vecchio':true,'palazzo-vecchio':true};
+      var audioAvailability={'palazzo-vecchio':{en:true}};
       var narrationAudio=new Audio();
       narrationAudio.preload='none';
       var activeAudioKey='';
@@ -46,13 +52,13 @@ window.ArchiSpotterMonuments = (function () {
         if(!audioButton)return;
         var id=existingAudioIds[place[0]];
         audioButton.hidden=false;
-        audioButton.disabled=!id;
-        if(!id){stopNarration();return;}
+        audioButton.disabled=!id || (audioAvailability[id] && !audioAvailability[id][language]);
+        if(audioButton.disabled){stopNarration();return;}
         var key=id+'-'+language;
         if(activeAudioKey!==key){
           stopNarration();
           activeAudioKey=key;
-          narrationAudio.src=audioBase+key+'.mp3';
+          narrationAudio.src=(newAudioIds[id]?'./audio/':audioBase)+key+'.mp3';
           narrationAudio.playbackRate=1.15;
         }
         updateAudioButton();
