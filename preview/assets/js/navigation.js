@@ -32,7 +32,8 @@ window.ArchiSpotterNavigation = (function () {
       visible('city-detail')?document.getElementById('city-detail'):
       visible('country-detail')?document.getElementById('country-detail'):null;
     if(!panel)return;
-    var previous=document.getElementById(panel.id==='monument-detail'?'city-detail':
+    var previous=document.getElementById(panel.id==='monument-detail'?
+      (document.getElementById('monument-back').getAttribute('data-direct-country')==='true'?'country-detail':'city-detail'):
       panel.id==='city-detail'?'country-detail':'country-overview');
     gesture={x:e.touches[0].clientX,y:e.touches[0].clientY,dx:0,started:false,
       panel:panel,previous:previous,scroll:document.querySelector('.app-content')};
