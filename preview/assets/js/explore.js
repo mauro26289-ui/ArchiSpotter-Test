@@ -90,9 +90,6 @@ window.ArchiSpotterExplore = (function () {
         button.addEventListener('click', function () {
           document.getElementById('country-detail').setAttribute('data-selected',button.getAttribute('data-country'));
           var coverPhoto = button.querySelector('img').src;
-          if (button.getAttribute('data-country') === 'it') {
-            coverPhoto = 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=1100&q=80';
-          }
           document.getElementById('country-detail-photo').src = coverPhoto;
           document.getElementById('country-overview').hidden = true;
           document.getElementById('country-detail').hidden = false;
