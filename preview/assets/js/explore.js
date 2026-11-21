@@ -37,6 +37,8 @@ window.ArchiSpotterExplore = (function () {
         });
       }
       function openCity(city) {
+        // A city with a single monument opens its monument directly.
+        if(city[4].length===1){openMonument(city[4][0],city);return;}
         var idx={es:0,en:1,it:2}[currentLang()]||0;
         var photo=document.getElementById('city-detail-photo');
         photo.src='https://images.unsplash.com/'+city[3]+'?auto=format&fit=crop&w=1100&q=80';
