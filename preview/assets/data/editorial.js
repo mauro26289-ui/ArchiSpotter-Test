@@ -588,5 +588,103 @@ window.ArchiSpotterEditorial={
       "https://www.paris-arc-de-triomphe.fr/en/discover/history-of-the-arc-de-triomphe",
       "https://www.paris-arc-de-triomphe.fr/en/discover"
     ]
+  },
+  "Catedral de Notre-Dame": {
+    "history": {
+      "es": "La catedral de Notre-Dame de París comenzó a levantarse en 1163, durante el episcopado de Maurice de Sully, en la isla de la Cité. Su construcción se extendió durante generaciones, en una ciudad que estaba creciendo como centro político, religioso y universitario. El edificio reemplazó espacios de culto anteriores y expresó las ambiciones de la Iglesia medieval. A lo largo de los siglos fue escenario de celebraciones, ceremonias y episodios decisivos de la historia francesa. En 1804, Napoleón Bonaparte celebró allí su coronación imperial. Durante el siglo XIX, la catedral atravesó una profunda restauración dirigida por Eugène Viollet-le-Duc y Jean-Baptiste Lassus, después de décadas de deterioro y transformaciones. La novela de Victor Hugo contribuyó a despertar el interés público por su conservación. El incendio del 15 de abril de 2019 destruyó la cubierta y la aguja, además de provocar graves daños en el conjunto. Una extensa campaña de restauración reunió artesanos, especialistas e instituciones para recuperar el edificio. Notre-Dame reabrió sus puertas en diciembre de 2024, aunque determinados trabajos de conservación continuaron. Su historia no es la de una obra terminada de una sola vez, sino la de un monumento que cada época ha cuidado, transformado y reinterpretado. La catedral permanece ligada a la memoria colectiva de París.",
+      "en": "Notre-Dame Cathedral in Paris began to rise in 1163 under Bishop Maurice de Sully, on the Île de la Cité. Construction extended across generations in a city growing as a political, religious and university centre. The building replaced earlier places of worship and expressed the ambitions of the medieval Church. Over the centuries, it hosted celebrations, ceremonies and decisive moments in French history. In 1804, Napoleon Bonaparte held his imperial coronation there. During the nineteenth century, the cathedral underwent extensive restoration led by Eugène Viollet-le-Duc and Jean-Baptiste Lassus after decades of deterioration and alteration. Victor Hugo's novel helped awaken public interest in its preservation. The fire of 15 April 2019 destroyed the roof and spire and caused serious damage to the complex. A major restoration campaign brought together craftspeople, specialists and institutions to recover the building. Notre-Dame reopened in December 2024, although some conservation work continued. Its history is not that of a structure completed once and for all, but of a monument cared for, altered and reinterpreted by successive generations. The cathedral remains closely connected to the collective memory of Paris, representing both medieval achievement and the contemporary commitment to safeguarding shared heritage.",
+      "it": "La cattedrale di Notre-Dame a Parigi cominciò a sorgere nel 1163, durante l'episcopato di Maurice de Sully, sull'Île de la Cité. La costruzione proseguì per generazioni in una città che cresceva come centro politico, religioso e universitario. L'edificio sostituì precedenti luoghi di culto ed espresse le ambizioni della Chiesa medievale. Nei secoli ospitò celebrazioni, cerimonie ed episodi decisivi della storia francese. Nel 1804 Napoleone Bonaparte vi celebrò la propria incoronazione imperiale. Nell'Ottocento la cattedrale fu sottoposta a un vasto restauro diretto da Eugène Viollet-le-Duc e Jean-Baptiste Lassus, dopo decenni di degrado e trasformazioni. Il romanzo di Victor Hugo contribuì a risvegliare l'interesse pubblico per la sua conservazione. L'incendio del 15 aprile 2019 distrusse il tetto e la guglia, provocando gravi danni all'insieme. Un'importante campagna di restauro riunì artigiani, specialisti e istituzioni per recuperare l'edificio. Notre-Dame riaprì nel dicembre 2024, anche se alcuni interventi di conservazione proseguirono. La sua storia non è quella di un'opera completata una volta per tutte, ma di un monumento curato, trasformato e reinterpretato da generazioni successive. La cattedrale rimane profondamente legata alla memoria collettiva di Parigi, tra eredità medievale e tutela contemporanea del patrimonio."
+    },
+    "curiosity": {
+      "es": "Las campanas tienen nombres propios y distintas funciones litúrgicas.",
+      "en": "The bells have individual names and different liturgical roles.",
+      "it": "Le campane hanno nomi propri e differenti funzioni liturgiche."
+    },
+    "architecture": {
+      "es": [
+        "Los arbotantes exteriores contrarrestan los empujes de las bóvedas.",
+        "La fachada occidental presenta dos torres de planta cuadrada.",
+        "Tres grandes rosetones iluminan distintos sectores del templo."
+      ],
+      "en": [
+        "External flying buttresses counter the thrust of the vaults.",
+        "The western façade features two square-plan towers.",
+        "Three large rose windows illuminate different parts of the cathedral."
+      ],
+      "it": [
+        "Gli archi rampanti esterni contrastano la spinta delle volte.",
+        "La facciata occidentale presenta due torri a pianta quadrata.",
+        "Tre grandi rosoni illuminano diverse parti della cattedrale."
+      ]
+    },
+    "sources": [
+      "https://www.notredamedeparis.fr/en/understand/architecture/",
+      "https://www.rebatirnotredamedeparis.fr/en"
+    ]
+  },
+  "Basílica del Sacré-Cœur": {
+    "history": {
+      "es": "La basílica del Sacré-Cœur se alza sobre la colina de Montmartre, en un lugar visible desde numerosos puntos de París. Su construcción surgió después de la guerra franco-prusiana de 1870 y de la Comuna de París de 1871, en un contexto de profundas divisiones políticas y religiosas. Un movimiento católico promovió la idea de levantar un santuario dedicado al Sagrado Corazón de Jesús. La Asamblea Nacional declaró el proyecto de utilidad pública en 1873 y se organizó un concurso de arquitectura. Paul Abadie resultó elegido, y la primera piedra se colocó en 1875. La obra continuó durante décadas y pasó por las manos de varios arquitectos tras la muerte de Abadie. Aunque el edificio estaba esencialmente terminado antes de la Primera Guerra Mundial, su consagración se celebró en 1919. Desde entonces se convirtió en un importante centro de peregrinación y oración, además de un punto destacado del paisaje parisino. La basílica ha sido interpretada de maneras diferentes según las convicciones y la memoria histórica de cada época. Su emplazamiento en Montmartre también la relaciona con un barrio de intensa vida artística y cultural. Hoy recibe a fieles y visitantes de muchos países, y conserva una identidad marcada por la devoción religiosa y por los debates de la historia contemporánea francesa.",
+      "en": "The Basilica of Sacré-Cœur stands on the hill of Montmartre, visible from many parts of Paris. Its construction emerged after the Franco-Prussian War of 1870 and the Paris Commune of 1871, in a period of deep political and religious divisions. A Catholic movement promoted the idea of building a sanctuary dedicated to the Sacred Heart of Jesus. The National Assembly declared the project to be of public utility in 1873, and an architectural competition followed. Paul Abadie was selected, and the foundation stone was laid in 1875. Work continued for decades and passed to several architects after Abadie's death. Although the building was substantially finished before the First World War, its consecration took place in 1919. Since then, it has become an important centre of pilgrimage and prayer, as well as a prominent feature of the Parisian skyline. The basilica has been interpreted in different ways according to the beliefs and historical memories of successive generations. Its Montmartre location also connects it with a neighbourhood known for its lively artistic and cultural life. Today it welcomes worshippers and visitors from many countries, preserving an identity shaped by religious devotion and debates about modern French history.",
+      "it": "La basilica del Sacré-Cœur sorge sulla collina di Montmartre ed è visibile da molti punti di Parigi. La sua costruzione nacque dopo la guerra franco-prussiana del 1870 e la Comune di Parigi del 1871, in un contesto di profonde divisioni politiche e religiose. Un movimento cattolico promosse l'idea di costruire un santuario dedicato al Sacro Cuore di Gesù. L'Assemblea nazionale dichiarò il progetto di pubblica utilità nel 1873 e seguì un concorso di architettura. Fu scelto Paul Abadie e la prima pietra venne posata nel 1875. I lavori continuarono per decenni e passarono a diversi architetti dopo la morte di Abadie. Sebbene l'edificio fosse sostanzialmente completato prima della Prima guerra mondiale, la consacrazione avvenne nel 1919. Da allora è diventato un importante centro di pellegrinaggio e preghiera, oltre che un elemento caratteristico del panorama parigino. La basilica è stata interpretata in modi differenti secondo le convinzioni e la memoria storica delle varie epoche. La posizione a Montmartre la collega anche a un quartiere noto per la sua vivace vita artistica e culturale. Oggi accoglie fedeli e visitatori di molti paesi, conservando un'identità segnata dalla devozione religiosa e dai dibattiti della storia contemporanea francese."
+    },
+    "curiosity": {
+      "es": "La piedra exterior se blanquea naturalmente con la lluvia.",
+      "en": "Its exterior stone naturally whitens when exposed to rain.",
+      "it": "La pietra esterna si schiarisce naturalmente quando piove."
+    },
+    "architecture": {
+      "es": [
+        "El edificio combina referencias románicas y bizantinas.",
+        "La gran cúpula central domina el perfil de Montmartre.",
+        "La planta organiza los espacios alrededor de una cruz griega."
+      ],
+      "en": [
+        "The design combines Romanesque and Byzantine references.",
+        "The large central dome dominates Montmartre's skyline.",
+        "Its layout organizes spaces around a Greek-cross plan."
+      ],
+      "it": [
+        "Il progetto combina riferimenti romanici e bizantini.",
+        "La grande cupola centrale domina il profilo di Montmartre.",
+        "La pianta organizza gli spazi intorno a una croce greca."
+      ]
+    },
+    "sources": [
+      "https://www.sacre-coeur-montmartre.com/english/history-and-visit/history-of-the-basilica/"
+    ]
+  },
+  "Museo del Louvre": {
+    "history": {
+      "es": "El Museo del Louvre ocupa un conjunto de edificios cuya historia comenzó mucho antes de que existiera el museo. A finales del siglo XII, el rey Felipe Augusto mandó construir una fortaleza junto al Sena para proteger París. Durante los siglos siguientes, aquella estructura defensiva se transformó en residencia real y fue ampliada por distintos monarcas. Francisco I impulsó cambios renacentistas, mientras otros soberanos añadieron patios, galerías y dependencias. Cuando Luis XIV trasladó el centro de la corte a Versalles, el palacio perdió parte de su antigua función residencial. La Revolución francesa abrió el camino para convertir las colecciones reales en patrimonio accesible al público. El museo abrió sus puertas en 1793, inaugurando una nueva etapa en la relación entre el Estado, el arte y los ciudadanos. A lo largo de los siglos XIX y XX, sus colecciones crecieron mediante adquisiciones, donaciones y diferentes procesos históricos. El conjunto también atravesó reformas destinadas a mejorar la circulación y los servicios para visitantes. En 1989 se inauguró la pirámide diseñada por Ieoh Ming Pei, que reorganizó el acceso principal. Hoy el Louvre reúne obras de numerosas culturas y épocas. Su historia muestra cómo una fortaleza medieval y residencia monárquica pudo convertirse en una institución cultural de alcance mundial.",
+      "en": "The Louvre Museum occupies a complex of buildings whose history began long before the museum existed. In the late twelfth century, King Philip Augustus ordered a fortress beside the Seine to protect Paris. Over the following centuries, the defensive structure became a royal residence and was enlarged by successive monarchs. Francis I introduced Renaissance changes, while later rulers added courtyards, galleries and new rooms. When Louis XIV transferred the centre of court life to Versailles, the palace lost part of its former residential role. The French Revolution opened the way for royal collections to become heritage accessible to the public. The museum opened in 1793, beginning a new chapter in relations between the state, art and citizens. Throughout the nineteenth and twentieth centuries, its collections expanded through purchases, donations and other historical processes. The complex also underwent renovations intended to improve circulation and visitor facilities. In 1989, the pyramid designed by Ieoh Ming Pei opened, reorganizing the principal entrance. Today the Louvre brings together works from many cultures and historical periods. Its story demonstrates how a medieval fortress and royal residence could become a cultural institution with worldwide reach. The museum's successive transformations reflect changing ideas about power, collecting and public access to art.",
+      "it": "Il Museo del Louvre occupa un complesso di edifici la cui storia iniziò molto prima della nascita del museo. Alla fine del XII secolo, il re Filippo Augusto fece costruire una fortezza lungo la Senna per proteggere Parigi. Nei secoli successivi, la struttura difensiva divenne residenza reale e fu ampliata da diversi sovrani. Francesco I introdusse trasformazioni rinascimentali, mentre i monarchi successivi aggiunsero cortili, gallerie e nuovi ambienti. Quando Luigi XIV trasferì il centro della corte a Versailles, il palazzo perse parte della sua precedente funzione residenziale. La Rivoluzione francese aprì la strada alla trasformazione delle collezioni reali in patrimonio accessibile al pubblico. Il museo aprì nel 1793, inaugurando una nuova fase nei rapporti tra Stato, arte e cittadini. Durante l'Ottocento e il Novecento, le collezioni crebbero attraverso acquisti, donazioni e differenti vicende storiche. Il complesso fu inoltre interessato da interventi destinati a migliorare i percorsi e i servizi per i visitatori. Nel 1989 venne inaugurata la piramide progettata da Ieoh Ming Pei, che riorganizzò l'ingresso principale. Oggi il Louvre riunisce opere provenienti da numerose culture ed epoche. La sua storia mostra come una fortezza medievale e residenza monarchica sia potuta diventare un'istituzione culturale di portata mondiale. Le sue trasformazioni riflettono idee mutevoli sul potere e sull'accesso pubblico all'arte."
+    },
+    "curiosity": {
+      "es": "Los restos de la fortaleza medieval pueden visitarse bajo el museo.",
+      "en": "Remains of the medieval fortress can be visited beneath the museum.",
+      "it": "I resti della fortezza medievale sono visitabili sotto il museo."
+    },
+    "architecture": {
+      "es": [
+        "La Cour Carrée conserva fachadas de distintas etapas renacentistas.",
+        "La pirámide principal combina una estructura metálica con paneles de vidrio.",
+        "El palacio se organiza mediante grandes alas alrededor de patios."
+      ],
+      "en": [
+        "The Cour Carrée preserves façades from different Renaissance phases.",
+        "The main pyramid combines a metal framework with glass panels.",
+        "The palace is arranged in large wings surrounding courtyards."
+      ],
+      "it": [
+        "La Cour Carrée conserva facciate di diverse fasi rinascimentali.",
+        "La piramide principale combina una struttura metallica con pannelli di vetro.",
+        "Il palazzo è organizzato in grandi ali intorno ai cortili."
+      ]
+    },
+    "sources": [
+      "https://www.louvre.fr/en/explore/the-palace/from-palace-to-museum",
+      "https://www.louvre.fr/en/explore/the-palace"
+    ]
   }
 };
