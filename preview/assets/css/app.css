@@ -419,3 +419,10 @@
 #city-detail .city-guide ul{margin:0;padding-left:20px;font:400 14px/1.7 Inter,sans-serif}
 #city-detail .city-guide li+li{margin-top:9px}
 #country-detail .landmark-card:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:12px}
+
+/* City guide contrast correction: light editorial surface must never inherit dark-theme pale text. */
+#city-detail .city-guide{background:#f7f5f0!important;color:#263235!important;border-color:#d9dcd6}
+#city-detail .city-guide .city-guide-kicker{color:#526569!important}
+#city-detail .city-guide h2,#city-detail .city-guide h3,#city-detail .city-guide p,#city-detail .city-guide li{color:#263235!important}
+#city-detail .city-guide-audio{background:#263235!important;color:#fff!important;border-color:#263235!important}
+#city-detail .city-guide-audio:focus-visible{outline:3px solid #8aa7a8;outline-offset:3px}
