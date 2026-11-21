@@ -2,6 +2,66 @@
 window.ArchiSpotterMonuments = (function () {
   function init(currentLang, strings) {
       var selectedMonument=null, selectedMonumentCity=null;
+      // Existing ElevenLabs recordings from the original ArchiSpotter repository.
+      // Do not synthesize or charge credits for these previously generated MP3s.
+      var existingAudioIds={
+        'Coliseo':'colosseum',
+        'Panteón de Agripa':'pantheon',
+        'Foro Romano':'forum',
+        'Catedral de Florencia':'florence-duomo',
+        'Sagrada Familia':'sagrada-familia'
+      };
+      var audioBase='https://raw.githubusercontent.com/mauro26289-ui/ArchiSpotter/main/audio/';
+      var narrationAudio=new Audio();
+      narrationAudio.preload='none';
+      var activeAudioKey='';
+      var audioButton=null;
+      var audioLabels={
+        es:{play:'Escuchar audioguía · ElevenLabs',pause:'Pausar audioguía',resume:'Continuar audioguía',error:'No se pudo cargar el audio. Comprueba tu conexión.'},
+        en:{play:'Play audio guide · ElevenLabs',pause:'Pause audio guide',resume:'Resume audio guide',error:'Could not load the audio. Check your connection.'},
+        it:{play:'Ascolta audioguida · ElevenLabs',pause:'Pausa audioguida',resume:'Riprendi audioguida',error:'Impossibile caricare l’audio. Controlla la connessione.'}
+      };
+      function stopNarration(){
+        narrationAudio.pause();
+        narrationAudio.removeAttribute('src');
+        narrationAudio.load();
+        activeAudioKey='';
+        if(audioButton)audioButton.textContent=audioLabels[currentLang()].play;
+      }
+      function updateAudioButton(){
+        if(!audioButton)return;
+        var labels=audioLabels[currentLang()];
+        audioButton.textContent=narrationAudio.paused?(narrationAudio.currentTime>0?labels.resume:labels.play):labels.pause;
+      }
+      narrationAudio.addEventListener('ended',function(){narrationAudio.currentTime=0;updateAudioButton();});
+      narrationAudio.addEventListener('pause',updateAudioButton);
+      narrationAudio.addEventListener('play',updateAudioButton);
+      narrationAudio.addEventListener('error',function(){
+        if(!audioButton||!activeAudioKey)return;
+        audioButton.textContent=audioLabels[currentLang()].error;
+        narrationAudio.pause();
+      });
+      function renderNarrationControl(place,language){
+        audioButton=document.querySelector('#monument-detail .audio-action');
+        if(!audioButton)return;
+        var id=existingAudioIds[place[0]];
+        audioButton.hidden=!id;
+        audioButton.disabled=!id;
+        if(!id){stopNarration();return;}
+        var key=id+'-'+language;
+        if(activeAudioKey!==key){
+          stopNarration();
+          activeAudioKey=key;
+          narrationAudio.src=audioBase+key+'.mp3';
+          narrationAudio.playbackRate=1.15;
+        }
+        updateAudioButton();
+        audioButton.onclick=function(){
+          if(!narrationAudio.paused){narrationAudio.pause();return;}
+          narrationAudio.play().catch(function(){audioButton.textContent=audioLabels[currentLang()].error;});
+        };
+      }
+
       var officialSites={"Coliseo":"https://colosseo.it/en/","Panteón de Agripa":"https://direzionemuseiroma.cultura.gov.it/en/pantheon/","Fontana di Trevi":"https://www.turismoroma.it/en/places/trevi-fountain","Foro Romano":"https://colosseo.it/en/","Castillo de Sant'Angelo":"https://direzionemuseiroma.cultura.gov.it/en/","Catedral de Florencia":"https://duomo.firenze.it/en/home","Ponte Vecchio":"https://www.feelflorence.it/en","Palazzo Vecchio":"https://musefirenze.it/en/musei/museo-di-palazzo-vecchio/","Sagrada Familia":"https://sagradafamilia.org/","Casa Batlló":"https://www.casabatllo.es/en/","Parque Güell":"https://parkguell.barcelona/en","Casa Milà":"https://www.lapedrera.com/en","Palacio Real":"https://www.patrimonionacional.es/en","Puerta de Alcalá":"https://www.esmadrid.com/en","Palacio de Cristal":"https://www.museoreinasofia.es/en","Templo de Debod":"https://www.esmadrid.com/en","Torre Eiffel":"https://www.toureiffel.paris/en","Arco del Triunfo":"https://www.paris-arc-de-triomphe.fr/en","Catedral de Notre-Dame":"https://www.notredamedeparis.fr/en/","Basílica del Sacré-Cœur":"https://www.sacre-coeur-montmartre.com/english/","Museo del Louvre":"https://www.louvre.fr/en","Palacio de Versalles":"https://en.chateauversailles.fr/","Partenón":"https://www.theacropolismuseum.gr/en","Erecteión":"https://www.theacropolismuseum.gr/en","Templo de Zeus Olímpico":"https://odysseus.culture.gr/","Odeón de Herodes Ático":"https://odysseus.culture.gr/","Templo de Apolo":"https://delphi.culture.gr/","Palacio de Westminster":"https://www.parliament.uk/visiting/","Tower Bridge":"https://www.towerbridge.org.uk/","Abadía de Westminster":"https://www.westminster-abbey.org/","Catedral de San Pablo":"https://www.stpauls.co.uk/","Termas romanas":"https://www.romanbaths.co.uk/","Puerta de Brandeburgo":"https://www.visitberlin.de/en/brandenburg-gate","Catedral de Berlín":"https://www.berlinerdom.de/en/","Edificio del Reichstag":"https://www.bundestag.de/en/visittheBundestag","Memorial del Holocausto":"https://www.stiftung-denkmal.de/en/","Catedral de Colonia":"https://www.koelner-dom.de/en/","Torre de Belém":"https://www.museusemonumentos.pt/en","Monasterio de los Jerónimos":"https://www.museusemonumentos.pt/en","Castillo de San Jorge":"https://castelodesaojorge.pt/en/","Elevador de Santa Justa":"https://www.visitlisboa.com/en","Puente Don Luis I":"https://visitporto.travel/en-GB","Obelisco":"https://turismo.buenosaires.gob.ar/en","Teatro Colón":"https://teatrocolon.org.ar/en","Casa Rosada":"https://www.casarosada.gob.ar/","Palacio Barolo":"https://palaciobarolo.com.ar/","Congreso de la Nación Argentina":"https://www.congreso.gob.ar/","Puente de la Mujer":"https://turismo.buenosaires.gob.ar/en"};
       function monumentKey(place,city) { return city[0]+'|'+place[0]; }
       function storedMonumentSet(key) {
@@ -78,6 +138,7 @@ window.ArchiSpotterMonuments = (function () {
         };
         document.getElementById('monument-meta').textContent=metas[place[0]]?metas[place[0]][0][idx]:strings[language].metaPending;
         document.getElementById('monument-story-text').textContent=entry?entry.history[language]:strings[language].storyPending;
+        renderNarrationControl(place,language);
         document.getElementById('monument-story-heading').textContent=entry?({es:'Historia',en:'History',it:'Storia'})[language]:strings[language].monumentStoryTitle;
         var extra=document.getElementById('monument-editorial');extra.hidden=!entry;
         if(entry){
@@ -93,6 +154,7 @@ window.ArchiSpotterMonuments = (function () {
         updateMonumentActions();
       }
       document.getElementById('monument-back').addEventListener('click',function(){
+        stopNarration();
         document.getElementById('monument-detail').hidden=true;
         if(document.getElementById('monument-back').getAttribute('data-direct-country')==='true'){
           document.getElementById('city-detail').hidden=true;
