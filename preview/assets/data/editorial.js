@@ -1,4 +1,4 @@
-/* Stage 31: Delphi and London; earlier entries preserved. */
+/* Stage 32: Bath and Berlin; prior editorial entries retained. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -1012,6 +1012,166 @@ window.ArchiSpotterEditorial={
     },
     "sources": [
       "https://www.stpauls.co.uk/our-history"
+    ]
+  },
+  "Termas romanas": {
+    "history": {
+      "es": "En la ciudad inglesa de Bath, las termas romanas recuerdan la importancia que tuvo el agua caliente para los habitantes de la antigua Britania. Mucho antes de la conquista romana, el manantial ya era considerado sagrado por las comunidades locales, que lo relacionaban con la diosa Sulis. Cuando los romanos desarrollaron el asentamiento de Aquae Sulis, asociaron aquella divinidad con Minerva y construyeron un complejo de baños y un templo. El agua brotaba naturalmente caliente y alimentaba piscinas, conductos y espacios destinados al baño. Para los visitantes de entonces, acudir a las termas significaba mucho más que lavarse: era una actividad social, religiosa y cotidiana. El conjunto fue transformándose durante los siglos de ocupación romana. Después, muchas estructuras quedaron enterradas bajo edificios posteriores, mientras el uso de las aguas termales continuó formando parte de la identidad de Bath. Las excavaciones arqueológicas permitieron recuperar la gran piscina, restos de salas y numerosas ofrendas depositadas por los fieles. Hoy el visitante puede recorrer pasarelas sobre un lugar que conserva tanto ingeniería antigua como testimonios personales. Las termas muestran cómo una fuente natural pudo dar origen a una ciudad y mantener su importancia a través de diferentes épocas.",
+      "en": "In the English city of Bath, the Roman Baths recall the importance of hot water to the inhabitants of ancient Britain. Long before the Roman conquest, local communities regarded the spring as sacred and associated it with the goddess Sulis. When the Romans developed the settlement of Aquae Sulis, they linked this deity with Minerva and built a complex of baths and a temple. Naturally hot water supplied pools, channels and rooms used for bathing. For ancient visitors, the baths offered far more than washing: they were places for social life, religious observance and everyday encounters. The complex changed during centuries of Roman occupation. Later, many structures became buried beneath subsequent buildings, while the thermal waters remained central to Bath's identity. Archaeological excavations revealed the Great Bath, remains of adjoining rooms and numerous offerings left by worshippers. Today visitors walk above a place preserving both ancient engineering and traces of individual lives. The baths demonstrate how a natural spring could shape an entire city and remain important through changing historical periods. They also reveal how Roman practices were adapted to local beliefs rather than simply replacing them. Water, architecture and devotion became closely connected in this remarkable setting.",
+      "it": "Nella città inglese di Bath, le terme romane ricordano l'importanza dell'acqua calda per gli abitanti della Britannia antica. Molto prima della conquista romana, le comunità locali consideravano sacra la sorgente e la associavano alla dea Sulis. Quando i Romani svilupparono l'insediamento di Aquae Sulis, collegarono questa divinità a Minerva e costruirono un complesso di bagni e un tempio. L'acqua naturalmente calda alimentava vasche, canali e ambienti destinati al bagno. Per i visitatori antichi le terme offrivano molto più della pulizia: erano luoghi di vita sociale, pratiche religiose e incontri quotidiani. Il complesso cambiò durante i secoli dell'occupazione romana. In seguito molte strutture furono sepolte sotto edifici successivi, mentre le acque termali rimasero centrali nell'identità di Bath. Gli scavi archeologici riportarono alla luce la grande piscina, resti di sale vicine e numerose offerte lasciate dai fedeli. Oggi i visitatori camminano sopra un luogo che conserva sia l'ingegneria antica sia le tracce delle vite individuali. Le terme mostrano come una sorgente naturale potesse plasmare un'intera città e mantenere la propria importanza attraverso epoche differenti. Rivelano inoltre come le pratiche romane fossero adattate alle credenze locali, invece di sostituirle completamente. Acqua, architettura e devozione si unirono in questo luogo straordinario."
+    },
+    "curiosity": {
+      "es": "Las tablillas de maldición halladas en el santuario incluyen peticiones para recuperar objetos robados.",
+      "en": "Curse tablets found at the sanctuary include appeals concerning stolen belongings.",
+      "it": "Le tavolette di maledizione ritrovate nel santuario comprendono richieste relative a oggetti rubati."
+    },
+    "architecture": {
+      "es": [
+        "El Gran Baño está revestido con grandes losas de piedra.",
+        "El sistema romano conducía el agua caliente mediante canales de plomo.",
+        "Las salas de baño utilizaban sistemas de calefacción bajo el pavimento."
+      ],
+      "en": [
+        "The Great Bath is lined with large stone slabs.",
+        "Roman channels carried hot water through lead pipes.",
+        "Bathing rooms used underfloor heating systems."
+      ],
+      "it": [
+        "La Grande Vasca è rivestita da grandi lastre di pietra.",
+        "I canali romani trasportavano l'acqua calda attraverso tubi di piombo.",
+        "Gli ambienti termali utilizzavano sistemi di riscaldamento sotto il pavimento."
+      ]
+    },
+    "sources": [
+      "https://www.romanbaths.co.uk/roman-baths-history"
+    ]
+  },
+  "Puerta de Brandeburgo": {
+    "history": {
+      "es": "La Puerta de Brandeburgo se construyó entre 1788 y 1791 como una entrada monumental a Berlín, por encargo del rey prusiano Federico Guillermo II. Su arquitecto, Carl Gotthard Langhans, tomó como referencia los propileos de la Acrópolis de Atenas y creó una obra neoclásica que expresaba orden y prestigio. En lo alto se instaló una cuadriga, un carro tirado por cuatro caballos, diseñada por Johann Gottfried Schadow. La puerta presenció cambios políticos profundos. Tras la derrota prusiana de 1806, Napoleón ordenó trasladar la cuadriga a París; regresó después de su caída. Durante el siglo XIX, el monumento se convirtió en escenario de celebraciones y manifestaciones de poder. Los combates de la Segunda Guerra Mundial dejaron graves daños en su estructura y decoración. Cuando Berlín quedó dividida, la construcción terminó junto a la frontera entre los sectores oriental y occidental, dentro de una zona inaccesible para la mayoría de los ciudadanos. La caída del Muro en 1989 transformó radicalmente su significado: de símbolo de separación pasó a representar la reunificación alemana. Hoy la puerta ocupa el centro de una plaza abierta a peatones y visitantes. Su historia demuestra cómo una misma obra arquitectónica puede adquirir sentidos distintos según los acontecimientos que la rodean.",
+      "en": "The Brandenburg Gate was built between 1788 and 1791 as a monumental entrance to Berlin, commissioned by the Prussian king Frederick William II. Architect Carl Gotthard Langhans drew inspiration from the Propylaea of the Acropolis in Athens, creating a Neoclassical structure expressing order and prestige. A quadriga, a chariot drawn by four horses, designed by Johann Gottfried Schadow, crowned the gate. The monument witnessed profound political changes. Following Prussia's defeat in 1806, Napoleon ordered the quadriga taken to Paris; it returned after his downfall. During the nineteenth century, the gate became a setting for celebrations and displays of power. Fighting in the Second World War severely damaged its structure and decoration. When Berlin was divided, the monument stood beside the boundary between the eastern and western sectors, within an area inaccessible to most residents. The fall of the Berlin Wall in 1989 transformed its meaning: once associated with division, it came to represent German reunification. Today the gate stands in a square open to pedestrians and visitors. Its history demonstrates how the same architectural work can acquire very different meanings as events unfold around it. The monument remains a powerful reminder of the relationship between urban space, national memory and political change.",
+      "it": "La Porta di Brandeburgo fu costruita tra il 1788 e il 1791 come ingresso monumentale a Berlino, su incarico del re prussiano Federico Guglielmo II. L'architetto Carl Gotthard Langhans si ispirò ai Propilei dell'Acropoli di Atene, creando una struttura neoclassica che esprimeva ordine e prestigio. Una quadriga, carro trainato da quattro cavalli e progettato da Johann Gottfried Schadow, coronava la porta. Il monumento assistette a profondi cambiamenti politici. Dopo la sconfitta prussiana del 1806, Napoleone ordinò di trasferire la quadriga a Parigi; essa tornò dopo la sua caduta. Nell'Ottocento la porta divenne scenario di celebrazioni e manifestazioni di potere. I combattimenti della Seconda guerra mondiale danneggiarono gravemente la struttura e le decorazioni. Quando Berlino fu divisa, il monumento si trovò vicino al confine tra i settori orientale e occidentale, in un'area inaccessibile alla maggior parte degli abitanti. La caduta del Muro nel 1989 ne trasformò il significato: da simbolo della divisione divenne rappresentazione della riunificazione tedesca. Oggi la porta si trova in una piazza aperta ai pedoni e ai visitatori. La sua storia dimostra come una stessa opera architettonica possa assumere significati differenti secondo gli avvenimenti circostanti. Rimane un ricordo potente del rapporto tra spazio urbano, memoria nazionale e cambiamento politico."
+    },
+    "curiosity": {
+      "es": "La cuadriga fue llevada a París por Napoleón y devuelta a Berlín en 1814.",
+      "en": "Napoleon had the quadriga taken to Paris; it returned to Berlin in 1814.",
+      "it": "Napoleone fece portare la quadriga a Parigi; tornò a Berlino nel 1814."
+    },
+    "architecture": {
+      "es": [
+        "La puerta tiene cinco pasos, separados por columnas dóricas.",
+        "Su diseño se inspira en los Propileos de la Acrópolis ateniense.",
+        "La cuadriga escultórica corona el entablamento."
+      ],
+      "en": [
+        "The gate has five passages separated by Doric columns.",
+        "Its design references the Propylaea of the Athenian Acropolis.",
+        "A sculpted quadriga crowns the entablature."
+      ],
+      "it": [
+        "La porta presenta cinque passaggi separati da colonne doriche.",
+        "Il progetto richiama i Propilei dell'Acropoli ateniese.",
+        "Una quadriga scolpita corona la trabeazione."
+      ]
+    },
+    "sources": [
+      "https://www.visitberlin.de/en/brandenburg-gate"
+    ]
+  },
+  "Catedral de Berlín": {
+    "history": {
+      "es": "La Catedral de Berlín, situada en la Isla de los Museos, es uno de los grandes edificios religiosos de la capital alemana. Su aspecto actual procede principalmente de la reconstrucción impulsada por el emperador Guillermo II a finales del siglo XIX. El arquitecto Julius Carl Raschdorff diseñó una iglesia monumental de inspiración renacentista y barroca, destinada a expresar la importancia de la monarquía protestante prusiana. Las obras comenzaron en 1894 y el edificio fue inaugurado en 1905. Su cúpula se convirtió en una referencia del paisaje urbano junto al río Spree. El interior reunía espacios para el culto, ceremonias de Estado y memoria dinástica. Bajo la iglesia se conserva la cripta de los Hohenzollern, vinculada a la familia gobernante de Brandeburgo y Prusia. Durante la Segunda Guerra Mundial, los bombardeos dañaron gravemente la cúpula y otras partes del edificio. La reconstrucción posterior, desarrollada durante décadas, recuperó su uso religioso y patrimonial, aunque introdujo modificaciones respecto del diseño original. Hoy la catedral acoge celebraciones, conciertos y visitas. Su historia refleja la relación entre arquitectura religiosa, poder político y transformación urbana. También recuerda los esfuerzos de conservación necesarios para mantener un edificio monumental después de las destrucciones sufridas por Berlín en el siglo XX.",
+      "en": "Berlin Cathedral, on Museum Island, is one of the German capital's major religious buildings. Its present appearance largely reflects a reconstruction commissioned by Emperor Wilhelm II at the end of the nineteenth century. Architect Julius Carl Raschdorff designed a monumental church inspired by Renaissance and Baroque architecture, intended to express the importance of the Prussian Protestant monarchy. Construction began in 1894 and the building opened in 1905. Its dome became a prominent feature of the cityscape beside the River Spree. Inside were spaces for worship, state ceremonies and dynastic remembrance. Beneath the church lies the Hohenzollern crypt, associated with the ruling family of Brandenburg and Prussia. During the Second World War, bombing severely damaged the dome and other parts of the building. Reconstruction over subsequent decades restored its religious and heritage functions, although some features differed from the original design. Today the cathedral hosts services, concerts and visitors. Its history reveals the relationship between religious architecture, political authority and urban change. It also demonstrates the long effort required to preserve a monumental building after the destruction suffered by Berlin in the twentieth century. The cathedral remains both an active place of worship and a visible record of the city's complex past.",
+      "it": "Il Duomo di Berlino, sull'Isola dei Musei, è uno dei principali edifici religiosi della capitale tedesca. Il suo aspetto attuale deriva soprattutto dalla ricostruzione voluta dall'imperatore Guglielmo II alla fine dell'Ottocento. L'architetto Julius Carl Raschdorff progettò una chiesa monumentale ispirata al Rinascimento e al Barocco, destinata a esprimere l'importanza della monarchia protestante prussiana. I lavori iniziarono nel 1894 e l'edificio fu inaugurato nel 1905. La cupola divenne un elemento caratteristico del panorama urbano accanto al fiume Sprea. All'interno si trovavano spazi per il culto, cerimonie di Stato e memoria dinastica. Sotto la chiesa si conserva la cripta degli Hohenzollern, legata alla famiglia regnante del Brandeburgo e della Prussia. Durante la Seconda guerra mondiale i bombardamenti danneggiarono gravemente la cupola e altre parti dell'edificio. La ricostruzione nei decenni successivi restituì le funzioni religiose e culturali, pur introducendo modifiche rispetto al progetto originale. Oggi la cattedrale ospita celebrazioni, concerti e visitatori. La sua storia rivela il rapporto tra architettura religiosa, autorità politica e trasformazione urbana. Mostra inoltre il lungo impegno necessario per conservare un edificio monumentale dopo le distruzioni subite da Berlino nel Novecento. Il duomo rimane un luogo di culto attivo e una testimonianza visibile del passato complesso della città."
+    },
+    "curiosity": {
+      "es": "La cripta de los Hohenzollern conserva sepulturas de miembros de una dinastía que gobernó durante siglos.",
+      "en": "The Hohenzollern crypt contains burials from a dynasty that ruled for centuries.",
+      "it": "La cripta degli Hohenzollern conserva sepolture di una dinastia che governò per secoli."
+    },
+    "architecture": {
+      "es": [
+        "Su gran cúpula domina el crucero central.",
+        "El diseño combina referencias neorrenacentistas y neobarrocas.",
+        "La fachada utiliza columnas, esculturas y frontones monumentales."
+      ],
+      "en": [
+        "A large dome dominates the central crossing.",
+        "The design combines Neo-Renaissance and Neo-Baroque references.",
+        "The façade features monumental columns, sculpture and pediments."
+      ],
+      "it": [
+        "Una grande cupola domina la crociera centrale.",
+        "Il progetto combina riferimenti neorinascimentali e neobarocchi.",
+        "La facciata presenta colonne, sculture e frontoni monumentali."
+      ]
+    },
+    "sources": [
+      "https://www.berlinerdom.de/en/"
+    ]
+  },
+  "Edificio del Reichstag": {
+    "history": {
+      "es": "El edificio del Reichstag fue construido para albergar el Parlamento del Imperio alemán después de la unificación de 1871. El arquitecto Paul Wallot ganó el concurso de diseño y las obras se desarrollaron entre 1884 y 1894. Su arquitectura monumental combinaba elementos históricos con nuevas técnicas constructivas y buscaba dar una sede visible a la representación política nacional. Durante la República de Weimar continuó siendo un escenario central de la vida parlamentaria. En 1933 un incendio dañó gravemente el edificio y se convirtió en un acontecimiento utilizado por los nazis para justificar medidas represivas. Después de la Segunda Guerra Mundial, el Reichstag quedó junto a la división de Berlín y perdió su función legislativa principal. Con la reunificación alemana comenzó una nueva etapa. El Parlamento decidió trasladarse de Bonn a Berlín y encargó al arquitecto Norman Foster una transformación del edificio. La renovación, completada en 1999, introdujo una cúpula de vidrio abierta a los visitantes y convirtió la transparencia en un elemento simbólico del proyecto. Hoy el Bundestag celebra aquí sus sesiones. El edificio reúne huellas del imperio, de la democracia, de la dictadura y de la reconstrucción contemporánea. Su historia muestra cómo la arquitectura puede cambiar de significado sin borrar completamente las marcas del pasado.",
+      "en": "The Reichstag building was constructed to house the parliament of the German Empire after unification in 1871. Architect Paul Wallot won the design competition, and construction took place between 1884 and 1894. Its monumental architecture combined historical styles with new building techniques, providing a visible home for national political representation. During the Weimar Republic it remained central to parliamentary life. In 1933 a fire seriously damaged the building and became an event exploited by the Nazis to justify repressive measures. After the Second World War, the Reichstag stood near Berlin's division and no longer served as the principal legislative chamber. German reunification opened a new chapter. Parliament decided to move from Bonn to Berlin and commissioned architect Norman Foster to transform the building. The renovation, completed in 1999, introduced a glass dome accessible to visitors, making transparency a symbolic part of the design. Today the Bundestag meets here. The building contains traces of empire, democracy, dictatorship and contemporary reconstruction. Its history shows how architecture can acquire new meanings without completely erasing the marks of the past. Visitors can observe both the surviving historical fabric and the modern interventions that turned the former imperial parliament into a working institution for a reunited country.",
+      "it": "L'edificio del Reichstag fu costruito per ospitare il Parlamento dell'Impero tedesco dopo l'unificazione del 1871. L'architetto Paul Wallot vinse il concorso di progettazione e i lavori si svolsero tra il 1884 e il 1894. L'architettura monumentale combinava stili storici e nuove tecniche costruttive, offrendo una sede visibile alla rappresentanza politica nazionale. Durante la Repubblica di Weimar rimase al centro della vita parlamentare. Nel 1933 un incendio danneggiò gravemente l'edificio e fu sfruttato dai nazisti per giustificare misure repressive. Dopo la Seconda guerra mondiale, il Reichstag si trovò vicino alla divisione di Berlino e non svolse più la funzione di principale aula legislativa. La riunificazione tedesca aprì una nuova fase. Il Parlamento decise di trasferirsi da Bonn a Berlino e incaricò l'architetto Norman Foster di trasformare l'edificio. Il restauro, completato nel 1999, introdusse una cupola di vetro accessibile ai visitatori, facendo della trasparenza un elemento simbolico del progetto. Oggi il Bundestag si riunisce qui. L'edificio conserva tracce dell'impero, della democrazia, della dittatura e della ricostruzione contemporanea. La sua storia mostra come l'architettura possa acquisire nuovi significati senza cancellare completamente i segni del passato. I visitatori osservano sia la struttura storica sia gli interventi moderni che hanno trasformato l'antico parlamento imperiale in un'istituzione attiva del paese riunificato."
+    },
+    "curiosity": {
+      "es": "Las inscripciones dejadas por soldados soviéticos en 1945 se conservaron en partes del edificio restaurado.",
+      "en": "Inscriptions left by Soviet soldiers in 1945 were preserved in parts of the restored building.",
+      "it": "Le iscrizioni lasciate dai soldati sovietici nel 1945 sono state conservate in parti dell'edificio restaurato."
+    },
+    "architecture": {
+      "es": [
+        "La cúpula moderna utiliza vidrio y acero.",
+        "Una rampa helicoidal permite recorrer el interior de la cúpula.",
+        "El proyecto conserva elementos históricos junto a intervenciones contemporáneas."
+      ],
+      "en": [
+        "The modern dome uses glass and steel.",
+        "A spiral ramp allows visitors to ascend inside the dome.",
+        "The design preserves historic fabric alongside contemporary interventions."
+      ],
+      "it": [
+        "La cupola moderna utilizza vetro e acciaio.",
+        "Una rampa elicoidale permette di salire all'interno della cupola.",
+        "Il progetto conserva elementi storici accanto a interventi contemporanei."
+      ]
+    },
+    "sources": [
+      "https://www.bundestag.de/en/visittheBundestag/reichstag-building"
+    ]
+  },
+  "Memorial del Holocausto": {
+    "history": {
+      "es": "En el centro de Berlín, el Memorial a los Judíos Asesinados de Europa recuerda a las víctimas judías del genocidio perpetrado por la Alemania nazi. Su construcción fue el resultado de largos debates públicos sobre cómo representar una historia de persecución y asesinato masivo en el espacio urbano. El proyecto del arquitecto Peter Eisenman fue finalmente elegido y el monumento se inauguró en 2005. En lugar de utilizar una estatua tradicional, el diseño presenta un campo de bloques de hormigón de distintas alturas, dispuestos sobre un terreno ondulado. Al caminar entre ellos, las perspectivas cambian y el entorno puede parecer desorientador. Esta experiencia no pretende reproducir lo que sufrieron las víctimas, sino invitar a la reflexión sobre la memoria y la responsabilidad histórica. Bajo el campo de estelas se encuentra un centro de información que presenta documentos, biografías y testimonios relacionados con el Holocausto. Su contenido permite comprender que detrás de las cifras hubo personas, familias y comunidades destruidas. La ubicación del memorial, cerca de antiguos centros del poder nazi, refuerza su presencia en la vida pública de la capital. El lugar no ofrece una interpretación única: plantea preguntas sobre la violencia, el recuerdo y la obligación de transmitir la historia a nuevas generaciones.",
+      "en": "In central Berlin, the Memorial to the Murdered Jews of Europe commemorates the Jewish victims of the genocide perpetrated by Nazi Germany. Its construction followed lengthy public debates about how to represent persecution and mass murder in the urban landscape. Architect Peter Eisenman's design was eventually selected, and the memorial opened in 2005. Rather than using a traditional statue, it consists of a field of concrete blocks of varying heights arranged across undulating ground. As visitors walk between them, perspectives change and the surroundings can become disorienting. This experience does not attempt to reproduce the suffering of victims; instead, it invites reflection on memory and historical responsibility. Beneath the field of stelae is an information centre presenting documents, biographies and testimonies relating to the Holocaust. Its exhibitions help visitors understand that behind the numbers were individuals, families and communities destroyed by persecution. The memorial's location near former centres of Nazi power reinforces its presence in the capital's public life. It does not impose a single interpretation but raises questions about violence, remembrance and the responsibility to pass history to future generations. The combination of an abstract landscape and documented personal stories makes the site a significant place of commemoration and education.",
+      "it": "Nel centro di Berlino, il Memoriale per gli ebrei assassinati d'Europa ricorda le vittime ebree del genocidio perpetrato dalla Germania nazista. La sua costruzione seguì lunghi dibattiti pubblici su come rappresentare persecuzione e sterminio nello spazio urbano. Il progetto dell'architetto Peter Eisenman fu infine scelto e il memoriale venne inaugurato nel 2005. Invece di una statua tradizionale, presenta un campo di blocchi di cemento di altezze differenti, disposti su un terreno ondulato. Camminando tra essi, le prospettive cambiano e l'ambiente può risultare disorientante. Questa esperienza non intende riprodurre la sofferenza delle vittime, ma invita a riflettere sulla memoria e sulla responsabilità storica. Sotto il campo di stele si trova un centro di informazione che presenta documenti, biografie e testimonianze legate all'Olocausto. I contenuti aiutano a comprendere che dietro i numeri vi erano individui, famiglie e comunità distrutte dalla persecuzione. La posizione del memoriale, vicino agli antichi centri del potere nazista, rafforza la sua presenza nella vita pubblica della capitale. Il luogo non impone un'unica interpretazione, ma solleva domande sulla violenza, sul ricordo e sulla responsabilità di trasmettere la storia alle generazioni future. L'unione tra paesaggio astratto e testimonianze personali documentate rende questo spazio un importante luogo di commemorazione e formazione."
+    },
+    "curiosity": {
+      "es": "El centro de información subterráneo incorpora una Sala de los Nombres dedicada a las víctimas.",
+      "en": "The underground information centre includes a Room of Names dedicated to victims.",
+      "it": "Il centro di informazione sotterraneo comprende una Sala dei Nomi dedicata alle vittime."
+    },
+    "architecture": {
+      "es": [
+        "El campo contiene 2.711 estelas de hormigón.",
+        "Las estelas varían de altura sobre una superficie ondulada.",
+        "El centro de información se encuentra bajo el conjunto escultórico."
+      ],
+      "en": [
+        "The field contains 2,711 concrete stelae.",
+        "The stelae vary in height across undulating ground.",
+        "The information centre lies beneath the sculptural field."
+      ],
+      "it": [
+        "Il campo contiene 2.711 stele di cemento.",
+        "Le stele hanno altezze diverse su un terreno ondulato.",
+        "Il centro di informazione si trova sotto il campo scultoreo."
+      ]
+    },
+    "sources": [
+      "https://www.stiftung-denkmal.de/en/memorials/memorial-to-the-murdered-jews-of-europe/"
     ]
   }
 };
