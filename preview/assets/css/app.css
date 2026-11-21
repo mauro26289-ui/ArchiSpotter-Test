@@ -408,3 +408,14 @@
 .monument-photo-choices:not([hidden]){display:flex;justify-content:center;gap:10px;margin:10px 0 12px;}
 .monument-photo-choice{width:38px;height:38px;border:1px solid var(--muted);border-radius:50%;background:transparent;color:var(--ink);font:600 14px Inter,sans-serif;cursor:pointer;}
 .monument-photo-choice[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+/* City stories: editorial card, native narration, and curiosities */
+#city-detail .city-guide{margin:20px 0 10px;padding:24px 21px;border-radius:19px;background:var(--surface,#f7f5f0);color:var(--ink);border:1px solid rgba(120,130,120,.16)}
+#city-detail .city-guide-kicker{font:600 10px/1.5 Inter,sans-serif;letter-spacing:.16em;color:var(--muted);margin-bottom:10px}
+#city-detail .city-guide h2{font:600 27px/1.2 Fraunces,Georgia,serif;margin:0 0 15px}
+#city-detail .city-guide p{font:400 15px/1.8 Inter,sans-serif;margin:0 0 20px;max-width:65ch}
+#city-detail .city-guide-audio{width:100%;border:1px solid currentColor;background:transparent;color:var(--ink);border-radius:12px;padding:14px 16px;text-align:center;font:600 14px Inter,sans-serif;cursor:pointer}
+#city-detail .city-guide h3{font:600 22px/1.3 Fraunces,Georgia,serif;margin:27px 0 12px}
+#city-detail .city-guide ul{margin:0;padding-left:20px;font:400 14px/1.7 Inter,sans-serif}
+#city-detail .city-guide li+li{margin-top:9px}
+#country-detail .landmark-card:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:12px}
