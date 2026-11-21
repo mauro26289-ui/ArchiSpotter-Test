@@ -31,7 +31,6 @@ window.ArchiSpotterMap = (function () {
     markers = L.layerGroup().addTo(map);
     var catalog=window.ArchiSpotterData.countryCitySamples,count=0;
     Object.keys(catalog).forEach(function(country){catalog[country].forEach(function(city){
-      if(country==='ar'&&city[0]!=='Buenos Aires')return;
       city[4].forEach(function(place){
         var pos=monumentCoordinates[place[0]];if(!pos)return;
         count++;
@@ -55,7 +54,7 @@ window.ArchiSpotterMap = (function () {
         });
       });
     });});
-    var status=document.getElementById('map-status');if(status)status.textContent=count+' monumentos ubicados · Catálogo de 48 en preparación';
+    var status=document.getElementById('map-status');if(status)status.textContent=({es:count+' de 48 monumentos ubicados',en:count+' of 48 monuments mapped',it:count+' di 48 monumenti sulla mappa'})[document.documentElement.lang];
   }
   function locate() {
     var status=document.getElementById('map-location-status');
@@ -77,7 +76,7 @@ window.ArchiSpotterMap = (function () {
   }
   // Local, accent-insensitive search across the mapped catalogue; no external geocoding.
   var searchInput=document.getElementById('map-search'),searchResults=document.getElementById('map-search-results');
-  function normalize(value){return String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();}
+  function normalize(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();}
   function searchEntries(){var entries=[],catalog=window.ArchiSpotterData.countryCitySamples;
     Object.keys(catalog).forEach(function(country){catalog[country].forEach(function(city){city[4].forEach(function(place){
       var pos=monumentCoordinates[place[0]];if(pos)entries.push({place:place,city:city,country:country,pos:pos});
