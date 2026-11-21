@@ -29,6 +29,7 @@ window.ArchiSpotterMonuments = (function () {
         document.getElementById('monument-back').setAttribute('data-direct-country',String(document.getElementById('city-detail').hidden));
         renderMonument();
         document.getElementById('city-detail').hidden=true;
+        document.getElementById('country-detail').hidden=true;
         document.getElementById('monument-detail').hidden=false;
         document.querySelector('.app-content').scrollTop=0;
       }
@@ -97,6 +98,7 @@ window.ArchiSpotterMonuments = (function () {
           document.getElementById('city-detail').hidden=true;
           document.getElementById('country-detail').hidden=false;
         }else{
+          document.getElementById('country-detail').hidden=true;
           document.getElementById('city-detail').hidden=false;
         }
         document.querySelector('.app-content').scrollTop=0;
