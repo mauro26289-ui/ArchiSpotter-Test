@@ -22,7 +22,7 @@ window.ArchiSpotterExplore = (function () {
           var heading = document.createElement('div'); heading.className='city-heading';
           var open = document.createElement('button'); open.type='button'; open.className='city-open';
           var title = document.createElement('h3'); title.textContent=city[idx]; open.appendChild(title);
-          var hint = document.createElement('span'); hint.textContent=strings[currentLang()].viewCity + ' ›'; open.appendChild(hint);
+          var hint = document.createElement('span'); hint.textContent=({es:'Saber más',en:'Learn more',it:'Scopri di più'})[currentLang()] + ' ›'; open.appendChild(hint);
           open.addEventListener('click',function(){ openCity(city); });
           heading.appendChild(open); section.appendChild(heading);
           var row = document.createElement('div'); row.className='landmarks-row';
@@ -30,6 +30,9 @@ window.ArchiSpotterExplore = (function () {
             var card=document.createElement('article'); card.className='landmark-card';
             card.appendChild(picture(place[3],500,''));
             var name=document.createElement('h4'); name.textContent=place[idx]; card.appendChild(name);
+            card.setAttribute('role','button');card.tabIndex=0;card.style.cursor='pointer';
+            card.addEventListener('click',function(){openMonument(place,city);});
+            card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openMonument(place,city);}});
             if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(card.querySelector('img'),place,500);
             row.appendChild(card);
           });
@@ -37,27 +40,27 @@ window.ArchiSpotterExplore = (function () {
         });
       }
       function openCity(city) {
-        // A city with a single monument opens its monument directly.
-        if(city[4].length===1){openMonument(city[4][0],city);return;}
         var idx={es:0,en:1,it:2}[currentLang()]||0;
         var photo=document.getElementById('city-detail-photo');
         photo.src='https://images.unsplash.com/'+city[3]+'?auto=format&fit=crop&w=1100&q=80';
         document.getElementById('city-detail-name').textContent=city[idx];
-        var gallery=document.getElementById('city-gallery'); gallery.replaceChildren();
-        city[4].forEach(function(place) {
-          var item=document.createElement('article');
-          item.setAttribute('role','button'); item.tabIndex=0;
-          item.style.cursor='pointer';
-          item.addEventListener('click',function(){openMonument(place,city);});
-          item.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openMonument(place,city);}});
-          var img=document.createElement('img');
-          img.src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=650&q=80';
-          img.alt=''; img.loading='lazy'; img.decoding='async'; item.appendChild(img);
-          var title=document.createElement('h3'); title.textContent=place[idx]; item.appendChild(title);
-          var note=document.createElement('p'); note.textContent=strings[currentLang()].sampleImage; item.appendChild(note);
-          if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(img,place,650);
-          gallery.appendChild(item);
-        });
+        var guide=window.ArchiSpotterCityGuides&&window.ArchiSpotterCityGuides[city[0]];
+        var lang=currentLang();
+        var labels={es:['Una ciudad para descubrir','Escuchar audioguía','Detener audio','Curiosidades'],en:['A city to discover','Listen to audio guide','Stop audio','Did you know?'],it:['Una città da scoprire','Ascolta audioguida','Ferma audio','Curiosità']}[lang];
+        document.getElementById('city-guide-heading').textContent=labels[0];
+        document.getElementById('city-guide-description').textContent=guide?guide[lang][0]:'';
+        document.getElementById('city-curiosities-heading').textContent=labels[3];
+        var facts=document.getElementById('city-curiosities');facts.replaceChildren();
+        if(guide)guide[lang][1].forEach(function(f){var li=document.createElement('li');li.textContent=f;facts.appendChild(li);});
+        var audio=document.getElementById('city-guide-audio');audio.textContent=labels[1];
+        audio.onclick=function(){
+          if(!('speechSynthesis' in window))return;
+          if(speechSynthesis.speaking){speechSynthesis.cancel();audio.textContent=labels[1];return;}
+          var utterance=new SpeechSynthesisUtterance(city[idx]+'. '+(guide?guide[lang][0]:'')+' '+(guide?guide[lang][1].join('. '):''));
+          utterance.lang={es:'es-ES',en:'en-GB',it:'it-IT'}[lang];utterance.rate=1.15;
+          utterance.onend=function(){audio.textContent=labels[1];};
+          speechSynthesis.speak(utterance);audio.textContent=labels[2];
+        };
         var food=window.ArchiSpotterCityFood&&window.ArchiSpotterCityFood[city[0]];
         var foodSection=document.getElementById('city-food'),foodList=document.getElementById('city-food-list');
         foodList.replaceChildren();foodSection.hidden=!food;
@@ -70,6 +73,7 @@ window.ArchiSpotterExplore = (function () {
         document.querySelector('.app-content').scrollTop=0;
       }
       document.getElementById('city-back').addEventListener('click',function(){
+        if('speechSynthesis' in window)speechSynthesis.cancel();
         document.getElementById('city-detail').hidden=true;
         document.getElementById('country-detail').hidden=false;
         document.querySelector('.app-content').scrollTop=0;
