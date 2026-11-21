@@ -1,4 +1,4 @@
-/* Stage 28: Madrid editorial content; original audio scripts remain unchanged. */
+/* Stage 29: Paris editorial; earlier content preserved. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -521,6 +521,72 @@ window.ArchiSpotterEditorial={
     "sources": [
       "https://www.esmadrid.com/informacion-turistica/templo-de-debod",
       "https://www.esmadrid.com/en/tourist-information/temple-debod"
+    ]
+  },
+  "Torre Eiffel": {
+    "history": {
+      "es": "La Torre Eiffel fue construida como una de las grandes atracciones de la Exposición Universal de París de 1889, organizada para conmemorar el centenario de la Revolución francesa. El proyecto surgió de la empresa de Gustave Eiffel y fue desarrollado inicialmente por los ingenieros Maurice Koechlin y Émile Nouguier, con aportaciones del arquitecto Stephen Sauvestre. Su propuesta provocó una intensa discusión entre quienes celebraban las posibilidades de la ingeniería moderna y quienes consideraban que una estructura metálica tan elevada perjudicaría el paisaje parisino. Los trabajos comenzaron en 1887 y concluyeron en 1889, después de poco más de dos años. Al principio, la torre estaba concebida como una instalación temporal vinculada a la exposición. Su utilidad para experimentos científicos y, especialmente, para las comunicaciones por radio contribuyó a que permaneciera en pie. Durante el siglo XX se convirtió progresivamente en una imagen reconocible de París y de Francia. También fue escenario de importantes innovaciones en iluminación, transmisión y mantenimiento de estructuras metálicas. Hoy sigue recibiendo visitantes de todo el mundo. Su historia permite comprender cómo un proyecto inicialmente controvertido pudo pasar de ser una demostración tecnológica a convertirse en un símbolo cultural de alcance internacional. La torre conserva así el recuerdo de una época que confiaba en el progreso industrial.",
+      "en": "The Eiffel Tower was built as one of the principal attractions of the 1889 Paris Universal Exposition, organized to mark the centenary of the French Revolution. The project originated within Gustave Eiffel's company and was initially developed by engineers Maurice Koechlin and Émile Nouguier, with contributions from architect Stephen Sauvestre. The proposal prompted intense debate between those who celebrated the possibilities of modern engineering and those who believed such a tall metal structure would damage the Parisian skyline. Construction began in 1887 and finished in 1889, after a little more than two years. The tower was originally conceived as a temporary installation associated with the exhibition. Its usefulness for scientific experiments and, especially, radio communications helped secure its survival. During the twentieth century, it gradually became a recognizable image of Paris and France. It also provided a setting for innovations in lighting, transmission and the maintenance of metal structures. Today it continues to welcome visitors from around the world. Its story shows how an initially controversial project could evolve from a technological demonstration into a cultural symbol with international significance. The tower therefore preserves the memory of an era that placed great confidence in industrial progress and engineering achievement.",
+      "it": "La Torre Eiffel fu costruita come una delle principali attrazioni dell'Esposizione Universale di Parigi del 1889, organizzata per celebrare il centenario della Rivoluzione francese. Il progetto nacque nell'impresa di Gustave Eiffel e fu sviluppato inizialmente dagli ingegneri Maurice Koechlin ed Émile Nouguier, con il contributo dell'architetto Stephen Sauvestre. La proposta suscitò un acceso dibattito fra chi apprezzava le possibilità dell'ingegneria moderna e chi riteneva che una struttura metallica così alta avrebbe danneggiato il paesaggio parigino. I lavori iniziarono nel 1887 e terminarono nel 1889, dopo poco più di due anni. La torre era stata concepita inizialmente come installazione temporanea legata all'esposizione. La sua utilità per esperimenti scientifici e soprattutto per le comunicazioni radio contribuì alla sua conservazione. Nel Novecento divenne progressivamente un'immagine riconoscibile di Parigi e della Francia. Fu anche teatro di innovazioni nell'illuminazione, nelle trasmissioni e nella manutenzione delle strutture metalliche. Oggi continua ad accogliere visitatori da tutto il mondo. La sua storia mostra come un progetto inizialmente controverso sia passato da dimostrazione tecnologica a simbolo culturale di rilievo internazionale. La torre conserva così la memoria di un'epoca che riponeva grande fiducia nel progresso industriale e nelle conquiste dell'ingegneria."
+    },
+    "curiosity": {
+      "es": "Eiffel instaló un pequeño apartamento privado cerca de la cima.",
+      "en": "Eiffel kept a small private apartment near the summit.",
+      "it": "Eiffel aveva un piccolo appartamento privato vicino alla cima."
+    },
+    "architecture": {
+      "es": [
+        "Su estructura metálica incorpora aproximadamente 18.038 piezas.",
+        "Las uniones se realizaron con unos 2,5 millones de remaches.",
+        "Cuatro grandes pilares curvos transmiten las cargas al terreno."
+      ],
+      "en": [
+        "Its metal framework contains approximately 18,038 components.",
+        "Around 2.5 million rivets were used in its joints.",
+        "Four large curved pillars transfer loads to the ground."
+      ],
+      "it": [
+        "La struttura metallica comprende circa 18.038 elementi.",
+        "Le giunzioni impiegarono circa 2,5 milioni di rivetti.",
+        "Quattro grandi pilastri curvi trasmettono i carichi al terreno."
+      ]
+    },
+    "sources": [
+      "https://www.toureiffel.paris/en/the-monument/history",
+      "https://www.toureiffel.paris/en/the-monument/key-figures"
+    ]
+  },
+  "Arco del Triunfo": {
+    "history": {
+      "es": "El Arco del Triunfo fue encargado por Napoleón I en 1806, después de la victoria francesa en Austerlitz. El emperador deseaba un monumento dedicado a los ejércitos que habían combatido bajo su mando. Jean-François-Thérèse Chalgrin inició el proyecto, inspirado en los grandes arcos conmemorativos de la Antigüedad romana. Sin embargo, los cambios políticos que siguieron a la caída de Napoleón interrumpieron los trabajos y modificaron el significado de la obra. La construcción se completó finalmente en 1836, durante el reinado de Luis Felipe. Con el tiempo, el arco dejó de representar exclusivamente las campañas napoleónicas y se convirtió en un lugar central de la memoria nacional francesa. En 1840, el cortejo funerario de Napoleón pasó bajo el monumento durante el traslado de sus restos a París. Más tarde, ceremonias militares y conmemoraciones públicas reforzaron su papel simbólico. Después de la Primera Guerra Mundial, el lugar adquirió una nueva dimensión: en 1920 se depositó allí el cuerpo de un soldado francés no identificado. La llama del recuerdo, encendida en 1923, continúa asociada a los homenajes a los caídos. Actualmente, el monumento permite recorrer distintas capas de la historia francesa, desde el Imperio hasta los conflictos del siglo XX. Es, sobre todo, un espacio de memoria colectiva.",
+      "en": "The Arc de Triomphe was commissioned by Napoleon I in 1806, following the French victory at Austerlitz. The emperor wanted a monument dedicated to the armies that had fought under his command. Jean-François-Thérèse Chalgrin began the design, drawing inspiration from the commemorative arches of ancient Rome. However, political changes following Napoleon's fall interrupted construction and altered the monument's meaning. The work was finally completed in 1836, during the reign of Louis Philippe. Over time, the arch ceased to represent only Napoleonic campaigns and became a central site of French national remembrance. In 1840, Napoleon's funeral procession passed beneath it when his remains were brought back to Paris. Later military ceremonies and public commemorations strengthened its symbolic role. Following the First World War, the site acquired another dimension: in 1920, the body of an unidentified French soldier was placed there. The memorial flame, first lit in 1923, remains associated with tributes to those who died in war. Today the monument reveals successive layers of French history, from the Empire to the conflicts of the twentieth century. Above all, it is a place of collective memory, where military history, national ceremonies and public remembrance continue to intersect.",
+      "it": "L'Arco di Trionfo fu commissionato da Napoleone I nel 1806, dopo la vittoria francese ad Austerlitz. L'imperatore desiderava un monumento dedicato agli eserciti che avevano combattuto sotto il suo comando. Jean-François-Thérèse Chalgrin avviò il progetto, ispirandosi ai grandi archi commemorativi dell'antica Roma. Tuttavia, i cambiamenti politici seguiti alla caduta di Napoleone interruppero i lavori e modificarono il significato dell'opera. La costruzione fu completata nel 1836, durante il regno di Luigi Filippo. Col tempo, l'arco smise di rappresentare soltanto le campagne napoleoniche e divenne un luogo centrale della memoria nazionale francese. Nel 1840 il corteo funebre di Napoleone passò sotto il monumento durante il ritorno delle sue spoglie a Parigi. Successivamente cerimonie militari e commemorazioni pubbliche ne rafforzarono il ruolo simbolico. Dopo la Prima guerra mondiale, il luogo acquisì una nuova dimensione: nel 1920 vi fu deposto il corpo di un soldato francese non identificato. La fiamma della memoria, accesa nel 1923, continua a essere associata agli omaggi ai caduti. Oggi il monumento permette di leggere diversi capitoli della storia francese, dall'Impero ai conflitti del Novecento. È soprattutto uno spazio di memoria collettiva, dove storia militare, cerimonie nazionali e ricordo pubblico continuano a incontrarsi."
+    },
+    "curiosity": {
+      "es": "En 1919, un aviador atravesó el arco con su avión.",
+      "en": "In 1919, an aviator flew his aircraft through the arch.",
+      "it": "Nel 1919 un aviatore attraversò l'arco con il proprio aereo."
+    },
+    "architecture": {
+      "es": [
+        "El arco principal alcanza aproximadamente 29 metros de altura interior.",
+        "Sus pilares presentan grandes grupos escultóricos en relieve.",
+        "Los nombres de generales y batallas figuran grabados en sus superficies."
+      ],
+      "en": [
+        "The main arch has an interior height of approximately 29 metres.",
+        "Its piers feature large sculptural groups in relief.",
+        "Generals' names and battles are engraved across its surfaces."
+      ],
+      "it": [
+        "L'arco principale raggiunge circa 29 metri di altezza interna.",
+        "I pilastri presentano grandi gruppi scultorei in rilievo.",
+        "Nomi di generali e battaglie sono incisi sulle superfici."
+      ]
+    },
+    "sources": [
+      "https://www.paris-arc-de-triomphe.fr/en/discover/history-of-the-arc-de-triomphe",
+      "https://www.paris-arc-de-triomphe.fr/en/discover"
     ]
   }
 };
