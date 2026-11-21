@@ -38,6 +38,27 @@ window.ArchiSpotterMonuments = (function () {
         var place=selectedMonument,city=selectedMonumentCity;
         document.getElementById('monument-photo').src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=1100&q=80';
         if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(document.getElementById('monument-photo'),place,1100);
+        var gallery=document.getElementById('monument-photo-choices');
+        gallery.replaceChildren();
+        var images=window.ArchiSpotterPhotos&&window.ArchiSpotterPhotos.getImages(place);
+        if(images&&images.length>1){
+          gallery.hidden=false;
+          images.forEach(function(url,i){
+            var button=document.createElement('button');
+            button.type='button';
+            button.className='monument-photo-choice';
+            button.textContent=String(i+1);
+            button.setAttribute('aria-label',({es:'Ver fotografía ',en:'View photo ',it:'Vedi foto '})[currentLang()]+(i+1));
+            button.setAttribute('aria-pressed',String(i===0));
+            button.addEventListener('click',function(){
+              var img=document.getElementById('monument-photo');
+              img.src=url;
+              gallery.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-pressed',String(i===j));});
+            });
+            gallery.appendChild(button);
+          });
+        }else gallery.hidden=true;
+
         document.getElementById('monument-name').textContent=place[idx];
         document.getElementById('monument-photo').alt=place[idx];
         document.getElementById('monument-photo-trigger').setAttribute('aria-label',strings[currentLang()].zoomPhoto+' '+place[idx]);
