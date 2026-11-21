@@ -8,7 +8,7 @@ var curated={
  ],
  'Panteón de Agripa':[
   'https://unsplash.com/photos/fbYpd5Xubf8/download?force=true&w=1400',
-  'https://unsplash.com/photos/mXGU_BxNp40/download?force=true&w=1400'
+  'https://images.unsplash.com/photo-1654874324486-4acfae9228e4?auto=format&fit=crop&w=1400&q=85'
  ]
 };
 function getImages(place){return curated[place[0]]?curated[place[0]].slice():[];}
