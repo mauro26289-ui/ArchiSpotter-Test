@@ -404,3 +404,7 @@
 /* Keep interactive swipe layers inside the content viewport. */
 #home .app-content{position:relative;overflow-x:hidden;isolation:isolate;}
 #view-explore{position:relative;min-width:0;}
+
+.monument-photo-choices:not([hidden]){display:flex;justify-content:center;gap:10px;margin:10px 0 12px;}
+.monument-photo-choice{width:38px;height:38px;border:1px solid var(--muted);border-radius:50%;background:transparent;color:var(--ink);font:600 14px Inter,sans-serif;cursor:pointer;}
+.monument-photo-choice[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
