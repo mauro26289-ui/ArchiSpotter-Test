@@ -45,7 +45,7 @@ window.ArchiSpotterMonuments = (function () {
         audioButton=document.querySelector('#monument-detail .audio-action');
         if(!audioButton)return;
         var id=existingAudioIds[place[0]];
-        audioButton.hidden=!id;
+        audioButton.hidden=false;
         audioButton.disabled=!id;
         if(!id){stopNarration();return;}
         var key=id+'-'+language;
