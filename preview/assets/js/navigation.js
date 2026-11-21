@@ -11,7 +11,11 @@ window.ArchiSpotterNavigation = (function () {
   function visible(id){var el=document.getElementById(id);return el&&!el.hidden;}
   function resetPreview(g){
     if(!g)return;
-    if(g.preview)g.preview.remove();
+    if(g.preview){
+      g.preview.hidden=true;
+      g.preview.removeAttribute('style');
+      g.preview.removeAttribute('aria-hidden');
+    }
     if(g.panel){
       g.panel.style.transform='';
       g.panel.style.transition='';
@@ -45,18 +49,26 @@ window.ArchiSpotterNavigation = (function () {
     if(!g.started){
       if(dx<10||Math.abs(dx)<Math.abs(dy)*1.25)return;
       g.started=true;
-      var preview=g.previous.cloneNode(true);
-      preview.removeAttribute('id');
-      preview.removeAttribute('hidden');
-      preview.querySelectorAll('[id]').forEach(function(el){el.removeAttribute('id');});
+      // Reveal the real previous view instead of cloning the DOM.
+      // Cloning duplicated images, IDs and layout, producing the broken layered view.
+      var preview=g.previous;
+      preview.hidden=false;
       preview.setAttribute('aria-hidden','true');
-      preview.style.cssText='display:block!important;position:absolute;left:0;top:'+g.scroll.scrollTop+
-        'px;width:100%;pointer-events:none;z-index:0;opacity:.88;transform:translateX(-20px);';
+      preview.style.setProperty('display','block','important');
+      preview.style.position='absolute';
+      preview.style.left='0';
+      preview.style.top=g.scroll.scrollTop+'px';
+      preview.style.width='100%';
+      preview.style.height=g.scroll.clientHeight+'px';
+      preview.style.overflow='hidden';
+      preview.style.pointerEvents='none';
+      preview.style.zIndex='0';
+      preview.style.opacity='.88';
+      preview.style.transform='translate3d(-20px,0,0)';
       g.preview=preview;
-      g.panel.parentNode.insertBefore(preview,g.panel);
       g.panel.style.position='relative';
       g.panel.style.zIndex='1';
-      g.panel.style.background='#101517';
+      g.panel.style.background='var(--paper)';
       g.panel.style.boxShadow='-10px 0 24px rgba(0,0,0,.24)';
       g.panel.style.willChange='transform';
       g.panel.style.minHeight='100%';
