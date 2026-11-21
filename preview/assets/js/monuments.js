@@ -26,7 +26,7 @@ window.ArchiSpotterMonuments = (function () {
       document.getElementById('monument-trip').addEventListener('click',function(){toggleMonument('archispotter_preview_trip');});
       function openMonument(place,city) {
         selectedMonument=place; selectedMonumentCity=city;
-        document.getElementById('monument-back').setAttribute('data-direct-country',String(city[4].length===1));
+        document.getElementById('monument-back').setAttribute('data-direct-country',String(document.getElementById('city-detail').hidden));
         renderMonument();
         document.getElementById('city-detail').hidden=true;
         document.getElementById('monument-detail').hidden=false;
@@ -93,7 +93,7 @@ window.ArchiSpotterMonuments = (function () {
       }
       document.getElementById('monument-back').addEventListener('click',function(){
         document.getElementById('monument-detail').hidden=true;
-        if(selectedMonumentCity&&selectedMonumentCity[4].length===1){
+        if(document.getElementById('monument-back').getAttribute('data-direct-country')==='true'){
           document.getElementById('city-detail').hidden=true;
           document.getElementById('country-detail').hidden=false;
         }else{
