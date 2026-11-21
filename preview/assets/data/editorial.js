@@ -1,4 +1,4 @@
-/* Stage 30: Versailles and four Athens monuments; previous entries preserved. */
+/* Stage 31: Delphi and London; earlier entries preserved. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -852,6 +852,166 @@ window.ArchiSpotterEditorial={
     "sources": [
       "https://www.visitgreece.gr/en/experiences/culture/archaeological-sites-monuments/odeon-of-herodes-atticus",
       "https://www.thisisathens.org/antiquities/odeon-herodes-atticus"
+    ]
+  },
+  "Templo de Apolo": {
+    "history": {
+      "es": "El templo de Apolo en Delfos formaba parte de uno de los santuarios más importantes del mundo griego. Allí actuaba la Pitia, sacerdotisa que pronunciaba las respuestas del famoso oráculo. Ciudades y particulares viajaban hasta las laderas del monte Parnaso para consultar decisiones políticas, religiosas y personales. Los visitantes recorrían la Vía Sagrada entre tesoros, estatuas y ofrendas de comunidades que competían por mostrar su prestigio. El templo visible a través de sus ruinas fue construido en el siglo IV a. C. después de que un terremoto destruyera su predecesor en 373 a. C. La fama del oráculo sobrevivió durante siglos y continuó bajo el dominio romano. Con la difusión del cristianismo, los cultos tradicionales declinaron y el santuario perdió gradualmente su función. Las excavaciones modernas recuperaron edificios, esculturas e inscripciones que permiten reconstruir su historia. El paisaje montañoso era parte esencial de la experiencia religiosa: quienes llegaban desde lugares remotos encontraban un recinto lleno de recuerdos compartidos. Delfos no era solamente un templo, sino un centro de encuentros, creencias y relaciones entre ciudades. Sus columnas evocan todavía las esperanzas de quienes buscaban una respuesta sobre su futuro.",
+      "en": "The Temple of Apollo at Delphi belonged to one of the most important sanctuaries in the Greek world. The Pythia, priestess of the celebrated oracle, delivered responses to visitors seeking guidance. Cities and individuals travelled to the slopes of Mount Parnassus to ask about political, religious and personal decisions. Pilgrims followed the Sacred Way past treasuries, statues and offerings dedicated by communities competing for prestige. The temple represented by today's ruins was built in the fourth century BC after an earthquake destroyed its predecessor in 373 BC. The oracle's reputation endured for centuries, continuing under Roman rule. As Christianity spread, traditional worship declined and the sanctuary gradually lost its original purpose. Modern excavations uncovered buildings, sculptures and inscriptions that help reconstruct its history. The mountainous landscape was an essential part of the religious experience: travellers arriving from distant places encountered a sanctuary filled with shared memories. Delphi was more than a temple; it was a meeting place for beliefs, diplomacy and relationships between cities. Its surviving columns still evoke the hopes of those who came seeking answers about their future. The site's long history shows how religion could influence public decisions throughout the ancient Mediterranean world.",
+      "it": "Il Tempio di Apollo a Delfi apparteneva a uno dei santuari più importanti del mondo greco. Qui la Pizia, sacerdotessa del celebre oracolo, pronunciava risposte per i visitatori in cerca di orientamento. Città e privati raggiungevano le pendici del monte Parnaso per consultare decisioni politiche, religiose e personali. I pellegrini percorrevano la Via Sacra tra tesori, statue e offerte dedicate da comunità rivali. Il tempio rappresentato dalle rovine attuali fu costruito nel IV secolo a. C., dopo che un terremoto aveva distrutto il predecessore nel 373 a. C. La fama dell'oracolo durò per secoli e continuò durante il dominio romano. Con la diffusione del cristianesimo, i culti tradizionali diminuirono e il santuario perse gradualmente la sua funzione. Gli scavi moderni recuperarono edifici, sculture e iscrizioni che permettono di ricostruirne la storia. Il paesaggio montuoso era una parte essenziale dell'esperienza religiosa: i viaggiatori arrivati da lontano trovavano un recinto ricco di memorie condivise. Delfi era più di un tempio: rappresentava un luogo di incontro tra credenze, diplomazia e relazioni tra città. Le colonne superstiti evocano ancora le speranze di chi cercava risposte sul proprio futuro. La storia del sito mostra quanto la religione influenzasse le decisioni pubbliche nel Mediterraneo antico."
+    },
+    "curiosity": {
+      "es": "La inscripción «conócete a ti mismo» se asociaba al santuario.",
+      "en": "The saying 'know thyself' was associated with the sanctuary.",
+      "it": "Il motto «conosci te stesso» era associato al santuario."
+    },
+    "architecture": {
+      "es": [
+        "Templo dórico con 6 columnas frontales y 15 laterales.",
+        "Terraza sostenida por muros de contención.",
+        "El edificio del siglo IV a. C. reemplazó templos anteriores."
+      ],
+      "en": [
+        "Doric temple with 6 columns at each end and 15 along each side.",
+        "Terrace supported by retaining walls.",
+        "The fourth-century BC building replaced earlier temples."
+      ],
+      "it": [
+        "Tempio dorico con 6 colonne sui fronti e 15 sui lati.",
+        "Terrazza sostenuta da muri di contenimento.",
+        "L'edificio del IV secolo a. C. sostituì templi precedenti."
+      ]
+    },
+    "sources": [
+      "https://whc.unesco.org/en/list/393/"
+    ]
+  },
+  "Palacio de Westminster": {
+    "history": {
+      "es": "El Palacio de Westminster es la sede del Parlamento británico y uno de los edificios más reconocibles de Londres. Su historia comenzó como residencia real medieval, aunque sus salas terminaron acogiendo reuniones políticas. Un incendio devastador destruyó gran parte del conjunto en 1834. La reconstrucción ofreció una oportunidad para diseñar una sede parlamentaria moderna, y el concurso fue ganado por Charles Barry, con una contribución decisiva de Augustus Welby Northmore Pugin. Las obras comenzaron en 1840 y adoptaron un lenguaje neogótico que evocaba las instituciones históricas del país. El palacio alberga la Cámara de los Comunes y la Cámara de los Lores, conectadas mediante corredores y espacios ceremoniales. Su extensa fachada acompaña el curso del Támesis y sus torres definen el paisaje urbano. Durante la Segunda Guerra Mundial los bombardeos causaron daños importantes, incluida la destrucción de la antigua Cámara de los Comunes. A pesar de estas transformaciones, Westminster sigue siendo un edificio en funcionamiento, donde se debaten leyes y se celebran ceremonias oficiales. Su aspecto medieval esconde muchas soluciones constructivas propias del siglo XIX. La historia del palacio muestra cómo una institución política puede conservar su identidad mientras cambia de arquitectura y se adapta a nuevas necesidades.",
+      "en": "The Palace of Westminster houses the British Parliament and is one of London's most recognisable buildings. Its history began as a medieval royal residence, although its halls eventually became meeting places for political representatives. A devastating fire destroyed much of the complex in 1834. Reconstruction offered the chance to design a modern parliamentary headquarters, and Charles Barry won the competition with essential contributions from Augustus Welby Northmore Pugin. Work began in 1840, adopting a Gothic Revival language intended to evoke the country's historic institutions. The palace contains the House of Commons and House of Lords, linked by corridors and ceremonial spaces. Its extensive façade follows the Thames, while its towers shape the city's skyline. During the Second World War, bombing caused significant damage, including the destruction of the old Commons chamber. Despite these changes, Westminster remains a working building where legislation is debated and official ceremonies are held. Its medieval appearance conceals many nineteenth-century engineering solutions. The palace's history demonstrates how a political institution can retain its identity while changing its architecture and adapting to new needs. Visitors encounter a place where historical memory and daily political activity coexist, rather than a monument frozen in the past. Its rooms continue to influence decisions that extend far beyond London.",
+      "it": "Il Palazzo di Westminster ospita il Parlamento britannico ed è uno degli edifici più riconoscibili di Londra. La sua storia iniziò come residenza reale medievale, anche se le sue sale divennero progressivamente luoghi di riunione politica. Un incendio devastante distrusse gran parte del complesso nel 1834. La ricostruzione offrì l'occasione di progettare una sede parlamentare moderna e il concorso fu vinto da Charles Barry, con il contributo fondamentale di Augustus Welby Northmore Pugin. I lavori iniziarono nel 1840, adottando un linguaggio neogotico che richiamava le istituzioni storiche del paese. Il palazzo ospita la Camera dei Comuni e la Camera dei Lord, collegate da corridoi e spazi cerimoniali. La lunga facciata segue il Tamigi, mentre le torri definiscono il panorama cittadino. Durante la Seconda guerra mondiale i bombardamenti causarono gravi danni, compresa la distruzione della vecchia Camera dei Comuni. Nonostante questi cambiamenti, Westminster rimane un edificio attivo, dove si discutono leggi e si svolgono cerimonie ufficiali. L'aspetto medievale nasconde numerose soluzioni ingegneristiche ottocentesche. La storia del palazzo mostra come un'istituzione politica possa conservare la propria identità cambiando architettura e adattandosi a nuove necessità. I visitatori incontrano un luogo nel quale memoria storica e attività politica quotidiana convivono ancora oggi."
+    },
+    "curiosity": {
+      "es": "Westminster Hall sobrevivió al incendio de 1834.",
+      "en": "Westminster Hall survived the 1834 fire.",
+      "it": "Westminster Hall sopravvisse all'incendio del 1834."
+    },
+    "architecture": {
+      "es": [
+        "Elizabeth Tower alcanza unos 96 metros.",
+        "Westminster Hall conserva una cubierta medieval de madera.",
+        "El complejo incluye patios y dos cámaras parlamentarias."
+      ],
+      "en": [
+        "Elizabeth Tower rises approximately 96 metres.",
+        "Westminster Hall preserves a medieval timber roof.",
+        "The complex includes courtyards and two parliamentary chambers."
+      ],
+      "it": [
+        "La Elizabeth Tower raggiunge circa 96 metri.",
+        "Westminster Hall conserva una copertura medievale lignea.",
+        "Il complesso comprende cortili e due camere parlamentari."
+      ]
+    },
+    "sources": [
+      "https://www.parliament.uk/about/living-heritage/building/palace/"
+    ]
+  },
+  "Tower Bridge": {
+    "history": {
+      "es": "Tower Bridge nació de la necesidad de crear un nuevo paso sobre el Támesis sin impedir la navegación hacia los muelles de Londres. A finales del siglo XIX, el crecimiento de los barrios orientales exigía una solución de transporte más eficaz. Tras estudiar numerosas propuestas, el arquitecto Horace Jones y el ingeniero John Wolfe Barry desarrollaron un puente que combinaba dos hojas levadizas con tramos suspendidos. Las obras comenzaron en 1886 y la inauguración tuvo lugar en 1894. Sus torres de apariencia medieval dialogaban con la cercana Torre de Londres, pero ocultaban una estructura de acero propia de la ingeniería industrial. Las hojas centrales podían levantarse para dejar pasar barcos altos, mientras los peatones disponían de pasarelas superiores. Originalmente, grandes máquinas de vapor producían la presión hidráulica necesaria para mover el mecanismo. El sistema fue modernizado posteriormente y el puente continúa abriéndose cuando el tráfico fluvial lo requiere. Su presencia se convirtió en una imagen emblemática de la ciudad, aunque nunca dejó de cumplir una función cotidiana. Hoy permite comprender cómo una obra de infraestructura puede ser también un monumento arquitectónico. Tower Bridge reúne necesidades prácticas, innovación técnica y una puesta en escena visual que todavía sorprende a quienes cruzan el río.",
+      "en": "Tower Bridge was created to provide a new crossing over the Thames without blocking ships travelling to London's docks. By the late nineteenth century, growing eastern neighbourhoods required a more effective transport connection. After numerous proposals were examined, architect Horace Jones and engineer John Wolfe Barry developed a bridge combining two lifting bascules with suspended spans. Construction began in 1886 and the bridge opened in 1894. Its medieval-looking towers complemented the nearby Tower of London, but concealed a steel structure characteristic of industrial engineering. The central leaves could rise to allow tall ships through, while pedestrians had access to elevated walkways. Originally, large steam engines generated the hydraulic pressure required to operate the mechanism. The system was subsequently modernised, and the bridge still opens whenever river traffic requires passage. Its silhouette became an emblem of the city, although the crossing never stopped performing an everyday function. Today it demonstrates how infrastructure can also become an architectural monument. Tower Bridge combines practical needs, technical innovation and a striking visual design that continues to surprise people crossing the river. It is not simply a historic object to admire from a distance: it remains part of the movement and rhythm of London, linking different neighbourhoods while accommodating activity on the water below.",
+      "it": "Tower Bridge nacque dalla necessità di creare un nuovo attraversamento del Tamigi senza impedire alle navi di raggiungere i moli di Londra. Alla fine dell'Ottocento, la crescita dei quartieri orientali richiedeva collegamenti più efficienti. Dopo aver esaminato numerose proposte, l'architetto Horace Jones e l'ingegnere John Wolfe Barry svilupparono un ponte che univa due campate mobili a sezioni sospese. I lavori iniziarono nel 1886 e l'inaugurazione avvenne nel 1894. Le torri dall'aspetto medievale dialogavano con la vicina Torre di Londra, ma nascondevano una struttura d'acciaio tipica dell'ingegneria industriale. Le parti centrali potevano sollevarsi per lasciare passare le navi più alte, mentre i pedoni disponevano di passerelle sopraelevate. Originariamente grandi macchine a vapore producevano la pressione idraulica necessaria al movimento. Il sistema fu modernizzato in seguito e il ponte continua ad aprirsi quando il traffico fluviale lo richiede. Il suo profilo divenne un emblema della città, senza perdere la funzione quotidiana di collegamento. Oggi mostra come un'infrastruttura possa diventare anche un monumento architettonico. Tower Bridge riunisce necessità pratiche, innovazione tecnica e un progetto visivo sorprendente. Non è soltanto un oggetto storico da ammirare a distanza: rimane parte del movimento di Londra, collegando quartieri diversi e lasciando spazio alla navigazione sottostante."
+    },
+    "curiosity": {
+      "es": "Las pasarelas superiores cerraron en 1910 y reabrieron en 1982.",
+      "en": "The upper walkways closed in 1910 and reopened in 1982.",
+      "it": "Le passerelle superiori chiusero nel 1910 e riaprirono nel 1982."
+    },
+    "architecture": {
+      "es": [
+        "El puente mide aproximadamente 244 metros.",
+        "Las torres alcanzan unos 65 metros.",
+        "Dos hojas basculantes se elevan para dejar pasar barcos."
+      ],
+      "en": [
+        "The bridge is approximately 244 metres long.",
+        "The towers rise about 65 metres.",
+        "Two bascules lift to allow ships through."
+      ],
+      "it": [
+        "Il ponte misura circa 244 metri.",
+        "Le torri raggiungono circa 65 metri.",
+        "Due campate mobili si sollevano per lasciare passare le navi."
+      ]
+    },
+    "sources": [
+      "https://www.towerbridge.org.uk/discover/history"
+    ]
+  },
+  "Abadía de Westminster": {
+    "history": {
+      "es": "La Abadía de Westminster ha reunido durante siglos la vida religiosa, las ceremonias monárquicas y la memoria nacional británica. Antes de la conquista normanda ya existía una comunidad religiosa en este lugar, pero Eduardo el Confesor impulsó una gran iglesia durante el siglo XI. Guillermo el Conquistador fue coronado aquí en 1066 y desde entonces el edificio ha acogido casi todas las coronaciones de los monarcas ingleses y británicos. La construcción de la iglesia actual comenzó en 1245 por iniciativa de Enrique III, que adoptó formas góticas inspiradas en grandes catedrales francesas. Los trabajos se extendieron durante generaciones y distintas capillas fueron enriqueciendo el conjunto. La abadía también se convirtió en lugar de sepultura y conmemoración de reyes, reinas, escritores, científicos y otras personalidades. La Reforma inglesa cambió su organización religiosa, pero no eliminó su importancia ceremonial. Hoy sigue siendo una iglesia activa, con servicios religiosos, funerales de Estado y acontecimientos reales. Su interior reúne esculturas, vidrieras y monumentos funerarios de épocas muy diferentes. Visitar Westminster permite observar cómo un mismo edificio ha acompañado cambios políticos, conflictos religiosos y transformaciones sociales. Su continuidad histórica no significa inmovilidad: cada generación ha añadido nuevas historias a un espacio compartido por la nación.",
+      "en": "Westminster Abbey has brought together religious life, royal ceremonies and British national remembrance for centuries. A religious community existed here before the Norman Conquest, but Edward the Confessor commissioned a major church in the eleventh century. William the Conqueror was crowned here in 1066, and almost every subsequent English and British coronation has taken place at the abbey. Construction of the present church began in 1245 under Henry III, who adopted Gothic forms inspired by great French cathedrals. Work continued over generations, and different chapels gradually enriched the complex. The abbey also became a burial and memorial place for kings, queens, writers, scientists and other prominent figures. The English Reformation changed its religious organisation without ending its ceremonial importance. Today it remains an active church, hosting worship, state funerals and royal occasions. Its interior contains sculpture, stained glass and funerary monuments from very different periods. Visiting Westminster reveals how one building has accompanied political changes, religious conflicts and social transformations. Historical continuity does not mean that the place has remained unchanged: each generation has added new stories to a space shared by the nation. Its significance comes from the combination of architectural beauty, public ceremony and the memories of individuals whose lives shaped the country's history.",
+      "it": "L'Abbazia di Westminster ha riunito per secoli vita religiosa, cerimonie monarchiche e memoria nazionale britannica. Una comunità religiosa esisteva qui prima della conquista normanna, ma Edoardo il Confessore promosse una grande chiesa nell'XI secolo. Guglielmo il Conquistatore fu incoronato qui nel 1066 e da allora l'abbazia ha ospitato quasi tutte le incoronazioni dei sovrani inglesi e britannici. La costruzione della chiesa attuale iniziò nel 1245 per volontà di Enrico III, che adottò forme gotiche ispirate alle grandi cattedrali francesi. I lavori continuarono per generazioni e diverse cappelle arricchirono progressivamente il complesso. L'abbazia divenne anche un luogo di sepoltura e commemorazione per re, regine, scrittori, scienziati e altre personalità. La Riforma inglese cambiò la sua organizzazione religiosa senza cancellarne l'importanza cerimoniale. Oggi rimane una chiesa attiva, sede di celebrazioni, funerali di Stato ed eventi reali. L'interno conserva sculture, vetrate e monumenti funerari di epoche molto differenti. Visitare Westminster permette di osservare come uno stesso edificio abbia accompagnato cambiamenti politici, conflitti religiosi e trasformazioni sociali. La continuità storica non significa immobilità: ogni generazione ha aggiunto nuove storie a uno spazio condiviso dalla nazione. Il suo significato deriva dall'unione di bellezza architettonica, cerimonie pubbliche e memorie individuali."
+    },
+    "curiosity": {
+      "es": "El Rincón de los Poetas conmemora a escritores no necesariamente enterrados allí.",
+      "en": "Poets' Corner commemorates writers not necessarily buried there.",
+      "it": "Il Poets' Corner commemora scrittori non necessariamente sepolti lì."
+    },
+    "architecture": {
+      "es": [
+        "La nave alcanza unos 31 metros de altura.",
+        "La capilla de Enrique VII posee bóvedas de abanico.",
+        "Conserva un pavimento cosmatesco medieval."
+      ],
+      "en": [
+        "The nave rises about 31 metres.",
+        "Henry VII's Chapel has fan vaulting.",
+        "It preserves a medieval Cosmati pavement."
+      ],
+      "it": [
+        "La navata raggiunge circa 31 metri.",
+        "La cappella di Enrico VII presenta volte a ventaglio.",
+        "Conserva un pavimento cosmatesco medievale."
+      ]
+    },
+    "sources": [
+      "https://www.westminster-abbey.org/history"
+    ]
+  },
+  "Catedral de San Pablo": {
+    "history": {
+      "es": "La Catedral de San Pablo domina Londres desde Ludgate Hill, un lugar relacionado con el culto cristiano desde hace muchos siglos. El edificio actual nació tras el Gran Incendio de 1666, que destruyó la catedral medieval y numerosos barrios cercanos. Christopher Wren recibió el encargo de proyectar una nueva iglesia capaz de expresar la recuperación de la ciudad. Después de varias propuestas, las obras comenzaron en 1675 y finalizaron en 1710. Wren combinó referencias clásicas con soluciones estructurales innovadoras para crear una catedral anglicana de escala monumental. Su gran cúpula se convirtió en una de las imágenes más conocidas de la capital. El interior acoge celebraciones religiosas y monumentos dedicados a personajes históricos. Durante la Segunda Guerra Mundial, San Pablo sobrevivió a los bombardeos que devastaron edificios de su entorno. La imagen de la cúpula emergiendo entre el humo se convirtió en símbolo de resistencia. En distintas épocas, la catedral acogió funerales de Estado, servicios conmemorativos y celebraciones nacionales. Actualmente sigue siendo un lugar de culto y recibe visitantes de todo el mundo. Su historia muestra cómo una catástrofe urbana pudo impulsar una renovación arquitectónica duradera. También recuerda que un edificio histórico puede conservar su función espiritual mientras adquiere nuevos significados para la sociedad que lo rodea.",
+      "en": "St Paul's Cathedral rises above London from Ludgate Hill, a site associated with Christian worship for many centuries. The present building emerged after the Great Fire of 1666 destroyed the medieval cathedral and many nearby neighbourhoods. Christopher Wren was commissioned to design a new church expressing the city's recovery. Following several proposals, construction began in 1675 and was completed in 1710. Wren combined classical references with innovative structural solutions to create a monumental Anglican cathedral. Its great dome became one of the capital's best-known landmarks. Inside, religious celebrations coexist with memorials to important historical figures. During the Second World War, St Paul's survived bombing that devastated buildings around it. The image of its dome rising through smoke became a symbol of endurance. At different moments, the cathedral has hosted state funerals, commemorative services and national celebrations. Today it remains a place of worship and welcomes visitors from around the world. Its history shows how an urban catastrophe could inspire lasting architectural renewal. It also reminds us that a historic building can preserve its spiritual purpose while acquiring new meanings for the society around it. The cathedral connects the memory of London's past with public ceremonies and personal experiences in the present day.",
+      "it": "La Cattedrale di San Paolo domina Londra da Ludgate Hill, un luogo associato al culto cristiano da molti secoli. L'edificio attuale nacque dopo il Grande Incendio del 1666, che distrusse la cattedrale medievale e numerosi quartieri vicini. Christopher Wren ricevette l'incarico di progettare una nuova chiesa capace di esprimere la rinascita della città. Dopo diverse proposte, i lavori iniziarono nel 1675 e terminarono nel 1710. Wren combinò riferimenti classici e soluzioni strutturali innovative per creare una cattedrale anglicana monumentale. La grande cupola divenne uno dei simboli più conosciuti della capitale. All'interno, le celebrazioni religiose convivono con monumenti dedicati a personaggi storici. Durante la Seconda guerra mondiale San Paolo sopravvisse ai bombardamenti che devastarono gli edifici circostanti. L'immagine della cupola emergente dal fumo divenne un simbolo di resistenza. In epoche differenti, la cattedrale ha ospitato funerali di Stato, commemorazioni e celebrazioni nazionali. Oggi rimane un luogo di culto e accoglie visitatori provenienti da tutto il mondo. La sua storia mostra come una catastrofe urbana abbia potuto ispirare un rinnovamento architettonico duraturo. Ricorda inoltre che un edificio storico può conservare la propria funzione spirituale e acquisire nuovi significati per la società circostante. La cattedrale collega la memoria del passato londinese alle cerimonie pubbliche e alle esperienze personali del presente."
+    },
+    "curiosity": {
+      "es": "En la Galería de los Susurros, el sonido viaja junto a la cúpula.",
+      "en": "In the Whispering Gallery, sound travels along the dome.",
+      "it": "Nella Galleria dei Sussurri il suono si propaga lungo la cupola."
+    },
+    "architecture": {
+      "es": [
+        "La cúpula alcanza aproximadamente 111 metros.",
+        "La cúpula utiliza una estructura de tres capas.",
+        "La planta incluye nave longitudinal y crucero central."
+      ],
+      "en": [
+        "The dome reaches approximately 111 metres.",
+        "The dome uses a three-layer structure.",
+        "The plan includes a long nave and central crossing."
+      ],
+      "it": [
+        "La cupola raggiunge circa 111 metri.",
+        "La cupola utilizza una struttura a tre strati.",
+        "La pianta comprende navata longitudinale e crociera centrale."
+      ]
+    },
+    "sources": [
+      "https://www.stpauls.co.uk/our-history"
     ]
   }
 };
