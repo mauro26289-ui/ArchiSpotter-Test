@@ -48,7 +48,7 @@ window.ArchiSpotterMap = (function () {
           directions.textContent={es:'Cómo llegar',en:'Directions',it:'Indicazioni'}[lang]||'Cómo llegar';
           directions.addEventListener('click',function(){
             var destination=pos[0]+','+pos[1];
-            window.open('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(destination)+'&travelmode=walking','_blank','noopener,noreferrer');
+            window.location.assign('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(destination)+'&travelmode=walking');
           });
           popup.appendChild(directions);marker.bindPopup(popup,{maxWidth:220,minWidth:180}).openPopup();
         });
