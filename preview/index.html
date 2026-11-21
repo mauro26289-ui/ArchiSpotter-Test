@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./assets/css/app.css?v=curated-pairs" />
+  <link rel="stylesheet" href="./assets/css/app.css?v=city-guide-1" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="./assets/css/map.css?v=stage23" />
   <link rel="stylesheet" href="./assets/css/gallery.css?v=mod3" />
@@ -95,9 +95,7 @@
         <div id="city-detail" hidden>
           <button type="button" class="city-back" id="city-back" data-i18n="backCountry">← Volver al país</button>
           <div class="city-cover"><img id="city-detail-photo" alt="" /><h2 id="city-detail-name"></h2></div>
-          <p class="city-gallery-intro" data-i18n="cityIntro">Explora la arquitectura de esta ciudad.</p>
-          <h2 class="city-gallery-heading" data-i18n="cityMonuments">Arquitectura destacada</h2>
-          <div class="city-gallery" id="city-gallery"></div><section id="city-food" class="city-food" hidden><h2 id="city-food-title"></h2><div id="city-food-list"></div></section>
+          <section class="city-guide"><div class="city-guide-kicker">ARCHISPOTTER · CITY STORIES</div><h2 id="city-guide-heading"></h2><p id="city-guide-description"></p><button id="city-guide-audio" type="button" class="city-guide-audio"></button><h3 id="city-curiosities-heading"></h3><ul id="city-curiosities"></ul></section><section id="city-food" class="city-food" hidden><h2 id="city-food-title"></h2><div id="city-food-list"></div></section>
         </div>
         <div id="monument-detail" hidden>
           <button type="button" class="monument-back" id="monument-back" data-i18n="backCity">← Volver a la ciudad</button>
@@ -167,7 +165,8 @@
   <script src="./assets/js/navigation.js?v=swipe-layer-fix" defer></script>
   <script src="./assets/data/editorial.js?v=stage35-audited32-33" defer></script>
   <script src="./assets/js/monuments.js?v=curated-pairs" defer></script>
-  <script src="./assets/js/explore.js?v=country-covers-20261121" defer></script>
+  <script src="./assets/data/city-guides.js?v=city-guide-1" defer></script>
+  <script src="./assets/js/explore.js?v=city-guide-1" defer></script>
   <script src="./assets/js/auth.js?v=mod7" defer></script>
   <script src="./assets/js/map.js?v=maps-return-fix" defer></script>
   <script src="./assets/js/app.js?v=fix17" defer></script>
