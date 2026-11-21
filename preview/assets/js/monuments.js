@@ -25,6 +25,7 @@ window.ArchiSpotterMonuments = (function () {
       document.getElementById('monument-trip').addEventListener('click',function(){toggleMonument('archispotter_preview_trip');});
       function openMonument(place,city) {
         selectedMonument=place; selectedMonumentCity=city;
+        document.getElementById('monument-back').setAttribute('data-direct-country',String(city[4].length===1));
         renderMonument();
         document.getElementById('city-detail').hidden=true;
         document.getElementById('monument-detail').hidden=false;
