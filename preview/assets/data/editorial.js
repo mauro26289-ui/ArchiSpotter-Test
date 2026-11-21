@@ -1,4 +1,4 @@
-/* Stage 30: Versailles editorial; previous entries preserved. */
+/* Stage 30: Versailles and four Athens monuments; previous entries preserved. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -719,6 +719,139 @@ window.ArchiSpotterEditorial={
       "https://en.chateauversailles.fr/discover/history",
       "https://en.chateauversailles.fr/discover/estate/palace/hall-mirrors",
       "https://en.chateauversailles.fr/discover/history/great-characters/louis-vau"
+    ]
+  },
+  "Partenón": {
+    "history": {
+      "es": "En lo alto de la Acrópolis de Atenas, el Partenón recuerda el momento en que la ciudad quiso convertir su poder político y religioso en piedra. Tras la destrucción de los santuarios anteriores durante la invasión persa de 480 a. C., los atenienses emprendieron un ambicioso programa de reconstrucción bajo el liderazgo de Pericles. Las obras del nuevo templo comenzaron en 447 a. C. Los arquitectos Ictino y Calícrates dirigieron el proyecto, mientras Fidias supervisó su decoración escultórica. El edificio estaba dedicado a Atenea Partenos, protectora de la ciudad, cuya imponente imagen de oro y marfil ocupaba la sala principal. Su construcción reunió a canteros, escultores y otros artesanos especializados. Aunque nació como santuario, su historia no terminó en la Antigüedad: durante siglos fue adaptado al culto cristiano y más tarde funcionó como mezquita. En 1687, durante un asedio veneciano, una explosión causó daños devastadores cuando el edificio era utilizado para almacenar pólvora. En el siglo XIX, la dispersión de parte de sus esculturas abrió debates que continúan hasta hoy. Las campañas modernas de conservación buscan estabilizar los restos y devolver a su posición elementos identificados con seguridad. Contemplar el Partenón significa observar tanto la ambición de la Atenas clásica como las huellas de sus transformaciones posteriores.",
+      "en": "High above Athens, the Parthenon recalls a moment when the city sought to express political influence and religious devotion through architecture. After Persian forces destroyed earlier sanctuaries in 480 BC, the Athenians began an ambitious rebuilding programme under the leadership of Pericles. Construction of the new temple started in 447 BC. The architects Iktinos and Kallikrates directed the design, while Pheidias supervised its sculptural decoration. The building honoured Athena Parthenos, the city's protecting goddess, whose imposing gold-and-ivory image stood in the main chamber. Stonemasons, sculptors and other skilled workers contributed to its creation. Yet the building's story did not end in classical antiquity. It was later adapted for Christian worship and eventually served as a mosque. In 1687, during a Venetian siege, an explosion caused catastrophic damage because gunpowder was stored inside. During the nineteenth century, the removal and dispersal of sculptures sparked debates that continue today. Modern conservation programmes aim to stabilise surviving fabric and return securely identified architectural pieces to their original positions. Standing before the Parthenon, visitors encounter more than a celebrated classical temple: they see a monument shaped by changing religions, conflicts, artistic ideals and decisions about the preservation of cultural heritage across many centuries.",
+      "it": "Sull'Acropoli di Atene, il Partenone ricorda il momento in cui la città volle esprimere il proprio prestigio politico e religioso attraverso l'architettura. Dopo la distruzione dei santuari precedenti durante l'invasione persiana del 480 a. C., gli Ateniesi avviarono un vasto programma di ricostruzione guidato da Pericle. I lavori del nuovo tempio iniziarono nel 447 a. C. Gli architetti Ictino e Callicrate diressero il progetto, mentre Fidia supervisionò la decorazione scultorea. L'edificio era dedicato ad Atena Parthenos, protettrice della città, la cui imponente statua d'oro e avorio occupava la sala principale. Alla realizzazione parteciparono scalpellini, scultori e numerosi artigiani specializzati. La storia del tempio, tuttavia, non terminò nell'antichità classica: nei secoli successivi fu adattato al culto cristiano e poi trasformato in moschea. Nel 1687, durante un assedio veneziano, un'esplosione provocò danni gravissimi perché al suo interno era conservata polvere da sparo. Nell'Ottocento la dispersione di parte delle sculture aprì discussioni ancora attuali. I restauri moderni mirano a consolidare i resti e a ricollocare gli elementi architettonici identificati con certezza. Osservare il Partenone significa incontrare non soltanto l'ambizione dell'Atene classica, ma anche le tracce di religioni, conflitti e trasformazioni che hanno segnato la sua lunga esistenza."
+    },
+    "curiosity": {
+      "es": "Algunas piezas de mármol preparadas para un templo anterior se reutilizaron en el Partenón.",
+      "en": "Some marble pieces prepared for an earlier temple were reused in the Parthenon.",
+      "it": "Alcuni elementi marmorei preparati per un tempio precedente furono riutilizzati nel Partenone."
+    },
+    "architecture": {
+      "es": [
+        "La columnata exterior presenta 8 columnas en cada fachada corta y 17 en cada lado largo.",
+        "El templo combina el orden dórico exterior con columnas jónicas en una sala occidental.",
+        "Sus líneas incorporan ligeras curvaturas y ajustes ópticos, en lugar de una geometría perfectamente rectilínea."
+      ],
+      "en": [
+        "The outer colonnade has 8 columns on each short façade and 17 along each long side.",
+        "The temple combines an external Doric order with Ionic columns in a western chamber.",
+        "Subtle curves and optical refinements replace strictly straight geometric lines."
+      ],
+      "it": [
+        "Il colonnato esterno presenta 8 colonne sui lati corti e 17 su quelli lunghi.",
+        "Il tempio combina l'ordine dorico esterno con colonne ioniche in un ambiente occidentale.",
+        "Lievi curvature e correzioni ottiche sostituiscono linee geometriche perfettamente rette."
+      ]
+    },
+    "sources": [
+      "https://www.visitgreece.gr/en/experiences/culture/archaeological-sites-monuments/parthenon",
+      "https://whc.unesco.org/en/list/404",
+      "https://www.hh.gr/en/destinations/acropolis-of-athens/"
+    ]
+  },
+  "Erecteión": {
+    "history": {
+      "es": "Al norte de la Acrópolis, el Erecteión cuenta una historia diferente de la del gran templo de Atenea. Su construcción, entre 421 y 406 a. C., coincidió con los años difíciles de la guerra del Peloponeso. Los atenienses necesitaban un edificio que reuniera cultos muy antiguos en un terreno irregular, cargado de recuerdos y tradiciones. En su parte oriental se veneraba a Atenea Polias y se conservaba una antigua imagen de madera de la diosa. Otros espacios estaban relacionados con Poseidón-Erecteo y con héroes vinculados a los orígenes míticos de la ciudad. Según la tradición, Atenea y Poseidón habían competido por convertirse en protectores de Atenas. El olivo sagrado, las marcas atribuidas al tridente del dios y una fuente de agua salada formaban parte de aquel paisaje religioso. Por eso el edificio no responde a la simetría habitual de muchos templos griegos: sus diferentes niveles y accesos se adaptan a lugares de culto concretos. A lo largo de los siglos sufrió cambios de uso, daños y restauraciones. Hoy su silueta permite comprender cómo la arquitectura ateniense podía servir no solo para celebrar el poder de la ciudad, sino también para custodiar creencias heredadas durante generaciones. Cada rincón del Erecteión conserva una relación entre mito, memoria y espacio construido.",
+      "en": "On the northern side of the Acropolis, the Erechtheion tells a different story from that of Athena's great temple. Built between 421 and 406 BC, it took shape during the difficult years of the Peloponnesian War. The Athenians needed a building that could accommodate several ancient cults on uneven ground filled with memories and traditions. Its eastern chamber honoured Athena Polias and housed an old wooden image of the goddess. Other spaces were associated with Poseidon-Erechtheus and heroes connected with the city's mythical beginnings. According to tradition, Athena and Poseidon competed to become the protector of Athens. The sacred olive tree, marks attributed to the sea god's trident and a saltwater spring all belonged to this religious landscape. That helps explain why the building lacks the straightforward symmetry found in many Greek temples: its levels and entrances respond to particular sacred places. Across the centuries, the monument underwent changes of use, damage and restoration. Today its distinctive outline reveals how Athenian architecture could do more than celebrate civic prestige. It could also preserve beliefs passed down through generations, even when those traditions required an unusual architectural solution. Every part of the Erechtheion connects myth, collective memory and the physical landscape of the Acropolis.",
+      "it": "Sul lato settentrionale dell'Acropoli, l'Eretteo racconta una storia diversa da quella del grande tempio di Atena. Costruito tra il 421 e il 406 a. C., prese forma durante i difficili anni della guerra del Peloponneso. Gli Ateniesi avevano bisogno di un edificio capace di accogliere culti molto antichi su un terreno irregolare, ricco di memorie e tradizioni. Nella parte orientale si venerava Atena Polias e si custodiva un'antica immagine lignea della dea. Altri ambienti erano associati a Poseidone-Eretteo e agli eroi legati alle origini mitiche della città. Secondo la tradizione, Atena e Poseidone si erano contesi il ruolo di protettori di Atene. L'olivo sacro, i segni attribuiti al tridente del dio e una sorgente di acqua salata appartenevano a questo paesaggio religioso. Per questo l'edificio non presenta la simmetria regolare di molti templi greci: livelli e ingressi si adattano a luoghi sacri precisi. Nei secoli successivi il monumento conobbe cambiamenti d'uso, danni e restauri. Oggi il suo profilo particolare mostra come l'architettura ateniese potesse non soltanto celebrare il prestigio cittadino, ma anche custodire credenze tramandate per generazioni. Ogni parte dell'Eretteo lega il mito, la memoria collettiva e il paesaggio dell'Acropoli."
+    },
+    "curiosity": {
+      "es": "Cinco cariátides originales están expuestas en el Museo de la Acrópolis; la sexta permanece en el Museo Británico.",
+      "en": "Five original Caryatids are displayed in the Acropolis Museum; the sixth remains in the British Museum.",
+      "it": "Cinque cariatidi originali sono esposte al Museo dell'Acropoli; la sesta si trova ancora al British Museum."
+    },
+    "architecture": {
+      "es": [
+        "El pórtico meridional sostiene su cubierta sobre 6 figuras femeninas esculpidas.",
+        "El friso combina figuras de mármol blanco de Paros con un fondo de piedra gris de Eleusis.",
+        "El pórtico oriental tiene 6 columnas jónicas y se sitúa en una cota superior a la zona occidental."
+      ],
+      "en": [
+        "The southern porch rests its roof on 6 sculpted female figures.",
+        "Its frieze combines white Parian marble figures with a grey Eleusinian stone background.",
+        "The eastern porch has 6 Ionic columns and stands higher than the western section."
+      ],
+      "it": [
+        "Il portico meridionale sostiene il tetto su 6 figure femminili scolpite.",
+        "Il fregio unisce figure in marmo bianco di Paro a un fondo in pietra grigia di Eleusi.",
+        "Il portico orientale presenta 6 colonne ioniche e si trova più in alto della sezione occidentale."
+      ]
+    },
+    "sources": [
+      "https://www.theacropolismuseum.gr/en/other-monuments-periklean-building-programme/erechtheion",
+      "https://www.visitgreece.gr/en/experiences/culture/archaeological-sites-monuments/erechtheion"
+    ]
+  },
+  "Templo de Zeus Olímpico": {
+    "history": {
+      "es": "Muy cerca del centro de Atenas se levantan las columnas del templo de Zeus Olímpico, testigos de uno de los proyectos más prolongados de la Antigüedad. La construcción comenzó hacia 515 a. C., cuando los gobernantes de la familia de los Pisistrátidas quisieron dedicar a Zeus un santuario de dimensiones excepcionales. Sin embargo, la caída de la tiranía interrumpió los trabajos y el edificio permaneció inacabado durante generaciones. Más tarde, el rey helenístico Antíoco IV Epífanes retomó el proyecto, pero su muerte volvió a detenerlo. Fue finalmente el emperador romano Adriano quien completó el templo en 131 o 132 d. C., más de seis siglos después de su inicio. Para Adriano, admirador de la cultura griega, terminar aquella obra era también una manera de vincular su gobierno con la historia prestigiosa de Atenas. El santuario formaba parte de un paisaje urbano que conectaba tradiciones religiosas griegas y ambiciones imperiales romanas. Con el paso del tiempo, el edificio perdió su función original. Terremotos, desmontajes y reutilizaciones de materiales contribuyeron a su ruina. Las columnas que sobreviven permiten imaginar la escala extraordinaria del conjunto. Su historia recuerda que un monumento no siempre pertenece a una sola época: puede ser el resultado de decisiones tomadas por gobernantes separados por siglos.",
+      "en": "Near central Athens, the surviving columns of the Temple of Olympian Zeus bear witness to one of antiquity's longest building projects. Construction began around 515 BC, when the Peisistratid rulers planned an exceptionally large sanctuary dedicated to Zeus. The fall of the tyranny interrupted the work, however, and the structure remained unfinished for generations. Later, the Hellenistic king Antiochus IV Epiphanes revived the project, but his death brought another halt. It was eventually the Roman emperor Hadrian who completed the temple in AD 131 or 132, more than six centuries after construction had begun. For Hadrian, an admirer of Greek culture, finishing the sanctuary was also a way to associate his rule with Athens and its celebrated past. The monument belonged to an urban landscape in which Greek religious traditions met Roman imperial ambitions. Over time, the building lost its original purpose. Earthquakes, dismantling and the reuse of construction materials contributed to its ruin. The columns that survive today still convey the extraordinary scale of the ancient sanctuary. Its story reminds us that a monument does not necessarily belong to a single historical moment. Instead, it can embody decisions made by rulers separated by centuries, each seeking to leave a lasting mark on the city.",
+      "it": "Vicino al centro di Atene, le colonne superstiti del Tempio di Zeus Olimpio testimoniano uno dei progetti edilizi più lunghi dell'antichità. La costruzione iniziò intorno al 515 a. C., quando i governanti della famiglia dei Pisistratidi vollero dedicare a Zeus un santuario di dimensioni eccezionali. La caduta della tirannide interruppe però i lavori e l'edificio rimase incompiuto per generazioni. Più tardi il re ellenistico Antioco IV Epifane riprese il progetto, ma la sua morte provocò una nuova sospensione. Fu infine l'imperatore romano Adriano a completare il tempio nel 131 o 132 d. C., oltre sei secoli dopo l'inizio dei lavori. Per Adriano, ammiratore della cultura greca, terminare il santuario significava anche collegare il proprio governo al prestigioso passato ateniese. Il monumento apparteneva a un paesaggio urbano nel quale le tradizioni religiose greche incontravano le ambizioni imperiali romane. Col passare del tempo l'edificio perse la funzione originaria. Terremoti, smontaggi e riutilizzo dei materiali contribuirono alla sua rovina. Le colonne ancora visibili permettono di immaginare la scala straordinaria del complesso. La sua storia ricorda che un monumento non appartiene necessariamente a un'unica epoca: può riunire le decisioni di sovrani vissuti a secoli di distanza, ciascuno desideroso di lasciare un segno duraturo nella città."
+    },
+    "curiosity": {
+      "es": "Durante el periodo otomano se grabaron inscripciones en algunas columnas para recordar acontecimientos como epidemias y desastres.",
+      "en": "During Ottoman rule, inscriptions were carved on some columns to record events such as epidemics and disasters.",
+      "it": "Durante il periodo ottomano alcune colonne furono incise per ricordare eventi come epidemie e calamità."
+    },
+    "architecture": {
+      "es": [
+        "El templo de época adrianea medía aproximadamente 107,89 metros de largo por 41,11 de ancho.",
+        "Se construyó con mármol pentélico y columnas de orden corintio.",
+        "El proyecto completo contó con 104 columnas, de las que hoy quedan en pie muchas menos."
+      ],
+      "en": [
+        "Hadrian's completed temple measured approximately 107.89 metres long by 41.11 metres wide.",
+        "It used Pentelic marble and Corinthian-order columns.",
+        "The complete design featured 104 columns, of which far fewer remain standing today."
+      ],
+      "it": [
+        "Il tempio completato sotto Adriano misurava circa 107,89 metri di lunghezza e 41,11 di larghezza.",
+        "Fu costruito in marmo pentelico con colonne di ordine corinzio.",
+        "Il progetto completo comprendeva 104 colonne, delle quali oggi ne restano in piedi molte meno."
+      ]
+    },
+    "sources": [
+      "https://www.hh.gr/en/destinations/olympieion/",
+      "https://www.thisisathens.org/antiquities/temple-olympian-zeus"
+    ]
+  },
+  "Odeón de Herodes Ático": {
+    "history": {
+      "es": "En la ladera meridional de la Acrópolis, el Odeón de Herodes Ático muestra otra faceta de la Atenas antigua: la ciudad que seguía celebrando espectáculos bajo dominio romano. El edificio fue levantado hacia 161 d. C. por Herodes Ático, un aristócrata y benefactor ateniense que quiso honrar la memoria de su esposa, Regila. Su proyecto ofreció a la ciudad un espacio monumental para actuaciones musicales, discursos y reuniones culturales. Aunque hoy lo vemos abierto al cielo, en la Antigüedad tenía una gran cubierta de madera, una solución ambiciosa para un recinto de semejante tamaño. Las gradas se apoyaban en la pendiente natural de la colina, mientras una fachada escénica monumental cerraba el espacio destinado a los artistas. Durante el siglo III, las invasiones de los hérulos dañaron gravemente el edificio. Con el paso de los siglos quedó parcialmente enterrado y perdió su función original. Las excavaciones y restauraciones modernas permitieron recuperar su forma y hacerlo utilizable de nuevo. A mediados del siglo XX comenzó una nueva etapa vinculada a los festivales y las representaciones en vivo. Así, el odeón volvió a reunir a espectadores, aunque en un contexto muy distinto del romano. Escuchar música entre sus muros significa participar en una tradición de encuentros públicos que atraviesa casi dos milenios.",
+      "en": "On the southern slope of the Acropolis, the Odeon of Herodes Atticus reveals another side of ancient Athens: a city that continued to host performances under Roman rule. The building was erected around AD 161 by Herodes Atticus, an Athenian aristocrat and benefactor who wished to honour his wife, Regilla. His gift provided the city with a monumental setting for music, speeches and cultural gatherings. Although visitors now see an open-air venue, the ancient building had a large timber roof, an ambitious solution for a space of this size. The seating followed the natural slope of the hill, while an imposing stage building enclosed the area used by performers. During the third century, the Herulian incursions severely damaged the structure. Over subsequent centuries, parts of it became buried and it lost its original purpose. Modern excavations and restoration recovered its form and made renewed use possible. In the middle of the twentieth century, a new chapter began with festivals and live performances. The odeon once again brought audiences together, although in circumstances very different from those of Roman Athens. Listening to music within these ancient walls connects present-day visitors with a tradition of public gatherings extending across nearly two thousand years.",
+      "it": "Sul versante meridionale dell'Acropoli, l'Odeo di Erode Attico mostra un altro volto dell'Atene antica: una città che continuava a ospitare spettacoli sotto il dominio romano. L'edificio fu costruito intorno al 161 d. C. da Erode Attico, aristocratico e benefattore ateniese che desiderava onorare la memoria della moglie Regilla. Il suo dono offrì alla città uno spazio monumentale per musica, discorsi e incontri culturali. Sebbene oggi appaia come un teatro all'aperto, nell'antichità era coperto da un grande tetto ligneo, una soluzione ambiziosa per un ambiente di tali dimensioni. Le gradinate seguivano il pendio naturale della collina, mentre un imponente edificio scenico delimitava lo spazio destinato agli artisti. Nel III secolo le incursioni degli Eruli danneggiarono gravemente la struttura. Nei secoli successivi alcune parti furono sepolte e il complesso perse la funzione originaria. Scavi e restauri moderni permisero di recuperarne la forma e di renderlo nuovamente utilizzabile. A metà del Novecento iniziò una nuova fase legata ai festival e agli spettacoli dal vivo. L'odeo tornò così ad accogliere spettatori, anche se in un contesto molto diverso da quello romano. Ascoltare musica tra queste antiche mura significa partecipare a una tradizione di incontri pubblici che attraversa quasi duemila anni."
+    },
+    "curiosity": {
+      "es": "En su escenario actuaron figuras internacionales como Maria Callas y Margot Fonteyn.",
+      "en": "International performers including Maria Callas and Margot Fonteyn have appeared on its stage.",
+      "it": "Sul suo palcoscenico si sono esibite artiste internazionali come Maria Callas e Margot Fonteyn."
+    },
+    "architecture": {
+      "es": [
+        "La cavea aprovechaba la pendiente rocosa de la Acrópolis y acogía aproximadamente 5.000 personas.",
+        "La fachada escénica original se elevaba en tres niveles con arcos.",
+        "La cubierta antigua utilizaba madera de cedro, hoy desaparecida."
+      ],
+      "en": [
+        "The cavea followed the rocky Acropolis slope and seated approximately 5,000 people.",
+        "The original stage façade rose through three levels of arches.",
+        "The ancient roof used cedar timber and no longer survives."
+      ],
+      "it": [
+        "La cavea seguiva il pendio roccioso dell'Acropoli e ospitava circa 5.000 persone.",
+        "La facciata scenica originaria si sviluppava su tre livelli di arcate.",
+        "La copertura antica utilizzava legno di cedro, oggi scomparso."
+      ]
+    },
+    "sources": [
+      "https://www.visitgreece.gr/en/experiences/culture/archaeological-sites-monuments/odeon-of-herodes-atticus",
+      "https://www.thisisathens.org/antiquities/odeon-herodes-atticus"
     ]
   }
 };
