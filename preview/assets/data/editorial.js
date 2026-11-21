@@ -1,4 +1,4 @@
-/* Stage 29: Paris editorial; earlier content preserved. */
+/* Stage 30: Versailles editorial; previous entries preserved. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -685,6 +685,40 @@ window.ArchiSpotterEditorial={
     "sources": [
       "https://www.louvre.fr/en/explore/the-palace/from-palace-to-museum",
       "https://www.louvre.fr/en/explore/the-palace"
+    ]
+  },
+  "Palacio de Versalles": {
+    "history": {
+      "es": "El Palacio de Versalles comenzó como una residencia de caza de Luis XIII, levantada a partir de 1623 en un territorio de bosques cercano a París. Su hijo, Luis XIV, transformó aquel retiro en una residencia monumental destinada a expresar la autoridad de la monarquía francesa. Desde 1661 impulsó ampliaciones sucesivas, en las que participaron arquitectos como Louis Le Vau y Jules Hardouin-Mansart. El conjunto creció junto con los jardines y los edificios destinados a albergar a la corte. El 6 de mayo de 1682, Versalles se convirtió en la sede principal del gobierno y de la vida cortesana. Allí se concentraron ceremonias, recepciones diplomáticas y decisiones políticas, mientras la nobleza competía por acercarse al soberano. Tras la muerte de Luis XIV, sus sucesores continuaron modificando el palacio. La Revolución francesa cambió definitivamente su función: en octubre de 1789 la familia real abandonó Versalles y se trasladó a París. Durante el siglo XIX, Luis Felipe promovió su transformación en un museo dedicado a la historia de Francia, inaugurado en 1837. Desde entonces, el lugar ha combinado conservación patrimonial, visitas públicas y actos oficiales. Su historia muestra cómo una residencia concebida para representar el poder absoluto terminó convirtiéndose en un espacio dedicado a preservar y explicar el pasado nacional.",
+      "en": "The Palace of Versailles began as a hunting residence built for Louis XIII from 1623 in wooded countryside near Paris. His son, Louis XIV, transformed this retreat into a monumental residence intended to express the authority of the French monarchy. From 1661 he commissioned successive expansions involving architects such as Louis Le Vau and Jules Hardouin-Mansart. The complex grew alongside its gardens and the buildings needed to accommodate the royal court. On 6 May 1682, Versailles became the principal seat of government and court life. Ceremonies, diplomatic receptions and political decisions took place there, while nobles competed for access to the sovereign. After Louis XIV died, his successors continued altering the palace. The French Revolution fundamentally changed its purpose: in October 1789 the royal family left Versailles for Paris. During the nineteenth century, Louis Philippe promoted its transformation into a museum devoted to French history, which opened in 1837. Since then, the estate has combined heritage conservation, public visits and official events. Its history demonstrates how a residence designed to represent absolute royal power eventually became a place for preserving and interpreting the nation's past. The palace also offers an unusual record of how architecture can acquire new meanings as political institutions and public expectations change over time.",
+      "it": "La Reggia di Versailles nacque come residenza di caccia di Luigi XIII, costruita a partire dal 1623 in una zona boscosa vicino a Parigi. Suo figlio, Luigi XIV, trasformò quel rifugio in una residenza monumentale destinata a esprimere l'autorità della monarchia francese. Dal 1661 promosse ampliamenti successivi, ai quali parteciparono architetti come Louis Le Vau e Jules Hardouin-Mansart. Il complesso crebbe insieme ai giardini e agli edifici necessari per ospitare la corte. Il 6 maggio 1682 Versailles divenne la sede principale del governo e della vita cortigiana. Qui si svolgevano cerimonie, ricevimenti diplomatici e decisioni politiche, mentre i nobili cercavano di avvicinarsi al sovrano. Dopo la morte di Luigi XIV, i suoi successori continuarono a modificare il palazzo. La Rivoluzione francese ne cambiò profondamente la funzione: nell'ottobre del 1789 la famiglia reale lasciò Versailles per Parigi. Nell'Ottocento Luigi Filippo promosse la trasformazione della reggia in un museo dedicato alla storia della Francia, inaugurato nel 1837. Da allora il complesso unisce conservazione del patrimonio, visite pubbliche e manifestazioni ufficiali. La sua storia mostra come una residenza concepita per rappresentare il potere monarchico assoluto sia diventata un luogo dedicato a conservare e raccontare il passato nazionale. Il palazzo testimonia inoltre come l'architettura cambi significato insieme alle istituzioni politiche e alla società."
+    },
+    "curiosity": {
+      "es": "En 1686 recibió a una embajada del reino de Siam.",
+      "en": "In 1686 it welcomed an embassy from the kingdom of Siam.",
+      "it": "Nel 1686 accolse un'ambasceria del regno del Siam."
+    },
+    "architecture": {
+      "es": [
+        "La Galería de los Espejos mide 73 metros de longitud.",
+        "Sus 17 arcos contienen un total de 357 espejos.",
+        "La fachada hacia los jardines incorpora la envolvente diseñada por Le Vau."
+      ],
+      "en": [
+        "The Hall of Mirrors measures 73 metres in length.",
+        "Its 17 arches contain a total of 357 mirrors.",
+        "The garden façade incorporates the envelope designed by Le Vau."
+      ],
+      "it": [
+        "La Galleria degli Specchi misura 73 metri di lunghezza.",
+        "I suoi 17 archi contengono complessivamente 357 specchi.",
+        "La facciata verso i giardini comprende l'involucro progettato da Le Vau."
+      ]
+    },
+    "sources": [
+      "https://en.chateauversailles.fr/discover/history",
+      "https://en.chateauversailles.fr/discover/estate/palace/hall-mirrors",
+      "https://en.chateauversailles.fr/discover/history/great-characters/louis-vau"
     ]
   }
 };
