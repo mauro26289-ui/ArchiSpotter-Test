@@ -1,4 +1,4 @@
-/* Stage 33: Cologne and Lisbon; previous entries preserved. */
+/* Stage 31 source review and corrections; previous entries retained. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -867,19 +867,19 @@ window.ArchiSpotterEditorial={
     },
     "architecture": {
       "es": [
-        "Templo dórico con 6 columnas frontales y 15 laterales.",
-        "Terraza sostenida por muros de contención.",
-        "El edificio del siglo IV a. C. reemplazó templos anteriores."
+        "La Vía Sagrada conectaba las ofrendas y tesoros con el santuario de Apolo.",
+        "El conjunto se organizaba en terrazas adaptadas a la ladera del monte Parnaso.",
+        "El templo formaba parte de un recinto que incluía tesoros, altares y otras construcciones."
       ],
       "en": [
-        "Doric temple with 6 columns at each end and 15 along each side.",
-        "Terrace supported by retaining walls.",
-        "The fourth-century BC building replaced earlier temples."
+        "The Sacred Way connected offerings and treasuries with Apollo's sanctuary.",
+        "The complex occupied terraces adapted to the slope of Mount Parnassus.",
+        "The temple belonged to a precinct containing treasuries, altars and other structures."
       ],
       "it": [
-        "Tempio dorico con 6 colonne sui fronti e 15 sui lati.",
-        "Terrazza sostenuta da muri di contenimento.",
-        "L'edificio del IV secolo a. C. sostituì templi precedenti."
+        "La Via Sacra collegava offerte e tesori al santuario di Apollo.",
+        "Il complesso occupava terrazze adattate al pendio del monte Parnaso.",
+        "Il tempio faceva parte di un recinto con tesori, altari e altri edifici."
       ]
     },
     "sources": [
@@ -915,7 +915,9 @@ window.ArchiSpotterEditorial={
       ]
     },
     "sources": [
-      "https://www.parliament.uk/about/living-heritage/building/palace/"
+      "https://www.parliament.uk/about/living-heritage/building/palace/",
+      "https://www.parliament.uk/about/living-heritage/building/palace/architecture/key-dates-fire1834-to-present/",
+      "https://www.parliament.uk/about/living-heritage/building/palace/architecture/palacestructure/rebuilding-palace/"
     ]
   },
   "Tower Bridge": {
@@ -931,23 +933,25 @@ window.ArchiSpotterEditorial={
     },
     "architecture": {
       "es": [
-        "El puente mide aproximadamente 244 metros.",
-        "Las torres alcanzan unos 65 metros.",
-        "Dos hojas basculantes se elevan para dejar pasar barcos."
+        "El puente combina tramos suspendidos y dos hojas basculantes.",
+        "Las pasarelas superiores unen las dos torres.",
+        "La estructura portante utiliza acero revestido con piedra."
       ],
       "en": [
-        "The bridge is approximately 244 metres long.",
-        "The towers rise about 65 metres.",
-        "Two bascules lift to allow ships through."
+        "The bridge combines suspended spans with two lifting bascules.",
+        "High-level walkways connect the two towers.",
+        "Its load-bearing structure uses steel clad in stone."
       ],
       "it": [
-        "Il ponte misura circa 244 metri.",
-        "Le torri raggiungono circa 65 metri.",
-        "Due campate mobili si sollevano per lasciare passare le navi."
+        "Il ponte combina campate sospese e due sezioni mobili.",
+        "Le passerelle superiori collegano le due torri.",
+        "La struttura portante utilizza acciaio rivestito in pietra."
       ]
     },
     "sources": [
-      "https://www.towerbridge.org.uk/discover/history"
+      "https://www.towerbridge.org.uk/discover/history",
+      "https://www.towerbridge.org.uk/stories/timeline-the-construction-of-tower-bridge",
+      "https://www.towerbridge.org.uk/explore-inside"
     ]
   },
   "Abadía de Westminster": {
@@ -963,23 +967,25 @@ window.ArchiSpotterEditorial={
     },
     "architecture": {
       "es": [
-        "La nave alcanza unos 31 metros de altura.",
-        "La capilla de Enrique VII posee bóvedas de abanico.",
-        "Conserva un pavimento cosmatesco medieval."
+        "La iglesia presenta una planta cruciforme.",
+        "La capilla de Enrique VII forma parte del conjunto de capillas reales.",
+        "El pavimento cosmatesco frente al altar mayor fue colocado en 1268."
       ],
       "en": [
-        "The nave rises about 31 metres.",
-        "Henry VII's Chapel has fan vaulting.",
-        "It preserves a medieval Cosmati pavement."
+        "The church has a cruciform plan.",
+        "Henry VII's Chapel belongs to the complex of royal chapels.",
+        "The Cosmati pavement before the high altar was laid in 1268."
       ],
       "it": [
-        "La navata raggiunge circa 31 metri.",
-        "La cappella di Enrico VII presenta volte a ventaglio.",
-        "Conserva un pavimento cosmatesco medievale."
+        "La chiesa presenta una pianta a croce.",
+        "La cappella di Enrico VII appartiene al complesso delle cappelle reali.",
+        "Il pavimento cosmatesco davanti all'altare maggiore fu posato nel 1268."
       ]
     },
     "sources": [
-      "https://www.westminster-abbey.org/history"
+      "https://www.westminster-abbey.org/history",
+      "https://www.westminster-abbey.org/history/coronations-at-the-abbey/a-history-of-coronations",
+      "https://www.westminster-abbey.org/history/explore-our-history/cosmati-pavement"
     ]
   },
   "Catedral de San Pablo": {
@@ -995,23 +1001,25 @@ window.ArchiSpotterEditorial={
     },
     "architecture": {
       "es": [
-        "La cúpula alcanza aproximadamente 111 metros.",
-        "La cúpula utiliza una estructura de tres capas.",
-        "La planta incluye nave longitudinal y crucero central."
+        "La cúpula se apoya sobre el crucero central.",
+        "El proyecto de Wren combina una nave longitudinal y transeptos.",
+        "El diseño de la cúpula incorporó cadenas de hierro para controlar los empujes."
       ],
       "en": [
-        "The dome reaches approximately 111 metres.",
-        "The dome uses a three-layer structure.",
-        "The plan includes a long nave and central crossing."
+        "The dome rises over the central crossing.",
+        "Wren's design combines a longitudinal nave and transepts.",
+        "The dome design incorporated iron chains to control outward thrust."
       ],
       "it": [
-        "La cupola raggiunge circa 111 metri.",
-        "La cupola utilizza una struttura a tre strati.",
-        "La pianta comprende navata longitudinale e crociera centrale."
+        "La cupola si eleva sopra la crociera centrale.",
+        "Il progetto di Wren combina una navata longitudinale e transetti.",
+        "Il progetto della cupola incorporò catene di ferro per controllare le spinte."
       ]
     },
     "sources": [
-      "https://www.stpauls.co.uk/our-history"
+      "https://www.stpauls.co.uk/our-history",
+      "https://www.stpauls.co.uk/wren-office-drawings",
+      "https://www.stpauls.co.uk/5-designs-for-dome-c-1685-1710"
     ]
   },
   "Termas romanas": {
