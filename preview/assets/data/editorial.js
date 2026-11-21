@@ -1,4 +1,4 @@
-/* Stage 32: Bath and Berlin; prior editorial entries retained. */
+/* Stage 33: Cologne and Lisbon; previous entries preserved. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -1172,6 +1172,166 @@ window.ArchiSpotterEditorial={
     },
     "sources": [
       "https://www.stiftung-denkmal.de/en/memorials/memorial-to-the-murdered-jews-of-europe/"
+    ]
+  },
+  "Catedral de Colonia": {
+    "history": {
+      "es": "La Catedral de Colonia se alza junto al Rin y representa uno de los proyectos góticos más ambiciosos de Europa. Su construcción comenzó en 1248, cuando la ciudad quería ofrecer un santuario digno de las reliquias de los Reyes Magos, llegadas desde Milán en el siglo XII. Los maestros medievales proyectaron una iglesia inspirada en las grandes catedrales francesas, con espacios elevados y una compleja organización de capillas. Las obras avanzaron durante generaciones, pero se interrumpieron en la Edad Moderna y el edificio permaneció incompleto durante siglos. En el siglo XIX, el entusiasmo por la arquitectura medieval y la identidad alemana impulsó la reanudación de los trabajos. La catedral fue terminada en 1880 siguiendo en buena medida los planos históricos conservados. Durante la Segunda Guerra Mundial sufrió daños por los bombardeos, aunque su estructura principal permaneció en pie. Las restauraciones posteriores permitieron recuperar elementos dañados y continuar una tarea de conservación que nunca termina. Hoy el edificio sigue siendo una iglesia activa y un destino de peregrinación. Sus torres dominan el paisaje urbano, mientras el interior reúne testimonios de distintas épocas. La historia de esta catedral muestra cómo una obra puede superar la vida de sus constructores y convertirse en una responsabilidad compartida por muchas generaciones.",
+      "en": "Cologne Cathedral rises beside the Rhine and represents one of Europe's most ambitious Gothic building projects. Construction began in 1248, when the city sought a sanctuary worthy of the relics of the Three Kings, brought from Milan in the twelfth century. Medieval master builders planned a church inspired by the great French cathedrals, with soaring spaces and a complex arrangement of chapels. Work progressed over generations but eventually stopped, leaving the building unfinished for centuries. In the nineteenth century, enthusiasm for medieval architecture and German national identity encouraged construction to resume. The cathedral was completed in 1880, largely following surviving historical plans. During the Second World War, bombing damaged the church, although its main structure remained standing. Later restoration recovered damaged elements and continued a programme of conservation that has never truly ended. Today the building remains an active church and pilgrimage destination. Its towers dominate the city skyline, while the interior brings together evidence from different periods. The cathedral's history shows how a single project can outlast its original builders and become a responsibility shared across many generations. It is both a religious monument and a remarkable record of changing attitudes towards medieval art and the preservation of historic architecture.",
+      "it": "Il Duomo di Colonia sorge accanto al Reno e rappresenta uno dei progetti gotici più ambiziosi d'Europa. La costruzione iniziò nel 1248, quando la città desiderava un santuario degno delle reliquie dei Re Magi, giunte da Milano nel XII secolo. I maestri medievali progettarono una chiesa ispirata alle grandi cattedrali francesi, con spazi elevati e una complessa disposizione di cappelle. I lavori avanzarono per generazioni, ma furono interrotti e l'edificio rimase incompiuto per secoli. Nell'Ottocento, l'entusiasmo per l'architettura medievale e l'identità nazionale tedesca favorì la ripresa della costruzione. Il duomo fu completato nel 1880, seguendo in larga misura i disegni storici conservati. Durante la Seconda guerra mondiale i bombardamenti danneggiarono la chiesa, sebbene la struttura principale rimanesse in piedi. I restauri successivi recuperarono gli elementi colpiti e proseguirono un'attività di conservazione che non si è mai realmente conclusa. Oggi l'edificio rimane una chiesa attiva e una meta di pellegrinaggio. Le torri dominano il panorama urbano, mentre l'interno riunisce testimonianze di epoche differenti. La storia del duomo mostra come un unico progetto possa sopravvivere ai suoi primi costruttori e diventare una responsabilità condivisa da molte generazioni. È anche una testimonianza dell'evoluzione della tutela del patrimonio storico."
+    },
+    "curiosity": {
+      "es": "La catedral conserva un gran relicario medieval tradicionalmente asociado a los Reyes Magos.",
+      "en": "The cathedral houses a major medieval shrine traditionally associated with the Three Kings.",
+      "it": "Il duomo conserva un grande reliquiario medievale tradizionalmente associato ai Re Magi."
+    },
+    "architecture": {
+      "es": [
+        "Sus dos torres alcanzan aproximadamente 157 metros.",
+        "La planta presenta una nave central y cuatro naves laterales.",
+        "El coro gótico destaca por sus elevadas bóvedas y vidrieras."
+      ],
+      "en": [
+        "Its twin towers rise approximately 157 metres.",
+        "The plan has a central nave and four side aisles.",
+        "The Gothic choir features high vaults and stained glass."
+      ],
+      "it": [
+        "Le due torri raggiungono circa 157 metri.",
+        "La pianta presenta una navata centrale e quattro navate laterali.",
+        "Il coro gotico presenta alte volte e vetrate."
+      ]
+    },
+    "sources": [
+      "https://whc.unesco.org/en/list/292/"
+    ]
+  },
+  "Torre de Belém": {
+    "history": {
+      "es": "La Torre de Belém se levanta junto al río Tajo, en Lisboa, y recuerda la época en que Portugal desarrolló una extensa red de viajes marítimos. Fue construida a comienzos del siglo XVI, durante el reinado de Manuel I, como parte del sistema defensivo de la entrada al puerto. Su emplazamiento permitía vigilar el tránsito de embarcaciones y complementar otras fortificaciones de la desembocadura. El arquitecto Francisco de Arruda participó en el proyecto, que combinó funciones militares con una decoración representativa del poder de la monarquía. La torre estuvo vinculada al control del río y a la protección de una ciudad enriquecida por el comercio oceánico. Con el paso de los siglos desempeñó distintos usos, incluidos los de puesto de vigilancia y prisión. Los cambios en la línea de costa modificaron su relación con el agua, de modo que hoy parece mucho más próxima a tierra firme. Las campañas de conservación han buscado proteger su delicada ornamentación de piedra frente al desgaste ambiental. Actualmente es uno de los monumentos más visitados de Lisboa y forma parte del patrimonio mundial reconocido por la UNESCO. Su historia permite observar cómo la arquitectura defensiva también podía comunicar ambiciones políticas, creencias religiosas y orgullo por los viajes realizados más allá de Europa.",
+      "en": "Belém Tower stands beside the River Tagus in Lisbon and recalls the period when Portugal developed an extensive network of maritime voyages. It was built in the early sixteenth century under King Manuel I as part of the defensive system protecting the harbour entrance. Its position helped monitor passing vessels and complemented other fortifications near the river mouth. Architect Francisco de Arruda contributed to a design combining military purposes with decoration expressing royal authority. The tower was connected with control of the river and protection of a city enriched by overseas trade. Over the centuries it served different functions, including observation and imprisonment. Changes to the shoreline altered its relationship with the water, so today it appears much closer to the mainland. Conservation work has sought to protect its delicate stone ornament against environmental damage. It is now one of Lisbon's most visited monuments and forms part of a UNESCO World Heritage property. Its history reveals how defensive architecture could also communicate political ambition, religious beliefs and pride in journeys extending beyond Europe. Visitors encounter a building shaped by practical needs but designed to make a lasting impression. The monument remains closely associated with Portugal's maritime history and the complex legacy of its overseas expansion.",
+      "it": "La Torre di Belém sorge accanto al fiume Tago, a Lisbona, e ricorda l'epoca in cui il Portogallo sviluppò una vasta rete di viaggi marittimi. Fu costruita all'inizio del XVI secolo, durante il regno di Manuele I, come parte del sistema difensivo dell'ingresso al porto. La posizione permetteva di controllare il passaggio delle imbarcazioni e completava altre fortificazioni presso la foce. L'architetto Francisco de Arruda partecipò a un progetto che univa funzioni militari e decorazioni rappresentative del potere monarchico. La torre era legata al controllo del fiume e alla protezione di una città arricchita dai commerci oceanici. Nel corso dei secoli svolse diverse funzioni, comprese quelle di osservazione e prigione. I cambiamenti della linea costiera modificarono il rapporto con l'acqua, tanto che oggi appare molto più vicina alla terraferma. Gli interventi di conservazione hanno cercato di proteggere i delicati ornamenti in pietra dai danni ambientali. Attualmente è uno dei monumenti più visitati di Lisbona e fa parte del patrimonio mondiale riconosciuto dall'UNESCO. La sua storia mostra come l'architettura difensiva potesse comunicare ambizioni politiche, credenze religiose e orgoglio per i viaggi oltre l'Europa. I visitatori incontrano un edificio nato da esigenze pratiche ma progettato per lasciare un'impressione duratura."
+    },
+    "curiosity": {
+      "es": "Una escultura de rinoceronte aparece entre los elementos decorativos de la torre.",
+      "en": "A rhinoceros carving appears among the tower's decorative details.",
+      "it": "Una scultura di rinoceronte compare tra le decorazioni della torre."
+    },
+    "architecture": {
+      "es": [
+        "El baluarte inferior presenta una plataforma artillera.",
+        "La torre combina piedra caliza y ornamentación manuelina.",
+        "Las garitas de esquina tienen cubiertas abovedadas."
+      ],
+      "en": [
+        "The lower bastion contains a gun platform.",
+        "The tower combines limestone with Manueline ornament.",
+        "Corner watchtowers have domed roofs."
+      ],
+      "it": [
+        "Il bastione inferiore presenta una piattaforma per l'artiglieria.",
+        "La torre combina pietra calcarea e ornamenti manuelini.",
+        "Le garitte angolari presentano coperture a cupola."
+      ]
+    },
+    "sources": [
+      "https://whc.unesco.org/en/list/263/"
+    ]
+  },
+  "Monasterio de los Jerónimos": {
+    "history": {
+      "es": "El Monasterio de los Jerónimos, en el barrio lisboeta de Belém, nació de la expansión marítima portuguesa de comienzos del siglo XVI. El rey Manuel I promovió su construcción cerca del lugar donde los navegantes partían hacia el Atlántico. Los monjes de la orden de San Jerónimo debían rezar por la familia real y por quienes emprendían viajes peligrosos. Las obras comenzaron hacia 1501 y se prolongaron durante varias generaciones. El proyecto reunió a arquitectos y artesanos que desarrollaron un lenguaje decorativo hoy conocido como manuelino, vinculado al gótico tardío y a influencias renacentistas. El monasterio fue financiado en parte mediante recursos relacionados con el comercio ultramarino. Su iglesia y sus claustros expresaban tanto devoción religiosa como prestigio de la corona. A lo largo de los siglos, el conjunto atravesó cambios políticos y transformaciones de uso. Tras la desaparición de las órdenes religiosas en Portugal durante el siglo XIX, algunos espacios acogieron instituciones civiles. Hoy el monasterio es un importante lugar de memoria nacional y recibe visitantes de todo el mundo. Su arquitectura permite reconocer el vínculo entre religión, poder y navegación, pero también invita a reflexionar sobre los contactos y las desigualdades que acompañaron la expansión portuguesa. El edificio conserva testimonios de una época de enormes transformaciones.",
+      "en": "The Jerónimos Monastery in Lisbon's Belém district emerged from Portuguese maritime expansion in the early sixteenth century. King Manuel I commissioned its construction near the place from which sailors departed towards the Atlantic. Monks of the Order of Saint Jerome were expected to pray for the royal family and those undertaking dangerous voyages. Building began around 1501 and continued across several generations. Architects and craftsmen developed a decorative language now called Manueline, combining late Gothic traditions with Renaissance influences. The monastery was funded partly through resources connected with overseas commerce. Its church and cloisters expressed religious devotion alongside the prestige of the crown. Over the centuries, the complex experienced political changes and new uses. After religious orders were dissolved in Portugal during the nineteenth century, some spaces housed civil institutions. Today the monastery is an important site of national memory and welcomes visitors from around the world. Its architecture reveals connections between religion, political power and navigation, while also inviting reflection on the contacts and inequalities accompanying Portuguese expansion. The building preserves evidence of an era of profound transformation. Its carefully worked stone surfaces remain a powerful expression of the ambitions and beliefs of the people who commissioned and constructed this remarkable monument.",
+      "it": "Il Monastero dos Jerónimos, nel quartiere lisbonese di Belém, nacque dall'espansione marittima portoghese dell'inizio del XVI secolo. Il re Manuele I ne promosse la costruzione vicino al luogo da cui i navigatori partivano verso l'Atlantico. I monaci dell'ordine di San Girolamo dovevano pregare per la famiglia reale e per coloro che affrontavano viaggi pericolosi. I lavori iniziarono intorno al 1501 e continuarono per diverse generazioni. Architetti e artigiani svilupparono un linguaggio decorativo oggi chiamato manuelino, legato al gotico tardo e a influenze rinascimentali. Il monastero fu finanziato in parte con risorse collegate ai commerci d'oltremare. La chiesa e i chiostri esprimevano devozione religiosa e prestigio della corona. Nel corso dei secoli il complesso attraversò cambiamenti politici e trasformazioni d'uso. Dopo la soppressione degli ordini religiosi in Portogallo nell'Ottocento, alcuni spazi ospitarono istituzioni civili. Oggi il monastero è un importante luogo della memoria nazionale e accoglie visitatori da tutto il mondo. La sua architettura rivela i legami tra religione, potere e navigazione, ma invita anche a riflettere sui contatti e sulle disuguaglianze che accompagnarono l'espansione portoghese. L'edificio conserva testimonianze di un'epoca di grandi trasformazioni. Le superfici di pietra finemente lavorate esprimono ancora le ambizioni e le credenze dei suoi committenti."
+    },
+    "curiosity": {
+      "es": "La iglesia alberga la tumba de Vasco da Gama, asociada a la memoria de los viajes portugueses.",
+      "en": "The church houses Vasco da Gama's tomb, associated with Portuguese maritime memory.",
+      "it": "La chiesa ospita la tomba di Vasco da Gama, legata alla memoria dei viaggi portoghesi."
+    },
+    "architecture": {
+      "es": [
+        "El claustro presenta dos niveles de galerías ornamentadas.",
+        "Las bóvedas de la iglesia utilizan nervaduras de piedra.",
+        "La ornamentación manuelina incorpora motivos vegetales y marítimos."
+      ],
+      "en": [
+        "The cloister has two levels of decorated galleries.",
+        "The church vaults use stone ribs.",
+        "Manueline decoration includes botanical and maritime motifs."
+      ],
+      "it": [
+        "Il chiostro presenta due livelli di gallerie decorate.",
+        "Le volte della chiesa utilizzano nervature in pietra.",
+        "La decorazione manuelina comprende motivi vegetali e marittimi."
+      ]
+    },
+    "sources": [
+      "https://whc.unesco.org/en/list/263/"
+    ]
+  },
+  "Castillo de San Jorge": {
+    "history": {
+      "es": "El Castillo de San Jorge domina una de las colinas más altas de Lisboa y permite comprender la importancia estratégica del lugar. Aunque existen vestigios de ocupación anteriores, la fortificación adquirió especial relevancia durante el periodo islámico, cuando Lisboa formaba parte de al-Ándalus. Sus murallas protegían un núcleo urbano y ofrecían una posición privilegiada para vigilar el río Tajo. En 1147, las fuerzas cristianas encabezadas por Alfonso Henriques conquistaron la ciudad tras un prolongado asedio. Durante los siglos siguientes, el castillo se vinculó a la monarquía portuguesa y algunas de sus dependencias fueron utilizadas como residencia real. Con el traslado de la corte a otros palacios, el conjunto perdió progresivamente ese papel. Terremotos, transformaciones militares y nuevas construcciones alteraron su aspecto original. En el siglo XX, importantes intervenciones recuperaron sectores de murallas y torres, aunque también modificaron la presentación histórica del lugar. Hoy el recinto reúne espacios arqueológicos, jardines y miradores sobre los tejados de Lisboa. Su historia refleja la convivencia y los conflictos entre distintas comunidades, así como los cambios de función de las fortificaciones medievales. Recorrer sus caminos permite reconocer la relación entre geografía, defensa y crecimiento urbano que marcó durante siglos la evolución de la capital portuguesa.",
+      "en": "São Jorge Castle dominates one of Lisbon's highest hills and reveals the strategic importance of this location. Although evidence of earlier settlement survives, the fortification became particularly significant during the Islamic period, when Lisbon formed part of al-Andalus. Its walls protected an urban centre and offered an advantageous position for watching the Tagus. In 1147, Christian forces led by Afonso Henriques captured the city after a prolonged siege. During subsequent centuries, the castle became associated with the Portuguese monarchy, and some buildings served as a royal residence. As the court moved to other palaces, the complex gradually lost that role. Earthquakes, military alterations and new construction changed its original appearance. In the twentieth century, major interventions recovered sections of walls and towers, although they also changed how the historic site was presented. Today the grounds contain archaeological areas, gardens and viewpoints over Lisbon's rooftops. Its history reflects coexistence and conflict between different communities, together with the changing functions of medieval fortifications. Walking through the site reveals the relationship between geography, defence and urban growth that shaped the Portuguese capital over many centuries. The castle is not a monument from just one moment: its remains preserve traces of several societies that occupied and transformed the hill.",
+      "it": "Il Castello di São Jorge domina una delle colline più alte di Lisbona e permette di comprendere l'importanza strategica del luogo. Sebbene esistano tracce di insediamenti precedenti, la fortificazione acquistò particolare rilievo durante il periodo islamico, quando Lisbona faceva parte di al-Andalus. Le mura proteggevano un centro urbano e offrivano una posizione privilegiata per controllare il Tago. Nel 1147, le forze cristiane guidate da Alfonso Henriques conquistarono la città dopo un lungo assedio. Nei secoli successivi il castello fu associato alla monarchia portoghese e alcuni edifici servirono come residenza reale. Con il trasferimento della corte in altri palazzi, il complesso perse gradualmente questo ruolo. Terremoti, modifiche militari e nuove costruzioni alterarono il suo aspetto originario. Nel Novecento, importanti interventi recuperarono tratti di mura e torri, pur cambiando anche la presentazione storica del sito. Oggi il recinto comprende aree archeologiche, giardini e punti panoramici sui tetti di Lisbona. La sua storia riflette convivenza e conflitti tra comunità differenti, insieme ai cambiamenti di funzione delle fortificazioni medievali. Percorrere il luogo permette di riconoscere il rapporto tra geografia, difesa e crescita urbana che ha segnato per secoli la capitale portoghese. Il castello non appartiene a un unico momento: conserva tracce di diverse società che hanno trasformato la collina."
+    },
+    "curiosity": {
+      "es": "En el recinto se conservan vestigios arqueológicos de distintas fases de ocupación, incluidas estructuras islámicas.",
+      "en": "The grounds preserve archaeological traces from different occupations, including Islamic structures.",
+      "it": "Il recinto conserva tracce archeologiche di diverse occupazioni, comprese strutture islamiche."
+    },
+    "architecture": {
+      "es": [
+        "Las murallas aprovechan la posición elevada de la colina.",
+        "El castillo conserva torres y caminos de ronda.",
+        "El recinto presenta patios y sectores arqueológicos."
+      ],
+      "en": [
+        "The defensive walls exploit the hilltop position.",
+        "The castle retains towers and wall walks.",
+        "The grounds contain courtyards and archaeological areas."
+      ],
+      "it": [
+        "Le mura difensive sfruttano la posizione elevata della collina.",
+        "Il castello conserva torri e camminamenti di ronda.",
+        "Il recinto comprende cortili e aree archeologiche."
+      ]
+    },
+    "sources": [
+      "https://castelodesaojorge.pt/en/"
+    ]
+  },
+  "Elevador de Santa Justa": {
+    "history": {
+      "es": "El Elevador de Santa Justa nació para resolver una dificultad cotidiana de Lisboa: la gran diferencia de altura entre las calles de la Baixa y el barrio del Chiado. A finales del siglo XIX, los nuevos medios de transporte urbano comenzaron a transformar la movilidad en una ciudad construida sobre colinas. El ingeniero Raoul Mesnier du Ponsard diseñó un ascensor público integrado en una estructura metálica monumental. La obra fue inaugurada en 1902 y se convirtió rápidamente en una referencia del paisaje urbano. En sus primeros años utilizaba maquinaria de vapor, sustituida después por un sistema eléctrico. El elevador permitía ahorrar una subida exigente y facilitaba el desplazamiento entre zonas comerciales y residenciales. Su diseño también respondía al gusto por el hierro trabajado y la ornamentación de la época. A lo largo del siglo XX, la instalación pasó de ser una innovación práctica a convertirse en un atractivo patrimonial. Sigue formando parte de la memoria de la movilidad lisboeta, aunque el turismo ha cambiado notablemente la experiencia de sus usuarios. Desde la plataforma superior se observan tejados, plazas y edificios históricos. El monumento muestra cómo una solución técnica destinada al transporte puede adquirir valor arquitectónico y convertirse en un símbolo de la ciudad que sirve.",
+      "en": "The Santa Justa Lift was created to solve an everyday problem in Lisbon: the steep difference in height between the streets of Baixa and the Chiado district. In the late nineteenth century, new forms of urban transport were transforming movement through a city built on hills. Engineer Raoul Mesnier du Ponsard designed a public lift housed within a monumental metal structure. It opened in 1902 and quickly became a familiar part of the cityscape. Its early machinery was steam powered, later replaced by an electric system. The lift spared passengers a demanding climb and made travel between commercial and residential areas easier. Its design also reflected contemporary enthusiasm for worked iron and elaborate decoration. During the twentieth century, the installation gradually changed from a practical innovation into a heritage attraction. It remains part of Lisbon's transport history, although tourism has significantly altered the experience of using it. From the upper viewing platform, visitors can see rooftops, squares and historic buildings. The monument demonstrates how a technical solution intended for everyday transport can acquire architectural significance and become a symbol of the city it serves. Its survival also illustrates the lasting influence of industrial design on the appearance of European urban centres.",
+      "it": "L'Elevador de Santa Justa nacque per risolvere una difficoltà quotidiana di Lisbona: il forte dislivello tra le strade della Baixa e il quartiere del Chiado. Alla fine dell'Ottocento, nuovi mezzi di trasporto urbano iniziarono a trasformare gli spostamenti in una città costruita sulle colline. L'ingegnere Raoul Mesnier du Ponsard progettò un ascensore pubblico inserito in una struttura metallica monumentale. L'opera fu inaugurata nel 1902 e divenne rapidamente un elemento caratteristico del paesaggio cittadino. Nei primi anni utilizzava macchinari a vapore, sostituiti successivamente da un sistema elettrico. L'ascensore permetteva di evitare una salita impegnativa e facilitava gli spostamenti tra zone commerciali e residenziali. Il progetto rifletteva anche il gusto dell'epoca per il ferro lavorato e le decorazioni elaborate. Durante il Novecento, l'impianto si trasformò gradualmente da innovazione pratica ad attrazione storica. Rimane parte della memoria dei trasporti lisbonesi, anche se il turismo ha modificato sensibilmente l'esperienza dei passeggeri. Dalla piattaforma superiore si osservano tetti, piazze ed edifici storici. Il monumento mostra come una soluzione tecnica destinata alla mobilità quotidiana possa acquistare valore architettonico e diventare un simbolo della città che serve. La sua sopravvivenza testimonia inoltre l'influenza duratura del design industriale sul paesaggio urbano europeo."
+    },
+    "curiosity": {
+      "es": "La estructura metálica fue diseñada por Raoul Mesnier du Ponsard, ingeniero de origen francés.",
+      "en": "The metal structure was designed by French-born engineer Raoul Mesnier du Ponsard.",
+      "it": "La struttura metallica fu progettata dall'ingegnere di origine francese Raoul Mesnier du Ponsard."
+    },
+    "architecture": {
+      "es": [
+        "La torre metálica alcanza aproximadamente 45 metros.",
+        "La estructura presenta celosías y ornamentación de hierro.",
+        "Una pasarela superior conecta el elevador con el Chiado."
+      ],
+      "en": [
+        "The metal tower rises approximately 45 metres.",
+        "The structure features iron latticework and ornament.",
+        "An upper walkway connects the lift with Chiado."
+      ],
+      "it": [
+        "La torre metallica raggiunge circa 45 metri.",
+        "La struttura presenta reticoli e decorazioni in ferro.",
+        "Una passerella superiore collega l'ascensore al Chiado."
+      ]
+    },
+    "sources": [
+      "https://www.visitlisboa.com/en/places/santa-justa-lift"
     ]
   }
 };
