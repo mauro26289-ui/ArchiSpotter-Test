@@ -1,4 +1,4 @@
-/* Stage 34: source-checked editorial; stage 31 audit corrections. */
+/* Stage 35: final two monuments; stage 32-33 institutional-source review and 1502 correction. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -1083,7 +1083,8 @@ window.ArchiSpotterEditorial={
       ]
     },
     "sources": [
-      "https://www.visitberlin.de/en/brandenburg-gate"
+      "https://www.visitberlin.de/en/brandenburg-gate",
+      "https://www.berlin.de/en/attractions-and-sights/3560266-3104052-brandenburg-gate.en.html"
     ]
   },
   "Catedral de Berlín": {
@@ -1115,7 +1116,8 @@ window.ArchiSpotterEditorial={
       ]
     },
     "sources": [
-      "https://www.berlinerdom.de/en/"
+      "https://www.berlinerdom.de/en/",
+      "https://www.berlinerdom.de/en/visiting/about-the-cathedral/construction-history-up-to-1905/"
     ]
   },
   "Edificio del Reichstag": {
@@ -1248,9 +1250,9 @@ window.ArchiSpotterEditorial={
   },
   "Monasterio de los Jerónimos": {
     "history": {
-      "es": "El Monasterio de los Jerónimos, en el barrio lisboeta de Belém, nació de la expansión marítima portuguesa de comienzos del siglo XVI. El rey Manuel I promovió su construcción cerca del lugar donde los navegantes partían hacia el Atlántico. Los monjes de la orden de San Jerónimo debían rezar por la familia real y por quienes emprendían viajes peligrosos. Las obras comenzaron hacia 1501 y se prolongaron durante varias generaciones. El proyecto reunió a arquitectos y artesanos que desarrollaron un lenguaje decorativo hoy conocido como manuelino, vinculado al gótico tardío y a influencias renacentistas. El monasterio fue financiado en parte mediante recursos relacionados con el comercio ultramarino. Su iglesia y sus claustros expresaban tanto devoción religiosa como prestigio de la corona. A lo largo de los siglos, el conjunto atravesó cambios políticos y transformaciones de uso. Tras la desaparición de las órdenes religiosas en Portugal durante el siglo XIX, algunos espacios acogieron instituciones civiles. Hoy el monasterio es un importante lugar de memoria nacional y recibe visitantes de todo el mundo. Su arquitectura permite reconocer el vínculo entre religión, poder y navegación, pero también invita a reflexionar sobre los contactos y las desigualdades que acompañaron la expansión portuguesa. El edificio conserva testimonios de una época de enormes transformaciones.",
-      "en": "The Jerónimos Monastery in Lisbon's Belém district emerged from Portuguese maritime expansion in the early sixteenth century. King Manuel I commissioned its construction near the place from which sailors departed towards the Atlantic. Monks of the Order of Saint Jerome were expected to pray for the royal family and those undertaking dangerous voyages. Building began around 1501 and continued across several generations. Architects and craftsmen developed a decorative language now called Manueline, combining late Gothic traditions with Renaissance influences. The monastery was funded partly through resources connected with overseas commerce. Its church and cloisters expressed religious devotion alongside the prestige of the crown. Over the centuries, the complex experienced political changes and new uses. After religious orders were dissolved in Portugal during the nineteenth century, some spaces housed civil institutions. Today the monastery is an important site of national memory and welcomes visitors from around the world. Its architecture reveals connections between religion, political power and navigation, while also inviting reflection on the contacts and inequalities accompanying Portuguese expansion. The building preserves evidence of an era of profound transformation. Its carefully worked stone surfaces remain a powerful expression of the ambitions and beliefs of the people who commissioned and constructed this remarkable monument.",
-      "it": "Il Monastero dos Jerónimos, nel quartiere lisbonese di Belém, nacque dall'espansione marittima portoghese dell'inizio del XVI secolo. Il re Manuele I ne promosse la costruzione vicino al luogo da cui i navigatori partivano verso l'Atlantico. I monaci dell'ordine di San Girolamo dovevano pregare per la famiglia reale e per coloro che affrontavano viaggi pericolosi. I lavori iniziarono intorno al 1501 e continuarono per diverse generazioni. Architetti e artigiani svilupparono un linguaggio decorativo oggi chiamato manuelino, legato al gotico tardo e a influenze rinascimentali. Il monastero fu finanziato in parte con risorse collegate ai commerci d'oltremare. La chiesa e i chiostri esprimevano devozione religiosa e prestigio della corona. Nel corso dei secoli il complesso attraversò cambiamenti politici e trasformazioni d'uso. Dopo la soppressione degli ordini religiosi in Portogallo nell'Ottocento, alcuni spazi ospitarono istituzioni civili. Oggi il monastero è un importante luogo della memoria nazionale e accoglie visitatori da tutto il mondo. La sua architettura rivela i legami tra religione, potere e navigazione, ma invita anche a riflettere sui contatti e sulle disuguaglianze che accompagnarono l'espansione portoghese. L'edificio conserva testimonianze di un'epoca di grandi trasformazioni. Le superfici di pietra finemente lavorate esprimono ancora le ambizioni e le credenze dei suoi committenti."
+      "es": "El Monasterio de los Jerónimos, en el barrio lisboeta de Belém, nació de la expansión marítima portuguesa de comienzos del siglo XVI. El rey Manuel I promovió su construcción cerca del lugar donde los navegantes partían hacia el Atlántico. Los monjes de la orden de San Jerónimo debían rezar por la familia real y por quienes emprendían viajes peligrosos. Las obras comenzaron en 1502 y se prolongaron durante varias generaciones. El proyecto reunió a arquitectos y artesanos que desarrollaron un lenguaje decorativo hoy conocido como manuelino, vinculado al gótico tardío y a influencias renacentistas. El monasterio fue financiado en parte mediante recursos relacionados con el comercio ultramarino. Su iglesia y sus claustros expresaban tanto devoción religiosa como prestigio de la corona. A lo largo de los siglos, el conjunto atravesó cambios políticos y transformaciones de uso. Tras la desaparición de las órdenes religiosas en Portugal durante el siglo XIX, algunos espacios acogieron instituciones civiles. Hoy el monasterio es un importante lugar de memoria nacional y recibe visitantes de todo el mundo. Su arquitectura permite reconocer el vínculo entre religión, poder y navegación, pero también invita a reflexionar sobre los contactos y las desigualdades que acompañaron la expansión portuguesa. El edificio conserva testimonios de una época de enormes transformaciones.",
+      "en": "The Jerónimos Monastery in Lisbon's Belém district emerged from Portuguese maritime expansion in the early sixteenth century. King Manuel I commissioned its construction near the place from which sailors departed towards the Atlantic. Monks of the Order of Saint Jerome were expected to pray for the royal family and those undertaking dangerous voyages. Building began in 1502 and continued across several generations. Architects and craftsmen developed a decorative language now called Manueline, combining late Gothic traditions with Renaissance influences. The monastery was funded partly through resources connected with overseas commerce. Its church and cloisters expressed religious devotion alongside the prestige of the crown. Over the centuries, the complex experienced political changes and new uses. After religious orders were dissolved in Portugal during the nineteenth century, some spaces housed civil institutions. Today the monastery is an important site of national memory and welcomes visitors from around the world. Its architecture reveals connections between religion, political power and navigation, while also inviting reflection on the contacts and inequalities accompanying Portuguese expansion. The building preserves evidence of an era of profound transformation. Its carefully worked stone surfaces remain a powerful expression of the ambitions and beliefs of the people who commissioned and constructed this remarkable monument.",
+      "it": "Il Monastero dos Jerónimos, nel quartiere lisbonese di Belém, nacque dall'espansione marittima portoghese dell'inizio del XVI secolo. Il re Manuele I ne promosse la costruzione vicino al luogo da cui i navigatori partivano verso l'Atlantico. I monaci dell'ordine di San Girolamo dovevano pregare per la famiglia reale e per coloro che affrontavano viaggi pericolosi. I lavori iniziarono nel 1502 e continuarono per diverse generazioni. Architetti e artigiani svilupparono un linguaggio decorativo oggi chiamato manuelino, legato al gotico tardo e a influenze rinascimentali. Il monastero fu finanziato in parte con risorse collegate ai commerci d'oltremare. La chiesa e i chiostri esprimevano devozione religiosa e prestigio della corona. Nel corso dei secoli il complesso attraversò cambiamenti politici e trasformazioni d'uso. Dopo la soppressione degli ordini religiosi in Portogallo nell'Ottocento, alcuni spazi ospitarono istituzioni civili. Oggi il monastero è un importante luogo della memoria nazionale e accoglie visitatori da tutto il mondo. La sua architettura rivela i legami tra religione, potere e navigazione, ma invita anche a riflettere sui contatti e sulle disuguaglianze che accompagnarono l'espansione portoghese. L'edificio conserva testimonianze di un'epoca di grandi trasformazioni. Le superfici di pietra finemente lavorate esprimono ancora le ambizioni e le credenze dei suoi committenti."
     },
     "curiosity": {
       "es": "La iglesia alberga la tumba de Vasco da Gama, asociada a la memoria de los viajes portugueses.",
@@ -1502,6 +1504,72 @@ window.ArchiSpotterEditorial={
     },
     "sources": [
       "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/palacio-barolo"
+    ]
+  },
+  "Congreso de la Nación Argentina": {
+    "history": {
+      "es": "El Palacio del Congreso de la Nación Argentina ocupa un lugar destacado en el extremo occidental de la Avenida de Mayo, en Buenos Aires. Su construcción respondió a la necesidad de dar una sede definitiva al Poder Legislativo. En 1889, el presidente Miguel Juárez Celman propuso el emplazamiento actual, frente a la futura Plaza del Congreso. Un concurso internacional celebrado en 1895 eligió el proyecto del arquitecto italiano Víctor Meano. Su propuesta combinaba academicismo, eclecticismo y referencias clásicas para expresar la importancia de las instituciones republicanas. Los trabajos comenzaron a finales del siglo XIX y continuaron bajo la dirección de Jules Dormal después de la muerte de Meano. El edificio fue inaugurado oficialmente el 12 de mayo de 1906, aunque todavía estaba en obras. La construcción no quedó completamente terminada hasta 1946. Desde entonces, el palacio ha sido escenario de debates legislativos, ceremonias institucionales y acontecimientos centrales de la historia política argentina. En 1993 fue declarado Monumento Histórico y Artístico Nacional, reconociendo tanto su arquitectura como su significado público. El conjunto organiza salas, galerías y recintos parlamentarios alrededor de una composición monumental. Su presencia urbana conecta simbólicamente el Congreso con la Casa de Gobierno, situada al otro extremo de la Avenida de Mayo.",
+      "en": "Argentina's National Congress Palace occupies a prominent position at the western end of Avenida de Mayo in Buenos Aires. Its construction answered the need for a permanent home for the national legislature. In 1889, President Miguel Juárez Celman proposed the present location, facing what would become Plaza del Congreso. An international competition held in 1895 selected a design by Italian architect Víctor Meano. His proposal combined academic, eclectic and classical references to express the importance of republican institutions. Building work began in the late nineteenth century and continued under Jules Dormal after Meano's death. The palace was officially inaugurated on 12 May 1906, although construction was still underway. The building was not fully completed until 1946. Since then, it has hosted legislative debates, institutional ceremonies and major events in Argentine political history. In 1993 it was declared a National Historic and Artistic Monument, recognising both its architectural qualities and its public significance. The complex brings together halls, galleries and parliamentary chambers within a monumental composition. Its urban position symbolically connects Congress with the government headquarters at the opposite end of Avenida de Mayo. The building remains an active centre of democratic life, where architectural heritage and contemporary political activity meet every day.",
+      "it": "Il Palazzo del Congresso della Nazione Argentina occupa una posizione importante all'estremità occidentale dell'Avenida de Mayo, a Buenos Aires. La costruzione rispondeva alla necessità di dare una sede permanente al potere legislativo nazionale. Nel 1889 il presidente Miguel Juárez Celman propose l'attuale posizione, davanti alla futura Plaza del Congreso. Un concorso internazionale del 1895 scelse il progetto dell'architetto italiano Víctor Meano. La proposta combinava riferimenti accademici, eclettici e classici per esprimere l'importanza delle istituzioni repubblicane. I lavori iniziarono alla fine dell'Ottocento e continuarono sotto la direzione di Jules Dormal dopo la morte di Meano. Il palazzo fu inaugurato ufficialmente il 12 maggio 1906, quando il cantiere era ancora aperto. La costruzione fu completata soltanto nel 1946. Da allora ha ospitato dibattiti legislativi, cerimonie istituzionali e avvenimenti centrali della storia politica argentina. Nel 1993 fu dichiarato Monumento Storico e Artistico Nazionale, riconoscendone sia le qualità architettoniche sia il significato pubblico. Il complesso riunisce sale, gallerie e aule parlamentari in una composizione monumentale. La sua posizione urbana collega simbolicamente il Congresso alla sede del governo, all'altra estremità dell'Avenida de Mayo. L'edificio rimane un centro attivo della vita democratica, dove patrimonio architettonico e attività politica contemporanea si incontrano quotidianamente."
+    },
+    "curiosity": {
+      "es": "La inauguración de 1906 se realizó cuando el recinto todavía carecía de bancas.",
+      "en": "The 1906 inauguration took place while the chamber still lacked its benches.",
+      "it": "L'inaugurazione del 1906 avvenne quando l'aula era ancora priva dei banchi."
+    },
+    "architecture": {
+      "es": [
+        "La cúpula alcanza aproximadamente 80 metros de altura.",
+        "La fachada tiene un pórtico de columnas corintias.",
+        "El edificio reúne dos recintos legislativos y salas ceremoniales."
+      ],
+      "en": [
+        "The dome reaches approximately 80 metres in height.",
+        "The façade has a portico of Corinthian columns.",
+        "The building contains two legislative chambers and ceremonial halls."
+      ],
+      "it": [
+        "La cupola raggiunge circa 80 metri di altezza.",
+        "La facciata presenta un portico con colonne corinzie.",
+        "L'edificio comprende due aule legislative e sale cerimoniali."
+      ]
+    },
+    "sources": [
+      "https://www.congreso.gob.ar/palacio.php",
+      "https://www.argentina.gob.ar/capital-humano/cultura/monumentos/congreso-nacional"
+    ]
+  },
+  "Puente de la Mujer": {
+    "history": {
+      "es": "El Puente de la Mujer atraviesa uno de los diques de Puerto Madero, un antiguo sector portuario transformado en barrio contemporáneo de Buenos Aires. Fue diseñado por el arquitecto e ingeniero español Santiago Calatrava y se inauguró el 20 de diciembre de 2001. Su presencia introduce una imagen escultórica en un paisaje donde conviven depósitos históricos, edificios modernos y espacios públicos junto al agua. El puente está destinado a los peatones y permite conectar ambos lados del dique sin interrumpir definitivamente la circulación de embarcaciones. Para conseguirlo, incorpora un mecanismo que hace girar parte de su estructura y abre el paso a los barcos. El proyecto se asocia simbólicamente con una pareja que baila tango: el mástil inclinado representa al hombre y la curva del puente evoca a la mujer. Esa interpretación vincula una obra de ingeniería contemporánea con una expresión cultural característica de Buenos Aires. La estructura fue fabricada en España y llegó a la ciudad mediante una iniciativa privada. Con los años se convirtió en uno de los puntos más fotografiados de Puerto Madero. En 2018 recibió reconocimiento como patrimonio cultural de la ciudad. Su historia muestra cómo una infraestructura peatonal puede transformar la experiencia de un espacio urbano y convertirse en un emblema local.",
+      "en": "The Women's Bridge crosses one of the docks in Puerto Madero, a former port district transformed into a contemporary neighbourhood of Buenos Aires. It was designed by Spanish architect and engineer Santiago Calatrava and inaugurated on 20 December 2001. Its sculptural appearance stands out in a landscape combining historic warehouses, modern buildings and public spaces beside the water. The bridge is intended for pedestrians and connects both sides of the dock without permanently blocking the movement of vessels. To achieve this, a mechanism rotates part of the structure and opens a passage for boats. The design is symbolically associated with a couple dancing tango: the inclined mast represents the man, while the curved bridge evokes the woman. This interpretation connects contemporary engineering with a cultural expression strongly associated with Buenos Aires. The structure was manufactured in Spain and brought to the city through a private initiative. Over time it became one of Puerto Madero's most photographed landmarks. In 2018 it received recognition as part of the city's cultural heritage. Its story shows how pedestrian infrastructure can change the experience of urban space and become a local emblem. It remains a practical crossing as well as a distinctive work of architectural design.",
+      "it": "Il Puente de la Mujer attraversa uno dei bacini di Puerto Madero, un'antica zona portuale trasformata in quartiere contemporaneo di Buenos Aires. Fu progettato dall'architetto e ingegnere spagnolo Santiago Calatrava e inaugurato il 20 dicembre 2001. Il suo aspetto scultoreo emerge in un paesaggio che combina vecchi magazzini, edifici moderni e spazi pubblici accanto all'acqua. Il ponte è destinato ai pedoni e collega i due lati del bacino senza bloccare definitivamente il passaggio delle imbarcazioni. Per questo dispone di un meccanismo che fa ruotare parte della struttura, aprendo un varco per le barche. Il progetto è simbolicamente associato a una coppia che balla il tango: l'albero inclinato rappresenta l'uomo, mentre la curva del ponte evoca la donna. Questa interpretazione collega l'ingegneria contemporanea a un'espressione culturale caratteristica di Buenos Aires. La struttura fu fabbricata in Spagna e portata in città attraverso un'iniziativa privata. Con il tempo divenne uno dei monumenti più fotografati di Puerto Madero. Nel 2018 ricevette un riconoscimento come patrimonio culturale cittadino. La sua storia mostra come un'infrastruttura pedonale possa trasformare l'esperienza dello spazio urbano e diventare un simbolo locale. Rimane un attraversamento pratico e un'opera riconoscibile di progettazione architettonica."
+    },
+    "curiosity": {
+      "es": "El mecanismo de apertura utiliza 20 motores para permitir el giro del puente.",
+      "en": "The opening mechanism uses 20 motors to rotate the bridge.",
+      "it": "Il meccanismo di apertura utilizza 20 motori per far ruotare il ponte."
+    },
+    "architecture": {
+      "es": [
+        "Un mástil blanco inclinado sostiene cables de la pasarela.",
+        "La estructura móvil gira para permitir el paso de embarcaciones.",
+        "El puente utiliza acero y hormigón blanco."
+      ],
+      "en": [
+        "An inclined white mast supports cables for the walkway.",
+        "The movable structure rotates to allow boats to pass.",
+        "The bridge uses steel and white concrete."
+      ],
+      "it": [
+        "Un albero bianco inclinato sostiene i cavi della passerella.",
+        "La struttura mobile ruota per consentire il passaggio delle imbarcazioni.",
+        "Il ponte utilizza acciaio e cemento bianco."
+      ]
+    },
+    "sources": [
+      "https://turismo.buenosaires.gob.ar/es/node/49882",
+      "https://buenosaires.gob.ar/gcaba_historico/espaciopublicoehigieneurbana/noticias/la-ciudad-pone-en-valor-el-puente-de-la-mujer"
     ]
   }
 };
