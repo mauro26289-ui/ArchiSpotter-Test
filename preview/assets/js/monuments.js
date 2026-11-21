@@ -66,7 +66,8 @@ window.ArchiSpotterMonuments = (function () {
           entry.architecture[language].forEach(function(detail){var li=document.createElement('li');li.textContent=detail;list.appendChild(li);});
         }
         var official=document.getElementById('monument-official-site');
-        if(official){var url=officialSites[place[0]];official.hidden=!url;if(url)official.href=url;}
+        if(official){var url=officialSites[place[0]];official.hidden=!url;if(url)official.href=url;
+          document.getElementById('monument-official-label').textContent=({es:'Sitio oficial / información institucional',en:'Official site / institutional information',it:'Sito ufficiale / informazioni istituzionali'})[language];}
         updateMonumentActions();
       }
       document.getElementById('monument-back').addEventListener('click',function(){
