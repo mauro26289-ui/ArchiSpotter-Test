@@ -6,7 +6,10 @@ window.ArchiSpotterNavigation = (function () {
     document.querySelector('.app-content').scrollTop = 0;
     document.dispatchEvent(new CustomEvent('archispotter:tab',{detail:tab}));
   }
+  var initialized=false;
   function init() {
+    if(initialized)return;
+    initialized=true;
     document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
   }
   return { showTab: showTab, init: init };
