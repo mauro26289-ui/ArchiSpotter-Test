@@ -67,7 +67,12 @@ window.ArchiSpotterMonuments = (function () {
       }
       document.getElementById('monument-back').addEventListener('click',function(){
         document.getElementById('monument-detail').hidden=true;
-        document.getElementById('city-detail').hidden=false;
+        if(selectedMonumentCity&&selectedMonumentCity[4].length===1){
+          document.getElementById('city-detail').hidden=true;
+          document.getElementById('country-detail').hidden=false;
+        }else{
+          document.getElementById('city-detail').hidden=false;
+        }
         document.querySelector('.app-content').scrollTop=0;
       });
     return {openMonument:openMonument,renderMonument:renderMonument};
