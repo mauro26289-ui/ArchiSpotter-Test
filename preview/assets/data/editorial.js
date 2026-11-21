@@ -1,4 +1,4 @@
-/* Stage 31 source review and corrections; previous entries retained. */
+/* Stage 34: official-source researched Porto and Buenos Aires monuments; stage 31 corrections retained. */
 window.ArchiSpotterEditorial={
   "Coliseo": {
     "sourceId": "colosseum",
@@ -1340,6 +1340,168 @@ window.ArchiSpotterEditorial={
     },
     "sources": [
       "https://www.visitlisboa.com/en/places/santa-justa-lift"
+    ]
+  },
+  "Puente Don Luis I": {
+    "history": {
+      "es": "El Puente Don Luis I conecta Oporto con Vila Nova de Gaia sobre el río Duero. Su construcción respondió al crecimiento del tráfico entre ambas orillas y a la necesidad de sustituir un antiguo puente colgante. El proyecto fue desarrollado por Théophile Seyrig, ingeniero que había colaborado anteriormente con Gustave Eiffel. Las obras se realizaron entre 1881 y 1886, y el tablero superior se inauguró el 31 de octubre de 1886. El nivel inferior quedó concluido en 1888. La solución elegida incorporó un gran arco metálico y dos niveles de circulación, aprovechando la diferencia de altura entre los barrios ribereños y las zonas elevadas de ambas ciudades. Esta organización permitió establecer conexiones urbanas diferentes sin depender de una única calzada. Con el tiempo, el puente se convirtió en uno de los símbolos visuales de Oporto y del paisaje del Duero. El tráfico y los usos de sus plataformas cambiaron a medida que evolucionaron los transportes metropolitanos. Actualmente el nivel superior sirve al metro ligero y a los peatones, mientras el inferior mantiene una conexión vial. La estructura forma parte del entorno histórico reconocido como Patrimonio Mundial por la UNESCO. Su historia une la ingeniería del hierro del siglo XIX con la vida cotidiana de una ciudad portuaria en transformación.",
+      "en": "Dom Luís I Bridge connects Porto with Vila Nova de Gaia across the Douro River. Its construction responded to growing traffic between the two banks and the need to replace an earlier suspension bridge. The design was developed by Théophile Seyrig, an engineer who had previously worked with Gustave Eiffel. Construction took place between 1881 and 1886, and the upper deck opened on 31 October 1886. The lower level was completed in 1888. The chosen solution featured a large metal arch and two traffic levels, taking advantage of the difference in height between riverside districts and the higher areas of both cities. This arrangement created different urban connections without relying on a single roadway. Over time the bridge became one of Porto's most recognisable landmarks and a defining element of the Douro landscape. Traffic patterns and the uses of its platforms changed as metropolitan transport developed. Today the upper level carries light rail and pedestrians, while the lower level maintains a road connection. The structure forms part of the historic setting recognised as World Heritage by UNESCO. Its story connects nineteenth-century iron engineering with the everyday life of a changing port city. The bridge remains a working piece of infrastructure rather than merely a preserved monument.",
+      "it": "Il Ponte Dom Luís I collega Porto a Vila Nova de Gaia attraversando il fiume Douro. La costruzione rispondeva alla crescita del traffico tra le due sponde e alla necessità di sostituire un precedente ponte sospeso. Il progetto fu sviluppato da Théophile Seyrig, ingegnere che aveva collaborato con Gustave Eiffel. I lavori si svolsero tra il 1881 e il 1886 e il piano superiore fu inaugurato il 31 ottobre 1886. Il livello inferiore venne completato nel 1888. La soluzione adottata comprendeva un grande arco metallico e due piani di circolazione, sfruttando la differenza di quota tra i quartieri lungo il fiume e le zone alte delle due città. Questa organizzazione creò collegamenti urbani differenti senza dipendere da una sola carreggiata. Nel tempo il ponte divenne uno dei simboli più riconoscibili di Porto e del paesaggio del Douro. Il traffico e gli usi delle piattaforme cambiarono con lo sviluppo dei trasporti metropolitani. Oggi il livello superiore ospita la metropolitana leggera e i pedoni, mentre quello inferiore mantiene un collegamento stradale. La struttura appartiene al contesto storico riconosciuto dall'UNESCO come Patrimonio Mondiale. La sua storia unisce l'ingegneria del ferro ottocentesca alla vita quotidiana di una città portuale in trasformazione. Il ponte rimane un'infrastruttura attiva, non soltanto un monumento conservato."
+    },
+    "curiosity": {
+      "es": "El tablero inferior se terminó dos años después de la inauguración del superior.",
+      "en": "The lower deck was completed two years after the upper deck opened.",
+      "it": "Il piano inferiore fu completato due anni dopo l'inaugurazione di quello superiore."
+    },
+    "architecture": {
+      "es": [
+        "Dispone de dos tableros de circulación a distintas alturas.",
+        "Un gran arco de hierro sostiene la estructura principal.",
+        "La estructura alcanza aproximadamente 395 metros de longitud."
+      ],
+      "en": [
+        "It has two traffic decks at different heights.",
+        "A large iron arch supports the main structure.",
+        "The structure is approximately 395 metres long."
+      ],
+      "it": [
+        "Presenta due piani di circolazione ad altezze differenti.",
+        "Un grande arco di ferro sostiene la struttura principale.",
+        "La struttura raggiunge circa 395 metri di lunghezza."
+      ]
+    },
+    "sources": [
+      "https://servicos.infraestruturasdeportugal.pt/pt-pt/a-descobrir/obras-de-arte/ponte-luiz-i"
+    ]
+  },
+  "Obelisco": {
+    "history": {
+      "es": "El Obelisco de Buenos Aires se levanta en la Plaza de la República, en el cruce de las avenidas Corrientes y 9 de Julio. Fue inaugurado el 23 de mayo de 1936 para conmemorar el cuarto centenario de la primera fundación española de la ciudad. El arquitecto Alberto Prebisch diseñó una forma geométrica sencilla y monumental, vinculada a las tendencias modernas de la época. El emplazamiento tenía un significado histórico particular: allí había estado la iglesia de San Nicolás de Bari, en cuya torre se izó por primera vez la bandera argentina en Buenos Aires en 1812. La construcción transformó una zona urbana que estaba cambiando con la apertura de grandes avenidas. Al principio, el monumento provocó críticas y debates sobre su apariencia y su conveniencia. Con los años, sin embargo, terminó convirtiéndose en una imagen inseparable de la capital. Su silueta aparece en celebraciones deportivas, manifestaciones públicas y fotografías de la vida porteña. El interior, originalmente accesible mediante una escalera, fue adaptado posteriormente para incorporar un ascensor destinado al mirador. El monumento demuestra cómo una obra concebida para una conmemoración específica puede adquirir significados mucho más amplios. Hoy representa tanto la historia urbana como la identidad visual de Buenos Aires.",
+      "en": "The Obelisk of Buenos Aires stands in Plaza de la República at the intersection of Corrientes and 9 de Julio avenues. It was inaugurated on 23 May 1936 to commemorate the four-hundredth anniversary of the city's first Spanish foundation. Architect Alberto Prebisch designed a simple, monumental geometric form associated with modern architectural trends of the period. The location carried particular historical meaning: the church of San Nicolás de Bari had previously stood there, and the Argentine flag was first raised in Buenos Aires from its tower in 1812. Construction transformed an urban area already changing through the creation of broad avenues. At first, the monument provoked criticism and debate about its appearance and purpose. Over the years, however, it became an inseparable part of the capital's image. Its silhouette appears during sporting celebrations, public demonstrations and photographs of everyday city life. The interior, originally reached by stairs, was later adapted to incorporate a lift serving the observation area. The monument demonstrates how a structure conceived for a specific commemoration can acquire much wider meanings. Today it represents both urban history and the visual identity of Buenos Aires. Its continued presence also illustrates how public opinion about modern architecture can change across generations.",
+      "it": "L'Obelisco di Buenos Aires sorge nella Plaza de la República, all'incrocio tra le avenidas Corrientes e 9 de Julio. Fu inaugurato il 23 maggio 1936 per commemorare il quarto centenario della prima fondazione spagnola della città. L'architetto Alberto Prebisch progettò una forma geometrica semplice e monumentale, legata alle tendenze moderne dell'epoca. Il luogo aveva un particolare significato storico: qui sorgeva la chiesa di San Nicolás de Bari, dalla cui torre la bandiera argentina fu issata per la prima volta a Buenos Aires nel 1812. La costruzione trasformò una zona urbana già interessata dall'apertura di grandi viali. Inizialmente il monumento suscitò critiche e dibattiti sull'aspetto e sull'utilità. Con gli anni, tuttavia, divenne un'immagine inseparabile della capitale. La sua sagoma compare durante feste sportive, manifestazioni pubbliche e fotografie della vita cittadina. L'interno, originariamente raggiungibile tramite una scala, fu successivamente adattato per incorporare un ascensore destinato al belvedere. Il monumento dimostra come una struttura concepita per una commemorazione specifica possa acquisire significati molto più ampi. Oggi rappresenta sia la storia urbana sia l'identità visiva di Buenos Aires. La sua presenza mostra inoltre come l'opinione pubblica sull'architettura moderna possa cambiare attraverso le generazioni."
+    },
+    "curiosity": {
+      "es": "En 2025 se habilitó un ascensor interior para facilitar el acceso al mirador.",
+      "en": "An internal lift was introduced in 2025 to improve access to the viewing platform.",
+      "it": "Nel 2025 fu introdotto un ascensore interno per facilitare l'accesso al belvedere."
+    },
+    "architecture": {
+      "es": [
+        "Alcanza una altura de 67,5 metros.",
+        "Su base mide 6,8 metros por lado.",
+        "El mirador superior dispone de cuatro ventanas."
+      ],
+      "en": [
+        "It rises 67.5 metres.",
+        "Its base measures 6.8 metres on each side.",
+        "The upper observation area has four windows."
+      ],
+      "it": [
+        "Raggiunge un'altezza di 67,5 metri.",
+        "La base misura 6,8 metri per lato.",
+        "Il belvedere superiore dispone di quattro finestre."
+      ]
+    },
+    "sources": [
+      "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/obelisco",
+      "https://turismo.buenosaires.gob.ar/es/article/mirador-obelisco"
+    ]
+  },
+  "Teatro Colón": {
+    "history": {
+      "es": "El Teatro Colón es una de las instituciones musicales más importantes de Buenos Aires y ocupa un edificio inaugurado el 25 de mayo de 1908. La función de apertura presentó la ópera Aida, de Giuseppe Verdi. Antes había existido otro Teatro Colón, situado cerca de la Plaza de Mayo, que funcionó entre 1857 y 1888. El nuevo proyecto surgió del deseo de construir una sala de ópera acorde con el crecimiento económico y cultural de la ciudad. Su diseño inicial estuvo a cargo de Francesco Tamburini, pero la obra atravesó cambios de dirección. Tras su muerte, Víctor Meano continuó el trabajo y, después de 1904, Jules Dormal asumió la terminación del edificio. La larga construcción incorporó diferentes influencias europeas y produjo una arquitectura ecléctica de gran riqueza decorativa. La sala principal adoptó una disposición en herradura, vinculada a la tradición de los teatros líricos italianos. Con el tiempo, el Colón desarrolló orquesta, coro, ballet y talleres propios para producir sus espectáculos. Sus escenarios recibieron artistas internacionales y figuras destacadas de la música argentina. Una importante restauración culminó en 2010. Hoy el teatro sigue combinando representaciones, formación artística y conservación patrimonial. Su historia muestra cómo una institución cultural puede convertirse también en un símbolo arquitectónico de la ciudad.",
+      "en": "Teatro Colón is one of Buenos Aires's leading musical institutions and occupies a building inaugurated on 25 May 1908. Its opening performance presented Giuseppe Verdi's opera Aida. An earlier Teatro Colón had stood near Plaza de Mayo and operated between 1857 and 1888. The new project emerged from the ambition to create an opera house reflecting the city's economic and cultural growth. Francesco Tamburini prepared the initial design, but construction passed through several changes of leadership. After his death, Víctor Meano continued the work, and Jules Dormal took responsibility for completing the building after 1904. The lengthy construction brought together different European influences and produced a richly decorated eclectic architecture. The main auditorium adopted a horseshoe arrangement associated with the tradition of Italian opera houses. Over time, the Colón developed its own orchestra, choir, ballet and workshops for producing performances. Its stages welcomed international artists and leading figures in Argentine music. A major restoration programme concluded in 2010. Today the theatre continues to combine performances, artistic education and heritage conservation. Its history shows how a cultural institution can also become an architectural symbol of a city. The building embodies the ambitions of generations who invested in music and public cultural life.",
+      "it": "Il Teatro Colón è una delle principali istituzioni musicali di Buenos Aires e occupa un edificio inaugurato il 25 maggio 1908. Lo spettacolo di apertura presentò l'opera Aida di Giuseppe Verdi. In precedenza esisteva un altro Teatro Colón, vicino alla Plaza de Mayo, attivo tra il 1857 e il 1888. Il nuovo progetto nacque dall'ambizione di costruire un teatro d'opera adeguato alla crescita economica e culturale della città. Francesco Tamburini preparò il disegno iniziale, ma la costruzione attraversò diversi cambiamenti di direzione. Dopo la sua morte, Víctor Meano continuò i lavori e Jules Dormal assunse il compito di completare l'edificio dopo il 1904. Il lungo cantiere riunì influenze europee differenti e produsse un'architettura eclettica riccamente decorata. La sala principale adottò una disposizione a ferro di cavallo, legata alla tradizione dei teatri lirici italiani. Nel tempo il Colón sviluppò una propria orchestra, un coro, un corpo di ballo e laboratori per realizzare gli spettacoli. I suoi palcoscenici accolsero artisti internazionali e figure importanti della musica argentina. Un grande intervento di restauro terminò nel 2010. Oggi il teatro continua a unire rappresentazioni, formazione artistica e conservazione del patrimonio. La sua storia mostra come un'istituzione culturale possa diventare anche un simbolo architettonico della città."
+    },
+    "curiosity": {
+      "es": "El edificio actual reemplazó una sala anterior que funcionó junto a Plaza de Mayo.",
+      "en": "The current building replaced an earlier theatre near Plaza de Mayo.",
+      "it": "L'edificio attuale sostituì un teatro precedente vicino alla Plaza de Mayo."
+    },
+    "architecture": {
+      "es": [
+        "La sala principal tiene una planta en herradura.",
+        "La decoración combina referencias italianas y francesas.",
+        "El edificio incluye talleres escenográficos y espacios de ensayo."
+      ],
+      "en": [
+        "The main auditorium has a horseshoe plan.",
+        "The decoration combines Italian and French references.",
+        "The building includes stage workshops and rehearsal spaces."
+      ],
+      "it": [
+        "La sala principale presenta una pianta a ferro di cavallo.",
+        "La decorazione combina riferimenti italiani e francesi.",
+        "L'edificio comprende laboratori scenografici e sale prova."
+      ]
+    },
+    "sources": [
+      "https://teatrocolon.org.ar/el-teatro/",
+      "https://www.argentina.gob.ar/teatro-colon"
+    ]
+  },
+  "Casa Rosada": {
+    "history": {
+      "es": "La Casa Rosada ocupa uno de los lugares de mayor continuidad política de Buenos Aires, frente a la Plaza de Mayo. Desde el periodo colonial, este sector estuvo asociado con fortificaciones y edificios destinados a las autoridades. Tras la independencia, las instituciones de gobierno continuaron utilizando el entorno del antiguo fuerte. Durante el siglo XIX, los cambios administrativos y el crecimiento de la ciudad impulsaron nuevas construcciones. En 1873 se inició un edificio para Correos y Telégrafos, proyectado por Carlos Kihlberg. Posteriormente, Julio Argentino Roca promovió la construcción de una sede gubernamental vecina, con participación del arquitecto Enrique Aberg. Para unificar ambos cuerpos, Francisco Tamburini diseñó un gran arco central que dio al conjunto una imagen reconocible. La unión se realizó en 1886 y el edificio resultante fue inaugurado oficialmente en 1898. Su color rosado, asociado a intervenciones del periodo de Domingo Faustino Sarmiento, terminó dando nombre a la sede presidencial. A lo largo del tiempo, la Casa Rosada fue escenario de discursos, decisiones políticas y manifestaciones ciudadanas. En el entorno se conservan restos de estructuras anteriores, que ayudan a comprender la evolución del lugar. Su arquitectura no responde a una sola etapa: reúne diferentes proyectos y muestra cómo el poder político transformó sucesivamente el centro de Buenos Aires.",
+      "en": "Casa Rosada occupies one of Buenos Aires's most enduring political sites, facing Plaza de Mayo. Since colonial times, the area had been associated with fortifications and buildings used by governing authorities. After independence, political institutions continued to occupy the surroundings of the former fort. During the nineteenth century, administrative changes and urban growth encouraged new construction. In 1873, work began on a Post and Telegraph building designed by Carlos Kihlberg. Later, Julio Argentino Roca promoted a neighbouring government headquarters, with architect Enrique Aberg involved in its design. To unite the two structures, Francisco Tamburini designed a monumental central arch that gave the complex its recognisable appearance. The buildings were joined in 1886, and the resulting government house was officially inaugurated in 1898. Its pink colour, associated with alterations during Domingo Faustino Sarmiento's presidency, eventually gave the presidential headquarters its name. Over time, Casa Rosada became a setting for speeches, political decisions and public demonstrations. Remains of earlier structures survive nearby, helping explain the site's development. Its architecture does not belong to a single period: it combines different projects and shows how political authority repeatedly transformed central Buenos Aires. The building continues to connect the country's institutional history with the public life of the square.",
+      "it": "La Casa Rosada occupa uno dei luoghi di maggiore continuità politica di Buenos Aires, di fronte alla Plaza de Mayo. Fin dall'epoca coloniale, la zona era associata a fortificazioni ed edifici utilizzati dalle autorità. Dopo l'indipendenza, le istituzioni governative continuarono a occupare l'area dell'antico forte. Nell'Ottocento, cambiamenti amministrativi e crescita urbana favorirono nuove costruzioni. Nel 1873 iniziarono i lavori per un edificio delle Poste e dei Telegrafi progettato da Carlos Kihlberg. Successivamente Julio Argentino Roca promosse una sede governativa vicina, con la partecipazione dell'architetto Enrique Aberg. Per unire i due corpi, Francisco Tamburini progettò un grande arco centrale che diede al complesso il suo aspetto riconoscibile. Gli edifici furono collegati nel 1886 e la sede risultante venne inaugurata ufficialmente nel 1898. Il colore rosa, associato agli interventi durante la presidenza di Domingo Faustino Sarmiento, finì per dare il nome alla sede presidenziale. Nel tempo la Casa Rosada divenne scenario di discorsi, decisioni politiche e manifestazioni pubbliche. Nelle vicinanze sopravvivono resti di strutture precedenti, utili per comprendere lo sviluppo del luogo. La sua architettura non appartiene a un unico periodo: riunisce progetti differenti e mostra come il potere politico abbia trasformato ripetutamente il centro di Buenos Aires."
+    },
+    "curiosity": {
+      "es": "La fachada actual une dos edificios originalmente separados mediante un arco central.",
+      "en": "The present façade unites two originally separate buildings through a central arch.",
+      "it": "La facciata attuale unisce due edifici originariamente separati mediante un arco centrale."
+    },
+    "architecture": {
+      "es": [
+        "El gran arco central fue proyectado por Francisco Tamburini.",
+        "La composición reúne sectores construidos en distintas etapas.",
+        "Sus espacios interiores se organizan alrededor de patios y galerías."
+      ],
+      "en": [
+        "The large central arch was designed by Francisco Tamburini.",
+        "The composition brings together sections built at different times.",
+        "Its interiors are arranged around courtyards and galleries."
+      ],
+      "it": [
+        "Il grande arco centrale fu progettato da Francisco Tamburini.",
+        "La composizione riunisce parti costruite in epoche differenti.",
+        "Gli spazi interni si organizzano attorno a cortili e gallerie."
+      ]
+    },
+    "sources": [
+      "https://www.casarosada.gob.ar/informacion/actividad-oficial/13-nuestro-pais/acerca-de-argentina/13-historia-de-la-casa-rosada"
+    ]
+  },
+  "Palacio Barolo": {
+    "history": {
+      "es": "El Palacio Barolo se encuentra sobre la Avenida de Mayo de Buenos Aires y representa una de las expresiones más singulares de la arquitectura de comienzos del siglo XX. Fue encargado por el empresario italiano Luigi Barolo y diseñado por el arquitecto Mario Palanti. El edificio se inauguró en 1923, en una ciudad que experimentaba un rápido crecimiento y recibía numerosas influencias culturales de la inmigración europea. Palanti combinó soluciones técnicas modernas con un lenguaje ornamental difícil de encasillar en un solo estilo. La construcción alcanzó aproximadamente 100 metros de altura y se convirtió temporalmente en una de las más elevadas de Sudamérica. Una parte importante de su identidad proviene de las referencias a la Divina Comedia de Dante Alighieri. La distribución simbólica de los espacios y la presencia de un faro en la parte superior forman parte de esa interpretación literaria. El palacio fue concebido principalmente para albergar oficinas, no como residencia privada. Su estructura de hormigón armado permitió desarrollar una altura poco habitual para la ciudad de la época. Con el paso de los años, el edificio se convirtió en un punto de referencia del centro porteño. Hoy atrae visitantes interesados tanto en su arquitectura como en los significados culturales que inspiraron su diseño.",
+      "en": "Palacio Barolo stands on Avenida de Mayo in Buenos Aires and represents one of the city's most distinctive examples of early twentieth-century architecture. It was commissioned by Italian businessman Luigi Barolo and designed by architect Mario Palanti. The building opened in 1923, when the city was growing rapidly and absorbing cultural influences brought by European immigration. Palanti combined modern technical solutions with an ornamental language difficult to place within a single style. The structure reached approximately 100 metres in height and temporarily became one of the tallest buildings in South America. Much of its identity comes from references to Dante Alighieri's Divine Comedy. The symbolic arrangement of spaces and the lighthouse at the top belong to this literary interpretation. The palace was designed primarily for offices rather than as a private residence. Its reinforced concrete structure made possible a height unusual for Buenos Aires at the time. Over the years, the building became a landmark of the city's central district. Today it attracts visitors interested in both its architecture and the cultural meanings that inspired its design. Its history illustrates how literature, technology and commercial ambition could converge in a single urban building during a period of profound transformation.",
+      "it": "Il Palacio Barolo sorge sull'Avenida de Mayo di Buenos Aires e rappresenta uno degli esempi più singolari dell'architettura cittadina del primo Novecento. Fu commissionato dall'imprenditore italiano Luigi Barolo e progettato dall'architetto Mario Palanti. L'edificio venne inaugurato nel 1923, quando la città cresceva rapidamente e accoglieva influenze culturali portate dall'immigrazione europea. Palanti combinò soluzioni tecniche moderne con un linguaggio ornamentale difficile da classificare in un solo stile. La costruzione raggiunse circa 100 metri di altezza e divenne temporaneamente uno degli edifici più alti del Sudamerica. Una parte importante della sua identità deriva dai riferimenti alla Divina Commedia di Dante Alighieri. La disposizione simbolica degli spazi e il faro sulla sommità appartengono a questa interpretazione letteraria. Il palazzo fu concepito principalmente per ospitare uffici, non come residenza privata. La struttura in cemento armato rese possibile un'altezza insolita per la Buenos Aires dell'epoca. Nel corso degli anni l'edificio divenne un punto di riferimento del centro cittadino. Oggi attira visitatori interessati sia all'architettura sia ai significati culturali che ne ispirarono il progetto. La sua storia mostra come letteratura, tecnologia e ambizione commerciale potessero convergere in un unico edificio urbano durante un periodo di profonde trasformazioni."
+    },
+    "curiosity": {
+      "es": "Il faro del palazzo fu usato nel 1923 per segnalare il risultato dell'incontro di boxe Firpo-Dempsey.",
+      "en": "The lighthouse was used in 1923 to signal the result of the Firpo–Dempsey boxing match.",
+      "it": "Il faro del palazzo fu usato nel 1923 per segnalare il risultato dell'incontro di pugilato Firpo-Dempsey."
+    },
+    "architecture": {
+      "es": [
+        "El edificio alcanza aproximadamente 100 metros de altura.",
+        "Utiliza una estructura de hormigón armado.",
+        "Un faro corona su parte superior."
+      ],
+      "en": [
+        "The building reaches approximately 100 metres.",
+        "It uses a reinforced concrete structure.",
+        "A lighthouse crowns the uppermost level."
+      ],
+      "it": [
+        "L'edificio raggiunge circa 100 metri di altezza.",
+        "Utilizza una struttura in cemento armato.",
+        "Un faro corona la parte superiore."
+      ]
+    },
+    "sources": [
+      "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/palacio-barolo"
     ]
   }
 };
