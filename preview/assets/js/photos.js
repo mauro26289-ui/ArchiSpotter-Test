@@ -2,14 +2,21 @@
 window.ArchiSpotterPhotos=(function(){
 var titles={"Panteón de Agripa":"Pantheon, Rome","Fontana di Trevi":"Trevi Fountain","Foro Romano":"Roman Forum","Castillo de Sant'Angelo":"Castel Sant'Angelo","Ponte Vecchio":"Ponte Vecchio","Palazzo Vecchio":"Palazzo Vecchio","Parque Güell":"Park Güell","Casa Milà":"Casa Milà","Palacio de Cristal":"Palacio de Cristal del Retiro","Templo de Debod":"Temple of Debod","Catedral de Notre-Dame":"Notre-Dame de Paris","Basílica del Sacré-Cœur":"Sacré-Cœur, Paris","Museo del Louvre":"Louvre","Templo de Zeus Olímpico":"Temple of Olympian Zeus, Athens","Odeón de Herodes Ático":"Odeon of Herodes Atticus","Abadía de Westminster":"Westminster Abbey","Catedral de San Pablo":"St Paul's Cathedral","Edificio del Reichstag":"Reichstag building","Memorial del Holocausto":"Memorial to the Murdered Jews of Europe","Castillo de San Jorge":"São Jorge Castle","Elevador de Santa Justa":"Santa Justa Lift","Casa Rosada":"Casa Rosada","Palacio Barolo":"Palacio Barolo","Congreso de la Nación Argentina":"Palace of the Argentine National Congress","Puente de la Mujer":"Puente de la Mujer"};
 var curated={
- 'Coliseo':'https://unsplash.com/photos/s87bBFZviAU/download?force=true&w=1100',
- 'Panteón de Agripa':'https://unsplash.com/photos/fbYpd5Xubf8/download?force=true&w=1100'
+ 'Coliseo':[
+  'https://unsplash.com/photos/s87bBFZviAU/download?force=true&w=1400',
+  'https://unsplash.com/photos/nAb-SFzL1GM/download?force=true&w=1400'
+ ],
+ 'Panteón de Agripa':[
+  'https://unsplash.com/photos/fbYpd5Xubf8/download?force=true&w=1400',
+  'https://unsplash.com/photos/mXGU_BxNp40/download?force=true&w=1400'
+ ]
 };
+function getImages(place){return curated[place[0]]?curated[place[0]].slice():[];}
 var cache={};
 var activeRequests=new WeakMap();
 function apply(img,place,width){
  var title=titles[place[0]];if(!img)return;
- if(curated[place[0]]){activeRequests.set(img,{curated:true});img.src=curated[place[0]];return;}
+ if(curated[place[0]]){activeRequests.set(img,{curated:true});img.src=curated[place[0]][0];return;}
  var request={title:title};activeRequests.set(img,request);
  if(!title)return;
  if(cache[title]){img.src=cache[title];return;}
@@ -22,5 +29,5 @@ function apply(img,place,width){
   if(img.isConnected&&activeRequests.get(img)===request)img.src=cache[title];
  }).catch(function(){if(img.isConnected&&activeRequests.get(img)===request&&!img.src)img.src=original;});
 }
-return {apply:apply};
+return {apply:apply,getImages:getImages};
 })();
