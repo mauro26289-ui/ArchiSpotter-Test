@@ -1,4 +1,4 @@
-/* Source-checked Commons candidates. Metadata and dimensions verified by Commons API; visual acceptance remains pending. */
+/* Commons source-verified photographs: file identity, author, license and original dimensions. Visual verification in Safari remains separate. */
 window.ArchiSpotterPhotoPairs={
   "Castillo de Sant'Angelo": [
     {
@@ -37,15 +37,63 @@ window.ArchiSpotterPhotoPairs={
       "sha1": "e4114afb7eedd2d640e5f2baabfb23bea048fc0d"
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Piazza_del_Duomo_%28Cathedral_Square%29_-_Milan%2C_Italy_-_December_6%2C_2009.jpg/1920px-Piazza_del_Duomo_%28Cathedral_Square%29_-_Milan%2C_Italy_-_December_6%2C_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Piazza del Duomo (Cathedral Square) - Milan, Italy - December 6, 2009.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Piazza_del_Duomo_(Cathedral_Square)_-_Milan,_Italy_-_December_6,_2009.jpg",
-      "artist": "Giorgio Galeotti",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/1920px-Milan_Cathedral_from_Piazza_del_Duomo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Milan Cathedral from Piazza del Duomo.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Milan_Cathedral_from_Piazza_del_Duomo.jpg",
+      "artist": "Jiuguang Wang",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 4164,
+      "height": 3129,
+      "sha1": "a02289ffd6337fb54852cc0d5f0e8d2fc308cfa3"
+    }
+  ],
+  "Palacio Real": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Royal_Palace_of_Madrid_east_facade_1.jpg/1920px-Royal_Palace_of_Madrid_east_facade_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Royal Palace of Madrid east facade 1.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Royal_Palace_of_Madrid_east_facade_1.jpg",
+      "artist": "kallerna",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5410,
+      "height": 3560,
+      "sha1": "583c5a6a2b40fcc737ff23fdadbf320b4daa6379"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/North_facade_of_the_Royal_Palace_of_Madrid_1.jpg/1920px-North_facade_of_the_Royal_Palace_of_Madrid_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:North facade of the Royal Palace of Madrid 1.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:North_facade_of_the_Royal_Palace_of_Madrid_1.jpg",
+      "artist": "Joseolgon",
       "license": "CC BY 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-      "width": 6000,
-      "height": 3161,
-      "sha1": "fd32b5b8630f99adfe0fde4d79989565f1031c1a"
+      "width": 5472,
+      "height": 3648,
+      "sha1": "3fa56745ad2378f0cbdd1ae59ec3507cc92153c4"
+    }
+  ],
+  "Puerta de Alcalá": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Puerta_de_Alcal%C3%A1%2C_Madrid%2C_Espa%C3%B1a%2C_2017-05-18%2C_DD_14.jpg/1920px-Puerta_de_Alcal%C3%A1%2C_Madrid%2C_Espa%C3%B1a%2C_2017-05-18%2C_DD_14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Puerta de Alcalá, Madrid, España, 2017-05-18, DD 14.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Puerta_de_Alcal%C3%A1,_Madrid,_Espa%C3%B1a,_2017-05-18,_DD_14.jpg",
+      "artist": "Diego Delso",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5923,
+      "height": 3851,
+      "sha1": "c6edaa6df9efeab46c520c9ec78cc46a9216eb61"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Puerta_de_Alcal%C3%A1%2C_Madrid_20180720.jpg/1920px-Puerta_de_Alcal%C3%A1%2C_Madrid_20180720.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Puerta de Alcalá, Madrid 20180720.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Puerta_de_Alcal%C3%A1,_Madrid_20180720.jpg",
+      "artist": "Suicasmo",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5184,
+      "height": 3456,
+      "sha1": "89094fea73a7193f784f77c4cb4e5cbba6dfd9d1"
     }
   ],
   "Palacio de Cristal": [
@@ -168,6 +216,102 @@ window.ArchiSpotterPhotoPairs={
       "sha1": "f90b6d9a8a8e532017c8d0c9c0012e4be62d9af7"
     }
   ],
+  "Catedral de Notre-Dame": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg/1920px-Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Notre-Dame de Paris and Île de la Cité at dusk 140516 1.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg",
+      "artist": "DXR",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 8188,
+      "height": 4094,
+      "sha1": "502dc64ff34faf20a1838a6967db5f7f0d0add8f"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Paris_Notre-Dame_Southeast_View_01.JPG/1920px-Paris_Notre-Dame_Southeast_View_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Paris Notre-Dame Southeast View 01.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Paris_Notre-Dame_Southeast_View_01.JPG",
+      "artist": "Uoaei1",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5596,
+      "height": 3997,
+      "sha1": "1b23e0fee3f82c470a233e22d8ea09e5dd711478"
+    }
+  ],
+  "Basílica del Sacré-Cœur": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Paris%2C_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg/1920px-Paris%2C_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Paris, Sacré-Cœur de Montmartre -- 2014 -- 1193.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Paris,_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg",
+      "artist": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5471,
+      "height": 3321,
+      "sha1": "c9263bbb049fa3b89368e53d437e1826edf00961"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg/1920px-Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Basilique du Sacré-Cœur de Montmartre - Paris - GT-01 - 2024.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg",
+      "artist": "Terragio67",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 9998,
+      "height": 9998,
+      "sha1": "0d1e3af4615d42a6457c596ed435c3fa61ca9691"
+    }
+  ],
+  "Museo del Louvre": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Louvre_Cour_Carree.jpg/1920px-Louvre_Cour_Carree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Louvre Cour Carree.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Louvre_Cour_Carree.jpg",
+      "artist": "Benh LIEU SONG",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 8000,
+      "height": 3551,
+      "sha1": "08ff277664aae2b5d4e1dbc595485a614acf45cf"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cour_Carr%C3%A9e%2C_Louvre_Museum%2C_2_April_2009.jpg/1920px-Cour_Carr%C3%A9e%2C_Louvre_Museum%2C_2_April_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Cour Carrée, Louvre Museum, 2 April 2009.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Cour_Carr%C3%A9e,_Louvre_Museum,_2_April_2009.jpg",
+      "artist": "Benh LIEU SONG",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 8000,
+      "height": 3551,
+      "sha1": "7a43f8464a3caf879c19ba558aa0f69f6653ef83"
+    }
+  ],
+  "Palacio de Versalles": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg/1920px-Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Water reflection of the Orangerie garden and Palace of Versailles with blue sky in France.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg",
+      "artist": "Basile Morin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 8192,
+      "height": 4096,
+      "sha1": "76fb2ee83f6dd862ed2b32036aa8ba7084ad39b4"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Main_Fa%C3%A7ade%2C_Palace_of_Versailles%2C_Cour_Royale.jpg/1920px-Main_Fa%C3%A7ade%2C_Palace_of_Versailles%2C_Cour_Royale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Main Façade, Palace of Versailles, Cour Royale.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Main_Fa%C3%A7ade,_Palace_of_Versailles,_Cour_Royale.jpg",
+      "artist": "Julian Lupyan",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "width": 7009,
+      "height": 4649,
+      "sha1": "eaffdbef29318f300055a7143c413dcb88ddc998"
+    }
+  ],
   "Templo de Zeus Olímpico": [
     {
       "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg/1920px-Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -238,6 +382,102 @@ window.ArchiSpotterPhotoPairs={
       "width": 6048,
       "height": 4024,
       "sha1": "403f9e43bd09a7d74e2e2fc8df30a5bbcaf2b6f3"
+    }
+  ],
+  "Palacio de Westminster": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/London%2C_Westminster_Palace_--_2016_--_4648.jpg/1920px-London%2C_Westminster_Palace_--_2016_--_4648.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:London, Westminster Palace -- 2016 -- 4648.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:London,_Westminster_Palace_--_2016_--_4648.jpg",
+      "artist": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5319,
+      "height": 2992,
+      "sha1": "e30fb4274c51f794f40922f060ecbcca6f9c481f"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Palace_of_Westminster_London_2023_01.jpg/1920px-Palace_of_Westminster_London_2023_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Palace of Westminster London 2023 01.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Palace_of_Westminster_London_2023_01.jpg",
+      "artist": "Julian Herzog  ( Website )",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 5333,
+      "height": 3560,
+      "sha1": "cd3ced5b7f271ea624d82119155c126b12790a67"
+    }
+  ],
+  "Tower Bridge": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Tower_Bridge_London_Feb_2006.jpg/1920px-Tower_Bridge_London_Feb_2006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Tower Bridge London Feb 2006.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tower_Bridge_London_Feb_2006.jpg",
+      "artist": "Diliff",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 9462,
+      "height": 4734,
+      "sha1": "15fd8033faa27817cb1e9a2d637339f0431ad007"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Tower_Bridge_at_Dawn.jpg/1920px-Tower_Bridge_at_Dawn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Tower Bridge at Dawn.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg",
+      "artist": "Fuzzypiggy",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 5554,
+      "height": 3703,
+      "sha1": "ac998630dbd82bc209cd5d5a39819a76f29e78a9"
+    }
+  ],
+  "Abadía de Westminster": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Westminster_Abbey_West_Front_Facade_by_Nicholas_Hawkmoor%2C_London.jpg/1920px-Westminster_Abbey_West_Front_Facade_by_Nicholas_Hawkmoor%2C_London.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Westminster Abbey West Front Facade by Nicholas Hawkmoor, London.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Westminster_Abbey_West_Front_Facade_by_Nicholas_Hawkmoor,_London.jpg",
+      "artist": "The New Athens",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 5625,
+      "height": 9999,
+      "sha1": "3dc5a5d06ddfab1f5da54e5645ef5450cbae2064"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Interior_of_Westminster_Abbey_-_019.jpg/1920px-Interior_of_Westminster_Abbey_-_019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Interior of Westminster Abbey - 019.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Interior_of_Westminster_Abbey_-_019.jpg",
+      "artist": "Oleg Yunakov",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5712,
+      "height": 4284,
+      "sha1": "3a8cb16097ec796439367073e2028ddec3ea8d2d"
+    }
+  ],
+  "Catedral de San Pablo": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/St_Paul%27s_Cathedral%2C_London%2C_England_-_Jan_2010.jpg/1920px-St_Paul%27s_Cathedral%2C_London%2C_England_-_Jan_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:St Paul's Cathedral, London, England - Jan 2010.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:St_Paul%27s_Cathedral,_London,_England_-_Jan_2010.jpg",
+      "artist": "Diliff",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 5603,
+      "height": 5369,
+      "sha1": "1bb1a8c1da55846c202df12e0907ab988495eb9b"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/St_Paul%27s_Cathedral_Nave%2C_London%2C_UK_-_Diliff.jpg/1920px-St_Paul%27s_Cathedral_Nave%2C_London%2C_UK_-_Diliff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:St Paul's Cathedral Nave, London, UK - Diliff.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:St_Paul%27s_Cathedral_Nave,_London,_UK_-_Diliff.jpg",
+      "artist": "Diliff",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 6000,
+      "height": 5230,
+      "sha1": "ca152b32ddf6d1f5ddd5cae826176a351bf33f19"
     }
   ],
   "Termas romanas": [
@@ -360,6 +600,102 @@ window.ArchiSpotterPhotoPairs={
       "sha1": "edd02c141fa3112fb4f0d3a77d2b5af4c99cd03b"
     }
   ],
+  "Catedral de Colonia": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Cologne-Cathedral-0360.jpg/1920px-Cologne-Cathedral-0360.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Cologne-Cathedral-0360.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Cologne-Cathedral-0360.jpg",
+      "artist": "Source:  Rolf Heinrich, Köln , Processing:  User:MathKnight",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 5410,
+      "height": 3936,
+      "sha1": "90aef9de395d71b21077056a28366a72b683575f"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Cologne_cathedral_2022.jpg/1920px-Cologne_cathedral_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Cologne cathedral 2022.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Cologne_cathedral_2022.jpg",
+      "artist": "LilacCaracal",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 2933,
+      "height": 3534,
+      "sha1": "e42238028e5b6d3ad5af957e54accffe77dddc7d"
+    }
+  ],
+  "Torre de Belém": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Bel%C3%A9m_Tower_in_Lisbon.jpg/1920px-Bel%C3%A9m_Tower_in_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Belém Tower in Lisbon.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Bel%C3%A9m_Tower_in_Lisbon.jpg",
+      "artist": "Lisbon Photoshoots",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 2366,
+      "height": 1578,
+      "sha1": "cbd944903ff628fa3da4c7b6d252fd374a8bc97a"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Belem_Tower_-_April_2019_%282%29.jpg/1920px-Belem_Tower_-_April_2019_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Belem Tower - April 2019 (2).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Belem_Tower_-_April_2019_(2).jpg",
+      "artist": "Rehman Abubakr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 4608,
+      "height": 3456,
+      "sha1": "f4d7b16a3407435e77bab2104634b4d8969aa277"
+    }
+  ],
+  "Monasterio de los Jerónimos": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1340_9252.jpg/1920px-Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1340_9252.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Jerónimos Monastery in Belém, Lisbon, 20250604 1340 9252.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m,_Lisbon,_20250604_1340_9252.jpg",
+      "artist": "Jakub Hałun",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 5536,
+      "height": 2936,
+      "sha1": "3ee8672a9df1dc840d23310c352ba4a12fd55618"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Cloister_of_the_Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1304_9160.jpg/1920px-Cloister_of_the_Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1304_9160.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Cloister of the Jerónimos Monastery in Belém, Lisbon, 20250604 1304 9160.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Cloister_of_the_Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m,_Lisbon,_20250604_1304_9160.jpg",
+      "artist": "Jakub Hałun",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 5279,
+      "height": 3501,
+      "sha1": "2dce3e511797708140ab8cc551190d5cd819a55c"
+    }
+  ],
+  "Castillo de San Jorge": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/S%C3%A3o_Jorge_Castle_%2833288676503%29.jpg/1920px-S%C3%A3o_Jorge_Castle_%2833288676503%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:São Jorge Castle (33288676503).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:S%C3%A3o_Jorge_Castle_(33288676503).jpg",
+      "artist": "Maria  Eklind",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 6000,
+      "height": 4000,
+      "sha1": "63f450c5d5de908318afadb84dc3cbcb77889527"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/View_of_Castelo_de_S%C3%A3o_Jorge_from_S%C3%A3o_Pedro_de_Alc%C3%A2ntara%2C_Lisbon%2C_20250604_1614_9358.jpg/1920px-View_of_Castelo_de_S%C3%A3o_Jorge_from_S%C3%A3o_Pedro_de_Alc%C3%A2ntara%2C_Lisbon%2C_20250604_1614_9358.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:View of Castelo de São Jorge from São Pedro de Alcântara, Lisbon, 20250604 1614 9358.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:View_of_Castelo_de_S%C3%A3o_Jorge_from_S%C3%A3o_Pedro_de_Alc%C3%A2ntara,_Lisbon,_20250604_1614_9358.jpg",
+      "artist": "Jakub Hałun",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 5586,
+      "height": 3728,
+      "sha1": "390447581d81033e0bc0c7ddfba1c089b5370333"
+    }
+  ],
   "Elevador de Santa Justa": [
     {
       "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Elevador_de_Santa_Justa%2C_Lisboa%2C_Portugal%2C_2022-07-24%2C_DD_08.jpg/1920px-Elevador_de_Santa_Justa%2C_Lisboa%2C_Portugal%2C_2022-07-24%2C_DD_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -478,6 +814,78 @@ window.ArchiSpotterPhotoPairs={
       "width": 5472,
       "height": 3648,
       "sha1": "f19b81b19ef357e2862599c915205f5981c17dad"
+    }
+  ],
+  "Palacio Barolo": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Palacio_Barolo_7.jpg/1920px-Palacio_Barolo_7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Palacio Barolo 7.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Palacio_Barolo_7.jpg",
+      "artist": "Eugenio Hansen, OFS",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5152,
+      "height": 3864,
+      "sha1": "e533f0396fc2dee5f029a8dcf62488ec2aeea9d5"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Palacio_Barolo_18.jpg/1920px-Palacio_Barolo_18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Palacio Barolo 18.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Palacio_Barolo_18.jpg",
+      "artist": "Eugenio Hansen, OFS",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5152,
+      "height": 3864,
+      "sha1": "c8bde99a2341c93befbdc928bfae2e55def7d9b4"
+    }
+  ],
+  "Congreso de la Nación Argentina": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Congreso_de_la_Naci%C3%B3n_Argentina_-_National_Congress_of_Argentina_%2824825135872%29.jpg/1920px-Congreso_de_la_Naci%C3%B3n_Argentina_-_National_Congress_of_Argentina_%2824825135872%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Congreso de la Nación Argentina - National Congress of Argentina (24825135872).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Congreso_de_la_Naci%C3%B3n_Argentina_-_National_Congress_of_Argentina_(24825135872).jpg",
+      "artist": "Nicolas Solop",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 6000,
+      "height": 4000,
+      "sha1": "2930b76e63a802dc8c9b1f8a33de631a3e7eac5d"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Palacio_del_Congreso_de_la_Naci%C3%B3n_Argentina_%282014%29.JPG/1920px-Palacio_del_Congreso_de_la_Naci%C3%B3n_Argentina_%282014%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Palacio del Congreso de la Nación Argentina (2014).JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Palacio_del_Congreso_de_la_Naci%C3%B3n_Argentina_(2014).JPG",
+      "artist": "Lars Curfs  ( Grashoofd )",
+      "license": "CC BY-SA 3.0 nl",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/nl/deed.en",
+      "width": 5184,
+      "height": 3456,
+      "sha1": "d9ef0d9c2f08e21e70c442046fc4ee40ff680d28"
+    }
+  ],
+  "Puente de la Mujer": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Puente_de_la_Mujer_-_Puerto_Madero.jpg/1920px-Puente_de_la_Mujer_-_Puerto_Madero.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Puente de la Mujer - Puerto Madero.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Puente_de_la_Mujer_-_Puerto_Madero.jpg",
+      "artist": "Norberto Kolus",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 5868,
+      "height": 2781,
+      "sha1": "4208dd3efc5298353613d46fa5213154f1838ba2"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Buenos_Aires_Puente_de_la_Mujer_1030985.jpg/1920px-Buenos_Aires_Puente_de_la_Mujer_1030985.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Buenos Aires Puente de la Mujer 1030985.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Buenos_Aires_Puente_de_la_Mujer_1030985.jpg",
+      "artist": "Ermell",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 4528,
+      "height": 3396,
+      "sha1": "43900b9a37f53bd1d82b5072bcdb4297f7d46a23"
     }
   ]
 };
