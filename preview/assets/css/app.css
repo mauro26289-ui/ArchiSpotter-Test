@@ -276,7 +276,10 @@
     .app-panel h3 { font: 600 20px Fraunces, Georgia, serif; margin: 0 0 8px; }
     .app-panel p { margin: 0; }
     .app-nav { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; padding: 10px 8px max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); border-top: 1px solid rgba(220,229,229,.17); background: #101517; }
-    .app-nav button { border: 0; background: none; color: #9faeb1; padding: 9px 2px; font: 500 11px Inter, sans-serif; border-radius: 10px; cursor: pointer; }
+    .app-nav button { border: 0; background: none; color: #9faeb1; padding: 7px 2px 8px; font: 500 10px Inter, sans-serif; border-radius: 10px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 49px; }
+.app-nav .nav-icon { width: 21px; height: 21px; flex: none; display: block; }
+.app-nav .nav-label { display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2; }
+.app-nav button:focus-visible { outline: 2px solid #dce5e5; outline-offset: -2px; }
     .app-nav button[aria-selected="true"] { background: #dce5e5; color: #101517; }
     .lang-choices { display: flex; gap: 8px; margin: 12px 0 20px; }
     .lang-choices button { flex: 1; min-height: 42px; border: 1px solid rgba(220,229,229,.3); border-radius: 10px; background: transparent; color: var(--ink); font: 600 13px Inter, sans-serif; }
