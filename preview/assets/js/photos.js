@@ -34,13 +34,14 @@ var curated={
   'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ch%C3%A2teau%20de%20Chillon%2C%20Cour%20int%C3%A9rieure%2C%20Veytaux%2C%20Vaud.jpg?width=1400'
  ]
 };
-function getImages(place){return curated[place[0]]?curated[place[0]].slice():[];}
+function getImages(place){var pair=window.ArchiSpotterPhotoPairs&&window.ArchiSpotterPhotoPairs[place[0]];return pair&&pair.length===2?pair.map(function(photo){return photo.url;}):(curated[place[0]]?curated[place[0]].slice():[]);}
 var cache=Object.create(null);
 var pending=Object.create(null);
 var activeRequests=new WeakMap();
 function apply(img,place,width){
  var title=titles[place[0]];if(!img)return;
- if(curated[place[0]]){activeRequests.set(img,{curated:true});img.src=curated[place[0]][0];return;}
+ var selected=getImages(place);
+ if(selected.length){activeRequests.set(img,{curated:true});img.src=selected[0];return;}
  var request={title:title};activeRequests.set(img,request);
  if(!title)return;
  var original=img.getAttribute('src')||'';
