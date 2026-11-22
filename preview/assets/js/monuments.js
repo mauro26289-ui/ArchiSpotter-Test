@@ -13,11 +13,12 @@ window.ArchiSpotterMonuments = (function () {
         'Fontana di Trevi':'trevi-fountain',
         "Castillo de Sant'Angelo":'castel-sant-angelo',
         'Ponte Vecchio':'ponte-vecchio',
-        'Palazzo Vecchio':'palazzo-vecchio'
+        'Palazzo Vecchio':'palazzo-vecchio',
+        'Casa Batlló':'casa-batllo'
       };
       var audioBase='https://raw.githubusercontent.com/mauro26289-ui/ArchiSpotter/main/audio/';
-      var newAudioIds={'trevi-fountain':true,'castel-sant-angelo':true,'ponte-vecchio':true,'palazzo-vecchio':true};
-      var audioAvailability={'palazzo-vecchio':{en:true}};
+      var newAudioIds={'trevi-fountain':true,'castel-sant-angelo':true,'ponte-vecchio':true,'palazzo-vecchio':true,'casa-batllo':true};
+      var audioAvailability={};
       var narrationAudio=new Audio();
       narrationAudio.preload='none';
       var activeAudioKey='';
