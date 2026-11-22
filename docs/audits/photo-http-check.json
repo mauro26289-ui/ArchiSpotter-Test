@@ -1,0 +1,1028 @@
+{
+  "checkedAt": "2026-11-22T21:46:08.939Z",
+  "total": 102,
+  "ok": 102,
+  "failed": 0,
+  "results": [
+    {
+      "monument": "Castillo de Sant'Angelo",
+      "index": 1,
+      "file": "File:Rome - Passetto di Borgo and Castel Sant'Angelo by night 0990.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Rome_-_Passetto_di_Borgo_and_Castel_Sant%27Angelo_by_night_0990.jpg/1920px-Rome_-_Passetto_di_Borgo_and_Castel_Sant%27Angelo_by_night_0990.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "349322",
+      "ok": true
+    },
+    {
+      "monument": "Castillo de Sant'Angelo",
+      "index": 2,
+      "file": "File:Rome - Castel and Ponte Sant'Angelo by night 0966.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Rome_-_Castel_and_Ponte_Sant%27Angelo_by_night_0966.jpg/1920px-Rome_-_Castel_and_Ponte_Sant%27Angelo_by_night_0966.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "496548",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Milán",
+      "index": 1,
+      "file": "File:Duomo cathedral Milan Italy.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Duomo_cathedral_Milan_Italy.jpg/1920px-Duomo_cathedral_Milan_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "698908",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Milán",
+      "index": 2,
+      "file": "File:Milan Cathedral from Piazza del Duomo.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/1920px-Milan_Cathedral_from_Piazza_del_Duomo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "820534",
+      "ok": true
+    },
+    {
+      "monument": "Palacio Real",
+      "index": 1,
+      "file": "File:Royal Palace of Madrid east facade 1.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Royal_Palace_of_Madrid_east_facade_1.jpg/1920px-Royal_Palace_of_Madrid_east_facade_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "766295",
+      "ok": true
+    },
+    {
+      "monument": "Palacio Real",
+      "index": 2,
+      "file": "File:North facade of the Royal Palace of Madrid 1.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/North_facade_of_the_Royal_Palace_of_Madrid_1.jpg/1920px-North_facade_of_the_Royal_Palace_of_Madrid_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "840166",
+      "ok": true
+    },
+    {
+      "monument": "Puerta de Alcalá",
+      "index": 1,
+      "file": "File:Puerta de Alcalá, Madrid, España, 2017-05-18, DD 14.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Puerta_de_Alcal%C3%A1%2C_Madrid%2C_Espa%C3%B1a%2C_2017-05-18%2C_DD_14.jpg/1920px-Puerta_de_Alcal%C3%A1%2C_Madrid%2C_Espa%C3%B1a%2C_2017-05-18%2C_DD_14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "648683",
+      "ok": true
+    },
+    {
+      "monument": "Puerta de Alcalá",
+      "index": 2,
+      "file": "File:Puerta de Alcalá, Madrid 20180720.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Puerta_de_Alcal%C3%A1%2C_Madrid_20180720.jpg/1920px-Puerta_de_Alcal%C3%A1%2C_Madrid_20180720.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "550816",
+      "ok": true
+    },
+    {
+      "monument": "Palacio de Cristal",
+      "index": 1,
+      "file": "File:Palacio de Cristal (El Retiro) Madrid in black and white.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Palacio_de_Cristal_%28El_Retiro%29_Madrid_in_black_and_white.jpg/1920px-Palacio_de_Cristal_%28El_Retiro%29_Madrid_in_black_and_white.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "598852",
+      "ok": true
+    },
+    {
+      "monument": "Palacio de Cristal",
+      "index": 2,
+      "file": "File:El Retiro in Madrid, Palacio de Cristal.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/El_Retiro_in_Madrid%2C_Palacio_de_Cristal.jpg/1920px-El_Retiro_in_Madrid%2C_Palacio_de_Cristal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "775240",
+      "ok": true
+    },
+    {
+      "monument": "Templo de Debod",
+      "index": 1,
+      "file": "File:Temple of Debod at evening.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Temple_of_Debod_at_evening.jpg/1920px-Temple_of_Debod_at_evening.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "426127",
+      "ok": true
+    },
+    {
+      "monument": "Templo de Debod",
+      "index": 2,
+      "file": "File:2026-09-03 - Temple of Debod in Madrid Spain 01.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/2026-09-03_-_Temple_of_Debod_in_Madrid_Spain_01.jpg/1920px-2026-09-03_-_Temple_of_Debod_in_Madrid_Spain_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "934005",
+      "ok": true
+    },
+    {
+      "monument": "Alhambra",
+      "index": 1,
+      "file": "File:Alhambra at dusk Granada Spain.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Alhambra_at_dusk_Granada_Spain.jpg/1920px-Alhambra_at_dusk_Granada_Spain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "310136",
+      "ok": true
+    },
+    {
+      "monument": "Alhambra",
+      "index": 2,
+      "file": "File:Alcazaba, Alhambra, Granada, Spain.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Alcazaba%2C_Alhambra%2C_Granada%2C_Spain.jpg/1920px-Alcazaba%2C_Alhambra%2C_Granada%2C_Spain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "568073",
+      "ok": true
+    },
+    {
+      "monument": "Torre Eiffel",
+      "index": 1,
+      "file": "File:Paris - The Eiffel Tower in spring - 2307.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg/1920px-Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1448708",
+      "ok": true
+    },
+    {
+      "monument": "Torre Eiffel",
+      "index": 2,
+      "file": "File:Eiffel Tower,Paris.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Eiffel_Tower%2CParis.jpg/1920px-Eiffel_Tower%2CParis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "805433",
+      "ok": true
+    },
+    {
+      "monument": "Arco del Triunfo",
+      "index": 1,
+      "file": "File:West Façade of North Leg, Low Angle, Arc de Triomphe, Paris.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/West_Fa%C3%A7ade_of_North_Leg%2C_Low_Angle%2C_Arc_de_Triomphe%2C_Paris.jpg/1920px-West_Fa%C3%A7ade_of_North_Leg%2C_Low_Angle%2C_Arc_de_Triomphe%2C_Paris.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1517054",
+      "ok": true
+    },
+    {
+      "monument": "Arco del Triunfo",
+      "index": 2,
+      "file": "File:West Low Angle of Arc de Triomphe, Paris.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/West_Low_Angle_of_Arc_de_Triomphe%2C_Paris.jpg/1920px-West_Low_Angle_of_Arc_de_Triomphe%2C_Paris.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "860961",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Notre-Dame",
+      "index": 1,
+      "file": "File:Notre-Dame de Paris and Île de la Cité at dusk 140516 1.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg/1920px-Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "424736",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Notre-Dame",
+      "index": 2,
+      "file": "File:Paris Notre-Dame Southeast View 01.JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Paris_Notre-Dame_Southeast_View_01.JPG/1920px-Paris_Notre-Dame_Southeast_View_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "745299",
+      "ok": true
+    },
+    {
+      "monument": "Basílica del Sacré-Cœur",
+      "index": 1,
+      "file": "File:Paris, Sacré-Cœur de Montmartre -- 2014 -- 1193.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Paris%2C_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg/1920px-Paris%2C_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "550481",
+      "ok": true
+    },
+    {
+      "monument": "Basílica del Sacré-Cœur",
+      "index": 2,
+      "file": "File:Basilique du Sacré-Cœur de Montmartre - Paris - GT-01 - 2024.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg/1920px-Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "902490",
+      "ok": true
+    },
+    {
+      "monument": "Museo del Louvre",
+      "index": 1,
+      "file": "File:Louvre Cour Carree.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Louvre_Cour_Carree.jpg/1920px-Louvre_Cour_Carree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "409069",
+      "ok": true
+    },
+    {
+      "monument": "Museo del Louvre",
+      "index": 2,
+      "file": "File:Cour Carrée, Louvre Museum, 2 April 2009.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cour_Carr%C3%A9e%2C_Louvre_Museum%2C_2_April_2009.jpg/1920px-Cour_Carr%C3%A9e%2C_Louvre_Museum%2C_2_April_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "408276",
+      "ok": true
+    },
+    {
+      "monument": "Palacio de Versalles",
+      "index": 1,
+      "file": "File:Water reflection of the Orangerie garden and Palace of Versailles with blue sky in France.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg/1920px-Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "429531",
+      "ok": true
+    },
+    {
+      "monument": "Palacio de Versalles",
+      "index": 2,
+      "file": "File:Main Façade, Palace of Versailles, Cour Royale.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Main_Fa%C3%A7ade%2C_Palace_of_Versailles%2C_Cour_Royale.jpg/1920px-Main_Fa%C3%A7ade%2C_Palace_of_Versailles%2C_Cour_Royale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "804067",
+      "ok": true
+    },
+    {
+      "monument": "Templo de Zeus Olímpico",
+      "index": 1,
+      "file": "File:Temple of Zeus Olympian, Athens, Greece.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg/1920px-Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "765645",
+      "ok": true
+    },
+    {
+      "monument": "Templo de Zeus Olímpico",
+      "index": 2,
+      "file": "File:Three columns, Temple of Zeus Olympian, Athens, Greece.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Three_columns%2C_Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg/1920px-Three_columns%2C_Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "454314",
+      "ok": true
+    },
+    {
+      "monument": "Odeón de Herodes Ático",
+      "index": 1,
+      "file": "File:Athen Odeon Herodes Atticus BW 2017-10-09 13-12-44.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Athen_Odeon_Herodes_Atticus_BW_2017-10-09_13-12-44.jpg/1920px-Athen_Odeon_Herodes_Atticus_BW_2017-10-09_13-12-44.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "670092",
+      "ok": true
+    },
+    {
+      "monument": "Odeón de Herodes Ático",
+      "index": 2,
+      "file": "File:Odeon of Herodes Atticus 2019.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Odeon_of_Herodes_Atticus_2019.jpg/1920px-Odeon_of_Herodes_Atticus_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "896315",
+      "ok": true
+    },
+    {
+      "monument": "Templo de Apolo",
+      "index": 1,
+      "file": "File:Temple of Apollo, Delphi, 201246.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Temple_of_Apollo%2C_Delphi%2C_201246.jpg/1920px-Temple_of_Apollo%2C_Delphi%2C_201246.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "840467",
+      "ok": true
+    },
+    {
+      "monument": "Templo de Apolo",
+      "index": 2,
+      "file": "File:Temple of Apollo in Delphi, east portico, 201248.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Temple_of_Apollo_in_Delphi%2C_east_portico%2C_201248.jpg/1920px-Temple_of_Apollo_in_Delphi%2C_east_portico%2C_201248.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "698079",
+      "ok": true
+    },
+    {
+      "monument": "Palacio de Westminster",
+      "index": 1,
+      "file": "File:London, Westminster Palace -- 2016 -- 4648.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/London%2C_Westminster_Palace_--_2016_--_4648.jpg/1920px-London%2C_Westminster_Palace_--_2016_--_4648.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "393066",
+      "ok": true
+    },
+    {
+      "monument": "Palacio de Westminster",
+      "index": 2,
+      "file": "File:Palace of Westminster London 2023 01.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Palace_of_Westminster_London_2023_01.jpg/1920px-Palace_of_Westminster_London_2023_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "704982",
+      "ok": true
+    },
+    {
+      "monument": "Tower Bridge",
+      "index": 1,
+      "file": "File:Tower Bridge London Feb 2006.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Tower_Bridge_London_Feb_2006.jpg/1920px-Tower_Bridge_London_Feb_2006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "321157",
+      "ok": true
+    },
+    {
+      "monument": "Tower Bridge",
+      "index": 2,
+      "file": "File:Tower Bridge at Dawn.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Tower_Bridge_at_Dawn.jpg/1920px-Tower_Bridge_at_Dawn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "442764",
+      "ok": true
+    },
+    {
+      "monument": "Abadía de Westminster",
+      "index": 1,
+      "file": "File:Westminster Abbey West Front Facade by Nicholas Hawkmoor, London.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Westminster_Abbey_West_Front_Facade_by_Nicholas_Hawkmoor%2C_London.jpg/1920px-Westminster_Abbey_West_Front_Facade_by_Nicholas_Hawkmoor%2C_London.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1589179",
+      "ok": true
+    },
+    {
+      "monument": "Abadía de Westminster",
+      "index": 2,
+      "file": "File:Interior of Westminster Abbey - 019.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Interior_of_Westminster_Abbey_-_019.jpg/1920px-Interior_of_Westminster_Abbey_-_019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1098278",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de San Pablo",
+      "index": 1,
+      "file": "File:St Paul's Cathedral, London, England - Jan 2010.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/St_Paul%27s_Cathedral%2C_London%2C_England_-_Jan_2010.jpg/1920px-St_Paul%27s_Cathedral%2C_London%2C_England_-_Jan_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "874467",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de San Pablo",
+      "index": 2,
+      "file": "File:St Paul's Cathedral Nave, London, UK - Diliff.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/St_Paul%27s_Cathedral_Nave%2C_London%2C_UK_-_Diliff.jpg/1920px-St_Paul%27s_Cathedral_Nave%2C_London%2C_UK_-_Diliff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1184199",
+      "ok": true
+    },
+    {
+      "monument": "Termas romanas",
+      "index": 1,
+      "file": "File:The Roman Baths.011 - Bath.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/The_Roman_Baths.011_-_Bath.jpg/1920px-The_Roman_Baths.011_-_Bath.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1014649",
+      "ok": true
+    },
+    {
+      "monument": "Termas romanas",
+      "index": 2,
+      "file": "File:Roman Baths, Bath, Somerset 79.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Roman_Baths%2C_Bath%2C_Somerset_79.jpg/1920px-Roman_Baths%2C_Bath%2C_Somerset_79.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "510435",
+      "ok": true
+    },
+    {
+      "monument": "Puerta de Brandeburgo",
+      "index": 1,
+      "file": "File:Brandenburg Gate - Brandenburger Tor - Berlin - Germany - 02.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Brandenburg_Gate_-_Brandenburger_Tor_-_Berlin_-_Germany_-_02.jpg/1920px-Brandenburg_Gate_-_Brandenburger_Tor_-_Berlin_-_Germany_-_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "501809",
+      "ok": true
+    },
+    {
+      "monument": "Puerta de Brandeburgo",
+      "index": 2,
+      "file": "File:Brandenburg Gate - Brandenburger Tor - Berlin - Germany - 01.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Brandenburg_Gate_-_Brandenburger_Tor_-_Berlin_-_Germany_-_01.jpg/1920px-Brandenburg_Gate_-_Brandenburger_Tor_-_Berlin_-_Germany_-_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "510680",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Berlín",
+      "index": 1,
+      "file": "File:Berlin Cathedral from Muehlendammbruecke.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Berlin_Cathedral_from_Muehlendammbruecke.jpg/1920px-Berlin_Cathedral_from_Muehlendammbruecke.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "470190",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Berlín",
+      "index": 2,
+      "file": "File:Berlin Cathedral, Evangelical Supreme Parish and Collegiate Church.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Berlin_Cathedral%2C_Evangelical_Supreme_Parish_and_Collegiate_Church.jpg/1920px-Berlin_Cathedral%2C_Evangelical_Supreme_Parish_and_Collegiate_Church.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "980797",
+      "ok": true
+    },
+    {
+      "monument": "Edificio del Reichstag",
+      "index": 1,
+      "file": "File:Reichstag building Berlin view from west before sunset.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Reichstag_building_Berlin_view_from_west_before_sunset.jpg/1920px-Reichstag_building_Berlin_view_from_west_before_sunset.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "375042",
+      "ok": true
+    },
+    {
+      "monument": "Edificio del Reichstag",
+      "index": 2,
+      "file": "File:The Reichstag building, Berlin, Germany 2.JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/The_Reichstag_building%2C_Berlin%2C_Germany_2.JPG/1920px-The_Reichstag_building%2C_Berlin%2C_Germany_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "442186",
+      "ok": true
+    },
+    {
+      "monument": "Memorial del Holocausto",
+      "index": 1,
+      "file": "File:Memorial to the Murdered Jews of Europe Berlin 2014-07-13.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Memorial_to_the_Murdered_Jews_of_Europe_Berlin_2014-07-13.jpg/1920px-Memorial_to_the_Murdered_Jews_of_Europe_Berlin_2014-07-13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "424949",
+      "ok": true
+    },
+    {
+      "monument": "Memorial del Holocausto",
+      "index": 2,
+      "file": "File:Memorial to the Murdered Jews of Europe 2.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Memorial_to_the_Murdered_Jews_of_Europe_2.jpg/1920px-Memorial_to_the_Murdered_Jews_of_Europe_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "623846",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Colonia",
+      "index": 1,
+      "file": "File:Cologne-Cathedral-0360.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Cologne-Cathedral-0360.jpg/1920px-Cologne-Cathedral-0360.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "771513",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Colonia",
+      "index": 2,
+      "file": "File:Cologne cathedral 2022.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Cologne_cathedral_2022.jpg/1920px-Cologne_cathedral_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1565313",
+      "ok": true
+    },
+    {
+      "monument": "Torre de Belém",
+      "index": 1,
+      "file": "File:Belém Tower in Lisbon.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Bel%C3%A9m_Tower_in_Lisbon.jpg/1920px-Bel%C3%A9m_Tower_in_Lisbon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "431126",
+      "ok": true
+    },
+    {
+      "monument": "Torre de Belém",
+      "index": 2,
+      "file": "File:Belem Tower - April 2019 (2).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Belem_Tower_-_April_2019_%282%29.jpg/1920px-Belem_Tower_-_April_2019_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "653125",
+      "ok": true
+    },
+    {
+      "monument": "Monasterio de los Jerónimos",
+      "index": 1,
+      "file": "File:Jerónimos Monastery in Belém, Lisbon, 20250604 1340 9252.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1340_9252.jpg/1920px-Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1340_9252.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "736518",
+      "ok": true
+    },
+    {
+      "monument": "Monasterio de los Jerónimos",
+      "index": 2,
+      "file": "File:Cloister of the Jerónimos Monastery in Belém, Lisbon, 20250604 1304 9160.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Cloister_of_the_Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1304_9160.jpg/1920px-Cloister_of_the_Jer%C3%B3nimos_Monastery_in_Bel%C3%A9m%2C_Lisbon%2C_20250604_1304_9160.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "793089",
+      "ok": true
+    },
+    {
+      "monument": "Castillo de San Jorge",
+      "index": 1,
+      "file": "File:São Jorge Castle (33288676503).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/S%C3%A3o_Jorge_Castle_%2833288676503%29.jpg/1920px-S%C3%A3o_Jorge_Castle_%2833288676503%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1237300",
+      "ok": true
+    },
+    {
+      "monument": "Castillo de San Jorge",
+      "index": 2,
+      "file": "File:View of Castelo de São Jorge from São Pedro de Alcântara, Lisbon, 20250604 1614 9358.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/View_of_Castelo_de_S%C3%A3o_Jorge_from_S%C3%A3o_Pedro_de_Alc%C3%A2ntara%2C_Lisbon%2C_20250604_1614_9358.jpg/1920px-View_of_Castelo_de_S%C3%A3o_Jorge_from_S%C3%A3o_Pedro_de_Alc%C3%A2ntara%2C_Lisbon%2C_20250604_1614_9358.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "727110",
+      "ok": true
+    },
+    {
+      "monument": "Elevador de Santa Justa",
+      "index": 1,
+      "file": "File:Elevador de Santa Justa, Lisboa, Portugal, 2022-07-24, DD 08.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Elevador_de_Santa_Justa%2C_Lisboa%2C_Portugal%2C_2022-07-24%2C_DD_08.jpg/1920px-Elevador_de_Santa_Justa%2C_Lisboa%2C_Portugal%2C_2022-07-24%2C_DD_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1268640",
+      "ok": true
+    },
+    {
+      "monument": "Elevador de Santa Justa",
+      "index": 2,
+      "file": "File:Elevador de Santa Justa, Lisboa, Portugal, 2022-07-24, DD 09.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Elevador_de_Santa_Justa%2C_Lisboa%2C_Portugal%2C_2022-07-24%2C_DD_09.jpg/1920px-Elevador_de_Santa_Justa%2C_Lisboa%2C_Portugal%2C_2022-07-24%2C_DD_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "339236",
+      "ok": true
+    },
+    {
+      "monument": "Puente Don Luis I",
+      "index": 1,
+      "file": "File:Bridge Ponte Dom Luís I in Porto, Portugal.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Bridge_Ponte_Dom_Lu%C3%ADs_I_in_Porto%2C_Portugal.jpg/1920px-Bridge_Ponte_Dom_Lu%C3%ADs_I_in_Porto%2C_Portugal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "693851",
+      "ok": true
+    },
+    {
+      "monument": "Puente Don Luis I",
+      "index": 2,
+      "file": "File:Ponte Dom Luís I in Porto, Portugal.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Ponte_Dom_Lu%C3%ADs_I_in_Porto%2C_Portugal.jpg/1920px-Ponte_Dom_Lu%C3%ADs_I_in_Porto%2C_Portugal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "771442",
+      "ok": true
+    },
+    {
+      "monument": "Obelisco",
+      "index": 1,
+      "file": "File:Obelisk of Buenos Aires (Obelisco de Buenos Aires - Buenos Aires Argentina (5269817318).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Obelisk_of_Buenos_Aires_%28Obelisco_de_Buenos_Aires_-_Buenos_Aires_Argentina_%285269817318%29.jpg/1920px-Obelisk_of_Buenos_Aires_%28Obelisco_de_Buenos_Aires_-_Buenos_Aires_Argentina_%285269817318%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "495383",
+      "ok": true
+    },
+    {
+      "monument": "Obelisco",
+      "index": 2,
+      "file": "File:Obelisk of Buenos Aires (Obelisco de Buenos Aires - Buenos Aires Argentina (5269209835).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Obelisk_of_Buenos_Aires_%28Obelisco_de_Buenos_Aires_-_Buenos_Aires_Argentina_%285269209835%29.jpg/1920px-Obelisk_of_Buenos_Aires_%28Obelisco_de_Buenos_Aires_-_Buenos_Aires_Argentina_%285269209835%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "469733",
+      "ok": true
+    },
+    {
+      "monument": "Teatro Colón",
+      "index": 1,
+      "file": "File:Teatro Colón, Buenos Aires (5423806862).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Teatro_Col%C3%B3n%2C_Buenos_Aires_%285423806862%29.jpg/1920px-Teatro_Col%C3%B3n%2C_Buenos_Aires_%285423806862%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "670160",
+      "ok": true
+    },
+    {
+      "monument": "Teatro Colón",
+      "index": 2,
+      "file": "File:Argentina - Buenos Aires - Teatro Colón (Editatón).JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Argentina_-_Buenos_Aires_-_Teatro_Col%C3%B3n_%28Editat%C3%B3n%29.JPG/1920px-Argentina_-_Buenos_Aires_-_Teatro_Col%C3%B3n_%28Editat%C3%B3n%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "390608",
+      "ok": true
+    },
+    {
+      "monument": "Casa Rosada",
+      "index": 1,
+      "file": "File:Casa Rosada, Buenos Aires.JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Casa_Rosada%2C_Buenos_Aires.JPG/1920px-Casa_Rosada%2C_Buenos_Aires.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "578924",
+      "ok": true
+    },
+    {
+      "monument": "Casa Rosada",
+      "index": 2,
+      "file": "File:Casa Rosada (7815334616).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Casa_Rosada_%287815334616%29.jpg/1920px-Casa_Rosada_%287815334616%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "556086",
+      "ok": true
+    },
+    {
+      "monument": "Palacio Barolo",
+      "index": 1,
+      "file": "File:Palacio Barolo 7.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Palacio_Barolo_7.jpg/1920px-Palacio_Barolo_7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "454377",
+      "ok": true
+    },
+    {
+      "monument": "Palacio Barolo",
+      "index": 2,
+      "file": "File:Palacio Barolo 18.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Palacio_Barolo_18.jpg/1920px-Palacio_Barolo_18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "346899",
+      "ok": true
+    },
+    {
+      "monument": "Congreso de la Nación Argentina",
+      "index": 1,
+      "file": "File:Congreso de la Nación Argentina - National Congress of Argentina (24825135872).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Congreso_de_la_Naci%C3%B3n_Argentina_-_National_Congress_of_Argentina_%2824825135872%29.jpg/1920px-Congreso_de_la_Naci%C3%B3n_Argentina_-_National_Congress_of_Argentina_%2824825135872%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "576681",
+      "ok": true
+    },
+    {
+      "monument": "Congreso de la Nación Argentina",
+      "index": 2,
+      "file": "File:Palacio del Congreso de la Nación Argentina (2014).JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Palacio_del_Congreso_de_la_Naci%C3%B3n_Argentina_%282014%29.JPG/1920px-Palacio_del_Congreso_de_la_Naci%C3%B3n_Argentina_%282014%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "703381",
+      "ok": true
+    },
+    {
+      "monument": "Puente de la Mujer",
+      "index": 1,
+      "file": "File:Puente de la Mujer - Puerto Madero.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Puente_de_la_Mujer_-_Puerto_Madero.jpg/1920px-Puente_de_la_Mujer_-_Puerto_Madero.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "543976",
+      "ok": true
+    },
+    {
+      "monument": "Puente de la Mujer",
+      "index": 2,
+      "file": "File:Buenos Aires Puente de la Mujer 1030985.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Buenos_Aires_Puente_de_la_Mujer_1030985.jpg/1920px-Buenos_Aires_Puente_de_la_Mujer_1030985.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "632292",
+      "ok": true
+    },
+    {
+      "monument": "Panteón de Agripa",
+      "index": 1,
+      "file": "File:Rome (IT), Pantheon -- 2013 -- 3572.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Rome_%28IT%29%2C_Pantheon_--_2013_--_3572.jpg/1920px-Rome_%28IT%29%2C_Pantheon_--_2013_--_3572.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1087605",
+      "ok": true
+    },
+    {
+      "monument": "Panteón de Agripa",
+      "index": 2,
+      "file": "File:Pantheon (Rome), Dome interior.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Pantheon_%28Rome%29%2C_Dome_interior.jpg/1920px-Pantheon_%28Rome%29%2C_Dome_interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "832564",
+      "ok": true
+    },
+    {
+      "monument": "Fontana di Trevi",
+      "index": 1,
+      "file": "File:Trevi fountain 2015.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Trevi_fountain_2015.jpg/1920px-Trevi_fountain_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "725900",
+      "ok": true
+    },
+    {
+      "monument": "Fontana di Trevi",
+      "index": 2,
+      "file": "File:Detail Neptune Trevi fountain Rome Italy.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Detail_Neptune_Trevi_fountain_Rome_Italy.jpg/1920px-Detail_Neptune_Trevi_fountain_Rome_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "761168",
+      "ok": true
+    },
+    {
+      "monument": "Foro Romano",
+      "index": 1,
+      "file": "File:Forum romanum 6k (5760x2097).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Forum_romanum_6k_%285760x2097%29.jpg/1920px-Forum_romanum_6k_%285760x2097%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "470862",
+      "ok": true
+    },
+    {
+      "monument": "Foro Romano",
+      "index": 2,
+      "file": "File:Rome (IT), Forum Romanum -- 2013 -- 3358.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Rome_%28IT%29%2C_Forum_Romanum_--_2013_--_3358.jpg/1920px-Rome_%28IT%29%2C_Forum_Romanum_--_2013_--_3358.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "614004",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Florencia",
+      "index": 1,
+      "file": "File:Florencia - Firenze - Catedral de Santa Maria del Fiore - Exterior - 03.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg/1920px-Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "630815",
+      "ok": true
+    },
+    {
+      "monument": "Catedral de Florencia",
+      "index": 2,
+      "file": "File:Florencia - Firenze - Catedral de Santa Maria del Fiore - Interior - Frescos de la cupula - 02.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg/1920px-Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "676624",
+      "ok": true
+    },
+    {
+      "monument": "Ponte Vecchio",
+      "index": 1,
+      "file": "File:Ponte Vecchio at dusk 1.JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Ponte_Vecchio_at_dusk_1.JPG/1920px-Ponte_Vecchio_at_dusk_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "461827",
+      "ok": true
+    },
+    {
+      "monument": "Ponte Vecchio",
+      "index": 2,
+      "file": "File:Ponte Vecchio from Ponte Santa Trinita Blue hour.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg/1920px-Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "802567",
+      "ok": true
+    },
+    {
+      "monument": "Palazzo Vecchio",
+      "index": 1,
+      "file": "File:Palazzo Vecchio (Firenze).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Palazzo_Vecchio_%28Firenze%29.jpg/1920px-Palazzo_Vecchio_%28Firenze%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "2277247",
+      "ok": true
+    },
+    {
+      "monument": "Palazzo Vecchio",
+      "index": 2,
+      "file": "File:Binnenplaats van het Palazzo Vecchio te Florence, RP-F-00-482.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Binnenplaats_van_het_Palazzo_Vecchio_te_Florence%2C_RP-F-00-482.jpg/1920px-Binnenplaats_van_het_Palazzo_Vecchio_te_Florence%2C_RP-F-00-482.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "673703",
+      "ok": true
+    },
+    {
+      "monument": "Sagrada Familia",
+      "index": 1,
+      "file": "File:Sagrada Familia March 2015-3a.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Sagrada_Familia_March_2015-3a.jpg/1920px-Sagrada_Familia_March_2015-3a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "503385",
+      "ok": true
+    },
+    {
+      "monument": "Sagrada Familia",
+      "index": 2,
+      "file": "File:Sagrada Familia March 2015-2a.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Sagrada_Familia_March_2015-2a.jpg/1920px-Sagrada_Familia_March_2015-2a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1202687",
+      "ok": true
+    },
+    {
+      "monument": "Casa Batlló",
+      "index": 1,
+      "file": "File:Casa Batlló Barcellona.JPG",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Casa_Batll%C3%B3_Barcellona.JPG/1920px-Casa_Batll%C3%B3_Barcellona.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "711342",
+      "ok": true
+    },
+    {
+      "monument": "Casa Batlló",
+      "index": 2,
+      "file": "File:Central Lightwell of Casa Batlló, Barcelona.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Central_Lightwell_of_Casa_Batll%C3%B3%2C_Barcelona.jpg/1920px-Central_Lightwell_of_Casa_Batll%C3%B3%2C_Barcelona.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "778051",
+      "ok": true
+    },
+    {
+      "monument": "Parque Güell",
+      "index": 1,
+      "file": "File:Barcelona - Park Güell - Antonio Gaudí - ICE Fisheye.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Barcelona_-_Park_G%C3%BCell_-_Antonio_Gaud%C3%AD_-_ICE_Fisheye.jpg/1920px-Barcelona_-_Park_G%C3%BCell_-_Antonio_Gaud%C3%AD_-_ICE_Fisheye.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "586963",
+      "ok": true
+    },
+    {
+      "monument": "Parque Güell",
+      "index": 2,
+      "file": "File:Park Güell 02.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Park_G%C3%BCell_02.jpg/1920px-Park_G%C3%BCell_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "780991",
+      "ok": true
+    },
+    {
+      "monument": "Casa Milà",
+      "index": 1,
+      "file": "File:Casa milà (7448346186).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Casa_mil%C3%A0_%287448346186%29.jpg/1920px-Casa_mil%C3%A0_%287448346186%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "443876",
+      "ok": true
+    },
+    {
+      "monument": "Casa Milà",
+      "index": 2,
+      "file": "File:Chimneys of Casa Milà by Mikani - IMG 2431.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Chimneys_of_Casa_Mil%C3%A0_by_Mikani_-_IMG_2431.jpg/1920px-Chimneys_of_Casa_Mil%C3%A0_by_Mikani_-_IMG_2431.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "305324",
+      "ok": true
+    },
+    {
+      "monument": "Erecteión",
+      "index": 1,
+      "file": "File:Erechtheum Acropolis Athens.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Erechtheum_Acropolis_Athens.jpg/1920px-Erechtheum_Acropolis_Athens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "697284",
+      "ok": true
+    },
+    {
+      "monument": "Erecteión",
+      "index": 2,
+      "file": "File:Athen Erechtheion BW 2017-10-09 13-57-07.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Athen_Erechtheion_BW_2017-10-09_13-57-07.jpg/1920px-Athen_Erechtheion_BW_2017-10-09_13-57-07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "625028",
+      "ok": true
+    },
+    {
+      "monument": "Castillo de Chillon",
+      "index": 1,
+      "file": "File:Chillon Castle 01.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Chillon_Castle_01.jpg/1920px-Chillon_Castle_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "401524",
+      "ok": true
+    },
+    {
+      "monument": "Castillo de Chillon",
+      "index": 2,
+      "file": "File:Chillon Castle 03.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Chillon_Castle_03.jpg/1920px-Chillon_Castle_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "370921",
+      "ok": true
+    },
+    {
+      "monument": "Coliseo",
+      "index": 1,
+      "file": "File:Colosseum in Rome, Italy - April 2007.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg/1920px-Colosseum_in_Rome%2C_Italy_-_April_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "557575",
+      "ok": true
+    },
+    {
+      "monument": "Coliseo",
+      "index": 2,
+      "file": "File:Colosseum of Rome, Italy.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Colosseum_of_Rome%2C_Italy.jpg/1920px-Colosseum_of_Rome%2C_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "706834",
+      "ok": true
+    },
+    {
+      "monument": "Partenón",
+      "index": 1,
+      "file": "File:Parthenon east side Acropolis Athens, Greece.jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Parthenon_east_side_Acropolis_Athens%2C_Greece.jpg/1920px-Parthenon_east_side_Acropolis_Athens%2C_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "615719",
+      "ok": true
+    },
+    {
+      "monument": "Partenón",
+      "index": 2,
+      "file": "File:Athens Acropolis Parthenon (27828101733).jpg",
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Athens_Acropolis_Parthenon_%2827828101733%29.jpg/1920px-Athens_Acropolis_Parthenon_%2827828101733%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "669048",
+      "ok": true
+    }
+  ]
+}
