@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',function(){
    var figure=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption');
    img.src=photo.url;img.alt=entry[0]+' — fotografía '+(i+1);img.loading='lazy';img.decoding='async';
    var link=document.createElement('a');link.href=photo.source;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Fuente y licencia';
-   caption.appendChild(document.createTextNode((i+1)+'. '+photo.file.replace(/^File:/,'')+' · '+photo.width+' × '+photo.height+' px · '+photo.license+' · '+photo.artist+' · '));
+   caption.appendChild(document.createTextNode((i+1)+'. '+photo.file.replace(/^File:/,'')+' · '+(photo.width?photo.width+' × '+photo.height+' px · ':'')+photo.license+' · '+photo.artist+' · '));
    caption.appendChild(link);figure.appendChild(img);figure.appendChild(caption);grid.appendChild(figure);
   });section.appendChild(title);section.appendChild(grid);root.appendChild(section);
  });
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </head>
 <body>
 <h1>Auditoría fotográfica de ArchiSpotter</h1>
-<p class="intro">Galería de revisión visual de las dos fotografías seleccionadas para cada monumento. Se comprobó su procedencia, licencia, resolución original y disponibilidad HTTP. Esta página permite revisar visualmente si la fotografía corresponde al edificio y si los dos encuadres son suficientemente diferentes.</p>
+<p class="intro">Galería de revisión visual de las dos fotografías seleccionadas para cada monumento. La etapa 1 utiliza Unsplash Free en los primeros 13 monumentos; las etapas 2–4 conservan temporalmente Wikimedia Commons. Esta página permite revisar si cada imagen corresponde al monumento y si los encuadres son diferentes.</p>
 <p id="count">Cargando catálogo…</p>
 <main id="gallery"></main>
 </body>
