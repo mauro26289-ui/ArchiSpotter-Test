@@ -1,4 +1,4 @@
-/* Network health check for the 102 Commons photo URLs. Does not validate visual subject. */
+/* Network health check for 102 photo URLs, including stage 1 Unsplash Free. Does not validate visual subject. */
 import fs from 'node:fs';
 import vm from 'node:vm';
 const context={window:{}};vm.createContext(context);
