@@ -887,5 +887,293 @@ window.ArchiSpotterPhotoPairs={
       "height": 3396,
       "sha1": "43900b9a37f53bd1d82b5072bcdb4297f7d46a23"
     }
+  ],
+  "Panteón de Agripa": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Rome_%28IT%29%2C_Pantheon_--_2013_--_3572.jpg/1920px-Rome_%28IT%29%2C_Pantheon_--_2013_--_3572.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Rome (IT), Pantheon -- 2013 -- 3572.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Rome_(IT),_Pantheon_--_2013_--_3572.jpg",
+      "artist": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5184,
+      "height": 3456,
+      "sha1": "949d232b065c1f4a4b68e29221d8579dd608afd9"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Pantheon_%28Rome%29%2C_Dome_interior.jpg/1920px-Pantheon_%28Rome%29%2C_Dome_interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Pantheon (Rome), Dome interior.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome),_Dome_interior.jpg",
+      "artist": "Wilfredor",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 5698,
+      "height": 4875,
+      "sha1": "794908f84bd6312e4c2598fe62da5abbca62fceb"
+    }
+  ],
+  "Fontana di Trevi": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Trevi_fountain_2015.jpg/1920px-Trevi_fountain_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Trevi fountain 2015.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Trevi_fountain_2015.jpg",
+      "artist": "Livioandronico2013",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 6210,
+      "height": 3118,
+      "sha1": "78c0cc694624be72fafb428d20efbab3a5c9958a"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Detail_Neptune_Trevi_fountain_Rome_Italy.jpg/1920px-Detail_Neptune_Trevi_fountain_Rome_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Detail Neptune Trevi fountain Rome Italy.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Detail_Neptune_Trevi_fountain_Rome_Italy.jpg",
+      "artist": "Jebulon",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 4632,
+      "height": 3064,
+      "sha1": "3c322c8e0ccfdf1483655056a60ba424b38a69ae"
+    }
+  ],
+  "Foro Romano": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Forum_romanum_6k_%285760x2097%29.jpg/1920px-Forum_romanum_6k_%285760x2097%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Forum romanum 6k (5760x2097).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Forum_romanum_6k_(5760x2097).jpg",
+      "artist": "BeBo86",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 5760,
+      "height": 2097,
+      "sha1": "f6446837127917ea60a537189e6ad2a5e589c081"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Rome_%28IT%29%2C_Forum_Romanum_--_2013_--_3358.jpg/1920px-Rome_%28IT%29%2C_Forum_Romanum_--_2013_--_3358.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Rome (IT), Forum Romanum -- 2013 -- 3358.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Rome_(IT),_Forum_Romanum_--_2013_--_3358.jpg",
+      "artist": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 4917,
+      "height": 3278,
+      "sha1": "fc630a1495e033e6c87d5d2e99911a79cbc81862"
+    }
+  ],
+  "Catedral de Florencia": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg/1920px-Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Florencia - Firenze - Catedral de Santa Maria del Fiore - Exterior - 03.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg",
+      "artist": "Xosema",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5194,
+      "height": 3457,
+      "sha1": "05acd3b36714d410da119a304a05bcb4cf934beb"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg/1920px-Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Florencia - Firenze - Catedral de Santa Maria del Fiore - Interior - Frescos de la cupula - 02.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg",
+      "artist": "Xosema",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5194,
+      "height": 3457,
+      "sha1": "5c81273d7a7e8480eb448779995d51e9d70832fb"
+    }
+  ],
+  "Ponte Vecchio": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Ponte_Vecchio_at_dusk_1.JPG/1920px-Ponte_Vecchio_at_dusk_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Ponte Vecchio at dusk 1.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_at_dusk_1.JPG",
+      "artist": "Martin Falbisoner",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 4948,
+      "height": 3786,
+      "sha1": "c5013daf20a2e8decfe5b7f760f25ef666577395"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg/1920px-Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Ponte Vecchio from Ponte Santa Trinita Blue hour.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg",
+      "artist": "Commonists",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 4908,
+      "height": 3339,
+      "sha1": "4792107ed91b30f2d8500a7b74323b589158afa3"
+    }
+  ],
+  "Palazzo Vecchio": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Palazzo_Vecchio_%28Firenze%29.jpg/1920px-Palazzo_Vecchio_%28Firenze%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Palazzo Vecchio (Firenze).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Palazzo_Vecchio_(Firenze).jpg",
+      "artist": "Wikibusters",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5460,
+      "height": 11344,
+      "sha1": "e75563c7bbb1c60e4a46715f96fdec1abda5b98a"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Binnenplaats_van_het_Palazzo_Vecchio_te_Florence%2C_RP-F-00-482.jpg/1920px-Binnenplaats_van_het_Palazzo_Vecchio_te_Florence%2C_RP-F-00-482.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Binnenplaats van het Palazzo Vecchio te Florence, RP-F-00-482.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Binnenplaats_van_het_Palazzo_Vecchio_te_Florence,_RP-F-00-482.jpg",
+      "artist": "Rijksmuseum",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 4764,
+      "height": 3672,
+      "sha1": "914fccfcbc3ffc70432cd45fe8dbf6159b601cdc"
+    }
+  ],
+  "Sagrada Familia": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Sagrada_Familia_March_2015-3a.jpg/1920px-Sagrada_Familia_March_2015-3a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Sagrada Familia March 2015-3a.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia_March_2015-3a.jpg",
+      "artist": "Alvesgaspar",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 7233,
+      "height": 4803,
+      "sha1": "53ee155f2bda967b1c1fea648b954867f2d9e2e0"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Sagrada_Familia_March_2015-2a.jpg/1920px-Sagrada_Familia_March_2015-2a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Sagrada Familia March 2015-2a.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia_March_2015-2a.jpg",
+      "artist": "Alvesgaspar",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 4565,
+      "height": 6965,
+      "sha1": "bf2aa49234fc6e660f39ea587ed72a5c6327c736"
+    }
+  ],
+  "Casa Batlló": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Casa_Batll%C3%B3_Barcellona.JPG/1920px-Casa_Batll%C3%B3_Barcellona.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Casa Batlló Barcellona.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Casa_Batll%C3%B3_Barcellona.JPG",
+      "artist": "Tulumnes",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5184,
+      "height": 3456,
+      "sha1": "20a957041db93b3e32fe796fbbd3c16c5ed2fbb4"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Central_Lightwell_of_Casa_Batll%C3%B3%2C_Barcelona.jpg/1920px-Central_Lightwell_of_Casa_Batll%C3%B3%2C_Barcelona.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Central Lightwell of Casa Batlló, Barcelona.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Central_Lightwell_of_Casa_Batll%C3%B3,_Barcelona.jpg",
+      "artist": "Julian Lupyan",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 5942,
+      "height": 3899,
+      "sha1": "447ffda770df94ec0e83d6f97760368969b50580"
+    }
+  ],
+  "Parque Güell": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Barcelona_-_Park_G%C3%BCell_-_Antonio_Gaud%C3%AD_-_ICE_Fisheye.jpg/1920px-Barcelona_-_Park_G%C3%BCell_-_Antonio_Gaud%C3%AD_-_ICE_Fisheye.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Barcelona - Park Güell - Antonio Gaudí - ICE Fisheye.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Barcelona_-_Park_G%C3%BCell_-_Antonio_Gaud%C3%AD_-_ICE_Fisheye.jpg",
+      "artist": "Txllxt TxllxT",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 12003,
+      "height": 4522,
+      "sha1": "33f197803e0ded4cee10a5b13aac41ebb25db17e"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Park_G%C3%BCell_02.jpg/1920px-Park_G%C3%BCell_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Park Güell 02.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Park_G%C3%BCell_02.jpg",
+      "artist": "Bernard Gagnon",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 2960,
+      "height": 2232,
+      "sha1": "7cf5bd8111ba4b4994300b32a67988e009fe595c"
+    }
+  ],
+  "Casa Milà": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Casa_mil%C3%A0_%287448346186%29.jpg/1920px-Casa_mil%C3%A0_%287448346186%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Casa milà (7448346186).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Casa_mil%C3%A0_(7448346186).jpg",
+      "artist": "Martin Abegglen  from Bern, Switzerland",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 4912,
+      "height": 3264,
+      "sha1": "506d4435efebfbfb6a8f747a00573f4d651bb552"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Chimneys_of_Casa_Mil%C3%A0_by_Mikani_-_IMG_2431.jpg/1920px-Chimneys_of_Casa_Mil%C3%A0_by_Mikani_-_IMG_2431.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Chimneys of Casa Milà by Mikani - IMG 2431.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Chimneys_of_Casa_Mil%C3%A0_by_Mikani_-_IMG_2431.jpg",
+      "artist": "Mikani",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 6000,
+      "height": 4000,
+      "sha1": "e1e214b9431a7a0304b1f72900db1acaf7300360"
+    }
+  ],
+  "Erecteión": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Erechtheum_Acropolis_Athens.jpg/1920px-Erechtheum_Acropolis_Athens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Erechtheum Acropolis Athens.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Erechtheum_Acropolis_Athens.jpg",
+      "artist": "Jebulon",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 4592,
+      "height": 3056,
+      "sha1": "a2bd0e7cba302061955b09bba265ba2478ebcd19"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Athen_Erechtheion_BW_2017-10-09_13-57-07.jpg/1920px-Athen_Erechtheion_BW_2017-10-09_13-57-07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Athen Erechtheion BW 2017-10-09 13-57-07.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Athen_Erechtheion_BW_2017-10-09_13-57-07.jpg",
+      "artist": "Berthold Werner",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 5907,
+      "height": 3862,
+      "sha1": "20e441fb21ccc42e4b25fbf16c40a63bc9c55fc4"
+    }
+  ],
+  "Castillo de Chillon": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Chillon_Castle_01.jpg/1920px-Chillon_Castle_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Chillon Castle 01.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Chillon_Castle_01.jpg",
+      "artist": "SimonWaldherr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 5472,
+      "height": 3078,
+      "sha1": "881fc1787097e050db785c6069e09b3c740ad0af"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Chillon_Castle_03.jpg/1920px-Chillon_Castle_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Chillon Castle 03.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Chillon_Castle_03.jpg",
+      "artist": "SimonWaldherr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 6400,
+      "height": 3600,
+      "sha1": "7d7424d6ce611a0bf8b6c360250ad22e80c2b2df"
+    }
   ]
 };
