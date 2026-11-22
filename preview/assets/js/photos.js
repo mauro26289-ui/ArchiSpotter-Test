@@ -20,7 +20,11 @@ var curated={
  'Sagrada Familia':['https://unsplash.com/photos/D8n_RJ3keAw/download?force=true&w=1400','https://unsplash.com/photos/O_Hkk-MXKAE/download?force=true&w=1400'],
  'Casa Batlló':['https://unsplash.com/photos/LSscVPEyQpI/download?force=true&w=1400','https://unsplash.com/photos/-FSYoN9OCsM/download?force=true&w=1400'],
  'Parque Güell':['https://unsplash.com/photos/GPbn2G1fdMo/download?force=true&w=1400','https://unsplash.com/photos/G5lnbfU4i5A/download?force=true&w=1400'],
- 'Casa Milà':['https://unsplash.com/photos/LTCLy5ZFGrY/download?force=true&w=1400','https://unsplash.com/photos/gKvF99QzdBo/download?force=true&w=1400']
+ 'Casa Milà':['https://unsplash.com/photos/LTCLy5ZFGrY/download?force=true&w=1400','https://unsplash.com/photos/gKvF99QzdBo/download?force=true&w=1400'],
+ 'Castillo de Chillon':[
+  'https://commons.wikimedia.org/wiki/Special:Redirect/file/001%20Chateau%20de%20Chillon%20and%20Dents%20du%20Midi%20Photo%20by%20Giles%20Laurent.jpg?width=1400',
+  'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ch%C3%A2teau%20de%20Chillon%2C%20Cour%20int%C3%A9rieure%2C%20Veytaux%2C%20Vaud.jpg?width=1400'
+ ]
 };
 function getImages(place){return curated[place[0]]?curated[place[0]].slice():[];}
 var cache={};
