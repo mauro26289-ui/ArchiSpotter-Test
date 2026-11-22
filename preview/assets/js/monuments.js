@@ -107,8 +107,8 @@ window.ArchiSpotterMonuments = (function () {
         if(!selectedMonument)return;
         var idx={es:0,en:1,it:2}[currentLang()]||0;
         var place=selectedMonument,city=selectedMonumentCity;
-        document.getElementById('monument-photo').src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=1100&q=80';
         if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(document.getElementById('monument-photo'),place,1100);
+        else document.getElementById('monument-photo').src='https://images.unsplash.com/'+place[3]+'?auto=format&fit=crop&w=1100&q=80';
         var gallery=document.getElementById('monument-photo-choices');
         gallery.replaceChildren();
         var credit=document.getElementById('monument-photo-credit');
