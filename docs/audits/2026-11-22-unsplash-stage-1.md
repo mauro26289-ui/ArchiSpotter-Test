@@ -1,7 +1,7 @@
 # Etapa 1 — 26 fotos Unsplash Free
 Fecha: 2026-11-22
 Rama: main, repositorio de prueba ArchiSpotter-Test.
-Estado: 13 monumentos sustituidos en el código. Verificación de URL y revisión en Safari documentadas por separado.
+Estado: 26 fuentes Unsplash Free identificadas y documentadas, pero NO activadas. Los 26 enlaces de descarga directa devolvieron HTTP 401 durante el chequeo automatizado. Se revirtió el cambio de imágenes para evitar 26 fotos rotas en la app.
 
 ## Selección (13 monumentos / 26 fotos)
 1. Castillo de Sant'Angelo: https://unsplash.com/photos/WuFn2LrYSzU | https://unsplash.com/photos/rg7WH0NjWCw
@@ -22,7 +22,8 @@ Estado: 13 monumentos sustituidos en el código. Verificación de URL y revisió
 Se verificaron páginas individuales de Unsplash con título o ubicación del monumento, autor y condición «Free to use under the Unsplash License». Las dos fotografías por monumento corresponden a IDs de Unsplash diferentes. No se usaron Unsplash+ ni Wikimedia Commons para estas 26 nuevas fotografías. Las 76 restantes conservan provisionalmente Wikimedia Commons hasta las etapas 2–4.
 
 ## Cambios
-- preview/assets/data/photo-pairs.js contiene las 26 fotos de Unsplash Free de etapa 1.
+- docs/audits/unsplash-stage-1-candidates.js conserva las 26 fuentes de Unsplash Free de etapa 1, pendientes de enlaces de imagen accesibles.
+- preview/assets/data/photo-pairs.js se restauró al registro anterior que funciona, hasta obtener enlaces de CDN Unsplash verificados.
 - Las tarjetas, fichas, Favoritos y Mi viaje consumen la misma tabla.
 - Los créditos de las fichas indican Unsplash y enlazan la licencia.
 - preview/photo-audit.html permite comparar los pares de fotografías.
@@ -31,3 +32,6 @@ Se verificaron páginas individuales de Unsplash con título o ubicación del mo
 
 ## Advertencias de verificación
 La ficha pública de Unsplash acredita monumento, autor y licencia, pero la comprobación de enlaces directos y de su carga real en Safari debe basarse en el workflow HTTP y en pruebas de navegador. No declarar verificada la resolución nativa de las fotos de Unsplash sin consultar sus metadatos de imagen. La etapa 1 no modifica la versión estable.
+
+## Resultado HTTP observado
+El workflow de enlaces devolvió 76/102 correctos; los 26 nuevos enlaces Unsplash `unsplash.com/photos/{id}/download?force=true&w=1400` devolvieron HTTP 401 (text/html). Se desactivaron y se restauraron las imágenes anteriores. No declarar la etapa terminada ni afirmar que se publicaron las 26 imágenes Unsplash.
