@@ -43,6 +43,7 @@ window.ArchiSpotterExplore = (function () {
         var idx={es:0,en:1,it:2}[currentLang()]||0;
         var photo=document.getElementById('city-detail-photo');
         photo.src='https://images.unsplash.com/'+city[3]+'?auto=format&fit=crop&w=1100&q=80';
+        if(city[0]==='Veytaux'&&window.ArchiSpotterPhotos){var chillon=window.ArchiSpotterPhotos.getImages(['Castillo de Chillon']);if(chillon.length)photo.src=chillon[0];}
         document.getElementById('city-detail-name').textContent=city[idx];
         var guide=window.ArchiSpotterCityGuides&&window.ArchiSpotterCityGuides[city[0]];
         var lang=currentLang();
