@@ -53,7 +53,7 @@ for(const name of names){
 for(const name of Object.keys(editorial))assert(names.includes(name),`Orphan editorial entry: ${name}`);
 // Photo coverage is a warning until every monument has two independently reviewed photos.
 const photoSource=fs.readFileSync(path.join(preview,'assets/js/photos.js'),'utf8');
-const curatedNames=[...photoSource.matchAll(/^\\s*['"]([^'"]+)['"]\\s*:\\s*\\[\\s*['"]https?:/gm)].map(match=>match[1]);
+const curatedNames=[...photoSource.matchAll(/^\s*['"]([^'"]+)['"]\s*:\s*\[\s*['"]https?:/gm)].map(match=>match[1]);
 for(const name of names)if(!curatedNames.includes(name))warnings.push(`Photo pair not curated: ${name}`);
 for(const name of curatedNames)if(!names.includes(name))warnings.push(`Orphan photo pair: ${name}`);
 const photoIds=Object.values(data).flatMap(cities=>cities.flatMap(city=>city[4].map(monument=>({name:monument[0],id:monument[3]}))));
