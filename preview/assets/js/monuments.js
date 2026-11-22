@@ -145,6 +145,28 @@ window.ArchiSpotterMonuments = (function () {
             gallery.appendChild(button);
           });
         }else gallery.hidden=true;
+        var swipeTarget=document.getElementById('monument-photo-trigger');
+        if(swipeTarget){
+          var swipeStart=null;
+          swipeTarget.ontouchstart=function(e){
+            if(!images||images.length<2||e.touches.length!==1){swipeStart=null;return;}
+            var t=e.touches[0];
+            swipeStart={x:t.clientX,y:t.clientY};
+          };
+          swipeTarget.ontouchend=function(e){
+            if(!swipeStart||!images||images.length<2||e.changedTouches.length!==1)return;
+            var t=e.changedTouches[0],dx=t.clientX-swipeStart.x,dy=t.clientY-swipeStart.y;
+            swipeStart=null;
+            if(Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.35)return;
+            // Leave the iPhone's left-edge back gesture untouched.
+            if(dx>0&&t.clientX-dx<30)return;
+            var buttons=Array.from(gallery.querySelectorAll('button'));
+            var current=buttons.findIndex(function(b){return b.getAttribute('aria-pressed')==='true';});
+            var next=(current+(dx<0?1:-1)+buttons.length)%buttons.length;
+            if(buttons[next])buttons[next].click();
+          };
+          swipeTarget.ontouchcancel=function(){swipeStart=null;};
+        }
 
         document.getElementById('monument-name').textContent=place[idx];
         document.getElementById('monument-photo').alt=place[idx];
