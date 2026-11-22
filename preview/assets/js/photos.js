@@ -35,7 +35,6 @@ function apply(img,place,width){
  if(curated[place[0]]){activeRequests.set(img,{curated:true});img.src=curated[place[0]][0];return;}
  var request={title:title};activeRequests.set(img,request);
  if(!title)return;
- if(cache[title]){img.src=cache[title];return;}
  var original=img.getAttribute('src')||'';
  var size=Math.max(width||500,500);
  var key=title+'|'+size;
