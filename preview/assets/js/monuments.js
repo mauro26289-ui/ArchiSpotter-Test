@@ -150,6 +150,7 @@ window.ArchiSpotterMonuments = (function () {
           // Gesture contract: the incoming and outgoing photos track the finger.
           // The selected photo remains the canonical image used by the zoom viewer.
           var swipeStart=null,swipeNeighbor=null,swipeDirection=0,swipeMoved=false;
+          swipeTarget.onclick=function(e){if(Date.now()<(swipeTarget._suppressViewerUntil||0)){e.preventDefault();e.stopImmediatePropagation();}};
           var mainPhoto=document.getElementById('monument-photo');
           function selectedPhotoIndex(){
             var buttons=gallery.querySelectorAll('button');
@@ -208,6 +209,7 @@ window.ArchiSpotterMonuments = (function () {
             if(!swipeStart)return;
             var state=swipeStart;
             if(!state.active){resetPhotoGesture();return;}
+            swipeTarget._suppressViewerUntil=Date.now()+450;
             var width=swipeTarget.clientWidth||1;
             var complete=Math.abs(state.dx)>Math.min(85,width*.22);
             var direction=state.dx<0?1:-1;
