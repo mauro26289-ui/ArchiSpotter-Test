@@ -51,6 +51,15 @@ for(const name of names){
  }
 }
 for(const name of Object.keys(editorial))assert(names.includes(name),`Orphan editorial entry: ${name}`);
+// Photo coverage is a warning until every monument has two independently reviewed photos.
+const photoSource=fs.readFileSync(path.join(preview,'assets/js/photos.js'),'utf8');
+const curatedNames=[...photoSource.matchAll(/^\\s*['"]([^'"]+)['"]\\s*:\\s*\\[\\s*['"]https?:/gm)].map(match=>match[1]);
+for(const name of names)if(!curatedNames.includes(name))warnings.push(`Photo pair not curated: ${name}`);
+for(const name of curatedNames)if(!names.includes(name))warnings.push(`Orphan photo pair: ${name}`);
+const photoIds=Object.values(data).flatMap(cities=>cities.flatMap(city=>city[4].map(monument=>({name:monument[0],id:monument[3]}))));
+const byPhoto=new Map();
+for(const item of photoIds){if(!byPhoto.has(item.id))byPhoto.set(item.id,[]);byPhoto.get(item.id).push(item.name);}
+for(const [id,group] of byPhoto)if(group.length>1&&group.some(name=>!curatedNames.includes(name)))warnings.push(`Shared fallback photo ${id}: ${group.join(', ')}`);
 const audio=fs.readFileSync(path.join(preview,'assets/js/monuments.js'),'utf8');
 const ids=Object.fromEntries([...audio.matchAll(/^\s*['"]([^'"]+)['"]\s*:\s*'([a-z0-9-]+)'\s*,?$/gm)].map(m=>[m[1],m[2]]));
 const localIds=['trevi-fountain','castel-sant-angelo','ponte-vecchio','palazzo-vecchio','casa-batllo'];
