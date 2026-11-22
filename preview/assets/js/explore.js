@@ -8,9 +8,10 @@ window.ArchiSpotterExplore = (function () {
         root.replaceChildren();
         if (!selected || !countryCitySamples[selected]) return;
         var idx = {es:0,en:1,it:2}[currentLang()] || 0;
-        function picture(id, width, className) {
+        function picture(id, width, className, place) {
           var img = document.createElement('img');
-          img.src = 'https://images.unsplash.com/' + id + '?auto=format&fit=crop&w=' + width + '&q=80';
+          var pair=place&&window.ArchiSpotterPhotos&&window.ArchiSpotterPhotos.getImages(place);
+          img.src = pair&&pair.length?pair[0]:'https://images.unsplash.com/' + id + '?auto=format&fit=crop&w=' + width + '&q=80';
           img.alt = '';
           img.loading = 'lazy';
           img.decoding = 'async';
@@ -28,12 +29,11 @@ window.ArchiSpotterExplore = (function () {
           var row = document.createElement('div'); row.className='landmarks-row';
           city[4].forEach(function(place) {
             var card=document.createElement('article'); card.className='landmark-card';
-            card.appendChild(picture(place[3],500,''));
+            card.appendChild(picture(place[3],500,'',place));
             var name=document.createElement('h4'); name.textContent=place[idx]; card.appendChild(name);
             card.setAttribute('role','button');card.tabIndex=0;card.style.cursor='pointer';
             card.addEventListener('click',function(){openMonument(place,city);});
             card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openMonument(place,city);}});
-            if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(card.querySelector('img'),place,500);
             row.appendChild(card);
           });
           section.appendChild(row); root.appendChild(section);
