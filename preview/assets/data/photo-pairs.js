@@ -1175,5 +1175,53 @@ window.ArchiSpotterPhotoPairs={
       "height": 3600,
       "sha1": "7d7424d6ce611a0bf8b6c360250ad22e80c2b2df"
     }
+  ],
+  "Coliseo": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg/1920px-Colosseum_in_Rome%2C_Italy_-_April_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Colosseum in Rome, Italy - April 2007.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Colosseum_in_Rome,_Italy_-_April_2007.jpg",
+      "artist": "Diliff",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "width": 4827,
+      "height": 2833,
+      "sha1": "cea34ba0bb8fdecde622f9139be733e006fbdac0"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Colosseum_of_Rome%2C_Italy.jpg/1920px-Colosseum_of_Rome%2C_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Colosseum of Rome, Italy.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Colosseum_of_Rome,_Italy.jpg",
+      "artist": "Wilfredor",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 8200,
+      "height": 5162,
+      "sha1": "4f1781d4caa051c85065c8d43e422e716a6648af"
+    }
+  ],
+  "Partenón": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Parthenon_east_side_Acropolis_Athens%2C_Greece.jpg/1920px-Parthenon_east_side_Acropolis_Athens%2C_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Parthenon east side Acropolis Athens, Greece.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Parthenon_east_side_Acropolis_Athens,_Greece.jpg",
+      "artist": "Jebulon",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 5951,
+      "height": 4417,
+      "sha1": "f4edb1a3e65e133de00b1ef95a73aa377ba3a2b2"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Athens_Acropolis_Parthenon_%2827828101733%29.jpg/1920px-Athens_Acropolis_Parthenon_%2827828101733%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Athens Acropolis Parthenon (27828101733).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Athens_Acropolis_Parthenon_(27828101733).jpg",
+      "artist": "Gary Todd  from Xinzheng, China",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 5184,
+      "height": 3456,
+      "sha1": "ac42de1c0fdcb9209499372bd9b9f34f1739f93b"
+    }
   ]
 };
