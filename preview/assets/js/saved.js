@@ -1,10 +1,11 @@
 /* Saved monuments: render Favorites and My Trip from the same catalogue and storage keys. */
 window.ArchiSpotterSaved=(function(){
   var catalog=window.ArchiSpotterData.countryCitySamples;
-  var keys={trip:'archispotter_preview_trip',favorites:'archispotter_preview_favorites'};
+  var storage=window.ArchiSpotterStorage;
+  var keys=storage.keys;
   function lang(){return {es:0,en:1,it:2}[document.documentElement.lang]||0;}
   function labels(){return ({es:{empty:'Todavía no guardaste monumentos.',open:'Ver ficha',remove:'Quitar',count:'monumentos guardados'},en:{empty:'No monuments saved yet.',open:'View details',remove:'Remove',count:'saved monuments'},it:{empty:'Non hai ancora salvato monumenti.',open:'Apri scheda',remove:'Rimuovi',count:'monumenti salvati'}})[document.documentElement.lang]||({empty:'Todavía no guardaste monumentos.',open:'Ver ficha',remove:'Quitar',count:'monumentos guardados'});}
-  function read(key){try{var data=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(data)?data.filter(function(x){return typeof x==='string';}):[];}catch(_){return [];}}
+  function read(key){return storage.read(key);}
   function lookup(){var result={};Object.keys(catalog).forEach(function(country){catalog[country].forEach(function(city){city[4].forEach(function(place){result[city[0]+'|'+place[0]]={country:country,city:city,place:place};});});});return result;}
   function render(type){
     var root=document.getElementById('saved-'+type);if(!root)return;
@@ -48,7 +49,7 @@ window.ArchiSpotterSaved=(function(){
           var current=read(keys.trip),at=current.indexOf(id),target=at+direction;
           if(at<0||target<0||target>=current.length)return;
           var other=current[target];current[target]=id;current[at]=other;
-          try{localStorage.setItem(keys.trip,JSON.stringify(current));}catch(_){return;}
+          if(!storage.write(keys.trip,current))return;
           document.dispatchEvent(new CustomEvent('archispotter:saved-change'));
         }
         var up=document.createElement('button');up.type='button';up.textContent='↑';up.disabled=index===0;up.setAttribute('aria-label',({es:'Subir parada',en:'Move stop up',it:'Sposta tappa su'})[document.documentElement.lang]||'Subir parada');up.addEventListener('click',function(){move(-1);});order.appendChild(up);
@@ -59,7 +60,7 @@ window.ArchiSpotterSaved=(function(){
       var city=document.createElement('span');city.textContent=item.city[idx];body.appendChild(city);
       var actions=document.createElement('div');actions.className='saved-card-actions';
       var open=document.createElement('button');open.type='button';open.textContent=words.open;open.addEventListener('click',function(){if(window.ArchiSpotterMap&&window.ArchiSpotterMap.openMonument)window.ArchiSpotterMap.openMonument(item.place,item.city,item.country);});actions.appendChild(open);
-      var remove=document.createElement('button');remove.type='button';remove.className='saved-remove';remove.textContent=words.remove;remove.addEventListener('click',function(){try{localStorage.setItem(keys[type],JSON.stringify(read(keys[type]).filter(function(x){return x!==id;})));}catch(_){}render(type);document.dispatchEvent(new CustomEvent('archispotter:saved-change'));});actions.appendChild(remove);
+      var remove=document.createElement('button');remove.type='button';remove.className='saved-remove';remove.textContent=words.remove;remove.addEventListener('click',function(){if(!storage.write(keys[type],read(keys[type]).filter(function(x){return x!==id;})))return;render(type);document.dispatchEvent(new CustomEvent('archispotter:saved-change'));});actions.appendChild(remove);
       body.appendChild(actions);card.appendChild(body);root.appendChild(card);
     });
   }
