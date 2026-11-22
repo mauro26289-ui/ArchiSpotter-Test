@@ -41,7 +41,7 @@ window.ArchiSpotterSaved=(function(){
     }
     valid.forEach(function(id,index){
       var item=dict[id],card=document.createElement('article');card.className='saved-card';
-      var photo=document.createElement('img');photo.src='https://images.unsplash.com/'+item.place[3]+'?auto=format&fit=crop&w=360&q=75';photo.alt='';photo.loading='lazy';card.appendChild(photo);if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(photo,item.place,360);
+      var photo=document.createElement('img');var pair=window.ArchiSpotterPhotos&&window.ArchiSpotterPhotos.getImages(item.place);photo.src=pair&&pair.length?pair[0]:'https://images.unsplash.com/'+item.place[3]+'?auto=format&fit=crop&w=360&q=75';photo.alt='';photo.loading='lazy';card.appendChild(photo);
       if(type==='trip'){
         var order=document.createElement('div');order.className='trip-order';
         var number=document.createElement('span');number.className='trip-order-number';number.textContent=String(index+1);order.appendChild(number);
