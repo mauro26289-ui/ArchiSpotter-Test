@@ -1,0 +1,33 @@
+name: Research 51 monument photographs
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/research-monument-photos.py'
+      - '.github/workflows/research-monument-photos.yml'
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Research Wikimedia Commons candidates and metadata
+        run: python scripts/research-monument-photos.py
+      - name: Publish research inventory
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/audits/photo-candidates.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record Commons image candidates and attribution for 51 monuments"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
