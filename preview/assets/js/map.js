@@ -126,7 +126,18 @@ window.ArchiSpotterMap = (function () {
     var missing=ids.length-found.length;
     if(status)status.textContent=({es:found.length+' de '+ids.length+' paradas ubicadas'+(missing?' · '+missing+' sin coordenadas todavía':''),en:found.length+' of '+ids.length+' stops mapped'+(missing?' · '+missing+' missing coordinates':''),it:found.length+' di '+ids.length+' tappe sulla mappa'+(missing?' · '+missing+' senza coordinate':'')})[document.documentElement.lang]||found.length+' paradas ubicadas';
   }
-  function show() { init(); if (map) { addTiles(); setTimeout(function(){map.invalidateSize();},60); } }
+  var mapResizeTimer=null;
+  function show() {
+    init();
+    if(!map)return;
+    addTiles();
+    if(mapResizeTimer!==null)clearTimeout(mapResizeTimer);
+    mapResizeTimer=setTimeout(function(){
+      mapResizeTimer=null;
+      var view=document.getElementById('view-map');
+      if(view&&!view.hidden&&map)map.invalidateSize();
+    },60);
+  }
   document.addEventListener('archispotter:tab',function(e){if(e.detail==='map')show();});
   document.addEventListener('archispotter:saved-change',function(){if(tripMode&&map)showTrip();});
   return {show:show,showTrip:showTrip,coordinates:monumentCoordinates,openMonument:null};
