@@ -147,25 +147,88 @@ window.ArchiSpotterMonuments = (function () {
         }else gallery.hidden=true;
         var swipeTarget=document.getElementById('monument-photo-trigger');
         if(swipeTarget){
-          var swipeStart=null;
+          // Gesture contract: the incoming and outgoing photos track the finger.
+          // The selected photo remains the canonical image used by the zoom viewer.
+          var swipeStart=null,swipeNeighbor=null,swipeDirection=0,swipeMoved=false;
+          var mainPhoto=document.getElementById('monument-photo');
+          function selectedPhotoIndex(){
+            var buttons=gallery.querySelectorAll('button');
+            for(var k=0;k<buttons.length;k++)if(buttons[k].getAttribute('aria-pressed')==='true')return k;
+            return 0;
+          }
+          function resetPhotoGesture(){
+            mainPhoto.style.transition='';mainPhoto.style.transform='';
+            mainPhoto.style.position='';mainPhoto.style.zIndex='';
+            if(swipeNeighbor){swipeNeighbor.remove();swipeNeighbor=null;}
+            swipeStart=null;swipeDirection=0;swipeMoved=false;
+          }
           swipeTarget.ontouchstart=function(e){
-            if(!images||images.length<2||e.touches.length!==1){swipeStart=null;return;}
+            resetPhotoGesture();
+            if(!images||images.length<2||e.touches.length!==1)return;
             var t=e.touches[0];
-            swipeStart={x:t.clientX,y:t.clientY};
+            // The left edge is reserved for interactive back navigation.
+            if(t.clientX<34)return;
+            swipeStart={x:t.clientX,y:t.clientY,active:false,dx:0};
+          };
+          swipeTarget.ontouchmove=function(e){
+            if(!swipeStart||e.touches.length!==1)return;
+            var t=e.touches[0],dx=t.clientX-swipeStart.x,dy=t.clientY-swipeStart.y;
+            if(!swipeStart.active){
+              if(Math.abs(dx)<9||Math.abs(dx)<Math.abs(dy)*1.25)return;
+              swipeStart.active=true;
+            }
+            swipeMoved=true;
+            var width=swipeTarget.clientWidth||1;
+            swipeStart.dx=Math.max(-width,Math.min(width,dx));
+            var direction=dx<0?1:-1;
+            var index=selectedPhotoIndex(),next=(index+direction+images.length)%images.length;
+            if(!swipeNeighbor||swipeDirection!==direction){
+              if(swipeNeighbor)swipeNeighbor.remove();
+              swipeNeighbor=mainPhoto.cloneNode(false);
+              swipeNeighbor.removeAttribute('id');
+              swipeNeighbor.src=images[next];
+              swipeNeighbor.style.position='absolute';
+              swipeNeighbor.style.inset='0';
+              swipeNeighbor.style.width='100%';
+              swipeNeighbor.style.height='100%';
+              swipeNeighbor.style.objectFit='cover';
+              swipeNeighbor.style.zIndex='2';
+              swipeNeighbor.style.pointerEvents='none';
+              swipeNeighbor.style.transition='none';
+              swipeTarget.appendChild(swipeNeighbor);
+              swipeDirection=direction;
+            }
+            if(getComputedStyle(swipeTarget).position==='static')swipeTarget.style.position='relative';
+            swipeTarget.style.overflow='hidden';
+            mainPhoto.style.transition='none';mainPhoto.style.position='relative';mainPhoto.style.zIndex='1';
+            mainPhoto.style.transform='translate3d('+swipeStart.dx+'px,0,0)';
+            swipeNeighbor.style.transform='translate3d('+(swipeStart.dx+(direction>0?width:-width))+'px,0,0)';
           };
           swipeTarget.ontouchend=function(e){
-            if(!swipeStart||!images||images.length<2||e.changedTouches.length!==1)return;
-            var t=e.changedTouches[0],dx=t.clientX-swipeStart.x,dy=t.clientY-swipeStart.y;
+            if(!swipeStart)return;
+            var state=swipeStart;
+            if(!state.active){resetPhotoGesture();return;}
+            var width=swipeTarget.clientWidth||1;
+            var complete=Math.abs(state.dx)>Math.min(85,width*.22);
+            var direction=state.dx<0?1:-1;
+            var target=complete?(direction>0?-width:width):0;
+            mainPhoto.style.transition='transform 190ms ease-out';
+            mainPhoto.style.transform='translate3d('+target+'px,0,0)';
+            if(swipeNeighbor){
+              swipeNeighbor.style.transition='transform 190ms ease-out';
+              swipeNeighbor.style.transform='translate3d('+(complete?0:(direction>0?width:-width))+'px,0,0)';
+            }
             swipeStart=null;
-            if(Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.35)return;
-            // Leave the iPhone's left-edge back gesture untouched.
-            if(dx>0&&t.clientX-dx<30)return;
-            var buttons=Array.from(gallery.querySelectorAll('button'));
-            var current=buttons.findIndex(function(b){return b.getAttribute('aria-pressed')==='true';});
-            var next=(current+(dx<0?1:-1)+buttons.length)%buttons.length;
-            if(buttons[next])buttons[next].click();
+            window.setTimeout(function(){
+              if(complete&&images&&images.length>1){
+                var buttons=gallery.querySelectorAll('button');
+                var next=(selectedPhotoIndex()+direction+buttons.length)%buttons.length;
+                if(buttons[next])buttons[next].click();
+              }
+              resetPhotoGesture();
+            },200);
           };
-          swipeTarget.ontouchcancel=function(){swipeStart=null;};
+          swipeTarget.ontouchcancel=resetPhotoGesture;
         }
 
         document.getElementById('monument-name').textContent=place[idx];
