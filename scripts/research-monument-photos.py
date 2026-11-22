@@ -38,7 +38,7 @@ def api(params):
             with urllib.request.urlopen(req,timeout=35) as f:return json.load(f)
         except Exception:
             if attempt==3:raise
-            time.sleep(2*(attempt+1))
+            time.sleep(15*(attempt+1))
 def plain(x):return re.sub('<[^>]+>',' ',html.unescape(x or '')).strip()
 def acceptable(info):
     meta=info.get('extmetadata',{})
@@ -52,8 +52,9 @@ def score(item,terms):
     name=item['file'].lower().replace('_',' ')
     tokens=[t for t in re.findall(r'[\w]+',terms.lower()) if len(t)>3]
     return sum(3 for t in tokens if t in name)+min(item['width'],4500)/4500
-result={'generated_at':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'method':'Commons API search; license, resolution and filename relevance; NOT visual certification','monuments':{}}
+result=json.loads(OUT.read_text()) if OUT.exists() else {'generated_at':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'method':'Commons API search; license, resolution and filename relevance; NOT visual certification','monuments':{}}
 for i,name in enumerate(names):
+    if result['monuments'].get(name,{}).get('status') not in (None,'search_error','needs_more_candidates'):continue
     query=search_override.get(name,titles.get(name,name))
     existing=name in curated
     candidates=[]
@@ -83,7 +84,7 @@ for i,name in enumerate(names):
     except Exception as exc:
         result['monuments'][name]={'query':query,'already_curated':existing,'candidates':[],'candidate_pair':[],'status':'search_error','error':str(exc)[:240]}
     print(f"[{i+1}/{len(names)}] {name}: {len(result['monuments'][name]['candidate_pair'])} candidates ({result['monuments'][name]['status']})",flush=True)
-    time.sleep(.25)
+    time.sleep(4)
 OUT.parent.mkdir(parents=True,exist_ok=True)
 OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
 print('Saved',OUT)
