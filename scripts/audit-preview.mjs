@@ -16,6 +16,22 @@ for(const file of scripts){
  if(!fs.existsSync(full))continue;
  try{new vm.Script(fs.readFileSync(full,'utf8'),{filename:file});}catch(e){errors.push(`JavaScript syntax: ${file}: ${e.message}`);}
 }
+// Storage regression: legacy keys, malformed data, order, and failed writes.
+{
+ const data=new Map();
+ const localStorage={getItem:key=>data.has(key)?data.get(key):null,setItem:(key,value)=>data.set(key,value)};
+ const ctx={window:{},localStorage};vm.createContext(ctx);
+ vm.runInContext(fs.readFileSync(path.join(preview,'assets/js/storage.js'),'utf8'),ctx);
+ const storage=ctx.window.ArchiSpotterStorage;
+ assert(storage.keys.favorites==='archispotter_preview_favorites','Favorites storage key changed');
+ assert(storage.keys.trip==='archispotter_preview_trip','Trip storage key changed');
+ assert(storage.write(storage.keys.trip,['A|B','C|D']),'Trip write failed');
+ assert(JSON.stringify(Array.from(storage.read(storage.keys.trip)))===JSON.stringify(['A|B','C|D']),'Trip order or data changed');
+ data.set(storage.keys.favorites,'{invalid');
+ assert(storage.read(storage.keys.favorites).length===0,'Malformed favorites must be safe');
+ data.set(storage.keys.favorites,JSON.stringify(['valid',5,null,'second']));
+ assert(JSON.stringify(Array.from(storage.read(storage.keys.favorites)))===JSON.stringify(['valid','second']),'Invalid favorites were not filtered');
+}
 const sandbox={window:{ArchiSpotterData:{},ArchiSpotterEditorial:{},ArchiSpotterCityGuides:{},ArchiSpotterCityFood:{}}};
 vm.createContext(sandbox);
 const load=(file)=>vm.runInContext(fs.readFileSync(path.join(preview,file),'utf8'),sandbox,{filename:file,timeout:3000});
