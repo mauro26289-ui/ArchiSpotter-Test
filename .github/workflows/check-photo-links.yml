@@ -1,0 +1,31 @@
+name: Check 102 monument photo URLs
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/check-photo-links.mjs'
+      - '.github/workflows/check-photo-links.yml'
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify 102 photo HTTP responses
+        run: node scripts/check-photo-links.mjs
+      - name: Publish HTTP verification report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/audits/photo-http-check.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record HTTP health of all 102 monument photographs"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
