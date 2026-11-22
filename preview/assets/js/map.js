@@ -54,7 +54,7 @@ window.ArchiSpotterMap = (function () {
         });
       });
     });});
-    var status=document.getElementById('map-status');if(status)status.textContent=({es:count+' de 48 monumentos ubicados',en:count+' of 48 monuments mapped',it:count+' di 48 monumenti sulla mappa'})[document.documentElement.lang];
+    var status=document.getElementById('map-status');if(status){var total=Object.keys(catalog).reduce(function(sum,key){return sum+catalog[key].reduce(function(n,city){return n+city[4].length;},0);},0);status.textContent=({es:count+' de '+total+' monumentos ubicados',en:count+' of '+total+' monuments mapped',it:count+' di '+total+' monumenti sulla mappa'})[document.documentElement.lang];}
   }
   function locate() {
     var status=document.getElementById('map-location-status');
