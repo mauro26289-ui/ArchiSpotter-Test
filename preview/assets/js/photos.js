@@ -27,7 +27,8 @@ var curated={
  ]
 };
 function getImages(place){return curated[place[0]]?curated[place[0]].slice():[];}
-var cache={};
+var cache=Object.create(null);
+var pending=Object.create(null);
 var activeRequests=new WeakMap();
 function apply(img,place,width){
  var title=titles[place[0]];if(!img)return;
@@ -35,14 +36,24 @@ function apply(img,place,width){
  var request={title:title};activeRequests.set(img,request);
  if(!title)return;
  if(cache[title]){img.src=cache[title];return;}
- var original=img.src;
- var url='https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&redirects=1&origin=*&pithumbsize='+Math.max(width||500,500)+'&titles='+encodeURIComponent(title);
- fetch(url).then(function(r){if(!r.ok)throw Error('photo');return r.json();}).then(function(json){
-  var pages=json.query&&json.query.pages;var page=pages&&Object.values(pages)[0];
-  if(!page||!page.thumbnail||!page.thumbnail.source)return;
-  cache[title]=page.thumbnail.source;
-  if(img.isConnected&&activeRequests.get(img)===request)img.src=cache[title];
- }).catch(function(){if(img.isConnected&&activeRequests.get(img)===request&&!img.src)img.src=original;});
+ var original=img.getAttribute('src')||'';
+ var size=Math.max(width||500,500);
+ var key=title+'|'+size;
+ if(cache[key]){img.src=cache[key];return;}
+ if(!pending[key]){
+  var url='https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&redirects=1&origin=*&pithumbsize='+size+'&titles='+encodeURIComponent(title);
+  pending[key]=fetch(url).then(function(r){if(!r.ok)throw Error('photo');return r.json();}).then(function(json){
+   var pages=json.query&&json.query.pages;var page=pages&&Object.values(pages)[0];
+   if(!page||!page.thumbnail||!page.thumbnail.source)throw Error('no thumbnail');
+   cache[key]=page.thumbnail.source;
+   return cache[key];
+  }).finally(function(){delete pending[key];});
+ }
+ pending[key].then(function(source){
+  if(img.isConnected&&activeRequests.get(img)===request)img.src=source;
+ }).catch(function(){
+  if(img.isConnected&&activeRequests.get(img)===request&&!img.getAttribute('src')&&original)img.src=original;
+ });
 }
 return {apply:apply,getImages:getImages};
 })();
