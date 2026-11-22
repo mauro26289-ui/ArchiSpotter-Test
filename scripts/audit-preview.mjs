@@ -52,6 +52,21 @@ for(const name of names){
 }
 for(const name of Object.keys(editorial))assert(names.includes(name),`Orphan editorial entry: ${name}`);
 // Photo coverage is a warning until every monument has two independently reviewed photos.
+// Commons image pair metadata and integrity checks.
+const pairsContext={window:{}};vm.createContext(pairsContext);
+vm.runInContext(fs.readFileSync(path.join(preview,'assets/data/photo-pairs.js'),'utf8'),pairsContext);
+const pairs=pairsContext.window.ArchiSpotterPhotoPairs;
+for(const [name,photos] of Object.entries(pairs)){
+ assert(names.includes(name),`Photo pair not in catalog: ${name}`);
+ assert(Array.isArray(photos)&&photos.length===2,`Photo pair must contain two photos: ${name}`);
+ if(!Array.isArray(photos)||photos.length!==2)continue;
+ assert(photos[0].url!==photos[1].url&&photos[0].sha1!==photos[1].sha1,`Duplicate photo pair: ${name}`);
+ for(const photo of photos){
+  assert(photo.url?.startsWith('https://'),`Invalid photo URL: ${name}`);
+  assert(photo.width>=1400&&photo.height>=800,`Insufficient photo resolution: ${name}`);
+  assert(Boolean(photo.source&&photo.artist&&photo.license),`Missing image attribution: ${name}`);
+ }
+}
 const photoSource=fs.readFileSync(path.join(preview,'assets/js/photos.js'),'utf8');
 const curatedNames=[...photoSource.matchAll(/^\s*['"]([^'"]+)['"]\s*:\s*\[\s*['"]https?:/gm)].map(match=>match[1]);
 for(const name of names)if(!curatedNames.includes(name))warnings.push(`Photo pair not curated: ${name}`);
