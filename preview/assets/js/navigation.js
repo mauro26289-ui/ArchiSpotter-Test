@@ -8,6 +8,8 @@ window.ArchiSpotterNavigation = (function () {
   }
   // Interactive iOS-like edge swipe with a noninteractive preview of the previous screen.
   var gesture=null;
+  var settleTimer=null;
+  function cancelSettle(){if(settleTimer!==null){clearTimeout(settleTimer);settleTimer=null;}}
   function visible(id){var el=document.getElementById(id);return el&&!el.hidden;}
   function resetPreview(g){
     if(!g)return;
@@ -28,6 +30,7 @@ window.ArchiSpotterNavigation = (function () {
     }
   }
   function onTouchStart(e){
+    cancelSettle();
     if(gesture){resetPreview(gesture);gesture=null;}
     if(e.touches.length!==1||!document.body.classList.contains('is-in-app'))return;
     if(!visible('view-explore')||e.touches[0].clientX>32)return;
@@ -93,9 +96,9 @@ window.ArchiSpotterNavigation = (function () {
         document.getElementById(back).click();
       }
     };
-    setTimeout(finish,190);
+    settleTimer=setTimeout(function(){settleTimer=null;finish();},190);
   }
-  function onTouchCancel(){if(gesture){resetPreview(gesture);gesture=null;}}
+  function onTouchCancel(){cancelSettle();if(gesture){resetPreview(gesture);gesture=null;}}
   var initialized=false;
   function init() {
     if(initialized)return;
@@ -104,6 +107,7 @@ window.ArchiSpotterNavigation = (function () {
     document.addEventListener('touchmove',onTouchMove,{passive:true});
     document.addEventListener('touchend',onTouchEnd,{passive:true});
     document.addEventListener('touchcancel',onTouchCancel,{passive:true});
+    document.addEventListener('visibilitychange',function(){if(document.hidden)onTouchCancel();});
     document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
   }
   return { showTab: showTab, init: init };
