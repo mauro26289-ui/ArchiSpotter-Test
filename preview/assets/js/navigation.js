@@ -8,8 +8,8 @@ window.ArchiSpotterNavigation = (function () {
   }
   // Interactive iOS-like edge swipe with a noninteractive preview of the previous screen.
   var gesture=null;
-  var settleTimer=null;
-  function cancelSettle(){if(settleTimer!==null){clearTimeout(settleTimer);settleTimer=null;}}
+  var settleTimer=null,settlingGesture=null;
+  function cancelSettle(){if(settleTimer!==null){clearTimeout(settleTimer);settleTimer=null;}if(settlingGesture){resetPreview(settlingGesture);settlingGesture=null;}}
   function visible(id){var el=document.getElementById(id);return el&&!el.hidden;}
   function resetPreview(g){
     if(!g)return;
@@ -96,7 +96,8 @@ window.ArchiSpotterNavigation = (function () {
         document.getElementById(back).click();
       }
     };
-    settleTimer=setTimeout(function(){settleTimer=null;finish();},190);
+    settlingGesture=g;
+    settleTimer=setTimeout(function(){settleTimer=null;settlingGesture=null;finish();},190);
   }
   function onTouchCancel(){cancelSettle();if(gesture){resetPreview(gesture);gesture=null;}}
   var initialized=false;
