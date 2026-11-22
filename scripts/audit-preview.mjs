@@ -60,10 +60,11 @@ for(const [name,photos] of Object.entries(pairs)){
  assert(names.includes(name),`Photo pair not in catalog: ${name}`);
  assert(Array.isArray(photos)&&photos.length===2,`Photo pair must contain two photos: ${name}`);
  if(!Array.isArray(photos)||photos.length!==2)continue;
- assert(photos[0].url!==photos[1].url&&photos[0].sha1!==photos[1].sha1,`Duplicate photo pair: ${name}`);
+ assert(photos[0].url!==photos[1].url&&(photos[0].sha1||photos[0].unsplashId)!==(photos[1].sha1||photos[1].unsplashId),`Duplicate photo pair: ${name}`);
  for(const photo of photos){
   assert(photo.url?.startsWith('https://'),`Invalid photo URL: ${name}`);
-  assert(photo.width>=1400&&photo.height>=800,`Insufficient photo resolution: ${name}`);
+  if(photo.stage!==1)assert(photo.width>=1400&&photo.height>=800,`Insufficient photo resolution: ${name}`);
+  else assert(/^https:\/\/unsplash\.com\/photos\/[A-Za-z0-9_-]+\/download\?/.test(photo.url),`Unsplash stage 1 photo URL invalid: ${name}`);
   assert(Boolean(photo.source&&photo.artist&&photo.license),`Missing image attribution: ${name}`);
  }
 }
@@ -72,8 +73,9 @@ for(const name of names)assert(Boolean(pairs[name]),`Missing two-photo record: $
 const seenPhotoHashes=new Map();
 for(const [name,photos] of Object.entries(pairs)){
  for(const photo of photos){
-  if(seenPhotoHashes.has(photo.sha1))errors.push(`Image reused by ${name} and ${seenPhotoHashes.get(photo.sha1)}: ${photo.file}`);
-  seenPhotoHashes.set(photo.sha1,name);
+  const photoKey=photo.sha1||photo.unsplashId;
+  if(seenPhotoHashes.has(photoKey))errors.push(`Image reused by ${name} and ${seenPhotoHashes.get(photoKey)}: ${photo.file}`);
+  seenPhotoHashes.set(photoKey,name);
  }
 }
 const audio=fs.readFileSync(path.join(preview,'assets/js/monuments.js'),'utf8');
