@@ -111,6 +111,21 @@ window.ArchiSpotterMonuments = (function () {
         if(window.ArchiSpotterPhotos)window.ArchiSpotterPhotos.apply(document.getElementById('monument-photo'),place,1100);
         var gallery=document.getElementById('monument-photo-choices');
         gallery.replaceChildren();
+        var credit=document.getElementById('monument-photo-credit');
+        function updatePhotoCredit(index){
+          if(!credit)return;
+          credit.replaceChildren();
+          if(place[0]!=='Castillo de Chillon'){credit.hidden=true;return;}
+          credit.hidden=false;
+          var author=index===0?'Giles Laurent':'Christian David';
+          credit.appendChild(document.createTextNode('Foto: '+author+' · '));
+          var link=document.createElement('a');
+          link.href=index===0?'https://commons.wikimedia.org/wiki/File:001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg':'https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_de_Chillon%2C_Cour_int%C3%A9rieure%2C_Veytaux%2C_Vaud.jpg';
+          link.textContent='Wikimedia Commons · CC BY-SA 4.0';
+          link.target='_blank';link.rel='noopener noreferrer';
+          credit.appendChild(link);
+        }
+        updatePhotoCredit(0);
         var images=window.ArchiSpotterPhotos&&window.ArchiSpotterPhotos.getImages(place);
         if(images&&images.length>1){
           gallery.hidden=false;
@@ -124,6 +139,7 @@ window.ArchiSpotterMonuments = (function () {
             button.addEventListener('click',function(){
               var img=document.getElementById('monument-photo');
               img.src=url;
+              updatePhotoCredit(i);
               gallery.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-pressed',String(i===j));});
             });
             gallery.appendChild(button);
