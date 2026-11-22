@@ -75,9 +75,7 @@ window.ArchiSpotterMonuments = (function () {
 
       var officialSites={"Coliseo":"https://colosseo.it/en/","Panteón de Agripa":"https://direzionemuseiroma.cultura.gov.it/en/pantheon/","Fontana di Trevi":"https://www.turismoroma.it/en/places/trevi-fountain","Foro Romano":"https://colosseo.it/en/","Castillo de Sant'Angelo":"https://direzionemuseiroma.cultura.gov.it/en/","Catedral de Florencia":"https://duomo.firenze.it/en/home","Ponte Vecchio":"https://www.feelflorence.it/en","Palazzo Vecchio":"https://musefirenze.it/en/musei/museo-di-palazzo-vecchio/","Sagrada Familia":"https://sagradafamilia.org/","Casa Batlló":"https://www.casabatllo.es/en/","Parque Güell":"https://parkguell.barcelona/en","Casa Milà":"https://www.lapedrera.com/en","Palacio Real":"https://www.patrimonionacional.es/en","Puerta de Alcalá":"https://www.esmadrid.com/en","Palacio de Cristal":"https://www.museoreinasofia.es/en","Templo de Debod":"https://www.esmadrid.com/en","Torre Eiffel":"https://www.toureiffel.paris/en","Arco del Triunfo":"https://www.paris-arc-de-triomphe.fr/en","Catedral de Notre-Dame":"https://www.notredamedeparis.fr/en/","Basílica del Sacré-Cœur":"https://www.sacre-coeur-montmartre.com/english/","Museo del Louvre":"https://www.louvre.fr/en","Palacio de Versalles":"https://en.chateauversailles.fr/","Partenón":"https://www.theacropolismuseum.gr/en","Erecteión":"https://www.theacropolismuseum.gr/en","Templo de Zeus Olímpico":"https://odysseus.culture.gr/","Odeón de Herodes Ático":"https://odysseus.culture.gr/","Templo de Apolo":"https://delphi.culture.gr/","Palacio de Westminster":"https://www.parliament.uk/visiting/","Tower Bridge":"https://www.towerbridge.org.uk/","Abadía de Westminster":"https://www.westminster-abbey.org/","Catedral de San Pablo":"https://www.stpauls.co.uk/","Termas romanas":"https://www.romanbaths.co.uk/","Puerta de Brandeburgo":"https://www.visitberlin.de/en/brandenburg-gate","Catedral de Berlín":"https://www.berlinerdom.de/en/","Edificio del Reichstag":"https://www.bundestag.de/en/visittheBundestag","Memorial del Holocausto":"https://www.stiftung-denkmal.de/en/","Catedral de Colonia":"https://www.koelner-dom.de/en/","Catedral de Milán":"https://www.duomomilano.it/en/","Alhambra":"https://www.alhambra-patronato.es/","Castillo de Chillon":"https://www.chillon.ch/en/","Torre de Belém":"https://www.museusemonumentos.pt/en","Monasterio de los Jerónimos":"https://www.museusemonumentos.pt/en","Castillo de San Jorge":"https://castelodesaojorge.pt/en/","Elevador de Santa Justa":"https://www.visitlisboa.com/en","Puente Don Luis I":"https://visitporto.travel/en-GB","Obelisco":"https://turismo.buenosaires.gob.ar/en","Teatro Colón":"https://teatrocolon.org.ar/en","Casa Rosada":"https://www.casarosada.gob.ar/","Palacio Barolo":"https://palaciobarolo.com.ar/","Congreso de la Nación Argentina":"https://www.congreso.gob.ar/","Puente de la Mujer":"https://turismo.buenosaires.gob.ar/en"};
       function monumentKey(place,city) { return city[0]+'|'+place[0]; }
-      function storedMonumentSet(key) {
-        try {var a=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(a)?a:[];}catch(_){return [];}
-      }
+      function storedMonumentSet(key) {return window.ArchiSpotterStorage.read(key);}
       function updateMonumentActions() {
         if(!selectedMonument)return;
         var key=monumentKey(selectedMonument,selectedMonumentCity);
@@ -89,7 +87,7 @@ window.ArchiSpotterMonuments = (function () {
         var id=monumentKey(selectedMonument,selectedMonumentCity);
         var items=storedMonumentSet(key);
         items=items.includes(id)?items.filter(function(x){return x!==id;}):items.concat(id);
-        try{localStorage.setItem(key,JSON.stringify(items));}catch(_){}
+        if(!window.ArchiSpotterStorage.write(key,items))return;
         updateMonumentActions();
         document.dispatchEvent(new CustomEvent('archispotter:saved-change'));
       }
