@@ -14,6 +14,8 @@ src=PHOTOS.read_text()
 titles=json.loads(re.search(r'var titles=(\{.*?\});',src,re.S).group(1))
 curated=re.findall(r"(?m)^\s*['\"]([^'\"]+)['\"]\s*:\s*\[\s*['\"]https?://",src)
 search_override={
+"Coliseo":"Colosseum Rome Italy",
+"Partenón":"Parthenon Acropolis Athens",
 "Castillo de Sant'Angelo":"Castel Sant'Angelo Rome",
 "Catedral de Milán":"Milan Cathedral Duomo",
 "Palacio Real":"Royal Palace Madrid",
@@ -54,7 +56,7 @@ def score(item,terms):
     return sum(3 for t in tokens if t in name)+min(item['width'],4500)/4500
 result=json.loads(OUT.read_text()) if OUT.exists() else {'generated_at':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'method':'Commons API search; license, resolution and filename relevance; NOT visual certification','monuments':{}}
 for i,name in enumerate(names):
-    if result['monuments'].get(name,{}).get('status') not in (None,'search_error','needs_more_candidates'):continue
+    if name not in ('Coliseo','Partenón') and result['monuments'].get(name,{}).get('status') not in (None,'search_error','needs_more_candidates'):continue
     query=search_override.get(name,titles.get(name,name))
     existing=name in curated
     candidates=[]
