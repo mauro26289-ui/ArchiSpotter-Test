@@ -2,6 +2,7 @@
 window.ArchiSpotterMonuments = (function () {
   function init(currentLang, strings) {
       var selectedMonument=null, selectedMonumentCity=null;
+      var photoSwipeTimer=null;
       // Existing ElevenLabs recordings from the original ArchiSpotter repository.
       // Do not synthesize or charge credits for these previously generated MP3s.
       var existingAudioIds={
@@ -104,6 +105,7 @@ window.ArchiSpotterMonuments = (function () {
         document.querySelector('.app-content').scrollTop=0;
       }
       function renderMonument() {
+        if(photoSwipeTimer!==null){clearTimeout(photoSwipeTimer);photoSwipeTimer=null;}
         if(!selectedMonument)return;
         var idx={es:0,en:1,it:2}[currentLang()]||0;
         var place=selectedMonument,city=selectedMonumentCity;
@@ -164,6 +166,7 @@ window.ArchiSpotterMonuments = (function () {
             swipeStart=null;swipeDirection=0;swipeMoved=false;
           }
           swipeTarget.ontouchstart=function(e){
+            if(photoSwipeTimer!==null){clearTimeout(photoSwipeTimer);photoSwipeTimer=null;}
             resetPhotoGesture();
             if(!images||images.length<2||e.touches.length!==1)return;
             var t=e.touches[0];
@@ -221,7 +224,9 @@ window.ArchiSpotterMonuments = (function () {
               swipeNeighbor.style.transform='translate3d('+(complete?0:(direction>0?width:-width))+'px,0,0)';
             }
             swipeStart=null;
-            window.setTimeout(function(){
+            photoSwipeTimer=window.setTimeout(function(){
+              photoSwipeTimer=null;
+              if(selectedMonument!==place)return;
               if(complete&&images&&images.length>1){
                 var buttons=gallery.querySelectorAll('button');
                 var next=(selectedPhotoIndex()+direction+buttons.length)%buttons.length;
