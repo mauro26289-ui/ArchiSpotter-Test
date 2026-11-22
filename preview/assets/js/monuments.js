@@ -119,7 +119,7 @@ window.ArchiSpotterMonuments = (function () {
           var photo=pair&&pair[index];
           if(!photo){credit.hidden=true;return;}
           credit.hidden=false;
-          var artist=(photo.artist||'Wikimedia Commons').replace(/\\s+/g,' ').trim();
+          var artist=(photo.artist||'Wikimedia Commons').replace(/\s+/g,' ').trim();
           credit.appendChild(document.createTextNode('Foto: '+artist+' · '));
           var link=document.createElement('a');
           link.href=photo.source;
