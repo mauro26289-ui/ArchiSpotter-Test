@@ -62,7 +62,7 @@ for(const [name,photos] of Object.entries(pairs)){
  if(!Array.isArray(photos)||photos.length!==2)continue;
  assert(photos[0].url!==photos[1].url&&(photos[0].sha1||photos[0].pexelsId||photos[0].unsplashId)!==(photos[1].sha1||photos[1].pexelsId||photos[1].unsplashId),`Duplicate photo pair: ${name}`);
  for(const photo of photos){
-  assert(photo.url?.startsWith('https://'),`Invalid photo URL: ${name}`);
+  assert(photo.pexelsId?photo.url?.startsWith('./assets/photos/pexels/'):photo.url?.startsWith('https://'),`Invalid photo URL: ${name}`);
   if(photo.pexelsId){assert(photo.url===`./assets/photos/pexels/${photo.pexelsId}.jpg`,`Pexels image path mismatch: ${name}`);assert(fs.existsSync(path.join(preview,photo.url)),`Missing local Pexels photo: ${name}`);assert(photo.bytes>=25000&&Boolean(photo.sha256),`Missing Pexels file verification: ${name}`);}else assert(photo.width>=1400&&photo.height>=800,`Insufficient photo resolution: ${name}`);
   assert(Boolean(photo.source&&photo.artist&&photo.license),`Missing image attribution: ${name}`);
  }
