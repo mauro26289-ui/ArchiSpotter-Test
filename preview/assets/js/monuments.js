@@ -123,7 +123,7 @@ window.ArchiSpotterMonuments = (function () {
           credit.appendChild(document.createTextNode('Foto: '+artist+' · '));
           var link=document.createElement('a');
           link.href=photo.source;
-          link.textContent=(photo.unsplashId?'Unsplash · ':'Wikimedia Commons · ')+photo.license;
+          link.textContent=(photo.pexelsId?'Pexels · ':photo.unsplashId?'Unsplash · ':'Wikimedia Commons · ')+photo.license;
           link.target='_blank';link.rel='noopener noreferrer';
           credit.appendChild(link);
           if(photo.licenseUrl){
