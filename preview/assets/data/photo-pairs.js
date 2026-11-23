@@ -292,26 +292,28 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Palacio de Versalles": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg/1920px-Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Water reflection of the Orangerie garden and Palace of Versailles with blue sky in France.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Water_reflection_of_the_Orangerie_garden_and_Palace_of_Versailles_with_blue_sky_in_France.jpg",
-      "artist": "Basile Morin",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 8192,
-      "height": 4096,
-      "sha1": "76fb2ee83f6dd862ed2b32036aa8ba7084ad39b4"
+      "url": "./assets/photos/pexels/pexels-catalin-m-1839309-10183520.jpg",
+      "file": "pexels-catalin-m-1839309-10183520.jpg",
+      "source": "https://www.pexels.com/photo/10183520/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 10183520
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Main_Fa%C3%A7ade%2C_Palace_of_Versailles%2C_Cour_Royale.jpg/1920px-Main_Fa%C3%A7ade%2C_Palace_of_Versailles%2C_Cour_Royale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Main Façade, Palace of Versailles, Cour Royale.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Main_Fa%C3%A7ade,_Palace_of_Versailles,_Cour_Royale.jpg",
-      "artist": "Julian Lupyan",
-      "license": "Public domain",
-      "licenseUrl": "",
-      "width": 7009,
-      "height": 4649,
-      "sha1": "eaffdbef29318f300055a7143c413dcb88ddc998"
+      "url": "./assets/photos/pexels/pexels-lexi-lauwers-1431940-30255490.jpg",
+      "file": "pexels-lexi-lauwers-1431940-30255490.jpg",
+      "source": "https://www.pexels.com/photo/30255490/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 30255490
+    },
+    {
+      "url": "./assets/photos/pexels/pexels-yannick-739231218-24407123.jpg",
+      "file": "pexels-yannick-739231218-24407123.jpg",
+      "source": "https://www.pexels.com/photo/24407123/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 24407123
     }
   ],
   "Templo de Zeus Olímpico": [
