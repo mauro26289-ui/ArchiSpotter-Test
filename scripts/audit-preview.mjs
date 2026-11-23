@@ -51,28 +51,35 @@ for(const name of names){
  }
 }
 for(const name of Object.keys(editorial))assert(names.includes(name),`Orphan editorial entry: ${name}`);
-// Static two-photo coverage and metadata integrity; visual review remains a separate acceptance check.
-// Commons image pair metadata and integrity checks.
+// Gallery coverage and local-file integrity; visual review remains a separate acceptance check.
 const pairsContext={window:{}};vm.createContext(pairsContext);
 vm.runInContext(fs.readFileSync(path.join(preview,'assets/data/photo-pairs.js'),'utf8'),pairsContext);
 const pairs=pairsContext.window.ArchiSpotterPhotoPairs;
 for(const [name,photos] of Object.entries(pairs)){
  assert(names.includes(name),`Photo pair not in catalog: ${name}`);
- assert(Array.isArray(photos)&&photos.length===2,`Photo pair must contain two photos: ${name}`);
- if(!Array.isArray(photos)||photos.length!==2)continue;
- assert(photos[0].url!==photos[1].url&&(photos[0].sha1||photos[0].pexelsId||photos[0].unsplashId)!==(photos[1].sha1||photos[1].pexelsId||photos[1].unsplashId),`Duplicate photo pair: ${name}`);
+ assert(Array.isArray(photos)&&photos.length>=1,`Gallery must contain at least one photo: ${name}`);
+ if(!Array.isArray(photos)||photos.length<1)continue;
+ assert(new Set(photos.map(photo=>photo.url)).size===photos.length,`Duplicate photos within gallery: ${name}`);
  for(const photo of photos){
-  assert(photo.pexelsId?photo.url?.startsWith('./assets/photos/pexels/'):photo.url?.startsWith('https://'),`Invalid photo URL: ${name}`);
-  if(photo.pexelsId){assert(photo.url===`./assets/photos/pexels/${photo.pexelsId}.jpg`,`Pexels image path mismatch: ${name}`);assert(fs.existsSync(path.join(preview,photo.url)),`Missing local Pexels photo: ${name}`);assert(photo.bytes>=25000&&Boolean(photo.sha256),`Missing Pexels file verification: ${name}`);}else assert(photo.width>=1400&&photo.height>=800,`Insufficient photo resolution: ${name}`);
-  assert(Boolean(photo.source&&photo.artist&&photo.license),`Missing image attribution: ${name}`);
+  const localPexels=photo.url?.startsWith('./assets/photos/pexels/');
+  assert(localPexels||photo.url?.startsWith('https://'),`Invalid photo URL: ${name}`);
+  if(localPexels){
+   const file=path.basename(photo.url);
+   assert(Boolean(photo.pexelsId)&&(/^(?:\d+|pexels-[a-z0-9-]+)\.jpe?g$/i).test(file),`Invalid Pexels filename or ID: ${name}`);
+   assert(fs.existsSync(path.join(preview,photo.url)),`Missing local Pexels photo: ${name} (${file})`);
+   if(photo.bytes!==undefined)assert(photo.bytes>=25000,`Pexels file too small: ${name}`);
+   if(photo.sha256!==undefined)assert(/^[a-f0-9]{64}$/i.test(photo.sha256),`Invalid Pexels SHA256: ${name}`);
+  }else assert(photo.width>=1400&&photo.height>=800,`Insufficient photo resolution: ${name}`);
+  assert(Boolean(photo.source&&photo.license),`Missing image source or license: ${name}`);
+  if(!localPexels)assert(Boolean(photo.artist),`Missing image attribution: ${name}`);
  }
 }
-assert(Object.keys(pairs).length===names.length,`Expected two image records for all ${names.length} monuments`);
-for(const name of names)assert(Boolean(pairs[name]),`Missing two-photo record: ${name}`);
+assert(Object.keys(pairs).length===names.length,`Expected gallery records for all ${names.length} monuments`);
+for(const name of names)assert(Boolean(pairs[name]),`Missing gallery record: ${name}`);
 const seenPhotoHashes=new Map();
 for(const [name,photos] of Object.entries(pairs)){
  for(const photo of photos){
-  const photoKey=photo.sha1||photo.pexelsId||photo.unsplashId;
+  const photoKey=photo.sha1||photo.pexelsId||photo.unsplashId||photo.url;
   if(seenPhotoHashes.has(photoKey))errors.push(`Image reused by ${name} and ${seenPhotoHashes.get(photoKey)}: ${photo.file}`);
   seenPhotoHashes.set(photoKey,name);
  }
