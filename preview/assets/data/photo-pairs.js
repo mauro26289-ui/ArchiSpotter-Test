@@ -1,4 +1,4 @@
-/* Verified local Pexels images for 7 monuments; other monuments await next batches. */
+/* Monument gallery photo records; locally stored Pexels assets take precedence. */
 window.ArchiSpotterPhotoPairs={
   "Castillo de Sant'Angelo": [
     {
@@ -252,6 +252,14 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Templo de Zeus Olímpico": [
     {
+      "url": "./assets/photos/pexels/pexels-seymamutlu-31804146.jpg",
+      "file": "pexels-seymamutlu-31804146.jpg",
+      "source": "https://www.pexels.com/photo/31804146/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 31804146
+    },
+    {
       "url": "./assets/photos/pexels/pexels-edibe-sarac-1860857135-28572628.jpg",
       "file": "pexels-edibe-sarac-1860857135-28572628.jpg",
       "source": "https://www.pexels.com/photo/28572628/",
@@ -286,12 +294,26 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Templo de Apolo": [
     {
-      "url": "./assets/photos/pexels/pexels-seymamutlu-31804146.jpg",
-      "file": "pexels-seymamutlu-31804146.jpg",
-      "source": "https://www.pexels.com/photo/31804146/",
-      "license": "Pexels License",
-      "licenseUrl": "https://www.pexels.com/license/",
-      "pexelsId": 31804146
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Temple_of_Apollo%2C_Delphi%2C_201246.jpg/1920px-Temple_of_Apollo%2C_Delphi%2C_201246.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Temple of Apollo, Delphi, 201246.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Apollo,_Delphi,_201246.jpg",
+      "artist": "Zde",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 6048,
+      "height": 4024,
+      "sha1": "2703a040fdaf71d468279d89c73b45120864c32e"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Temple_of_Apollo_in_Delphi%2C_east_portico%2C_201248.jpg/1920px-Temple_of_Apollo_in_Delphi%2C_east_portico%2C_201248.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "File:Temple of Apollo in Delphi, east portico, 201248.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Apollo_in_Delphi,_east_portico,_201248.jpg",
+      "artist": "Zde",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 6048,
+      "height": 4024,
+      "sha1": "403f9e43bd09a7d74e2e2fc8df30a5bbcaf2b6f3"
     }
   ],
   "Palacio de Westminster": [
