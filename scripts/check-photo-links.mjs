@@ -7,6 +7,7 @@ const items=Object.entries(context.window.ArchiSpotterPhotoPairs).flatMap(([name
 const results=[];
 let cursor=0;
 async function check(item){
+ if(item.pexelsId){const f='preview/'+item.url.replace(/^\.\//,'');const ok=fs.existsSync(f)&&fs.statSync(f).size===item.bytes;return {monument:item.name,index:item.index,file:item.file,url:item.url,status:ok?200:404,contentType:ok?'image/jpeg':'',contentLength:ok?String(item.bytes):'0',ok};}
  let last={status:0,error:'unknown'};
  for(let attempt=0;attempt<3;attempt++){
   const controller=new AbortController();
