@@ -1,6 +1,6 @@
 {
-  "total": 13,
-  "ok": 13,
+  "total": 14,
+  "ok": 14,
   "results": [
     {
       "monument": "Coliseo",
@@ -169,6 +169,20 @@
       "originalUrl": "https://images.pexels.com/photos/22806939/pexels-photo-22806939.jpeg?auto=compress&cs=tinysrgb&w=1400",
       "bytes": 222078,
       "sha256": "06f9be656389d5da388318036883cb074fb251bf5557306df6c76ab4d53cc151",
+      "status": "ok"
+    },
+    {
+      "monument": "Ponte Vecchio",
+      "id": 20770930,
+      "artist": "Ahmet Eymen Aktaş",
+      "source": "https://www.pexels.com/photo/20770930/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "group": 2,
+      "url": "assets/photos/pexels/20770930.jpg",
+      "originalUrl": "https://images.pexels.com/photos/20770930/pexels-photo-20770930.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "bytes": 339148,
+      "sha256": "609804449ae3df797974aab47449462fc4522b5ce8a79645c9af8d05a73f9863",
       "status": "ok"
     }
   ]
