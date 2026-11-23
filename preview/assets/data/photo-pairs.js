@@ -28,266 +28,200 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Catedral de Milán": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Duomo_cathedral_Milan_Italy.jpg/1920px-Duomo_cathedral_Milan_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Duomo cathedral Milan Italy.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Duomo_cathedral_Milan_Italy.jpg",
-      "artist": "Reem Al-Kashif",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5152,
-      "height": 3864,
-      "sha1": "e4114afb7eedd2d640e5f2baabfb23bea048fc0d"
+      "url": "./assets/photos/pexels/pexels-travel-with-lenses-734723610-36527408.jpg",
+      "file": "pexels-travel-with-lenses-734723610-36527408.jpg",
+      "source": "https://www.pexels.com/photo/36527408/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 36527408
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/1920px-Milan_Cathedral_from_Piazza_del_Duomo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Milan Cathedral from Piazza del Duomo.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Milan_Cathedral_from_Piazza_del_Duomo.jpg",
-      "artist": "Jiuguang Wang",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 4164,
-      "height": 3129,
-      "sha1": "a02289ffd6337fb54852cc0d5f0e8d2fc308cfa3"
+      "url": "./assets/photos/pexels/pexels-laurencuddy-15939547.jpg",
+      "file": "pexels-laurencuddy-15939547.jpg",
+      "source": "https://www.pexels.com/photo/15939547/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 15939547
     }
   ],
   "Palacio Real": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Royal_Palace_of_Madrid_east_facade_1.jpg/1920px-Royal_Palace_of_Madrid_east_facade_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Royal Palace of Madrid east facade 1.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Royal_Palace_of_Madrid_east_facade_1.jpg",
-      "artist": "kallerna",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5410,
-      "height": 3560,
-      "sha1": "583c5a6a2b40fcc737ff23fdadbf320b4daa6379"
+      "url": "./assets/photos/pexels/pexels-nano-erdozain-120534369-27420575.jpg",
+      "file": "pexels-nano-erdozain-120534369-27420575.jpg",
+      "source": "https://www.pexels.com/photo/27420575/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 27420575
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/North_facade_of_the_Royal_Palace_of_Madrid_1.jpg/1920px-North_facade_of_the_Royal_Palace_of_Madrid_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:North facade of the Royal Palace of Madrid 1.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:North_facade_of_the_Royal_Palace_of_Madrid_1.jpg",
-      "artist": "Joseolgon",
-      "license": "CC BY 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-      "width": 5472,
-      "height": 3648,
-      "sha1": "3fa56745ad2378f0cbdd1ae59ec3507cc92153c4"
+      "url": "./assets/photos/pexels/pexels-mehul-2025855431-29329006.jpg",
+      "file": "pexels-mehul-2025855431-29329006.jpg",
+      "source": "https://www.pexels.com/photo/29329006/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 29329006
     }
   ],
   "Puerta de Alcalá": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Puerta_de_Alcal%C3%A1%2C_Madrid%2C_Espa%C3%B1a%2C_2017-05-18%2C_DD_14.jpg/1920px-Puerta_de_Alcal%C3%A1%2C_Madrid%2C_Espa%C3%B1a%2C_2017-05-18%2C_DD_14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Puerta de Alcalá, Madrid, España, 2017-05-18, DD 14.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Puerta_de_Alcal%C3%A1,_Madrid,_Espa%C3%B1a,_2017-05-18,_DD_14.jpg",
-      "artist": "Diego Delso",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5923,
-      "height": 3851,
-      "sha1": "c6edaa6df9efeab46c520c9ec78cc46a9216eb61"
+      "url": "./assets/photos/pexels/pexels-lajos-kristof-kantor-2158796893-37175020.jpg",
+      "file": "pexels-lajos-kristof-kantor-2158796893-37175020.jpg",
+      "source": "https://www.pexels.com/photo/37175020/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 37175020
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Puerta_de_Alcal%C3%A1%2C_Madrid_20180720.jpg/1920px-Puerta_de_Alcal%C3%A1%2C_Madrid_20180720.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Puerta de Alcalá, Madrid 20180720.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Puerta_de_Alcal%C3%A1,_Madrid_20180720.jpg",
-      "artist": "Suicasmo",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5184,
-      "height": 3456,
-      "sha1": "89094fea73a7193f784f77c4cb4e5cbba6dfd9d1"
+      "url": "./assets/photos/pexels/pexels-tkirkgoz-11959798.jpg",
+      "file": "pexels-tkirkgoz-11959798.jpg",
+      "source": "https://www.pexels.com/photo/11959798/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 11959798
     }
   ],
   "Palacio de Cristal": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Palacio_de_Cristal_%28El_Retiro%29_Madrid_in_black_and_white.jpg/1920px-Palacio_de_Cristal_%28El_Retiro%29_Madrid_in_black_and_white.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Palacio de Cristal (El Retiro) Madrid in black and white.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Palacio_de_Cristal_(El_Retiro)_Madrid_in_black_and_white.jpg",
-      "artist": "David Adam Kess",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 4608,
-      "height": 3456,
-      "sha1": "5d386d9588547b65640c7a88abdbb86463aa3dc3"
+      "url": "./assets/photos/pexels/pexels-philevenphotos-15336232.jpg",
+      "file": "pexels-philevenphotos-15336232.jpg",
+      "source": "https://www.pexels.com/photo/15336232/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 15336232
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/El_Retiro_in_Madrid%2C_Palacio_de_Cristal.jpg/1920px-El_Retiro_in_Madrid%2C_Palacio_de_Cristal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:El Retiro in Madrid, Palacio de Cristal.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:El_Retiro_in_Madrid,_Palacio_de_Cristal.jpg",
-      "artist": "David Adam Kess",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 4608,
-      "height": 3456,
-      "sha1": "94d53896b80955dbfefbb64b52bd67fead327511"
+      "url": "./assets/photos/pexels/pexels-tkathie-19341546.jpg",
+      "file": "pexels-tkathie-19341546.jpg",
+      "source": "https://www.pexels.com/photo/19341546/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 19341546
     }
   ],
   "Templo de Debod": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Temple_of_Debod_at_evening.jpg/1920px-Temple_of_Debod_at_evening.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Temple of Debod at evening.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Debod_at_evening.jpg",
-      "artist": "Yulia Kuprina",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 5116,
-      "height": 3354,
-      "sha1": "f785cc309be83188d34c10c83fa9035c85ace74f"
+      "url": "./assets/photos/pexels/pexels-vince-33389231.jpg",
+      "file": "pexels-vince-33389231.jpg",
+      "source": "https://www.pexels.com/photo/33389231/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 33389231
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/2026-09-03_-_Temple_of_Debod_in_Madrid_Spain_01.jpg/1920px-2026-09-03_-_Temple_of_Debod_in_Madrid_Spain_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:2026-09-03 - Temple of Debod in Madrid Spain 01.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:2026-09-03_-_Temple_of_Debod_in_Madrid_Spain_01.jpg",
-      "artist": "Matt Joseph",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 8645,
-      "height": 6483,
-      "sha1": "04fb8fae6455e63a284825c0b69cd1c81840a0c4"
+      "url": "./assets/photos/pexels/pexels-juliogarciaphotos-4399319.jpg",
+      "file": "pexels-juliogarciaphotos-4399319.jpg",
+      "source": "https://www.pexels.com/photo/4399319/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 4399319
     }
   ],
   "Alhambra": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Alhambra_at_dusk_Granada_Spain.jpg/1920px-Alhambra_at_dusk_Granada_Spain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Alhambra at dusk Granada Spain.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Alhambra_at_dusk_Granada_Spain.jpg",
-      "artist": "Jebulon",
-      "license": "CC0",
-      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 4592,
-      "height": 1949,
-      "sha1": "6cd8e792f0185e8262727a69cdc5b0cae264d615"
+      "url": "./assets/photos/pexels/pexels-enrique72-13341148.jpg",
+      "file": "pexels-enrique72-13341148.jpg",
+      "source": "https://www.pexels.com/photo/13341148/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 13341148
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Alcazaba%2C_Alhambra%2C_Granada%2C_Spain.jpg/1920px-Alcazaba%2C_Alhambra%2C_Granada%2C_Spain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Alcazaba, Alhambra, Granada, Spain.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Alcazaba,_Alhambra,_Granada,_Spain.jpg",
-      "artist": "Jebulon",
-      "license": "CC0",
-      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 4592,
-      "height": 3056,
-      "sha1": "b8c294476e0a077685502db79eaa8f362454cd6c"
+      "url": "./assets/photos/pexels/pexels-dirk-pothen-2149332904-34369631.jpg",
+      "file": "pexels-dirk-pothen-2149332904-34369631.jpg",
+      "source": "https://www.pexels.com/photo/34369631/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 34369631
     }
   ],
   "Torre Eiffel": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg/1920px-Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Paris - The Eiffel Tower in spring - 2307.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg",
-      "artist": "Jorge Royan",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 4368,
-      "height": 2912,
-      "sha1": "afdc7c435478f98cc9988031fce562ebd7ef0479"
+      "url": "./assets/photos/pexels/pexels-dan-umareta-725729489-18436942.jpg",
+      "file": "pexels-dan-umareta-725729489-18436942.jpg",
+      "source": "https://www.pexels.com/photo/18436942/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 18436942
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Eiffel_Tower%2CParis.jpg/1920px-Eiffel_Tower%2CParis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Eiffel Tower,Paris.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Eiffel_Tower,Paris.jpg",
-      "artist": "Commonists",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 4000,
-      "height": 4840,
-      "sha1": "1bc593d401e6e20b46d9d72ad7a5131a0e0c13eb"
+      "url": "./assets/photos/pexels/pexels-blazearth-30379456.jpg",
+      "file": "pexels-blazearth-30379456.jpg",
+      "source": "https://www.pexels.com/photo/30379456/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 30379456
     }
   ],
   "Arco del Triunfo": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/West_Fa%C3%A7ade_of_North_Leg%2C_Low_Angle%2C_Arc_de_Triomphe%2C_Paris.jpg/1920px-West_Fa%C3%A7ade_of_North_Leg%2C_Low_Angle%2C_Arc_de_Triomphe%2C_Paris.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:West Façade of North Leg, Low Angle, Arc de Triomphe, Paris.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:West_Fa%C3%A7ade_of_North_Leg,_Low_Angle,_Arc_de_Triomphe,_Paris.jpg",
-      "artist": "Julian Lupyan",
-      "license": "Public domain",
-      "licenseUrl": "",
-      "width": 4912,
-      "height": 7070,
-      "sha1": "7a7e726766a96839bb208e95600197ace257988b"
+      "url": "./assets/photos/pexels/pexels-paulo-marcelo-martins-1265830-2412595.jpg",
+      "file": "pexels-paulo-marcelo-martins-1265830-2412595.jpg",
+      "source": "https://www.pexels.com/photo/2412595/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 2412595
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/West_Low_Angle_of_Arc_de_Triomphe%2C_Paris.jpg/1920px-West_Low_Angle_of_Arc_de_Triomphe%2C_Paris.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:West Low Angle of Arc de Triomphe, Paris.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:West_Low_Angle_of_Arc_de_Triomphe,_Paris.jpg",
-      "artist": "Julian Lupyan",
-      "license": "Public domain",
-      "licenseUrl": "",
-      "width": 7150,
-      "height": 4703,
-      "sha1": "f90b6d9a8a8e532017c8d0c9c0012e4be62d9af7"
+      "url": "./assets/photos/pexels/pexels-aabdou-ch-304108527-18308445.jpg",
+      "file": "pexels-aabdou-ch-304108527-18308445.jpg",
+      "source": "https://www.pexels.com/photo/18308445/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 18308445
     }
   ],
   "Catedral de Notre-Dame": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg/1920px-Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Notre-Dame de Paris and Île de la Cité at dusk 140516 1.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Notre-Dame_de_Paris_and_%C3%8Ele_de_la_Cit%C3%A9_at_dusk_140516_1.jpg",
-      "artist": "DXR",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 8188,
-      "height": 4094,
-      "sha1": "502dc64ff34faf20a1838a6967db5f7f0d0add8f"
+      "url": "./assets/photos/pexels/pexels-ali-buyukkahraman-2162016206-38099663.jpg",
+      "file": "pexels-ali-buyukkahraman-2162016206-38099663.jpg",
+      "source": "https://www.pexels.com/photo/38099663/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 38099663
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Paris_Notre-Dame_Southeast_View_01.JPG/1920px-Paris_Notre-Dame_Southeast_View_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Paris Notre-Dame Southeast View 01.JPG",
-      "source": "https://commons.wikimedia.org/wiki/File:Paris_Notre-Dame_Southeast_View_01.JPG",
-      "artist": "Uoaei1",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5596,
-      "height": 3997,
-      "sha1": "1b23e0fee3f82c470a233e22d8ea09e5dd711478"
+      "url": "./assets/photos/pexels/pexels-gyulay-redzheb-48864562-7619777.jpg",
+      "file": "pexels-gyulay-redzheb-48864562-7619777.jpg",
+      "source": "https://www.pexels.com/photo/7619777/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 7619777
     }
   ],
   "Basílica del Sacré-Cœur": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Paris%2C_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg/1920px-Paris%2C_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Paris, Sacré-Cœur de Montmartre -- 2014 -- 1193.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Paris,_Sacr%C3%A9-C%C5%93ur_de_Montmartre_--_2014_--_1193.jpg",
-      "artist": "Dietmar Rabich",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5471,
-      "height": 3321,
-      "sha1": "c9263bbb049fa3b89368e53d437e1826edf00961"
+      "url": "./assets/photos/pexels/pexels-polodo-23858887.jpg",
+      "file": "pexels-polodo-23858887.jpg",
+      "source": "https://www.pexels.com/photo/23858887/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 23858887
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg/1920px-Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Basilique du Sacré-Cœur de Montmartre - Paris - GT-01 - 2024.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Basilique_du_Sacr%C3%A9-C%C5%93ur_de_Montmartre_-_Paris_-_GT-01_-_2024.jpg",
-      "artist": "Terragio67",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 9998,
-      "height": 9998,
-      "sha1": "0d1e3af4615d42a6457c596ed435c3fa61ca9691"
+      "url": "./assets/photos/pexels/pexels-clickerhappy-1083359.jpg",
+      "file": "pexels-clickerhappy-1083359.jpg",
+      "source": "https://www.pexels.com/photo/1083359/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 1083359
     }
   ],
   "Museo del Louvre": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Louvre_Cour_Carree.jpg/1920px-Louvre_Cour_Carree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Louvre Cour Carree.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Louvre_Cour_Carree.jpg",
-      "artist": "Benh LIEU SONG",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 8000,
-      "height": 3551,
-      "sha1": "08ff277664aae2b5d4e1dbc595485a614acf45cf"
+      "url": "./assets/photos/pexels/pexels-omergulen-19407062.jpg",
+      "file": "pexels-omergulen-19407062.jpg",
+      "source": "https://www.pexels.com/photo/19407062/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 19407062
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cour_Carr%C3%A9e%2C_Louvre_Museum%2C_2_April_2009.jpg/1920px-Cour_Carr%C3%A9e%2C_Louvre_Museum%2C_2_April_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Cour Carrée, Louvre Museum, 2 April 2009.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Cour_Carr%C3%A9e,_Louvre_Museum,_2_April_2009.jpg",
-      "artist": "Benh LIEU SONG",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 8000,
-      "height": 3551,
-      "sha1": "7a43f8464a3caf879c19ba558aa0f69f6653ef83"
+      "url": "./assets/photos/pexels/pexels-matreding-11783028.jpg",
+      "file": "pexels-matreding-11783028.jpg",
+      "source": "https://www.pexels.com/photo/11783028/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 11783028
     }
   ],
   "Palacio de Versalles": [
@@ -318,26 +252,12 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Templo de Zeus Olímpico": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg/1920px-Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Temple of Zeus Olympian, Athens, Greece.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Zeus_Olympian,_Athens,_Greece.jpg",
-      "artist": "Jebulon",
-      "license": "CC0",
-      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 4547,
-      "height": 3026,
-      "sha1": "cef0159f7434aece740c8570cce15d47854edea1"
-    },
-    {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Three_columns%2C_Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg/1920px-Three_columns%2C_Temple_of_Zeus_Olympian%2C_Athens%2C_Greece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Three columns, Temple of Zeus Olympian, Athens, Greece.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Three_columns,_Temple_of_Zeus_Olympian,_Athens,_Greece.jpg",
-      "artist": "Jebulon",
-      "license": "CC0",
-      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 4592,
-      "height": 3056,
-      "sha1": "729e2bf69551604b6f631fb97ab1eb9929738143"
+      "url": "./assets/photos/pexels/pexels-edibe-sarac-1860857135-28572628.jpg",
+      "file": "pexels-edibe-sarac-1860857135-28572628.jpg",
+      "source": "https://www.pexels.com/photo/28572628/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 28572628
     }
   ],
   "Odeón de Herodes Ático": [
@@ -366,26 +286,12 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Templo de Apolo": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Temple_of_Apollo%2C_Delphi%2C_201246.jpg/1920px-Temple_of_Apollo%2C_Delphi%2C_201246.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Temple of Apollo, Delphi, 201246.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Apollo,_Delphi,_201246.jpg",
-      "artist": "Zde",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 6048,
-      "height": 4024,
-      "sha1": "2703a040fdaf71d468279d89c73b45120864c32e"
-    },
-    {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Temple_of_Apollo_in_Delphi%2C_east_portico%2C_201248.jpg/1920px-Temple_of_Apollo_in_Delphi%2C_east_portico%2C_201248.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Temple of Apollo in Delphi, east portico, 201248.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Apollo_in_Delphi,_east_portico,_201248.jpg",
-      "artist": "Zde",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 6048,
-      "height": 4024,
-      "sha1": "403f9e43bd09a7d74e2e2fc8df30a5bbcaf2b6f3"
+      "url": "./assets/photos/pexels/pexels-seymamutlu-31804146.jpg",
+      "file": "pexels-seymamutlu-31804146.jpg",
+      "source": "https://www.pexels.com/photo/31804146/",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 31804146
     }
   ],
   "Palacio de Westminster": [
