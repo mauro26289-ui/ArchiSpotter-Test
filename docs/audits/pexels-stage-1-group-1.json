@@ -102,5 +102,14 @@
     "source": "https://www.pexels.com/photo/22806939/",
     "license": "Pexels License",
     "licenseUrl": "https://www.pexels.com/license/"
+  },
+  {
+    "monument": "Ponte Vecchio",
+    "id": 20770930,
+    "artist": "Ahmet Eymen Aktaş",
+    "source": "https://www.pexels.com/photo/20770930/",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "group": 2
   }
 ]
