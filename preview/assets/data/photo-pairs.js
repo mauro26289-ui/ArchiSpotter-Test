@@ -1,27 +1,29 @@
-/* Active verified Commons registry; stage 1 Unsplash candidates pending usable image URLs. */
+/* Verified local Pexels images for 7 monuments; other monuments await next batches. */
 window.ArchiSpotterPhotoPairs={
   "Castillo de Sant'Angelo": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Rome_-_Passetto_di_Borgo_and_Castel_Sant%27Angelo_by_night_0990.jpg/1920px-Rome_-_Passetto_di_Borgo_and_Castel_Sant%27Angelo_by_night_0990.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Rome - Passetto di Borgo and Castel Sant'Angelo by night 0990.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Rome_-_Passetto_di_Borgo_and_Castel_Sant%27Angelo_by_night_0990.jpg",
-      "artist": "NormanB",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 4652,
-      "height": 3101,
-      "sha1": "f452c83262d91d88702fba9b8f392aec73f070c7"
+      "url": "./assets/photos/pexels/15677808.jpg",
+      "file": "Pexels:15677808",
+      "source": "https://www.pexels.com/photo/15677808/",
+      "artist": "Efrem Efre",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 15677808,
+      "sha256": "233d04812a90f1f8d0bbf24e8bc6af9f61b90580c792d1dec9179bcbf15953dd",
+      "bytes": 165508,
+      "stage": 1
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Rome_-_Castel_and_Ponte_Sant%27Angelo_by_night_0966.jpg/1920px-Rome_-_Castel_and_Ponte_Sant%27Angelo_by_night_0966.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Rome - Castel and Ponte Sant'Angelo by night 0966.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Rome_-_Castel_and_Ponte_Sant%27Angelo_by_night_0966.jpg",
-      "artist": "NormanB",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 4594,
-      "height": 2794,
-      "sha1": "9ac2d0d9d1be005d175f16af8cadeeb27c9d4ba1"
+      "url": "./assets/photos/pexels/13999204.jpg",
+      "file": "Pexels:13999204",
+      "source": "https://www.pexels.com/photo/13999204/",
+      "artist": "Linh Bo",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 13999204,
+      "sha256": "dd620a6dfaf348d563bdadbb6e520c871e8ea9c2e76a799adfa80e684d8539c1",
+      "bytes": 283479,
+      "stage": 1
     }
   ],
   "Catedral de Milán": [
@@ -890,122 +892,132 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Panteón de Agripa": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Rome_%28IT%29%2C_Pantheon_--_2013_--_3572.jpg/1920px-Rome_%28IT%29%2C_Pantheon_--_2013_--_3572.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Rome (IT), Pantheon -- 2013 -- 3572.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Rome_(IT),_Pantheon_--_2013_--_3572.jpg",
-      "artist": "Dietmar Rabich",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5184,
-      "height": 3456,
-      "sha1": "949d232b065c1f4a4b68e29221d8579dd608afd9"
+      "url": "./assets/photos/pexels/33009166.jpg",
+      "file": "Pexels:33009166",
+      "source": "https://www.pexels.com/photo/33009166/",
+      "artist": "AXP Photography",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 33009166,
+      "sha256": "0ab3be99ab58a370777d46659cedc21f5e7fb447c425334b9d36041018713424",
+      "bytes": 248029,
+      "stage": 1
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Pantheon_%28Rome%29%2C_Dome_interior.jpg/1920px-Pantheon_%28Rome%29%2C_Dome_interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Pantheon (Rome), Dome interior.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome),_Dome_interior.jpg",
-      "artist": "Wilfredor",
-      "license": "CC0",
-      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 5698,
-      "height": 4875,
-      "sha1": "794908f84bd6312e4c2598fe62da5abbca62fceb"
+      "url": "./assets/photos/pexels/11932863.jpg",
+      "file": "Pexels:11932863",
+      "source": "https://www.pexels.com/photo/11932863/",
+      "artist": "Elia",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 11932863,
+      "sha256": "5db32cbddf1fb35b6b10470e6dfedb07f0f33adec759b05e1281343580272829",
+      "bytes": 785358,
+      "stage": 1
     }
   ],
   "Fontana di Trevi": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Trevi_fountain_2015.jpg/1920px-Trevi_fountain_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Trevi fountain 2015.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Trevi_fountain_2015.jpg",
-      "artist": "Livioandronico2013",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 6210,
-      "height": 3118,
-      "sha1": "78c0cc694624be72fafb428d20efbab3a5c9958a"
+      "url": "./assets/photos/pexels/12268455.jpg",
+      "file": "Pexels:12268455",
+      "source": "https://www.pexels.com/photo/12268455/",
+      "artist": "Federica Amerio",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 12268455,
+      "sha256": "413ac4c83224040761dbcc7807428747ee936f03f70ed59bace61424eea0fa38",
+      "bytes": 283245,
+      "stage": 1
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Detail_Neptune_Trevi_fountain_Rome_Italy.jpg/1920px-Detail_Neptune_Trevi_fountain_Rome_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Detail Neptune Trevi fountain Rome Italy.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Detail_Neptune_Trevi_fountain_Rome_Italy.jpg",
-      "artist": "Jebulon",
-      "license": "CC0",
-      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 4632,
-      "height": 3064,
-      "sha1": "3c322c8e0ccfdf1483655056a60ba424b38a69ae"
+      "url": "./assets/photos/pexels/27065807.jpg",
+      "file": "Pexels:27065807",
+      "source": "https://www.pexels.com/photo/27065807/",
+      "artist": "Hasan Lütfü Örsdemir",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 27065807,
+      "sha256": "3b8ee922c5aae1b4d20ceb05716fee50c84285adff26ae274d1e9b2853a1132c",
+      "bytes": 366357,
+      "stage": 1
     }
   ],
   "Foro Romano": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Forum_romanum_6k_%285760x2097%29.jpg/1920px-Forum_romanum_6k_%285760x2097%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Forum romanum 6k (5760x2097).jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Forum_romanum_6k_(5760x2097).jpg",
-      "artist": "BeBo86",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 5760,
-      "height": 2097,
-      "sha1": "f6446837127917ea60a537189e6ad2a5e589c081"
+      "url": "./assets/photos/pexels/20778184.jpg",
+      "file": "Pexels:20778184",
+      "source": "https://www.pexels.com/photo/20778184/",
+      "artist": "V Marin",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 20778184,
+      "sha256": "137e442c5a3aa33959ed0261f7f7fceba0c26229705aa29feed49bff1e8b8c35",
+      "bytes": 515806,
+      "stage": 1
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Rome_%28IT%29%2C_Forum_Romanum_--_2013_--_3358.jpg/1920px-Rome_%28IT%29%2C_Forum_Romanum_--_2013_--_3358.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Rome (IT), Forum Romanum -- 2013 -- 3358.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Rome_(IT),_Forum_Romanum_--_2013_--_3358.jpg",
-      "artist": "Dietmar Rabich",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 4917,
-      "height": 3278,
-      "sha1": "fc630a1495e033e6c87d5d2e99911a79cbc81862"
+      "url": "./assets/photos/pexels/30208659.jpg",
+      "file": "Pexels:30208659",
+      "source": "https://www.pexels.com/photo/30208659/",
+      "artist": "Natalia Sevruk",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 30208659,
+      "sha256": "516a206fcc401ec0b4514446fe59b4c2360eed1643e482659ce9a80c086fd456",
+      "bytes": 565081,
+      "stage": 1
     }
   ],
   "Catedral de Florencia": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg/1920px-Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Florencia - Firenze - Catedral de Santa Maria del Fiore - Exterior - 03.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Exterior_-_03.jpg",
-      "artist": "Xosema",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5194,
-      "height": 3457,
-      "sha1": "05acd3b36714d410da119a304a05bcb4cf934beb"
+      "url": "./assets/photos/pexels/35728016.jpg",
+      "file": "Pexels:35728016",
+      "source": "https://www.pexels.com/photo/35728016/",
+      "artist": "Alisa Skripina",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 35728016,
+      "sha256": "6f0f96cd470b604fb45c962512c96b3f6d3f0f4f392ec665dc668dd40c8db722",
+      "bytes": 737101,
+      "stage": 1
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg/1920px-Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Florencia - Firenze - Catedral de Santa Maria del Fiore - Interior - Frescos de la cupula - 02.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Florencia_-_Firenze_-_Catedral_de_Santa_Maria_del_Fiore_-_Interior_-_Frescos_de_la_cupula_-_02.jpg",
-      "artist": "Xosema",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 5194,
-      "height": 3457,
-      "sha1": "5c81273d7a7e8480eb448779995d51e9d70832fb"
+      "url": "./assets/photos/pexels/20664567.jpg",
+      "file": "Pexels:20664567",
+      "source": "https://www.pexels.com/photo/20664567/",
+      "artist": "Efrem Efre",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 20664567,
+      "sha256": "c5bfcdb645486c6e64987a773ea15e755a8932e9e1ec44d016815a6c84e237ca",
+      "bytes": 180364,
+      "stage": 1
     }
   ],
   "Ponte Vecchio": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Ponte_Vecchio_at_dusk_1.JPG/1920px-Ponte_Vecchio_at_dusk_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Ponte Vecchio at dusk 1.JPG",
-      "source": "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_at_dusk_1.JPG",
-      "artist": "Martin Falbisoner",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "width": 4948,
-      "height": 3786,
-      "sha1": "c5013daf20a2e8decfe5b7f760f25ef666577395"
+      "url": "./assets/photos/pexels/22806939.jpg",
+      "file": "Pexels:22806939",
+      "source": "https://www.pexels.com/photo/22806939/",
+      "artist": "Mihai Vlasceanu",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 22806939,
+      "sha256": "06f9be656389d5da388318036883cb074fb251bf5557306df6c76ab4d53cc151",
+      "bytes": 222078,
+      "stage": 1
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg/1920px-Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Ponte Vecchio from Ponte Santa Trinita Blue hour.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_from_Ponte_Santa_Trinita_Blue_hour.jpg",
-      "artist": "Commonists",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 4908,
-      "height": 3339,
-      "sha1": "4792107ed91b30f2d8500a7b74323b589158afa3"
+      "url": "./assets/photos/pexels/20770930.jpg",
+      "file": "Pexels:20770930",
+      "source": "https://www.pexels.com/photo/20770930/",
+      "artist": "Ahmet Eymen Aktaş",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 20770930,
+      "sha256": "609804449ae3df797974aab47449462fc4522b5ce8a79645c9af8d05a73f9863",
+      "bytes": 339148,
+      "stage": 1
     }
   ],
   "Palazzo Vecchio": [
@@ -1178,26 +1190,28 @@ window.ArchiSpotterPhotoPairs={
   ],
   "Coliseo": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg/1920px-Colosseum_in_Rome%2C_Italy_-_April_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Colosseum in Rome, Italy - April 2007.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Colosseum_in_Rome,_Italy_-_April_2007.jpg",
-      "artist": "Diliff",
-      "license": "CC BY-SA 2.5",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
-      "width": 4827,
-      "height": 2833,
-      "sha1": "cea34ba0bb8fdecde622f9139be733e006fbdac0"
+      "url": "./assets/photos/pexels/2064820.jpg",
+      "file": "Pexels:2064820",
+      "source": "https://www.pexels.com/photo/2064820/",
+      "artist": "Davi Pimentel",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 2064820,
+      "sha256": "852f4326be021572fae2608bfa3de1dfddbe62504c7dc83be2834be4a34900f7",
+      "bytes": 545787,
+      "stage": 1
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Colosseum_of_Rome%2C_Italy.jpg/1920px-Colosseum_of_Rome%2C_Italy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "file": "File:Colosseum of Rome, Italy.jpg",
-      "source": "https://commons.wikimedia.org/wiki/File:Colosseum_of_Rome,_Italy.jpg",
-      "artist": "Wilfredor",
-      "license": "CC0",
-      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 8200,
-      "height": 5162,
-      "sha1": "4f1781d4caa051c85065c8d43e422e716a6648af"
+      "url": "./assets/photos/pexels/14683046.jpg",
+      "file": "Pexels:14683046",
+      "source": "https://www.pexels.com/photo/14683046/",
+      "artist": "Rafael Nicida",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "pexelsId": 14683046,
+      "sha256": "fefd234b8df885fee51cfb1c5cdbf5190b6a23e52ac1a4016eca58302d8148fa",
+      "bytes": 474919,
+      "stage": 1
     }
   ],
   "Partenón": [
