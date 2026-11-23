@@ -6,3 +6,5 @@ for(const row of rows){const url='https://images.pexels.com/photos/'+row.id+'/pe
  catch(e){results.push({...row,status:'failed',error:String(e)});console.error('FAIL',row.monument,row.id,String(e));}}
 fs.writeFileSync('docs/audits/pexels-stage-1-group-1-results.json',JSON.stringify({total:rows.length,ok:results.filter(x=>x.status==='ok').length,results},null,2)+'\n');
 if(results.some(x=>x.status!=='ok'))process.exitCode=1;
+
+// First 13 photos are archived locally before activation.
