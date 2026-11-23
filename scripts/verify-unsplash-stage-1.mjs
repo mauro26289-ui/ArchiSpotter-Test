@@ -19,3 +19,5 @@ for(const [name,photos] of Object.entries(pairs)){
 }
 fs.mkdirSync('docs/audits',{recursive:true});fs.writeFileSync('docs/audits/unsplash-stage-1-http.json',JSON.stringify({generatedAt:new Date().toISOString(),total:results.length,valid:results.filter(x=>x.pageStatus===200&&x.imageStatus>=200&&x.imageStatus<300&&x.imageType?.startsWith('image/')).length,results},null,2)+'\n');
 console.log(JSON.stringify({total:results.length,valid:results.filter(x=>x.imageStatus>=200&&x.imageStatus<300).length,failures:results.filter(x=>!(x.imageStatus>=200&&x.imageStatus<300)).map(x=>({name:x.name,id:x.id,error:x.error,page:x.pageStatus,image:x.imageStatus}))},null,2));
+
+// CI audit: page metadata and CDN image response are recorded separately.
