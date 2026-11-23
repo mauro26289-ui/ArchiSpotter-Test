@@ -90,3 +90,5 @@ for(const message of warnings)console.warn('WARNING:',message);
 for(const message of errors)console.error('ERROR:',message);
 if(errors.length)process.exitCode=1;
 else console.log(`PASS: ${warnings.length} nonblocking media warning(s)`);
+
+// Pexels local-image regression check is part of the preview audit.
