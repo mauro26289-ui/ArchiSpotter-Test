@@ -8,3 +8,5 @@ fs.writeFileSync('docs/audits/pexels-stage-1-group-1-results.json',JSON.stringif
 if(results.some(x=>x.status!=='ok'))process.exitCode=1;
 
 // First 13 photos are archived locally before activation.
+
+// Complete Ponte Vecchio gallery with the first photo of group 2.
