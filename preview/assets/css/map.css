@@ -23,3 +23,29 @@
 #map-search-results button{display:block;width:100%;padding:13px 14px;text-align:left;border:0;border-bottom:1px solid rgba(220,229,229,.12);background:transparent;color:#f1f4f2;font:13px Inter,sans-serif;cursor:pointer}
 #map-search-results button:last-child{border-bottom:0}
 #map-search-results p{padding:12px;margin:0;color:#aebbb9;font:13px Inter,sans-serif}
+
+/* Mediterranean map: visual overrides only; keep Leaflet sizing and lifecycle. */
+html.is-in-app:has(#view-map:not([hidden])),html.is-in-app:has(#view-map:not([hidden])) body{background:#f5ebdd;}
+#home:has(#view-map:not([hidden])){background:#f5ebdd;color:#543b2b;--ink:#543b2b;--muted:#75634f;--accent:#626c43;--accent-contrast:#fff;}
+#home:has(#view-map:not([hidden])) .app-nav{background:#fff8ef;border-top-color:#dfd0bd;}
+#home:has(#view-map:not([hidden])) .app-nav button{color:#626c43;}
+#home:has(#view-map:not([hidden])) .app-nav button[aria-selected="true"]{background:#a84e30;color:#fff;}
+#view-map>.eyebrow{color:#626c43;}
+#view-map .map-title{color:#543b2b;}
+#view-map #map-search{background:#fff8ef;color:#543b2b;border-color:#c8b79f;}
+#view-map #map-search::placeholder{color:#75634f;}
+#view-map #map-search-results{background:#fff8ef;border-color:#c8b79f;box-shadow:0 8px 20px rgba(84,59,43,.18);}
+#view-map #map-search-results button{color:#543b2b;border-bottom-color:#e5d5c2;}
+#view-map #map-search-results p{color:#75634f;}
+#view-map .map-locate{background:#626c43;color:#fff;}
+#archi-map{background:#e5d5c2;box-shadow:0 2px 8px rgba(84,59,43,.12);}
+#archi-map .leaflet-marker-icon:not(.leaflet-div-icon){filter:grayscale(1) sepia(1) saturate(3) hue-rotate(325deg) brightness(.83);}
+#archi-map .leaflet-popup-content-wrapper,#archi-map .leaflet-popup-tip{background:#fff8ef;color:#543b2b;}
+#archi-map .archi-map-popup{color:#543b2b;}
+#archi-map .archi-map-popup strong{font:600 18px/1.2 Fraunces,Georgia,serif;}
+#archi-map .archi-map-popup span{color:#75634f;}
+#archi-map .archi-map-popup button{background:#a84e30;color:#fff;}
+#archi-map .archi-map-popup .archi-directions{background:#fff8ef;color:#626c43;border-color:#b7bda6;}
+#archi-map .leaflet-bar a{background:#fff8ef;color:#543b2b;border-bottom-color:#dfd0bd;}
+#archi-map .leaflet-control-attribution{background:rgba(255,248,239,.9);color:#543b2b;}
+#archi-map .leaflet-control-attribution a{color:#465331;}
