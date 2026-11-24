@@ -429,3 +429,13 @@
 #city-detail .city-guide h2,#city-detail .city-guide h3,#city-detail .city-guide p,#city-detail .city-guide li{color:#263235!important}
 #city-detail .city-guide-audio{background:#263235!important;color:#fff!important;border-color:#263235!important}
 #city-detail .city-guide-audio:focus-visible{outline:3px solid #8aa7a8;outline-offset:3px}
+
+/* Travel Mate: access-only Mediterranean palette; layout and transitions unchanged. */
+#auth .field { background: #fff8ef; border-color: #626c43; }
+#auth .field svg { stroke: #626c43; }
+#auth .field input { color: #543b2b; caret-color: #626c43; }
+#auth .field input::placeholder { color: #75634f; }
+#auth .field:focus-within { border-color: #626c43; box-shadow: 0 0 0 3px rgba(98,108,67,.35); }
+#auth .btn-primary { background: #fff8ef; color: #543b2b; }
+#auth.is-active .btn-primary { background: #a84e30; color: #ffffff; }
+#auth .btn-primary:focus-visible { outline: 2px solid #fff8ef; outline-offset: 3px; }
