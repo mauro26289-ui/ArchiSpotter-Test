@@ -485,3 +485,28 @@ html.is-in-app:has(#view-explore:not([hidden]) #country-overview:not([hidden])) 
 #country-overview .country-card::after {background:linear-gradient(180deg,transparent 20%,rgba(55,34,21,.83));}
 #country-overview .country-card span {font:600 23px/1.1 Fraunces,Georgia,serif;color:#fff8ef;left:13px;bottom:13px;}
 #country-overview .country-card:focus-visible,#country-overview .travel-destinations button:focus-visible {outline:3px solid #a84e30;outline-offset:-3px;}
+
+/* Mediterranean city and country detail: preserve navigation geometry and content. */
+#home:has(#view-explore:not([hidden]) :is(#country-detail,#city-detail):not([hidden])) {background:#f5ebdd;color:#543b2b;--paper:#f5ebdd;--ink:#543b2b;--muted:#75634f;--accent:#626c43;}
+html.is-in-app:has(#view-explore:not([hidden]) :is(#country-detail,#city-detail):not([hidden])),html.is-in-app:has(#view-explore:not([hidden]) :is(#country-detail,#city-detail):not([hidden])) body {background:#f5ebdd;}
+#home:has(#view-explore:not([hidden]) :is(#country-detail,#city-detail):not([hidden])) .app-nav {background:#fff8ef;border-top-color:#dfd0bd;}
+#home:has(#view-explore:not([hidden]) :is(#country-detail,#city-detail):not([hidden])) .app-nav button {color:#626c43;}
+#home:has(#view-explore:not([hidden]) :is(#country-detail,#city-detail):not([hidden])) .app-nav button[aria-selected="true"] {background:#a84e30;color:white;}
+#country-detail .country-cover,#city-detail .city-cover {border-radius:16px;background:#626c43;}
+#country-detail .country-cover::after,#city-detail .city-cover::after {background:linear-gradient(180deg,transparent 25%,rgba(55,34,21,.83));}
+#city-detail .city-cover {height:260px;}
+#country-detail .country-back,#city-detail .city-back {color:#626c43;}
+#country-detail .city-open span {color:#a84e30;}
+#country-detail .landmark-card {background:#fff8ef;border-radius:14px;overflow:hidden;border:1px solid #e5d5c2;}
+#country-detail .landmark-card img {border-radius:0;}
+#country-detail .landmark-card h4 {padding:0 10px 12px;color:#543b2b;}
+#city-detail .city-guide {background:#fff8ef!important;color:#543b2b!important;border-color:#e5d5c2;padding:22px 18px;box-shadow:0 3px 12px rgba(84,59,43,.06);}
+#city-detail .city-guide-kicker {color:#626c43!important;}
+#city-detail .city-guide h2,#city-detail .city-guide h3,#city-detail .city-guide p,#city-detail .city-guide li {color:#543b2b!important;}
+#city-detail .city-guide-audio {background:#a84e30!important;color:#fff!important;border-color:#a84e30!important;}
+#city-detail .city-guide-audio:focus-visible {outline-color:#626c43;}
+#city-detail .city-food {background:#fff8ef;border:1px solid #e5d5c2;border-radius:16px;padding:20px 18px;}
+#city-detail .city-food>h2 {color:#543b2b;}
+#city-detail .city-food-item h3 {color:#626c43;}
+#city-detail .city-food-item p {color:#75634f;}
+#city-detail .city-food-item:last-child {border-bottom:0;}
