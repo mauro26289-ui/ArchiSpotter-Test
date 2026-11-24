@@ -460,3 +460,16 @@
 #travel-preview h3 {margin:0 0 10px;font:600 20px Fraunces,serif;}
 #travel-preview button {margin:4px;padding:8px 12px;border:1px solid #626c43;border-radius:16px;background:#fff8ef;color:#543b2b;font:500 13px Inter,sans-serif;}
 #travel-preview button[aria-pressed=true]{background:#626c43;color:white;}
+
+/* Full-bleed welcome only: preserve the existing safe-area and other views. */
+html.is-in-app:has(#view-explore:not([hidden]) #country-overview:not([hidden])),
+html.is-in-app:has(#view-explore:not([hidden]) #country-overview:not([hidden])) body {background:#f5ebdd;}
+#home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) {background:#f5ebdd;color:#543b2b;padding-left:0;padding-right:0;}
+#home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) .app-heading {padding-left:20px;padding-right:20px;}
+#home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) .app-heading span {color:#626c43;}
+#country-overview {border-radius:0;padding:0 16px 16px;}
+#view-explore #country-overview .explore-hero {margin:0 -16px 12px;border-radius:0;}
+#home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) .app-nav {background:#fff8ef;border-top-color:#dfd0bd;}
+#home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) .app-nav button {color:#626c43;}
+#home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) .app-nav button[aria-selected="true"] {background:#a84e30;color:#fff;}
+#country-overview .travel-search input::placeholder {color:#75634f;}
