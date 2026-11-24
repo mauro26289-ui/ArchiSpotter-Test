@@ -185,5 +185,98 @@ window.ArchiSpotterClimate = {
       56
     ],
     "source": "https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?l=5530E"
+  },
+  "it|Florencia": {
+    "source": "https://worldweather.wmo.int/en/city.html?cityId=602",
+    "label": "OMM / WMO · Firenze · 1971–2000",
+    "min": [
+      2,
+      2.5,
+      4.9,
+      7.5,
+      11.6,
+      15,
+      17.7,
+      17.7,
+      14.4,
+      10.1,
+      5.1,
+      2.6
+    ],
+    "max": [
+      10.9,
+      12.5,
+      15.7,
+      18.5,
+      23.7,
+      27.7,
+      31.4,
+      31.5,
+      26.7,
+      20.9,
+      14.7,
+      11.1
+    ],
+    "rain": [
+      60.5,
+      63.7,
+      63.5,
+      86.4,
+      70,
+      57.1,
+      36.7,
+      56,
+      79.6,
+      104.2,
+      113.6,
+      81.3
+    ]
+  },
+  "it|Milán": {
+    "source": "https://www.notamet.com/climate/LIML",
+    "label": "NOAA GSOD / NOTAMET · Milano Linate · 1991–2020",
+    "min": [
+      -0.4,
+      0.6,
+      4.5,
+      8.4,
+      13.1,
+      17.3,
+      19.3,
+      19,
+      14.8,
+      10.4,
+      5.3,
+      0.6
+    ],
+    "max": [
+      7.4,
+      10.3,
+      15.6,
+      19.3,
+      24.1,
+      28.3,
+      30.7,
+      30.3,
+      25.4,
+      19,
+      12.4,
+      7.6
+    ],
+    "rain": [
+      40.7,
+      36.2,
+      49.1,
+      68.4,
+      79.6,
+      71.5,
+      74.2,
+      57,
+      81.2,
+      79.2,
+      114.1,
+      49.9
+    ],
+    "method": "GSOD synoptic daily extremes; may differ from official calendar-day normals."
   }
 };
