@@ -602,3 +602,5 @@ html.is-in-app:has(#view-settings:not([hidden])),html.is-in-app:has(#view-settin
 #travel-preview .planner-calendar-city dl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;font:12px/1.4 Inter,sans-serif;}
 #travel-preview .planner-calendar-city dt{color:#543b2b;font-weight:600;}
 #travel-preview .planner-calendar-city dd{margin:0;color:#75634f;text-align:right;}
+
+#travel-preview .planner-cancel{min-height:44px;padding:9px 12px;border:1px solid #c9a18c;border-radius:10px;background:#fff8ef;color:#a84e30;font:600 13px Inter,sans-serif;cursor:pointer;}
