@@ -473,3 +473,15 @@ html.is-in-app:has(#view-explore:not([hidden]) #country-overview:not([hidden])) 
 #home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) .app-nav button {color:#626c43;}
 #home:has(#view-explore:not([hidden]) #country-overview:not([hidden])) .app-nav button[aria-selected="true"] {background:#a84e30;color:#fff;}
 #country-overview .travel-search input::placeholder {color:#75634f;}
+
+/* Mediterranean destination and country cards. */
+#country-overview .travel-destinations {gap:12px;padding:2px 0 8px;}
+#country-overview .travel-destinations button {flex-basis:42%;height:184px;border-radius:16px;box-shadow:0 2px 5px rgba(84,59,43,.12);}
+#country-overview .travel-destinations b {padding:36px 12px 12px;background:linear-gradient(transparent,rgba(43,27,17,.9));font:600 20px/1.12 Fraunces,Georgia,serif;}
+#country-overview .travel-destinations small {display:block;margin-top:5px;font:400 12px/1.35 Inter,sans-serif;color:#fff8ef;}
+#country-overview .travel-destinations .travel-photo-pending {background:linear-gradient(145deg,#929b77,#4e583b);}
+#country-overview .countries-grid {gap:12px;}
+#country-overview .country-card {aspect-ratio:1.28;border-radius:16px;background:#626c43;box-shadow:0 2px 6px rgba(84,59,43,.13);}
+#country-overview .country-card::after {background:linear-gradient(180deg,transparent 20%,rgba(55,34,21,.83));}
+#country-overview .country-card span {font:600 23px/1.1 Fraunces,Georgia,serif;color:#fff8ef;left:13px;bottom:13px;}
+#country-overview .country-card:focus-visible,#country-overview .travel-destinations button:focus-visible {outline:3px solid #a84e30;outline-offset:-3px;}
