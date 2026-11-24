@@ -15,6 +15,20 @@ var planTabs={es:['Países','Ciudades','ciudades disponibles'],en:['Countries','
 var planDates={mode:'flex',month:'',start:'',end:''};
 var dateWords={es:['¿Cuándo quieres viajar?','Fechas concretas','Tengo flexibilidad','Mes preferido','Fecha de ida','Fecha de vuelta','Todavía no lo sé','Cambiar destinos','Continuar','Selecciona fechas válidas','Datos de temporadas, clima y precios pendientes de incorporar.','Fechas seleccionadas'],en:['When would you like to travel?','Specific dates','Flexible dates','Preferred month','Start date','End date','Not sure yet','Change destinations','Continue','Choose valid dates','Season, climate and price data are not yet available.','Selected dates'],it:['Quando vuoi viaggiare?','Date precise','Date flessibili','Mese preferito','Data di partenza','Data di ritorno','Non lo so ancora','Cambia destinazioni','Continua','Scegli date valide','Dati su stagioni, clima e prezzi ancora da integrare.','Date selezionate']};
 var planDateReview=false;
+var calendarWords={es:['Compara los meses','Temporada turística','Coste de alojamiento','Clima','Eventos','Sin datos verificados','Seleccionar mes','Baja','Media','Alta'],en:['Compare months','Tourist season','Accommodation cost','Climate','Events','No verified data','Select month','Low','Medium','High'],it:['Confronta i mesi','Stagione turistica','Costo alloggio','Clima','Eventi','Dati non verificati','Seleziona mese','Bassa','Media','Alta']};
+var calendarMonth=0;
+function renderCalendar(section,l,idx){
+ var w=calendarWords[l],wrap=document.createElement('section');wrap.className='planner-calendar';
+ var title=document.createElement('h3');title.textContent=w[0];wrap.append(title);
+ var legend=document.createElement('div');legend.className='planner-season-legend';w.slice(7).forEach(function(t,i){var span=document.createElement('span');span.className='planner-season-'+i;span.textContent=t;legend.append(span);});wrap.append(legend);
+ var month=Number(planDates.month)||calendarMonth||1;
+ var select=document.createElement('select');select.setAttribute('aria-label',w[6]);for(var m=1;m<=12;m++){var option=document.createElement('option');option.value=String(m);option.textContent=new Intl.DateTimeFormat(l,{month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(2026,m-1,1)));select.append(option);}select.value=String(month);select.onchange=function(){calendarMonth=Number(select.value);if(planDates.mode==='flex')planDates.month=select.value;renderPlan();};wrap.append(select);
+ cities.filter(function(item){return planSelected.has(item.country+'|'+item.city[0]);}).forEach(function(item){
+ var card=document.createElement('article');card.className='planner-calendar-city';var h=document.createElement('h4');h.textContent=item.city[idx];card.append(h);
+ var months=document.createElement('div');months.className='planner-calendar-grid';for(var m=1;m<=12;m++){(function(n){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,n-1,1)));b.setAttribute('aria-pressed',String(n===month));b.title=w[5];b.onclick=function(){calendarMonth=n;if(planDates.mode==='flex')planDates.month=String(n);renderPlan();};months.append(b);})(m);}card.append(months);
+ var dl=document.createElement('dl');w.slice(1,5).forEach(function(label){var dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=w[5];dl.append(dt,dd);});card.append(dl);wrap.append(card);
+ });section.append(wrap);
+}
 function renderDates(section,l,idx){
  var w=dateWords[l],title=document.createElement('h3');title.textContent=planDateReview?w[11]:w[0];section.append(title);
  var modes=document.createElement('div');modes.className='planner-modes';
@@ -32,7 +46,7 @@ function renderDates(section,l,idx){
  for(var m=0;m<12;m++){(function(month){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,month,1)));b.setAttribute('aria-pressed',String(planDates.month===String(month+1)));b.onclick=function(){planDates.month=String(month+1);planDateReview=false;renderPlan();};months.append(b);})(m);}fields.append(months);
  var unsure=document.createElement('button');unsure.type='button';unsure.className='planner-country-toggle';unsure.textContent=w[6];unsure.setAttribute('aria-pressed',String(!planDates.month));unsure.onclick=function(){planDates.month='';planDateReview=false;renderPlan();};fields.append(unsure);
  }
- var note=document.createElement('p');note.textContent=w[10];section.append(note);
+ renderCalendar(section,l,idx);var note=document.createElement('p');note.textContent=w[10];section.append(note);
  next.onclick=function(){if(!valid())return;planDateReview=true;renderPlan();};sync();if(!planDateReview)section.append(next);
  var back=document.createElement('button');back.type='button';back.className='planner-country-toggle';back.textContent=w[7];back.onclick=function(){planReview=false;planDateReview=false;renderPlan();};section.append(back);
 }
