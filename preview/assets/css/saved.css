@@ -16,3 +16,24 @@
 .trip-order button:disabled{opacity:.25;cursor:default}
 #view-trip .saved-card>img{width:82px}
 @media(max-width:370px){#view-trip .saved-card>img{width:65px}}
+
+/* Mediterranean My Trip: preserve saved data, route actions and ordering. */
+html.is-in-app:has(#view-trip:not([hidden])),html.is-in-app:has(#view-trip:not([hidden])) body{background:#f5ebdd;}
+#home:has(#view-trip:not([hidden])){background:#f5ebdd;color:#543b2b;--paper:#f5ebdd;--ink:#543b2b;--muted:#75634f;--accent:#626c43;--accent-contrast:#fff;}
+#home:has(#view-trip:not([hidden])) .app-nav{background:#fff8ef;border-top-color:#dfd0bd;}
+#home:has(#view-trip:not([hidden])) .app-nav button{color:#626c43;}
+#home:has(#view-trip:not([hidden])) .app-nav button[aria-selected="true"]{background:#a84e30;color:#fff;}
+#view-trip>.eyebrow{color:#626c43;}
+#view-trip>h2{font:600 30px/1.2 Fraunces,Georgia,serif;color:#543b2b;margin:10px 0 16px;}
+#view-trip .saved-empty{background:#fff8ef;border:1px solid #e5d5c2;border-radius:16px;padding:24px 18px;text-align:center;}
+#view-trip .saved-count{color:#75634f;}
+#view-trip .trip-map-actions button{background:#a84e30;color:#fff;border-color:#a84e30;min-height:44px;}
+#view-trip .saved-card{background:#fff8ef;border-color:#e5d5c2;border-radius:16px;box-shadow:0 2px 6px rgba(84,59,43,.06);gap:9px;}
+#view-trip .saved-card-body strong{color:#543b2b;}
+#view-trip .saved-card-body>span{color:#75634f;}
+#view-trip .saved-card-actions button{background:#626c43;color:#fff;min-height:36px;}
+#view-trip .saved-card-actions .saved-remove{background:transparent;color:#a84e30;border-color:#c9a18c;}
+#view-trip .trip-order-number{background:#a84e30;color:#fff;}
+#view-trip .trip-order button{color:#626c43;border-color:#b7bda6;}
+#view-trip .trip-order button:disabled{opacity:.35;}
+#view-trip button:focus-visible{outline:2px solid #a84e30;outline-offset:2px;}
