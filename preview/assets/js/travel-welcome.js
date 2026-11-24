@@ -12,17 +12,41 @@ var planWords={es:['¿Adónde quieres viajar?','Elige una o varias ciudades para
 var planReview=false,planMode='countries',planExpanded=new Set();
 var planCountryNames={it:['Italia','Italy','Italia'],es:['España','Spain','Spagna'],fr:['Francia','France','Francia'],gr:['Grecia','Greece','Grecia'],gb:['Reino Unido','United Kingdom','Regno Unito'],de:['Alemania','Germany','Germania'],pt:['Portugal','Portugal','Portogallo'],ar:['Argentina','Argentina','Argentina'],ch:['Suiza','Switzerland','Svizzera']};
 var planTabs={es:['Países','Ciudades','ciudades disponibles'],en:['Countries','Cities','cities available'],it:['Paesi','Città','città disponibili']};
+var planDates={mode:'flex',month:'',start:'',end:''};
+var dateWords={es:['¿Cuándo quieres viajar?','Fechas concretas','Tengo flexibilidad','Mes preferido','Fecha de ida','Fecha de vuelta','Todavía no lo sé','Cambiar destinos','Continuar','Selecciona fechas válidas','Datos de temporadas, clima y precios pendientes de incorporar.','Fechas seleccionadas'],en:['When would you like to travel?','Specific dates','Flexible dates','Preferred month','Start date','End date','Not sure yet','Change destinations','Continue','Choose valid dates','Season, climate and price data are not yet available.','Selected dates'],it:['Quando vuoi viaggiare?','Date precise','Date flessibili','Mese preferito','Data di partenza','Data di ritorno','Non lo so ancora','Cambia destinazioni','Continua','Scegli date valide','Dati su stagioni, clima e prezzi ancora da integrare.','Date selezionate']};
+var planDateReview=false;
+function renderDates(section,l,idx){
+ var w=dateWords[l],title=document.createElement('h3');title.textContent=planDateReview?w[11]:w[0];section.append(title);
+ var modes=document.createElement('div');modes.className='planner-modes';
+ ['fixed','flex'].forEach(function(mode,i){var b=document.createElement('button');b.type='button';b.textContent=w[i+1];b.setAttribute('aria-pressed',String(planDates.mode===mode));b.onclick=function(){planDates.mode=mode;planDateReview=false;renderPlan();};modes.append(b);});section.append(modes);
+ var fields=document.createElement('div');fields.className='planner-date-fields';section.append(fields);
+ var next=document.createElement('button');next.type='button';next.className='planner-next';next.textContent=w[8];
+ function valid(){return planDates.mode==='flex'||!!(planDates.start&&planDates.end&&planDates.end>=planDates.start);}
+ function sync(){next.disabled=!valid();if(endInput)endInput.min=planDates.start;}
+ var endInput=null;
+ if(planDates.mode==='fixed'){
+ ['start','end'].forEach(function(key,i){var label=document.createElement('label');label.textContent=w[4+i];var input=document.createElement('input');input.type='date';input.value=planDates[key];if(key==='end')endInput=input;input.onchange=function(){planDates[key]=input.value;planDateReview=false;sync();};label.append(input);fields.append(label);});
+ }else{
+ var label=document.createElement('p');label.textContent=w[3];fields.append(label);
+ var months=document.createElement('div');months.className='planner-months';
+ for(var m=0;m<12;m++){(function(month){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,month,1)));b.setAttribute('aria-pressed',String(planDates.month===String(month+1)));b.onclick=function(){planDates.month=String(month+1);planDateReview=false;renderPlan();};months.append(b);})(m);}fields.append(months);
+ var unsure=document.createElement('button');unsure.type='button';unsure.className='planner-country-toggle';unsure.textContent=w[6];unsure.setAttribute('aria-pressed',String(!planDates.month));unsure.onclick=function(){planDates.month='';planDateReview=false;renderPlan();};fields.append(unsure);
+ }
+ var note=document.createElement('p');note.textContent=w[10];section.append(note);
+ next.onclick=function(){if(!valid())return;planDateReview=true;renderPlan();};sync();if(!planDateReview)section.append(next);
+ var back=document.createElement('button');back.type='button';back.className='planner-country-toggle';back.textContent=w[7];back.onclick=function(){planReview=false;planDateReview=false;renderPlan();};section.append(back);
+}
 function renderPlan(){
  var l=lang(),idx={es:0,en:1,it:2}[l],w=planWords[l],tabs=planTabs[l];body.replaceChildren();
  var section=document.createElement('section');section.className='planner-start';
  var heading=document.createElement('h3');heading.textContent=planReview?w[4]:w[0];section.append(heading);
- var intro=document.createElement('p');intro.textContent=planReview?w[6]:w[1];section.append(intro);
+ var intro=document.createElement('p');intro.textContent=planReview?'':w[1];section.append(intro);
  function countryName(code){return (planCountryNames[code]||[code,code,code])[idx];}
  function cityKey(item){return item.country+'|'+item.city[0];}
  function cityGrid(items){var grid=document.createElement('div');grid.className='planner-cities';
  items.forEach(function(item){var key=cityKey(item);var b=document.createElement(planReview?'div':'button');b.className='planner-city';if(!planReview){b.type='button';b.setAttribute('aria-pressed',String(planSelected.has(key)));b.onclick=function(){if(planSelected.has(key))planSelected.delete(key);else planSelected.add(key);renderPlan();};}
  var title=document.createElement('strong');title.textContent=item.city[idx];var sub=document.createElement('small');sub.textContent=countryName(item.country)+' · '+item.city[4].length+' '+w[7];b.append(title,sub);grid.append(b);});return grid;}
- if(planReview){section.append(cityGrid(cities.filter(function(item){return planSelected.has(cityKey(item));})));}
+ if(planReview){section.append(cityGrid(cities.filter(function(item){return planSelected.has(cityKey(item));})));renderDates(section,l,idx);body.append(section);return;}
  else{
  var modes=document.createElement('div');modes.className='planner-modes';['countries','cities'].forEach(function(mode,i){var button=document.createElement('button');button.type='button';button.textContent=tabs[i];button.setAttribute('aria-pressed',String(planMode===mode));button.onclick=function(){planMode=mode;renderPlan();};modes.append(button);});section.append(modes);
  if(planMode==='cities'){section.append(cityGrid(cities.slice().sort(function(a,b){return a.city[idx].localeCompare(b.city[idx],l);})));}else{
