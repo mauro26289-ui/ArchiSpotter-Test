@@ -579,3 +579,10 @@ html.is-in-app:has(#view-settings:not([hidden])),html.is-in-app:has(#view-settin
 #travel-preview .planner-country{display:grid;gap:8px;}
 #travel-preview .planner-country-toggle{width:100%;min-height:48px;padding:12px;text-align:left;background:#fff8ef;color:#543b2b;border:1px solid #c8b79f;border-radius:12px;font:600 14px/1.4 Inter,sans-serif;}
 #travel-preview .planner-country-toggle[aria-expanded="true"]{border-color:#626c43;}
+
+#travel-preview .planner-date-fields{display:grid;gap:10px;}
+#travel-preview .planner-date-fields label{display:grid;gap:6px;color:#543b2b;font:600 13px Inter,sans-serif;min-width:0;}
+#travel-preview .planner-date-fields input{box-sizing:border-box;width:100%;min-width:0;min-height:44px;border:1px solid #c8b79f;border-radius:10px;padding:10px;background:#fff8ef;color:#543b2b;font:14px Inter,sans-serif;color-scheme:light;}
+#travel-preview .planner-months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+#travel-preview .planner-months button{min-height:44px;border:1px solid #c8b79f;border-radius:10px;background:#fff8ef;color:#543b2b;font:600 14px Inter,sans-serif;}
+#travel-preview .planner-months button[aria-pressed="true"],#travel-preview .planner-date-fields button[aria-pressed="true"]{background:#626c43;color:#fff;border-color:#626c43;}
