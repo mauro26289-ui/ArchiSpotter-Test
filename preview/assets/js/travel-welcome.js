@@ -45,7 +45,7 @@ function renderDates(section,l,idx){
  var label=document.createElement('p');label.textContent=w[3];fields.append(label);
  var months=document.createElement('div');months.className='planner-months';
  for(var m=0;m<12;m++){(function(month){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,month,1)));b.setAttribute('aria-pressed',String(planDates.month===String(month+1)));b.onclick=function(){planDates.month=String(month+1);planDateReview=false;renderPlan();};months.append(b);})(m);}fields.append(months);
- var unsure=document.createElement('button');unsure.type='button';unsure.className='planner-country-toggle';unsure.textContent=w[6];unsure.setAttribute('aria-pressed',String(!planDates.month));unsure.onclick=function(){planDates.month='';planDateReview=false;renderPlan();};fields.append(unsure);
+
  }
  renderCalendar(section,l,idx);var note=document.createElement('p');note.textContent=w[10];section.append(note);
  next.onclick=function(){if(!valid())return;planDateReview=true;renderPlan();reveal(body.querySelector('.planner-date-heading'));};sync();if(!planDateReview)section.append(next);
