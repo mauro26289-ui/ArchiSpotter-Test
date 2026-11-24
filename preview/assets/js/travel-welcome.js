@@ -51,11 +51,18 @@ function renderDates(section,l,idx){
  next.onclick=function(){if(!valid())return;planDateReview=true;renderPlan();reveal(body.querySelector('.planner-date-heading'));};sync();if(!planDateReview)section.append(next);
  var back=document.createElement('button');back.type='button';back.className='planner-country-toggle';back.textContent=w[7];back.onclick=function(){planReview=false;planDateReview=false;renderPlan();reveal(panel);};section.append(back);
 }
+var cancelWords={es:['Cancelar planificación','¿Quieres cancelar la planificación? Se perderán los destinos y fechas seleccionados.'],en:['Cancel planning','Cancel planning? Your selected destinations and dates will be lost.'],it:['Annulla pianificazione','Annullare la pianificazione? Le destinazioni e le date selezionate andranno perse.']};
+function cancelPlan(){
+ if(!window.confirm(cancelWords[lang()][1]))return;
+ planSelected.clear();planExpanded.clear();planReview=false;planDateReview=false;planMode='countries';planDates={mode:'flex',month:'',start:'',end:''};calendarMonth=0;
+ active='';panel.hidden=true;body.replaceChildren();reveal(root.querySelector('[data-travel="plan"]'));
+}
+function addCancel(section){var b=document.createElement('button');b.type='button';b.className='planner-cancel';b.textContent=cancelWords[lang()][0];b.onclick=cancelPlan;section.append(b);}
 function renderPlan(){
  var sc=document.querySelector('.app-content'),previousTop=sc?sc.scrollTop:0;
  var l=lang(),idx={es:0,en:1,it:2}[l],w=planWords[l],tabs=planTabs[l];body.replaceChildren();
  var section=document.createElement('section');section.className='planner-start';
- var heading=document.createElement('h3');heading.textContent=planReview?w[4]:w[0];section.append(heading);
+ var heading=document.createElement('h3');heading.textContent=planReview?w[4]:w[0];section.append(heading);addCancel(section);
  var intro=document.createElement('p');intro.textContent=planReview?'':w[1];section.append(intro);
  function countryName(code){return (planCountryNames[code]||[code,code,code])[idx];}
  function cityKey(item){return item.country+'|'+item.city[0];}
