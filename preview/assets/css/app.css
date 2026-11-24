@@ -586,3 +586,19 @@ html.is-in-app:has(#view-settings:not([hidden])),html.is-in-app:has(#view-settin
 #travel-preview .planner-months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
 #travel-preview .planner-months button{min-height:44px;border:1px solid #c8b79f;border-radius:10px;background:#fff8ef;color:#543b2b;font:600 14px Inter,sans-serif;}
 #travel-preview .planner-months button[aria-pressed="true"],#travel-preview .planner-date-fields button[aria-pressed="true"]{background:#626c43;color:#fff;border-color:#626c43;}
+
+#travel-preview .planner-calendar{display:grid;gap:12px;margin-top:8px;}
+#travel-preview .planner-season-legend{display:flex;gap:8px;flex-wrap:wrap;}
+#travel-preview .planner-season-legend span{padding:5px 9px;border-radius:7px;font:600 11px Inter,sans-serif;}
+#travel-preview .planner-season-0{background:#626c43;color:white;}
+#travel-preview .planner-season-1{background:#d5ae65;color:#543b2b;}
+#travel-preview .planner-season-2{background:#a84e30;color:white;}
+#travel-preview .planner-calendar select{min-height:44px;border:1px solid #c8b79f;border-radius:10px;background:#fff8ef;color:#543b2b;padding:8px;}
+#travel-preview .planner-calendar-city{display:grid;gap:10px;padding:12px;border:1px solid #e5d5c2;border-radius:14px;background:#fff8ef;}
+#travel-preview .planner-calendar-city h4{font:600 20px Fraunces,Georgia,serif;margin:0;color:#543b2b;}
+#travel-preview .planner-calendar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;}
+#travel-preview .planner-calendar-grid button{min-height:36px;padding:4px;border:1px solid #d9cbbb;border-radius:7px;background:#eee7dc;color:#543b2b;font:12px Inter,sans-serif;}
+#travel-preview .planner-calendar-grid button[aria-pressed="true"]{outline:2px solid #626c43;outline-offset:-2px;}
+#travel-preview .planner-calendar-city dl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;font:12px/1.4 Inter,sans-serif;}
+#travel-preview .planner-calendar-city dt{color:#543b2b;font-weight:600;}
+#travel-preview .planner-calendar-city dd{margin:0;color:#75634f;text-align:right;}
