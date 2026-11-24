@@ -544,3 +544,19 @@ html.is-in-app:has(#view-explore:not([hidden]) #monument-detail:not([hidden])),h
 #monument-detail .audio-progress-range::-moz-range-progress{height:5px;background:#a84e30;}
 #monument-detail .audio-progress-range::-moz-range-thumb{width:15px;height:15px;border:0;border-radius:50%;background:#a84e30;}
 #monument-detail .audio-progress-times{display:flex;justify-content:space-between;color:#75634f;font:12px Inter,sans-serif;font-variant-numeric:tabular-nums;}
+
+/* Mediterranean Settings: scoped visual treatment, no session or language changes. */
+html.is-in-app:has(#view-settings:not([hidden])),html.is-in-app:has(#view-settings:not([hidden])) body{background:#f5ebdd;}
+#home:has(#view-settings:not([hidden])){background:#f5ebdd;color:#543b2b;--paper:#f5ebdd;--ink:#543b2b;--muted:#75634f;--accent:#626c43;--accent-contrast:#fff;}
+#home:has(#view-settings:not([hidden])) .app-nav{background:#fff8ef;border-top-color:#dfd0bd;}
+#home:has(#view-settings:not([hidden])) .app-nav button{color:#626c43;}
+#home:has(#view-settings:not([hidden])) .app-nav button[aria-selected="true"]{background:#a84e30;color:#fff;}
+#view-settings>.eyebrow{color:#626c43;}
+#view-settings>h2{font:600 30px/1.2 Fraunces,Georgia,serif;color:#543b2b;margin:10px 0 16px;}
+#view-settings .app-panel{background:#fff8ef;border-color:#e5d5c2;box-shadow:0 2px 6px rgba(84,59,43,.06);}
+#view-settings .app-panel h3{color:#543b2b;}
+#view-settings #welcome-user{color:#75634f;font:13px/1.5 Inter,sans-serif;overflow-wrap:anywhere;}
+#view-settings .lang-choices button{background:#fff8ef;color:#626c43;border-color:#b7bda6;min-height:44px;cursor:pointer;}
+#view-settings .lang-choices button[aria-pressed="true"]{background:#626c43;color:#fff;border-color:#626c43;}
+#view-settings #logout-btn{background:#fff8ef;color:#a84e30;border:1px solid #c9a18c;min-height:44px;}
+#view-settings button:focus-visible{outline:2px solid #a84e30;outline-offset:2px;}
