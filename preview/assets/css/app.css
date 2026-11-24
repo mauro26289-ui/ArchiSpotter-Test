@@ -510,3 +510,27 @@ html.is-in-app:has(#view-explore:not([hidden]) :is(#country-detail,#city-detail)
 #city-detail .city-food-item h3 {color:#626c43;}
 #city-detail .city-food-item p {color:#75634f;}
 #city-detail .city-food-item:last-child {border-bottom:0;}
+
+/* Mediterranean monument detail, scoped to the visible explore panel. */
+html.is-in-app:has(#view-explore:not([hidden]) #monument-detail:not([hidden])),html.is-in-app:has(#view-explore:not([hidden]) #monument-detail:not([hidden])) body {background:#f5ebdd;}
+#home:has(#view-explore:not([hidden]) #monument-detail:not([hidden])) {background:#f5ebdd;color:#543b2b;--paper:#f5ebdd;--ink:#543b2b;--muted:#75634f;--accent:#626c43;--accent-contrast:#fff;}
+#home:has(#view-explore:not([hidden]) #monument-detail:not([hidden])) .app-nav {background:#fff8ef;border-top-color:#dfd0bd;}
+#home:has(#view-explore:not([hidden]) #monument-detail:not([hidden])) .app-nav button {color:#626c43;}
+#home:has(#view-explore:not([hidden]) #monument-detail:not([hidden])) .app-nav button[aria-selected="true"] {background:#a84e30;color:#fff;}
+#monument-detail .monument-back {color:#626c43;}
+#monument-detail .monument-cover {background:#fff8ef;border:1px solid #e5d5c2;border-radius:16px;}
+#monument-detail .monument-cover-photo {background:#626c43;}
+#monument-detail .monument-cover-info .eyebrow {color:#626c43;}
+#monument-detail .monument-cover-info h2 {color:#543b2b;}
+#monument-detail .monument-meta {color:#75634f;}
+#monument-detail .monument-actions {flex-wrap:wrap;}
+#monument-detail .monument-actions button {background:#fff8ef;color:#626c43;border-color:#b7bda6;flex:1;}
+#monument-detail .monument-actions .audio-action {flex:1 0 100%;text-align:center;background:#a84e30;color:#fff;border-color:#a84e30;}
+#monument-detail .monument-actions button[aria-pressed="true"] {background:#626c43;color:#fff;border-color:#626c43;}
+#monument-detail .monument-actions button:disabled {opacity:.65;}
+#monument-detail .monument-story {background:#fff8ef;border:1px solid #e5d5c2;border-radius:16px;padding:22px 18px;}
+#monument-detail .monument-story h3,#monument-detail .monument-editorial h3 {color:#543b2b;}
+#monument-detail .monument-story p {color:#543b2b;font-size:15px;line-height:1.8;margin-bottom:0;}
+#monument-detail .monument-editorial {padding:0 18px 30px;color:#543b2b;}
+#monument-detail #monument-official-site {color:#626c43;background:#fff8ef;border-color:#b7bda6;}
+#monument-detail .monument-photo-choice[aria-pressed="true"] {background:#626c43;color:#fff;border-color:#626c43;}
