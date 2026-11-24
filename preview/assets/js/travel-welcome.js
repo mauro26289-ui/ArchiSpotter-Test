@@ -23,7 +23,7 @@ function renderCalendar(section,l,idx){
  var title=document.createElement('h3');title.textContent=w[0];wrap.append(title);
  var legend=document.createElement('div');legend.className='planner-season-legend';w.slice(7).forEach(function(t,i){var span=document.createElement('span');span.className='planner-season-'+i;span.textContent=t;legend.append(span);});wrap.append(legend);
  var month=Number(planDates.month)||calendarMonth||1;
- var select=document.createElement('select');select.setAttribute('aria-label',w[6]);for(var m=1;m<=12;m++){var option=document.createElement('option');option.value=String(m);option.textContent=new Intl.DateTimeFormat(l,{month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(2026,m-1,1)));select.append(option);}select.value=String(month);select.onchange=function(){calendarMonth=Number(select.value);if(planDates.mode==='flex')planDates.month=select.value;renderPlan();};wrap.append(select);
+
  cities.filter(function(item){return planSelected.has(item.country+'|'+item.city[0]);}).forEach(function(item){
  var card=document.createElement('article');card.className='planner-calendar-city';var h=document.createElement('h4');h.textContent=item.city[idx];card.append(h);
  var months=document.createElement('div');months.className='planner-calendar-grid';for(var m=1;m<=12;m++){(function(n){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,n-1,1)));b.setAttribute('aria-pressed',String(n===month));b.title=w[5];b.onclick=function(){calendarMonth=n;if(planDates.mode==='flex')planDates.month=String(n);renderPlan();};months.append(b);})(m);}card.append(months);
