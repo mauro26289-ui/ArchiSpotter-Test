@@ -32,11 +32,44 @@ window.ArchiSpotterMonuments = (function () {
         en:{play:'Play audio guide · ElevenLabs',pause:'Pause audio guide',resume:'Resume audio guide',error:'Could not load the audio. Check your connection.'},
         it:{play:'Ascolta audioguida · ElevenLabs',pause:'Pausa audioguida',resume:'Riprendi audioguida',error:'Impossibile caricare l’audio. Controlla la connessione.'}
       };
+
+      var progressPanel=null, progressRange=null, progressTime=null, progressDuration=null, progressStarted=false;
+      function formatAudioTime(value){
+        var n=Number.isFinite(value)?Math.max(0,Math.floor(value)):0;
+        return Math.floor(n/60)+':'+String(n%60).padStart(2,'0');
+      }
+      function syncAudioProgress(){
+        if(!progressPanel)return;
+        var duration=narrationAudio.duration, valid=Number.isFinite(duration)&&duration>0;
+        progressPanel.hidden=!progressStarted||!activeAudioKey;
+        progressRange.disabled=!valid;
+        progressRange.max=valid?duration:1;
+        progressRange.value=valid?Math.min(duration,narrationAudio.currentTime):0;
+        progressRange.style.setProperty('--audio-progress',(valid?100*narrationAudio.currentTime/duration:0)+'%');
+        progressTime.textContent=formatAudioTime(narrationAudio.currentTime);
+        progressDuration.textContent=valid?formatAudioTime(duration):'–:––';
+      }
+      function ensureAudioProgress(){
+        if(!progressPanel){
+          progressPanel=document.createElement('div');progressPanel.className='audio-progress-panel';progressPanel.hidden=true;
+          progressRange=document.createElement('input');progressRange.type='range';progressRange.min=0;progressRange.step='any';progressRange.className='audio-progress-range';
+          var times=document.createElement('div');times.className='audio-progress-times';
+          progressTime=document.createElement('span');progressDuration=document.createElement('span');times.append(progressTime,progressDuration);
+          progressPanel.append(progressRange,times);audioButton.after(progressPanel);
+          progressRange.addEventListener('input',function(){if(Number.isFinite(narrationAudio.duration)&&activeAudioKey){narrationAudio.currentTime=Number(progressRange.value);syncAudioProgress();}});
+        }
+        progressRange.setAttribute('aria-label',({es:'Posición de reproducción',en:'Playback position',it:'Posizione di riproduzione'})[currentLang()]);
+        syncAudioProgress();
+      }
+      ['timeupdate','loadedmetadata','durationchange','seeking','seeked','emptied','ended','pause'].forEach(function(event){narrationAudio.addEventListener(event,syncAudioProgress);});
+      narrationAudio.addEventListener('play',function(){progressStarted=true;syncAudioProgress();});
       function stopNarration(){
+        progressStarted=false;
         narrationAudio.pause();
         narrationAudio.removeAttribute('src');
         narrationAudio.load();
         activeAudioKey='';
+        syncAudioProgress();
         if(audioButton)audioButton.textContent=audioLabels[currentLang()].play;
       }
       function updateAudioButton(){
@@ -55,6 +88,7 @@ window.ArchiSpotterMonuments = (function () {
       function renderNarrationControl(place,language){
         audioButton=document.querySelector('#monument-detail .audio-action');
         if(!audioButton)return;
+        ensureAudioProgress();
         var id=existingAudioIds[place[0]];
         audioButton.hidden=false;
         audioButton.disabled=!id || (audioAvailability[id] && !audioAvailability[id][language]);
