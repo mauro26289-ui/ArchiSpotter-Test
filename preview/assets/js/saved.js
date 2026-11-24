@@ -34,7 +34,7 @@ window.ArchiSpotterSaved=(function(){
             var url='https://www.google.com/maps/dir/?api=1&travelmode=walking';
             if(points.length===1)url+='&destination='+encodeURIComponent(points[0]);
             else {url+='&origin='+encodeURIComponent(points[0])+'&destination='+encodeURIComponent(points[points.length-1]);if(points.length>2)url+='&waypoints='+encodeURIComponent(points.slice(1,-1).join('|'));}
-            window.open(url,'_blank','noopener,noreferrer');
+            window.location.assign(url);
           });actions.appendChild(button);root.appendChild(actions);
         });
       }
