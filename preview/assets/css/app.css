@@ -572,3 +572,10 @@ html.is-in-app:has(#view-settings:not([hidden])),html.is-in-app:has(#view-settin
 #travel-preview .planner-city[aria-pressed="true"]{background:#626c43;color:#fff;border-color:#626c43;}
 #travel-preview .planner-next{width:100%;min-height:44px;background:#a84e30;color:#fff;border:0;border-radius:12px;font:600 14px Inter,sans-serif;}
 #travel-preview .planner-next:disabled{opacity:.45;cursor:default;}
+
+#travel-preview .planner-modes{display:flex;gap:8px;}
+#travel-preview .planner-modes button{flex:1;min-height:44px;border:1px solid #b7bda6;border-radius:10px;background:#fff8ef;color:#626c43;font:600 14px Inter,sans-serif;}
+#travel-preview .planner-modes button[aria-pressed="true"]{background:#626c43;color:#fff;border-color:#626c43;}
+#travel-preview .planner-country{display:grid;gap:8px;}
+#travel-preview .planner-country-toggle{width:100%;min-height:48px;padding:12px;text-align:left;background:#fff8ef;color:#543b2b;border:1px solid #c8b79f;border-radius:12px;font:600 14px/1.4 Inter,sans-serif;}
+#travel-preview .planner-country-toggle[aria-expanded="true"]{border-color:#626c43;}
