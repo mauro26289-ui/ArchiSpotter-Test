@@ -534,3 +534,13 @@ html.is-in-app:has(#view-explore:not([hidden]) #monument-detail:not([hidden])),h
 #monument-detail .monument-editorial {padding:0 18px 30px;color:#543b2b;}
 #monument-detail #monument-official-site {color:#626c43;background:#fff8ef;border-color:#b7bda6;}
 #monument-detail .monument-photo-choice[aria-pressed="true"] {background:#626c43;color:#fff;border-color:#626c43;}
+
+#monument-detail .audio-progress-panel[hidden]{display:none!important;}
+#monument-detail .audio-progress-panel{flex:1 0 100%;min-width:0;padding:0 3px 8px;box-sizing:border-box;}
+#monument-detail .audio-progress-range{display:block;width:100%;height:28px;margin:0;appearance:none;-webkit-appearance:none;background:transparent;accent-color:#a84e30;cursor:pointer;}
+#monument-detail .audio-progress-range::-webkit-slider-runnable-track{height:5px;border-radius:8px;background:linear-gradient(to right,#a84e30 0%,#a84e30 var(--audio-progress,0%),#dccdb9 var(--audio-progress,0%),#dccdb9 100%);}
+#monument-detail .audio-progress-range::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:#a84e30;margin-top:-5px;border:0;}
+#monument-detail .audio-progress-range::-moz-range-track{height:5px;border-radius:8px;background:#dccdb9;}
+#monument-detail .audio-progress-range::-moz-range-progress{height:5px;background:#a84e30;}
+#monument-detail .audio-progress-range::-moz-range-thumb{width:15px;height:15px;border:0;border-radius:50%;background:#a84e30;}
+#monument-detail .audio-progress-times{display:flex;justify-content:space-between;color:#75634f;font:12px Inter,sans-serif;font-variant-numeric:tabular-nums;}
