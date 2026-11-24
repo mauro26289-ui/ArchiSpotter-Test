@@ -560,3 +560,15 @@ html.is-in-app:has(#view-settings:not([hidden])),html.is-in-app:has(#view-settin
 #view-settings .lang-choices button[aria-pressed="true"]{background:#626c43;color:#fff;border-color:#626c43;}
 #view-settings #logout-btn{background:#fff8ef;color:#a84e30;border:1px solid #c9a18c;min-height:44px;}
 #view-settings button:focus-visible{outline:2px solid #a84e30;outline-offset:2px;}
+
+/* Travel planner, first step: city selection. */
+#travel-preview .planner-start{display:grid;gap:12px;color:#543b2b;}
+#travel-preview .planner-start h3{font:600 23px/1.2 Fraunces,Georgia,serif;margin:0;}
+#travel-preview .planner-start p{font:13px/1.5 Inter,sans-serif;color:#75634f;margin:0;}
+#travel-preview .planner-cities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+#travel-preview .planner-city{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:84px;padding:13px;border:1px solid #c8b79f;border-radius:12px;background:#fff8ef;color:#543b2b;text-align:left;}
+#travel-preview .planner-city strong{font:600 19px/1.2 Fraunces,Georgia,serif;}
+#travel-preview .planner-city small{font:11px/1.4 Inter,sans-serif;color:inherit;}
+#travel-preview .planner-city[aria-pressed="true"]{background:#626c43;color:#fff;border-color:#626c43;}
+#travel-preview .planner-next{width:100%;min-height:44px;background:#a84e30;color:#fff;border:0;border-radius:12px;font:600 14px Inter,sans-serif;}
+#travel-preview .planner-next:disabled{opacity:.45;cursor:default;}
