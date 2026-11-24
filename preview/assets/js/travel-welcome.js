@@ -22,14 +22,16 @@ var calendarMonth=0;
 function renderCalendar(section,l,idx){
  var w=calendarWords[l],wrap=document.createElement('section');wrap.className='planner-calendar';
  var title=document.createElement('h3');title.textContent=w[0];wrap.append(title);
- var legend=document.createElement('div');legend.className='planner-season-legend';w.slice(7).forEach(function(t,i){var span=document.createElement('span');span.className='planner-season-'+i;span.textContent=t;legend.append(span);});wrap.append(legend);
- var month=Number(planDates.month)||calendarMonth||1;
+ var legend=document.createElement('div');legend.className='planner-season-legend';w.slice(7).forEach(function(t,i){var span=document.createElement('span');span.className='planner-season-'+i;span.textContent=t;legend.append(span);});
+ var month=planDates.mode==='flex'?(Number(planDates.month)||calendarMonth||1):(calendarMonth||Number((planDates.start||'').slice(5,7))||1);
 
+ var months=document.createElement('div');months.className='planner-calendar-grid';for(var m=1;m<=12;m++){(function(n){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,n-1,1)));b.setAttribute('aria-pressed',String(n===month));b.onclick=function(){calendarMonth=n;if(planDates.mode==='flex')planDates.month=String(n);planDateReview=false;renderPlan();};months.append(b);})(m);}wrap.append(months);
+ var selectedHeading=document.createElement('h3');selectedHeading.textContent=new Intl.DateTimeFormat(l,{month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(2026,month-1,1)));wrap.append(selectedHeading);
  cities.filter(function(item){return planSelected.has(item.country+'|'+item.city[0]);}).forEach(function(item){
  var card=document.createElement('article');card.className='planner-calendar-city';var h=document.createElement('h4');h.textContent=item.city[idx];card.append(h);
- var months=document.createElement('div');months.className='planner-calendar-grid';for(var m=1;m<=12;m++){(function(n){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,n-1,1)));b.setAttribute('aria-pressed',String(n===month));b.title=w[5];b.onclick=function(){calendarMonth=n;if(planDates.mode==='flex')planDates.month=String(n);renderPlan();};months.append(b);})(m);}card.append(months);
+
  var dl=document.createElement('dl');w.slice(1,5).forEach(function(label){var dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;var climate=(window.ArchiSpotterClimate||{})[item.country+'|'+item.city[0]];dd.textContent=label===w[3]&&climate?climate.min[month-1]+'–'+climate.max[month-1]+' °C · '+climate.rain[month-1]+' mm':w[5];if(label===w[2]){var hotel=hotelPrices[item.country+'|'+item.city[0]];if(hotel&&hotel[0][month-1]!=null){var price=document.createElement('a');price.href=hotel[1];price.target='_blank';price.rel='noopener noreferrer';price.textContent='≈ '+hotel[0][month-1]+' USD '+({es:'/ noche',en:'/ night',it:'/ notte'})[l];price.title=({es:'Mediana ofertada para dos adultos, no precio en directo',en:'Median quoted price for two adults, not live price',it:'Prezzo mediano offerto per due adulti, non in tempo reale'})[l];dd.replaceChildren(price);}}if(label===w[4]){var link=document.createElement('a');link.href='https://www.skyscanner.com/';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Skyscanner.com';link.style.color='#626c43';dd.replaceChildren(link);}dl.append(dt,dd);});card.append(dl);var hotel=hotelPrices[item.country+'|'+item.city[0]];if(hotel){var note=document.createElement('small');note.textContent='TravelDeals · 21/11/2026 · Nov 2026–Oct 2027'+' · '+({es:'Ofertas orientativas, 2 adultos',en:'Indicative offers, 2 adults',it:'Offerte indicative, 2 adulti'})[l];card.append(note);}var climate=(window.ArchiSpotterClimate||{})[item.country+'|'+item.city[0]];if(climate){var link=document.createElement('a');link.href=climate.source;link.textContent=climate.label;link.style.fontSize='11px';link.style.color='#626c43';link.target='_blank';link.rel='noopener noreferrer';card.append(link);}wrap.append(card);
- });section.append(wrap);
+ });var annual=document.createElement('p');annual.textContent=({es:'Comparación anual de temporadas: pendiente de datos oficiales.',en:'Annual season comparison: official data pending.',it:'Confronto annuale delle stagioni: dati ufficiali in attesa.'})[l];wrap.append(annual);section.append(wrap);
 }
 function renderDates(section,l,idx){
  var w=dateWords[l],title=document.createElement('h3');title.className='planner-date-heading';title.textContent=planDateReview?w[11]:w[0];section.append(title);
@@ -41,12 +43,8 @@ function renderDates(section,l,idx){
  function sync(){next.disabled=!valid();if(endInput)endInput.min=planDates.start;}
  var endInput=null;
  if(planDates.mode==='fixed'){
- ['start','end'].forEach(function(key,i){var label=document.createElement('label');label.textContent=w[4+i];var input=document.createElement('input');input.type='date';input.value=planDates[key];if(key==='end')endInput=input;input.onchange=function(){planDates[key]=input.value;planDateReview=false;sync();};label.append(input);fields.append(label);});
- }else{
- var label=document.createElement('p');label.textContent=w[3];fields.append(label);
- var months=document.createElement('div');months.className='planner-months';
- for(var m=0;m<12;m++){(function(month){var b=document.createElement('button');b.type='button';b.textContent=new Intl.DateTimeFormat(l,{month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(2026,month,1)));b.setAttribute('aria-pressed',String(planDates.month===String(month+1)));b.onclick=function(){planDates.month=String(month+1);planDateReview=false;renderPlan();};months.append(b);})(m);}fields.append(months);
-
+ ['start','end'].forEach(function(key,i){var label=document.createElement('label');label.textContent=w[4+i];var input=document.createElement('input');input.type='date';input.value=planDates[key];if(key==='end')endInput=input;input.onchange=function(){planDates[key]=input.value;planDateReview=false;if(key==='start')calendarMonth=Number(input.value.slice(5,7))||0;renderPlan();};label.append(input);fields.append(label);});
+ }else{fields.hidden=true;
  }
  renderCalendar(section,l,idx);var note=document.createElement('p');note.textContent=w[10];section.append(note);
  next.onclick=function(){if(!valid())return;planDateReview=true;renderPlan();reveal(body.querySelector('.planner-date-heading'));};sync();if(!planDateReview)section.append(next);
