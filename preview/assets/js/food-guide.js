@@ -23,9 +23,31 @@ function render(host,lang,reveal){
  if(selectedCity!=='Roma'){add('p',w[9]);return;}
  groups.forEach(function(dishes,j){var section=add('section','',root,'food-category');add('h5',w[5+j*2],section);add('p',w[6+j*2],section);var grid=add('div','',section,'food-dishes');dishes.forEach(function(d,k){var card=add('article','',grid,'food-dish');var photo=photos[j*5+k];var slot=add('div','',card,'food-photo-slot');var img=add('img','',slot,'food-photo');img.alt=d;img.loading='lazy';img.decoding='async';img.src=photo.src;img.onerror=function(){img.hidden=true;slot.textContent=['Imagen no disponible','Image unavailable','Immagine non disponibile'][i];};add('strong',d,card);add('p',descriptions[j*5+k][i],card,'food-description');var credit=add('div','',card,'food-credit');var source=add('a',photo.author,credit);source.href=photo.original;source.target='_blank';source.rel='noopener noreferrer';credit.append(document.createTextNode(' · '));var license=add('a',photo.license,credit);license.href=photo.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';add('span',[' · recorte visual',' · display crop',' · ritaglio visivo'][i],credit);});});
  var venueSection=add('section','',root,'food-category');
+ var mapPanel=add('section','',venueSection,'food-map-panel');
+ add('h4',['Mapa gastronómico','Food map','Mappa gastronomica'][i],mapPanel);
+ var category=add('select','',mapPanel),dish=add('select','',mapPanel);
+ category.setAttribute('aria-label',['Categoría','Category','Categoria'][i]);
+ dish.setAttribute('aria-label',['Plato','Dish','Piatto'][i]);
+ function option(select,value,label){var o=add('option',label,select);o.value=value;}
+ option(category,'all',['Todas las categorías','All categories','Tutte le categorie'][i]);
+ option(category,'0',w[5]);option(category,'1',w[7]);
+ option(dish,'all',['Todos los platos','All dishes','Tutti i piatti'][i]);
+ groups.forEach(function(ds){ds.forEach(function(d){option(dish,d,d);});});
+ var status=add('p','',mapPanel);
+ var mapBox=add('div','',mapPanel,'food-map');
+ var mapButton=button(['Abrir mapa','Open map','Apri mappa'][i],function(){mapButton.hidden=true;startMap();},mapPanel);
+ mapBox.hidden=true;
+ var foodMap,layer,records=[],pending=false;
+ var tags=[[0,2],[0,2],[0,3],[],[1],[5,6,7,8,9],[5,6,7,8,9],[5,6,7,8],[5,6,7],[5,6,7,8]];
+ function matches(v,n){return (category.value==='all'||Number(category.value)===Math.floor(n/5))&&(dish.value==='all'||tags[n].some(function(k){return groups[Math.floor(k/5)][k%5]===dish.value;}));}
+ var cards=[];
+ function filter(){var count=0;venues.forEach(function(v,n){var yes=matches(v,n);if(yes)count++;if(cards[n])cards[n].hidden=!yes;});status.textContent=count+' / 10 '+['establecimientos','places','locali'][i]+(pending?' · '+['Buscando ubicaciones…','Finding locations…','Ricerca posizioni…'][i]:'');if(!layer)return;layer.clearLayers();records.forEach(function(pos,n){if(!pos||!matches(venues[n],n))return;var v=venues[n],pop=document.createElement('div');add('strong',v[0],pop);add('p',v[1],pop);add('p',v[5],pop);var link=add('a',['Cómo llegar','Directions','Indicazioni'][i],pop);link.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(v[0]+', '+v[1]+', Roma, Italia')+'&travelmode=walking';L.circleMarker(pos,{radius:9,color:'#fff',weight:2,fillColor:n<5?'#A84E30':'#626C43',fillOpacity:1}).bindPopup(pop).addTo(layer);});}
+ category.onchange=dish.onchange=filter;
+ async function startMap(){if(!window.L){status.textContent=['Mapa no disponible','Map unavailable','Mappa non disponibile'][i];mapButton.hidden=false;return;}mapBox.hidden=false;foodMap=L.map(mapBox).setView([41.895,12.48],13);L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(foodMap);layer=L.layerGroup().addTo(foodMap);pending=true;filter();requestAnimationFrame(function(){foodMap.invalidateSize();});for(var n=0;n<venues.length;n++){if(!mapBox.isConnected){foodMap.remove();return;}try{var v=venues[n];var response=await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=it&q='+encodeURIComponent(v[1]+', Roma, Italia'));if(response.ok){var rows=await response.json();if(rows.length){var lat=Number(rows[0].lat),lon=Number(rows[0].lon);if(lat>41.8&&lat<42&&lon>12.35&&lon<12.65)records[n]=[lat,lon];}}}catch(e){}filter();await new Promise(function(resolve){setTimeout(resolve,1200);});}pending=false;filter();add('p',records.filter(Boolean).length+' / 10 · '+['Ubicaciones por dirección; comprueba el acceso exacto en Google Maps.','Address-based locations; check the exact entrance in Google Maps.','Posizioni per indirizzo; verifica ingresso su Google Maps.'][i],mapPanel);}
+ 
  add('h4',['Dónde comer','Where to eat','Dove mangiare'][i],venueSection);
  add('p',['Valoraciones consultadas el 26/11/2026; pueden variar según la plataforma. Consulta la carta y disponibilidad antes de ir.','Ratings checked 26 Nov 2026; may vary by platform. Check the menu and availability before visiting.','Valutazioni consultate il 26/11/2026; possono variare secondo la piattaforma. Verifica menu e disponibilità.'][i],venueSection);
- [0,1].forEach(function(g){add('h5',w[5+g*2],venueSection);venues.slice(g*5,g*5+5).forEach(function(v){var card=add('article','',venueSection,'food-venue');add('strong',v[0],card);add('p',v[1]+', Roma',card);add('p','★ '+v[2].toFixed(1)+' / 5 · '+v[3].toLocaleString(['es','en','it'][i])+' '+['reseñas','reviews','recensioni'][i]+(v[4]?' · '+v[4]:''),card);add('p',v[5],card);var link=add('a',['Cómo llegar','Directions','Indicazioni'][i],card);link.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(v[0]+', '+v[1]+', Roma, Italia')+'&travelmode=walking';link.rel='noopener noreferrer';});});
+ [0,1].forEach(function(g){add('h5',w[5+g*2],venueSection);venues.slice(g*5,g*5+5).forEach(function(v){var card=add('article','',venueSection,'food-venue');cards.push(card);add('strong',v[0],card);add('p',v[1]+', Roma',card);add('p','★ '+v[2].toFixed(1)+' / 5 · '+v[3].toLocaleString(['es','en','it'][i])+' '+['reseñas','reviews','recensioni'][i]+(v[4]?' · '+v[4]:''),card);add('p',v[5],card);var link=add('a',['Cómo llegar','Directions','Indicazioni'][i],card);link.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(v[0]+', '+v[1]+', Roma, Italia')+'&travelmode=walking';link.rel='noopener noreferrer';});});filter();
 }
 window.ArchiSpotterFood={render:render};
 })();
