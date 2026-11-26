@@ -53,13 +53,21 @@ function geographicDays(key,places,pace){
  return best?best.days:[];
 }
 function selectedVisits(item){var prefix=item.country+'|'+item.city[0]+'|';return item.city[4].filter(function(p){return plannedPlaces.has(prefix+p[0]);});}
+var customDays=new Map(),editingItinerary=false;
 function renderItinerary(section,l,idx){
- var w=itineraryWords[l],h=document.createElement('h3');h.className='planner-itinerary-heading';h.textContent=w[0];section.append(h);
- var modes=document.createElement('div');modes.className='planner-modes';[150,240].forEach(function(n,i){var b=document.createElement('button');b.type='button';b.textContent=w[5+i];b.setAttribute('aria-pressed',String(itineraryPace===n));b.onclick=function(){itineraryPace=n;renderPlan();};modes.append(b);});section.append(modes);
+ var w=itineraryWords[l],t={es:['Editar itinerario','Listo','Restaurar propuesta','Subir','Bajar','Mover al día anterior','Mover al día siguiente','Añadir día'],en:['Edit itinerary','Done','Restore suggestion','Move up','Move down','Move to previous day','Move to next day','Add day'],it:['Modifica itinerario','Fatto','Ripristina proposta','Sposta su','Sposta giù','Sposta al giorno precedente','Sposta al giorno successivo','Aggiungi giorno']}[l];
+ var h=document.createElement('h3');h.className='planner-itinerary-heading';h.textContent=w[0];section.append(h);
+ function button(label,fn,cls){var b=document.createElement('button');b.type='button';b.className=cls||'planner-country-toggle';b.textContent=label;b.onclick=fn;return b;}
+ var modes=document.createElement('div');modes.className='planner-modes';[150,240].forEach(function(n,i){var b=button(w[5+i],function(){if(itineraryPace!==n){itineraryPace=n;customDays.clear();renderPlan();}});b.setAttribute('aria-pressed',String(itineraryPace===n));modes.append(b);});section.append(modes);
+ section.append(button(t[editingItinerary?1:0],function(){editingItinerary=!editingItinerary;renderPlan();}));
+ if(editingItinerary)section.append(button(t[2],function(){customDays.clear();renderPlan();}));
  var day=0;cities.filter(function(item){return planSelected.has(item.country+'|'+item.city[0]);}).forEach(function(item){var key=item.country+'|'+item.city[0],places=selectedVisits(item);if(!places.length)return;
- var card=document.createElement('article');card.className='planner-calendar-city';var title=document.createElement('h4');title.textContent=item.city[idx];card.append(title);
- geographicDays(key,places,itineraryPace).forEach(function(group){day++;var heading=document.createElement('strong');heading.textContent=w[1]+' '+day;card.append(heading);var list=document.createElement('ul');group.forEach(function(p){var li=document.createElement('li');li.textContent=p[idx];list.append(li);});card.append(list);});section.append(card);
- });var note=document.createElement('p');note.textContent=w[4];section.append(note);var back=document.createElement('button');back.type='button';back.className='planner-country-toggle';back.textContent=w[3];back.onclick=function(){planItinerary=false;renderPlan();reveal(body.querySelector('.planner-visit-heading'));};section.append(back);
+ var signature=JSON.stringify([itineraryPace,places.map(function(p){return p[0];})]),entry=customDays.get(key);
+ if(!entry||entry.signature!==signature){entry={signature:signature,days:geographicDays(key,places,itineraryPace)};customDays.set(key,entry);}
+ var groups=entry.days,card=document.createElement('article');card.className='planner-calendar-city';var title=document.createElement('h4');title.textContent=item.city[idx];card.append(title);
+ function clean(){entry.days=groups.filter(function(g){return g.length;});renderPlan();}
+ groups.forEach(function(group,d){day++;var heading=document.createElement('strong');heading.textContent=w[1]+' '+day;card.append(heading);var list=document.createElement('ul');group.forEach(function(p,j){var li=document.createElement('li');li.textContent=p[idx];if(editingItinerary){var controls=document.createElement('div');controls.className='planner-modes';function control(symbol,label,disabled,fn){var b=button(symbol,fn);b.title=label;b.setAttribute('aria-label',label+' · '+p[idx]);b.disabled=disabled;controls.append(b);}control('↑',t[3],j===0,function(){group.splice(j-1,0,group.splice(j,1)[0]);renderPlan();});control('↓',t[4],j===group.length-1,function(){group.splice(j+1,0,group.splice(j,1)[0]);renderPlan();});control('←',t[5],d===0,function(){groups[d-1].push(group.splice(j,1)[0]);clean();});control('→',t[6],false,function(){if(d===groups.length-1)groups.push([]);groups[d+1].push(group.splice(j,1)[0]);clean();});li.append(controls);}list.append(li);});card.append(list);});section.append(card);
+ });var note=document.createElement('p');note.textContent=w[4];section.append(note);var back=button(w[3],function(){editingItinerary=false;planItinerary=false;renderPlan();reveal(body.querySelector('.planner-visit-heading'));});section.append(back);
 }
 function renderVisits(section,l,idx){
  var w=visitWords[l],heading=document.createElement('h3');heading.className='planner-visit-heading';heading.textContent=w[0];section.append(heading);
@@ -96,7 +104,7 @@ function renderDates(section,l,idx){
 var cancelWords={es:['Cancelar planificación','¿Quieres cancelar la planificación? Se perderán los destinos y fechas seleccionados.'],en:['Cancel planning','Cancel planning? Your selected destinations and dates will be lost.'],it:['Annulla pianificazione','Annullare la pianificazione? Le destinazioni e le date selezionate andranno perse.']};
 function cancelPlan(){
  if(!window.confirm(cancelWords[lang()][1]))return;
- planItinerary=false;itineraryPace=240;plannedPlaces.clear();dailyHours=4;planSelected.clear();planExpanded.clear();planReview=false;planDateReview=false;planMode='countries';planDates={mode:'flex',month:'',start:'',end:''};calendarMonth=0;
+ customDays.clear();editingItinerary=false;planItinerary=false;itineraryPace=240;plannedPlaces.clear();dailyHours=4;planSelected.clear();planExpanded.clear();planReview=false;planDateReview=false;planMode='countries';planDates={mode:'flex',month:'',start:'',end:''};calendarMonth=0;
  active='';panel.hidden=true;body.replaceChildren();reveal(root.querySelector('[data-travel="plan"]'));
 }
 function addCancel(section){var b=document.createElement('button');b.type='button';b.className='planner-cancel';b.textContent=cancelWords[lang()][0];b.onclick=cancelPlan;section.append(b);}
