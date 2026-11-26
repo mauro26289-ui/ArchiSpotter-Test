@@ -126,6 +126,20 @@ window.ArchiSpotterMap = (function () {
     var missing=ids.length-found.length;
     if(status)status.textContent=({es:found.length+' de '+ids.length+' paradas ubicadas'+(missing?' · '+missing+' sin coordenadas todavía':''),en:found.length+' of '+ids.length+' stops mapped'+(missing?' · '+missing+' missing coordinates':''),it:found.length+' di '+ids.length+' tappe sulla mappa'+(missing?' · '+missing+' senza coordinate':'')})[document.documentElement.lang]||found.length+' paradas ubicadas';
   }
+  function applyLanguage(){
+    var i=({es:0,en:1,it:2}[document.documentElement.lang]||0);
+    function set(selector,values,attr){var el=document.querySelector(selector);if(el){if(attr)el.setAttribute(attr,values[i]);else el.textContent=values[i];}}
+    set('[data-tab="map"] .nav-label',['Mapa','Map','Mappa']);
+    set('#view-map .map-title',['Mapa arquitectónico','Architecture map','Mappa architettonica']);
+    set('#view-map .map-note',['Explora los monumentos en el mapa interactivo.','Explore monuments on the interactive map.','Esplora i monumenti sulla mappa interattiva.']);
+    set('#map-search',['Buscar monumento o ciudad…','Search monument or city…','Cerca monumento o città…'],'placeholder');
+    set('#map-search',['Buscar monumento o ciudad','Search monument or city','Cerca monumento o città'],'aria-label');
+    set('#map-locate',['◎ Mi ubicación','◎ My location','◎ La mia posizione']);
+    set('#archi-map',['Mapa de monumentos de ArchiSpotter','ArchiSpotter monument map','Mappa dei monumenti di ArchiSpotter'],'aria-label');
+    if(map){map.closePopup();if(!tripMode){var count=markers.getLayers().length;var catalog=window.ArchiSpotterData.countryCitySamples,total=Object.keys(catalog).reduce(function(sum,k){return sum+catalog[k].reduce(function(n,c){return n+c[4].length;},0);},0);set('#map-status',[count+' de '+total+' monumentos ubicados',count+' of '+total+' monuments mapped',count+' di '+total+' monumenti sulla mappa']);}else showTrip();}
+    set('#map-location-status',locationMarker?['Ubicación aproximada mostrada.','Approximate location shown.','Posizione approssimativa visualizzata.']:['','','']);
+    if(searchInput&&searchInput.value&&!searchResults.hidden)updateSearch();
+  }
   var mapResizeTimer=null;
   function show() {
     init();
@@ -140,5 +154,5 @@ window.ArchiSpotterMap = (function () {
   }
   document.addEventListener('archispotter:tab',function(e){if(e.detail==='map')show();});
   document.addEventListener('archispotter:saved-change',function(){if(tripMode&&map)showTrip();});
-  return {show:show,showTrip:showTrip,coordinates:monumentCoordinates,openMonument:null};
+  return {applyLanguage:applyLanguage,show:show,showTrip:showTrip,coordinates:monumentCoordinates,openMonument:null};
 })();
