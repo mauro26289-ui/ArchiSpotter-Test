@@ -30,6 +30,25 @@
  document.addEventListener('DOMContentLoaded',function(){sample('DOMContentLoaded');var home=document.getElementById('home');new MutationObserver(function(){queue('home class');}).observe(home,{attributes:true,attributeFilter:['class']});var b=document.createElement('button');b.type='button';b.textContent='Diagnóstico de pantalla';b.style.cssText='min-height:44px;margin:12px 0';b.onclick=function(){sample('manual');var report=JSON.stringify(history,null,2);var area=document.createElement('textarea');area.value=report;area.readOnly=true;area.style.cssText='width:100%;height:180px;font-size:12px';b.after(area);area.focus();area.select();};document.getElementById('view-settings').append(b);});
 })();
 </script>
+<style>
+/* Experimental standalone viewport correction; inactive in Safari and normal launches. */
+html.archi-viewport-test body{min-height:var(--archi-full-height);}
+html.archi-viewport-test .screen,html.archi-viewport-test #backdrop{bottom:auto;height:var(--archi-full-height);}
+</style>
+<script>
+(function(){
+ function sync(){
+ var root=document.documentElement,v=window.visualViewport,active=document.activeElement;
+ var standalone=!!navigator.standalone||matchMedia('(display-mode: standalone)').matches;
+ var keyboard=active&&(/^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName)||active.isContentEditable);
+ var gap=screen.height-innerHeight;
+ var affected=standalone&&matchMedia('(orientation: portrait)').matches&&!keyboard&&(!v||v.scale===1)&&gap>=60&&gap<=64&&Math.abs(root.clientHeight-innerHeight)<2;
+ root.classList.toggle('archi-viewport-test',affected);
+ if(affected)root.style.setProperty('--archi-full-height',screen.height+'px');else root.style.removeProperty('--archi-full-height');
+ }
+ document.addEventListener('DOMContentLoaded',sync);window.addEventListener('pageshow',sync);window.addEventListener('resize',sync);document.addEventListener('visibilitychange',sync);document.addEventListener('focusin',sync);document.addEventListener('focusout',function(){requestAnimationFrame(sync);});if(window.visualViewport)visualViewport.addEventListener('resize',sync);
+})();
+</script>
 </head>
 <body>
   <div id="backdrop" aria-hidden="true">
