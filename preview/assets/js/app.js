@@ -14,6 +14,7 @@
       function applyLanguage() {
         var lang = currentLang(), words = strings[lang];
         document.documentElement.lang = lang;
+        if(window.ArchiSpotterMap&&window.ArchiSpotterMap.applyLanguage)window.ArchiSpotterMap.applyLanguage();
         document.querySelectorAll('#home [data-i18n]').forEach(function (el) {
           el.textContent = words[el.getAttribute('data-i18n')] || '';
         });
