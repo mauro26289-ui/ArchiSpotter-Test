@@ -7,7 +7,7 @@ function render(host,lang,reveal){
  var catalog=window.ArchiSpotterData,data=catalog.countryCitySamples,names=catalog.countryNames,w=words[lang]||words.es,i={es:0,en:1,it:2}[lang]||0;
  var root=document.createElement('section');root.className='food-guide';host.replaceChildren(root);
  function add(tag,value,parent,cls){var el=document.createElement(tag);el.textContent=value;if(cls)el.className=cls;(parent||root).append(el);return el;}
- function refresh(){render(host,lang,reveal);reveal(host);}
+ function refresh(){render(host,lang,reveal);}
  function button(label,fn,parent){var b=add('button',label,parent,'food-choice');b.type='button';b.onclick=fn;return b;}
  function countryName(code){return (names[code]||[code,code,code])[i]||code;}
  if(!selectedCountry){add('h4',w[0]);var list=add('div','',root,'food-choices');Object.keys(data).filter(function(c){return data[c].length;}).forEach(function(c){button(countryName(c)+' ›',function(){selectedCountry=c;selectedCity='';refresh();},list);});return;}
