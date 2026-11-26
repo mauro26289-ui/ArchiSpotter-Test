@@ -42,14 +42,23 @@ var visitWords={es:['¿Qué quieres visitar?','Selecciona los monumentos de cada
 var planItinerary=false;
 var itineraryWords={es:['Tu itinerario','Día','Ver itinerario','Volver a monumentos','Propuesta flexible, sin horarios fijos. No incluye traslados entre ciudades ni disponibilidad de entradas.','Ritmo tranquilo','Ritmo equilibrado'],en:['Your itinerary','Day','View itinerary','Back to monuments','Flexible suggestion, without fixed times. Excludes intercity travel and ticket availability.','Relaxed pace','Balanced pace'],it:['Il tuo itinerario','Giorno','Vedi itinerario','Torna ai monumenti','Proposta flessibile, senza orari fissi. Non include trasferimenti tra città né disponibilità dei biglietti.','Ritmo tranquillo','Ritmo equilibrato']};
 var itineraryPace=240;
-var visitOrder={'it|Roma':['Coliseo','Foro Romano','Fontana di Trevi','Panteón de Agripa',"Castillo de Sant'Angelo"],'it|Florencia':['Catedral de Florencia','Palazzo Vecchio','Ponte Vecchio'],'es|Barcelona':['Sagrada Familia','Parque Güell','Casa Milà','Casa Batlló'],'es|Madrid':['Palacio Real','Templo de Debod','Puerta de Alcalá','Palacio de Cristal']};
+function geographicDays(key,places,pace){
+ var coords=(window.ArchiSpotterMap||{}).coordinates||{};
+ function distance(a,b){var x=coords[a[0]],y=coords[b[0]];if(!x||!y)return 1000;var rad=Math.PI/180,dlat=(y[0]-x[0])*rad,dlon=(y[1]-x[1])*rad,h=Math.sin(dlat/2)**2+Math.cos(x[0]*rad)*Math.cos(y[0]*rad)*Math.sin(dlon/2)**2;return 6371*2*Math.asin(Math.sqrt(Math.min(1,h)));}
+ function split(order){var days=[],used=0,km=0;order.forEach(function(p){var minutes=estimatedVisit(key+'|'+p[0]),last=days[days.length-1];if(!last||used+minutes>pace){last=[];days.push(last);used=0;}if(last.length)km+=distance(last[last.length-1],p);last.push(p);used+=minutes;});return {days:days,km:km};}
+ var best=null;
+ function consider(order){var result=split(order);if(!best||result.days.length<best.days.length||(result.days.length===best.days.length&&result.km<best.km))best=result;}
+ if(places.length<=8){function perm(prefix,rest){if(!rest.length){consider(prefix);return;}rest.forEach(function(p,i){perm(prefix.concat([p]),rest.slice(0,i).concat(rest.slice(i+1)));});}perm([],places);}
+ else{places.forEach(function(start){var order=[start],rest=places.filter(function(p){return p!==start;});while(rest.length){var last=order[order.length-1],i=0;rest.forEach(function(p,j){if(distance(last,p)<distance(last,rest[i]))i=j;});order.push(rest.splice(i,1)[0]);}consider(order);});}
+ return best?best.days:[];
+}
 function selectedVisits(item){var prefix=item.country+'|'+item.city[0]+'|';return item.city[4].filter(function(p){return plannedPlaces.has(prefix+p[0]);});}
 function renderItinerary(section,l,idx){
  var w=itineraryWords[l],h=document.createElement('h3');h.className='planner-itinerary-heading';h.textContent=w[0];section.append(h);
  var modes=document.createElement('div');modes.className='planner-modes';[150,240].forEach(function(n,i){var b=document.createElement('button');b.type='button';b.textContent=w[5+i];b.setAttribute('aria-pressed',String(itineraryPace===n));b.onclick=function(){itineraryPace=n;renderPlan();};modes.append(b);});section.append(modes);
- var day=0;cities.filter(function(item){return planSelected.has(item.country+'|'+item.city[0]);}).forEach(function(item){var key=item.country+'|'+item.city[0],places=selectedVisits(item),order=visitOrder[key];if(!places.length)return;if(order)places.sort(function(a,b){var x=order.indexOf(a[0]),y=order.indexOf(b[0]);return (x<0?999:x)-(y<0?999:y);});
- var card=document.createElement('article');card.className='planner-calendar-city';var title=document.createElement('h4');title.textContent=item.city[idx];card.append(title);var used=0,list=null;
- places.forEach(function(p){var minutes=estimatedVisit(key+'|'+p[0]);if(!list||used+minutes>itineraryPace){day++;used=0;var heading=document.createElement('strong');heading.textContent=w[1]+' '+day;card.append(heading);list=document.createElement('ul');card.append(list);}var li=document.createElement('li');li.textContent=p[idx];list.append(li);used+=minutes;});section.append(card);
+ var day=0;cities.filter(function(item){return planSelected.has(item.country+'|'+item.city[0]);}).forEach(function(item){var key=item.country+'|'+item.city[0],places=selectedVisits(item);if(!places.length)return;
+ var card=document.createElement('article');card.className='planner-calendar-city';var title=document.createElement('h4');title.textContent=item.city[idx];card.append(title);
+ geographicDays(key,places,itineraryPace).forEach(function(group){day++;var heading=document.createElement('strong');heading.textContent=w[1]+' '+day;card.append(heading);var list=document.createElement('ul');group.forEach(function(p){var li=document.createElement('li');li.textContent=p[idx];list.append(li);});card.append(list);});section.append(card);
  });var note=document.createElement('p');note.textContent=w[4];section.append(note);var back=document.createElement('button');back.type='button';back.className='planner-country-toggle';back.textContent=w[3];back.onclick=function(){planItinerary=false;renderPlan();reveal(body.querySelector('.planner-visit-heading'));};section.append(back);
 }
 function renderVisits(section,l,idx){
