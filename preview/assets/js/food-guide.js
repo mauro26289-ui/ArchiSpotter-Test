@@ -14,7 +14,7 @@ function render(host,lang,reveal){
  backAction=function(){if(selectedCity)selectedCity='';else if(selectedCountry)selectedCountry='';else return;refresh();if(reveal)reveal(document.getElementById('travel-preview'));};
  function button(label,fn,parent){var b=add('button',label,parent,'food-choice');b.type='button';b.onclick=fn;return b;}
  function countryName(code){return (names[code]||[code,code,code])[i]||code;}
- if(!selectedCountry){add('h4',w[0]);var list=add('div','',root,'food-choices');Object.keys(data).filter(function(c){return data[c].length;}).forEach(function(c){button(countryName(c)+' ›',function(){selectedCountry=c;selectedCity='';refresh();},list);});return;}
+ if(!selectedCountry){add('p',['Selecciona un país y descubre sus sabores, platos típicos y tradiciones culinarias.','Choose a country and discover its flavours, traditional dishes and culinary heritage.','Scegli un paese e scopri i suoi sapori, piatti tipici e tradizioni culinarie.'][i],root,'food-intro');var list=add('div','',root,'food-choices');Object.keys(data).filter(function(c){return data[c].length;}).forEach(function(c){button(countryName(c)+' ›',function(){selectedCountry=c;selectedCity='';refresh();},list);});return;}
 
  if(!selectedCity){add('h4',countryName(selectedCountry)+' · '+w[1]);var grid=add('div','',root,'food-choices');(data[selectedCountry]||[]).forEach(function(c){button(c[i]+' ›',function(){selectedCity=c[0];refresh();},grid);});return;}
 
