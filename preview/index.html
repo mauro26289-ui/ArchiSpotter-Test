@@ -106,7 +106,7 @@ html.archi-viewport-test .screen,html.archi-viewport-test #backdrop{bottom:auto;
     <button type="button" data-travel="history"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#626c43" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 7C9 4 5 4 2 5v15c4-1 7-1 10 2 3-3 6-3 10-2V5c-3-1-7-1-10 2Zm0 0v15"/></svg><b>Historia y patrimonio</b></button>
     <button type="button" data-travel="favorites"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#a84e30" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20.8 8.6c0 4.2-8.8 10.1-8.8 10.1S3.2 12.8 3.2 8.6a4.6 4.6 0 0 1 8.8-1.8 4.6 4.6 0 0 1 8.8 1.8Z"/></svg><b>Mis favoritos</b></button>
   </div>
-  <div id="travel-preview" hidden><h3 id="travel-preview-title"></h3><div id="travel-preview-body"></div><button type="button" id="travel-preview-close">Cerrar</button></div>
+  
   <h2 id="travel-destinations-title">Destinos para inspirarte</h2><div id="travel-destinations" class="travel-destinations"></div>
 </section>
           <h2 class="countries-heading" data-i18n="countriesTitle">Países</h2>
@@ -159,6 +159,7 @@ html.archi-viewport-test .screen,html.archi-viewport-test #backdrop{bottom:auto;
           <section class="monument-editorial" id="monument-editorial" hidden><h3 id="monument-curiosity-title"></h3><p id="monument-curiosity-text"></p><h3 id="monument-architecture-title"></h3><ul id="monument-architecture-list"></ul></section>
         </div>
       </div>
+      <div class="app-view" id="view-travel" hidden><div id="travel-preview" hidden><h3 id="travel-preview-title"></h3><div id="travel-preview-body"></div><button type="button" id="travel-preview-close">Cerrar</button></div></div>
       <div class="app-view" id="view-map" hidden><span class="eyebrow">CARTO Voyager · OpenStreetMap</span><h2 class="map-title">Mapa arquitectónico</h2><p class="map-note">Explorá los monumentos en el mapa interactivo.</p><div class="map-search-wrap"><input id="map-search" type="search" autocomplete="off" placeholder="Buscar monumento o ciudad…" aria-label="Buscar monumento o ciudad" aria-controls="map-search-results"><div id="map-search-results" class="map-search-results" role="listbox" hidden></div></div><div class="map-toolbar"><button id="map-locate" class="map-locate" type="button">◎ Mi ubicación</button><span id="map-location-status" class="map-location-status" role="status"></span></div><div id="archi-map" role="region" aria-label="Mapa de monumentos de ArchiSpotter"></div><p id="map-status" class="map-status" role="status"></p></div>
       <div class="app-view" id="view-trip" hidden>
         <span class="eyebrow" data-i18n="trip">Mi viaje</span><h2 data-i18n="tripTitle">Mis rutas</h2>
@@ -201,7 +202,7 @@ html.archi-viewport-test .screen,html.archi-viewport-test #backdrop{bottom:auto;
   <script src="./assets/js/photos.js?v=gallery-variable-count-20261123" defer></script>
   <script src="./assets/data/city-food.js?v=stage24" defer></script>
   <script src="./assets/js/storage.js?v=stage5-shared-storage-1" defer></script>
-  <script src="./assets/js/navigation.js?v=settings-back-1" defer></script>
+  <script src="./assets/js/navigation.js?v=separate-screens-1" defer></script>
   <script src="./assets/data/editorial.js?v=stage35-audited32-33" defer></script>
   <script src="./assets/js/monuments.js?v=travel-mate-audio-1" defer></script>
   <script src="./assets/data/restored-monuments.js?v=restored-3-1" defer></script>
@@ -215,6 +216,6 @@ html.archi-viewport-test .screen,html.archi-viewport-test #backdrop{bottom:auto;
   <script src="./assets/js/saved.js?v=planner-saved-edit-1" defer></script>
   <script src="./assets/data/travel-climate.js?v=2"></script>
 <script src="./assets/js/food-guide.js?v=12" defer></script>
-<script src="./assets/js/travel-welcome.js?v=food-pilot-1" defer></script>
+<script src="./assets/js/travel-welcome.js?v=separate-screens-1" defer></script>
 </body>
 </html>
