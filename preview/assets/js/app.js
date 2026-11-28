@@ -52,9 +52,11 @@
       }
       var authModule = window.ArchiSpotterAuth.init(enter,showScreen,auth);
       var sessionUser = authModule.sessionUser;
+      // Preview only: reversible login bypass; no storage or credentials changed.
+      var previewDirectAccess = true;
       setTimeout(function () {
         var user = sessionUser();
-        if (user) enter(user);
+        if (previewDirectAccess || user) enter(user);
         else showScreen(auth);
-      }, 2000);
+      }, previewDirectAccess ? 250 : 2000);
     })();
