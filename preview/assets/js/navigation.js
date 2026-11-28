@@ -8,7 +8,7 @@ window.ArchiSpotterNavigation = (function () {
     var top=restore&&settingsReturn?settingsReturn.top:0;
     if(tab!=='settings')settingsReturn=null;
     currentTab=tab;
-    document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
+    document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === (tab==='travel'?'explore':tab))); });
     document.querySelectorAll('.app-view').forEach(function (view) { view.hidden = view.id !== 'view-' + tab; });
     sc.scrollTop = top;
     if(restore)requestAnimationFrame(function(){if(currentTab===tab)sc.scrollTop=top;});
@@ -43,8 +43,9 @@ window.ArchiSpotterNavigation = (function () {
     if(e.touches.length!==1||!document.body.classList.contains('is-in-app'))return;
     if(e.touches[0].clientX>32)return;
     if(e.target.closest('#photo-viewer, input, textarea, select, [contenteditable="true"]'))return;
-    var special=currentTab==='settings'?document.getElementById('view-settings'):currentTab==='explore'&&window.ArchiSpotterFood&&window.ArchiSpotterFood.canBack()?document.querySelector('#travel-preview .food-guide'):null;
+    var special=currentTab==='settings'?document.getElementById('view-settings'):currentTab==='travel'&&window.ArchiSpotterFood&&window.ArchiSpotterFood.canBack()?document.querySelector('#travel-preview .food-guide'):null;
     if(special){gesture={x:e.touches[0].clientX,y:e.touches[0].clientY,dx:0,started:false,panel:special,scroll:document.querySelector('.app-content'),action:currentTab==='settings'?closeSettings:window.ArchiSpotterFood.back};return;}
+    if(currentTab==='travel'){gesture={x:e.touches[0].clientX,y:e.touches[0].clientY,dx:0,started:false,panel:document.getElementById('view-travel'),scroll:document.querySelector('.app-content'),action:function(){document.getElementById('travel-preview-close').click();}};return;}
     if(!visible('view-explore'))return;
     var panel=visible('monument-detail')?document.getElementById('monument-detail'):
       visible('city-detail')?document.getElementById('city-detail'):
@@ -124,7 +125,7 @@ window.ArchiSpotterNavigation = (function () {
     document.addEventListener('touchcancel',onTouchCancel,{passive:true});
     document.addEventListener('visibilitychange',function(){if(document.hidden)onTouchCancel();});
     document.getElementById('settings-close').addEventListener('click',closeSettings);
-    document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
+    document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { var tab=button.getAttribute('data-tab');if(tab==='explore'){if(window.ArchiSpotterTravel)window.ArchiSpotterTravel.close();['country-detail','city-detail','monument-detail'].forEach(function(id){document.getElementById(id).hidden=true;});document.getElementById('country-overview').hidden=false;}showTab(tab); }); });
   }
   return { showTab: showTab, init: init };
 })();
