@@ -1,9 +1,17 @@
 /* Navigation module: initialized explicitly by app.js after DOM and data load. */
 window.ArchiSpotterNavigation = (function () {
-  function showTab(tab) {
+  var currentTab='explore', settingsReturn=null;
+  function closeSettings(){if(currentTab!=='settings')return;var saved=settingsReturn||{tab:'explore',top:0};showTab(saved.tab,true);}
+  function showTab(tab,restore) {
+    var sc=document.querySelector('.app-content');
+    if(tab==='settings'&&currentTab!=='settings')settingsReturn={tab:currentTab,top:sc.scrollTop};
+    var top=restore&&settingsReturn?settingsReturn.top:0;
+    if(tab!=='settings')settingsReturn=null;
+    currentTab=tab;
     document.querySelectorAll('[data-tab]').forEach(function (button) { button.setAttribute('aria-selected', String(button.getAttribute('data-tab') === tab)); });
     document.querySelectorAll('.app-view').forEach(function (view) { view.hidden = view.id !== 'view-' + tab; });
-    document.querySelector('.app-content').scrollTop = 0;
+    sc.scrollTop = top;
+    if(restore)requestAnimationFrame(function(){if(currentTab===tab)sc.scrollTop=top;});
     document.dispatchEvent(new CustomEvent('archispotter:tab',{detail:tab}));
   }
   // Interactive iOS-like edge swipe with a noninteractive preview of the previous screen.
@@ -33,8 +41,11 @@ window.ArchiSpotterNavigation = (function () {
     cancelSettle();
     if(gesture){resetPreview(gesture);gesture=null;}
     if(e.touches.length!==1||!document.body.classList.contains('is-in-app'))return;
-    if(!visible('view-explore')||e.touches[0].clientX>32)return;
+    if(e.touches[0].clientX>32)return;
     if(e.target.closest('#photo-viewer, input, textarea, select, [contenteditable="true"]'))return;
+    var special=currentTab==='settings'?document.getElementById('view-settings'):currentTab==='explore'&&window.ArchiSpotterFood&&window.ArchiSpotterFood.canBack()?document.querySelector('#travel-preview .food-guide'):null;
+    if(special){gesture={x:e.touches[0].clientX,y:e.touches[0].clientY,dx:0,started:false,panel:special,scroll:document.querySelector('.app-content'),action:currentTab==='settings'?closeSettings:window.ArchiSpotterFood.back};return;}
+    if(!visible('view-explore'))return;
     var panel=visible('monument-detail')?document.getElementById('monument-detail'):
       visible('city-detail')?document.getElementById('city-detail'):
       visible('country-detail')?document.getElementById('country-detail'):null;
@@ -54,6 +65,7 @@ window.ArchiSpotterNavigation = (function () {
       g.started=true;
       // Reveal the real previous view instead of cloning the DOM.
       // Cloning duplicated images, IDs and layout, producing the broken layered view.
+      if(g.action){g.panel.style.willChange='transform';}else{
       var preview=g.previous;
       preview.hidden=false;
       preview.setAttribute('aria-hidden','true');
@@ -75,11 +87,12 @@ window.ArchiSpotterNavigation = (function () {
       g.panel.style.boxShadow='-10px 0 24px rgba(0,0,0,.24)';
       g.panel.style.willChange='transform';
       g.panel.style.minHeight='100%';
+      }
     }
     g.dx=Math.max(0,Math.min(dx,g.scroll.clientWidth));
     g.panel.style.transform='translate3d('+g.dx+'px,0,0)';
-    g.preview.style.transform='translate3d('+(-20+20*g.dx/Math.max(1,g.scroll.clientWidth))+'px,0,0)';
-    g.preview.style.opacity=String(.88+.12*g.dx/Math.max(1,g.scroll.clientWidth));
+    if(g.preview)g.preview.style.transform='translate3d('+(-20+20*g.dx/Math.max(1,g.scroll.clientWidth))+'px,0,0)';
+    if(g.preview)g.preview.style.opacity=String(.88+.12*g.dx/Math.max(1,g.scroll.clientWidth));
   }
   function onTouchEnd(e){
     var g=gesture;gesture=null;
@@ -90,6 +103,7 @@ window.ArchiSpotterNavigation = (function () {
     g.panel.style.transform='translate3d('+(commit?g.scroll.clientWidth:0)+'px,0,0)';
     var finish=function(){
       resetPreview(g);
+      if(commit&&g.action){g.action();return;}
       if(commit){
         var back=g.panel.id==='monument-detail'?'monument-back':
           g.panel.id==='city-detail'?'city-back':'country-back';
@@ -109,6 +123,7 @@ window.ArchiSpotterNavigation = (function () {
     document.addEventListener('touchend',onTouchEnd,{passive:true});
     document.addEventListener('touchcancel',onTouchCancel,{passive:true});
     document.addEventListener('visibilitychange',function(){if(document.hidden)onTouchCancel();});
+    document.getElementById('settings-close').addEventListener('click',closeSettings);
     document.querySelectorAll('[data-tab]').forEach(function (button) { button.addEventListener('click', function () { showTab(button.getAttribute('data-tab')); }); });
   }
   return { showTab: showTab, init: init };
