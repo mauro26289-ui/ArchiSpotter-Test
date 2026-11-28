@@ -20,12 +20,12 @@ window.ArchiSpotterMap = (function () {
       });
       tiles._archiFallback = true; tiles.addTo(map);
       var status = document.getElementById('map-status');
-      if (status) status.textContent = 'CARTO no responde. Se muestra OpenStreetMap.';
+      if (status) status.textContent = ({es:'CARTO no responde. Se muestra OpenStreetMap.',en:'CARTO is unavailable. Showing OpenStreetMap.',it:'CARTO non risponde. Visualizzazione di OpenStreetMap.'})[document.documentElement.lang];
     });
     tiles.addTo(map);
   }
   function init() {
-    if (map || !window.L) { if (!window.L) document.getElementById('map-status').textContent = 'No se pudo cargar el mapa. Comprueba la conexión.'; return; }
+    if (map || !window.L) { if (!window.L) document.getElementById('map-status').textContent = ({es:'No se pudo cargar el mapa. Comprueba la conexión.',en:'Unable to load the map. Check your connection.',it:'Impossibile caricare la mappa. Verifica la connessione.'})[document.documentElement.lang]; return; }
     map = L.map('archi-map', {worldCopyJump:true, maxBounds:[[-85,-180],[85,180]], maxBoundsViscosity:1, zoomControl:true}).setView([46.5,9],4);
     addTiles();
     markers = L.layerGroup().addTo(map);
